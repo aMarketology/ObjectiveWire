@@ -8,6 +8,8 @@
 import type { Metadata } from 'next';
 import VaultDashboard     from './VaultDashboard';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title:       'Your Vault | ObjectWire',
   description: 'Your digital vault of interests, saved articles, reading history, and engagement on ObjectWire.',

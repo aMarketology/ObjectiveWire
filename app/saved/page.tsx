@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import SavedArticles    from '@/components/discovery/SavedArticles';
 import Link             from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Saved Articles | ObjectWire',
   description: 'Your bookmarked articles on ObjectWire.',
