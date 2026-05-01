@@ -99,7 +99,7 @@ export async function getAllArticles(): Promise<ArticleFull[]> {
       .order('created_at', { ascending: false });
 
     if (error) { console.error('[article-service] getAllArticles:', error.message); return []; }
-    return (data || []).map(row => ({
+    return (data || []).map((row: any) => ({
       id: row.id,
       title: row.title,
       slug: row.slug,
@@ -136,7 +136,7 @@ export async function getPublishedArticles(): Promise<ArticleSummary[]> {
       .order('published_at', { ascending: false });
 
     if (error) { console.error('[article-service] getPublishedArticles:', error.message); return []; }
-    return (data || []).map(row => ({
+    return (data || []).map((row: any) => ({
       id: row.id,
       title: row.title,
       slug: row.slug,
@@ -165,7 +165,7 @@ export async function getCreatorArticles(): Promise<ArticleFull[]> {
       .order('schema_published_time', { ascending: false });
 
     if (error) { console.error('[article-service] getCreatorArticles:', error.message); return []; }
-    return (data || []).map(row => {
+    return (data || []).map((row: any) => {
       // Prefer schema_article_url (full canonical URL) → extract path.
       // Fall back to slug-based path only when schema_article_url is absent.
       let url: string;
@@ -217,7 +217,7 @@ export async function getJackArticles(): Promise<ArticleFull[]> {
       .order('publish_date', { ascending: false });
 
     if (error) { console.error('[article-service] getJackArticles:', error.message); return []; }
-    return (data || []).map(row => {
+    return (data || []).map((row: any) => {
       const authorObj = row.author as Record<string, unknown> | null;
       const heroObj = row.hero_image as Record<string, unknown> | null;
       let url: string;
@@ -263,7 +263,7 @@ export async function getBreakingHeadlines(): Promise<string[]> {
       .order('created_at', { ascending: false })
       .limit(8);
     if (error) return [];
-    return (data || []).map(r => r.title as string);
+    return (data || []).map((r: any) => r.title as string);
   } catch { return []; }
 }
 

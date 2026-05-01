@@ -26,6 +26,7 @@ interface CreatorArticleDBProps {
 
 export async function CreatorArticleDB({ slug }: CreatorArticleDBProps) {
   const supabase = await createClient();
+  if (!supabase) notFound();
 
   const { data: row } = await supabase
     .from('creator_articles')
@@ -44,7 +45,7 @@ export async function CreatorArticleDB({ slug }: CreatorArticleDBProps) {
     .neq('slug', slug)
     .limit(5);
 
-  const relatedCreators = (relatedRows ?? []).map((r) => {
+  const relatedCreators = (relatedRows ?? []).map((r: any) => {
     // Derive the page path from schema_article_url or slug
     let href = '/influencer';
     if (r.schema_article_url) {
@@ -59,7 +60,7 @@ export async function CreatorArticleDB({ slug }: CreatorArticleDBProps) {
       imageAlt:  r.sidebar_infobox_image_alt ?? r.hero_name ?? '',
       href,
     };
-  }).filter((c) => c.imageSrc);
+  }).filter((c: any) => c.imageSrc);
 
   return (
     <CreatorArticle

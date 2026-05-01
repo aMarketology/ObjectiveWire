@@ -25,7 +25,7 @@ export async function GET() {
       return new Response('Error generating RSS feed', { status: 500 });
     }
 
-    const articles = (rows || []).filter(row => {
+    const articles = (rows || []).filter((row: any) => {
       // Exclude hub/meta pages — only real articles
       const parts = row.slug.split('/').filter(Boolean);
       if (parts.length < 2) return false;
@@ -47,7 +47,7 @@ export async function GET() {
       <url>${baseUrl}/favicon.ico</url>
       <title>${escapeXml(SITE_CONFIG.name)}</title>
       <link>${baseUrl}</link>
-    </image>${articles.map(row => {
+    </image>${articles.map((row: any) => {
       const slug = row.slug.startsWith('/') ? row.slug.substring(1) : row.slug;
       const pubDate = new Date(row.publish_date).toUTCString();
       const author = row.author || 'ObjectWire Editorial Team';
@@ -60,7 +60,7 @@ export async function GET() {
       <description><![CDATA[${row.description || ''}]]></description>
       <pubDate>${pubDate}</pubDate>
       <author>${SITE_CONFIG.email} (${escapeXml(author)})</author>
-      <category>${escapeXml(row.category || 'News')}</category>${tags.map(tag => `
+      <category>${escapeXml(row.category || 'News')}</category>${tags.map((tag: any) => `
       <category>${escapeXml(tag)}</category>`).join('')}${row.image_url ? `
       <enclosure url="${escapeXml(row.image_url)}" type="image/jpeg"/>
       <media:content url="${escapeXml(row.image_url)}" medium="image"/>` : ''}

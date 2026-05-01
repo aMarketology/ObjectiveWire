@@ -165,7 +165,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
             <p className="text-sm text-gray-400">No likes yet.</p>
           ) : (
             <ul className="space-y-3">
-              {activity.likes.map((like) => (
+              {activity.likes.map((like: any) => (
                 <li key={like.article_slug}>
                   <Link
                     href={like.article_url}
@@ -191,7 +191,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
             <p className="text-sm text-gray-400">No saved articles yet.</p>
           ) : (
             <ul className="space-y-3">
-              {activity.saves.map((save) => (
+              {activity.saves.map((save: any) => (
                 <li key={save.article_slug}>
                   <Link
                     href={save.article_url}

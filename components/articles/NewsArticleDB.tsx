@@ -45,6 +45,7 @@ function deriveBreadcrumbs(urlPath: string | null | undefined, title: string): B
 
 export async function NewsArticleDB({ slug }: NewsArticleDBProps) {
   const supabase = await createClient();
+  if (!supabase) notFound();
 
   const { data: row } = await supabase
     .from('articles')

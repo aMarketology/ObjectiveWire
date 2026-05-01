@@ -42,6 +42,10 @@ export async function createClient() {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !key) {
+    if (process.env.NODE_ENV === 'production') {
+      console.warn('[supabase] Missing env vars. Returning null client.');
+      return null as any;
+    }
     throw new Error(
       'Missing Supabase env vars. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local'
     );
@@ -94,8 +98,17 @@ export async function createClient() {
  * Use this everywhere you need to check who is logged in.
  */
 export async function createAuthClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
+    if (process.env.NODE_ENV === 'production') {
+      console.warn('[supabase] Missing env vars for Auth. Returning null client.');
+      return null as any;
+    }
+    throw new Error('Missing Supabase env vars for Auth.');
+  }
+  
   const cookieStore = await cookies();
 
   return createServerClient(url, key, {

@@ -46,17 +46,17 @@ export async function GET(req: NextRequest) {
     ]);
 
     const suggestions = [
-      ...(articlesRes.data ?? []).map(a => ({
+      ...(articlesRes.data ?? []).map((a: any) => ({
         title: a.title as string,
         url: a.url as string,
         category: (a.category as string) ?? 'News',
       })),
-      ...(jackRes.data ?? []).map(a => ({
+      ...(jackRes.data ?? []).map((a: any) => ({
         title: a.title as string,
         url: stripDomain(a.article_url as string) ?? `/${a.title}`,
         category: (a.section as string) ?? 'Analysis',
       })),
-      ...(creatorRes.data ?? []).map(a => ({
+      ...(creatorRes.data ?? []).map((a: any) => ({
         title: a.hero_name as string,
         url: stripDomain(a.schema_article_url as string) ?? '/creator',
         category: (a.schema_section as string) ?? 'Creator',

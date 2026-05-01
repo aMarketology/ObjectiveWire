@@ -1,4 +1,4 @@
-﻿import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/lib/site-config';
 import { createClient } from '@/lib/supabase/server';
 
@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { data: regRows } = await supabase
       .from('content_registry')
       .select('slug, modified_date, change_frequency, priority');
-    registryEntries = (regRows || []).map((entry) => ({
+    registryEntries = (regRows || []).map((entry: any) => ({
       url: `${baseUrl}${entry.slug}`,
       lastModified: new Date(entry.modified_date),
       changeFrequency: entry.change_frequency as MetadataRoute.Sitemap[number]['changeFrequency'],
@@ -41,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Deduplicate (registry takes precedence over static)
   const unique = Array.from(
-    new Map(all.map((e) => [e.url, e])).values()
+    new Map(all.map((e: any) => [e.url, e])).values()
   );
 
   // Sort: priority desc, then lastModified desc

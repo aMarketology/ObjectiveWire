@@ -34,7 +34,7 @@ export async function GET() {
       .gte('publish_date', cutoffStr)
       .order('publish_date', { ascending: false });
 
-    const registryArticles = (registryRows || []).map(row => ({
+    const registryArticles = (registryRows || []).map((row: any) => ({
       loc: `${baseUrl}${row.slug}`,
       title: row.title,
       // publish_date is timestamptz — already a full ISO string from Supabase

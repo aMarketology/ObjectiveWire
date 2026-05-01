@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Map DB column names to the camelCase the frontend expects
-  const comments = (data ?? []).map((row) => ({
+  const comments = (data ?? []).map((row: any) => ({
     id: row.id,
     slug: row.slug,
     discordId: row.discord_id,

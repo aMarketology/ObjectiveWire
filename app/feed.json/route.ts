@@ -18,7 +18,7 @@ export async function GET() {
       .order('publish_date', { ascending: false })
       .limit(100);
 
-    const items = (entries || []).map((entry) => {
+    const items = (entries || []).map((entry: any) => {
       const item: Record<string, unknown> = {
         id: `${baseUrl}${entry.slug}`,
         url: `${baseUrl}${entry.slug}`,
