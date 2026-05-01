@@ -1,5 +1,6 @@
 /* =============================================================================
-   OBJECTWIRE GLOBAL STYLES
+   oWIRE GLOBAL STYLES
+   Brand palette derived from CreatorArticle (cream / navy / steel / amber).
    Font loading handled by Next.js for optimal performance (no CLS)
    ============================================================================= */
 
@@ -13,6 +14,13 @@
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: var(--font-source-serif), Georgia, 'Times New Roman', serif;
   --font-mono: var(--font-jetbrains), monospace;
+
+  /* oWire brand tokens — match CreatorArticle hero gradient */
+  --color-brand-bg: #faf9f6;
+  --color-brand-ink: #0f172a;
+  --color-brand-ink-2: #1e3a5f;
+  --color-brand-accent: #b45309;
+  --color-brand-accent-hi: #d97706;
 }
 
 @layer base {
@@ -21,10 +29,18 @@
     --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-serif: var(--font-source-serif), Georgia, 'Times New Roman', serif;
     --font-mono: var(--font-jetbrains), monospace;
-    
+
     /* Layout stability - prevent CLS */
     --header-height: 80px;
     --container-max: 1280px;
+
+    /* Brand color tokens (also exposed as Tailwind v4 utilities via @theme) */
+    --brand-bg: #faf9f6;
+    --brand-ink: #0f172a;
+    --brand-ink-2: #1e3a5f;
+    --brand-accent: #b45309;
+    --brand-accent-hi: #d97706;
+    --brand-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a5f 45%, #b45309 100%);
   }
 
   * {
@@ -129,13 +145,13 @@
   }
 
   ::selection {
-    background: #b3d4fc;
-    color: #0f0f0f;
+    background: #fde68a; /* amber-200 — matches brand accent */
+    color: #0f172a;
   }
 
   .dark ::selection {
-    background: #3b5998;
-    color: #f0f0f0;
+    background: #b45309; /* brand amber on dark */
+    color: #faf9f6;
   }
 
   /* News page animations */
@@ -147,6 +163,66 @@
   .animate-marquee {
     animation: marquee 30s linear infinite;
   }
+}
+
+/* =============================================================================
+   oWIRE BRAND UTILITIES
+   Reusable visual primitives derived from the CreatorArticle palette.
+   ============================================================================= */
+
+/* Hero / banner gradient — same as CreatorArticle default */
+.brand-gradient {
+  background: var(--brand-gradient);
+}
+
+/* Solid amber accent — for nameplate underline, active nav, CTAs */
+.brand-accent-bg { background-color: var(--brand-accent); }
+.brand-accent-text { color: var(--brand-accent); }
+.brand-accent-border { border-color: var(--brand-accent); }
+
+/* Thin amber separator line under wordmarks / section headers */
+.brand-rule {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--brand-accent) 20%,
+    var(--brand-accent) 80%,
+    transparent 100%
+  );
+}
+
+/* Tabloid wordmark — italicized lowercase 'o' + bold 'Wire' */
+.brand-wordmark {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--brand-ink);
+}
+.brand-wordmark .o {
+  color: var(--brand-accent);
+  font-style: italic;
+  font-weight: 800;
+}
+.dark .brand-wordmark { color: #f0f0f0; }
+.dark .brand-wordmark .o { color: #f59e0b; }
+
+/* Pill / chip used for category labels in the tabloid feed */
+.brand-chip {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--brand-ink);
+  color: #faf9f6;
+}
+.brand-chip-accent {
+  background: var(--brand-accent);
+  color: #fff;
 }
 
 /* =============================================================================

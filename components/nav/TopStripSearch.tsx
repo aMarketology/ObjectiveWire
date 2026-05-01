@@ -102,8 +102,8 @@ export default function TopStripSearch({ dateString }: { dateString: string }) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Search ObjectWire…"
-                className="text-sm font-mono border-b-2 border-black bg-transparent outline-none w-52 sm:w-72 py-1 placeholder-gray-400 text-gray-900"
+                placeholder="Search oWire…"
+                className="text-sm font-mono border-b-2 border-[#b45309] bg-transparent outline-none w-52 sm:w-72 py-1 placeholder-gray-400 text-gray-900"
                 autoComplete="off"
               />
               <button type="submit" aria-label="Submit search" className="text-gray-500 hover:text-black transition-colors">
@@ -171,7 +171,7 @@ export default function TopStripSearch({ dateString }: { dateString: string }) {
             href="https://discord.gg/wBsgkU4uAf"
             target="_blank"
             rel="noopener noreferrer"
-            title="Join the ObjectWire Discord community"
+            title="Join the oWire Discord community"
             className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-semibold text-[#5865F2] hover:text-[#4752C4] transition-colors border border-[#5865F2]/30 hover:border-[#5865F2] rounded px-2 py-0.5"
           >
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -181,7 +181,7 @@ export default function TopStripSearch({ dateString }: { dateString: string }) {
           </a>
           <span className="text-xs font-mono text-gray-500 hidden sm:block whitespace-nowrap">Est. 2024 ·</span>
           <ThemeToggle />
-          <span className="text-xs font-mono text-gray-500 hidden sm:block whitespace-nowrap">Independent</span>
+          <span className="text-xs font-mono hidden sm:block whitespace-nowrap" style={{ color: 'var(--brand-accent)' }}>Sports · Creators</span>
         </div>
       )}
     </>

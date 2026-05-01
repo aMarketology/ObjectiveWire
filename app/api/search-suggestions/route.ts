@@ -58,8 +58,8 @@ export async function GET(req: NextRequest) {
       })),
       ...(creatorRes.data ?? []).map(a => ({
         title: a.hero_name as string,
-        url: stripDomain(a.schema_article_url as string) ?? '/influencer',
-        category: (a.schema_section as string) ?? 'Influencer',
+        url: stripDomain(a.schema_article_url as string) ?? '/creator',
+        category: (a.schema_section as string) ?? 'Creator',
       })),
     ].slice(0, 3);
 

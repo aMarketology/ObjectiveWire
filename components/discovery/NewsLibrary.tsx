@@ -96,7 +96,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   'FORMULA-1': 'Formula 1', 'FORMULA 1': 'Formula 1',
   'WINTER-OLYMPICS': 'Winter Olympics', 'WINTER OLYMPICS': 'Winter Olympics',
   'WORLD-CUP': 'World Cup', 'WORLD CUP': 'World Cup',
-  'ROCKET-LEAGUE': 'Rocket League', 'ROCKET LEAGUE': 'Rocket League',
   SAAS: 'SaaS',
   'BIO-HACKING': 'Bio-Hacking',
   COLLEGE: 'Education', EDUCATION: 'Education',

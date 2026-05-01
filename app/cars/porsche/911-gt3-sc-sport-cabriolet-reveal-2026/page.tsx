@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { JackArticleDB } from '@/components/articles/JackArticleDB';
+import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
@@ -10,27 +10,8 @@ const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:pub
 const OG_IMAGE = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {
-  title: 'Porsche 911 GT3 S/C | First GT3 Convertible, 502 hp, $275K',
-  description: 'The 2026 Porsche 911 GT3 S/C is the first-ever production GT3 convertible. 502 hp, 9,000 RPM flat-six, manual-only, 3,322 lbs. Full specs, pricing, and',
-  keywords: [
-    'Porsche 911 GT3 SC',
-    'Porsche 911 GT3 S/C 2026',
-    'Porsche 911 GT3 Sport Cabriolet',
-    'Porsche 911 GT3 convertible',
-    'Porsche GT3 SC specs',
-    'Porsche 911 GT3 SC price',
-    'Porsche 911 GT3 SC 502 hp',
-    'Porsche 911 GT3 SC vs GT3',
-    'Porsche GT3 SC vs Speedster',
-    'Porsche 911 GT3 SC magnesium wheels',
-    'Porsche 911 GT3 SC PCCB brakes',
-    'Porsche 911 GT3 SC manual gearbox',
-    'Porsche 911 GT3 SC Street Style Package',
-    '2026 Porsche 911 GT3 reveal',
-    'Porsche 9000 RPM flat-six 2026',
-    'Porsche 911 GT3 SC $275350',
-    'first GT3 cabriolet Porsche',
-  ],
+  title: 'Porsche 911 GT3 SC Cabriolet Revealed | 2026 Specs & Price',
+  description: 'First look at the 2026 Porsche 911 GT3 SC Sport Cabriolet. Naturally aspirated flat-six, lightweight roof, and a $240,000 price tag.',
   alternates: { canonical: ARTICLE_URL },
   openGraph: {
     title: 'Porsche 911 GT3 S/C | First GT3 Convertible, 502 hp, $275K',
@@ -53,6 +34,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CarsPorsche911Gt3ScSportCabrioletReveal2026Page() {
-  return <JackArticleDB slug="cars-porsche-911-gt3-sc-sport-cabriolet-reveal-2026" />;
+export default function Page() {
+  return <NewsArticleDB slug="porsche-911-gt3-sc-sport-cabriolet-reveal-2026" />;
 }

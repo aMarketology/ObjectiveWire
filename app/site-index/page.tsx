@@ -32,7 +32,7 @@ const HUB_SLUGS = new Set([
   '/youtube', '/editorial-standards', '/social', '/entertainment', '/blog',
   '/about', '/team', '/privacy-policy', '/terms-of-service', '/copyright',
   '/corrections', '/get-help', '/service', '/index', '/feeds', '/crypto',
-  '/artists', '/influencer', '/saas', '/research', '/objectwire',
+  '/soccer', '/mlb', '/golf', '/youtube', '/creator', '/cars',
   '/podcasts', '/video-games', '/winter-olympics', '/world-cup', '/formula-1',
   '/redbull', '/disney', '/elon-musk', '/google', '/apple', '/nvidia',
   '/microsoft', '/open-ai', '/github', '/nasa', '/intel',

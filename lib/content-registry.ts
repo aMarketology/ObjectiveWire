@@ -594,6 +594,22 @@ export const contentRegistry: ContentEntry[] = [
     imageHeight: 675,
     imageAlt: "Airplane at airport gate representing JetBlue surveillance pricing lawsuit 2026",
   },
+  {
+    slug: "/cars/bugatti-tourbillon-v16-hybrid-reveal-2026",
+    title: "Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar",
+    description: "Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.",
+    publishDate: "2026-05-01T10:00:00Z",
+    modifiedDate: "2026-05-01",
+    category: "Automotive",
+    tags: ["Bugatti", "Tourbillon", "Hypercar", "Hybrid", "V16", "Mate Rimac"],
+    author: "ObjectWire Auto Desk",
+    priority: 0.9,
+    changeFrequency: "weekly",
+    imageUrl: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop",
+    imageWidth: 1200,
+    imageHeight: 675,
+    imageAlt: "Sleek hypercar concept",
+  },
 ];
 // SYNC HELPER FUNCTIONS (used as fallbacks by registry-service.ts)
 // When Supabase is unreachable, these operate on the empty array above,

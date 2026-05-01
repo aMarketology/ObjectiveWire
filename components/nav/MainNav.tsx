@@ -10,165 +10,72 @@ type Hub = { label: string; href: string; items: NavItem[]; cols?: 1 | 2 };
 
 const HUBS: Hub[] = [
   {
-    label: 'News',
-    href: '/news',
+    label: 'Soccer',
+    href: '/soccer',
     items: [
-      { label: 'All News', href: '/news' },
-      { label: 'World', href: '/news/world' },
-      { label: 'AI & Science', href: '/news/ai' },
-      { label: 'Canada', href: '/news/canada' },
-      { label: 'Iran', href: '/news/iran' },
-      { label: 'Layoffs', href: '/news/layoffs' },
-      { label: 'Texas', href: '/news/texas' },
-      { label: 'New York', href: '/news/newyork' },
-    ],
-  },
-  {
-    label: 'Tech',
-    href: '/tech',
-    cols: 2,
-    items: [
-      { label: 'All Tech', href: '/tech' },
-      { label: 'OpenAI', href: '/open-ai' },
-      { label: 'Google', href: '/google' },
-      { label: 'Nvidia', href: '/nvidia' },
-      { label: 'DeepSeek', href: '/tech/deepseek' },
-      { label: 'Cloudflare', href: '/cloudflare' },
-      { label: 'Stripe', href: '/tech/stripe' },
-      { label: 'Oracle', href: '/tech/oracle' },
-      { label: 'Perplexity', href: '/tech/perplexity' },
-      { label: 'Palantir', href: '/tech/palantir-3d-frontend-gaia-zodiac' },
-      { label: 'TSMC', href: '/tech/tsmc-semiconductor-foundry-profile' },
-      { label: 'AlphaFold', href: '/tech/alphafold-protein-complex-structures-database-2026' },
-      { label: 'Dell', href: '/tech/dell' },
-      { label: 'Newegg', href: '/tech/newegg' },
-      { label: 'Square', href: '/tech/square' },
-    ],
-  },
-  {
-    label: 'Finance',
-    href: '/finance',
-    items: [
-      { label: 'All Finance', href: '/finance' },
-      { label: 'Finance News', href: '/finance/news' },
-      { label: 'BlackRock', href: '/blackrock' },
-      { label: 'Cross River Bank', href: '/finance/cross-river-bank-baas-visa-usdc' },
-      { label: 'Lead Bank', href: '/finance/lead-bank-crypto-infrastructure' },
-      { label: 'Private Credit', href: '/finance/private-credit-redemption-crisis-blackstone-blackrock-blue-owl-2026' },
-    ],
-  },
-  {
-    label: 'Gaming',
-    href: '/video-games',
-    cols: 2,
-    items: [
-      { label: 'All Games', href: '/video-games' },
-      { label: 'GTA 6', href: '/video-games/gta-6' },
-      { label: 'Nintendo Switch 2', href: '/video-games/switch2' },
-      { label: 'Nintendo', href: '/video-games/nintendo' },
-      { label: 'Pokemon', href: '/video-games/pokemon' },
-      { label: "Marvel's Wolverine", href: '/video-games/marvels-wolverine' },
-      { label: 'Battlefield 6', href: '/video-games/battlefield-6' },
-      { label: 'Mario Kart', href: '/video-games/mario-kart' },
-      { label: 'Forza Horizon 6', href: '/video-games/forza-horizon-6' },
-      { label: 'Resident Evil', href: '/video-games/resident-evil-requiem' },
-      { label: 'Rainbow 6 Siege', href: '/video-games/rainbow-6-siege' },
-      { label: 'Epic Games', href: '/video-games/epic' },
-      { label: 'Ubisoft', href: '/video-games/ubisoft' },
-      { label: 'Valve / Steam', href: '/video-games/valve-corporation' },
-      { label: 'Capcom', href: '/video-games/capcom' },
-      { label: 'Unreal Engine', href: '/video-games/unreal-engine' },
-      { label: 'Star Wars Games', href: '/video-games/star-wars' },
-      { label: 'Dragon Ball', href: '/video-games/dragon-ball' },
-    ],
-  },
-  {
-    label: 'Entertainment',
-    href: '/entertainment',
-    cols: 2,
-    items: [
-      { label: 'All Entertainment', href: '/entertainment' },
-      { label: 'Netflix', href: '/entertainment/netflix' },
-      { label: 'Marvel', href: '/entertainment/marvel' },
-      { label: 'HBO Max', href: '/entertainment/hbo-max' },
-      { label: 'Hulu', href: '/entertainment/hulu' },
-      { label: 'Movies', href: '/entertainment/movies' },
-      { label: 'Apple TV+', href: '/entertainment/apple-tv' },
-      { label: 'Beast Games', href: '/entertainment/beastgames' },
-      { label: 'James Cameron', href: '/entertainment/james-cameron' },
-      { label: 'Survivor', href: '/entertainment/survivor' },
-      { label: 'Disney', href: '/disney' },
-    ],
-  },
-  {
-    label: 'Politics',
-    href: '/trump',
-    cols: 2,
-    items: [
-      { label: 'Trump', href: '/trump' },
-      { label: 'Trump News', href: '/trump/news' },
-      { label: 'Elon Musk', href: '/elon-musk' },
-      { label: 'SpaceX', href: '/elon-musk/spacex' },
-      { label: 'xAI', href: '/elon-musk/xai' },
-      { label: 'Boring Company', href: '/elon-musk/boring-company' },
-      { label: 'Politics News', href: '/politics/news' },
-    ],
-  },
-  {
-    label: 'Crypto',
-    href: '/crypto',
-    items: [
-      { label: 'All Crypto', href: '/crypto' },
-      { label: 'Crypto News', href: '/crypto/news' },
-      { label: 'Coinbase', href: '/crypto/coinbase' },
-      { label: 'XRP', href: '/crypto/xrp' },
-      { label: 'USDC', href: '/crypto/usdc' },
-      { label: 'HBAR', href: '/crypto/hbar' },
-      { label: 'Trump Crypto', href: '/crypto/trump' },
-    ],
-  },
-  {
-    label: 'Sports',
-    href: '/winter-olympics',
-    cols: 2,
-    items: [
-      { label: 'Winter Olympics', href: '/winter-olympics' },
-      { label: 'Olympics News', href: '/winter-olympics/news' },
-      { label: 'USA', href: '/winter-olympics/usa' },
-      { label: 'Norway', href: '/winter-olympics/norway' },
-      { label: 'Italy', href: '/winter-olympics/italy' },
-      { label: 'France', href: '/winter-olympics/france' },
-      { label: 'Lindsey Vonn', href: '/winter-olympics/lindsey-vonn' },
-      { label: 'Mikaela Shiffrin', href: '/winter-olympics/mikaela-shiffrin' },
-      { label: 'Chloe Kim', href: '/winter-olympics/chloe-kim-historic-three-peat-bid' },
-      { label: 'Formula 1', href: '/formula-1' },
-      { label: 'World Cup 2026', href: '/world-cup' },
+      { label: 'All Soccer', href: '/soccer' },
+      { label: 'World Cup', href: '/world-cup' },
       { label: 'MLS', href: '/mls' },
+      { label: 'Premier League', href: '/premier-league' },
     ],
   },
   {
-    label: 'Influencer',
-    href: '/influencer',
+    label: 'MLB',
+    href: '/mlb',
+    items: [
+      { label: 'All MLB', href: '/mlb' },
+    ],
+  },
+  {
+    label: 'Golf',
+    href: '/golf',
+    items: [
+      { label: 'All Golf', href: '/golf' },
+    ],
+  },
+  {
+    label: 'YouTube',
+    href: '/youtube',
+    items: [
+      { label: 'All YouTube', href: '/youtube' },
+      { label: 'Logan Paul', href: '/youtube/logan-paul' },
+      { label: 'Sidemen', href: '/youtube/sidemen' },
+      { label: 'NELK Boys', href: '/youtube/nelk-boys' },
+      { label: 'Mat Armstrong', href: '/youtube/mat-armstrong' },
+      { label: 'TheFellas', href: '/youtube/thefellas' },
+    ],
+  },
+  {
+    label: 'Creators',
+    href: '/creator',
     cols: 2,
     items: [
-      { label: 'All Influencers', href: '/influencer' },
-      { label: 'Influencer News', href: '/influencer/news' },
-      { label: 'MrBeast', href: '/influencer/mrbeast' },
-      { label: 'Iman Gadzhi', href: '/influencer/iman-gadzhi' },
-      { label: 'Lean Beef Patty', href: '/influencer/lean-beef-patty' },
-      { label: 'Ari Kytsya', href: '/influencer/ari-kytsya' },
-      { label: 'Abby Berner', href: '/influencer/abby-berner' },
-      { label: 'Tren Twins', href: '/influencer/tren-twins' },
-      { label: 'Steve Will Do It', href: '/influencer/steve-will-do-it-kicked-of-logan-paul-s-podcast-making-an-official-return-to-youtube' },
-      { label: 'Colleen Sheehan', href: '/influencer/colleen-sheehan' },
-      { label: 'TikTok', href: '/tiktok' },
-      { label: 'YouTube', href: '/youtube' },
+      { label: 'All Creators', href: '/creator' },
+      { label: 'Creator News', href: '/creator/news' },
+      { label: 'MrBeast', href: '/creator/mrbeast' },
+      { label: 'Iman Gadzhi', href: '/creator/iman-gadzhi' },
+      { label: 'Lean Beef Patty', href: '/creator/lean-beef-patty' },
+      { label: 'Ari Kytsya', href: '/creator/ari-kytsya' },
+      { label: 'Abby Berner', href: '/creator/abby-berner' },
+      { label: 'Tren Twins', href: '/creator/tren-twins' },
+      { label: 'Emma Chamberlain', href: '/creator/emma-chamberlain' },
+      { label: 'Alix Earle', href: '/creator/alix-earle' },
+      { label: 'Charli D’Amelio', href: '/creator/charli-damelio' },
+      { label: 'Pokimane', href: '/creator/pokimane' },
+      { label: 'Valkyrae', href: '/creator/valkyrae' },
+    ],
+  },
+  {
+    label: 'Cars',
+    href: '/cars',
+    items: [
+      { label: 'All Cars', href: '/cars' },
     ],
   },
 ];
 
 const LINK_CLS =
-  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap hover:bg-black hover:text-white transition-colors';
+  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap hover:bg-[#b45309] hover:text-white transition-colors';
 
 export default function MainNav() {
   const [openHub, setOpenHub] = useState<string | null>(null);
@@ -188,7 +95,7 @@ export default function MainNav() {
   };
 
   return (
-    <div className="border-t-2 border-black">
+    <div className="border-t border-[#0f172a]/15 bg-white">
       <div className="container mx-auto px-4">
         <nav className="flex items-center">
 
@@ -196,7 +103,7 @@ export default function MainNav() {
           <Link
             href="/"
             aria-label="Home"
-            className={`${LINK_CLS} border-r border-black shrink-0 flex items-center`}
+            className={`${LINK_CLS} border-r border-[#0f172a]/20 shrink-0 flex items-center`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
               <path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7A1 1 0 0 0 3 11h1v6a1 1 0 0 0 1 1h4v-4h2v4h4a1 1 0 0 0 1-1v-6h1a1 1 0 0 0 .707-1.707l-7-7Z" />
@@ -216,7 +123,7 @@ export default function MainNav() {
                 >
                   <Link
                     href={hub.href}
-                    className={`${LINK_CLS} border-r border-black flex items-center gap-1 ${isOpen ? 'bg-black text-white' : ''}`}
+                    className={`${LINK_CLS} border-r border-[#0f172a]/20 flex items-center gap-1 ${isOpen ? 'bg-[#0f172a] text-white' : ''}`}
                   >
                     {hub.label}
                     <svg
@@ -230,21 +137,25 @@ export default function MainNav() {
 
                   {isOpen && (
                     <div
-                      className={`absolute top-full left-0 z-[200] bg-white border-2 border-t-0 border-black shadow-2xl py-1 ${hub.cols === 2 ? 'min-w-[280px]' : 'min-w-[180px]'}`}
+                      className="absolute top-full left-0 z-[200] bg-white rounded-b-xl shadow-xl mt-0 overflow-hidden"
+                      style={{ borderTopColor: 'var(--brand-accent)', borderTopWidth: '3px', borderTopStyle: 'solid' }}
                       onMouseEnter={cancelClose}
                       onMouseLeave={scheduleClose}
                     >
-                      <div className={hub.cols === 2 ? 'grid grid-cols-2' : 'flex flex-col'}>
+                      <div className={`p-3 grid gap-2 ${hub.cols === 2 ? 'grid-cols-2 w-[480px]' : 'grid-cols-1 w-[240px]'}`}>
                         {hub.items.map((item, idx) => (
                           <Link
                             key={item.href}
                             href={item.href}
                             onClick={() => setOpenHub(null)}
-                            className={`block px-4 py-2 text-[10px] font-bold tracking-[.1em] uppercase text-gray-800 hover:bg-black hover:text-white transition-colors whitespace-nowrap ${
-                              idx === 0 ? `border-b border-gray-200 ${hub.cols === 2 ? 'col-span-2' : ''}` : ''
-                            }`}
+                            className={`flex items-center gap-3 py-2.5 px-3 bg-[#faf9f6] rounded-md shadow-sm border border-gray-100 hover:border-[#b45309] hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 ${idx === 0 && hub.cols === 2 ? 'col-span-2 bg-[#0f172a] hover:bg-[#0f172a] text-white border-none' : ''}`}
                           >
-                            {item.label}
+                            <span className={`text-[10px] font-black transition-colors leading-none tracking-[.1em] uppercase ${idx === 0 && hub.cols === 2 ? 'text-white' : 'text-[#0f172a] group-hover:text-[#b45309]'}`}>
+                              {item.label}
+                            </span>
+                            <span className={`ml-auto transition-colors ${idx === 0 && hub.cols === 2 ? 'text-gray-400' : 'text-gray-300 group-hover:text-[#b45309]'}`}>
+                              →
+                            </span>
                           </Link>
                         ))}
                       </div>
@@ -259,11 +170,11 @@ export default function MainNav() {
           <div className="flex items-center ml-auto shrink-0">
             <Link
               href="/site-index"
-              className={`${LINK_CLS} border-l border-r border-black hidden sm:block`}
+              className={`${LINK_CLS} border-l border-r border-[#0f172a]/20 hidden sm:block`}
             >
               Index
             </Link>
-            <div className="hidden sm:block border-r border-black">
+            <div className="hidden sm:block border-r border-[#0f172a]/20">
               <NavUserButton />
             </div>
             {/* Mobile hamburger */}

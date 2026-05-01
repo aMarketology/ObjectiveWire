@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { JackArticleDB } from '@/components/articles/JackArticleDB';
+import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
@@ -53,6 +53,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TeslaSemiTruckersMassProductionPage() {
-  return <JackArticleDB slug="cars-tesla-semi-truckers-mass-production-nevada-2026" />;
+export default function Page() {
+  return <NewsArticleDB slug="cars-tesla-semi-truckers-mass-production-nevada-2026" />;
 }

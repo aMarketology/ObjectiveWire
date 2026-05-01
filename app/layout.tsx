@@ -61,10 +61,10 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`
   },
   description: SITE_CONFIG.description,
-  keywords: ["news", "intelligence", "journalism", "business news", "technology news", "verified news", "fact-checked reporting"],
-  authors: [{ name: "ObjectWire News Editorial Team" }],
+  keywords: ["sports news", "creators", "influencers", "athletes", "world cup", "olympics", "formula 1", "creator economy", "tabloid sports"],
+  authors: [{ name: "oWire Editorial" }],
   creator: SITE_CONFIG.name,
-  publisher: `${SITE_CONFIG.name} News Network`,
+  publisher: SITE_CONFIG.name,
   formatDetection: {
     email: false,
     telephone: false,
@@ -142,11 +142,11 @@ export default async function RootLayout({
         <AuthProvider>
           <ThemeProvider>
             <FooterAuthorProvider>
-            {/* ── Newspaper Masthead ─────────────────────────────────────── */}
-            <header className="border-b-4 border-black bg-white sticky sm:relative top-0 z-40 overflow-visible">
+            {/* ── oWire Masthead ─────────────────────────────────────────── */}
+            <header className="bg-white sticky sm:relative top-0 z-40 overflow-visible shadow-[0_2px_0_0_var(--brand-accent),0_3px_0_0_var(--brand-ink)]">
 
               {/* Top info strip */}
-              <div className="border-b border-gray-300 bg-gray-50">
+              <div className="border-b border-gray-200 bg-[#faf9f6]">
                 <div className="container mx-auto px-4 py-1 flex items-center justify-between">
                   <TopStripSearch dateString={new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />
                 </div>
@@ -154,17 +154,14 @@ export default async function RootLayout({
 
               {/* Nameplate */}
               <div className="container mx-auto px-4 py-2 md:py-5 text-center">
-                <Link href="/" className="inline-block group">
-                  <div className="text-[2.4rem] sm:text-5xl md:text-8xl font-black tracking-tighter leading-none font-serif">
-                    OBJECTWIRE
+                <Link href="/" className="inline-block group" aria-label="oWire — home">
+                  <div className="brand-wordmark text-[2.6rem] sm:text-6xl md:text-8xl">
+                    <span className="o">o</span>Wire
                   </div>
-                  <div className="flex items-center justify-center gap-4 mt-1.5">
-                    <div className="h-px w-10 md:w-28 bg-black" />
-                    <p className="text-[8px] tracking-[.25em] uppercase text-gray-500 font-mono whitespace-nowrap">
-                      Independent · Verified · In-Depth
-                    </p>
-                    <div className="h-px w-10 md:w-28 bg-black" />
-                  </div>
+                  <div className="brand-rule mx-auto mt-2 w-40 md:w-72" />
+                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-gray-500 font-mono whitespace-nowrap">
+                    Sports <span className="brand-accent-text">·</span> Creators <span className="brand-accent-text">·</span> Culture
+                  </p>
                 </Link>
               </div>
 
@@ -204,26 +201,24 @@ export default async function RootLayout({
             {/* Ownership & funding disclosure */}
             <div className="border-t border-gray-100 dark:border-gray-800 mt-14 pt-8">
               <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl">
-                <span className="font-semibold text-gray-700 dark:text-gray-300">Ownership and funding:</span>{' '}
-                ObjectWire is an independent, self-funded nonprofit newsroom. We accept no advertising, no
-                sponsored content, and no political donations. Read our{' '}
-                <Link href="/about" className="text-blue-600 hover:text-blue-800 underline">about page</Link>,{' '}
-                <Link href="/editorial-standards" className="text-blue-600 hover:text-blue-800 underline">editorial standards</Link>, and{' '}
-                <Link href="/corrections" className="text-blue-600 hover:text-blue-800 underline">corrections policy</Link>.
+                <span className="font-semibold text-gray-700 dark:text-gray-300">About oWire:</span>{' '}
+                The lighter, faster sister of ObjectWire — covering sports, creators, and the moments
+                everyone is talking about. Read our{' '}
+                <Link href="/about" className="brand-accent-text hover:underline">about page</Link>,{' '}
+                <Link href="/editorial-standards" className="brand-accent-text hover:underline">editorial standards</Link>, and{' '}
+                <Link href="/corrections" className="brand-accent-text hover:underline">corrections policy</Link>.
               </p>
             </div>
 
             {/* Bottom bar */}
             <div className="border-t border-gray-100 dark:border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span>© 2026 ObjectWire.</span>
-                <span className="hidden sm:inline">Self-funded nonprofit newsroom.</span>
-                <span className="text-gray-300 dark:text-gray-600">·</span>
-                <span className="text-xs">Verified reporting. Primary sources only.</span>
+                <span>© 2026 oWire.</span>
+                <span className="hidden sm:inline">Sports & creator culture, daily.</span>
               </div>
               <div className="flex items-center gap-1 text-xs text-gray-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block animate-pulse" />
-                <span>objectwire.org</span>
+                <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ background: 'var(--brand-accent)' }} />
+                <span>owire</span>
               </div>
             </div>
           </div>
