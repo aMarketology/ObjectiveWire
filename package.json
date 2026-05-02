@@ -19,6 +19,7 @@
     "articles:dry-run": "npx tsx scripts/push-articles-to-supabase.ts --dry-run",
     "content:publish": "npx tsx scripts/publish-content.ts",
     "content:dry-run": "npx tsx scripts/publish-content.ts --dry-run",
+    "dump-content": "npx tsx --env-file=.env.local scripts/dump-content.ts",
     "wiki:migrate": "npx tsx scripts/migrate-wiki-content.ts",
     "wiki:migrate-dry": "npx tsx scripts/migrate-wiki-content.ts --dry-run",
     "wiki:trim": "npx tsx scripts/trim-wiki-pages.ts",

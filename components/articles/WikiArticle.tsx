@@ -1,17 +1,16 @@
 /**
  * WikiArticle — Server Component
  *
- * Fetches an article from the `wiki_articles` table by slug and renders it.
- * Supports two display modes determined by the stored data:
+ * Loads an article from a local JSON file (data/wiki-articles/{slug}.json).
+ * Populate the data directory by running: npm run dump-content
  *
- *  - WIKI mode:  No author set → encyclopedia layout (breadcrumb + serif h1 + grid HTML)
- *  - NEWS mode:  author_name set → news article layout (category badge, author, date, body)
- *
- * Used by the thin page.tsx files that replace the old static pages.
+ * Two display modes:
+ *  - WIKI mode:  No author set → encyclopedia layout
+ *  - NEWS mode:  author_name set → news article layout
  */
 
 import { notFound } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
+import { getWikiArticle } from '@/lib/local-content';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 
 interface WikiArticleProps {
@@ -19,14 +18,7 @@ interface WikiArticleProps {
 }
 
 export async function WikiArticle({ slug }: WikiArticleProps) {
-  const supabase = await createClient();
-
-  const { data: article } = await supabase
-    .from('wiki_articles')
-    .select('*')
-    .eq('slug', slug)
-    .single();
-
+  const article = getWikiArticle(slug);
   if (!article) notFound();
 
   // Find the raw HTML block
@@ -167,7 +159,7 @@ export async function WikiArticle({ slug }: WikiArticleProps) {
         <div className="container mx-auto px-4 max-w-6xl">
           <h1 className="text-4xl font-serif mb-2">{h1Title}</h1>
           <p className="text-gray-600 italic">
-            From ObjectWire, the verification-first intelligence platform
+            From oWire — Sports &amp; Creator Culture
           </p>
         </div>
       </header>

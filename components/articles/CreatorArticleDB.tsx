@@ -1,22 +1,12 @@
 /**
  * CreatorArticleDB — Server Component
  *
- * Fetches a row from the `creator_articles` table by slug and renders it
- * using the <CreatorArticle> display component.
- *
- * JSONB columns (breadcrumbs, hero_badges, hero_cta_buttons, sidebar_infobox_rows,
- * sidebar_callout, sidebar_timeline, sidebar_related_links) are stored as-is in
- * the DB and passed through directly — no manual mapping required.
- *
- * Usage in a page.tsx:
- *   export const dynamic = 'force-dynamic';
- *   export default function Page() {
- *     return <CreatorArticleDB slug="winter-olympics/usa/alysa-liu" />;
- *   }
+ * Loads a creator profile from a local JSON file (data/creator-articles/{slug}.json).
+ * Populate the data directory by running: npm run dump-content
  */
 
 import { notFound } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
+import { getCreatorArticle, listLocalSlugs } from '@/lib/local-content';
 import CreatorArticle from './CreatorArticle';
 import { ContentRenderer } from './ContentRenderer';
 
@@ -25,28 +15,17 @@ interface CreatorArticleDBProps {
 }
 
 export async function CreatorArticleDB({ slug }: CreatorArticleDBProps) {
-  const supabase = await createClient();
-  if (!supabase) notFound();
-
-  const { data: row } = await supabase
-    .from('creator_articles')
-    .select('*')
-    .eq('slug', slug)
-    .eq('status', 'published')
-    .single();
-
+  const row = getCreatorArticle(slug);
   if (!row) notFound();
 
-  // Fetch up to 5 other published creator profiles for the sidebar
-  const { data: relatedRows } = await supabase
-    .from('creator_articles')
-    .select('hero_name, hero_subtitle, sidebar_infobox_image_src, sidebar_infobox_image_alt, schema_article_url, slug')
-    .eq('status', 'published')
-    .neq('slug', slug)
-    .limit(5);
+  // Related creators: up to 5 other published profiles
+  const relatedRows = listLocalSlugs('creator-articles')
+    .filter(s => s !== slug)
+    .slice(0, 5)
+    .map(s => getCreatorArticle(s))
+    .filter(Boolean) as Record<string, any>[];
 
-  const relatedCreators = (relatedRows ?? []).map((r: any) => {
-    // Derive the page path from schema_article_url or slug
+  const relatedCreators = relatedRows.map((r) => {
     let href = '/influencer';
     if (r.schema_article_url) {
       try { href = new URL(r.schema_article_url).pathname; } catch { href = `/${r.slug}`; }
@@ -54,13 +33,13 @@ export async function CreatorArticleDB({ slug }: CreatorArticleDBProps) {
       href = `/${r.slug}`;
     }
     return {
-      name:      r.hero_name ?? r.slug,
-      subtitle:  r.hero_subtitle ?? 'Creator Profile',
-      imageSrc:  r.sidebar_infobox_image_src ?? '',
-      imageAlt:  r.sidebar_infobox_image_alt ?? r.hero_name ?? '',
+      name:     r.hero_name ?? r.slug,
+      subtitle: r.hero_subtitle ?? 'Creator Profile',
+      imageSrc: r.sidebar_infobox_image_src ?? '',
+      imageAlt: r.sidebar_infobox_image_alt ?? r.hero_name ?? '',
       href,
     };
-  }).filter((c: any) => c.imageSrc);
+  }).filter(c => c.imageSrc);
 
   return (
     <CreatorArticle
