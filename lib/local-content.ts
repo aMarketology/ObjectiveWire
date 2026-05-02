@@ -25,7 +25,7 @@ function slugToFilename(slug: string): string {
   return slug.replace(/\//g, '__') + '.json';
 }
 
-function readRow(dir: string, slug: string): Record<string, unknown> | null {
+function readRow(dir: string, slug: string): Record<string, any> | null {
   const filePath = path.join(DATA_ROOT, dir, slugToFilename(slug));
   if (fs.existsSync(filePath)) {
     try { return JSON.parse(fs.readFileSync(filePath, 'utf-8')); } catch { return null; }
@@ -52,15 +52,15 @@ function readRow(dir: string, slug: string): Record<string, unknown> | null {
   return null;
 }
 
-export function getCreatorArticle(slug: string): Record<string, unknown> | null {
+export function getCreatorArticle(slug: string): Record<string, any> | null {
   return readRow('creator-articles', slug);
 }
 
-export function getArticlePage(slug: string): Record<string, unknown> | null {
+export function getArticlePage(slug: string): Record<string, any> | null {
   return readRow('article-pages', slug);
 }
 
-export function getWikiArticle(slug: string): Record<string, unknown> | null {
+export function getWikiArticle(slug: string): Record<string, any> | null {
   return readRow('wiki-articles', slug);
 }
 

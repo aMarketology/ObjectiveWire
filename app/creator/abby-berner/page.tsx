@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 const SLUG = '/creator/abby-berner';
 const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
 const PAGE_URL = ARTICLE_URL;
-const OG_IMAGE = '';
+const OG_IMAGE = '/influncer/usa/abby_berner.png';
 const IMAGE_URL = OG_IMAGE;
 
 export const metadata: Metadata = {

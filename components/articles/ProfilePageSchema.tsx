@@ -52,6 +52,12 @@ export function ProfilePageSchema({
       !url.startsWith('mailto:'),
   );
 
+  // Derive section from pageUrl so breadcrumb matches actual page path
+  const urlSegments = pageUrl.replace('https://www.objectwire.org', '').split('/').filter(Boolean);
+  const sectionSlug = urlSegments[0] ?? 'creator';
+  const sectionName = sectionSlug.charAt(0).toUpperCase() + sectionSlug.slice(1);
+  const sectionUrl = `https://www.objectwire.org/${sectionSlug}`;
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
@@ -70,7 +76,7 @@ export function ProfilePageSchema({
       '@type': 'BreadcrumbList',
       'itemListElement': [
         { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://www.objectwire.org' },
-        { '@type': 'ListItem', 'position': 2, 'name': 'Influencer', 'item': 'https://www.objectwire.org/influencer' },
+        { '@type': 'ListItem', 'position': 2, 'name': sectionName, 'item': sectionUrl },
         { '@type': 'ListItem', 'position': 3, 'name': personName, 'item': pageUrl },
       ],
     },
