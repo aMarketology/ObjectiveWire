@@ -208,6 +208,77 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // ==========================================================================
+      // INFLUENCER → CREATOR URL MIGRATION
+      // Old /influencer/* slugs now live under /creator/*
+      // Date: May 2026
+      // ==========================================================================
+      {
+        source: '/influencer/abby-berner',
+        destination: '/creator/abby-berner',
+        permanent: true,
+      },
+      {
+        source: '/influencer/ari-kytsya',
+        destination: '/creator/ari-kytsya',
+        permanent: true,
+      },
+      {
+        source: '/influencer/bufalika',
+        destination: '/creator/bufalika',
+        permanent: true,
+      },
+      {
+        source: '/influencer/colleen-sheehan',
+        destination: '/creator/colleen-sheehan',
+        permanent: true,
+      },
+      {
+        source: '/influencer/diamond-gym',
+        destination: '/creator/diamond-gym',
+        permanent: true,
+      },
+      {
+        source: '/influencer/leah-davies',
+        destination: '/creator/leah-davies',
+        permanent: true,
+      },
+      {
+        source: '/influencer/lean-beef-patty',
+        destination: '/creator/lean-beef-patty',
+        permanent: true,
+      },
+      {
+        source: '/influencer/megan-marie',
+        destination: '/creator/megan-marie',
+        permanent: true,
+      },
+      {
+        source: '/influencer/mika-lafuente',
+        destination: '/creator/mika-lafuente',
+        permanent: true,
+      },
+      {
+        source: '/influencer/miranda-marie',
+        destination: '/creator/miranda-marie',
+        permanent: true,
+      },
+      {
+        source: '/influencer/tren-twins',
+        destination: '/creator/tren-twins',
+        permanent: true,
+      },
+      {
+        source: '/influencer/uk/stephen-tries',
+        destination: '/creator/uk',
+        permanent: true,
+      },
+      {
+        source: '/influencer/:path*',
+        destination: '/creator/:path*',
+        permanent: true,
+      },
+
     ];
   },
   
