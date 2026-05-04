@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { WikiArticle } from '@/components/articles/WikiArticle';
+import WorldCupBoycottClient from './WorldCupBoycottClient';
 
-// Page renders dynamically — content fetched from Supabase at request time.
-// Run 'npm run wiki:migrate' to update content in Supabase.
-export const dynamic = 'force-dynamic';
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "2026 World Cup Boycott Controversy | ICE Immigration",
@@ -45,5 +43,5 @@ export const metadata: Metadata = {
 };
 
 export default function WorldCupBoycottPage() {
-  return <WikiArticle slug="world-cup-boycott-controversy" />;
+  return <WorldCupBoycottClient />;
 }
