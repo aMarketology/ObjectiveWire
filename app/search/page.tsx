@@ -167,28 +167,28 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 {/* Suggested Categories */}
                 <div className="flex flex-wrap gap-3 justify-center">
                   <Link 
-                    href="/news"
+                    href="/site-index"
                     className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
                   >
                     Latest News
                   </Link>
                   <Link 
-                    href="/microsoft"
+                    href="/world-cup"
                     className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
                   >
-                    Microsoft
+                    World Cup 2026
                   </Link>
                   <Link 
-                    href="/google"
+                    href="/creator/news"
                     className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
                   >
-                    Google
+                    Creator News
                   </Link>
                   <Link 
-                    href="/apple-google-gemini-partnership"
+                    href="/youtube"
                     className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
                   >
-                    AI & Technology
+                    YouTube
                   </Link>
                 </div>
               </div>
