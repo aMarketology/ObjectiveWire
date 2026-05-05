@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
-// Page renders dynamically — content fetched from Supabase at request time.
-// Run 'npm run wiki:migrate' to update content in Supabase.
-export const dynamic = 'force-dynamic';
+// Content sourced from Supabase via WikiArticle. ISR keeps it fresh without live hits.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'All Topics & Tags',

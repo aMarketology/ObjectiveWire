@@ -150,11 +150,43 @@ interface PageMeta {
   title: string;
   description: string;
   author: string;
+  authorSlug?: string;
+  publishedTime?: string;  // ISO-8601 from openGraph.publishedTime
+  imageUrl?: string;       // from openGraph.images[0].url
+  imageAlt?: string;       // from openGraph.images[0].alt
+  extractedTags?: string[]; // from openGraph.tags
   filePath: string;
 }
 
+// Categories we still register (sitemap + homepage need them), but that are
+// NOT real articles — filtered at query time by isRealArticle in registry-service.
+// We still want them in the registry for the sitemap; they just don't surface in feeds.
+
 const SKIP_PREFIXES = ['/api/', '/(', '/feeds/', '/rss', '/news-sitemap', '/robots', '/sitemap'];
 const SKIP_EXACT   = ['/', '', '/page.tsx'];
+
+// Non-article route prefixes that add no value to the registry at all
+const SKIP_REGISTRY_PREFIXES = [
+  '/api/',
+  '/auth/',
+  '/account/',
+  '/login/',
+  '/profile/',
+  '/saved/',
+  '/search/',
+  '/admin/',
+  '/(admin)',
+  '/feed.json',
+  '/rss',
+  '/feeds/',
+  '/news-sitemap',
+  '/image-sitemap',
+  '/sitemap',
+  '/robots',
+  '/cursor/',       // internal test pages
+  '/articlepage/',  // legacy test stubs
+  '/newsarticle/',  // legacy test stubs
+];
 
 function extractMetadataFromFile(filePath: string): PageMeta | null {
   try {
@@ -176,27 +208,80 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
 
     if (SKIP_EXACT.includes(slug)) return null;
     if (SKIP_PREFIXES.some(p => slug.startsWith(p))) return null;
+    if (SKIP_REGISTRY_PREFIXES.some(p => slug.startsWith(p))) return null;
 
-    // extract title
+    // ── Quality gate 1: must have a real metadata export ──────────────────
+    if (!content.includes('export const metadata') && !content.includes('export async function generateMetadata')) {
+      return null;
+    }
+
+    // ── Extract title ──────────────────────────────────────────────────────
     const titleMatch =
       content.match(/title\s*:\s*['"`]([^'"`\r\n]{3,200})['"`]/) ||
       content.match(/<h1[^>]*>([^<]{3,200})<\/h1>/);
-    const title = titleMatch?.[1]?.trim() ?? slug.replace(/\//g, ' › ').trim();
+    const rawTitle = titleMatch?.[1]?.trim() ?? '';
 
-    // extract description
+    // Quality gate 2: reject fallback/slug-derived titles
+    const slugDerived = slug.replace(/\//g, ' › ').trim();
+    if (!rawTitle || rawTitle === slugDerived) return null;
+
+    // ── Extract description ────────────────────────────────────────────────
     const descMatch =
       content.match(/description\s*:\s*['"`]([^'"`\r\n]{10,300})['"`]/) ||
       content.match(/content\s*:\s*['"`]([^'"`\r\n]{10,300})['"`]/);
-    const description = (descMatch?.[1]?.trim() ?? `ObjectWire coverage of ${title}.`)
-      .slice(0, 160);
+    const rawDesc = descMatch?.[1]?.trim() ?? '';
 
-    // extract author
+    // Quality gate 3: reject fallback description and very short ones
+    if (!rawDesc || rawDesc.startsWith('ObjectWire coverage of') || rawDesc.length < 60) return null;
+
+    // ── Extract openGraph.publishedTime ───────────────────────────────────
+    const pubTimeMatch = content.match(/publishedTime\s*:\s*['"`]([^'"`\r\n]{10,30})['"`]/);
+    const publishedTime = pubTimeMatch?.[1]?.trim();
+
+    // ── Extract openGraph.images[0].url ──────────────────────────────────
+    const ogImageMatch =
+      content.match(/images\s*:\s*\[\s*\{[^}]*url\s*:\s*['"`]([^'"`]+)['"`]/) ||
+      content.match(/imageUrl\s*:\s*['"`]([^'"`]+)['"`]/);
+    const imageUrl = ogImageMatch?.[1]?.trim();
+
+    // ── Extract openGraph.images[0].alt ──────────────────────────────────
+    const ogAltMatch = content.match(/images\s*:\s*\[\s*\{[^}]*alt\s*:\s*['"`]([^'"`]+)['"`]/);
+    const imageAlt = ogAltMatch?.[1]?.trim();
+
+    // ── Extract openGraph.tags ────────────────────────────────────────────
+    const ogTagsMatch = content.match(/openGraph[\s\S]{0,500}tags\s*:\s*\[([^\]]+)\]/);
+    let extractedTags: string[] | undefined;
+    if (ogTagsMatch) {
+      extractedTags = ogTagsMatch[1]
+        .match(/['"`]([^'"`]+)['"`]/g)
+        ?.map(t => t.replace(/['"`]/g, '').trim())
+        .filter(t => t.length > 1);
+    }
+
+    // ── Extract authorSlug ────────────────────────────────────────────────
+    const authorSlugMatch =
+      content.match(/author_slug\s*:\s*['"`]([^'"`\r\n]{2,80})['"`]/) ||
+      content.match(/authorSlug\s*:\s*['"`]([^'"`\r\n]{2,80})['"`]/);
+    const authorSlug = authorSlugMatch?.[1]?.trim();
+
+    // ── Extract author display name ───────────────────────────────────────
     const authorMatch =
       content.match(/author\s*:\s*['"`]([^'"`\r\n]{3,80})['"`]/) ||
       content.match(/author\s*:\s*\{[^}]*name\s*:\s*['"`]([^'"`]{3,80})['"`]/);
     const author = authorMatch?.[1]?.trim() ?? DEFAULT_AUTHOR;
 
-    return { slug, title, description, author, filePath };
+    return {
+      slug,
+      title: rawTitle.slice(0, 300),
+      description: rawDesc.slice(0, 500),
+      author,
+      authorSlug,
+      publishedTime,
+      imageUrl,
+      imageAlt,
+      extractedTags,
+      filePath,
+    };
   } catch {
     return null;
   }
@@ -264,23 +349,41 @@ interface RegistryRow {
   category: string;
   tags: string[];
   author: string;
+  author_slug?: string;
   priority: number;
   change_frequency: string;
+  image_url?: string;
+  image_alt?: string;
 }
 
 function buildEntryObject(meta: PageMeta): RegistryRow {
-  const { category, tags } = detectCategory(meta.slug);
+  const { category, tags: categoryTags } = detectCategory(meta.slug);
+
+  // Prefer openGraph tags extracted from the file; fall back to slug-derived tags
+  const tags = (meta.extractedTags && meta.extractedTags.length >= 2)
+    ? meta.extractedTags
+    : categoryTags;
+
+  // Use the real published date from openGraph.publishedTime if available.
+  // Fall back to TODAY only for pages that genuinely don't have a date yet.
+  const publishDate = meta.publishedTime
+    ? meta.publishedTime.split('T')[0]  // "2026-04-28T00:00:00Z" → "2026-04-28"
+    : TODAY;
+
   return {
     slug: meta.slug,
     title: meta.title.slice(0, 300),
     description: meta.description.slice(0, 500),
-    publish_date: TODAY,
-    modified_date: TODAY,
+    publish_date: publishDate,
+    modified_date: publishDate,
     category,
     tags,
     author: meta.author,
+    author_slug: meta.authorSlug,
     priority: detectPriority(meta.slug, category),
     change_frequency: detectChangeFrequency(category),
+    image_url: meta.imageUrl,
+    image_alt: meta.imageAlt,
   };
 }
 
@@ -326,14 +429,27 @@ async function upsertToSupabase(rows: RegistryRow[]): Promise<void> {
 async function main() {
   console.log('🔍  Scanning app directory for page.tsx files…');
   const allPages = scanApp(APP_DIR);
-  console.log(`    Found ${allPages.length} pages\n`);
+  console.log(`    Found ${allPages.length} pages with real metadata\n`);
+
+  if (allPages.length === 0) {
+    console.warn('⚠️  No pages passed the metadata quality gate. Check that your page.tsx files export `metadata` with a real title and description (≥60 chars).');
+    return;
+  }
 
   // Source of truth is now Supabase — check what's already registered there
   const registeredSlugs = await getRegisteredSlugsFromSupabase();
   console.log(`📋  Currently registered in Supabase: ${registeredSlugs.size} entries\n`);
 
   const missing = allPages.filter(p => !registeredSlugs.has(p.slug));
-  console.log(`➕  Missing from registry: ${missing.length} pages\n`);
+
+  // Separate pages with real dates from ones that will get TODAY as fallback
+  const withDate    = missing.filter(p => p.publishedTime);
+  const withoutDate = missing.filter(p => !p.publishedTime);
+
+  console.log(`➕  Missing from registry: ${missing.length} pages`);
+  if (withDate.length)    console.log(`    ✓ ${withDate.length} have a real publishedTime from openGraph`);
+  if (withoutDate.length) console.log(`    ⚠ ${withoutDate.length} will get today's date (no openGraph.publishedTime found) — update these manually in Supabase`);
+  console.log('');
 
   if (missing.length === 0) {
     console.log('✅  Registry is fully up to date!');

@@ -183,9 +183,17 @@ export async function middleware(request: NextRequest) {
   }
   
   // ==========================================================================
-  // 5. NON-WWW TO WWW REDIRECT (Canonical domain)
+  // 5. NON-WWW TO WWW REDIRECT + ALIAS DOMAIN REDIRECT (Canonical domain)
   // ==========================================================================
   const host = request.headers.get('host') || '';
+
+  // owire.org and www.owire.org → www.objectwire.org (permanent 301)
+  if (host === 'owire.org' || host === 'www.owire.org') {
+    const newUrl = new URL(request.url);
+    newUrl.host = 'www.objectwire.org';
+    return NextResponse.redirect(newUrl, 301);
+  }
+
   if (host === 'objectwire.org') {
     const newUrl = new URL(request.url);
     newUrl.host = 'www.objectwire.org';

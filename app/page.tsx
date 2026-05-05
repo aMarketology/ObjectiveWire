@@ -1,10 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { getAllArticles, getCreatorArticles } from '@/lib/article-service';
-
-export const dynamic = 'force-dynamic';
-import type { ArticleFull } from '@/lib/article-service';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
 import EngagementBar from '@/components/engagement/EngagementBar';
 import HeadlineList from '@/components/discovery/HeadlineList';
@@ -62,33 +58,6 @@ function fromRegistry(e: ContentEntry): Article {
     imageAlt: e.imageAlt,
     featured: e.featured,
     tags: e.tags,
-  };
-}
-
-function fromBlog(p: ArticleFull, registry: ContentEntry[]): Article | null {
-  // Articles migrated from page routes have slugs derived from their path
-  // (e.g. /social/meta/news/article → slug "social-meta-news-article").
-  // Look up the canonical URL in the content registry. If no match, use
-  // the `url` field from the article itself (set by wiki:publish).
-  const registryEntry = registry.find(
-    (e) => e.slug.replace(/^\//, '').replace(/\//g, '-') === p.slug
-  );
-  const href = registryEntry?.slug ?? p.url;
-  if (!href) return null;
-  return {
-    id: String(p.id),
-    title: p.title.replace(/\s*[|—–\-]\s*ObjectWire.*$/i, ''),
-    excerpt: p.excerpt ?? undefined,
-    href,
-    publishDate: (p.published_at ?? p.publishedAt ?? ''),
-    category: p.category ?? 'News',
-    author: p.author_name ?? 'ObjectWire',
-    imageUrl: p.imageUrl ?? p.thumbnail_url ?? undefined,
-    imageAlt: p.image_alt ?? p.thumbnail_alt ?? undefined,
-    breaking: p.breaking ?? false,
-    featured: p.featured ?? false,
-    exclusive: p.exclusive ?? false,
-    tags: Array.isArray(p.tags) ? p.tags : [],
   };
 }
 
@@ -195,86 +164,16 @@ function HeadlineRow({ article }: { article: Article }) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default async function HomePage() {
-  // Load the content registry from Supabase
+  // Single Supabase call: content_registry holds all article metadata synced at build time.
+  // Article bodies live in code (page.tsx files) — no per-request Supabase body fetches.
   const contentRegistry = await getAllEntries();
 
-  // Load Supabase articles (non-fatal)
-  let blogArticles: Article[] = [];
-  try {
-    const all = await getAllArticles();
-    blogArticles = all
-      .filter((p: ArticleFull) => p.status === 'published')
-      .map((p: ArticleFull) => fromBlog(p, contentRegistry))
-      .filter((a: Article | null): a is Article => a !== null);
-  } catch {
-    // Supabase unavailable — static registry still shows
-  }
-
-  // Load creator articles (influencer bios, athlete profiles)
-  try {
-    const creators = await getCreatorArticles();
-    const creatorArticles = creators.map((p) => {
-      const href = p.url;
-      return {
-        id: p.slug,
-        title: p.title.replace(/\s*[|—–\-]\s*ObjectWire.*$/i, ''),
-        excerpt: p.excerpt ?? undefined,
-        href,
-        publishDate: p.published_at ?? p.publishedAt ?? '',
-        category: p.category ?? 'Entertainment',
-        author: p.author_name ?? 'ObjectWire',
-        imageUrl: p.imageUrl ?? undefined,
-        imageAlt: p.image_alt ?? undefined,
-        breaking: false,
-        featured: false,
-        exclusive: false,
-      } as Article;
-    });
-    blogArticles.push(...creatorArticles);
-  } catch {
-    // Creator articles unavailable — no-op
-  }
-
-
-
-  // Content registry: exclude section/hub pages (< 2 path segments)
-  // and dynamic route patterns like /profile/[username]
-  const registryArticles = contentRegistry
+  // Content registry: exclude hub/index pages (< 2 path segments) and dynamic routes
+  const filtered = contentRegistry
     .filter((e) => e.slug.split('/').filter(Boolean).length >= 2 && !e.slug.includes('['))
-    .map(fromRegistry);
-
-  // Merge & deduplicate by href — when both sources have the same article,
-  // combine fields so we get the best of both (Supabase has status flags,
-  // registry has images and SEO descriptions).
-  const seen = new Map<string, number>(); // href → index in merged[]
-  const merged: Article[] = [];
-  for (const a of [...blogArticles, ...registryArticles]) {
-    const idx = seen.get(a.href);
-    if (idx === undefined) {
-      seen.set(a.href, merged.length);
-      merged.push(a);
-    } else {
-      // Merge: keep existing entry but backfill missing fields
-      const existing = merged[idx];
-      if (!existing.imageUrl && a.imageUrl) {
-        existing.imageUrl = a.imageUrl;
-        existing.imageAlt = a.imageAlt;
-      }
-      if (!existing.excerpt && a.excerpt) existing.excerpt = a.excerpt;
-      if (a.breaking) existing.breaking = true;
-      if (a.featured) existing.featured = true;
-      if (a.exclusive) existing.exclusive = true;
-      // Prefer newer publish date
-      if (a.publishDate && (!existing.publishDate || new Date(a.publishDate) > new Date(existing.publishDate))) {
-        existing.publishDate = a.publishDate;
-      }
-    }
-  }
-  merged.sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
-
-  // Exclude non-editorial categories from the homepage feed
-  const HOMEPAGE_EXCLUDED_CATEGORIES = new Set(['services', 'service']);
-  const filtered = merged.filter((a) => !HOMEPAGE_EXCLUDED_CATEGORIES.has(a.category.toLowerCase()));
+    .filter((e) => !['services', 'service'].includes(e.category.toLowerCase()))
+    .map(fromRegistry)
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
   // GA4: promote most-read article to lead slot
   let popularLeadSlug: string | null = null;

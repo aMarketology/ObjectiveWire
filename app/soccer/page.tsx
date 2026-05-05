@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
-import { getAllEntries } from '@/lib/registry-service';
+import { getArticlesByCategory } from '@/lib/registry-service';
 
-export const dynamic = 'force-dynamic';
+// ISR: regenerate at most once per hour.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Soccer News & Analysis | oWire',
@@ -11,16 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SoccerHubPage() {
-  const contentRegistry = await getAllEntries();
-
-  // Filter for soccer content
-  const soccerArticles = contentRegistry
-    .filter((a) => {
-      const cat = a.category.toLowerCase();
-      const slug = a.slug.toLowerCase();
-      return cat === 'soccer' || cat === 'world cup' || cat === 'mls' || cat === 'premier league' || slug.includes('/soccer/') || slug.includes('world-cup');
-    })
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+  const soccerArticles = await getArticlesByCategory('Soccer', 20);
 
   // Split into featured and latest
   const featured = soccerArticles.slice(0, 2);

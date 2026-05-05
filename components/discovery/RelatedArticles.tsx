@@ -244,7 +244,8 @@ async function fetchTable(
       `${SUPABASE_URL}/rest/v1/${table}?${params.toString()}`,
       {
         headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` },
-        cache: 'no-store',
+        // 5-minute browser cache — reduces Supabase hits on every page navigation
+        next: { revalidate: 300 },
       },
     );
     if (!res.ok) return [];
@@ -255,6 +256,53 @@ async function fetchTable(
 }
 
 // â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+/**
+ * Fetch candidates from the content_registry table.
+ * Synced from the filesystem via wiki:publish / wiki:sync — includes every
+ * article on the current branch, not just articles / jack_articles / creator_articles.
+ */
+async function fetchRegistry(): Promise<ArticleRow[]> {
+  const params = new URLSearchParams({
+    select: 'slug,title,category,publish_date,modified_date,image_url,tags',
+    order:  'modified_date.desc',
+    limit:  String(PER_TABLE),
+  });
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/content_registry?${params.toString()}`,
+      {
+        headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` },
+        // 5-minute browser cache — reduces Supabase hits on every page navigation
+        next: { revalidate: 300 },
+      },
+    );
+    if (!res.ok) return [];
+    const rows: Array<{
+      slug:          string;
+      title:         string;
+      category:      string;
+      publish_date:  string;
+      modified_date: string;
+      image_url?:    string;
+      tags?:         string[];
+    }> = await res.json();
+
+    return rows.map((r) => ({
+      // Normalise slug: strip leading "/" and replace "/" with "-" to match articles-table format
+      slug:          r.slug.replace(/^\//, '').replace(/\//g, '-'),
+      title:         r.title,
+      category:      r.category,
+      publish_date:  r.publish_date,
+      published_at:  r.modified_date,   // ISO date — used for recency scoring
+      thumbnail_src: r.image_url,
+      tags:          r.tags,
+      url:           r.slug,            // full URL path used as href
+    }));
+  } catch {
+    return [];
+  }
+}
 
 export default function RelatedArticles({ currentSlug, category, tags = [] }: Props) {
   const [articles,           setArticles]           = useState<ScoredArticle[]>([]);
@@ -275,13 +323,14 @@ export default function RelatedArticles({ currentSlug, category, tags = [] }: Pr
         ? dwellValues.reduce((a, b) => a + b, 0) / dwellValues.length
         : 60;
 
-      const [news, jack, creators] = await Promise.all([
+      const [news, jack, creators, registry] = await Promise.all([
         fetchTable('articles',         'slug,title,category,publish_date,published_at,thumbnail_src,tags,url'),
         fetchTable('jack_articles',    'slug,title,category,publish_date,published_at,thumbnail_src,tags,url'),
         fetchTable('creator_articles', 'slug,title,category,publish_date,published_at,thumbnail_src,tags,url'),
+        fetchRegistry(),
       ]);
 
-      const rawMerged = [...news, ...jack, ...creators].filter(
+      const rawMerged = [...news, ...jack, ...creators, ...registry].filter(
         (r) => r.slug !== currentSlug && r.url,
       );
 

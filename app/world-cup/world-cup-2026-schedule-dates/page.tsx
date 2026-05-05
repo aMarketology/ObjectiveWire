@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 
 // Inline article — no Supabase sync. Content lives in the codebase.
-export const dynamic = 'force-dynamic';
+export const revalidate = 86400;
 
 const SLUG = '/world-cup/world-cup-2026-schedule-dates';
 const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;

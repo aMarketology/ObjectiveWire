@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
-import { getAllEntries } from '@/lib/registry-service';
+import { getArticlesByCategory } from '@/lib/registry-service';
 
-export const dynamic = 'force-dynamic';
+// ISR: regenerate at most once per hour.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Cars & Automotive | oWire',
@@ -11,12 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CarsHubPage() {
-  const contentRegistry = await getAllEntries();
-
-  // Filter for car content
-  const carArticles = contentRegistry
-    .filter((a) => a.category.toLowerCase() === 'automotive' || a.category.toLowerCase() === 'cars' || a.slug.includes('/cars/'))
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+  const carArticles = await getArticlesByCategory('Automotive', 20);
 
   // Split into featured and latest
   const featured = carArticles.slice(0, 2);

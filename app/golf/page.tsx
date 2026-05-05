@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
-import { getAllEntries } from '@/lib/registry-service';
+import { getArticlesByCategory } from '@/lib/registry-service';
 
-export const dynamic = 'force-dynamic';
+// ISR: regenerate at most once per hour.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Golf News & Analysis | oWire',
@@ -11,16 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function GolfHubPage() {
-  const contentRegistry = await getAllEntries();
-
-  // Filter for golf content
-  const golfArticles = contentRegistry
-    .filter((a) => {
-      const cat = a.category.toLowerCase();
-      const slug = a.slug.toLowerCase();
-      return cat === 'golf' || cat === 'pga' || cat === 'liv' || slug.includes('/golf/') || slug.includes('pga') || slug.includes('liv-golf');
-    })
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+  const golfArticles = await getArticlesByCategory('Golf', 20);
 
   // Split into featured and latest
   const featured = golfArticles.slice(0, 2);

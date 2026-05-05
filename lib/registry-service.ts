@@ -150,18 +150,37 @@ export async function getFeaturedArticles(): Promise<ContentEntry[]> {
   return data.map(rowToEntry);
 }
 
-/** Latest real articles (no hub/index pages), newest first */
+/** Latest real articles (no hub/index pages), newest first — DB-limited query, no full table scan */
 export async function getLatestArticles(limit = 10): Promise<ContentEntry[]> {
-  const all = await getAllEntries();
-  return all
+  const supabase = await db();
+  if (!supabase) {
+    return _syncRegistry
+      .filter(isRealArticle)
+      .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+      .slice(0, limit);
+  }
+
+  // Fetch only the rows we need with a DB-level limit.
+  // Exclude hub-only categories and short descriptions server-side via PostgREST filters.
+  const { data, error } = await supabase
+    .from('content_registry')
+    .select('*')
+    .not('category', 'in', '("Meta","Support","Services","Legal")')
+    .gte('description', '       ') // description length >= 7 chars filters out stubs (PostgREST gte on text = lexicographic, not ideal, so we over-fetch slightly)
+    .order('publish_date', { ascending: false })
+    .limit(limit * 4); // over-fetch 4x so isRealArticle filter still yields enough
+
+  if (error || !data) {
+    console.error('[registry-service] getLatestArticles:', error?.message);
+    return _syncRegistry
+      .filter(isRealArticle)
+      .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+      .slice(0, limit);
+  }
+
+  return data
+    .map(rowToEntry)
     .filter(isRealArticle)
-    .sort((a, b) => {
-      const d = new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
-      if (d !== 0) return d;
-      const m = new Date(b.modifiedDate).getTime() - new Date(a.modifiedDate).getTime();
-      if (m !== 0) return m;
-      return (b.priority ?? 0) - (a.priority ?? 0);
-    })
     .slice(0, limit);
 }
 

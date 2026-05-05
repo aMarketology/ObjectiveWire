@@ -45,21 +45,45 @@ Never use `—`. Replace every instance with these substitutions:
 
 ---
 
+## Article Architecture — Content in Code, Metadata in Supabase
+
+**Rule (May 2026):** Article bodies and subheadings live in code (`page.tsx` files). Only critical metadata is stored in Supabase.
+
+| Layer | Lives In | Synced How |
+|---|---|---|
+| Article body, headings, JSX | `page.tsx` (code) | Always in repo, built statically |
+| Metadata (title, description, tags, category, publish date) | `content_registry` (Supabase) | `sync-registry.ts` at build time |
+| Auth, engagement, reactions | Supabase | Real-time per user |
+
+### What this means in practice
+
+- **New articles**: Write as `<NewsArticle>`, `<JackArticle>`, etc. with full content in the file. Do NOT run `wiki:publish` to strip them to DB stubs.
+- **`*DB` components** (`NewsArticleDB`, `JackArticleDB`, etc.) are **legacy only**. They fetch body content from Supabase on every request and are not used for new articles.
+- **`content_registry`** is the single source of truth for the homepage, hub pages, sitemaps, and related articles. It is populated at build time by `sync-registry.ts` — no per-request Supabase calls needed for listings.
+- **Hub pages** use `export const revalidate = 3600` (ISR, 1-hour TTL). Never `force-dynamic` on hub/index pages.
+- **Article pages** use `export const revalidate = 86400` or no export (static). Full body content is in code so there is nothing to fetch from Supabase at render time.
+- **Homepage** makes exactly 1 Supabase call: `getAllEntries()` from `content_registry`. No `getAllArticles()`, no `getCreatorArticles()`, no `getJackArticles()`.
+
+---
+
 ## Article Component Routing
 
 Every article belongs to exactly one Supabase table. Use the correct component or you will query the wrong table:
 
 | Component | Supabase Table | Use For |
 |---|---|---|
-| `NewsArticleDB` | `articles` | News, breaking, gaming, tech, features, analysis |
-| `JackArticleDB` | `jack_articles` | Research reports, investigations, premium long-form |
-| `ArticlePageDB` | `article_pages` | Profiles, wiki-style, evergreen reference guides |
-| `CreatorArticleDB` | `creator_articles` | Creator profiles, influencer features, athlete bios |
-| `AlysaArticleDB` | `alysa_articles` | Winter Olympics / athlete-specific legacy profiles |
+| `NewsArticleDB` | `articles` | **Legacy only** — existing DB stub pages |
+| `JackArticleDB` | `jack_articles` | **Legacy only** — existing DB stub pages |
+| `ArticlePageDB` | `article_pages` | **Legacy only** — existing DB stub pages |
+| `CreatorArticleDB` | `creator_articles` | **Legacy only** — existing DB stub pages |
+| `AlysaArticleDB` | `alysa_articles` | **Legacy only** — existing DB stub pages |
+| `NewsArticle` | None (content in code) | **All new articles** — body stays in page.tsx |
+| `JackArticle` | None (content in code) | **All new JackArticle** — body stays in page.tsx |
+| `CreatorArticle` | None (content in code) | **All new creator profiles** |
 
 **`jack_articles` has no `status` column.** Never query `status` from it.
 
-All fetching is server-side. Zero client-side Supabase calls in page components. Every `page.tsx` must export `dynamic = 'force-dynamic'`.
+All fetching is server-side. Zero client-side Supabase calls in page components. New article `page.tsx` files do NOT export `dynamic = 'force-dynamic'` — use `revalidate = 86400` or omit entirely for static generation.
 
 ---
 
@@ -347,15 +371,27 @@ export default function InfluencerYourCreatorPage() {
 
 ## Publishing Workflows
 
-**Workflow A — `wiki:publish` (default for ALL new article pages):**
+**Workflow A — Full content in code (DEFAULT for all new articles, May 2026+):**
 
-Write the full `page.tsx` with real JSX content inside the correct component (`<ArticlePage>`, `<NewsArticle>`, `<JackArticle>`, `<CreatorArticle>`), then run:
+Write the full `page.tsx` with `<NewsArticle>`, `<JackArticle>`, or `<CreatorArticle>` — body and subheadings stay in the file. Then run `sync-registry.ts` to register the metadata in `content_registry`:
+```bash
+npm run build   # sync-registry.ts runs automatically as part of prebuild
+```
+Or manually:
+```bash
+npx tsx scripts/sync-registry.ts --write
+```
+The page is statically generated at build time. No Supabase call on every request. Use `export const revalidate = 86400` if you want periodic ISR refresh, or omit for fully static.
+
+**Workflow B — `wiki:publish` (legacy, only for migrating existing DB-based content):**
+
+If you have an existing full content file that was previously stripped to a stub, run:
 ```bash
 npm run wiki:publish -- --file app/your/path/page.tsx
 ```
-The script auto-detects the component, upserts to the correct Supabase table, adds a `content_registry` entry, and trims the file to a stub. One command does everything.
+This upserts to the appropriate Supabase table and trims to a DB stub. **Do not use for new articles.**
 
-**Workflow B — content file → Supabase (for `articles` table only, news format):**
+**Workflow C — content file → Supabase (for `articles` table only, news format, legacy):**
 ```bash
 cp content/articles/_template.ts content/articles/[category]/your-slug.ts
 # fill fields and content_html
@@ -363,19 +399,20 @@ npm run content:dry-run
 npm run content:publish
 ```
 
-**Workflow C — `/admin/editor` UI** — use only for quick edits or non-developer contributors.
+**Workflow D — `/admin/editor` UI** — use only for quick edits or non-developer contributors.
 
-**Workflow D — bulk sync (use with caution):**
+**Workflow E — bulk sync (use with caution):**
 ```bash
 npm run wiki:sync      # upserts all pages + deletes orphan Supabase rows
 npm run wiki:status    # diagnostic: shows sync state across filesystem, registry, Supabase
 ```
 
 ### Critical rules
-- **Never write a DB stub manually.** Always run `wiki:publish` on the full content file first.
-- **Never use `<ArticlePageDB>` (or any `*DB` component) in a full content file.** The `*DB` variants are only for stubs after the script has run.
+- **New articles: body stays in code.** Do not push body content to Supabase for new articles.
+- **`sync-registry.ts` runs at every build** — it reads metadata from `page.tsx` files and upserts `content_registry`. This is the only Supabase write needed for new content.
+- **Never use `<ArticlePageDB>` (or any `*DB` component) in a new content file.** The `*DB` variants are legacy for existing DB-backed stubs only.
 - Slug is derived automatically from the file path. Do not set it manually in the file.
-- **After every `wiki:publish`, check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.objectwire.org${SLUG}\`` after the SLUG line.
+- **After every `wiki:publish` (legacy), check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.objectwire.org${SLUG}\`` after the SLUG line.
 
 ---
 

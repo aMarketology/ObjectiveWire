@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
-import { getAllEntries } from '@/lib/registry-service';
+import { getArticlesByCategory } from '@/lib/registry-service';
 
-export const dynamic = 'force-dynamic';
+// ISR: regenerate at most once per hour.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Premier League News & Analysis | oWire',
@@ -11,20 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PremierLeagueHubPage() {
-  const contentRegistry = await getAllEntries();
-
-  const articles = contentRegistry
-    .filter((a) => {
-      const cat = a.category.toLowerCase();
-      const slug = a.slug.toLowerCase();
-      return (
-        cat === 'premier league' ||
-        cat === 'premier-league' ||
-        slug.includes('/premier-league/') ||
-        slug.includes('premier-league')
-      );
-    })
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+  const articles = await getArticlesByCategory('Premier League', 20);
 
   const featured = articles.slice(0, 2);
   const latest = articles.slice(2);

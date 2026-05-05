@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
-// Page renders dynamically — content fetched from Supabase at request time.
-// Run 'npm run wiki:migrate' to update content in Supabase.
-export const dynamic = 'force-dynamic';
+// Team page changes rarely. Regenerates daily via ISR.
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Our Team",

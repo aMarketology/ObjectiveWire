@@ -8,7 +8,7 @@ import { createClient } from '@/lib/supabase/server';
 // SEO METADATA
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 86400; // Profiles rarely change — daily ISR
 
 export const metadata: Metadata = {
   title: 'Creator Hub | Profiles, News & Culture',

@@ -2,23 +2,22 @@
 // =============================================================================
 // scripts/validate-canonicals.ts — M4 Canonical Guardrail
 // =============================================================================
-// Two checks in one script:
+// Three checks in one script:
 //
 // CHECK 1 — Layout canonical guard
-//   Scans app/layout.tsx (and any shared layout files) for a hardcoded
-//   `<link rel="canonical"` JSX element. If found, fails the build.
-//   Rationale: a site-wide canonical pointing to the homepage collapses every
-//   article URL into a duplicate of the homepage in Google's index.
-//   (This was the root cause of the April 22 2026 impressions drop.)
+//   Scans app/layout.tsx for a hardcoded `<link rel="canonical"` JSX element.
+//   If found, fails the build.
 //
 // CHECK 2 — Per-page canonical presence
 //   Scans every app/**/page.tsx that exports a `metadata` object and flags
 //   pages that have NO `alternates` / `canonical` defined.
-//   These pages will be served with no canonical tag at all, which causes
-//   canonicalization uncertainty for Google.
+//
+// CHECK 3 — Hub page force-dynamic guard (warning)
+//   Hub pages (1 path segment, /mlb, /golf, /soccer, etc.) should use
+//   `revalidate` (ISR) not `force-dynamic`. `force-dynamic` kills caching
+//   and causes a live Supabase hit on every Googlebot crawl.
 //
 // Excluded from check 2:
-//   - Dynamic DB-stub pages (they use *DB components; canonical comes from metadata export which is present)
 //   - Pages in non-indexable routes: (admin), api, auth, account, saved, search, login, profile
 //   - System route files (robots.ts, sitemap.ts, not-found.tsx, layout.tsx)
 //
@@ -132,27 +131,34 @@ function checkPageCanonicals(): string[] {
       continue;
     }
 
-    // Skip *DB stub pages — they export metadata with canonical set; this is the expected pattern
-    // (Check: metadata block present + one of the *DB components used)
-    const isDbStub =
+    // Detect article component type
+    const isLegacyDbStub =
       content.includes('NewsArticleDB') ||
       content.includes('JackArticleDB') ||
       content.includes('ArticlePageDB') ||
       content.includes('CreatorArticleDB') ||
       content.includes('AlysaArticleDB');
 
-    if (isDbStub) {
-      // Still verify it has a canonical defined in the metadata block
+    // New code-first articles — body stays in page.tsx, no DB fetch
+    const isCodeFirstArticle =
+      content.includes('<NewsArticle') ||
+      content.includes('<JackArticle') ||
+      content.includes('<CreatorArticle') ||
+      content.includes('<WikiArticle') ||
+      content.includes('<AlysaArticle');
+
+    // For any article page (legacy DB or new code-first), verify canonical is set
+    if (isLegacyDbStub || isCodeFirstArticle) {
       if (!content.includes('canonical')) {
         violations.push(
-          `  ✗  app/${rel}  →  DB stub exports metadata but no canonical URL found. ` +
+          `  ✗  app/${rel}  →  article page exports metadata but no canonical URL found. ` +
           `Add: alternates: { canonical: \`https://www.objectwire.org/your/path\` }`
         );
       }
       continue;
     }
 
-    // For full content pages: require alternates.canonical or canonicalUrl (used by generateArticleMetadata)
+    // For all other pages with metadata: require alternates.canonical
     const hasCanonical =
       (content.includes('alternates') && content.includes('canonical')) ||
       content.includes('canonicalUrl') ||
@@ -170,15 +176,50 @@ function checkPageCanonicals(): string[] {
 }
 
 // =============================================================================
+// CHECK 3 — Hub page force-dynamic guard
+// =============================================================================
+
+// Hub pages are top-level routes (1 path segment). They should never use
+// force-dynamic — that disables ISR and makes every Googlebot crawl hit Supabase.
+const HUB_SKIP_DIRS = new Set(['(admin)', 'api', 'auth', 'account', 'saved', 'search', 'login', 'profile', '_components']);
+
+function checkHubForceDynamic(): string[] {
+  const warnings: string[] = [];
+  let entries: fs.Dirent[];
+  try { entries = fs.readdirSync(APP_DIR, { withFileTypes: true }); } catch { return []; }
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    if (HUB_SKIP_DIRS.has(entry.name)) continue;
+    if (entry.name.startsWith('(') || entry.name.startsWith('[') || entry.name.startsWith('.')) continue;
+
+    const hubPage = path.join(APP_DIR, entry.name, 'page.tsx');
+    if (!fs.existsSync(hubPage)) continue;
+
+    const content = fs.readFileSync(hubPage, 'utf8');
+    if (content.includes("dynamic = 'force-dynamic'") || content.includes('dynamic = "force-dynamic"')) {
+      warnings.push(
+        `  ⚠  app/${entry.name}/page.tsx  →  hub page uses force-dynamic. ` +
+        `Replace with: export const revalidate = 3600  ` +
+        `(ISR 1h — saves a Supabase hit on every Googlebot crawl)`
+      );
+    }
+  }
+
+  return warnings;
+}
+
+// =============================================================================
 // MAIN
 // =============================================================================
 
 const layoutViolations = checkLayoutCanonical();
 const pageViolations = checkPageCanonicals();
+const hubWarnings = checkHubForceDynamic();
 
-const allViolations = [...layoutViolations, ...pageViolations];
+const allViolations = [...layoutViolations, ...pageViolations, ...hubWarnings];
 const errors = layoutViolations; // layout violations are hard errors — always block
-const warnings = pageViolations; // missing page canonicals are warnings by default
+const warnings = [...pageViolations, ...hubWarnings]; // soft warnings
 
 if (allViolations.length === 0) {
   console.log('✓ validate-canonicals: all canonical checks passed');
@@ -198,10 +239,14 @@ if (errors.length > 0) {
   console.error('Override (emergencies only): OBJECTWIRE_OVERRIDE=true npm run build\n');
 }
 
-// ── Page canonical warnings (soft error — logged but non-blocking by default) ─
+// ── Page canonical + hub warnings (soft error — logged but non-blocking by default) ─
 if (warnings.length > 0) {
-  console.warn(`\n⚠ validate-canonicals: ${warnings.length} page(s) missing alternates.canonical`);
-  console.warn('These pages will be served without a canonical tag (canonicalization risk):\n');
+  const canonicalWarnings = pageViolations.length;
+  const dynamicWarnings   = hubWarnings.length;
+  console.warn(`\n⚠ validate-canonicals: ${warnings.length} warning(s) found`);
+  if (canonicalWarnings) console.warn(`  → ${canonicalWarnings} page(s) missing alternates.canonical`);
+  if (dynamicWarnings)   console.warn(`  → ${dynamicWarnings} hub page(s) using force-dynamic (should be revalidate = 3600)`);
+  console.warn('');
   // Show first 20 to avoid flooding the terminal
   warnings.slice(0, 20).forEach(v => console.warn(v));
   if (warnings.length > 20) {
