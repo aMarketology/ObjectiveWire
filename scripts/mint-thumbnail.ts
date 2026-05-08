@@ -1,30 +1,41 @@
 /**
  * mint-thumbnail.ts
  *
- * Pulls a photo from Unsplash, composites the ZWire watermark, embeds EXIF
- * metadata, and saves a keyword-optimised JPEG to public/thumbnails/.
+ * Two source modes:
  *
- * Usage:
- *   npx tsx scripts/mint-thumbnail.ts \
- *     --photo  E3CxGyPAYlw \
- *     --slug   ferrari-f80-hypercar-price-specs-2026 \
- *     --alt    "Ferrari F80 hypercar red hood emblem, 1184hp hybrid 2026" \
- *     --keywords "Ferrari F80,Ferrari hypercar,supercar,1184hp"
+ *   A) Unsplash (default):
+ *      npx tsx scripts/mint-thumbnail.ts \
+ *        --photo  1767714454928-887853926d7c \
+ *        --slug   ferrari-f80-hypercar-price-specs-2026 \
+ *        --alt    "Ferrari F80 hypercar red hood emblem, 1184hp hybrid 2026" \
+ *        --keywords "Ferrari F80,Ferrari hypercar,supercar,1184hp"
+ *
+ *   B) Local file / Canva export:
+ *      npx tsx scripts/mint-thumbnail.ts \
+ *        --file   ~/Downloads/canva-ferrari-hero.png \
+ *        --slug   ferrari-f80-hypercar-price-specs-2026 \
+ *        --alt    "Ferrari F80 hypercar red hood emblem, 1184hp hybrid 2026" \
+ *        --keywords "Ferrari F80,Ferrari hypercar,supercar,1184hp"
  *
  * Output:
- *   public/thumbnails/ferrari-f80-hypercar-price-specs-2026.jpg
- *   (prints the public path so you can paste it directly into page.tsx)
+ *   public/thumbnails/[slug].jpg   (1200×675, q=88, ZWire watermark + EXIF)
  *
  * Image SEO baked in:
  *   - Keyword-rich filename (slug-based, hyphenated)
  *   - EXIF ImageDescription = alt text (read by Google Image crawlers)
- *   - EXIF XPKeywords = comma-separated keywords (Windows / Bing indexer)
  *   - EXIF Copyright = © 2026 ZWire
  *   - EXIF Artist = ZWire Auto Desk (or overridden via --author flag)
  *   - 1200×675 px (16:9, Google Top Stories requirement)
  *   - q=88 JPEG (good quality vs. file size trade-off)
- *   - ZWire coin watermark at bottom-right, 18% of frame width, 70% opacity
+ *   - ZWire coin watermark at bottom-right, 18% of frame width, 72% opacity
  */
+
+// ─── Canva export guidance (non-code) ────────────────────────────────────────
+// 1. In Canva: File → Download → PNG (highest quality)
+// 2. Recommended Canva canvas size: 2400×1350 px (2× for retina)
+// 3. Keep the Canva design background — this script adds the ZWire watermark.
+// 4. Pass the downloaded file path via --file "path/to/canva-export.png"
+// ─────────────────────────────────────────────────────────────────────────────
 
 import sharp from 'sharp';
 import fs from 'fs';
@@ -37,16 +48,26 @@ function arg(flag: string): string | undefined {
   return i !== -1 ? args[i + 1] : undefined;
 }
 
-const photoId   = arg('--photo')    ?? '';  // CDN timestamp-hash: 1730298878684-33c8b2c81aac
-const apiId     = arg('--api-id')   ?? '';  // short API ID (e.g. E3CxGyPAYlw) — for download trigger
+const photoId   = arg('--photo')    ?? '';  // Unsplash CDN timestamp-hash or short ID
+const localFile = arg('--file')     ?? '';  // path to Canva export or any local PNG/JPG
+const apiId     = arg('--api-id')   ?? '';  // Unsplash short API ID — for download credit
 const slug      = arg('--slug')     ?? '';
 const alt       = arg('--alt')      ?? slug.replace(/-/g, ' ');
 const keywords  = arg('--keywords') ?? '';
 const author    = arg('--author')   ?? 'ZWire Auto Desk';
-const ixid      = arg('--ixid')     ?? '';   // optional — improves Unsplash caching
+const ixid      = arg('--ixid')     ?? '';   // optional — improves Unsplash CDN caching
 
-if (!photoId || !slug) {
-  console.error('Usage: npx tsx scripts/mint-thumbnail.ts --photo <cdn-id> --slug <slug> [--api-id <short-id>] [--alt "..."] [--keywords "kw1,kw2"] [--author "..."] [--ixid "..."]');
+const useLocalFile = Boolean(localFile);
+const useUnsplash  = Boolean(photoId) && !useLocalFile;
+
+if ((!useLocalFile && !useUnsplash) || !slug) {
+  console.error([
+    'Usage (Unsplash):',
+    '  npx tsx scripts/mint-thumbnail.ts --photo <cdn-id> --slug <slug> [--api-id <id>] [--alt "..."] [--keywords "..."] [--author "..."] [--ixid "..."]',
+    '',
+    'Usage (Canva / local file):',
+    '  npx tsx scripts/mint-thumbnail.ts --file <path-to-png-or-jpg> --slug <slug> [--alt "..."] [--keywords "..."] [--author "..."]',
+  ].join('\n'));
   process.exit(1);
 }
 
@@ -109,9 +130,13 @@ async function triggerUnsplashDownload(): Promise<void> {
 // ─── Main ────────────────────────────────────────────────────────────────────
 (async () => {
   console.log(`\n🖼  Minting thumbnail for: ${slug}`);
-  const cdnPrefix = photoId.startsWith('photo-') ? '' : 'photo-';
-  console.log(`   Photo ID : ${cdnPrefix}${photoId}`);
-  if (apiId) console.log(`   API ID   : ${apiId}`);
+  if (useLocalFile) {
+    console.log(`   Source   : local file — ${localFile}`);
+  } else {
+    const cdnPrefix = photoId.startsWith('photo-') ? '' : 'photo-';
+    console.log(`   Photo ID : ${cdnPrefix}${photoId}`);
+    if (apiId) console.log(`   API ID   : ${apiId}`);
+  }
   console.log(`   Alt text : ${alt}`);
   console.log(`   Keywords : ${keywords}`);
   console.log(`   Output   : ${OUT_FILE}\n`);
@@ -119,11 +144,19 @@ async function triggerUnsplashDownload(): Promise<void> {
   // 1. Ensure output dir exists
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
-  // 2. Download Unsplash photo
-  console.log('  ↓  Downloading photo from Unsplash…');
-  const photoUrl = buildUnsplashUrl();
-  const photoBuffer = await fetchBuffer(photoUrl);
-  await triggerUnsplashDownload();
+  // 2. Get source image buffer (Unsplash or local file)
+  let photoBuffer: Buffer;
+  if (useLocalFile) {
+    const absPath = path.resolve(localFile);
+    if (!fs.existsSync(absPath)) throw new Error(`Local file not found: ${absPath}`);
+    console.log('  📂  Reading local file…');
+    photoBuffer = fs.readFileSync(absPath);
+  } else {
+    console.log('  ↓  Downloading photo from Unsplash…');
+    const photoUrl = buildUnsplashUrl();
+    photoBuffer = await fetchBuffer(photoUrl);
+    await triggerUnsplashDownload();
+  }
 
   // 3. Resize photo to 1200×675
   console.log('  ✂  Resizing to 1200×675…');
