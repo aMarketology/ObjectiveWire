@@ -274,14 +274,10 @@ export default async function HomePage() {
   const isYouTube = (a: Article) =>
     a.category.toLowerCase() === 'youtube' || a.href.startsWith('/youtube');
 
-  const isCars = (a: Article) =>
-    a.category.toLowerCase() === 'cars' || a.href.startsWith('/cars');
-
-  const latest   = allArticles.slice(0, 8);
+  const latest   = allArticles.slice(0, 9);
   const sports   = allArticles.filter(isSports).slice(0, 6);
   const creators = allArticles.filter(isCreator).slice(0, 8);
   const youtube  = allArticles.filter(isYouTube).slice(0, 6);
-  const cars     = allArticles.filter(isCars).slice(0, 4);
 
   // Remaining articles not in any section (for headlines)
   const usedHrefs = new Set([
@@ -289,7 +285,6 @@ export default async function HomePage() {
     ...sports.map((a) => a.href),
     ...creators.map((a) => a.href),
     ...youtube.map((a) => a.href),
-    ...cars.map((a) => a.href),
   ]);
   const remaining = allArticles.filter((a) => !usedHrefs.has(a.href));
 
@@ -388,12 +383,12 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* ── LATEST NEWS ───────────────────────────────────────────────────── */}
+        {/* ── LATEST STORIES ────────────────────────────────────────────────── */}
         {latest.length > 3 && (
-          <section aria-label="Latest news">
-            <SectionRule label="Latest" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {latest.slice(3, 7).map((a) => (
+          <section aria-label="Latest stories">
+            <SectionRule label="Latest Stories" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {latest.slice(3).map((a) => (
                 <ArticleCard key={a.id} article={a} size="sm" />
               ))}
             </div>
@@ -453,18 +448,6 @@ export default async function HomePage() {
                   </div>
                 </div>
               )}
-            </div>
-          </section>
-        )}
-
-        {/* ── CARS ──────────────────────────────────────────────────────────── */}
-        {cars.length > 0 && (
-          <section aria-label="Cars">
-            <SectionRule label="Cars & Supercars" href="/cars" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {cars.map((a) => (
-                <ArticleCard key={a.id} article={a} size="sm" />
-              ))}
             </div>
           </section>
         )}
