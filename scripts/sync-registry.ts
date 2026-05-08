@@ -228,10 +228,19 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     const publishedTime = pubTimeMatch?.[1]?.trim();
 
     // ── Extract openGraph.images[0] — url, width, height, alt ───────────
+    // Priority order:
+    //   1. images: [{ url: 'literal' }]            — direct string literal
+    //   2. const OG_IMAGE = '/thumbnails/...'       — most pages use this pattern
+    //   3. imageUrl: 'literal'                      — legacy pattern
     const ogImageMatch =
       content.match(/images\s*:\s*\[\s*\{[^}]*url\s*:\s*['"`]([^'"`]+)['"`]/) ||
+      content.match(/const\s+OG_IMAGE\s*=\s*['"`]([^'"`\$\{][^'"`]*)['"`]/) ||
       content.match(/imageUrl\s*:\s*['"`]([^'"`]+)['"`]/);
-    const imageUrl = ogImageMatch?.[1]?.trim();
+    const rawImageUrl = ogImageMatch?.[1]?.trim();
+    // Resolve relative thumbnail paths to absolute owire.org URLs for OG consistency
+    const imageUrl = rawImageUrl?.startsWith('/')
+      ? `https://www.owire.org${rawImageUrl}`
+      : rawImageUrl;
 
     const ogImageWidthMatch = content.match(/images\s*:\s*\[\s*\{[^}]*width\s*:\s*(\d+)/);
     const imageWidth = ogImageWidthMatch ? parseInt(ogImageWidthMatch[1], 10) : undefined;
