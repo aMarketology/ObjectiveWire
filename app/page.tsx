@@ -338,7 +338,10 @@ export default async function HomePage() {
                   ) : (
                     <div className={`w-full h-full bg-gradient-to-br ${catGradient(lead.category)}`} />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                  {/* Orange tint over image */}
+                  <div className="absolute inset-0 bg-[#b45309]/20 mix-blend-multiply" />
+                  {/* Bottom fade for text legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 w-full p-6 z-20">
                     <div className="flex items-center gap-2 mb-3 flex-wrap">
                       <CatLabel category={lead.category} breaking={lead.breaking} />
@@ -353,8 +356,13 @@ export default async function HomePage() {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-serif text-2xl sm:text-4xl font-black leading-tight text-white mb-3 group-hover:text-[#b45309] transition-colors">
-                      {lead.title}
+                    {/* Yellow highlight on headline text */}
+                    <h2 className="font-serif text-2xl sm:text-4xl font-black leading-tight mb-3">
+                      {lead.title.split(' ').map((word, i) => (
+                        <span key={i} className="bg-yellow-300 text-[#0f172a] px-0.5 mr-1 inline group-hover:bg-[#b45309] group-hover:text-white transition-colors duration-300 leading-snug">
+                          {word}
+                        </span>
+                      ))}
                     </h2>
                     {lead.excerpt && (
                       <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 mb-4 hidden sm:block">
