@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Harry Lewis Guernsey"
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/w2s',
+    canonical: 'https://www.owire.org/youtube/sidemen/w2s',
   },
   openGraph: {
     title: 'W2S (Harry Lewis) | Pack Opening King & Sidemen Wildcard',
     description: 'Full profile of W2S: legendary FIFA pack luck, 16M+ subscribers, chaotic personality, relationship with Katie Leach, and wildcard Sidemen role.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/sidemen/w2s',
+    url: 'https://www.owire.org/youtube/sidemen/w2s',
     siteName: 'ObjectWire',
     section: 'YouTube',
   },

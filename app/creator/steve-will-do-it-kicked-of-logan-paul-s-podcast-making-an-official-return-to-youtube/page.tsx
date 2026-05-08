@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description: "Breaking news: SteveWillDoIt was removed from Logan Paul's Impaulsive podcast and has announced his official return to YouTube. Full story, context, and",
   keywords: ["SteveWillDoIt", "Steve Deleonardis", "Logan Paul", "Impaulsive", "NELK Boys", "YouTube return", "creator news"],
   alternates: {
-    canonical: 'https://www.objectwire.org/creator/steve-will-do-it-kicked-of-logan-paul-s-podcast-making-an-official-return-to-youtube',
+    canonical: 'https://www.owire.org/creator/steve-will-do-it-kicked-of-logan-paul-s-podcast-making-an-official-return-to-youtube',
   },
   openGraph: {
     title: "SteveWillDoIt Kicked Off Logan Paul",
     description: "Breaking news: SteveWillDoIt was removed from Logan Paul",
     type: 'article',
-    url: "https://www.objectwire.org/creator/steve-will-do-it-kicked-of-logan-paul-s-podcast-making-an-official-return-to-youtube",
+    url: "https://www.owire.org/creator/steve-will-do-it-kicked-of-logan-paul-s-podcast-making-an-official-return-to-youtube",
     siteName: 'ObjectWire',
     section: "Creator",
   },

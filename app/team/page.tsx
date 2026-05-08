@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Team page changes rarely. Regenerates daily via ISR.
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Our Team",
   description: "Meet the ObjectWire editorial team. Our journalists, analysts, and contributors are dedicated to delivering verified, source-cited intelligence.",
   alternates: {
-    canonical: 'https://www.objectwire.org/team',
+    canonical: 'https://www.owire.org/team',
   },
   openGraph: {
     title: "Our Team",

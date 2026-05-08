@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Punchin' Podcast | Danny Aarons & Tennessee Thresher",
   description: "Complete profile of Punchin', the weekly couple podcast hosted by Danny Aarons and Tennessee Thresher on The Fellas Studios network. Episodes, topics,",
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/thefellas/punchin',
+    canonical: 'https://www.owire.org/youtube/thefellas/punchin',
   },
   keywords: [
     "Punchin' podcast",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Punchin' Podcast | Danny Aarons & Tennessee Thresher",
     description: "Full profile of Punchin', the candid weekly couple podcast hosted by Danny Aarons and Tennessee Thresher on The Fellas Studios network.",
     type: "article",
-    url: "https://www.objectwire.org/youtube/thefellas/punchin",
+    url: "https://www.owire.org/youtube/thefellas/punchin",
   },
   twitter: {
     card: "summary_large_image",

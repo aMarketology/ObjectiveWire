@@ -1,4 +1,4 @@
-# 📰 News Network Approval Roadmap
+﻿# 📰 News Network Approval Roadmap
 ## Google News, Perplexity AI, and MSN News
 
 ## Current Status: Pre-Application Phase
@@ -64,8 +64,8 @@ import { NewsArticleSchema } from '@/components/NewsArticleSchema';
   author="Author Name"
   publishedTime="2026-01-15T10:00:00Z"
   modifiedTime="2026-01-15T12:00:00Z"
-  imageUrl="https://objectwire.org/images/article-image.jpg"
-  articleUrl="https://objectwire.org/your-article-slug"
+  imageUrl="https://owire.org/images/article-image.jpg"
+  articleUrl="https://owire.org/your-article-slug"
   section="Technology"
   keywords={["keyword1", "keyword2", "keyword3"]}
 />
@@ -126,10 +126,10 @@ app/
 **Status:** Needs work
 
 **Required elements for `/contact`:**
-- [ ] General inquiries email: `info@objectwire.org`
-- [ ] Editorial email: `editorial@objectwire.org`
-- [ ] Tips/submissions email: `tips@objectwire.org`
-- [ ] Press inquiries email: `press@objectwire.org`
+- [ ] General inquiries email: `info@owire.org`
+- [ ] Editorial email: `editorial@owire.org`
+- [ ] Tips/submissions email: `tips@owire.org`
+- [ ] Press inquiries email: `press@owire.org`
 - [ ] Physical mailing address
 - [ ] Contact form
 - [ ] Response time expectations
@@ -154,8 +154,8 @@ app/
 
 Add to `public/robots.txt`:
 ```
-Sitemap: https://objectwire.org/sitemap.xml
-Sitemap: https://objectwire.org/news-sitemap.xml
+Sitemap: https://owire.org/sitemap.xml
+Sitemap: https://owire.org/news-sitemap.xml
 ```
 
 ---
@@ -309,14 +309,14 @@ Sitemap: https://objectwire.org/news-sitemap.xml
 ## 🔗 Important URLs & Resources
 
 ### Your Site URLs
-- Homepage: https://objectwire.org
-- RSS Feed: https://objectwire.org/rss.xml
-- Sitemap: https://objectwire.org/sitemap.xml
-- News Sitemap: https://objectwire.org/news-sitemap.xml
-- Editorial Standards: https://objectwire.org/editorial-standards
-- About: https://objectwire.org/about
-- Contact: https://objectwire.org/contact
-- Corrections: https://objectwire.org/corrections
+- Homepage: https://owire.org
+- RSS Feed: https://owire.org/rss.xml
+- Sitemap: https://owire.org/sitemap.xml
+- News Sitemap: https://owire.org/news-sitemap.xml
+- Editorial Standards: https://owire.org/editorial-standards
+- About: https://owire.org/about
+- Contact: https://owire.org/contact
+- Corrections: https://owire.org/corrections
 
 ### Platform Portals
 - Google Publisher Center: https://publishercenter.google.com

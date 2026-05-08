@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description: "Complete profile of Italian Bach (Isaac Butterfield), British-Italian YouTube creator known for his appearances with the Sidemen and distinctive",
   keywords: ["Italian Bach", "Isaac Butterfield", "Sidemen", "YouTube", "UK YouTuber", "Italian"],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/italian-bach',
+    canonical: 'https://www.owire.org/youtube/sidemen/italian-bach',
   },
   openGraph: {
     title: "Italian Bach | YouTube Content Creator & Sidemen",
     description: "Complete profile of Italian Bach (Isaac Butterfield), British-Italian YouTube creator known for his appearances with the Sidemen and distinctive",
     type: 'article',
-    url: "https://www.objectwire.org/youtube/sidemen/italian-bach",
+    url: "https://www.owire.org/youtube/sidemen/italian-bach",
     siteName: 'ObjectWire',
     section: "News",
   },

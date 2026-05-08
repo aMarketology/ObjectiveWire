@@ -1,4 +1,4 @@
-# ObjectWire | Step-by-Step Action Plan
+﻿# ObjectWire | Step-by-Step Action Plan
 
 > Distilled from `seo_contentregistry_auto.md` + `SEO_NEXTSTEPS_CONTEXT.md`.
 > These are the highest-impact actions executable directly in this codebase, in priority order.
@@ -17,7 +17,7 @@ npm run registry:sync   # dry-run, shows all missing/broken entries
 
 For every entry missing `imageUrl`, `imageWidth`, `imageHeight`:
 - Open `lib/content-registry.ts`
-- Add the actual hosted image URL (must be on `objectwire.org`, min 1200px wide)
+- Add the actual hosted image URL (must be on `owire.org`, min 1200px wide)
 - Set `imageWidth: 1200`, `imageHeight: 675`
 - Set `imageAlt` to a descriptive string
 
@@ -98,13 +98,13 @@ export const metadata = {
   openGraph: {
     title: '...',
     description: '...',
-    url: 'https://www.objectwire.org/[full/slug]',
+    url: 'https://www.owire.org/[full/slug]',
     type: 'article',
     publishedTime: '2026-MM-DDTHH:MM:SSZ',
     section: 'Technology',                                     // Canonical category
     images: [{ url: '...', width: 1200, height: 675, alt: '...' }],
   },
-  alternates: { canonical: 'https://www.objectwire.org/[full/slug]' },
+  alternates: { canonical: 'https://www.owire.org/[full/slug]' },
 };
 
 export default function ArticlePage() {
@@ -116,8 +116,8 @@ export default function ArticlePage() {
         description="..."
         author="First Last"                    {/* real name — not generic */}
         publishedTime="2026-MM-DDTHH:MM:SSZ"
-        imageUrl="https://www.objectwire.org/images/..."
-        articleUrl="https://www.objectwire.org/[full/slug]"
+        imageUrl="https://www.owire.org/images/..."
+        articleUrl="https://www.owire.org/[full/slug]"
         section="Technology"
         keywords={['keyword 1', 'keyword 2']}
       />
@@ -160,7 +160,7 @@ After `npm run build` auto-syncs the entry, go back and patch:
   author: 'First Last',                               // ← real name
   priority: 0.9,                                      // 0.9 breaking, 0.7 news, 0.5 evergreen
   changeFrequency: 'daily',                           // daily|weekly|monthly
-  imageUrl: 'https://www.objectwire.org/images/...', // ← CRITICAL, patch this
+  imageUrl: 'https://www.owire.org/images/...', // ← CRITICAL, patch this
   imageWidth: 1200,                                   // ← CRITICAL
   imageHeight: 675,                                   // ← CRITICAL
   imageAlt: 'Descriptive alt text',

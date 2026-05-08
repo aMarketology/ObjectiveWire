@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     'Mat Armstrong MK2',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/mat-armstrong',
+    canonical: 'https://www.owire.org/youtube/mat-armstrong',
   },
   openGraph: {
     title: 'Mat Armstrong | From Professional BMX Rider to',
     description:
       'Profile of Mat Armstrong (@MatArmstrongbmx), Leicester-born former pro BMX rider turned automotive content creator, with 870M+ total views specialising in',
     type: 'profile',
-    url: 'https://www.objectwire.org/youtube/mat-armstrong',
+    url: 'https://www.owire.org/youtube/mat-armstrong',
     siteName: 'ObjectWire',
   },
   twitter: {

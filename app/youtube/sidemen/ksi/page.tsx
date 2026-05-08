@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -22,21 +22,21 @@ export const metadata: Metadata = {
     'KSI net worth',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/ksi',
+    canonical: 'https://www.owire.org/youtube/sidemen/ksi',
   },
   openGraph: {
     title: 'KSI (JJ Olatunji) | YouTuber, Boxer, Musician & PRIME',
     description:
       'Full profile of KSI: from FIFA videos to professional boxing, chart-topping music, and co-founding PRIME Hydration with Logan Paul.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/sidemen/ksi',
+    url: 'https://www.owire.org/youtube/sidemen/ksi',
     siteName: 'ObjectWire',
     authors: ['ObjectWire Editorial'],
     section: 'YouTube',
     tags: ['KSI', 'Sidemen', 'PRIME', 'Boxing', 'Music'],
     images: [
       {
-        url: 'https://www.objectwire.org/sidemen/ksi-talking-head.gif',
+        url: 'https://www.owire.org/sidemen/ksi-talking-head.gif',
         width: 800,
         height: 600,
         alt: 'KSI',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'KSI (JJ Olatunji)',
     description: 'Full profile of KSI: YouTube, boxing, music, PRIME Hydration, and Sidemen.',
-    images: ['https://www.objectwire.org/sidemen/ksi-talking-head.gif'],
+    images: ['https://www.owire.org/sidemen/ksi-talking-head.gif'],
   },
 };
 

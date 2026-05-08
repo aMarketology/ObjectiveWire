@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     "Inside UK cast 2026",
   ],
   alternates: {
-    canonical: "https://www.objectwire.org/youtube/sidemen/inside-uk/season3",
+    canonical: "https://www.owire.org/youtube/sidemen/inside-uk/season3",
   },
   openGraph: {
     title: "Sidemen Inside Season 3: Netflix Spring 2026 | Full Cast",
     description:
       "The Sidemen have completed filming on Inside Season 3. Netflix spring premiere confirmed, full 12-person cast announced on February 22, 2026.",
     type: "article",
-    url: "https://www.objectwire.org/youtube/sidemen/inside-uk/season3",
+    url: "https://www.owire.org/youtube/sidemen/inside-uk/season3",
     siteName: "ObjectWire",
     section: "Entertainment",
     images: [

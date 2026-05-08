@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: 'oWire | Sports & Creator Culture, No Filter',
   description:
     'oWire covers the athletes, influencers, and creators everyone is talking about — World Cup, F1, the Olympics, MrBeast, Logan Paul, and more.',
-  alternates: { canonical: 'https://www.objectwire.org' },
+  alternates: { canonical: 'https://www.owire.org' },
   openGraph: {
     title: 'oWire | Sports & Creator Culture',
     description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
-    url: 'https://www.objectwire.org',
+    url: 'https://www.owire.org',
     siteName: 'oWire',
     type: 'website',
   },

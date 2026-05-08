@@ -1,4 +1,4 @@
-import { ImageResponse } from 'next/og';
+﻿import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 export const alt = 'ObjectWire — Breaking news, technology, and digital culture';
@@ -93,7 +93,7 @@ export default function Image() {
             fontWeight: 400,
           }}
         >
-          objectwire.org
+          owire.org
         </div>
 
         {/* Bottom accent line */}

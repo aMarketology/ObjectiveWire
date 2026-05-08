@@ -1,61 +1,39 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import { createClient } from '@/lib/supabase/server';
-
-export const dynamic = 'force-dynamic';
+import registryDataRaw from '@/lib/registry-data.json';
+import type { ContentEntry } from '@/lib/content-registry';
 
 // Google News Sitemap Protocol: https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap
-// Articles are sourced automatically from the content registry (lib/content-registry.ts).
+// Articles are sourced from lib/registry-data.json (generated at build time by sync-registry.ts).
 // To appear here, an entry needs:
-//   - publishDate within the sliding window (NEWS_WINDOW_DAYS — default 3 for discovery latency)
+//   - publishDate within the sliding window (NEWS_WINDOW_DAYS)
 //   - tags[] used as news keywords
-// The registry is auto-synced before every build via the `prebuild` npm script.
+// No Supabase calls — fully in-memory.
 
-// How many days back to include in the Google News sitemap.
-// Google News crawls articles published within the last 2 days for News Search inclusion;
-// the protocol allows up to 2 days, but Google tolerates a slightly wider window for discovery.
-// We use 3 to capture late-pickup of stories published just before midnight UTC and to
-// improve recovery from indexing latency. Reduce to 2 if Google flags the sitemap.
 const NEWS_WINDOW_DAYS = 3;
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
-  
-  try {
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - NEWS_WINDOW_DAYS);
+  const registry = registryDataRaw as ContentEntry[];
 
-    // Pull recent articles from Supabase content_registry table.
-    // Auto-synced on every build via the prebuild script (sync-registry.ts).
-    const supabase = await createClient();
-    const cutoffStr = cutoff.toISOString().split('T')[0]; // "YYYY-MM-DD"
-    const { data: registryRows } = await supabase
-      .from('content_registry')
-      .select('slug, title, publish_date, tags, category')
-      .gte('publish_date', cutoffStr)
-      .order('publish_date', { ascending: false });
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - NEWS_WINDOW_DAYS);
+  const cutoffStr = cutoff.toISOString().split('T')[0]; // "YYYY-MM-DD"
 
-    const registryArticles = (registryRows || []).map((row: any) => ({
-      loc: `${baseUrl}${row.slug}`,
-      title: row.title,
-      // publish_date is timestamptz — already a full ISO string from Supabase
-      publicationDate: new Date(row.publish_date).toISOString(),
-      keywords: Array.isArray(row.tags) ? row.tags.join(', ') : (row.category || ''),
+  const recentArticles = registry
+    .filter(entry => entry.publishDate >= cutoffStr)
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+    .map(entry => ({
+      loc: `${baseUrl}${entry.slug}`,
+      title: entry.title,
+      publicationDate: new Date(entry.publishDate).toISOString(),
+      keywords: Array.isArray(entry.tags) ? entry.tags.join(', ') : (entry.category || ''),
     }));
 
-    // All news articles come from the content_registry (auto-synced on build).
-    // No separate CMS/blog query needed.
-    const allArticles = [...registryArticles];
-    
-    // Sort by publication date (most recent first)
-    allArticles.sort((a, b) => 
-      new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime()
-    );
-    
-    // Generate Google News Sitemap XML
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  // Generate Google News Sitemap XML
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-${allArticles.map(article => `  <url>
+${recentArticles.map(article => `  <url>
     <loc>${escapeXml(article.loc)}</loc>
     <news:news>
       <news:publication>
@@ -68,18 +46,14 @@ ${allArticles.map(article => `  <url>
     </news:news>
   </url>`).join('\n')}
 </urlset>`;
-    
-    return new Response(sitemap, {
-      headers: {
-        'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=900, s-maxage=900, stale-while-revalidate=1800',
-        'X-Robots-Tag': 'noindex', // Sitemap itself shouldn't be indexed
-      },
-    });
-  } catch (error) {
-    console.error('Error generating news sitemap:', error);
-    return new Response('Error generating news sitemap', { status: 500 });
-  }
+
+  return new Response(sitemap, {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=900, s-maxage=900, stale-while-revalidate=1800',
+      'X-Robots-Tag': 'noindex',
+    },
+  });
 }
 
 // Helper function to escape XML special characters

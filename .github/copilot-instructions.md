@@ -1,14 +1,25 @@
-# ObjectWire Copilot Instructions
+﻿# ZWire Copilot Instructions
 
 These rules apply to **every** GitHub Copilot request in this workspace.
 
 ---
 
-## What ObjectWire Is
+## What ZWire Is
 
-ObjectWire is a verified news platform built on Next.js 15, React 19, Supabase (PostgreSQL), and Tailwind CSS. The editorial mission is accuracy over speed, primary sources only, and transparent corrections. It is not a blog, aggregator, or opinion site. Every article must be verifiable, sourced, and written for real search intent.
+ZWire (ZeroWire) is a verified news and culture platform built on Next.js 15, React 19, Supabase (PostgreSQL), and Tailwind CSS. Published at **owire.org**. The editorial mission is accuracy over speed, primary sources only, and transparent corrections. It is not a blog, aggregator, or opinion site. Every article must be verifiable, sourced, and written for real search intent.
 
-Production: Railway → `objectwire.org` | Repo: `Autolab350/Objectwire-Frontend`
+**ZWire covers four content pillars — nothing outside these:**
+
+| Pillar | Beats | Example routes |
+|---|---|---|
+| **Culture / Creators** | Influencers, YouTube creators, TikTok, viral moments, OnlyFans, brand deals | `/creator/`, `/youtube/` |
+| **Cars** | Supercars, EVs, auto news, car reviews, motorsport | `/cars/` |
+| **Sports** | Golf, MLB, MLS, Premier League, soccer, World Cup, combat sports | `/golf/`, `/mlb/`, `/mls/`, `/premier-league/`, `/soccer/`, `/world-cup/` |
+| **News / Culture** | Entertainment, pop culture, celebrity news, music, film | `/creator/news/`, `/youtube/news/` |
+
+**Do NOT create content in verticals outside these pillars.** No gaming, no general tech/AI, no finance, no politics.
+
+Production: Railway → `owire.org` (domain is **owire.org**, NOT objectwire.org) | Repo: `aMarketology/ZeroWire`
 
 ---
 
@@ -91,7 +102,7 @@ All fetching is server-side. Zero client-side Supabase calls in page components.
 
 **This is the reference article all new `NewsArticle` pages must match.**
 
-Live: `https://www.objectwire.org/entertainment/news/fortnite-moves-into-movies`
+Live: `https://www.owire.org/entertainment/news/fortnite-moves-into-movies`
 Slug: `entertainment-news-fortnite-moves-into-movies` | Table: `articles` | Component: `NewsArticleDB`
 
 ### Why it is the standard
@@ -118,12 +129,12 @@ export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',  // max 60 chars, no brand suffix, no em dashes, no &
   description: '130-155 chars. Primary keyword in first 60 chars. No generic phrases.',
   keywords: ['keyword 1', 'keyword 2', /* 10-18 targeted keywords */],
-  alternates: { canonical: `https://www.objectwire.org${SLUG}` },
+  alternates: { canonical: `https://www.owire.org${SLUG}` },
   openGraph: {
     title: 'Article Title Without Brand Suffix',
     description: 'Slightly different from meta description, emphasize data/hook.',
     type: 'article',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `https://www.owire.org${SLUG}`,
     siteName: 'ObjectWire',
     authors: ['Author Name'],
     publishedTime: '2026-03-12T00:00:00Z',
@@ -172,7 +183,7 @@ Every `NewsArticle` article must have ALL of these populated before `wiki:publis
 
 **This is the reference article all new `JackArticle` pages must match.**
 
-Live: `https://www.objectwire.org/crypto/news/anchorage-usat-expands-to-celo-network`
+Live: `https://www.owire.org/crypto/news/anchorage-usat-expands-to-celo-network`
 Slug: `crypto-news-anchorage-usat-expands-to-celo-network` | Table: `jack_articles` | Component: `JackArticleDB`
 
 ### Why it is the standard
@@ -196,8 +207,8 @@ import { JackArticleDB } from '@/components/JackArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/your/path/here';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // REQUIRED — wiki:publish removes this, add it back manually
-const OG_IMAGE = 'https://www.objectwire.org/your-image.png';
+const ARTICLE_URL = `https://www.owire.org${SLUG}`; // REQUIRED — wiki:publish removes this, add it back manually
+const OG_IMAGE = 'https://www.owire.org/your-image.png';
 
 export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',
@@ -230,7 +241,7 @@ export default function YourPage() {
 `wiki:publish` **always removes** the `const ARTICLE_URL = ...` line from the stub but leaves `ARTICLE_URL` references in `metadata.alternates.canonical` and `metadata.openGraph.url`. **After every `wiki:publish` on a JackArticle, manually re-add:**
 
 ```ts
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 ```
 
 Place it immediately after the `const SLUG = ...` line. This applies to NewsArticle stubs too when they use `ARTICLE_URL`.
@@ -241,7 +252,7 @@ Place it immediately after the `const SLUG = ...` line. This applies to NewsArti
 
 **This is the reference article all new `CreatorArticle` pages must match.**
 
-Live: `https://www.objectwire.org/influencer/ari-kytsya`
+Live: `https://www.owire.org/influencer/ari-kytsya`
 Slug: `influencer-ari-kytsya` | Table: `creator_articles` | Component: `CreatorArticleDB`
 
 ### Why it is the standard
@@ -267,7 +278,7 @@ import { CreatorArticleDB } from '@/components/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/influencer/your-creator';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/yourCreator.jpg';  // local public file
 
 export const metadata: Metadata = {
@@ -296,7 +307,7 @@ export const metadata: Metadata = {
     tags: ['Creator Name', 'Influencer', 'City', 'Platform'],
     publishedTime: '2026-04-02T12:00:00Z',
     modifiedTime: '2026-04-02T12:00:00Z',
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Creator Name portrait' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Creator Name portrait' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -318,7 +329,7 @@ export default function InfluencerYourCreatorPage() {
 | `schema_description` | 130-155 chars, name first, platforms + location |
 | `schema_author` | `"ObjectWire Influencer Desk"` |
 | `schema_article_url` | Full canonical URL |
-| `schema_image_url` | Full URL to portrait image (`https://www.objectwire.org/influncer/...`) |
+| `schema_image_url` | Full URL to portrait image (`https://www.owire.org/influncer/...`) |
 | `schema_section` | `"Influencer"` |
 | `schema_keywords` | Array of 15-18 terms matching `page.tsx` keywords |
 | `schema_published_time` | ISO-8601 |
@@ -412,7 +423,7 @@ npm run wiki:status    # diagnostic: shows sync state across filesystem, registr
 - **`sync-registry.ts` runs at every build** — it reads metadata from `page.tsx` files and upserts `content_registry`. This is the only Supabase write needed for new content.
 - **Never use `<ArticlePageDB>` (or any `*DB` component) in a new content file.** The `*DB` variants are legacy for existing DB-backed stubs only.
 - Slug is derived automatically from the file path. Do not set it manually in the file.
-- **After every `wiki:publish` (legacy), check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.objectwire.org${SLUG}\`` after the SLUG line.
+- **After every `wiki:publish` (legacy), check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.owire.org${SLUG}\`` after the SLUG line.
 
 ---
 
@@ -457,22 +468,22 @@ Every article that ships must have all of the following:
 
 ## SEO Growth Context
 
-ObjectWire's current SEO state (March 2026): ~330 indexed pages, 25+ topic verticals, full structured-data pipeline (sitemap, news-sitemap, JSON-LD on every page). Growth target: 100K monthly organic sessions within 12 months.
+ZWire's current SEO state (May 2026): ~120 registry entries, domain owire.org. Growth target: 100K monthly organic sessions on Bing + Google within 12 months.
 
 **Priority content pillars and clusters to build or expand:**
 
-| Pillar | Hub URL | Target Keyword |
-|---|---|---|
-| Gaming | `/video-games/gta-6` | "GTA 6" (5M+/mo) |
-| Gaming | `/video-games/switch2` | "Nintendo Switch 2" (2M+/mo) |
-| Tech / AI | `/open-ai` | "OpenAI" (3M+/mo) |
-| Tech / AI | `/google` | "Google news" (2M+/mo) |
-| Tech / AI | `/apple` | "Apple news" (1M+/mo) |
-| Tech / AI | `/nvidia` | "Nvidia news" (800K+/mo) |
-| Finance | `/finance` | "finance news" (500K+/mo) |
-| Entertainment | `/entertainment` | streaming, studio deals |
-| Seasonal | `/winter-olympics` | "2026 Winter Olympics" |
-| Seasonal | `/world-cup` | "2026 World Cup" |
+| Pillar | Hub URL | Target Keyword | Monthly Searches |
+|---|---|---|---|
+| Creators | `/creator` | creator profiles, influencer news | High |
+| YouTube | `/youtube` | YouTube creator news | High |
+| Cars | `/cars` | supercar news, EV news | High |
+| Cars | `/cars/ferrari` | Ferrari news 2026 | Medium |
+| Cars | `/cars/porsche` | Porsche news 2026 | Medium |
+| Sports | `/world-cup` | 2026 World Cup | Very High (seasonal) |
+| Sports | `/mlb` | MLB 2026 standings, scores | High |
+| Sports | `/mls` | MLS 2026 news | Medium |
+| Sports | `/premier-league` | Premier League news | High |
+| Sports | `/golf` | golf news, PGA Tour | Medium |
 
 Sub-articles within a cluster must link to the hub, and the hub must link to all sub-articles. Internal linking is the highest-leverage SEO tactic.
 
@@ -659,7 +670,7 @@ These rules were added after a production canonical bug caused a major impressio
 
 ### Schema / JSON-LD rules
 
-- All URLs in JSON-LD must use `https://www.objectwire.org` (with www). Non-www URLs cause a canonical mismatch between schema and the canonical tag.
+- All URLs in JSON-LD must use `https://www.owire.org` (with www). Non-www URLs cause a canonical mismatch between schema and the canonical tag.
 - Author fallback URL resolves to `/authors/[slug]`, not `/team/[slug]`.
 - `lib/seo.ts` has been deleted. Do not recreate it. Use `@/lib/seo-utils` or `@/lib/generate-article-metadata`.
 

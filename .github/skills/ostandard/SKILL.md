@@ -1,4 +1,4 @@
----
+﻿---
 name: ostandard
 description: "Use when: writing, editing, or reviewing any ObjectWire article component or Supabase article record. Covers the full publish pipeline, component routing, SEO standards, heading conventions, and content structure. Invoke with: OStandard, article standard, writing standard, article component, Supabase article, wiki:publish, publish article."
 ---
@@ -44,11 +44,11 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: 'Your Title | ObjectWire',
   description: '140–160 char description with primary keyword in first 60 chars.',
-  alternates: { canonical: 'https://www.objectwire.org/your/path' },
+  alternates: { canonical: 'https://www.owire.org/your/path' },
   openGraph: {
     type: 'article',
-    url: 'https://www.objectwire.org/your/path',
-    images: [{ url: 'https://www.objectwire.org/artist/your-image.png', width: 1200, height: 675, alt: '...' }],
+    url: 'https://www.owire.org/your/path',
+    images: [{ url: 'https://www.owire.org/artist/your-image.png', width: 1200, height: 675, alt: '...' }],
   },
 };
 
@@ -315,7 +315,7 @@ Then delete the stale uppercase Supabase row if one was already created.
 
 ## 12. Gold Standard Article | `NewsArticle` Template
 
-**Reference:** `https://www.objectwire.org/entertainment/news/fortnite-moves-into-movies`
+**Reference:** `https://www.owire.org/entertainment/news/fortnite-moves-into-movies`
 **Slug:** `entertainment-news-fortnite-moves-into-movies` | **Table:** `articles` | **Component:** `NewsArticleDB`
 
 This is the canonical example of a fully correct ObjectWire `NewsArticle`. Every new article using `NewsArticleDB` must match this standard before publishing.
@@ -351,12 +351,12 @@ export const metadata: Metadata = {
     'keyword two',
     // 10-18 targeted long-tail variants
   ],
-  alternates: { canonical: `https://www.objectwire.org${SLUG}` },
+  alternates: { canonical: `https://www.owire.org${SLUG}` },
   openGraph: {
     title: 'Article Title Without Brand Suffix',
     description: 'Slightly different — emphasize the data hook or key stat.',
     type: 'article',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `https://www.owire.org${SLUG}`,
     siteName: 'ObjectWire',
     authors: ['Author Name'],
     publishedTime: '2026-03-12T00:00:00Z',

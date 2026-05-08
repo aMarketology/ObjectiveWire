@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "2025 Nissan Z vs Toyota GR Supra | Full Comparison, Specs",
   description: "This head-to-head breakdown covers engine specs, design, interior, technology, pricing, and real-world driving dynamics to help you decide between the",
   alternates: {
-    canonical: 'https://www.objectwire.org/2025-nissan-z-vs-toyota-gr-supra-comparison',
+    canonical: 'https://www.owire.org/2025-nissan-z-vs-toyota-gr-supra-comparison',
   },
   openGraph: {
     title: "2025 Nissan Z vs Toyota GR Supra | Full Comparison, Specs",
     description: "This head-to-head breakdown covers engine specs, design, interior, technology, pricing, and real-world driving dynamics to help you decide between the",
     type: 'article',
-    url: "https://www.objectwire.org/2025-nissan-z-vs-toyota-gr-supra-comparison",
+    url: "https://www.owire.org/2025-nissan-z-vs-toyota-gr-supra-comparison",
     siteName: 'ObjectWire',
     section: "News",
   },

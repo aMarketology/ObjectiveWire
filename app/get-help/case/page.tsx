@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Contact Us | The Objective Wire",
   description: "Contact Object Wire for inquiries, tips, or story submissions. Get in touch with our team today.",
   alternates: {
-    canonical: 'https://www.objectwire.org/case',
+    canonical: 'https://www.owire.org/case',
   },
   openGraph: {
     title: "Contact Us | The Objective Wire",
     description: "Contact Object Wire for inquiries, tips, or story submissions. Get in touch with our team today.",
     type: 'article',
-    url: "https://www.objectwire.org/case",
+    url: "https://www.owire.org/case",
     siteName: 'ObjectWire',
     section: "News",
   },

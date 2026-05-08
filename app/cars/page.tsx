@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
 
@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Cars & Automotive | oWire',
   description: 'Hypercars, sports cars, and automotive culture. No filter.',
-  alternates: { canonical: 'https://www.objectwire.org/cars' }
+  alternates: { canonical: 'https://www.owire.org/cars' }
 };
 
 export default async function CarsHubPage() {

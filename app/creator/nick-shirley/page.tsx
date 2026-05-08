@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -23,10 +23,10 @@ export const metadata: Metadata = {
     title: "Nick Shirley: Investigative YouTuber & Fraud Exposé Expert",
     description: "From urban exploration to exposing multi-million dollar fraud schemes - Nick Shirley's rise as an investigative content creator.",
     type: "article",
-    url: "https://www.objectwire.org/creator/nick-shirley",
+    url: "https://www.owire.org/creator/nick-shirley",
     images: [
       {
-        url: "https://www.objectwire.org/nick-shirley-og.jpg",
+        url: "https://www.owire.org/nick-shirley-og.jpg",
         width: 1200,
         height: 630,
         alt: "Nick Shirley Profile",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description: "Complete profile of the investigative content creator exposing fraud across America.",
   },
   alternates: {
-    canonical: 'https://www.objectwire.org/creator/nick-shirley',
+    canonical: 'https://www.owire.org/creator/nick-shirley',
   },
 };
 

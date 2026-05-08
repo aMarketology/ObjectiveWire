@@ -1,4 +1,4 @@
-OBJECTWIRE EDITORIAL STANDARDS
+﻿OBJECTWIRE EDITORIAL STANDARDS
 
 Last Updated: December 25, 2025
 Effective Date: December 25, 2025
@@ -24,7 +24,7 @@ Editorial Standards
 Last updated: December 25, 2025 | Version 2.0
 
 Mission and Purpose
-Objectwire.org is a precision intelligence publisher dedicated to delivering event-driven analysis on business and technology developments, with a focus on Texas-based innovations and broader implications. Our mission is to transform raw information into actionable intelligence through rigorous verification and synthesis, serving as a reference-grade resource for professionals who prioritize accuracy over volume.
+owire.org is a precision intelligence publisher dedicated to delivering event-driven analysis on business and technology developments, with a focus on Texas-based innovations and broader implications. Our mission is to transform raw information into actionable intelligence through rigorous verification and synthesis, serving as a reference-grade resource for professionals who prioritize accuracy over volume.
 
 Content Principles
 Accuracy
@@ -43,7 +43,7 @@ Originality
 All content must be original. Plagiarism is strictly prohibited; external sources must be transparently cited and not repurposed without attribution.
 
 Tone and Style
-The tone of Objectwire.org is precise, professional, and technical—authoritative yet accessible for informed readers. We maintain an objective, analytical voice that supports professional workflows, avoiding sensationalism or casual language.
+The tone of owire.org is precise, professional, and technical—authoritative yet accessible for informed readers. We maintain an objective, analytical voice that supports professional workflows, avoiding sensationalism or casual language.
 
 We follow the Associated Press (AP) Stylebook for general writing conventions, with adaptations for technical precision.
 
@@ -127,7 +127,7 @@ All content undergoes mandatory multi-stage review before publication, ensuring 
 
 6.2 Real-Time Monitoring and Corrections
 
-ObjectWire maintains continuous monitoring of published content for accuracy and relevance beyond initial publication. Automated alerts trigger when primary sources are updated (amended SEC filings, revised regulatory guidance), and manual monitoring tracks related developments requiring content updates. A reader feedback mechanism at editorial@objectwire.org enables the community to report errors, and quarterly audits of high-traffic articles ensure ongoing accuracy. Corrections are issued immediately upon verification of errors, with transparency prioritized over reputation protection. This commitment to continuous accuracy distinguishes ObjectWire from traditional publications with fixed, unchanging archives.
+ObjectWire maintains continuous monitoring of published content for accuracy and relevance beyond initial publication. Automated alerts trigger when primary sources are updated (amended SEC filings, revised regulatory guidance), and manual monitoring tracks related developments requiring content updates. A reader feedback mechanism at editorial@owire.org enables the community to report errors, and quarterly audits of high-traffic articles ensure ongoing accuracy. Corrections are issued immediately upon verification of errors, with transparency prioritized over reputation protection. This commitment to continuous accuracy distinguishes ObjectWire from traditional publications with fixed, unchanging archives.
 
 
 7. ETHICAL STANDARDS AND TRANSPARENCY
@@ -146,7 +146,7 @@ ObjectWire content represents diverse perspectives and avoids exclusionary or bi
 
 7.4 Corrections and Accountability
 
-ObjectWire holds itself accountable to readers through transparent correction policies. Errors are acknowledged publicly with prominent correction notices, retractions issued for fundamental errors requiring content withdrawal, reader concerns addressed through ombudsman contact (editorial@objectwire.org), and annual editorial standards review with public reporting on corrections issued.
+ObjectWire holds itself accountable to readers through transparent correction policies. Errors are acknowledged publicly with prominent correction notices, retractions issued for fundamental errors requiring content withdrawal, reader concerns addressed through ombudsman contact (editorial@owire.org), and annual editorial standards review with public reporting on corrections issued.
 
 
 8. COMPLIANCE AND GOVERNANCE
@@ -161,7 +161,7 @@ ObjectWire maintains strict editorial independence from commercial, political, a
 
 8.3 Standards Review and Evolution
 
-These standards are reviewed annually and updated to reflect technological, regulatory, and operational changes. The next scheduled review is December 2026. Readers may submit feedback or recommendations for standards improvement to editorial@objectwire.org.
+These standards are reviewed annually and updated to reflect technological, regulatory, and operational changes. The next scheduled review is December 2026. Readers may submit feedback or recommendations for standards improvement to editorial@owire.org.
 
 
 9. CONTACT AND EDITORIAL INQUIRIES
@@ -169,11 +169,11 @@ These standards are reviewed annually and updated to reflect technological, regu
 For questions regarding editorial standards, corrections, or content verification:
 
 ObjectWire Editorial Team
-Email: editorial@objectwire.org
+Email: editorial@owire.org
 Phone: (575) 495-0323
 Mail: 2921 E 17th St Building 3, Apt 3205, Austin, TX 78702
 
-For source confidentiality or sensitive information: secure@objectwire.org (PGP encryption available upon request)
+For source confidentiality or sensitive information: secure@owire.org (PGP encryption available upon request)
 
 
 ---

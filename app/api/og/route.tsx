@@ -1,4 +1,4 @@
-import { ImageResponse } from 'next/og';
+﻿import { ImageResponse } from 'next/og';
 import { createClient } from '@supabase/supabase-js';
 import type { NextRequest } from 'next/server';
 
@@ -265,7 +265,7 @@ export async function GET(req: NextRequest) {
                   display: 'flex',
                 }}
               >
-                objectwire.org
+                owire.org
               </div>
             </div>
           </div>

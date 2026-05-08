@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     'Gen-Z influencer',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/chicos-toxicos/sava-schultz',
+    canonical: 'https://www.owire.org/youtube/chicos-toxicos/sava-schultz',
   },
   openGraph: {
     title: 'Sava Schultz | TikTok Star & Social Media Influencer',
     description:
       'Full profile of Sava Schultz: the American TikTok star known for viral dance, lip sync, and fitness content. Age, height, net worth, boyfriend, and social',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/chicos-toxicos/sava-schultz',
+    url: 'https://www.owire.org/youtube/chicos-toxicos/sava-schultz',
     siteName: 'ObjectWire',
     authors: ['ObjectWire Editorial'],
     section: 'Influencer',

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import YoutubeCreatorPage, {
   YTSection,
   YTStat,
@@ -10,7 +10,7 @@ import YoutubeCreatorPage, {
 export const revalidate = 86400;
 
 const SLUG = '/youtube/ishowspeed';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/youtube/ishowspeed.jpg';
 
 export const metadata: Metadata = {
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-04T12:00:00Z',
     modifiedTime: '2026-05-04T12:00:00Z',
     tags: ['IShowSpeed', 'YouTube', 'Gaming', 'Soccer', 'Reaction', 'Cincinnati'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'IShowSpeed, YouTube creator' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'IShowSpeed, YouTube creator' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IShowSpeed | 30M YouTube, Real Name Darren Watkins Jr., Bio 2026',
     description: 'IShowSpeed profile: real name, age 21, 30M subscribers, Ronaldo meeting, gaming streams, viral moments, and 2026 career.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -71,7 +71,7 @@ export default function IShowSpeedPage() {
         modifiedTime: '2026-05-04T12:00:00Z',
         author: 'ObjectWire YouTube Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'YouTube',
         keywords: [
           'IShowSpeed', 'Darren Watkins Jr', 'IShowSpeed age 2026',
@@ -80,8 +80,8 @@ export default function IShowSpeedPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'YouTube', item: 'https://www.objectwire.org/youtube' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'YouTube', item: 'https://www.owire.org/youtube' },
         { name: 'IShowSpeed', item: PAGE_URL },
       ]}
       hero={{

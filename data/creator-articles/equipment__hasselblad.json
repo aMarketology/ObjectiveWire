@@ -1,4 +1,4 @@
-{
+﻿{
   "id": "d702e0d3-2eda-407e-9d95-f80a205b5c41",
   "slug": "equipment/hasselblad",
   "status": "published",
@@ -6,7 +6,7 @@
   "schema_description": "Full profile of the Hasselblad 907X and CFV 100C medium-format digital system. 100MP BSI CMOS, 15 stops dynamic range, 294-zone PDAF, 1TB built-in SSD, and compatibility with V-system film bodies from 1957.",
   "schema_author": "ObjectWire Tech Desk",
   "schema_author_url": null,
-  "schema_article_url": "https://www.objectwire.org/equipment/hasselblad",
+  "schema_article_url": "https://www.owire.org/equipment/hasselblad",
   "schema_image_url": "/equipment-camera-placeholder.jpg",
   "schema_section": "Tech",
   "schema_keywords": [

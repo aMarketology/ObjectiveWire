@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import CreatorArticle, {
   CreatorSection,
   CreatorStat,
@@ -14,7 +14,7 @@ import CreatorArticle, {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/valkyrae';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/valkyrae-profile.jpg';
 
 export const metadata: Metadata = {
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-04-29T12:00:00Z',
     modifiedTime: '2026-04-29T12:00:00Z',
     tags: ['Valkyrae', 'Creator', '100 Thieves', 'YouTube Gaming', 'Las Vegas'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Valkyrae, 100 Thieves co-owner and YouTube Gaming creator' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Valkyrae, 100 Thieves co-owner and YouTube Gaming creator' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Valkyrae | Co-Owner of 100 Thieves, 3.7M YouTube Subs',
     description: 'Valkyrae profile: age, real name, YouTube Gaming career, RLYRAE brand, 100 Thieves co-ownership, and 2026 net worth.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -75,7 +75,7 @@ export default function ValkyraePage() {
         modifiedTime: '2026-04-29T12:00:00Z',
         author: 'ObjectWire Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Valkyrae', 'Rachel Hofstetter', 'Valkyrae age 2026', 'Valkyrae YouTube',
@@ -84,8 +84,8 @@ export default function ValkyraePage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'Creator', item: 'https://www.objectwire.org/creator' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'Creator', item: 'https://www.owire.org/creator' },
         { name: 'Valkyrae', item: PAGE_URL },
       ]}
       hero={{

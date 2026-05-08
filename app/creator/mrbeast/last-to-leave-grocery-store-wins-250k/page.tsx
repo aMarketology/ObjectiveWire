@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,8 +6,8 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/mrbeast/last-to-leave-grocery-store-wins-250k';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
-const OG_IMAGE = 'https://www.objectwire.org/influncer/usa/mr_beast.png';
+const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
+const OG_IMAGE = 'https://www.owire.org/influncer/usa/mr_beast.png';
 
 export const metadata: Metadata = {
   title: 'MrBeast Grocery Store | $250K, Part 2 Cliffhanger',

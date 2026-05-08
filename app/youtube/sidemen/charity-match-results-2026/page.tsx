@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,8 +6,8 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/youtube/sidemen/charity-match-results-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
-const OG_IMAGE = 'https://www.objectwire.org/influncer/sdmn_charitymatch_26.webp';
+const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
+const OG_IMAGE = 'https://www.owire.org/influncer/sdmn_charitymatch_26.webp';
 const THUMBNAIL = '/influncer/sdmn_charitymatch_26.webp';
 
 export const metadata: Metadata = {
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     publishedTime: '2026-04-19T00:00:00Z',
     modifiedTime: '2026-04-19T00:00:00Z',
     section: 'Entertainment',
-    images: [{ url: `https://www.objectwire.org${THUMBNAIL}`, width: 1200, height: 675, alt: 'Sidemen Charity Match 2026 at Wembley Stadium' }],
+    images: [{ url: `https://www.owire.org${THUMBNAIL}`, width: 1200, height: 675, alt: 'Sidemen Charity Match 2026 at Wembley Stadium' }],
     tags: ['Sidemen', 'KSI', 'YouTube', 'Charity Match', 'Wembley'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sidemen Charity Match 2026 | 10-10, YouTube Allstars win on',
     description: '20 goals. 4-1 penalty shootout. Jynxzi MOTM. Miniminter hat-trick. ItalianBach 90th-minute equalizer. Max Fosh burned a yellow card in front of 90,000',
-    images: [`https://www.objectwire.org${THUMBNAIL}`],
+    images: [`https://www.owire.org${THUMBNAIL}`],
   },
 };
 

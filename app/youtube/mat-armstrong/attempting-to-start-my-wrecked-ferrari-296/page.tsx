@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/youtube/mat-armstrong/attempting-to-start-my-wrecked-ferrari-296';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 const OG_IMAGE = '/mat-armstrong-ferrari-296-gtb.jpg';
 
 export const metadata: Metadata = {

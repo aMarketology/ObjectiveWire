@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   title: "How to Get Last-Minute Sidemen Charity Match 2026 Tickets",
   description: "Complete guide to securing last-minute tickets for the Sidemen Charity Match 2026 at Wembley Stadium. Learn about resale options, hospitality packages,",
   alternates: {
-    canonical: 'https://www.objectwire.org/sidemen/news',
+    canonical: 'https://www.owire.org/sidemen/news',
   },
   keywords: ['Sidemen Charity Match 2026', 'last-minute tickets', 'Wembley Stadium', 'KSI', 'YouTube Allstars', 'Bright Side', 'BBC Children in Need', 'Sidemen FC'],
   openGraph: {
     title: "How to Get Last-Minute Sidemen Charity Match 2026 Tickets",
     description: "Complete guide to securing last-minute tickets for the Sidemen Charity Match 2026 at Wembley Stadium. Learn about resale options, hospitality packages,",
     type: 'article',
-    url: "https://www.objectwire.org/sidemen/news",
+    url: "https://www.owire.org/sidemen/news",
     siteName: 'ObjectWire',
     section: "News",
   },

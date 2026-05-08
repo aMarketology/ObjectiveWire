@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import CreatorArticle, {
   CreatorSection,
   CreatorStat,
@@ -13,7 +13,7 @@ import CreatorArticle, {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/sssniperwolf';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/sssniperwolf-profile.jpg';
 
 export const metadata: Metadata = {
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-04-29T12:00:00Z',
     modifiedTime: '2026-04-29T12:00:00Z',
     tags: ['SSSniperWolf', 'Creator', 'YouTube', 'Gaming', 'Reactions'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'SSSniperWolf, YouTube gaming creator' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'SSSniperWolf, YouTube gaming creator' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SSSniperWolf | 34M YouTube Subscribers, Gaming Reactions',
     description: 'SSSniperWolf profile: real name Alia Shelesh, age 32, YouTube gaming reactions, Little Lia channel, JacksFilms controversy, and net worth 2026.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -74,7 +74,7 @@ export default function SSSniperWolfPage() {
         modifiedTime: '2026-04-29T12:00:00Z',
         author: 'ObjectWire Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'SSSniperWolf', 'Alia Shelesh', 'SSSniperWolf age 2026', 'SSSniperWolf YouTube',
@@ -83,8 +83,8 @@ export default function SSSniperWolfPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'Creator', item: 'https://www.objectwire.org/creator' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'Creator', item: 'https://www.owire.org/creator' },
         { name: 'SSSniperWolf', item: PAGE_URL },
       ]}
       hero={{

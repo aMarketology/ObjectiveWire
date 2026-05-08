@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/ari-kytsya';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/ariK.jpg';
 
 export const metadata: Metadata = {

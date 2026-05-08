@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Miniminter net worth"
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/miniminter',
+    canonical: 'https://www.owire.org/youtube/sidemen/miniminter',
   },
   openGraph: {
     title: 'Miniminter (Simon Minter) | FIFA Creator & Sidemen Member',
     description: 'Full profile of Miniminter: daily FIFA uploads, Sidemen founding member, relationship with Talia Mar, and 15+ years of consistent content creation.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/sidemen/miniminter',
+    url: 'https://www.owire.org/youtube/sidemen/miniminter',
     siteName: 'ObjectWire',
     section: 'YouTube',
   },

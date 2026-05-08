@@ -1,7 +1,7 @@
-# ObjectWire Writing & Publishing Guide
+﻿# ObjectWire Writing & Publishing Guide
 
 **Last updated:** March 26, 2026  
-**Production:** Railway → `objectwire.org`  
+**Production:** Railway → `owire.org`  
 **Supabase:** `https://kzcwclpurrtonpsnownbl.supabase.co`
 
 ---
@@ -31,7 +31,7 @@ ObjectWire uses **Next.js Server Components + Supabase** to deliver fully-render
 ### What happens when someone visits an article URL
 
 ```
-Reader / Googlebot → objectwire.org/california/california-tech-layoffs-2026-...
+Reader / Googlebot → owire.org/california/california-tech-layoffs-2026-...
         │
         ▼
 app/.../page.tsx   (Next.js Server Component, runs on Railway)
@@ -98,7 +98,7 @@ import { NewsArticleDB } from '@/components/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/section/your-article-slug';
-const FULL_URL = `https://www.objectwire.org${SLUG}`;
+const FULL_URL = `https://www.owire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Your Article Title | ObjectWire',
@@ -569,7 +569,7 @@ Switch `force-dynamic` → `revalidate = 3600` on any article once it is final a
 
 Run this on any live article to confirm SSR is working:
 
-1. Open `objectwire.org/{your-article-path}` in a browser
+1. Open `owire.org/{your-article-path}` in a browser
 2. Right-click → **View Page Source** (not DevTools, actual source)
 3. `Ctrl + F` → search for the article headline
 4. **Headline visible in source** → SSR working ✅, Googlebot can index it

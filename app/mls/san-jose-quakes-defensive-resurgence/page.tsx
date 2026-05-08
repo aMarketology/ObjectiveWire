@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/mls/san-jose-quakes-defensive-resurgence';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1558465202-92356bf74344?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
 
 export const metadata: Metadata = {

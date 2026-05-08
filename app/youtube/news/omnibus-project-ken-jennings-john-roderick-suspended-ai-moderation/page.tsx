@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/youtube/news/omnibus-project-ken-jennings-john-roderick-suspended-ai-moderation';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title:

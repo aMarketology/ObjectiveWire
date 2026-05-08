@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import CreatorArticle, {
   CreatorSection,
   CreatorStat,
@@ -13,7 +13,7 @@ import CreatorArticle, {
 export const revalidate = 86400;
 
 const SLUG = '/creator/zavala-himself';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/zavala-himself.jpg';
 
 export const metadata: Metadata = {
@@ -53,14 +53,14 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-04T12:00:00Z',
     modifiedTime: '2026-05-04T12:00:00Z',
     tags: ['Zavala Him Self', 'TikTok', 'Twitch', 'YouTube', 'Creator', 'Gaming'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Zavala Him Self, multi-platform content creator' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Zavala Him Self, multi-platform content creator' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Zavala Him Self | 1.3M TikTok, Twitch, YouTube Bio 2026',
     description:
       'Zavala Him Self creator profile: TikTok @zavalahimself 1.3M followers, Twitch live streams, ZavalaHimselfYT challenges and vlogs.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -75,7 +75,7 @@ export default function ZavalaHimselfPage() {
         modifiedTime: '2026-05-04T12:00:00Z',
         author: 'ObjectWire Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Zavala Him Self',
@@ -90,8 +90,8 @@ export default function ZavalaHimselfPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'Creator', item: 'https://www.objectwire.org/creator' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'Creator', item: 'https://www.owire.org/creator' },
         { name: 'Zavala Him Self', item: PAGE_URL },
       ]}
       hero={{

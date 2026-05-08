@@ -1,4 +1,4 @@
-# Content Topics — April 2026
+﻿# Content Topics — April 2026
 
 ---
 
@@ -53,19 +53,19 @@ Ships on every page in the site's `<head>`.
 - Full ownership and funding disclosure (self-funded, nonprofit, no ads/sponsorships/affiliates/political donations)
 - Lists all 3 authors with profile links
 - Explains editorial accountability rules
-- Contact info: `editorial@objectwire.org`
+- Contact info: `editorial@owire.org`
 - Datestamped April 29, 2026
 
 #### `/editorial-standards` — `app/editorial-standards/page.tsx`
 - `force-static`, no Supabase
 - 10 numbered standards: accuracy over speed, primary sources only, attribution, news vs analysis, conflicts of interest, AI use in newsroom, corrections, right of reply, source protection, diversity of coverage
 - Explicitly states AI is not used to write published copy
-- Contact: `editorial@objectwire.org`
+- Contact: `editorial@owire.org`
 
 #### `/corrections` — `app/corrections/page.tsx`
 - `force-static`, no Supabase
 - Defines what gets corrected, how a correction looks on the page (original text preserved, timestamped), what is NOT a correction (routine updates), how to report an error, right of reply, removals/unpublishing policy
-- Contact: `corrections@objectwire.org`
+- Contact: `corrections@owire.org`
 
 **Why this matters for SEO:**
 - `force-static` pages are prerendered HTML — Googlebot gets full content instantly
@@ -157,7 +157,7 @@ Set `openGraph.images` in `page.tsx` metadata with explicit `width`, `height`, a
 ```ts
 openGraph: {
   images: [{
-    url: 'https://www.objectwire.org/influncer/valkyrae-profile.jpg',
+    url: 'https://www.owire.org/influncer/valkyrae-profile.jpg',
     width: 1200,
     height: 675,
     alt: 'Valkyrae YouTube Gaming profile 2026',
@@ -173,7 +173,7 @@ Missing `width`/`height` causes Google to skip the image in rich snippets.
 | `thumbnail_alt` | Descriptive alt text, primary keyword included. |
 | `hero_image_src` | For CreatorArticleDB — portrait, min 800px wide. |
 | `hero_image_alt` | For CreatorArticleDB — name + role. |
-| `schema_image_url` | Full `https://www.objectwire.org/...` URL. Used in JSON-LD. Must be absolute. |
+| `schema_image_url` | Full `https://www.owire.org/...` URL. Used in JSON-LD. Must be absolute. |
 
 ### 6. Image Placement in Content
 - Hero/thumbnail: above the fold, handled automatically by the component

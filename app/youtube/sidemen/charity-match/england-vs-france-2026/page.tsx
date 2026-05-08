@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/youtube/sidemen/charity-match/england-vs-france-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const OG_IMAGE = 'https://www.objectwire.org/influncer/sdmn_charitymatch_26.webp';
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const OG_IMAGE = 'https://www.owire.org/influncer/sdmn_charitymatch_26.webp';
 
 export const metadata: Metadata = {
   title: 'Sidemen England vs France 2026 | Eleven All-Stars 2 Rumors',

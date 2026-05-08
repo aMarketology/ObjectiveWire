@@ -1,4 +1,4 @@
-# 100K Organic Search | ObjectWire Growth Plan
+﻿# 100K Organic Search | ObjectWire Growth Plan
 
 > **Goal:** Reach 100,000 monthly organic search sessions within 12 months.
 > **Last updated:** April 4, 2026
@@ -416,7 +416,7 @@ Still need to merge:
 ### D.2 Google News Publisher Center
 
 - Register at [Google Publisher Center](https://publishercenter.google.com/)
-- Verify `objectwire.org` ownership
+- Verify `owire.org` ownership
 - Submit `/news-sitemap.xml` as the news feed
 - Label sections: Technology, Gaming, Entertainment, Finance, Science
 - Upload publisher logo (min 1000x1000 square)

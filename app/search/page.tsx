@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { scanAllContent } from '@/lib/content-scanner';
 import Breadcrumb from '@/components/nav/Breadcrumb';
@@ -28,7 +28,7 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
       follow: true,
     },
     alternates: {
-      canonical: 'https://www.objectwire.org/search',
+      canonical: 'https://www.owire.org/search',
     },
   };
 }

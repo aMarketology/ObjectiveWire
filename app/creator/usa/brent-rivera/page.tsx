@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/usa/brent-rivera';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/usa/brentrivera.png';
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     modifiedTime: '2026-04-02T15:00:00Z',
     images: [
       {
-        url: `https://www.objectwire.org${IMAGE_URL}`,
+        url: `https://www.owire.org${IMAGE_URL}`,
         width: 1200,
         height: 675,
         alt: 'Brent Rivera, YouTuber and Amp Studios CEO',

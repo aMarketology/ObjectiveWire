@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description: "Complete profile of ChrisMD (Chris Dixon), British football YouTube creator known for skills videos, challenges, and regular Sidemen appearances.",
   keywords: ["ChrisMD", "Chris Dixon", "Chippo", "Sidemen", "Football YouTube", "UK YouTuber", "Soccer"],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/chippo-grimes',
+    canonical: 'https://www.owire.org/youtube/sidemen/chippo-grimes',
   },
   openGraph: {
     title: "ChrisMD (Chippo) | Football YouTube Creator & Sidemen",
     description: "Complete profile of ChrisMD (Chris Dixon), British football YouTube creator known for skills videos, challenges, and regular Sidemen appearances.",
     type: 'article',
-    url: "https://www.objectwire.org/youtube/sidemen/chippo-grimes",
+    url: "https://www.owire.org/youtube/sidemen/chippo-grimes",
     siteName: 'ObjectWire',
     section: "News",
   },

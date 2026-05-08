@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     images: ["https://objectwire.com/og-sidemen-charity-match-2026.jpg"],
   },
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/charity-match',
+    canonical: 'https://www.owire.org/youtube/sidemen/charity-match',
   },
 };
 

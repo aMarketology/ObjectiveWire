@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: 'From high school dropout to building a digital marketing empire. The story of Iman Gadzhi.',
   },
   alternates: {
-    canonical: 'https://www.objectwire.org/creator/iman-gadzhi',
+    canonical: 'https://www.owire.org/creator/iman-gadzhi',
   },
 };
 

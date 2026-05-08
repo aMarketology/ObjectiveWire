@@ -1,4 +1,4 @@
-# Image SEO — ObjectWire Engineering Reference
+﻿# Image SEO — ObjectWire Engineering Reference
 
 > How to upload, store, display, and mark up images so they appear in Google Images,
 > rank inside news articles, and never trigger a copyright claim.
@@ -134,7 +134,7 @@ The `imageUrl` field powers Google's rich results and the `NewsArticleSchema`:
   priority: 0.9,
   changeFrequency: 'weekly',
   // ← Add this whenever the article has a real image
-  imageUrl: 'https://www.objectwire.org/images/articles/winter-olympics/breezy-johnson-finish.webp',
+  imageUrl: 'https://www.owire.org/images/articles/winter-olympics/breezy-johnson-finish.webp',
 },
 ```
 
@@ -237,7 +237,7 @@ The `SEOWrapper` component already injects a `NewsArticle` schema that includes 
   "headline": "...",
   "image": {
     "@type": "ImageObject",
-    "url": "https://www.objectwire.org/images/articles/breezy-johnson-finish.webp",
+    "url": "https://www.owire.org/images/articles/breezy-johnson-finish.webp",
     "width": 1200,
     "height": 675
   }
@@ -313,7 +313,7 @@ export async function GET() {
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   ${entries.map(e => `
   <url>
-    <loc>https://www.objectwire.org${e.slug}</loc>
+    <loc>https://www.owire.org${e.slug}</loc>
     <lastmod>${e.modifiedDate}</lastmod>
     <image:image>
       <image:loc>${e.imageUrl}</image:loc>
@@ -377,7 +377,7 @@ Before publishing any article with images:
 ☐ Infobox image is portrait/square, 600 px minimum wide
 ☐ imageUrl added to contentRegistry entry
 ☐ Attribution caption visible on page (if CC-BY)
-☐ Image hosted on objectwire.org or Supabase (not hotlinked from source)
+☐ Image hosted on owire.org or Supabase (not hotlinked from source)
 ☐ priority set on hero image, lazy on all others
 ```
 

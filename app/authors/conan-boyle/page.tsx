@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,20 +11,20 @@ export const metadata: Metadata = {
   title: 'Conan Boyle, ObjectWire Science Writer',
   description:
     'Conan Boyle is a founding writer at ObjectWire in Austin, Texas, covering biotechnology, medical research, AI hardware, and emerging technology.',
-  alternates: { canonical: 'https://www.objectwire.org/authors/conan-boyle' },
+  alternates: { canonical: 'https://www.owire.org/authors/conan-boyle' },
   openGraph: {
     title: 'Conan Boyle, ObjectWire Science Writer',
     description: 'Founding writer at ObjectWire covering biotech, medical research, AI hardware, and emerging technology.',
-    url: 'https://www.objectwire.org/authors/conan-boyle',
+    url: 'https://www.owire.org/authors/conan-boyle',
     siteName: 'ObjectWire',
     type: 'profile',
-    images: [{ url: 'https://www.objectwire.org/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, ObjectWire science and technology writer' }],
+    images: [{ url: 'https://www.owire.org/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, ObjectWire science and technology writer' }],
   },
   twitter: {
     card: 'summary',
     title: 'Conan Boyle, ObjectWire Science Writer',
     description: 'Founding writer at ObjectWire. Biotech, medical research, AI hardware.',
-    images: ['https://www.objectwire.org/influncer/author/conan_doyle.jpg'],
+    images: ['https://www.owire.org/influncer/author/conan_doyle.jpg'],
   },
 };
 
@@ -46,7 +46,7 @@ export default function ConanBoyleAuthorPage() {
         name="Conan Boyle"
         jobTitle="Science & Technology Writer"
         description="Conan Boyle is the founding writer at ObjectWire covering biotechnology, CRISPR, medical research, AI hardware, video games, and emerging technologies."
-        url="https://www.objectwire.org/authors/conan-boyle"
+        url="https://www.owire.org/authors/conan-boyle"
         knowsAbout={['Biotechnology', 'CRISPR', 'Medical Research', 'AI Hardware', 'Emerging Technology', 'Neuroscience', 'Video Games']}
         alumniOf={[{ name: 'North Carolina State University', department: 'Journalism' }]}
         location={{ city: 'Austin', region: 'TX' }}

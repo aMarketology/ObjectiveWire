@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import YoutubeCreatorPage, {
   YTSection,
   YTStat,
@@ -10,7 +10,7 @@ import YoutubeCreatorPage, {
 export const revalidate = 86400;
 
 const SLUG = '/youtube/ksi';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/youtube/ksi.jpg';
 
 export const metadata: Metadata = {
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-04T12:00:00Z',
     modifiedTime: '2026-05-04T12:00:00Z',
     tags: ['KSI', 'JJ Olatunji', 'Sidemen', 'YouTube', 'Boxing', 'Prime'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'KSI, British YouTuber, boxer and musician' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'KSI, British YouTuber, boxer and musician' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'KSI | 24M YouTube, Boxing, Prime Hydration, Bio 2026',
     description: 'KSI (JJ Olatunji) profile: 24M YouTube, boxing record, Prime drink business, Logan Paul, Sidemen, music career, age 32.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -71,7 +71,7 @@ export default function KSIPage() {
         modifiedTime: '2026-05-04T12:00:00Z',
         author: 'ObjectWire YouTube Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'YouTube',
         keywords: [
           'KSI', 'JJ Olatunji', 'KSI YouTube', 'KSI boxing',
@@ -80,8 +80,8 @@ export default function KSIPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'YouTube', item: 'https://www.objectwire.org/youtube' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'YouTube', item: 'https://www.owire.org/youtube' },
         { name: 'KSI', item: PAGE_URL },
       ]}
       hero={{

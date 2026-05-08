@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   NewsArticle,
@@ -10,7 +10,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/youtube/mat-armstrong/bugatti-crash-damage-rebuild';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Mat Armstrong Bugatti Rebuild | Crash-Damaged Chiron Back on Road',

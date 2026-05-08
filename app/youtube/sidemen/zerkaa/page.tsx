@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Zerkaa engagement"
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/zerkaa',
+    canonical: 'https://www.owire.org/youtube/sidemen/zerkaa',
   },
   openGraph: {
     title: 'Zerkaa (Josh Bradley) | Sidemen Leader & GTA RP Creator',
     description: 'Full profile of Zerkaa: Sidemen leadership, GTA RP mastery, engagement to Freya Nightingale, business operations, and group stability role.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/sidemen/zerkaa',
+    url: 'https://www.owire.org/youtube/sidemen/zerkaa',
     siteName: 'ObjectWire',
     section: 'YouTube',
   },

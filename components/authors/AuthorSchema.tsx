@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AuthorSchema — Comprehensive Person JSON-LD for E-E-A-T
  *
  * Emits the full Person structured data that Google uses for author verification
@@ -10,7 +10,7 @@
  *     name="Alfansa"
  *     jobTitle="Finance & Markets Reporter"
  *     description="Covers payments, fintech, and MHA gaming."
- *     url="https://www.objectwire.org/authors/alfansa"
+ *     url="https://www.owire.org/authors/alfansa"
  *     knowsAbout={['Finance', 'Fintech', 'My Hero Academia']}
  *     articleCount={5}
  *   />
@@ -61,9 +61,9 @@ export function AuthorSchema({
     worksFor: {
       '@type': 'NewsMediaOrganization',
       name: 'ObjectWire',
-      url: 'https://www.objectwire.org',
-      publishingPrinciples: 'https://www.objectwire.org/editorial-standards',
-      correctionsPolicy: 'https://www.objectwire.org/corrections',
+      url: 'https://www.owire.org',
+      publishingPrinciples: 'https://www.owire.org/editorial-standards',
+      correctionsPolicy: 'https://www.owire.org/corrections',
     },
     ...(image ? { image } : {}),
     ...(knowsAbout.length > 0 ? { knowsAbout } : {}),

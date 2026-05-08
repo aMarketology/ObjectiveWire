@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: 'Digital marketing educator specializing in AI automation and client acquisition strategies.',
   },
   alternates: {
-    canonical: 'https://www.objectwire.org/creator/serge-gatari',
+    canonical: 'https://www.owire.org/creator/serge-gatari',
   },
 };
 

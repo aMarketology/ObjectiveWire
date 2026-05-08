@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Serge Gatari AI Course Review | ClientAcquisition.io",
   description: "Critical review of Serge Gatari's AI course and ClientAcquisition.io Community. Examining claims about creating AI agent millionaires.",
   alternates: {
-    canonical: 'https://www.objectwire.org/creator/serge-gatari/ai-course-review',
+    canonical: 'https://www.owire.org/creator/serge-gatari/ai-course-review',
   },
   openGraph: {
     title: "Serge Gatari AI Course Review | ClientAcquisition.io",
     description: "Critical review of Serge Gatari",
     type: 'article',
-    url: "https://www.objectwire.org/creator/serge-gatari/ai-course-review",
+    url: "https://www.owire.org/creator/serge-gatari/ai-course-review",
     siteName: 'ObjectWire',
     section: "Creator",
   },

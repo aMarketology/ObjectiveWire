@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import CreatorArticle, {
   CreatorSection,
   CreatorStat,
@@ -13,7 +13,7 @@ import CreatorArticle, {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/alix-earle';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/alix-earle-profile.jpg';
 
 export const metadata: Metadata = {
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-04-29T12:00:00Z',
     modifiedTime: '2026-04-29T12:00:00Z',
     tags: ['Alix Earle', 'Creator', 'TikTok', 'GRWM', 'Florida'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Alix Earle, TikTok GRWM creator' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Alix Earle, TikTok GRWM creator' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Alix Earle | 7M TikTok Followers, GRWM Creator Bio 2026',
     description: 'Alix Earle profile: age 25, TikTok @alixearle, GRWM videos, University of Miami, L\'Oreal deals, and relationship with Braxton Berrios.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -74,7 +74,7 @@ export default function AlixEarlePage() {
         modifiedTime: '2026-04-29T12:00:00Z',
         author: 'ObjectWire Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Alix Earle', 'Alix Earle age 2026', 'Alix Earle TikTok', 'GRWM creator',
@@ -83,8 +83,8 @@ export default function AlixEarlePage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'Creator', item: 'https://www.objectwire.org/creator' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'Creator', item: 'https://www.owire.org/creator' },
         { name: 'Alix Earle', item: PAGE_URL },
       ]}
       hero={{

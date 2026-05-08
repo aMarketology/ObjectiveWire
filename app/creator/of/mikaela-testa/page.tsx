@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/of/mikaela-testa';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Mikaela Testa | Age, Instagram, OnlyFans, Bio 2026',

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/world-cup-2026-us-transit-prices-fans-outraged';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
 const OG_IMAGE = 'https://images.unsplash.com/photo-1544366981-43d8d59eeba9?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
 
 export const metadata: Metadata = {

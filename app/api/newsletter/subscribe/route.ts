@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 
 // =============================================================================
 // NEWSLETTER SUBSCRIBE — POST /api/newsletter/subscribe
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
             utm_source:   'objectwire',
             utm_medium:   'article_footer',
             utm_campaign: 'newsletter_signup',
-            referring_site: req.headers.get('referer') || 'https://www.objectwire.org',
+            referring_site: req.headers.get('referer') || 'https://www.owire.org',
           }),
         }
       );

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -23,14 +23,14 @@ export const metadata: Metadata = {
     'Logan Paul influencer',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/logan-paul',
+    canonical: 'https://www.owire.org/youtube/logan-paul',
   },
   openGraph: {
     title: 'Logan Paul | YouTuber, WWE Star & Entrepreneur',
     description:
       'Complete profile of Logan Paul: from Vine star to WWE champion, PRIME co-founder, and record-breaking Pokémon card investor.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/logan-paul',
+    url: 'https://www.owire.org/youtube/logan-paul',
     siteName: 'ObjectWire',
     authors: ['ObjectWire Editorial'],
     section: 'YouTube',

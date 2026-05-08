@@ -1,4 +1,4 @@
-# Google News SEO | ObjectWire
+﻿# Google News SEO | ObjectWire
 
 > **How `content-registry.ts`, the Supabase articles table, and structured data work together to compete with IGN, CNN, and established media for Google News placement.**
 
@@ -44,7 +44,7 @@ It is **not** a CMS. It is metadata. The actual page content lives in `app/**/pa
   priority: 0.9,                   // Sitemap crawl priority (0.0–1.0)
   changeFrequency: "weekly",
   featured: true,                  // Appears in homepage hero slot
-  imageUrl: "https://www.objectwire.org/news/cursor.PNG",   // Required for Top Stories
+  imageUrl: "https://www.owire.org/news/cursor.PNG",   // Required for Top Stories
   imageAlt: "Cursor AI code editor, Anysphere $2 billion ARR milestone",
 }
 ```
@@ -231,11 +231,11 @@ Every ObjectWire article page should include both of these:
   title="Article Title"
   description="Article excerpt under 160 chars."
   author="Jack Wang"
-  authorUrl="https://www.objectwire.org/authors/jack-wang"
+  authorUrl="https://www.owire.org/authors/jack-wang"
   publishedTime="2026-03-02T12:00:00Z"   // ISO 8601, required
   modifiedTime="2026-03-02T12:00:00Z"
-  imageUrl="https://www.objectwire.org/news/cursor.PNG"
-  articleUrl="https://www.objectwire.org/technology/cursor"
+  imageUrl="https://www.owire.org/news/cursor.PNG"
+  articleUrl="https://www.owire.org/technology/cursor"
   section="Technology"
   keywords={['Cursor', 'Anysphere', 'ARR', 'SaaS']}
 />
@@ -280,7 +280,7 @@ Google mandates a minimum image size of **1200×675 px (16:9)** for Top Stories 
 Always include `imageWidth` and `imageHeight` in the registry entry:
 
 ```ts
-imageUrl: "https://www.objectwire.org/news/cursor.PNG",
+imageUrl: "https://www.owire.org/news/cursor.PNG",
 imageWidth: 1200,
 imageHeight: 675,
 imageAlt: "Cursor AI code editor interface screenshot",

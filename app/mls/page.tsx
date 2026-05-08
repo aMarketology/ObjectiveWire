@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { Hub } from '@/components/Hub';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 import { SEOWrapper } from '@/components/SEOWrapper';
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     'soccer news',
     'MLS scores',
   ],
-  alternates: { canonical: `https://www.objectwire.org${SLUG}` },
+  alternates: { canonical: `https://www.owire.org${SLUG}` },
   openGraph: {
     title: 'MLS | Major League Soccer News & Analysis',
     description:
       'Complete MLS coverage from ObjectWire. Transfers, standings, expansion, match reports, and 2026 season analysis.',
     type: 'website',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `https://www.owire.org${SLUG}`,
     siteName: 'ObjectWire',
   },
   twitter: {

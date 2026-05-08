@@ -1,4 +1,4 @@
-// =============================================================================
+﻿// =============================================================================
 // CONTENT REGISTRY — ObjectWire Central Content Metadata
 // =============================================================================
 // ALL DATA NOW LIVES IN SUPABASE (content_registry table).
@@ -48,7 +48,7 @@ export const contentRegistry: ContentEntry[] = [
     author: "Jack Sterling",
     priority: 0.7,
     changeFrequency: "weekly",
-    imageUrl: "https://www.objectwire.org/entertainment/forza_horizon_6.PNG",
+    imageUrl: "https://www.owire.org/entertainment/forza_horizon_6.PNG",
     imageWidth: 1200,
     imageHeight: 675,
     imageAlt: "Forza Horizon 6 Japan setting steam pre-sales 511K Alinea Analytics 2026",
@@ -65,7 +65,7 @@ export const contentRegistry: ContentEntry[] = [
     author: "ObjectWire Entertainment Desk",
     priority: 0.7,
     changeFrequency: "weekly",
-    imageUrl: "https://www.objectwire.org/influncer/sdmn_charitymatch_26.webp",
+    imageUrl: "https://www.owire.org/influncer/sdmn_charitymatch_26.webp",
     imageWidth: 1200,
     imageHeight: 675,
     imageAlt: "Sidemen Charity Match 2026 Wembley Stadium YouTube Allstars win penalty shootout",
@@ -286,7 +286,7 @@ export const contentRegistry: ContentEntry[] = [
     author: "ObjectWire Gaming Desk",
     priority: 0.8,
     changeFrequency: "weekly",
-    imageUrl: "https://www.objectwire.org/entertainment/forza_horizon_6.PNG",
+    imageUrl: "https://www.owire.org/entertainment/forza_horizon_6.PNG",
     imageWidth: 1200,
     imageHeight: 675,
     imageAlt: "Forza Horizon 6 500K Steam pre-sales Alinea Analytics better than FH5 launch projection",
@@ -425,7 +425,7 @@ export const contentRegistry: ContentEntry[] = [
     author: "Conan Boyle",
     priority: 0.7,
     changeFrequency: "weekly",
-    imageUrl: "https://www.objectwire.org/entertainment/InsideS3.webp",
+    imageUrl: "https://www.owire.org/entertainment/InsideS3.webp",
     imageWidth: 1200,
     imageHeight: 675,
     imageAlt: "Sidemen Inside Season 3 winner Eddie Hall ratings review 2026",

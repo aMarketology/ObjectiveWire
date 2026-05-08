@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import WorldCupBoycottClient from './WorldCupBoycottClient';
 
 export const revalidate = 86400;
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "2026 World Cup Boycott Controversy Over ICE Immigration",
     description: "Human rights groups demand World Cup cancellation citing ICE enforcement concerns and family separations.",
     type: "article",
-    url: "https://www.objectwire.org/world-cup/boycott-controversy",
+    url: "https://www.owire.org/world-cup/boycott-controversy",
     siteName: "ObjectWire",
     publishedTime: "2026-01-27T08:00:00Z",
     modifiedTime: "2026-01-27T14:30:00Z",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "Human rights groups demand cancellation as FIFA faces mounting pressure over U.S. immigration enforcement.",
   },
   alternates: {
-    canonical: "https://www.objectwire.org/world-cup/boycott-controversy",
+    canonical: "https://www.owire.org/world-cup/boycott-controversy",
   },
 };
 

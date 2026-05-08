@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description: "Complete coverage of the NELK Boys, the controversial YouTube entertainment group. Latest news, member profiles, career highlights, and current ventures",
   keywords: ["NELK Boys", "Full Send", "Kyle Forgeard", "Jesse Sebastiani", "Steve Deleonardis", "SteveWillDoIt", "YouTube pranks", "Happy Dad"],
   alternates: {
-    canonical: 'https://www.objectwire.org/nelk-boys',
+    canonical: 'https://www.owire.org/nelk-boys',
   },
   openGraph: {
     title: "NELK Boys | YouTube Entertainment Group",
     description: "Complete coverage of the NELK Boys, the controversial YouTube entertainment group. Latest news, member profiles, career highlights, and current ventures",
     type: 'article',
-    url: "https://www.objectwire.org/nelk-boys",
+    url: "https://www.owire.org/nelk-boys",
     siteName: 'ObjectWire',
     section: "News",
   },

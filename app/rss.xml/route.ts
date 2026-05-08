@@ -1,32 +1,19 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import { createClient } from '@/lib/supabase/server';
+import registryDataRaw from '@/lib/registry-data.json';
+import type { ContentEntry } from '@/lib/content-registry';
 
-export const dynamic = 'force-dynamic';
-
-// RSS 2.0 feed — all article types (NewsArticle, JackArticle, CreatorArticle, ArticlePage).
-// Data sourced from Supabase content_registry (auto-synced on every build via prebuild script).
-// Cap at 200 most recent entries to keep feed size reasonable for readers.
+// RSS feed is generated from lib/registry-data.json — no Supabase calls.
+// Updated on every build via sync-registry.ts in prebuild.
 const RSS_LIMIT = 200;
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
+  const registry = registryDataRaw as ContentEntry[];
 
-  try {
-    const supabase = await createClient();
-
-    const { data: rows, error } = await supabase
-      .from('content_registry')
-      .select('slug, title, description, publish_date, category, tags, author, image_url')
-      .order('publish_date', { ascending: false })
-      .limit(RSS_LIMIT);
-
-    if (error) {
-      console.error('RSS: Supabase query failed:', error.message);
-      return new Response('Error generating RSS feed', { status: 500 });
-    }
-
-    const articles = (rows || []).filter((row: any) => {
-      // Exclude hub/meta pages — only real articles
+  const articles = [...registry]
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+    .slice(0, RSS_LIMIT)
+    .filter((row) => {
       const parts = row.slug.split('/').filter(Boolean);
       if (parts.length < 2) return false;
       if ((row.description || '').length < 60) return false;
@@ -47,9 +34,9 @@ export async function GET() {
       <url>${baseUrl}/favicon.ico</url>
       <title>${escapeXml(SITE_CONFIG.name)}</title>
       <link>${baseUrl}</link>
-    </image>${articles.map((row: any) => {
+    </image>${articles.map((row) => {
       const slug = row.slug.startsWith('/') ? row.slug.substring(1) : row.slug;
-      const pubDate = new Date(row.publish_date).toUTCString();
+      const pubDate = new Date(row.publishDate).toUTCString();
       const author = row.author || 'ObjectWire Editorial Team';
       const tags = Array.isArray(row.tags) ? row.tags : [];
       return `
@@ -60,25 +47,21 @@ export async function GET() {
       <description><![CDATA[${row.description || ''}]]></description>
       <pubDate>${pubDate}</pubDate>
       <author>${SITE_CONFIG.email} (${escapeXml(author)})</author>
-      <category>${escapeXml(row.category || 'News')}</category>${tags.map((tag: any) => `
-      <category>${escapeXml(tag)}</category>`).join('')}${row.image_url ? `
-      <enclosure url="${escapeXml(row.image_url)}" type="image/jpeg"/>
-      <media:content url="${escapeXml(row.image_url)}" medium="image"/>` : ''}
+      <category>${escapeXml(row.category || 'News')}</category>${tags.map((tag) => `
+      <category>${escapeXml(tag)}</category>`).join('')}${row.imageUrl ? `
+      <enclosure url="${escapeXml(row.imageUrl)}" type="image/jpeg"/>
+      <media:content url="${escapeXml(row.imageUrl)}" medium="image"/>` : ''}
     </item>`;
     }).join('')}
   </channel>
 </rss>`;
 
-    return new Response(rss, {
-      headers: {
-        'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=7200',
-      },
-    });
-  } catch (error) {
-    console.error('Error generating RSS:', error);
-    return new Response('Error generating RSS feed', { status: 500 });
-  }
+  return new Response(rss, {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=7200',
+    },
+  });
 }
 
 function escapeXml(unsafe: string): string {

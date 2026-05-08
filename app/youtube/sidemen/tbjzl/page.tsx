@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Tobi Brown football"
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/tbjzl',
+    canonical: 'https://www.owire.org/youtube/sidemen/tbjzl',
   },
   openGraph: {
     title: 'TBJZL (Tobi Brown) | Sidemen Athlete & Positive Vibes',
     description: 'Full profile of TBJZL: infectious laugh, charity match athleticism, positive energy, and Nigerian-British representation in UK content creation.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/sidemen/tbjzl',
+    url: 'https://www.owire.org/youtube/sidemen/tbjzl',
     siteName: 'ObjectWire',
     section: 'YouTube',
   },

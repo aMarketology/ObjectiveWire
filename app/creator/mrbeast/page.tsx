@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/mrbeast';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
 const OG_IMAGE = '/influncer/usa/mr_beast.png';
 
 export const metadata: Metadata = {
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     'MrBeast real name',
   ],
   alternates: {
-    canonical: `https://www.objectwire.org${SLUG}`,
+    canonical: `https://www.owire.org${SLUG}`,
   },
   openGraph: {
     title: 'MrBeast | 350M Subscribers, Beast Games & Full Bio 2026',
     description:
       'Jimmy Donaldson, known as MrBeast, is the most-subscribed solo creator on YouTube. Bio, YouTube analytics, Beast Games Season 1 controversy, and brand',
     type: 'article',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `https://www.owire.org${SLUG}`,
     siteName: 'ObjectWire',
     authors: ['ObjectWire Creator Desk'],
     section: 'Creator',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     tags: ['MrBeast', 'YouTube', 'Jimmy Donaldson', 'Creator'],
     images: [
       {
-        url: 'https://www.objectwire.org/influncer/usa/mr_beast.png',
+        url: 'https://www.owire.org/influncer/usa/mr_beast.png',
         width: 1200,
         height: 675,
         alt: 'MrBeast, Jimmy Donaldson, most-subscribed solo YouTube creator',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     title: 'MrBeast | 350M YouTube Subscribers, Beast Games, Bio 2026',
     description:
       'Jimmy Donaldson profile: YouTube analytics, Beast Games Season 1, Feastables brand, philanthropy, and controversy timeline.',
-    images: ['https://www.objectwire.org/influncer/usa/mr_beast.png'],
+    images: ['https://www.owire.org/influncer/usa/mr_beast.png'],
   },
 };
 

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -232,7 +232,7 @@ export function YoutubeCreatorPage({
     hero.gradient ??
     'linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 45%, #dc2626 100%)';
 
-  const articleSlug = schema.articleUrl.replace('https://www.objectwire.org', '');
+  const articleSlug = schema.articleUrl.replace('https://www.owire.org', '');
 
   return (
     <>

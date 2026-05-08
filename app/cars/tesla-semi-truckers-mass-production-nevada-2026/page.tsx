@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,8 +6,8 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/tesla-semi-truckers-mass-production-nevada-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const IMAGE_URL = 'https://www.objectwire.org/entertainment/waymo.jpg';
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const IMAGE_URL = 'https://www.owire.org/entertainment/waymo.jpg';
 
 export const metadata: Metadata = {
   title: 'Tesla Semi Wins Over Truckers Ahead of Mass Production Ramp',

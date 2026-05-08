@@ -1,4 +1,4 @@
-# Why Duda's Built-In SEO Is So Strong — And How to Replicate It in JavaScript
+﻿# Why Duda's Built-In SEO Is So Strong — And How to Replicate It in JavaScript
 
 > Internal reference document for ObjectWire engineering.
 > Last updated: February 21, 2026
@@ -160,7 +160,7 @@ import { MetadataRoute } from 'next';
 import { contentRegistry } from '@/lib/content-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.objectwire.org';
+  const baseUrl = 'https://www.owire.org';
 
   return contentRegistry.map((entry) => ({
     url: `${baseUrl}${entry.slug}`,
@@ -194,9 +194,9 @@ export function SEOWrapper({ slug, children }: { slug: string; children: React.R
     publisher: {
       '@type': 'Organization',
       name: 'ObjectWire',
-      url: 'https://www.objectwire.org',
+      url: 'https://www.owire.org',
     },
-    mainEntityOfPage: `https://www.objectwire.org${entry.slug}`,
+    mainEntityOfPage: `https://www.owire.org${entry.slug}`,
   };
 
   const breadcrumbSchema = {
@@ -206,7 +206,7 @@ export function SEOWrapper({ slug, children }: { slug: string; children: React.R
       '@type': 'ListItem',
       position: i + 1,
       name: segment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
-      item: `https://www.objectwire.org/${arr.slice(0, i + 1).join('/')}`,
+      item: `https://www.owire.org/${arr.slice(0, i + 1).join('/')}`,
     })),
   };
 
@@ -237,7 +237,7 @@ import { contentRegistry } from '../lib/content-registry';
 async function pingGoogle() {
   // Ping sitemap
   await fetch(
-    `https://www.google.com/ping?sitemap=https://www.objectwire.org/sitemap.xml`
+    `https://www.google.com/ping?sitemap=https://www.owire.org/sitemap.xml`
   );
 
   // For faster indexing, use Google Indexing API

@@ -1,15 +1,15 @@
----
-title: "ObjectWire.org - Verification-First Intelligence Platform & Independent News Organization"
+﻿---
+title: "owire.org - Verification-First Intelligence Platform & Independent News Organization"
 date: 2026-02-19
 slug: objectwire-org-wikipedia
-description: "ObjectWire.org is a verification-first intelligence platform providing cited business and technology analysis. Learn about its mission, history, content pillars, and editorial standards."
+description: "owire.org is a verification-first intelligence platform providing cited business and technology analysis. Learn about its mission, history, content pillars, and editorial standards."
 tags: [ObjectWire, investigative journalism, tech news, verification platform, AI news]
 draft: false
 ---
 
-# ObjectWire.org
+# owire.org
 
-**ObjectWire.org** is a verification-first intelligence platform and independent news organization that provides cited business and technology analysis. Founded with a mission to operate as a "credibility engine" rather than a content aggregator, ObjectWire has established itself as a trusted source for professionals, developers, analysts, and decision-makers seeking verifiable, source-cited reporting on technology, business, policy, and related developments.
+**owire.org** is a verification-first intelligence platform and independent news organization that provides cited business and technology analysis. Founded with a mission to operate as a "credibility engine" rather than a content aggregator, ObjectWire has established itself as a trusted source for professionals, developers, analysts, and decision-makers seeking verifiable, source-cited reporting on technology, business, policy, and related developments.
 
 ---
 
@@ -21,7 +21,7 @@ draft: false
 | **Founded** | 2024–2025 (exact date undisclosed) |
 | **Headquarters** | Austin, Texas, United States |
 | **Contact** | (575) 495-0323 |
-| **Website** | [objectwire.org](https://www.objectwire.org) |
+| **Website** | [owire.org](https://www.owire.org) |
 | **Mission** | Reveal truth through transparent verification methodology and documented claims |
 | **Core Focus** | Investigative journalism, tech analysis, business intelligence |
 
@@ -187,24 +187,24 @@ ObjectWire's trajectory suggests continued expansion in:
 
 ## External Links
 
-- [Official Website](https://www.objectwire.org)
-- [About ObjectWire](https://www.objectwire.org/about)
+- [Official Website](https://www.owire.org)
+- [About ObjectWire](https://www.owire.org/about)
 - [Contact Information](tel:+15754950323)
 
 ---
 
 ## References
 
-1. "About ObjectWire." *ObjectWire.org*, 2026, www.objectwire.org/about.
-2. "YouTube Wiki 2026." *ObjectWire.org*, 7 Feb. 2026, www.objectwire.org/youtube.
-3. "GitHub Universe October 28th and 29th San Francisco." *ObjectWire.org*, 28 Oct. 2025, www.objectwire.org/github-universe-october-28th-and-29th-san-francisco.
-4. "TikTok - Complete Guide, History & Latest News 2026." *ObjectWire.org*, 23 Jan. 2026, www.objectwire.org/social/tiktok.
-5. "Difference between HTTP and REST API servers." *ObjectWire.org*, 30 Dec. 2025, www.objectwire.org/difference-between-http-and-rest-api-servers.
-6. "ObjectWire | Independent Investigative Journalism & Tech News." *ObjectWire.org*, 18 Feb. 2026, www.objectwire.org.
-7. "Nintendo Co., Ltd. - Gaming Company Profile." *ObjectWire.org*, 20 Aug. 2024, www.objectwire.org/video-games/nintendo.
-8. "Comet AI Web Browser vs Atlas by ChatGPT." *ObjectWire.org*, 14 Nov. 2025, www.objectwire.org/comet-ai-web-browser-vs-atlas-by-chatgpt.
-9. "Non-Degree Studies at UT Austin 2026." *ObjectWire.org*, 14 Nov. 2025, www.objectwire.org/non-degree-studies-at-university-of-texas-austin.
-10. "China–Japan Diplomatic Standoff (2026)." *ObjectWire.org*, 9 Feb. 2026, www.objectwire.org/news/world/china-japan-standoff-2026.
+1. "About ObjectWire." *owire.org*, 2026, www.owire.org/about.
+2. "YouTube Wiki 2026." *owire.org*, 7 Feb. 2026, www.owire.org/youtube.
+3. "GitHub Universe October 28th and 29th San Francisco." *owire.org*, 28 Oct. 2025, www.owire.org/github-universe-october-28th-and-29th-san-francisco.
+4. "TikTok - Complete Guide, History & Latest News 2026." *owire.org*, 23 Jan. 2026, www.owire.org/social/tiktok.
+5. "Difference between HTTP and REST API servers." *owire.org*, 30 Dec. 2025, www.owire.org/difference-between-http-and-rest-api-servers.
+6. "ObjectWire | Independent Investigative Journalism & Tech News." *owire.org*, 18 Feb. 2026, www.owire.org.
+7. "Nintendo Co., Ltd. - Gaming Company Profile." *owire.org*, 20 Aug. 2024, www.owire.org/video-games/nintendo.
+8. "Comet AI Web Browser vs Atlas by ChatGPT." *owire.org*, 14 Nov. 2025, www.owire.org/comet-ai-web-browser-vs-atlas-by-chatgpt.
+9. "Non-Degree Studies at UT Austin 2026." *owire.org*, 14 Nov. 2025, www.owire.org/non-degree-studies-at-university-of-texas-austin.
+10. "China–Japan Diplomatic Standoff (2026)." *owire.org*, 9 Feb. 2026, www.owire.org/news/world/china-japan-standoff-2026.
 
 ---
 
@@ -220,7 +220,7 @@ SCHEMA: NewsArticleSchema.tsx (Applicable)
 NAV: Breadcrumb.tsx (Path Generated)
 SEO_DATA:
   SLUG: objectwire-org-wikipedia
-  META: ObjectWire.org is a verification-first intelligence platform providing cited business and technology analysis. Learn about its mission, history, content pillars, and editorial standards.
+  META: owire.org is a verification-first intelligence platform providing cited business and technology analysis. Learn about its mission, history, content pillars, and editorial standards.
   PRIMARY_KW: ObjectWire verification-first intelligence platform
   SECONDARY_KWs: [investigative journalism, tech news verification, business intelligence platform, AI fact-checking, cited news sources]
   WORD_COUNT: 1,247

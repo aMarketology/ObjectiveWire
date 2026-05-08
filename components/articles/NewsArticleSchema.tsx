@@ -1,6 +1,6 @@
-// NewsArticle Schema Component for Google News, Perplexity, and MSN
+﻿// NewsArticle Schema Component for Google News, Perplexity, and MSN
 // Add this to your article pages for proper indexing
-// IMPORTANT: All URLs must use https://www.objectwire.org (canonical www domain)
+// IMPORTANT: All URLs must use https://www.owire.org (canonical www domain)
 
 export interface ArticleSchemaProps {
   title: string;
@@ -10,6 +10,9 @@ export interface ArticleSchemaProps {
   publishedTime: string;
   modifiedTime?: string;
   imageUrl?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlt?: string;
   articleUrl: string;
   section?: string;
   keywords?: string[];
@@ -23,6 +26,9 @@ export function NewsArticleSchema({
   publishedTime,
   modifiedTime,
   imageUrl,
+  imageWidth = 1200,
+  imageHeight = 675,
+  imageAlt,
   articleUrl,
   section = "Technology",
   keywords = [],
@@ -33,25 +39,25 @@ export function NewsArticleSchema({
     "headline": title,
     "description": description,
     "image": imageUrl
-      ? [{ "@type": "ImageObject", "url": imageUrl, "width": 1200, "height": 630 }]
+      ? [{ "@type": "ImageObject", "url": imageUrl, "width": imageWidth, "height": imageHeight, "caption": imageAlt || title }]
       : undefined,
     "datePublished": publishedTime,
     "dateModified": modifiedTime || publishedTime,
     "author": {
       "@type": "Person",
       "name": author,
-      "url": authorUrl || `https://www.objectwire.org/authors/${author.toLowerCase().replace(/\s+/g, '-')}`
+      "url": authorUrl || `https://www.owire.org/authors/${author.toLowerCase().replace(/\s+/g, '-')}`
     },
     "publisher": {
       "@type": "NewsMediaOrganization",
-      "name": "ObjectWire News",
+      "name": "ZeroWire",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.objectwire.org/objectwire-logo.png",
-        "width": 600,
-        "height": 60
+        "url": "https://www.owire.org/zwire-logo-square.png",
+        "width": 1001,
+        "height": 1001
       },
-      "url": "https://www.objectwire.org",
+      "url": "https://www.owire.org",
       "sameAs": [
         "https://twitter.com/object_wire",
         "https://www.facebook.com/objectwire",
@@ -67,7 +73,7 @@ export function NewsArticleSchema({
     "isAccessibleForFree": true,
     "inLanguage": "en-US",
     "copyrightYear": new Date(publishedTime).getFullYear(),
-    "copyrightHolder": { "@type": "Organization", "name": "ObjectWire News", "url": "https://www.objectwire.org" },
+    "copyrightHolder": { "@type": "Organization", "name": "ZeroWire", "url": "https://www.owire.org" },
     "speakable": {
       "@type": "SpeakableSpecification",
       "cssSelector": ["h1", "article"]
@@ -88,21 +94,21 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "NewsMediaOrganization",
     "additionalType": "https://schema.org/NGO",
-    "name": "ObjectWire News",
-    "alternateName": "ObjectWire News Network",
-    "url": "https://www.objectwire.org",
+    "name": "ZeroWire",
+    "alternateName": "ZWire",
+    "url": "https://www.owire.org",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.objectwire.org/objectwire-logo.png",
-      "width": 600,
-      "height": 60
+      "url": "https://www.owire.org/zwire-logo-square.png",
+      "width": 1001,
+      "height": 1001
     },
-    "description": "ObjectWire is an independent, self-funded nonprofit newsroom delivering verified, source-cited reporting on business, technology, and policy.",
+    "description": "ZeroWire is an independent, self-funded newsroom delivering verified, source-cited reporting on sports, creators, tech, and culture.",
     "foundingDate": "2024",
     "founders": [
       {
         "@type": "Person",
-        "name": "ObjectWire News Editorial Team"
+        "name": "ZeroWire Editorial Team"
       }
     ],
     "sameAs": [
@@ -113,19 +119,19 @@ export function OrganizationSchema() {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "editorial",
-      "email": "editorial@objectwire.org"
+      "email": "editorial@owire.org"
     },
-    "ethicsPolicy": "https://www.objectwire.org/editorial-standards",
-    "correctionsPolicy": "https://www.objectwire.org/corrections",
-    "verificationFactCheckingPolicy": "https://www.objectwire.org/editorial-standards",
-    "diversityPolicy": "https://www.objectwire.org/editorial-standards",
-    "masthead": "https://www.objectwire.org/team",
-    "ownershipFundingInfo": "https://www.objectwire.org/about",
+    "ethicsPolicy": "https://www.owire.org/editorial-standards",
+    "correctionsPolicy": "https://www.owire.org/corrections",
+    "verificationFactCheckingPolicy": "https://www.owire.org/editorial-standards",
+    "diversityPolicy": "https://www.owire.org/editorial-standards",
+    "masthead": "https://www.owire.org/team",
+    "ownershipFundingInfo": "https://www.owire.org/about",
     "nonprofitStatus": "Nonprofit501c3",
     "funder": {
       "@type": "Organization",
-      "name": "ObjectWire News (self-funded)",
-      "description": "Self-funded by the ObjectWire editorial team. No advertising, sponsored content, or political donations accepted."
+      "name": "ZeroWire (self-funded)",
+      "description": "Self-funded by the ZeroWire editorial team. No advertising, sponsored content, or political donations accepted."
     }
   };
 
@@ -142,13 +148,13 @@ export function WebSiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "ObjectWire",
-    "url": "https://www.objectwire.org",
+    "name": "ZeroWire",
+    "url": "https://www.owire.org",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.objectwire.org/search?q={search_term_string}"
+        "urlTemplate": "https://www.owire.org/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Sidemen Vikkstar"
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/vikkstar',
+    canonical: 'https://www.owire.org/youtube/sidemen/vikkstar',
   },
   openGraph: {
     title: 'Vikkstar123 (Vikram Barn) | Gaming Empire & Business Success',
     description: 'Full profile of Vikkstar: Warzone tournament wins, business investments, Minecraft dominance, poker career, and entrepreneurial ventures.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/sidemen/vikkstar',
+    url: 'https://www.owire.org/youtube/sidemen/vikkstar',
     siteName: 'ObjectWire',
     section: 'YouTube',
   },

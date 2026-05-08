@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     'PRIME hydration 2026',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/creator/diamond-gym/prime',
+    canonical: 'https://www.owire.org/creator/diamond-gym/prime',
   },
   openGraph: {
     title: 'PRIME x Diamond Gym: Logan Paul\'s Brand Becomes Official Hydration Sponsor of "The World\'s Most Dangerous Gym"',
     description:
       'Logan Paul\'s PRIME Hydration partners with Diamond Gym, a historic deal that includes a Special Edition TTD bottle and Prime Protein, repositioning PRIME',
     type: 'article',
-    url: 'https://www.objectwire.org/creator/diamond-gym/prime',
+    url: 'https://www.owire.org/creator/diamond-gym/prime',
     siteName: 'ObjectWire',
     authors: ['ObjectWire Editorial'],
     publishedTime: '2026-02-20T10:00:00Z',

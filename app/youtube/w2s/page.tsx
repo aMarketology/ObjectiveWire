@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import YoutubeCreatorPage, {
   YTSection,
   YTStat,
@@ -10,7 +10,7 @@ import YoutubeCreatorPage, {
 export const revalidate = 86400;
 
 const SLUG = '/youtube/w2s';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/youtube/w2s.jpg';
 
 export const metadata: Metadata = {
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-04T12:00:00Z',
     modifiedTime: '2026-05-04T12:00:00Z',
     tags: ['W2S', 'Harry Lewis', 'Sidemen', 'YouTube', 'FIFA', 'British'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'W2S, Harry Lewis, Sidemen YouTuber' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'W2S, Harry Lewis, Sidemen YouTuber' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'W2S | Harry Lewis, 16M YouTube, Sidemen Member, Bio 2026',
     description: 'W2S (Harry Lewis) profile: Sidemen member, 16M+ YouTube subscribers, FIFA content, age 29, Hampshire roots, KSI collab, 2026.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -71,7 +71,7 @@ export default function W2SPage() {
         modifiedTime: '2026-05-04T12:00:00Z',
         author: 'ObjectWire YouTube Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'YouTube',
         keywords: [
           'W2S', 'Harry Lewis', 'W2S YouTube', 'Sidemen W2S',
@@ -79,8 +79,8 @@ export default function W2SPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'YouTube', item: 'https://www.objectwire.org/youtube' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'YouTube', item: 'https://www.owire.org/youtube' },
         { name: 'W2S', item: PAGE_URL },
       ]}
       hero={{

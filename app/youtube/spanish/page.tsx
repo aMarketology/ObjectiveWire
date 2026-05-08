@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Top Spanish YouTubers 2026 | Ibai, AuronPlay, ElRubius",
   description: "Complete guide to the biggest Spanish-language YouTubers and streamers of 2026. Rankings, profiles, subscriber counts, and content breakdowns for Spain's",
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/spanish',
+    canonical: 'https://www.owire.org/youtube/spanish',
   },
   keywords: [
     'Spanish YouTubers',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Top Spanish YouTubers 2026",
     description: "Rankings and profiles of the biggest Spanish-language YouTube creators, from Ibai Llanos to Alana Flores.",
     type: "article",
-    url: "https://www.objectwire.org/youtube/spanish",
+    url: "https://www.owire.org/youtube/spanish",
   },
   twitter: {
     card: "summary_large_image",

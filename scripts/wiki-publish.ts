@@ -1,4 +1,4 @@
-/**
+﻿/**
  * wiki-publish.ts
  *
  * Unified publish pipeline for ALL article component types.
@@ -149,7 +149,7 @@ function extractJSXPropValue(source: string, propName: string): unknown | null {
   // Resolve common variable references (SLUG, ARTICLE_URL)
   const slugConstMatch = source.match(/const\s+SLUG\s*=\s*['"`]([^'"`]+)['"`]/);
   const slugVal = slugConstMatch ? slugConstMatch[1] : '';
-  const articleUrlVal = `https://www.objectwire.org${slugVal}`;
+  const articleUrlVal = `https://www.owire.org${slugVal}`;
 
   // eslint-disable-next-line no-new-func
   try { return new Function('SLUG', 'ARTICLE_URL', `return (${raw})`)(slugVal, articleUrlVal); }
@@ -366,7 +366,7 @@ function extractPageContent(source: string): Record<string, unknown> {
   if (subtitleMatch) row.subtitle = subtitleMatch[1];
 
   // url — from the canonical alternates in metadata
-  const canonicalMatch = source.match(/canonical:\s*['"`]https:\/\/www\.objectwire\.org([^'"`]+)['"`]/);
+  const canonicalMatch = source.match(/canonical:\s*['"\`]https:\/\/www\.owire\.org([^'"\`]+)['"\`]/);
   if (canonicalMatch) row.url = canonicalMatch[1];
 
   // back_link — backLink={{ href: '...', label: '...' }}
@@ -598,7 +598,7 @@ function buildStub(
   const slugConst    = slugConstMatch    ? slugConstMatch[0]    : `const SLUG = '/${slug.replace(/-/g, '/')}';`;
   const ogImageConst = ogImageConstMatch ? ogImageConstMatch[0] : `const OG_IMAGE = '';`;
   // Always regenerate ARTICLE_URL from SLUG so it's never missing in the stub
-  const articleUrlConst = `const ARTICLE_URL = \`https://www.objectwire.org\${SLUG}\`; // restored by wiki:publish`;
+  const articleUrlConst = `const ARTICLE_URL = \`https://www.owire.org\${SLUG}\`; // restored by wiki:publish`;
 
   const imports: Record<string, string> = {
     JackArticle:    "import { JackArticleDB } from '@/components/articles/JackArticleDB';",

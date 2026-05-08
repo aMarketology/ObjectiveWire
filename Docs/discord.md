@@ -1,4 +1,4 @@
-# ObjectWire × Discord Integration Blueprint
+﻿# ObjectWire × Discord Integration Blueprint
 
 ## The Core Idea
 
@@ -112,9 +112,9 @@ First comment on a new article:
     },
     "fields": [{
       "name": "📰 Read Article",
-      "value": "[Amazon's New AI Chip →](https://www.objectwire.org/amazon/ai-chip)"
+      "value": "[Amazon's New AI Chip →](https://www.owire.org/amazon/ai-chip)"
     }],
-    "footer": { "text": "Tech · objectwire.org" },
+    "footer": { "text": "Tech · owire.org" },
     "timestamp": "2026-03-21T15:30:00Z"
   }]
 }
@@ -331,7 +331,7 @@ DISCORD_NEW_ARTICLES_WEBHOOK_URL=https://discord.com/api/webhooks/{id}/{token}
    - Copy the webhook URL → paste into `.env.local` as `DISCORD_COMMENTS_WEBHOOK_URL`
 
 3. **Set up the Discord OAuth app** (already done)
-   - Ensure redirect URL is set to `https://www.objectwire.org/api/auth/callback/discord`
+   - Ensure redirect URL is set to `https://www.owire.org/api/auth/callback/discord`
 
 ### Code Side (What we'll build)
 

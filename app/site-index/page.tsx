@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
 import { SiteIndexTree } from './SiteIndexTree';
 
@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   description:
     'Browse the complete ObjectWire article index organized by category and tags. Explore 400+ verified articles across technology, gaming, finance, politics,',
   alternates: {
-    canonical: 'https://www.objectwire.org/site-index',
+    canonical: 'https://www.owire.org/site-index',
   },
   openGraph: {
     title: 'Site Index',
     description:
       'Browse the complete ObjectWire article index organized by category and tags.',
     type: 'website',
-    url: 'https://www.objectwire.org/site-index',
+    url: 'https://www.owire.org/site-index',
     siteName: 'ObjectWire',
   },
   twitter: {

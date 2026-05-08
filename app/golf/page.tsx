@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
 
@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Golf News & Analysis | oWire',
   description: 'The latest from the PGA Tour, LIV Golf, and the world of golf.',
-  alternates: { canonical: 'https://www.objectwire.org/golf' }
+  alternates: { canonical: 'https://www.owire.org/golf' }
 };
 
 export default async function GolfHubPage() {

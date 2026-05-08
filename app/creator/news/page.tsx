@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
 
@@ -8,12 +8,12 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Creator News | Latest from YouTube, TikTok & Social Media',
   description: 'Breaking creator news: MrBeast, Logan Paul, Pokimane, Ari Kytsya, and more. Updated daily.',
-  alternates: { canonical: 'https://www.objectwire.org/creator/news' },
+  alternates: { canonical: 'https://www.owire.org/creator/news' },
   openGraph: {
     title: 'Creator News | YouTube, TikTok & Social Media',
     description: 'The latest news from the biggest names in online content creation.',
     type: 'website',
-    url: 'https://www.objectwire.org/creator/news',
+    url: 'https://www.owire.org/creator/news',
     siteName: 'ObjectWire',
   },
   twitter: {

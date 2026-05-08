@@ -2,41 +2,28 @@
 // =============================================================================
 // scripts/sync-registry.ts
 // =============================================================================
-// Adds any page that isn't yet in lib/content-registry.ts.
+// Scans app/**/page.tsx files, extracts metadata, and writes
+// lib/registry-data.json — the single source of truth for the content
+// registry (sitemap, RSS, news-sitemap, homepage, hub pages).
+//
+// No Supabase involved. The JSON is committed to the repo and imported
+// as a static asset by all SEO consumers. New article = new build = updated JSON.
 //
 // Usage:
-//   npm run registry:sync            — preview new entries (dry-run)
-//   npm run registry:sync -- --write — apply changes to content-registry.ts
-//
-// How it works:
-//   1. Scans app/**/page.tsx and reads the `metadata` export via regex
-//   2. Compares slugs against existing contentRegistry entries
-//   3. For each missing slug, generates a ContentEntry with sensible defaults:
-//      - category auto-detected from slug prefix
-//      - tags generated from slug segments
-//      - publishDate = today (update after the fact)
-//      - priority derived from slug depth / category
-//   4. With --write, appends the new entries into content-registry.ts
-//      without touching existing entries
+//   npm run registry:sync            — preview (dry-run)
+//   npm run registry:sync -- --write — write lib/registry-data.json
 // =============================================================================
 
 import * as fs from 'fs';
 import * as path from 'path';
-
-// Load .env.local so Supabase env vars are available when run via tsx
-try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const dotenv = require('dotenv') as { config: (opts?: { path?: string }) => void };
-  dotenv.config({ path: path.resolve(__dirname, '..', '.env.local') });
-} catch { /* dotenv not installed — env vars must be set externally */ }
 
 // ---------------------------------------------------------------------------
 // config
 // ---------------------------------------------------------------------------
 const ROOT = path.resolve(__dirname, '..');
 const APP_DIR = path.join(ROOT, 'app');
+const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', 'registry-data.json');
 const DEFAULT_AUTHOR = 'ObjectWire Editorial';
-const DEFAULT_AUTHOR_SLUG = undefined; // only set on named-author entries
 const TODAY = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
 const WRITE_FLAG = process.argv.includes('--write');
 
@@ -75,9 +62,9 @@ const CATEGORY_MAP: { prefix: string; category: string; tags: string[] }[] = [
   { prefix: '/entertainment',      category: 'Entertainment', tags: ['Entertainment'] },
   { prefix: '/video-games',        category: 'Gaming',        tags: ['Video Games', 'Gaming'] },
   { prefix: '/beastgames',         category: 'YouTube',       tags: ['Beast Games', 'MrBeast', 'YouTube'] },
-  { prefix: '/cars',               category: 'Automotive',    tags: ['Cars', 'Automotive'] },
+  { prefix: '/cars',               category: 'Cars',          tags: ['Cars', 'Automotive'] },
   { prefix: '/college',            category: 'Education',     tags: ['College', 'Education'] },
-  { prefix: '/influencer',         category: 'YouTube',       tags: ['Influencer', 'Social Media'] },
+  { prefix: '/influencer',         category: 'Creators',      tags: ['Influencer', 'Social Media'] },
   { prefix: '/social',             category: 'Social Media',  tags: ['Social Media'] },
   { prefix: '/ngos',               category: 'World Affairs', tags: ['NGO', 'Nonprofits'] },
   { prefix: '/missing-persons',    category: 'Investigations',tags: ['Missing Persons', 'Investigations'] },
@@ -151,10 +138,12 @@ interface PageMeta {
   description: string;
   author: string;
   authorSlug?: string;
-  publishedTime?: string;  // ISO-8601 from openGraph.publishedTime
-  imageUrl?: string;       // from openGraph.images[0].url
-  imageAlt?: string;       // from openGraph.images[0].alt
-  extractedTags?: string[]; // from openGraph.tags
+  publishedTime?: string;
+  imageUrl?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlt?: string;
+  extractedTags?: string[];
   filePath: string;
 }
 
@@ -238,13 +227,18 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     const pubTimeMatch = content.match(/publishedTime\s*:\s*['"`]([^'"`\r\n]{10,30})['"`]/);
     const publishedTime = pubTimeMatch?.[1]?.trim();
 
-    // ── Extract openGraph.images[0].url ──────────────────────────────────
+    // ── Extract openGraph.images[0] — url, width, height, alt ───────────
     const ogImageMatch =
       content.match(/images\s*:\s*\[\s*\{[^}]*url\s*:\s*['"`]([^'"`]+)['"`]/) ||
       content.match(/imageUrl\s*:\s*['"`]([^'"`]+)['"`]/);
     const imageUrl = ogImageMatch?.[1]?.trim();
 
-    // ── Extract openGraph.images[0].alt ──────────────────────────────────
+    const ogImageWidthMatch = content.match(/images\s*:\s*\[\s*\{[^}]*width\s*:\s*(\d+)/);
+    const imageWidth = ogImageWidthMatch ? parseInt(ogImageWidthMatch[1], 10) : undefined;
+
+    const ogImageHeightMatch = content.match(/images\s*:\s*\[\s*\{[^}]*height\s*:\s*(\d+)/);
+    const imageHeight = ogImageHeightMatch ? parseInt(ogImageHeightMatch[1], 10) : undefined;
+
     const ogAltMatch = content.match(/images\s*:\s*\[\s*\{[^}]*alt\s*:\s*['"`]([^'"`]+)['"`]/);
     const imageAlt = ogAltMatch?.[1]?.trim();
 
@@ -278,6 +272,8 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
       authorSlug,
       publishedTime,
       imageUrl,
+      imageWidth,
+      imageHeight,
       imageAlt,
       extractedTags,
       filePath,
@@ -303,130 +299,87 @@ function scanApp(dir: string, results: PageMeta[] = []): PageMeta[] {
 }
 
 // ---------------------------------------------------------------------------
-// read existing registry slugs — from Supabase (source of truth)
+// Local registry — read / write lib/registry-data.json
 // ---------------------------------------------------------------------------
-async function getRegisteredSlugsFromSupabase(): Promise<Set<string>> {
-  const url  = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key  = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-            ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !key) return new Set();
-
-  let createClient: (url: string, key: string) => { from: (t: string) => { select: (cols: string) => Promise<{ data: { slug: string }[] | null; error: { message: string } | null }> } };
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    ({ createClient } = require('@supabase/supabase-js'));
-  } catch { return new Set(); }
-
-  const supabase = createClient(url, key);
-  const { data, error } = await supabase.from('content_registry').select('slug');
-  if (error || !data) return new Set();
-  return new Set(data.map((r: { slug: string }) => r.slug));
-}
-
-// ---------------------------------------------------------------------------
-// generate ContentEntry TypeScript source for a missing page
-// ---------------------------------------------------------------------------
-function sanitizeStr(s: string): string {
-  return s
-    .replace(/\\n/g, ' ')         // literal \n escape sequences → space
-    .replace(/\\t/g, ' ')         // literal \t escape sequences → space
-    .replace(/\\r/g, ' ')         // literal \r escape sequences → space
-    .replace(/[\r\n\t]+/g, ' ')   // actual control characters → space
-    .replace(/\\/g, '\\\\')       // escape remaining backslashes
-    .replace(/"/g, '\\"')         // escape double-quotes
-    .replace(/\s{2,}/g, ' ')      // collapse multiple spaces
-    .trim();
-}
-
-// Supabase row shape (snake_case column names)
-interface RegistryRow {
+interface RegistryEntry {
   slug: string;
   title: string;
   description: string;
-  publish_date: string;
-  modified_date: string;
+  publishDate: string;
+  modifiedDate: string;
   category: string;
   tags: string[];
   author: string;
-  author_slug?: string;
+  authorSlug?: string;
   priority: number;
-  change_frequency: string;
-  image_url?: string;
-  image_alt?: string;
+  changeFrequency: string;
+  imageUrl?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlt?: string;
+  featured?: boolean;
 }
 
-function buildEntryObject(meta: PageMeta): RegistryRow {
+function readLocalRegistry(): Map<string, RegistryEntry> {
+  try {
+    if (!fs.existsSync(LOCAL_REGISTRY_PATH)) return new Map();
+    const raw = fs.readFileSync(LOCAL_REGISTRY_PATH, 'utf-8').trim();
+    if (!raw || raw === '[]') return new Map();
+    const arr = JSON.parse(raw) as RegistryEntry[];
+    return new Map(arr.map(e => [e.slug, e]));
+  } catch {
+    return new Map();
+  }
+}
+
+function writeLocalRegistry(entries: RegistryEntry[]): void {
+  const sorted = [...entries].sort((a, b) =>
+    new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+  );
+  fs.writeFileSync(LOCAL_REGISTRY_PATH, JSON.stringify(sorted, null, 2) + '\n', 'utf-8');
+}
+
+// ---------------------------------------------------------------------------
+// build one RegistryEntry from scanned page metadata
+// ---------------------------------------------------------------------------
+function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
   const { category, tags: categoryTags } = detectCategory(meta.slug);
 
-  // Prefer openGraph tags extracted from the file; fall back to slug-derived tags
+  // Prefer openGraph tags from the file; fall back to slug-derived category tags
   const tags = (meta.extractedTags && meta.extractedTags.length >= 2)
     ? meta.extractedTags
     : categoryTags;
 
-  // Use the real published date from openGraph.publishedTime if available.
-  // Fall back to TODAY only for pages that genuinely don't have a date yet.
+  // Real publishedTime from the file wins; fall back to existing date; last resort: today
   const publishDate = meta.publishedTime
-    ? meta.publishedTime.split('T')[0]  // "2026-04-28T00:00:00Z" → "2026-04-28"
-    : TODAY;
+    ? meta.publishedTime.split('T')[0]
+    : existing?.publishDate ?? TODAY;
 
   return {
     slug: meta.slug,
-    title: meta.title.slice(0, 300),
-    description: meta.description.slice(0, 500),
-    publish_date: publishDate,
-    modified_date: publishDate,
+    title: meta.title,
+    description: meta.description,
+    publishDate,
+    modifiedDate: publishDate,
     category,
     tags,
     author: meta.author,
-    author_slug: meta.authorSlug,
+    authorSlug: meta.authorSlug,
     priority: detectPriority(meta.slug, category),
-    change_frequency: detectChangeFrequency(category),
-    image_url: meta.imageUrl,
-    image_alt: meta.imageAlt,
+    changeFrequency: detectChangeFrequency(category),
+    // Scanned values win; preserve existing if scan didn't find them
+    imageUrl:    meta.imageUrl    ?? existing?.imageUrl,
+    imageWidth:  meta.imageWidth  ?? existing?.imageWidth,
+    imageHeight: meta.imageHeight ?? existing?.imageHeight,
+    imageAlt:    meta.imageAlt    ?? existing?.imageAlt,
+    featured:    existing?.featured ?? false,
   };
-}
-
-async function upsertToSupabase(rows: RegistryRow[]): Promise<void> {
-  const url  = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key  = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-            ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !key) {
-    console.warn('⚠️   NEXT_PUBLIC_SUPABASE_URL or SUPABASE key not set — skipping Supabase upsert.');
-    return;
-  }
-
-  // Dynamic import so the script doesn't crash if @supabase/supabase-js isn't found
-  let createClient: (url: string, key: string) => { from: (t: string) => { upsert: (rows: RegistryRow[], opts?: object) => Promise<{ error: { message: string } | null }> } };
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    ({ createClient } = require('@supabase/supabase-js'));
-  } catch {
-    console.warn('⚠️   @supabase/supabase-js not found — skipping Supabase upsert.');
-    return;
-  }
-
-  const supabase = createClient(url, key);
-  const BATCH = 200;
-
-  for (let i = 0; i < rows.length; i += BATCH) {
-    const batch = rows.slice(i, i + BATCH);
-    const { error } = await supabase
-      .from('content_registry')
-      .upsert(batch, { onConflict: 'slug' });
-    if (error) {
-      console.error(`❌  Supabase upsert failed (batch ${i / BATCH + 1}): ${error.message}`);
-    } else {
-      console.log(`    ✓ Supabase: upserted batch ${i / BATCH + 1} (${batch.length} rows)`);
-    }
-  }
 }
 
 // ---------------------------------------------------------------------------
 // main
 // ---------------------------------------------------------------------------
-async function main() {
+function main() {
   console.log('🔍  Scanning app directory for page.tsx files…');
   const allPages = scanApp(APP_DIR);
   console.log(`    Found ${allPages.length} pages with real metadata\n`);
@@ -436,44 +389,45 @@ async function main() {
     return;
   }
 
-  // Source of truth is now Supabase — check what's already registered there
-  const registeredSlugs = await getRegisteredSlugsFromSupabase();
-  console.log(`📋  Currently registered in Supabase: ${registeredSlugs.size} entries\n`);
+  const existing = readLocalRegistry();
+  console.log(`📋  Current local registry: ${existing.size} entries\n`);
 
-  const missing = allPages.filter(p => !registeredSlugs.has(p.slug));
+  const newEntries = allPages.map(meta => buildEntry(meta, existing.get(meta.slug)));
 
-  // Separate pages with real dates from ones that will get TODAY as fallback
-  const withDate    = missing.filter(p => p.publishedTime);
-  const withoutDate = missing.filter(p => !p.publishedTime);
+  const added   = newEntries.filter(e => !existing.has(e.slug)).length;
+  const updated = newEntries.filter(e =>  existing.has(e.slug)).length;
+  const removed = existing.size - updated;
 
-  console.log(`➕  Missing from registry: ${missing.length} pages`);
-  if (withDate.length)    console.log(`    ✓ ${withDate.length} have a real publishedTime from openGraph`);
-  if (withoutDate.length) console.log(`    ⚠ ${withoutDate.length} will get today's date (no openGraph.publishedTime found) — update these manually in Supabase`);
-  console.log('');
+  const withoutDate = allPages.filter(p => !p.publishedTime);
 
-  if (missing.length === 0) {
-    console.log('✅  Registry is fully up to date!');
-    return;
+  if (added)        console.log(`➕  ${added} new pages added`);
+  if (updated)      console.log(`♻️   ${updated} existing pages updated`);
+  if (removed > 0)  console.log(`🗑️   ${removed} orphaned entries removed (no matching page.tsx)`);
+  if (withoutDate.length) {
+    console.log(`\n⚠️  ${withoutDate.length} pages have no openGraph.publishedTime — assigned today's date.`);
+    console.log('    Add openGraph.publishedTime to those files for accurate Google News indexing.');
   }
 
   if (!WRITE_FLAG) {
-    // Preview mode — just print what would be added
-    console.log('--- PREVIEW (pass --write to apply) ---\n');
-    for (const page of missing.slice(0, 20)) {
-      console.log(`  ${page.slug}`);
+    console.log('\n--- PREVIEW (pass --write to apply) ---');
+    const newSlugs = newEntries.filter(e => !existing.has(e.slug)).map(e => e.slug);
+    if (newSlugs.length) {
+      for (const slug of newSlugs.slice(0, 20)) console.log(`  + ${slug}`);
+      if (newSlugs.length > 20) console.log(`  … and ${newSlugs.length - 20} more`);
     }
-    if (missing.length > 20) console.log(`  … and ${missing.length - 20} more`);
-    console.log('\n--- END PREVIEW ---');
+    if (removed > 0) {
+      const removedSlugs = [...existing.keys()].filter(s => !newEntries.some(e => e.slug === s));
+      for (const slug of removedSlugs.slice(0, 10)) console.log(`  - ${slug}`);
+      if (removedSlugs.length > 10) console.log(`  … and ${removedSlugs.length - 10} more removed`);
+    }
+    if (!added && !removed) console.log('  (no changes)');
     console.log('\nRun:  npm run registry:sync -- --write');
     return;
   }
 
-  // Upsert missing entries to Supabase only (TS file is no longer the store)
-  const rows = missing.map(buildEntryObject);
-  await upsertToSupabase(rows);
-
-  console.log('✅  Done. Review the new entries in Supabase and fill in real publishDates + imageUrls.');
+  writeLocalRegistry(newEntries);
+  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data.json`);
 }
 
-main().catch(err => { console.error(err); process.exit(1); });
+main();
 

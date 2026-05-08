@@ -1,10 +1,10 @@
-OBJECTWIRE: A HYBRID INTELLIGENCE AND MEDIA INFRASTRUCTURE PLATFORM
+﻿OBJECTWIRE: A HYBRID INTELLIGENCE AND MEDIA INFRASTRUCTURE PLATFORM
 
 Executive Summary
 
 ObjectWire is a dual-layer enterprise platform combining media intelligence, automated content generation, and
 proprietary data analytics into a cohesive ecosystem. The platform operates as a public-facing newswire service
-(ObjectWire.org) delivering financial, technology, and sectoral news, supported by a proprietary backend engine
+(owire.org) delivering financial, technology, and sectoral news, supported by a proprietary backend engine
 of AI agents, automation pipelines, and real-time market intelligence.
 
 The platform is designed to function as a standardized feed system, comparable to Bloomberg Terminal or Reuters
@@ -159,7 +159,7 @@ Scope: Protection of original editorial content, code, and creative works.
 Protected Artifacts:
 - Generated articles and summaries produced by the AI-CMS
 - Software source code for all platform components
-- Design and layout of ObjectWire.org
+- Design and layout of owire.org
 - Video content, research reports, and visual assets
 - Database schema and structured data formats
 

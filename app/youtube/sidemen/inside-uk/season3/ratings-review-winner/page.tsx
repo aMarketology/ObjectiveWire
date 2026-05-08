@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/youtube/sidemen/inside-uk/season3/ratings-review-winner';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
 const OG_IMAGE = '/entertainment/InsideS3.webp';
 
 export const metadata: Metadata = {
@@ -28,16 +28,16 @@ export const metadata: Metadata = {
     'Sidemen Inside finale',
   ],
   alternates: {
-    canonical: `https://www.objectwire.org${SLUG}`,
+    canonical: `https://www.owire.org${SLUG}`,
   },
   openGraph: {
     type: 'article',
     title: 'Sidemen Inside Season 3 Review | Winner, Ratings, Worth',
     description:
       'Eddie Hall wins Sidemen Inside Season 3. IMDb rates the series 6.9/10, fans call it the best season yet. Full review, winner recap, and viewer reactions.',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `https://www.owire.org${SLUG}`,
     siteName: 'ObjectWire',
-    images: [{ url: `https://www.objectwire.org${OG_IMAGE}`, width: 1200, height: 675, alt: 'Sidemen Inside Season 3 promo art' }],
+    images: [{ url: `https://www.owire.org${OG_IMAGE}`, width: 1200, height: 675, alt: 'Sidemen Inside Season 3 promo art' }],
     publishedTime: '2026-03-30T22:00:00Z',
     modifiedTime: '2026-04-01T00:00:00Z',
     section: 'Entertainment',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: 'Sidemen Inside Season 3 | Winner, Ratings, Full Review',
     description:
       'Eddie Hall wins Sidemen Inside Season 3. IMDb 6.9/10, Reddit fans call it the best season. Full breakdown inside.',
-    images: [`https://www.objectwire.org${OG_IMAGE}`],
+    images: [`https://www.owire.org${OG_IMAGE}`],
   },
 };
 

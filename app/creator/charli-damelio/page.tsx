@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import CreatorArticle, {
   CreatorSection,
   CreatorStat,
@@ -13,7 +13,7 @@ import CreatorArticle, {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/charli-damelio';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/influncer/charli-damelio-profile.jpg';
 
 export const metadata: Metadata = {
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-04-29T12:00:00Z',
     modifiedTime: '2026-04-29T12:00:00Z',
     tags: ['Charli D\'Amelio', 'Creator', 'TikTok', 'Dancing', 'Connecticut'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Charli D\'Amelio, TikTok creator and dancer' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Charli D\'Amelio, TikTok creator and dancer' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Charli D\'Amelio | 150M TikTok, First to 100M, Bio 2026',
     description: 'Charli D\'Amelio profile: age 21, TikTok dancer, first to 100M followers, D\'Amelio Show, BORN DREAMER, and relationship with Landon Barker.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -74,7 +74,7 @@ export default function CharliDameliioPage() {
         modifiedTime: '2026-04-29T12:00:00Z',
         author: 'ObjectWire Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Charli D\'Amelio', 'Charli D\'Amelio age 2026', 'Charli D\'Amelio TikTok',
@@ -83,8 +83,8 @@ export default function CharliDameliioPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'Creator', item: 'https://www.objectwire.org/creator' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'Creator', item: 'https://www.owire.org/creator' },
         { name: 'Charli D\'Amelio', item: PAGE_URL },
       ]}
       hero={{

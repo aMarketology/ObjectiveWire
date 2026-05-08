@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Static legal page. Regenerates daily via ISR.
@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description: "ObjectWire Terms of Service - Rules and guidelines for using our platform",
   alternates: {
-    canonical: 'https://www.objectwire.org/terms-of-service',
+    canonical: 'https://www.owire.org/terms-of-service',
   },
   openGraph: {
     title: "Terms of Service",
     description: "ObjectWire Terms of Service - Rules and guidelines for using our platform",
     type: 'article',
-    url: "https://www.objectwire.org/terms-of-service",
+    url: "https://www.owire.org/terms-of-service",
     siteName: 'ObjectWire',
     section: "News",
   },

@@ -1,4 +1,4 @@
-# What to Write Next and How
+﻿# What to Write Next and How
 
 > Last updated: April 2, 2026
 
@@ -127,12 +127,12 @@ export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',  // max 60 chars, no brand suffix, no em dashes
   description: '130-155 chars. Primary keyword in first 60 chars. No generic phrases.',
   keywords: ['keyword 1', 'keyword 2', /* 10-18 targeted keywords */],
-  alternates: { canonical: `https://www.objectwire.org${SLUG}` },
+  alternates: { canonical: `https://www.owire.org${SLUG}` },
   openGraph: {
     title: 'Article Title Without Brand Suffix',
     description: 'Slightly different from meta description, emphasize data/hook.',
     type: 'article',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `https://www.owire.org${SLUG}`,
     siteName: 'ObjectWire',
     authors: ['Author Name'],
     publishedTime: '2026-03-12T00:00:00Z',
@@ -194,7 +194,7 @@ Every `NewsArticle` must have ALL of these populated before publishing:
 ### In Supabase content registry
 
 - [ ] Slug matches file path
-- [ ] `imageUrl` (hosted on objectwire.org or Supabase, min 1200px wide)
+- [ ] `imageUrl` (hosted on owire.org or Supabase, min 1200px wide)
 - [ ] `imageWidth: 1200`, `imageHeight: 675`
 - [ ] `imageAlt` (descriptive)
 - [ ] Description (unique, 130-155 chars, keyword-forward)

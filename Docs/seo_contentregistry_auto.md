@@ -1,4 +1,4 @@
-# SEO Content Registry | Automatic Ranking Chain
+﻿# SEO Content Registry | Automatic Ranking Chain
 
 > Every time a new article is published on ObjectWire, a chain of SEO systems must fire in the correct order, at lightning speed, for the article to have the **highest possible chance of ranking #1 in Google**. This document defines that chain, what each link does, and the hard requirements at every step.
 
@@ -45,7 +45,7 @@ Every `page.tsx` must export a `metadata` object. This is what Google reads firs
 | `title` | Primary keyword first, `\| ObjectWire` at end, ≤ 60 chars | Google truncates at ~60. Keyword-first = highest weight |
 | `description` | 130–155 chars. Primary keyword in the first 60 chars. Unique per page | This is the snippet in search results. Dupes = demotion |
 | `keywords` | 10–15 long-tail keyword phrases as an array | Google ignores the meta tag, but Bing and AI crawlers use it |
-| `canonical` | Always set to `https://www.objectwire.org/[slug]` | Prevents duplicate content penalties |
+| `canonical` | Always set to `https://www.owire.org/[slug]` | Prevents duplicate content penalties |
 | `openGraph.title` | Same as `title` or slightly reworded for social | Social shares and Google Discover use this |
 | `openGraph.description` | Same as `description` | Social shares use this |
 | `openGraph.images` | Array with `url` (1200×675+), `width`, `height`, `alt` | **Mandatory for Google Top Stories and Discover** |
@@ -63,18 +63,18 @@ export const metadata = {
   openGraph: {
     title: 'GTA 6 Pre-Orders Open on PlayStation Store | ObjectWire',
     description: '...',
-    url: 'https://www.objectwire.org/video-games/news/gta6-pre-orders',
+    url: 'https://www.owire.org/video-games/news/gta6-pre-orders',
     type: 'article',
     publishedTime: '2026-03-04T12:00:00Z',
     section: 'Gaming',
     images: [{
-      url: 'https://www.objectwire.org/images/gta6-preorders.jpg',
+      url: 'https://www.owire.org/images/gta6-preorders.jpg',
       width: 1200,
       height: 675,
       alt: 'GTA 6 pre-order page on PlayStation Store',
     }],
   },
-  alternates: { canonical: 'https://www.objectwire.org/video-games/news/gta6-pre-orders' },
+  alternates: { canonical: 'https://www.owire.org/video-games/news/gta6-pre-orders' },
 };
 ```
 
@@ -273,7 +273,7 @@ For a static `page.tsx` article:
 ```
 □ 1. Create page.tsx with metadata export (title, desc, OG, canonical)
 □ 2. Use NewsArticle + SEOWrapper + NewsArticleSchema + Breadcrumb components
-□ 3. Include hero image (1200×675+, hosted on objectwire.org)
+□ 3. Include hero image (1200×675+, hosted on owire.org)
 □ 4. Add 4–6 interlinks to related ObjectWire pages
 □ 5. npm run build (prebuild auto-registers in content registry)
 □ 6. Verify: open /news-sitemap.xml, article should be listed

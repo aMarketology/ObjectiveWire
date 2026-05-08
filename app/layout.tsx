@@ -201,8 +201,8 @@ export default async function RootLayout({
             {/* Ownership & funding disclosure */}
             <div className="border-t border-gray-100 dark:border-gray-800 mt-14 pt-8">
               <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl">
-                <span className="font-semibold text-gray-700 dark:text-gray-300">About oWire:</span>{' '}
-                The lighter, faster sister of ObjectWire — covering sports, creators, and the moments
+                <span className="font-semibold text-gray-700 dark:text-gray-300">About ZWire:</span>{' '}
+                ZWire (ZeroWire) covers sports, creators, and the moments
                 everyone is talking about. Read our{' '}
                 <Link href="/about" className="brand-accent-text hover:underline">about page</Link>,{' '}
                 <Link href="/editorial-standards" className="brand-accent-text hover:underline">editorial standards</Link>, and{' '}
@@ -213,7 +213,7 @@ export default async function RootLayout({
             {/* Bottom bar */}
             <div className="border-t border-gray-100 dark:border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span>© 2026 oWire.</span>
+                <span>© 2026 ZWire.</span>
                 <span className="hidden sm:inline">Sports & creator culture, daily.</span>
               </div>
               <div className="flex items-center gap-1 text-xs text-gray-400">
@@ -262,6 +262,30 @@ export default async function RootLayout({
           }}
         />
         <GoogleAnalytics />
+        {/* Google Publisher Center — Subscribe with Google (SwG) sync
+            Product ID: CAowp5vgCw:openaccess
+            Keeps article access/entitlement state in sync with Google News */}
+        <Script
+          id="swg-basic-lib"
+          strategy="afterInteractive"
+          src="https://news.google.com/swg/js/v1/swg-basic.js"
+        />
+        <Script
+          id="swg-basic-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (self.SWG_BASIC = self.SWG_BASIC || []).push(basicSubscriptions => {
+                basicSubscriptions.init({
+                  type: "NewsArticle",
+                  isPartOfType: ["Product"],
+                  isPartOfProductId: "CAowp5vgCw:openaccess",
+                  clientOptions: { theme: "light", lang: "en" },
+                });
+              });
+            `,
+          }}
+        />
       </body>
     </html>
   );

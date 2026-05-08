@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 
@@ -10,7 +10,7 @@ import { createServerClient } from '@supabase/ssr';
 
 // NOTE: We inline these values here because middleware runs on Edge Runtime
 // and cannot import from lib/ directly in all cases
-const SITE_URL = 'https://www.objectwire.org'; // Changed to www as canonical
+const SITE_URL = 'https://www.owire.org'; // Changed to www as canonical
 
 // Tracking parameters to strip (prevents index bloat)
 const PARAMS_TO_STRIP = [
@@ -187,16 +187,16 @@ export async function middleware(request: NextRequest) {
   // ==========================================================================
   const host = request.headers.get('host') || '';
 
-  // owire.org and www.owire.org → www.objectwire.org (permanent 301)
+  // owire.org and www.owire.org → www.owire.org (permanent 301)
   if (host === 'owire.org' || host === 'www.owire.org') {
     const newUrl = new URL(request.url);
-    newUrl.host = 'www.objectwire.org';
+    newUrl.host = 'www.owire.org';
     return NextResponse.redirect(newUrl, 301);
   }
 
-  if (host === 'objectwire.org') {
+  if (host === 'owire.org') {
     const newUrl = new URL(request.url);
-    newUrl.host = 'www.objectwire.org';
+    newUrl.host = 'www.owire.org';
     return NextResponse.redirect(newUrl, 308);
   }
   

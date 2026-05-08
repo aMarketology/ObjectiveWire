@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Sidemen behind the scenes"
   ],
   alternates: {
-    canonical: "https://www.objectwire.org/youtube/sidemen/inside-uk",
+    canonical: "https://www.owire.org/youtube/sidemen/inside-uk",
   },
   openGraph: {
     title: "Inside | Sidemen Netflix Documentary Series",
     description: "Complete guide to the Sidemen's Netflix documentary series: episodes, behind-the-scenes access, YouTube culture exploration, and creator life insights.",
     type: "article",
-    url: "https://www.objectwire.org/youtube/sidemen/inside-uk",
+    url: "https://www.owire.org/youtube/sidemen/inside-uk",
     siteName: "ObjectWire",
   },
   twitter: {

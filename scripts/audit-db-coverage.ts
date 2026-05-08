@@ -1,4 +1,4 @@
-#!/usr/bin/env tsx
+﻿#!/usr/bin/env tsx
 // =============================================================================
 // scripts/audit-db-coverage.ts
 // Finds articles in the 5 Supabase article tables that have no entry in
@@ -73,7 +73,7 @@ async function run() {
     const missing = rows.filter(row => {
       const rawUrl = row[urlField] as string | null;
       if (!rawUrl) return false;
-      // Normalize: strip full origin (https://www.objectwire.org) if present
+      // Normalize: strip full origin (https://www.owire.org) if present
       const urlPath = rawUrl.replace(/^https?:\/\/[^/]+/, '');
       const registrySlug = urlPath.startsWith('/') ? urlPath : `/${urlPath}`;
       return !registered.has(registrySlug);

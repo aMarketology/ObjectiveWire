@@ -1,4 +1,4 @@
-// =============================================================================
+﻿// =============================================================================
 // /account — Your Digital Vault
 //
 // A comprehensive dashboard of the user's interests, engagement, and identity.
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Your Vault | ObjectWire",
     description: "Your digital vault of interests, saved articles, reading history, and engagement on ObjectWire.",
     type: 'article',
-    url: 'https://www.objectwire.org',
+    url: 'https://www.owire.org',
     siteName: 'ObjectWire',
     section: "News",
   },

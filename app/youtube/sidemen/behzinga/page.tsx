@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "Behzinga charity match"
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/behzinga',
+    canonical: 'https://www.owire.org/youtube/sidemen/behzinga',
   },
   openGraph: {
     title: 'Behzinga (Ethan Payne) | Fitness Journey & Mental Health',
     description: 'Full profile of Behzinga: transformative weight loss journey, mental health advocacy, engagement to Faith Kelly, and inspiring fitness content.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/sidemen/behzinga',
+    url: 'https://www.owire.org/youtube/sidemen/behzinga',
     siteName: 'ObjectWire',
     section: 'YouTube',
   },

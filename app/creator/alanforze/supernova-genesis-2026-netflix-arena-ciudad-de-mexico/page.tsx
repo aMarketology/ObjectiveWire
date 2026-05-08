@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -6,7 +6,7 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/alanforze/supernova-genesis-2026-netflix-arena-ciudad-de-mexico';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
 const OG_IMAGE = 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {

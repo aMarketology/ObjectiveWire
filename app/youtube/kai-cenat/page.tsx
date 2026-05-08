@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import YoutubeCreatorPage, {
   YTSection,
   YTStat,
@@ -10,7 +10,7 @@ import YoutubeCreatorPage, {
 export const revalidate = 86400;
 
 const SLUG = '/youtube/kai-cenat';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const IMAGE_URL = '/youtube/kai-cenat.jpg';
 
 export const metadata: Metadata = {
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-04T12:00:00Z',
     modifiedTime: '2026-05-04T12:00:00Z',
     tags: ['Kai Cenat', 'Twitch', 'YouTube', 'New York', 'Streaming', 'AMP'],
-    images: [{ url: `https://www.objectwire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Kai Cenat, Twitch streamer and YouTuber' }],
+    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Kai Cenat, Twitch streamer and YouTuber' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kai Cenat | 20M+ Twitch, Most Subbed Streamer, Bio 2026',
     description: 'Kai Cenat profile: age 24, 20M Twitch, record subathon, Drake collab, AMP group, New York roots, and creator career 2026.',
-    images: [`https://www.objectwire.org${IMAGE_URL}`],
+    images: [`https://www.owire.org${IMAGE_URL}`],
   },
 };
 
@@ -71,7 +71,7 @@ export default function KaiCenatPage() {
         modifiedTime: '2026-05-04T12:00:00Z',
         author: 'ObjectWire YouTube Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectwire.org${IMAGE_URL}`,
+        imageUrl: `https://www.owire.org${IMAGE_URL}`,
         section: 'YouTube',
         keywords: [
           'Kai Cenat', 'Kai Cenat Twitch', 'most subscribed Twitch',
@@ -80,8 +80,8 @@ export default function KaiCenatPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectwire.org' },
-        { name: 'YouTube', item: 'https://www.objectwire.org/youtube' },
+        { name: 'Home', item: 'https://www.owire.org' },
+        { name: 'YouTube', item: 'https://www.owire.org/youtube' },
         { name: 'Kai Cenat', item: PAGE_URL },
       ]}
       hero={{

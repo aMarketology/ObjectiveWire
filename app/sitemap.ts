@@ -1,14 +1,15 @@
 import { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/lib/site-config';
-import { createClient } from '@/lib/supabase/server';
+import registryDataRaw from '@/lib/registry-data.json';
+import type { ContentEntry } from '@/lib/content-registry';
 
-// Regenerate daily — but dates come from content-registry, not filesystem
-export const revalidate = 86400;
+// Fully static — regenerated at every build via sync-registry.ts in prebuild.
+// No Supabase calls. registry-data.json is the source of truth.
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
+  const registry = registryDataRaw as ContentEntry[];
 
-  // Homepage
   const staticEntries: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -18,30 +19,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // All registered static content — from Supabase content_registry (auto-synced on build)
-  let registryEntries: MetadataRoute.Sitemap = [];
-  try {
-    const supabase = await createClient();
-    const { data: regRows } = await supabase
-      .from('content_registry')
-      .select('slug, modified_date, change_frequency, priority');
-    registryEntries = (regRows || []).map((entry: any) => ({
-      url: `${baseUrl}${entry.slug}`,
-      lastModified: new Date(entry.modified_date),
-      changeFrequency: entry.change_frequency as MetadataRoute.Sitemap[number]['changeFrequency'],
-      priority: Number(entry.priority),
-    }));
-  } catch {
-    // Supabase unavailable — sitemap will include homepage + blog posts only
-  }
+  const registryEntries: MetadataRoute.Sitemap = registry.map(entry => ({
+    url: `${baseUrl}${entry.slug}`,
+    lastModified: new Date(entry.modifiedDate),
+    changeFrequency: entry.changeFrequency as MetadataRoute.Sitemap[number]['changeFrequency'],
+    priority: Number(entry.priority),
+  }));
 
-  // All article URLs come from the content_registry (auto-synced on build).
-  // No separate /blog/[slug] routes exist — removed legacy blog entries.
   const all = [...staticEntries, ...registryEntries];
 
   // Deduplicate (registry takes precedence over static)
   const unique = Array.from(
-    new Map(all.map((e: any) => [e.url, e])).values()
+    new Map(all.map((e) => [e.url, e])).values()
   );
 
   // Sort: priority desc, then lastModified desc

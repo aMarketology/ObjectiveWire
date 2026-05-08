@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     'Spanish YouTube',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/chicos-toxicos',
+    canonical: 'https://www.owire.org/youtube/chicos-toxicos',
   },
   openGraph: {
     title: 'Chicos Toxicos | Latin YouTuber Entertainment Group',
     description:
       'Felipe, Diego, and Brandom deliver new content every Toxico Thursday. Full profile, member breakdowns, and collaboration history on ObjectWire.',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/chicos-toxicos',
+    url: 'https://www.owire.org/youtube/chicos-toxicos',
     siteName: 'ObjectWire',
     authors: ['ObjectWire Editorial'],
     section: 'YouTube',

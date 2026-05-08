@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     'Felipito96',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/chicos-toxicos/cristiana-love',
+    canonical: 'https://www.owire.org/youtube/chicos-toxicos/cristiana-love',
   },
   openGraph: {
     title: 'Cristiana Love | Chicos Toxicos Personality',
     description:
       'Full profile of Cristiana Love, prominent figure in the Chicos Toxicos community. TikTok videos, fan interactions, and her role in the Latin content',
     type: 'article',
-    url: 'https://www.objectwire.org/youtube/chicos-toxicos/cristiana-love',
+    url: 'https://www.owire.org/youtube/chicos-toxicos/cristiana-love',
     siteName: 'ObjectWire',
     authors: ['ObjectWire Editorial'],
     section: 'YouTube',

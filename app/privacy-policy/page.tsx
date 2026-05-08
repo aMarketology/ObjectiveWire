@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Static legal page. Regenerates daily via ISR.
@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "ObjectWire Privacy Policy - How we collect, use, and protect your information",
   alternates: {
-    canonical: 'https://www.objectwire.org/privacy-policy',
+    canonical: 'https://www.owire.org/privacy-policy',
   },
   openGraph: {
     title: "Privacy Policy",
     description: "ObjectWire Privacy Policy - How we collect, use, and protect your information",
     type: 'article',
-    url: "https://www.objectwire.org/privacy-policy",
+    url: "https://www.owire.org/privacy-policy",
     siteName: 'ObjectWire',
     section: "News",
   },

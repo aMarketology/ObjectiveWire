@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description: "Complete profile of ArthurTV (Arthur Frederick), British YouTube content creator known for collaborations with the Sidemen and his charismatic personality.",
   keywords: ["ArthurTV", "Arthur Frederick", "Sidemen", "YouTube", "UK YouTuber", "Entertainment"],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/arthur-tv',
+    canonical: 'https://www.owire.org/youtube/sidemen/arthur-tv',
   },
   openGraph: {
     title: "ArthurTV | YouTube Content Creator & Sidemen Collaborator",
     description: "Complete profile of ArthurTV (Arthur Frederick), British YouTube content creator known for collaborations with the Sidemen and his charismatic personality.",
     type: 'article',
-    url: "https://www.objectwire.org/youtube/sidemen/arthur-tv",
+    url: "https://www.owire.org/youtube/sidemen/arthur-tv",
     siteName: 'ObjectWire',
     section: "News",
   },
