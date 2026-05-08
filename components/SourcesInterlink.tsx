@@ -6,29 +6,57 @@ import Link from 'next/link';
 // =============================================================================
 // SOURCES INTERLINK COMPONENT
 //
-// Renders a "Sources & Further Reading" block inside article content_html.
+// Renders a "Sources" block inside article content_html.
 // Two sections:
-//   1. External primary sources — numbered list with domain badge, blue link,
-//      optional description. Styled for journalistic credibility.
-//   2. Internal ObjectWire cross-links — pill-style links to related hubs
-//      and cluster articles ("Also on ObjectWire").
+//   1. External primary sources — numbered list with domain badge, author,
+//      date, blue link, optional description. Styled for journalistic credibility.
+//   2. Internal ZWire cross-links — pill-style links to related hubs
+//      and cluster articles ("Also on ZWire").
+//
+// INLINE CITATION NUMBERS
+//   Use <CitationRef n={1} /> in JSX to render a superscript [1] that scrolls
+//   to #source-1 in this component. In raw content_html (static JSON), use:
+//     <sup id="cite-ref-1"><a href="#source-1" class="text-blue-600 underline font-mono text-[10px]">[1]</a></sup>
+//   The ↑ arrow on  each source links back to the inline cite anchor.
 //
 // Usage in page.tsx (full content file):
 //   <SourcesInterlink
-//     sources={[{ number: 1, url: "https://...", title: "...", description: "..." }]}
+//     sources={[{ number: 1, url: "https://...", title: "...", author: "Jane Doe", date: "May 7, 2026" }]}
 //     internalLinks={[{ href: "/claude", label: "Claude Hub" }]}
 //     accentColor="blue"
 //   />
 //
 // Usage in content_html (static JSON — passes as self-closing tag):
-//   <SourcesInterlink sources={[{"number":1,"url":"...","title":"..."}]} internalLinks={[{"href":"/claude","label":"Claude Hub"}]} accentColor="blue" />
+//   <SourcesInterlink sources={[{"number":1,"url":"...","title":"...","author":"Jane Doe","date":"May 7, 2026"}]} internalLinks={[{"href":"/claude","label":"Claude Hub"}]} accentColor="blue" />
 // =============================================================================
 
 export interface SourceItem {
   number: number;
   url: string;
   title: string;
+  author?: string;   // e.g. "Reuters Staff" or "John Smith"
+  date?: string;     // e.g. "May 7, 2026" or "2026-05-07"
   description?: string;
+}
+
+// ---------------------------------------------------------------------------
+// CitationRef — inline superscript citation for use in JSX article content.
+// Renders [n] as a superscript that links to #source-n and gives the source
+// a ↑ back-reference target at #cite-ref-n.
+//
+// Example: "…Anthropic shipped Claude 4<CitationRef n={1} /> last week…"
+// ---------------------------------------------------------------------------
+export function CitationRef({ n }: { n: number }) {
+  return (
+    <sup id={`cite-ref-${n}`}>
+      <a
+        href={`#source-${n}`}
+        className="text-blue-600 hover:text-blue-800 underline font-mono text-[10px] ml-0.5 align-super"
+      >
+        [{n}]
+      </a>
+    </sup>
+  );
 }
 
 export interface InternalLinkItem {
@@ -82,7 +110,7 @@ function getDomain(url: string): string {
 export function SourcesInterlink({
   sources = [],
   internalLinks = [],
-  heading = 'Sources & Further Reading',
+  heading = 'Sources',
   accentColor = 'blue',
 }: SourcesInterlinkProps) {
   const borderClass = ACCENT_BORDER[accentColor] ?? ACCENT_BORDER.blue;
@@ -92,67 +120,82 @@ export function SourcesInterlink({
   if (!sources.length && !internalLinks.length) return null;
 
   return (
-    <div className={`mt-12 border-t-2 ${borderClass} pt-6 not-prose`}>
+    <div className={`mt-12 border-t-2 ${borderClass} pt-6 not-prose text-gray-900 dark:text-gray-100`}>
 
       {/* Section heading */}
-      <p className="text-[10px] font-black tracking-[0.18em] uppercase text-gray-400 mb-5">
-        {heading}
-      </p>
+      <h2 className="text-xl font-bold mb-4">{heading}</h2>
 
-      {/* External sources list */}
+      {/* External sources — clean numbered list, blue underlined links */}
       {sources.length > 0 && (
-        <ol className="space-y-4 mb-8">
+        <ol className="list-none pl-0 space-y-2 mb-8 text-sm leading-relaxed">
           {sources.map((src) => (
-            <li key={src.number} className="flex gap-3 items-start">
-              <span className={`text-xs font-mono font-bold ${textClass} mt-0.5 shrink-0 tabular-nums`}>
+            <li
+              key={src.number}
+              id={`source-${src.number}`}
+              className="scroll-mt-24"
+            >
+              <a
+                href={`#cite-ref-${src.number}`}
+                className="text-gray-500 hover:text-gray-700 mr-1 no-underline"
+                title="Back to citation"
+                aria-label={`Back to inline citation ${src.number}`}
+              >
+                ^
+              </a>
+              <span className="font-mono text-gray-700 dark:text-gray-300 mr-1">
                 [{src.number}]
               </span>
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <a
-                    href={src.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`text-sm font-semibold ${textClass} hover:underline underline-offset-2 break-words`}
-                  >
-                    {src.title}
-                  </a>
-                  <span className="text-[10px] font-mono text-gray-400 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded shrink-0">
-                    {getDomain(src.url)}
-                  </span>
-                </div>
-                {src.description && (
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed">
-                    {src.description}
-                  </p>
-                )}
-              </div>
+              {src.author && (
+                <span className="text-gray-700 dark:text-gray-300">
+                  {src.author}.{' '}
+                </span>
+              )}
+              <a
+                href={src.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${textClass} underline hover:opacity-80`}
+              >
+                {src.title}
+              </a>
+              {src.date && (
+                <span className="text-gray-500 dark:text-gray-400">
+                  {' '}({src.date})
+                </span>
+              )}
+              {src.description && (
+                <span className="text-gray-600 dark:text-gray-400">
+                  {' | '}
+                  {src.description}
+                </span>
+              )}
             </li>
           ))}
         </ol>
       )}
 
-      {/* Internal ObjectWire cross-links */}
+      {/* Internal ZWire cross-links — clean blue-underlined list */}
       {internalLinks.length > 0 && (
         <div>
-          <p className="text-[10px] font-black tracking-[0.18em] uppercase text-gray-400 mb-3">
-            Also on ObjectWire
-          </p>
-          <div className="flex flex-wrap gap-2">
+          <h3 className="text-base font-bold mb-2">Further Reading on ZWire</h3>
+          <ul className="list-disc pl-6 space-y-1 text-sm">
             {internalLinks.map((link, i) => (
-              <Link
-                key={i}
-                href={link.href}
-                title={link.description}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${pillClass}`}
-              >
-                <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                </svg>
-                {link.label}
-              </Link>
+              <li key={i}>
+                <Link
+                  href={link.href}
+                  className={`${textClass} underline hover:opacity-80`}
+                >
+                  {link.label}
+                </Link>
+                {link.description && (
+                  <span className="text-gray-600 dark:text-gray-400">
+                    {' | '}
+                    {link.description}
+                  </span>
+                )}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     </div>

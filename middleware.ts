@@ -187,17 +187,11 @@ export async function middleware(request: NextRequest) {
   // ==========================================================================
   const host = request.headers.get('host') || '';
 
-  // owire.org and www.owire.org → www.owire.org (permanent 301)
-  if (host === 'owire.org' || host === 'www.owire.org') {
-    const newUrl = new URL(request.url);
-    newUrl.host = 'www.owire.org';
-    return NextResponse.redirect(newUrl, 301);
-  }
-
+  // owire.org → www.owire.org (permanent 301)
   if (host === 'owire.org') {
     const newUrl = new URL(request.url);
     newUrl.host = 'www.owire.org';
-    return NextResponse.redirect(newUrl, 308);
+    return NextResponse.redirect(newUrl, 301);
   }
   
   // ==========================================================================
