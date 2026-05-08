@@ -5,19 +5,21 @@ import { WikiArticle } from '@/components/articles/WikiArticle';
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Our Team",
-  description: "Meet the ObjectWire editorial team. Our journalists, analysts, and contributors are dedicated to delivering verified, source-cited intelligence.",
+  title: 'Our Team | oWire',
+  description:
+    'Meet the oWire editorial team. Founder Conan D. Boyle and staff writers Jack Sterling and Jack Brennan cover Creators, Cars, and Culture.',
   alternates: {
     canonical: 'https://www.owire.org/team',
   },
   openGraph: {
-    title: "Our Team",
-    description: "Meet the journalists and analysts behind ObjectWire's precision intelligence reporting.",
+    title: 'Our Team | oWire',
+    description: 'Meet the journalists behind oWire. Owned by Conan D. Boyle.',
+    siteName: 'oWire',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Team',
-    description: 'Meet the journalists and analysts behind ObjectWire',
+    title: 'Our Team | oWire',
+    description: 'Meet the journalists behind oWire.',
   },
 };
 

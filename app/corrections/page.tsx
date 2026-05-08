@@ -8,22 +8,22 @@ export const revalidate = false;
 const PAGE_URL = 'https://www.owire.org/corrections';
 
 export const metadata: Metadata = {
-  title: 'Corrections Policy',
+  title: 'Corrections Policy | oWire',
   description:
-    'How ObjectWire handles corrections. Errors are fixed publicly, timestamped, and the original text is preserved. Report an issue here.',
+    'How oWire handles corrections. Errors are fixed publicly, timestamped, and the original text is preserved. Report an issue here.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Corrections Policy',
-    description: 'How ObjectWire handles corrections. Errors fixed publicly and timestamped.',
+    title: 'Corrections Policy | oWire',
+    description: 'How oWire handles corrections. Errors fixed publicly and timestamped.',
     type: 'article',
     url: PAGE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'oWire',
     section: 'About',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corrections Policy',
-    description: 'How ObjectWire handles corrections. Errors fixed publicly and timestamped.',
+    title: 'Corrections Policy | oWire',
+    description: 'How oWire handles corrections. Errors fixed publicly and timestamped.',
   },
 };
 
@@ -44,7 +44,7 @@ export default function CorrectionsPage() {
           Corrections Policy
         </p>
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-          How ObjectWire handles corrections
+          How oWire handles corrections
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
           We make mistakes. Hiding them is not acceptable. Every error is corrected publicly,
@@ -86,7 +86,7 @@ export default function CorrectionsPage() {
           </p>
 
           <h2>How to report an error</h2>
-          <p>If you believe ObjectWire has published something inaccurate, contact us with:</p>
+          <p>If you believe oWire has published something inaccurate, contact us with:</p>
           <ul>
             <li>The article URL</li>
             <li>The specific claim or sentence at issue</li>
@@ -107,7 +107,7 @@ export default function CorrectionsPage() {
 
           <h2>Right of reply</h2>
           <p>
-            If you are the subject of an ObjectWire article and were not contacted before publication, or
+            If you are the subject of an oWire article and were not contacted before publication, or
             if your response was not adequately reflected, write to{' '}
             <a
               href="mailto:editorial@owire.org"
@@ -141,7 +141,7 @@ export default function CorrectionsPage() {
           </p>
 
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Last updated: April 29, 2026.
+            Last updated: May 8, 2026.
           </p>
         </div>
       </article>

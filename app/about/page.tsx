@@ -2,29 +2,28 @@
 import Link from 'next/link';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 
-// Static evergreen page — rendered at build time, no Supabase round-trip.
 export const dynamic = 'force-static';
 export const revalidate = false;
 
 const PAGE_URL = 'https://www.owire.org/about';
 
 export const metadata: Metadata = {
-  title: 'About ZeroWire',
+  title: 'About oWire | Ownership, Mission, Team',
   description:
-    'ZeroWire is a self-funded newsroom focused on verified, source-cited reporting. Read our mission, ownership, and funding.',
+    'oWire is an independent digital newsroom covering Creators, Cars, and Culture. Founded and owned by Conan D. Boyle. No outside investors. No sponsored content.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'About ZeroWire',
-    description: 'Self-funded newsroom. Verified, source-cited reporting.',
+    title: 'About oWire | Ownership, Mission, Team',
+    description: 'Independent newsroom covering Creators, Cars, and Culture. Owned by Conan D. Boyle.',
     type: 'article',
     url: PAGE_URL,
-    siteName: 'ZeroWire',
+    siteName: 'oWire',
     section: 'About',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About ZeroWire',
-    description: 'Self-funded newsroom. Verified, source-cited reporting.',
+    title: 'About oWire | Ownership, Mission, Team',
+    description: 'Independent newsroom covering Creators, Cars, and Culture. Owned by Conan D. Boyle.',
   },
 };
 
@@ -42,112 +41,146 @@ export default function AboutPage() {
 
       <article className="container mx-auto px-4 max-w-3xl pb-20 pt-6">
         <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-500 mb-3 font-mono">
-          Ownership and Funding Disclosure
+          Ownership &amp; Mission
         </p>
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-          ZeroWire is an independent, self-funded newsroom.
+          About oWire
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
-          We exist to publish verified, source-cited reporting. We are not owned by, controlled by, or
-          financially tied to any corporation, political party, government, or private investor.
+          oWire is an independent digital newsroom covering Creators, Cars, and Culture. We publish
+          verified, source-cited reporting on the people, vehicles, and moments that define what
+          everyone is watching right now.
         </p>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
+
+          <h2>What oWire covers</h2>
+          <p>
+            oWire focuses on three beats and nothing outside them:
+          </p>
+          <ul>
+            <li>
+              <strong>Creators</strong> — YouTube, TikTok, OnlyFans, brand deals, viral moments,
+              influencer profiles, and creator economy news.
+            </li>
+            <li>
+              <strong>Cars</strong> — Supercars, hypercars, EVs, auto news, car reviews, and motorsport.
+            </li>
+            <li>
+              <strong>Culture &amp; Sports</strong> — World Cup, Premier League, MLS, MLB, golf, and
+              the pop culture moments tied to these spaces.
+            </li>
+          </ul>
+          <p>
+            Topical depth beats breadth. Every article is written for a specific search intent, sourced
+            to primary material, and structured so that the key fact is in the first sentence.
+          </p>
+
           <h2>Ownership</h2>
           <p>
-            ZeroWire is owned and operated by its editorial team. There are no outside shareholders,
-            parent companies, or holding entities. Editorial decisions are made by named editors whose
-            bios are public on our{' '}
+            oWire is founded and owned by <strong>Conan D. Boyle</strong>. There are no outside
+            shareholders, parent companies, venture investors, or holding entities. Editorial decisions
+            are made by the named editorial team, not by advertisers or investors, because there are
+            none.
+          </p>
+          <p>
+            Conan D. Boyle is the editor-in-chief and has final say on all editorial and publishing
+            decisions. His author profile is public at{' '}
+            <Link href="/authors/conan-boyle" className="text-blue-600 hover:text-blue-800 underline">
+              owire.org/authors/conan-boyle
+            </Link>
+            .
+          </p>
+
+          <h2>Funding</h2>
+          <p>
+            oWire is self-funded. We do not accept:
+          </p>
+          <ul>
+            <li>Display advertising or programmatic ad networks</li>
+            <li>Sponsored content, native ads, or paid placements</li>
+            <li>Affiliate commissions tied to coverage decisions</li>
+            <li>Political donations or PAC funding</li>
+            <li>Brand partnership deals that influence editorial</li>
+          </ul>
+          <p>
+            If our funding model ever changes, we will disclose it on this page before the change takes
+            effect.
+          </p>
+
+          <h2>The editorial team</h2>
+          <p>
+            Every article published on oWire carries a named byline. Our current writing staff:
+          </p>
+          <ul>
+            <li>
+              <Link href="/authors/conan-boyle" className="text-blue-600 hover:text-blue-800 underline">
+                Conan D. Boyle
+              </Link>
+              {' '}— Founder, Editor-in-Chief. Covers Cars, Culture, and editorial strategy.
+            </li>
+            <li>
+              <Link href="/authors/jack-sterling" className="text-blue-600 hover:text-blue-800 underline">
+                Jack Sterling
+              </Link>
+              {' '}— Staff Writer. Covers Creators, YouTube, and influencer economy news.
+            </li>
+            <li>
+              <Link href="/authors/jack-brennan" className="text-blue-600 hover:text-blue-800 underline">
+                Jack Brennan
+              </Link>
+              {' '}— Staff Writer. Covers Sports, World Cup, and culture news.
+            </li>
+          </ul>
+          <p>
+            Full bios, contact paths, and article archives for each writer are on our{' '}
             <Link href="/authors" className="text-blue-600 hover:text-blue-800 underline">
               authors page
             </Link>
             .
           </p>
 
-          <h2>Funding</h2>
-          <p>ZeroWire is self-funded by its founders and staff. We do not accept:</p>
-          <ul>
-            <li>Advertising of any kind</li>
-            <li>Sponsored content, native ads, or paid placements</li>
-            <li>Affiliate commissions</li>
-            <li>Political donations or PAC funding</li>
-            <li>Government grants tied to coverage</li>
-          </ul>
+          <h2>Our standards</h2>
           <p>
-            No outside party has influence over our reporting, editorial decisions, or coverage choices.
-            If our funding model ever changes, we will disclose it here before any change takes effect.
-          </p>
-
-          <h2>What we cover</h2>
-          <p>
-            ZeroWire reports on technology, finance, politics, gaming, entertainment, and culture, with
-            a focus on stories that can be verified against primary documents: court filings, SEC
-            disclosures, government records, peer-reviewed research, and named on-record sources. We do
-            not aggregate or rewrite competitors&rsquo; coverage as our own.
-          </p>
-
-          <h2>Editorial accountability</h2>
-          <ul>
-            <li>Every article carries a named author with a public bio.</li>
-            <li>Every factual claim is sourced and traceable to a primary document or named source.</li>
-            <li>News and analysis are clearly labeled and never blended without disclosure.</li>
-            <li>Errors are corrected publicly, timestamped, and the original text is preserved.</li>
-          </ul>
-          <p>
-            Read our{' '}
-            <Link href="/editorial-standards" className="text-blue-600 hover:text-blue-800 underline">
-              editorial standards
-            </Link>{' '}
-            and{' '}
-            <Link href="/corrections" className="text-blue-600 hover:text-blue-800 underline">
-              corrections policy
-            </Link>{' '}
-            for the full process.
-          </p>
-
-          <h2>Our authors</h2>
-          <p>
-            All ZeroWire reporters publish under their real names with full bios, beats, and contact
-            paths:
+            oWire operates under a strict editorial code: accuracy over speed, primary sources only,
+            no anonymous claims without corroboration, and public corrections for every error.
           </p>
           <ul>
             <li>
-              <Link href="/authors/jack-sterling" className="text-blue-600 hover:text-blue-800 underline">
-                Jack Sterling
+              <Link href="/editorial-standards" className="text-blue-600 hover:text-blue-800 underline">
+                Editorial Standards
               </Link>
-              , Reporter (Congress, federal investigations, AI policy)
             </li>
             <li>
-              <Link href="/authors/jack-brennan" className="text-blue-600 hover:text-blue-800 underline">
-                Jack Brennan
+              <Link href="/corrections" className="text-blue-600 hover:text-blue-800 underline">
+                Corrections Policy
               </Link>
-              , Investigations Reporter (environmental law, national security, regulatory agencies)
-            </li>
-            <li>
-              <Link href="/authors/conan-boyle" className="text-blue-600 hover:text-blue-800 underline">
-                Conan Boyle
-              </Link>
-              , Science and Technology Writer (biotech, medical research, AI hardware)
             </li>
           </ul>
+
+          <h2>AI use disclosure</h2>
+          <p>
+            AI tools are used for research assistance, data lookup, and code. AI does not write
+            published article copy, generate quotes, or fabricate sources. Every published sentence
+            is written or edited by a named human writer who is accountable for it.
+          </p>
 
           <h2>Contact</h2>
           <p>
-            Editorial contact:{' '}
-            <a
-              href="mailto:editorial@owire.org"
-              className="text-blue-600 hover:text-blue-800 underline"
-            >
+            Editorial:{' '}
+            <a href="mailto:editorial@owire.org" className="text-blue-600 hover:text-blue-800 underline">
               editorial@owire.org
             </a>
-            . Tips, document leads, and corrections are welcome. We protect source identities.
+            <br />
+            Corrections and tips:{' '}
+            <a href="mailto:corrections@owire.org" className="text-blue-600 hover:text-blue-800 underline">
+              corrections@owire.org
+            </a>
           </p>
 
-          <h2>Updates to this page</h2>
-          <p>
-            This disclosure page is maintained directly in the ZeroWire codebase. Material changes
-            (ownership, funding model, leadership) are committed to the public repository and dated in
-            the change log. Last updated: April 29, 2026.
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Last updated: May 8, 2026. Material changes to ownership or funding are committed to the
+            public GitHub repository and dated in the change log.
           </p>
         </div>
       </article>

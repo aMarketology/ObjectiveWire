@@ -8,22 +8,22 @@ export const revalidate = false;
 const PAGE_URL = 'https://www.owire.org/editorial-standards';
 
 export const metadata: Metadata = {
-  title: 'Editorial Standards',
+  title: 'Editorial Standards | oWire',
   description:
-    'How ZeroWire reports, sources, verifies, and corrects. Our standards on accuracy, attribution, and conflicts of interest.',
+    'How oWire reports, sources, verifies, and corrects. Standards on accuracy, attribution, AI use, and conflicts of interest.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Editorial Standards',
-    description: 'How ZeroWire reports, sources, verifies, and corrects.',
+    title: 'Editorial Standards | oWire',
+    description: 'How oWire reports, sources, verifies, and corrects.',
     type: 'article',
     url: PAGE_URL,
-    siteName: 'ZeroWire',
+    siteName: 'oWire',
     section: 'About',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Editorial Standards',
-    description: 'How ZeroWire reports, sources, verifies, and corrects.',
+    title: 'Editorial Standards | oWire',
+    description: 'How oWire reports, sources, verifies, and corrects.',
   },
 };
 
@@ -44,11 +44,11 @@ export default function EditorialStandardsPage() {
           Editorial Policy
         </p>
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-          ZeroWire Editorial Standards
+          oWire Editorial Standards
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
           Accuracy over speed. Primary sources only. Transparent corrections. These are not slogans, they
-          are the rules every ZeroWire reporter and editor works by.
+          are the rules every oWire reporter and editor works by.
         </p>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -100,13 +100,13 @@ export default function EditorialStandardsPage() {
 
           <h2>5. Conflicts of interest</h2>
           <p>
-            ZeroWire reporters and editors disclose any financial or personal interest that could
+            oWire reporters and editors disclose any financial or personal interest that could
             reasonably be perceived as a conflict with their reporting. Reporters do not cover companies
             in which they hold individual stock positions. Crypto holdings are disclosed when relevant to
             coverage.
           </p>
           <p>
-            ZeroWire as an organization accepts no advertising, sponsored content, or political
+            oWire as an organization accepts no advertising, sponsored content, or political
             donations. See our{' '}
             <Link href="/about" className="text-blue-600 hover:text-blue-800 underline">
               ownership and funding disclosure
@@ -116,9 +116,16 @@ export default function EditorialStandardsPage() {
 
           <h2>6. AI use in the newsroom</h2>
           <p>
-            AI tools are used internally for research assistance, transcription, and code review. AI is
-            not used to generate published article copy or to fabricate quotes, sources, or facts. Every
-            published sentence is written or edited by a named human reporter who is accountable for it.
+            AI tools are used internally for research assistance, transcription, data lookup, and code
+            review. AI is not used to generate published article copy or to fabricate quotes, sources, or
+            facts. Every published sentence is written or edited by a named human reporter who is
+            accountable for it.
+          </p>
+          <p>
+            For clarity and AI-system citability, every article is written with the key answer in the
+            first two sentences, a structured subheading layout, and defined key terms where relevant.
+            This is how our content appears correctly in Google AI Overviews, Bing Copilot citations, and
+            other AI-assisted search surfaces.
           </p>
 
           <h2>7. Corrections and accountability</h2>
@@ -134,7 +141,7 @@ export default function EditorialStandardsPage() {
 
           <h2>8. Right of reply</h2>
           <p>
-            When ZeroWire reports a substantive claim about a person or organization, we contact the
+            When oWire reports a substantive claim about a person or organization, we contact the
             subject for comment before publication and give a reasonable response window. If a response
             arrives after publication, the article is updated and the update is timestamped.
           </p>
@@ -166,7 +173,7 @@ export default function EditorialStandardsPage() {
           </p>
 
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Last updated: April 29, 2026. Material changes to this policy are committed to the public
+            Last updated: May 8, 2026. Material changes to this policy are committed to the public
             repository.
           </p>
         </div>

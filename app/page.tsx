@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
-import EngagementBar from '@/components/engagement/EngagementBar';
+import { ArticleSlider } from '@/components/discovery/ArticleSlider';
 import { getPopularLeadSlug } from '@/lib/popular-lead';
 
 export const metadata: Metadata = {
@@ -252,16 +252,14 @@ export default async function HomePage() {
     .map(fromRegistry)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
-  // GA4 popular lead
-  let popularLeadSlug: string | null = null;
-  try { popularLeadSlug = await getPopularLeadSlug(); } catch { /* graceful */ }
-
-  let isMostRead = false;
-  if (popularLeadSlug) {
-    const idx = allArticles.findIndex((a) => a.href === popularLeadSlug);
-    if (idx > 0) { const [p] = allArticles.splice(idx, 1); allArticles.unshift(p); isMostRead = true; }
-    else if (idx === 0) { isMostRead = true; }
-  }
+  // GA4 popular lead — promote most-read article to front of slider
+  try {
+    const popularSlug = await getPopularLeadSlug();
+    if (popularSlug) {
+      const idx = allArticles.findIndex((a) => a.href === popularSlug);
+      if (idx > 0) { const [p] = allArticles.splice(idx, 1); allArticles.unshift(p); }
+    }
+  } catch { /* graceful */ }
 
   // Section splits — slugs are the source of truth for routing
   const isSports = (a: Article) =>
@@ -274,21 +272,21 @@ export default async function HomePage() {
   const isYouTube = (a: Article) =>
     a.category.toLowerCase() === 'youtube' || a.href.startsWith('/youtube');
 
-  const latest   = allArticles.slice(0, 9);
+  // Slider gets top 14 newest articles across all categories
+  const sliderArticles = allArticles.slice(0, 14);
   const sports   = allArticles.filter(isSports).slice(0, 6);
   const creators = allArticles.filter(isCreator).slice(0, 8);
   const youtube  = allArticles.filter(isYouTube).slice(0, 6);
 
   // Remaining articles not in any section (for headlines)
   const usedHrefs = new Set([
-    ...latest.map((a) => a.href),
+    ...sliderArticles.map((a) => a.href),
     ...sports.map((a) => a.href),
     ...creators.map((a) => a.href),
     ...youtube.map((a) => a.href),
   ]);
   const remaining = allArticles.filter((a) => !usedHrefs.has(a.href));
 
-  const [lead, second, third] = latest;
   const editionDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   });
@@ -318,90 +316,8 @@ export default async function HomePage() {
           ))}
         </nav>
 
-        {/* ── HERO: LEAD + 2 SECONDARY ──────────────────────────────────────── */}
-        {lead && (
-          <section className="border-b-2 border-black pb-8 mb-0" aria-label="Featured stories">
-            <div className="grid lg:grid-cols-5 gap-6">
-
-              {/* Hero — left, 3/5 */}
-              <div className="lg:col-span-3 flex flex-col">
-                <Link href={lead.href} className="relative overflow-hidden rounded-xl shadow-lg group block h-[340px] sm:h-[440px] lg:h-[520px]">
-                  {lead.imageUrl ? (
-                    <Image
-                      src={lead.imageUrl}
-                      alt={lead.imageAlt ?? lead.title}
-                      fill
-                      priority
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                      sizes="(max-width: 768px) 100vw, 60vw"
-                    />
-                  ) : (
-                    <div className={`w-full h-full bg-gradient-to-br ${catGradient(lead.category)}`} />
-                  )}
-                  {/* Orange tint over image */}
-                  <div className="absolute inset-0 bg-[#b45309]/20 mix-blend-multiply" />
-                  {/* Bottom fade for text legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 w-full p-6 z-20">
-                    <div className="flex items-center gap-2 mb-3 flex-wrap">
-                      <CatLabel category={lead.category} breaking={lead.breaking} />
-                      {isMostRead && (
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-black px-2.5 py-1 tracking-[.2em] uppercase bg-[#b45309] text-white rounded-sm">
-                          🔥 Most Read
-                        </span>
-                      )}
-                      {lead.exclusive && (
-                        <span className="inline-block text-[9px] font-black px-2 py-0.5 tracking-widest uppercase border border-[#b45309] text-[#b45309] rounded-sm">
-                          EXCLUSIVE
-                        </span>
-                      )}
-                    </div>
-                    {/* Yellow highlight on headline text */}
-                    <h2 className="font-serif text-2xl sm:text-4xl font-black leading-tight mb-3">
-                      {lead.title.split(' ').map((word, i) => (
-                        <span key={i} className="bg-yellow-300 text-[#0f172a] px-0.5 mr-1 inline group-hover:bg-[#b45309] group-hover:text-white transition-colors duration-300 leading-snug">
-                          {word}
-                        </span>
-                      ))}
-                    </h2>
-                    {lead.excerpt && (
-                      <p className="text-gray-300 text-sm leading-relaxed line-clamp-2 mb-4 hidden sm:block">
-                        {lead.excerpt}
-                      </p>
-                    )}
-                    <p className="text-xs text-gray-400 font-mono">
-                      <span className="text-white font-bold">{lead.author}</span>
-                      <span className="mx-1.5 opacity-50">·</span>
-                      {timeAgo(lead.publishDate)}
-                    </p>
-                  </div>
-                </Link>
-                <div className="mt-3 pt-2 border-t border-gray-200/60">
-                  <EngagementBar slug={lead.href} title={lead.title} url={lead.href} image={lead.imageUrl} category={lead.category} />
-                </div>
-              </div>
-
-              {/* Right column — 2 stacked, 2/5 */}
-              <div className="lg:col-span-2 flex flex-col gap-5">
-                {[second, third].filter(Boolean).map((a) => a && (
-                  <ArticleCard key={a.id} article={a} size="md" />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* ── LATEST STORIES ────────────────────────────────────────────────── */}
-        {latest.length > 3 && (
-          <section aria-label="Latest stories">
-            <SectionRule label="Latest Stories" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {latest.slice(3).map((a) => (
-                <ArticleCard key={a.id} article={a} size="sm" />
-              ))}
-            </div>
-          </section>
-        )}
+        {/* ── AUTO-SCROLL STORY STRIP ────────────────────────────────────── */}
+        <ArticleSlider articles={sliderArticles} />
 
         {/* ── SPORTS ────────────────────────────────────────────────────────── */}
         {sports.length > 0 && (
