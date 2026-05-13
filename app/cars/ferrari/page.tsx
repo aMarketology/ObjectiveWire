@@ -103,6 +103,14 @@ export default function FerrariHubPage() {
           Ferrari Articles
         </h2>
 
+        <p className="text-gray-700 leading-relaxed mb-8">
+          Ferrari S.p.A. is an Italian luxury sports car manufacturer founded by Enzo Ferrari in 1947 in Maranello, Italy.
+          The company is publicly traded on the Milan Stock Exchange (RACE) and produces fewer than 15,000 cars per year by design.
+          Ferrari's road car lineup includes the Roma, Portofino M, 296 GTB, SF90 Stradale, and the new F80 hypercar at $3.735M.
+          In Formula 1, Scuderia Ferrari is the only team to have competed in every World Championship season since 1950.
+          Articles on this page cover Ferrari models, pricing, specifications, reveal coverage, and Formula 1 news from Maranello.
+        </p>
+
         <div className="space-y-6">
           {articles.map((article) => (
             <article key={article.href} className="group border border-gray-200 rounded-xl p-6 hover:border-red-300 hover:shadow-md transition-all duration-200">

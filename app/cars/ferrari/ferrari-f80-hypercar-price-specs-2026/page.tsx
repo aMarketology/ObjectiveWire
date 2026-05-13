@@ -70,7 +70,7 @@ export default function FerrariF80Page() {
       topicTag="automotive"
       publishDate="2026-05-07T14:00:00Z"
       readTime="6 min read"
-      author={{ name: 'ZWire Auto Desk', role: 'Cars', authorSlug: undefined }}
+      author={{ name: 'Conan D. Boyle', role: 'Cars', authorSlug: 'conan-boyle' }}
       heroImage={{
         src: OG_IMAGE_FULL,
         alt: 'Ferrari F80 hypercar red emblem close-up, 1184hp hybrid supercar 2026',
@@ -88,6 +88,40 @@ export default function FerrariF80Page() {
         { name: 'Cars', item: '/cars' },
         { name: 'Ferrari', item: '/cars/ferrari' },
         { name: 'Ferrari F80', item: SLUG },
+      ]}
+      keyTakeaways={[
+        'The Ferrari F80 is a 1,184hp hybrid hypercar priced at $3,735,000 USD, making it the most powerful and most expensive production road car Ferrari has ever built.',
+        'All 799 units were sold to existing Ferrari clients before the public reveal in October 2024, making the F80 unavailable new at launch.',
+        'Power comes from a 3.0L twin-turbo V6 producing 900hp combined with three F1-derived MGU electric motors adding 296hp, running on an 800-volt architecture.',
+        'The F80 does 0-60 mph in 1.9 seconds and generates 1,050 kg of downforce at 250 km/h, more than any road-legal Ferrari ever produced.',
+        'First deliveries to customers began in Q1 2026, with the full 799-unit run completing through 2026 into 2027.',
+      ]}
+      keyTakeawaysColor="red"
+      faqItems={[
+        {
+          question: 'What is the Ferrari F80?',
+          answer: 'The Ferrari F80 is a limited-edition hybrid hypercar revealed in October 2024. It produces 1,184hp from a 3.0L twin-turbo V6 paired with three electric motors, does 0-60 mph in 1.9 seconds, costs $3,735,000 USD, and is produced in a run of 799 units all already sold.',
+        },
+        {
+          question: 'How much does the Ferrari F80 cost?',
+          answer: 'The Ferrari F80 has a base price of $3,735,000 USD. All 799 units were allocated before the public reveal, so the only way to buy one is through the secondary market, where prices are reported well above the sticker price.',
+        },
+        {
+          question: 'What engine is in the Ferrari F80?',
+          answer: 'The Ferrari F80 uses a new 3.0-liter twin-turbocharged V6 engine producing 900hp on its own, combined with three electric motor-generator units (MGUs) derived from the Ferrari Formula 1 hybrid program. Total combined output is 1,184hp on an 800-volt architecture.',
+        },
+        {
+          question: 'How fast is the Ferrari F80?',
+          answer: 'The Ferrari F80 does 0-60 mph in 1.9 seconds, 0-124 mph in under 5.0 seconds, and has a top speed of 217 mph (350 km/h). It generates 1,050 kg of downforce at 250 km/h.',
+        },
+        {
+          question: 'Is the Ferrari F80 sold out?',
+          answer: 'Yes. All 799 units of the Ferrari F80 were allocated to existing Ferrari clients before the public reveal in October 2024. There is no waiting list. The secondary market is the only purchase option.',
+        },
+        {
+          question: 'What car does the Ferrari F80 succeed?',
+          answer: 'The Ferrari F80 is the direct successor to the LaFerrari (2013). The LaFerrari produced 950hp from a V12 with one MGU and cost approximately $1.3 million. The F80 produces 1,184hp from a twin-turbo V6 with three MGUs and costs $3,735,000.',
+        },
       ]}
     >
       <p>

@@ -35,6 +35,20 @@ export default async function CarsHubPage() {
         accentColor="text-[#b45309]"
       />
 
+      <Hub.Prose>
+        <p>
+          oWire Cars covers hypercars, supercars, and electric vehicles from the brands that define
+          performance: Ferrari, Bugatti, Porsche, Lamborghini, McLaren, and Tesla. Every article is
+          sourced to primary manufacturer data and named journalists. No sponsored reviews.
+          Coverage includes reveal coverage, spec analysis, comparison tests, and production updates.
+        </p>
+        <p>
+          Current focus areas: the Ferrari F80 (1,184hp, $3.735M, all 799 units sold), the Bugatti
+          Tourbillon (1,800hp V16 hybrid, $4.1M, 250 units), the Ferrari Luce (first electric Ferrari,
+          1,113hp, from $530,000), and the Porsche 911 GT3 SC Sport Cabriolet.
+        </p>
+      </Hub.Prose>
+
       <Hub.Section title="Featured Hypercars" variant="default" className="border-[#0f172a] shadow-lg">
         <Hub.CardGrid columns={2}>
           {featured.map((a) => (

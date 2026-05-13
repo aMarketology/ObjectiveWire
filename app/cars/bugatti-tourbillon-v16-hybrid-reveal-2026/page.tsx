@@ -16,7 +16,7 @@ export default function Page() {
       categoryColor="blue"
       topicTag="automotive"
       publishDate="2026-05-01T10:00:00Z"
-      author={{ name: 'ObjectWire Auto Desk' }}
+      author={{ name: 'Conan D. Boyle', role: 'Cars', authorSlug: 'conan-boyle' }}
       heroImage={{
         src: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop',
         alt: 'Sleek hypercar concept',
@@ -32,6 +32,36 @@ export default function Page() {
         { name: 'Home', item: '/' },
         { name: 'Cars', item: '/cars' },
         { name: 'Bugatti Tourbillon Revealed', item: '/cars/bugatti-tourbillon-v16-hybrid-reveal-2026' },
+      ]}
+      keyTakeaways={[
+        'The Bugatti Tourbillon is the successor to the Chiron, powered by a new 8.3L naturally aspirated V16 engine developed with Cosworth producing 1,000hp on its own.',
+        'A plug-in hybrid system adds two front electric motors and one integrated rear motor for a combined output of 1,800 horsepower.',
+        'The Tourbillon does 0-62 mph in 2.0 seconds and has a top speed of 276 mph (445 km/h) with the Speed Key unlocked.',
+        'Production is limited to 250 units worldwide at approximately $4.1 million each, with deliveries beginning in 2026.',
+        'The interior uses mechanical Swiss horology dials made from titanium, sapphire crystal, and rubies, with no digital touchscreens.',
+      ]}
+      keyTakeawaysColor="blue"
+      faqItems={[
+        {
+          question: 'What is the Bugatti Tourbillon?',
+          answer: 'The Bugatti Tourbillon is the successor to the Chiron hypercar. It uses a new 8.3-liter naturally aspirated V16 engine producing 1,000hp combined with a plug-in hybrid system of three electric motors for a total of 1,800 horsepower. It is limited to 250 units at approximately $4.1 million each.',
+        },
+        {
+          question: 'What engine does the Bugatti Tourbillon use?',
+          answer: 'The Bugatti Tourbillon uses a new 8.3-liter naturally aspirated V16 engine developed in partnership with Cosworth, producing 1,000hp and revving to 9,000 RPM. It is paired with two front electric motors and one rear electric motor for a combined output of 1,800hp.',
+        },
+        {
+          question: 'How fast is the Bugatti Tourbillon?',
+          answer: 'The Bugatti Tourbillon does 0-62 mph in 2.0 seconds, 0-124 mph in under 5.0 seconds, and 0-248 mph in under 25 seconds. Top speed is 236 mph with the standard key and 276 mph (445 km/h) with the Speed Key.',
+        },
+        {
+          question: 'How much does the Bugatti Tourbillon cost?',
+          answer: 'The Bugatti Tourbillon costs approximately $4.1 million (3.8 million euros). Production is limited to 250 units worldwide with deliveries expected from 2026.',
+        },
+        {
+          question: 'What replaced the W16 engine in Bugatti?',
+          answer: 'Bugatti replaced its iconic quad-turbo 8.0-liter W16 engine, used in the Veyron and Chiron, with a new 8.3-liter naturally aspirated V16 engine developed with Cosworth for the Tourbillon. The V16 revs to 9,000 RPM and produces 1,000hp without turbochargers.',
+        },
       ]}
     >
       <div>

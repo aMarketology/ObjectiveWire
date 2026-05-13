@@ -449,20 +449,95 @@ After publishing, every article also needs a `content_registry` entry. Missing e
 
 ---
 
+## AI-First Extraction SEO (May 2026)
+
+oWire targets AI citation in ChatGPT, Perplexity, Gemini, and Copilot — not just Google blue-links. The following rules are **mandatory on every new article**. An article without these is incomplete regardless of SEO metadata quality.
+
+### KeyTakeaways (required on every NewsArticle)
+
+Every `NewsArticle` must pass a `keyTakeaways` prop with 3-5 items:
+
+```tsx
+keyTakeaways={[
+  '[Subject] is a [complete definition with key specs/price/date].',
+  '[Key quantitative fact — a number, price, or date that stands alone].',
+  '[Technical or comparative fact — engine, performance, architecture].',
+  '[Availability or status fact — sold out, units, delivery date].',
+]}
+keyTakeawaysColor="red"  // red for cars, blue for tech, green for finance
+```
+
+Rules:
+- **Each item must be a complete sentence** that makes sense without reading the article.
+- Item 1 = full definition: "X is a [category] that [key descriptor, price, manufacturer]."
+- No em dashes. No marketing language ("incredible", "amazing"). No hooks.
+- The `KeyTakeaways` component emits `ItemList` JSON-LD for AI crawlers automatically.
+- Import: the component is wired into `NewsArticle` — just pass the array prop.
+
+### FAQItems (required on every NewsArticle)
+
+Every `NewsArticle` must pass a `faqItems` prop with 3-6 items:
+
+```tsx
+faqItems={[
+  { question: 'What is [Subject]?', answer: '[Direct answer in sentence 1, full definition].' },
+  { question: 'How much does [Subject] cost?', answer: '$X. [One context sentence].' },
+  { question: 'When does [Subject] [come out / ship / launch]?', answer: '[Date/timeline sentence].' },
+  { question: '[Common comparison or versus query]?', answer: '[Direct comparison in sentence 1].' },
+]}
+```
+
+Rules:
+- Question 1 **must** be "What is [Subject]?" or "Who is [Name]?" — the definitional query.
+- Questions must match actual search queries (lower-case question, no trailing punctuation except `?`).
+- Answers: sentence 1 = direct answer. Max 3 sentences. No hedging ("It depends on...").
+- `FAQSchema` JSON-LD is emitted automatically by `NewsArticle` — no manual schema required.
+
+### Article Opener (answer-first, no hooks)
+
+The first sentence of the first paragraph in the article body must be a **direct answer** to what the title asks. This is the sentence AI will copy verbatim.
+
+| Bad (hook) | Good (answer-first) |
+|---|---|
+| `In the world of hypercars...` | `The Ferrari F80 is a 1,184hp hybrid hypercar priced at $3.735M.` |
+| `It has been a landmark year for Bugatti.` | `The Bugatti Tourbillon is a 1,800hp V16 hybrid grand tourer priced from $4.1M.` |
+| `Few cars have generated as much buzz as...` | `The McLaren W1 is a 1,275hp hybrid hypercar limited to 399 units.` |
+
+### Named Author Bylines (mandatory)
+
+All articles must use a named individual author. Never use desk names ("Auto Desk", "Editorial", "ObjectWire Staff").
+
+| Beat | Author | authorSlug |
+|---|---|---|
+| Cars / Supercars | Conan D. Boyle | `conan-boyle` |
+| Creator / YouTube | Jack Sterling | `jack-sterling` |
+| Sports / Culture | Jack Brennan | `jack-brennan` |
+
+### Hub Pages — Citable Intro Copy
+
+Every hub page (`/cars`, `/cars/ferrari`, `/creator`, etc.) must have a `<Hub.Prose>` section (or equivalent `<p>` block for custom hub layouts) with:
+- Sentence 1: direct definition of what the hub covers ("oWire Cars covers hypercars, supercars, and EVs from...")
+- Named examples with real numbers (prices, HP, model names)
+- 100-200 words total
+
+---
+
 ## SEO Article Requirements (Every Publish)
 
 Every article that ships must have all of the following:
 
-- `metadata.title` — keyword + brand (`"GTA 6 Release Date | ObjectWire"`)
+- `metadata.title` — keyword + specific detail (`"Ferrari F80 | Price, Specs, 2026"`) — no brand suffix, max 60 chars
 - `metadata.description` — 130-155 chars, primary keyword in first 60 chars
 - `canonical` URL set in `alternates`
 - `openGraph` block with title, description, image (1200x675), `publishedTime`, `section`
 - `NewsArticleSchema` component matching the `content_registry` entry exactly
 - `SEOWrapper` wrapping the page, slug pointed at registry
 - Breadcrumb at 3-4 levels
-- H2 headings (one per major section, keyword-rich)
-- 4-6 internal links to related ObjectWire pages
+- H2 headings (one per major section, keyword-rich, contain primary keyword)
+- 4-6 internal links to related oWire pages
 - `imageUrl`, `imageWidth`, `imageHeight` in the registry entry (required for Google Top Stories)
+- `keyTakeaways` prop — 3-5 answer-first sentences (see AI-First Extraction SEO section above)
+- `faqItems` prop — 3-6 Q&A pairs, first question is "What is X?" (see above)
 
 ---
 

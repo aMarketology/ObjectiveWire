@@ -10,6 +10,8 @@ import type { BreadcrumbItem } from '@/components/nav/Breadcrumb';
 import FAQAccordion, { FAQSchema } from '@/components/FAQAccordion';
 import type { FAQItem } from '@/components/FAQAccordion';
 import { MoreFromHub, type MoreFromHubItem } from '@/components/discovery/MoreFromHub';
+import { KeyTakeaways } from '@/components/articles/KeyTakeaways';
+import type { KeyTakeawaysProps } from '@/components/articles/KeyTakeaways';
 
 // =============================================================================
 // NEWS ARTICLE COMPONENT - Flashy, engaging article layout
@@ -68,6 +70,14 @@ export interface NewsArticleProps {
   breadcrumbs?: BreadcrumbItem[];
   /** FAQ items rendered at the bottom of the article body + FAQPage JSON-LD schema. */
   faqItems?: FAQItem[];
+  /**
+   * Key Takeaways rendered at the top of the article body.
+   * 3-5 declarative sentences. Each sentence must stand alone as a citable fact.
+   * Renders an ItemList JSON-LD block for AI extraction.
+   */
+  keyTakeaways?: string[];
+  /** Accent color for the KeyTakeaways block. Default: 'gray' */
+  keyTakeawaysColor?: KeyTakeawaysProps['color'];
   /** Server-rendered "More from this Hub" related articles strip — important for SEO crawlability. */
   moreFromHub?: MoreFromHubItem[];
   /** Optional hub label + href for the MoreFromHub heading. */
@@ -700,6 +710,8 @@ export function NewsArticle({
   url,
   breadcrumbs,
   faqItems,
+  keyTakeaways,
+  keyTakeawaysColor,
   moreFromHub,
   moreFromHubLabel,
   moreFromHubHref,
@@ -778,6 +790,13 @@ export function NewsArticle({
               [&_ul]:!font-serif [&_ul]:!text-[18px] [&_ul]:!leading-[1.75] [&_li]:!text-gray-800 dark:[&_li]:!text-gray-200 [&_li]:!my-2
               [&_hr]:!border-gray-300 [&_hr]:!my-12
             ">
+              {keyTakeaways && keyTakeaways.length > 0 && (
+                <KeyTakeaways
+                  items={keyTakeaways}
+                  color={keyTakeawaysColor ?? 'gray'}
+                  articleUrl={url ? `https://www.owire.org${url}` : undefined}
+                />
+              )}
               {children}
             </div>
           </article>
