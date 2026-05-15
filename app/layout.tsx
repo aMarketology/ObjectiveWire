@@ -172,56 +172,130 @@ export default async function RootLayout({
             <main style={{ marginLeft: '10px', marginRight: '10px' }}>{children}</main>
 
         {/* Footer */}
-        <footer className="border-t border-gray-200 bg-white dark:bg-gray-950 dark:border-gray-800 mt-24">
-          <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-16">
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_2fr] gap-x-16 gap-y-12">
+        <footer className="border-t-2 border-gray-900 dark:border-gray-700 bg-[#f9f8f5] dark:bg-[#0d0d0d] mt-24">
 
-              {/* Brand */}
+          {/* Top accent bar */}
+          <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, var(--brand-accent) 0%, var(--brand-ink) 100%)' }} />
+
+          {/* Main footer grid */}
+          <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr] gap-x-10 gap-y-12">
+
+              {/* Brand column */}
               <FooterAuthorSlot />
 
-              {/* Company — narrow */}
-              <div className="shrink-0">
-                <h4 className="font-bold text-xs uppercase tracking-widest text-gray-400 mb-4">Company</h4>
-                <div className="flex flex-col gap-2">
-                  <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white font-medium transition-colors">About</Link>
-                  <Link href="/editorial-standards" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white font-medium transition-colors">Editorial Standards</Link>
-                  <Link href="/corrections" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white font-medium transition-colors">Corrections</Link>
-                  <Link href="/privacy-policy" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white font-medium transition-colors">Privacy Policy</Link>
-                  <Link href="/terms-of-service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white font-medium transition-colors">Terms of Service</Link>
+              {/* Sports */}
+              <div>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Sports</h4>
+                <div className="flex flex-col gap-2.5">
+                  <Link href="/soccer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Soccer</Link>
+                  <Link href="/world-cup" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">World Cup 2026</Link>
+                  <Link href="/premier-league" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Premier League</Link>
+                  <Link href="/mls" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLS</Link>
+                  <Link href="/mlb" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLB</Link>
+                  <Link href="/golf" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Golf</Link>
                 </div>
               </div>
 
-              {/* Newsletter — wide */}
+              {/* Creators & Culture */}
               <div>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Creators</h4>
+                <div className="flex flex-col gap-2.5">
+                  <Link href="/creator" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">All Creators</Link>
+                  <Link href="/creator/news" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Creator News</Link>
+                  <Link href="/youtube" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">YouTube</Link>
+                  <Link href="/creator/mrbeast" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MrBeast</Link>
+                  <Link href="/creator/alix-earle" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Alix Earle</Link>
+                  <Link href="/cars" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Cars</Link>
+                </div>
+              </div>
+
+              {/* Newsroom */}
+              <div>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Newsroom</h4>
+                <div className="flex flex-col gap-2.5">
+                  <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">About oWire</Link>
+                  <Link href="/authors" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Our Authors</Link>
+                  <Link href="/editorial-standards" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Editorial Standards</Link>
+                  <Link href="/corrections" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Corrections</Link>
+                  <Link href="/get-help/contact" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Contact Us</Link>
+                  <Link href="/site-index" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Site Index</Link>
+                </div>
+              </div>
+
+              {/* Newsletter */}
+              <div>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Newsletter</h4>
                 <NewsletterSignupInline />
               </div>
 
             </div>
+          </div>
 
-            {/* Ownership & funding disclosure */}
-            <div className="border-t border-gray-100 dark:border-gray-800 mt-14 pt-8">
-              <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl">
-                <span className="font-semibold text-gray-700 dark:text-gray-300">About ZWire:</span>{' '}
-                ZWire (ZeroWire) covers sports, creators, and the moments
-                everyone is talking about. Read our{' '}
-                <Link href="/about" className="brand-accent-text hover:underline">about page</Link>,{' '}
-                <Link href="/editorial-standards" className="brand-accent-text hover:underline">editorial standards</Link>, and{' '}
-                <Link href="/corrections" className="brand-accent-text hover:underline">corrections policy</Link>.
-              </p>
-            </div>
+          {/* Transparency / editorial disclosure */}
+          <div className="border-t border-gray-200 dark:border-gray-800">
+            <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            {/* Bottom bar */}
-            <div className="border-t border-gray-100 dark:border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span>© 2026 ZWire.</span>
-                <span className="hidden sm:inline">Sports & creator culture, daily.</span>
-              </div>
-              <div className="flex items-center gap-1 text-xs text-gray-400">
-                <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ background: 'var(--brand-accent)' }} />
-                <span>owire</span>
+                {/* Mission */}
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Our Mission</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                    oWire is an independent sports and culture news network based in Austin, Texas. We publish verified, source-cited reporting on athletes, creators, and cultural moments. Accuracy over speed, always.
+                  </p>
+                </div>
+
+                {/* Editorial independence */}
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Editorial Independence</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                    Editorial decisions are made independently of advertising and sponsorship. Sponsored content is clearly labeled. Errors are corrected publicly and transparently.{' '}
+                    <Link href="/editorial-standards" className="text-blue-600 hover:text-blue-800 underline">Read our editorial standards.</Link>
+                  </p>
+                </div>
+
+                {/* Contact & legal */}
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Contact</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                    Newsroom tips, corrections, and press inquiries:{' '}
+                    <Link href="/get-help/contact" className="text-blue-600 hover:text-blue-800 underline">contact form</Link>.
+                    Copyright complaints:{' '}
+                    <Link href="/copyright" className="text-blue-600 hover:text-blue-800 underline">copyright policy</Link>.
+                    Based in Austin, Texas, USA.
+                  </p>
+                </div>
+
               </div>
             </div>
           </div>
+
+          {/* Bottom bar */}
+          <div className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
+            <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
+
+              <div className="flex items-center gap-3 text-xs text-gray-400">
+                <span className="font-bold text-gray-600 dark:text-gray-300">oWire</span>
+                <span className="text-gray-300 dark:text-gray-700">|</span>
+                <span>Sports &amp; Culture News Network</span>
+                <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">|</span>
+                <span className="hidden sm:inline">Austin, Texas</span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400">
+                <span>© 2026 oWire. All rights reserved.</span>
+                <Link href="/privacy-policy" className="hover:text-black dark:hover:text-white transition-colors">Privacy</Link>
+                <Link href="/terms-of-service" className="hover:text-black dark:hover:text-white transition-colors">Terms</Link>
+                <Link href="/copyright" className="hover:text-black dark:hover:text-white transition-colors">Copyright</Link>
+                <div className="flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ background: 'var(--brand-accent)' }} />
+                  <span>owire.org</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </footer>
 
             </FooterAuthorProvider>

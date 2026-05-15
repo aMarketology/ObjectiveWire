@@ -1,27 +1,27 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllEntries } from '@/lib/registry-service';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 const SLUG = '/youtube';
 
 export const metadata: Metadata = {
   title: 'YouTube News | Creators, Channels & Platform 2026',
-  description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ObjectWire.',
+  description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.',
   alternates: { canonical: `https://www.owire.org${SLUG}` },
   openGraph: {
     title: 'YouTube News | Creators, Channels & Platform 2026',
-    description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ObjectWire.',
+    description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.',
     type: 'website',
     url: `https://www.owire.org${SLUG}`,
-    siteName: 'ObjectWire',
+    siteName: 'oWire',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'YouTube News | Creators, Channels & Platform 2026',
-    description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ObjectWire.',
+    description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.',
   },
 };
 
@@ -69,6 +69,34 @@ export default async function Page() {
       </header>
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+        {/* Section quick-nav — hard-coded cluster links for Google crawl + user navigation */}
+        <div className="mb-10">
+          <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">Browse by Section</p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { href: '/youtube/sidemen/charity-match', label: 'Sidemen Charity Match 2026' },
+              { href: '/youtube/sidemen/charity-match/2026-lineup-max-fosh-willne', label: 'Charity Match Lineup | Max Fosh, WillNE' },
+              { href: '/youtube/sidemen/alfie-buttle', label: 'AB (Alfie Buttle)' },
+              { href: '/youtube/sidemen/italian-bach', label: 'Italian Bach' },
+              { href: '/youtube/sidemen/arthur-tv', label: 'ArthurTV' },
+              { href: '/youtube/spanish', label: 'Spanish YouTubers 2026' },
+              { href: '/youtube/logan-paul', label: 'Logan Paul' },
+              { href: '/youtube/mat-armstrong', label: 'Mat Armstrong' },
+              { href: '/youtube/nelk-boys', label: 'NELK Boys' },
+              { href: '/youtube/chicos-toxicos', label: 'Chicos Toxicos' },
+            ].map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="text-xs font-semibold px-3 py-1.5 rounded-sm border border-gray-200 text-blue-600 hover:text-blue-800 underline hover:border-black transition-colors"
+              >
+                {s.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {articles.length === 0 ? (
           <div className="py-24 text-center">
             <p className="text-gray-400 text-lg">No articles found yet.</p>
@@ -106,7 +134,7 @@ export default async function Page() {
                       {article.category}
                     </span>
                     <h2 className="font-serif text-base font-black leading-snug group-hover:underline line-clamp-3 flex-1">
-                      {article.title.replace(/\s*[|]\s*ObjectWire.*$/i, '')}
+                      {article.title.replace(/\s*[|]\s*(ObjectWire|ZWire|oWire).*$/i, '')}
                     </h2>
                     <p className="text-[10px] text-gray-500 font-mono mt-3 pt-2 border-t border-gray-100">
                       {article.author} · {new Date(article.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}

@@ -1,5 +1,6 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
+import { SourcesInterlink } from '@/components/SourcesInterlink';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
@@ -22,23 +23,15 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Sidemen Charity Match 2026: YouTube's Biggest Football Event",
-    description: "The world's biggest YouTube charity football match returns! 100+ creators, millions raised, and the match of the year.",
+    description: "The world's biggest YouTube charity football match returns. 100+ creators, millions raised, and the match of the year.",
     type: "article",
-    url: "https://objectwire.com/youtube/sidemen/charity-match",
-    images: [
-      {
-        url: "https://objectwire.com/og-sidemen-charity-match-2026.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Sidemen Charity Match 2026",
-      },
-    ],
+    url: "https://www.owire.org/youtube/sidemen/charity-match",
+    siteName: 'oWire',
   },
   twitter: {
     card: "summary_large_image",
     title: "Sidemen Charity Match 2026: YouTube's Biggest Football Event",
     description: "100+ creators. Millions raised. The match of the year returns.",
-    images: ["https://objectwire.com/og-sidemen-charity-match-2026.jpg"],
   },
   alternates: {
     canonical: 'https://www.owire.org/youtube/sidemen/charity-match',
@@ -46,5 +39,21 @@ export const metadata: Metadata = {
 };
 
 export default function SidemenCharityMatchPage() {
-  return <WikiArticle slug="youtube-sidemen-charity-match" />;
+  return (
+    <>
+      <WikiArticle slug="youtube-sidemen-charity-match" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <SourcesInterlink
+          accentColor="red"
+          internalLinks={[
+            { href: '/youtube', label: 'YouTube Hub | All Creators & News' },
+            { href: '/youtube/sidemen/charity-match/2026-lineup-max-fosh-willne', label: 'Full 2026 Lineup | Max Fosh, WillNE Confirmed' },
+            { href: '/youtube/sidemen/alfie-buttle', label: 'AB (Alfie Buttle) | Sidemen Collaborator' },
+            { href: '/youtube/sidemen/italian-bach', label: 'Italian Bach | Sidemen Collaborator' },
+            { href: '/youtube/sidemen/arthur-tv', label: 'ArthurTV | Sidemen Collaborator' },
+          ]}
+        />
+      </div>
+    </>
+  );
 }

@@ -1,5 +1,6 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
+import { SourcesInterlink } from '@/components/SourcesInterlink';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
@@ -7,7 +8,7 @@ import { WikiArticle } from '@/components/articles/WikiArticle';
 
 export const metadata: Metadata = {
   title: "Top Spanish YouTubers 2026 | Ibai, AuronPlay, ElRubius",
-  description: "Complete guide to the biggest Spanish-language YouTubers and streamers of 2026. Rankings, profiles, subscriber counts, and content breakdowns for Spain's",
+  description: "Complete guide to the biggest Spanish-language YouTubers and streamers of 2026. Rankings, profiles, subscriber counts, and content breakdowns for Spain's top creators.",
   alternates: {
     canonical: 'https://www.owire.org/youtube/spanish',
   },
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
     description: "Rankings and profiles of the biggest Spanish-language YouTube creators, from Ibai Llanos to Alana Flores.",
     type: "article",
     url: "https://www.owire.org/youtube/spanish",
+    siteName: 'oWire',
   },
   twitter: {
     card: "summary_large_image",
@@ -37,5 +39,20 @@ export const metadata: Metadata = {
 };
 
 export default function SpanishYouTubersPage() {
-  return <WikiArticle slug="youtube-spanish" />;
+  return (
+    <>
+      <WikiArticle slug="youtube-spanish" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <SourcesInterlink
+          accentColor="red"
+          internalLinks={[
+            { href: '/youtube', label: 'YouTube Hub | All Creators & News' },
+            { href: '/youtube/chicos-toxicos', label: 'Chicos Toxicos | Latin YouTube Group' },
+            { href: '/youtube/logan-paul', label: 'Logan Paul | YouTuber, WWE Star' },
+            { href: '/youtube/sidemen/charity-match', label: 'Sidemen Charity Match 2026' },
+          ]}
+        />
+      </div>
+    </>
+  );
 }

@@ -3,7 +3,7 @@
 /**
  * FooterAuthorSlot
  *
- * Always renders the default ObjectWire brand block with social links.
+ * Always renders the default oWire brand block with social links.
  */
 
 import Link from 'next/link';
@@ -11,15 +11,30 @@ import Link from 'next/link';
 export default function FooterAuthorSlot() {
   return (
     <div>
-      <Link href="/" className="flex items-center gap-2.5 mb-5">
-        <div className="w-9 h-9 bg-black flex items-center justify-center rounded-sm shadow-sm">
-          <span className="text-white font-black text-base tracking-tight">O</span>
+      <Link href="/" className="inline-flex items-center gap-2.5 mb-4">
+        <div className="w-9 h-9 bg-black flex items-center justify-center rounded-sm shadow-sm shrink-0">
+          <span className="text-white font-black text-base tracking-tight">o</span>
         </div>
-        <span className="font-black text-xl tracking-tight text-gray-900 dark:text-white">ObjectWire</span>
+        <span className="font-black text-xl tracking-tight text-gray-900 dark:text-white">oWire</span>
       </Link>
-      <p className="text-sm text-gray-500 leading-relaxed mb-5">
-        Precision intelligence for professionals who demand verified, source-cited reporting.
+
+      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
+        Sports &amp; Culture News Network
       </p>
+
+      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+        Independent sports and culture journalism. Verified reporting on athletes, creators, and the moments everyone is talking about.
+      </p>
+
+      {/* Location */}
+      <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-5">
+        <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span>Austin, Texas</span>
+      </div>
+
       {/* Social links */}
       <div className="flex items-center gap-3">
         <a href="https://discord.gg/wBsgkU4uAf" target="_blank" rel="noopener noreferrer"

@@ -70,6 +70,13 @@ export interface SourcesInterlinkProps {
   internalLinks?: InternalLinkItem[];
   heading?: string;
   accentColor?: 'blue' | 'green' | 'orange' | 'purple' | 'red' | 'gray';
+  /**
+   * Controls how internal cross-links are rendered.
+   * - 'list'  (default) — compact disc-style list
+   * - 'cards' — visually prominent 2-column card grid; use for articles where
+   *             strong interlinking is the priority (e.g. pillar/hub articles)
+   */
+  internalLinkStyle?: 'list' | 'cards';
 }
 
 const ACCENT_BORDER: Record<string, string> = {
@@ -112,6 +119,7 @@ export function SourcesInterlink({
   internalLinks = [],
   heading = 'Sources',
   accentColor = 'blue',
+  internalLinkStyle = 'list',
 }: SourcesInterlinkProps) {
   const borderClass = ACCENT_BORDER[accentColor] ?? ACCENT_BORDER.blue;
   const textClass   = ACCENT_TEXT[accentColor]   ?? ACCENT_TEXT.blue;
@@ -174,28 +182,52 @@ export function SourcesInterlink({
         </ol>
       )}
 
-      {/* Internal ZWire cross-links — clean blue-underlined list */}
+      {/* Internal ZWire cross-links — list or card style */}
       {internalLinks.length > 0 && (
         <div>
-          <h3 className="text-base font-bold mb-2">Further Reading on ZWire</h3>
-          <ul className="list-disc pl-6 space-y-1 text-sm">
-            {internalLinks.map((link, i) => (
-              <li key={i}>
+          <h3 className="text-base font-bold mb-3">Further Reading on ZWire</h3>
+
+          {internalLinkStyle === 'cards' ? (
+            /* Card grid — visually prominent, good for strong interlinking */
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {internalLinks.map((link, i) => (
                 <Link
+                  key={i}
                   href={link.href}
-                  className={`${textClass} underline hover:opacity-80`}
+                  className={`block rounded-lg border border-gray-200 dark:border-gray-700 p-3 transition-colors ${pillClass} no-underline`}
                 >
-                  {link.label}
-                </Link>
-                {link.description && (
-                  <span className="text-gray-600 dark:text-gray-400">
-                    {' | '}
-                    {link.description}
+                  <span className="block font-semibold text-sm underline">
+                    {link.label}
                   </span>
-                )}
-              </li>
-            ))}
-          </ul>
+                  {link.description && (
+                    <span className="block text-xs mt-1 opacity-80 no-underline">
+                      {link.description}
+                    </span>
+                  )}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            /* Default compact list */
+            <ul className="list-disc pl-6 space-y-1 text-sm">
+              {internalLinks.map((link, i) => (
+                <li key={i}>
+                  <Link
+                    href={link.href}
+                    className={`${textClass} underline hover:opacity-80`}
+                  >
+                    {link.label}
+                  </Link>
+                  {link.description && (
+                    <span className="text-gray-600 dark:text-gray-400">
+                      {' | '}
+                      {link.description}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
     </div>

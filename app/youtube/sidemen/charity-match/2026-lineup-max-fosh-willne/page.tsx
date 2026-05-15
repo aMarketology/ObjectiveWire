@@ -1,12 +1,13 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
+import { SourcesInterlink } from '@/components/SourcesInterlink';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 
 
 const SLUG = '/youtube/sidemen/charity-match/2026-lineup-max-fosh-willne';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.owire.org${SLUG}`;
 const OG_IMAGE = 'https://www.owire.org/influncer/sidemne_charity_match_26.png';
 
 export const metadata: Metadata = {
@@ -35,8 +36,8 @@ export const metadata: Metadata = {
     description: 'Full squads revealed: KSI, xQc, Angry Ginge, Max Fosh, and WillNE headline the 2026 Sidemen Charity Match. Logan Paul, IShowSpeed, and MrBeast will not',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
-    authors: ['ObjectWire Sports Desk'],
+    siteName: 'oWire',
+    authors: ['ZWire Sports Desk'],
     publishedTime: '2026-04-17T19:00:00Z',
     modifiedTime: '2026-04-17T19:00:00Z',
     section: 'Sports',
@@ -52,5 +53,21 @@ export const metadata: Metadata = {
 };
 
 export default function YoutubeSidemenCharityMatch2026LineupMaxFoshWillnePage() {
-  return <NewsArticleDB slug="youtube-sidemen-charity-match-2026-lineup-max-fosh-willne" />;
+  return (
+    <>
+      <NewsArticleDB slug="youtube-sidemen-charity-match-2026-lineup-max-fosh-willne" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <SourcesInterlink
+          accentColor="red"
+          internalLinks={[
+            { href: '/youtube', label: 'YouTube Hub | All Creators & News' },
+            { href: '/youtube/sidemen/charity-match', label: 'Sidemen Charity Match 2026 | Full Guide' },
+            { href: '/youtube/sidemen/alfie-buttle', label: 'AB (Alfie Buttle) | Sidemen Collaborator' },
+            { href: '/youtube/sidemen/italian-bach', label: 'Italian Bach | Sidemen Collaborator' },
+            { href: '/youtube/sidemen/arthur-tv', label: 'ArthurTV | Sidemen Collaborator' },
+          ]}
+        />
+      </div>
+    </>
+  );
 }
