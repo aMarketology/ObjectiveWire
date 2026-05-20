@@ -14,7 +14,7 @@ import {
 export const revalidate = 86400;
 
 const SLUG = '/mlb/home-run-prop-analysis-may-15-2026';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'MLB Home Run Props May 15 | Ramos, Alonso, Bolte Data',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       'Advanced Statcast analysis decodes three structural home run prop targets for the May 15, 2026 MLB slate, led by HR/9 regression and bat speed data.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['Jack Brennan'],
     publishedTime: '2026-05-15T08:00:00Z',
     modifiedTime: '2026-05-15T08:00:00Z',

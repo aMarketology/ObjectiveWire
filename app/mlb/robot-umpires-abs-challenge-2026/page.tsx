@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   NewsArticle,
@@ -9,7 +9,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/mlb/robot-umpires-abs-challenge-2026';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'MLB ABS Challenge System 2026 | Are Robot Umpires Inevitable',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "MLB's pitch challenge system exposes the accuracy gap between human umpires and Hawk-Eye tracking. Inside the technology reshaping ball-strike calls.",
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Sports Desk'],
     publishedTime: '2026-05-04T14:00:00Z',
     modifiedTime: '2026-05-04T14:00:00Z',
@@ -81,7 +81,7 @@ export default function MLBRobotUmpiresPage() {
       tags={['MLB', 'Robot Umpires', 'ABS System', 'Baseball Technology', 'Hawk-Eye', 'Umpires']}
       trending
     >
-      {/* ── INTRO ────────────────────────────────────────────────────────── */}
+      {/* -- INTRO ---------------------------------------------------------- */}
       <p>
         <strong>Major League Baseball's 2026 season</strong> introduced the Automated Ball-Strike
         (ABS) Challenge System, a hybrid experiment that lets batters, pitchers, and catchers
@@ -109,7 +109,7 @@ export default function MLBRobotUmpiresPage() {
         as the system unfolds across a full 162-game season.
       </p>
 
-      {/* ── KEY STATS ────────────────────────────────────────────────────── */}
+      {/* -- KEY STATS ------------------------------------------------------ */}
       <HighlightBox type="stat" color="orange">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 py-2">
           {[
@@ -128,7 +128,7 @@ export default function MLBRobotUmpiresPage() {
         </div>
       </HighlightBox>
 
-      {/* ── SECTION 1 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 1 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         1. How the ABS Challenge System Works | Hawk-Eye in the Majors
       </h2>
@@ -160,7 +160,7 @@ export default function MLBRobotUmpiresPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 2 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 2 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         2. Challenge Rules | How Teams Can Use Them in 2026
       </h2>
@@ -191,7 +191,7 @@ export default function MLBRobotUmpiresPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 3 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 3 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         3. The Accuracy Gap | Why the Data Favors the Machine
       </h2>
@@ -215,8 +215,8 @@ export default function MLBRobotUmpiresPage() {
 
       <p>
         Players have understood this disparity for years, even without public access to the
-        granular numbers. Pitchers whose repertoires depend on corner-painting — the bottom of
-        the zone, the outer edge — have long complained about inconsistent zones shifting
+        granular numbers. Pitchers whose repertoires depend on corner-painting � the bottom of
+        the zone, the outer edge � have long complained about inconsistent zones shifting
         call-to-call within the same at-bat. The ABS Challenge System does not eliminate that
         inconsistency during the pitch itself, but it does introduce a correction mechanism
         that simply did not exist before 2026.
@@ -230,7 +230,7 @@ export default function MLBRobotUmpiresPage() {
         perceived.
       </p>
 
-      {/* ── SECTION 4 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 4 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         4. Umpires With the Lowest Accuracy | 2025 Pitch-Tracking Data
       </h2>
@@ -286,7 +286,7 @@ export default function MLBRobotUmpiresPage() {
         visibility is irreversible.
       </p>
 
-      {/* ── SECTION 5 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 5 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         5. The Traditionalist Case | What Gets Lost With Robot Umps
       </h2>
@@ -319,7 +319,7 @@ export default function MLBRobotUmpiresPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 6 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 6 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         6. Minor League Precedent | What Full ABS Testing Revealed
       </h2>
@@ -377,7 +377,7 @@ export default function MLBRobotUmpiresPage() {
         ]}
       />
 
-      {/* ── SECTION 7 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 7 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         7. What Comes Next | The Road to Full Automation
       </h2>
@@ -417,7 +417,7 @@ export default function MLBRobotUmpiresPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SOURCES ──────────────────────────────────────────────────────── */}
+      {/* -- SOURCES -------------------------------------------------------- */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         Sources
       </h2>

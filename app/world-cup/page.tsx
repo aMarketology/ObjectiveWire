@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   CountdownTimer,
@@ -10,7 +10,7 @@ import {
 export const revalidate = 3600;
 
 const SLUG = '/world-cup';
-const CANONICAL = `https://www.owire.org${SLUG}`;
+const CANONICAL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'FIFA World Cup 2026 | Schedule, Teams, Host Cities & News',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       '48 teams, 104 matches, 16 host cities across North America. Full tournament coverage from ObjectWire.',
     type: 'website',
     url: CANONICAL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',
@@ -103,7 +103,7 @@ export default function WorldCup2026Hub() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      {/* -- HERO ----------------------------------------------------------- */}
       <div className="relative min-h-[90vh] bg-gradient-to-br from-slate-900 via-purple-950 to-black text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E\")", backgroundSize: '60px 60px' }}
@@ -124,11 +124,11 @@ export default function WorldCup2026Hub() {
             </h1>
 
             <div className="flex items-center justify-center gap-8 text-xl md:text-2xl font-semibold mb-8">
-              <span className="flex items-center gap-2"><span className="text-4xl">🇺🇸</span> USA</span>
-              <span className="text-teal-400">•</span>
-              <span className="flex items-center gap-2"><span className="text-4xl">🇲🇽</span> MEXICO</span>
-              <span className="text-teal-400">•</span>
-              <span className="flex items-center gap-2"><span className="text-4xl">🇨🇦</span> CANADA</span>
+              <span className="flex items-center gap-2"><span className="text-4xl">????</span> USA</span>
+              <span className="text-teal-400">�</span>
+              <span className="flex items-center gap-2"><span className="text-4xl">????</span> MEXICO</span>
+              <span className="text-teal-400">�</span>
+              <span className="flex items-center gap-2"><span className="text-4xl">????</span> CANADA</span>
             </div>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
@@ -143,7 +143,7 @@ export default function WorldCup2026Hub() {
         <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-teal-500 via-cyan-400 to-teal-500" />
       </div>
 
-      {/* ── STATS BAR ────────────────────────────────────────────────────── */}
+      {/* -- STATS BAR ------------------------------------------------------ */}
       <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-12 border-b-4 border-teal-500">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -162,7 +162,7 @@ export default function WorldCup2026Hub() {
         </div>
       </div>
 
-      {/* ── LATEST NEWS ──────────────────────────────────────────────────── */}
+      {/* -- LATEST NEWS ---------------------------------------------------- */}
       <section className="py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight uppercase">
@@ -185,7 +185,7 @@ export default function WorldCup2026Hub() {
         </div>
       </section>
 
-      {/* ── HOST CITIES ──────────────────────────────────────────────────── */}
+      {/* -- HOST CITIES ---------------------------------------------------- */}
       <section className="py-20 bg-slate-50 border-b border-gray-200">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -196,7 +196,7 @@ export default function WorldCup2026Hub() {
         </div>
       </section>
 
-      {/* ── QUALIFIED TEAMS ──────────────────────────────────────────────── */}
+      {/* -- QUALIFIED TEAMS ------------------------------------------------ */}
       <section className="py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -207,7 +207,7 @@ export default function WorldCup2026Hub() {
         </div>
       </section>
 
-      {/* ── TOURNAMENT FORMAT ────────────────────────────────────────────── */}
+      {/* -- TOURNAMENT FORMAT ---------------------------------------------- */}
       <section className="py-20 bg-slate-50 border-b border-gray-200">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -218,7 +218,7 @@ export default function WorldCup2026Hub() {
         </div>
       </section>
 
-      {/* ── FOOTER CTA ───────────────────────────────────────────────────── */}
+      {/* -- FOOTER CTA ----------------------------------------------------- */}
       <footer className="bg-slate-900 text-white py-16">
         <div className="container mx-auto px-6 text-center max-w-4xl">
           <div className="text-sm font-bold tracking-[0.3em] text-teal-400 mb-4">OBJECTWIRE OFFICIAL COVERAGE</div>
@@ -242,7 +242,7 @@ export default function WorldCup2026Hub() {
           </div>
           <div className="border-t border-white/20 pt-8">
             <p className="text-sm text-gray-500">
-              © 2026{' '}
+              � 2026{' '}
               <Link href="/" className="text-teal-400 hover:underline">ObjectWire</Link>
               . FIFA World Cup 2026 coverage and analysis.
             </p>

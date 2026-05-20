@@ -1,11 +1,11 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.owire.org/editorial-standards';
+const PAGE_URL = 'https://www.objectwire.org/editorial-standards';
 
 export const metadata: Metadata = {
   title: 'Editorial Standards | oWire',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: 'How oWire reports, sources, verifies, and corrects.',
     type: 'article',
     url: PAGE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     section: 'About',
   },
   twitter: {
@@ -164,10 +164,10 @@ export default function EditorialStandardsPage() {
           <p>
             Questions about our standards, or a specific article&rsquo;s sourcing:{' '}
             <a
-              href="mailto:editorial@owire.org"
+              href="mailto:editorial@objectwire.org"
               className="text-blue-600 hover:text-blue-800 underline"
             >
-              editorial@owire.org
+              editorial@objectwire.org
             </a>
             .
           </p>

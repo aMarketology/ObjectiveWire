@@ -41,9 +41,26 @@ export function generateArticleMetadata(options: ArticleMetadataOptions): Metada
   const resolvedCanonical = canonicalUrl || canonical;
   const resolvedAuthors = authors ?? (author ? [author] : undefined);
   const resolvedKeywords = keywords ?? tags;
+
+  // Auto-generate OG image via Satori when no explicit image is provided
+  const SITE_URL = 'https://www.objectwire.org';
+  let fallbackOgImage: string | undefined;
+  if (!ogImage && images.length === 0 && resolvedCanonical) {
+    const slug = resolvedCanonical.startsWith(SITE_URL)
+      ? resolvedCanonical.slice(SITE_URL.length)
+      : resolvedCanonical.startsWith('https://objectwire.org')
+        ? resolvedCanonical.slice('https://objectwire.org'.length)
+        : resolvedCanonical.startsWith('/') ? resolvedCanonical : null;
+    if (slug) fallbackOgImage = `${SITE_URL}/api/og?slug=${encodeURIComponent(slug)}`;
+  }
+
   const allImages = ogImage
     ? [ogImage, ...images]
-    : images;
+    : images.length > 0
+      ? images
+      : fallbackOgImage
+        ? [fallbackOgImage]
+        : [];
 
   return {
     title,

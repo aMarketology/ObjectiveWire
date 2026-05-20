@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ProfilePageSchema — JSON-LD structured data for /influencer creator profile pages.
  *
  * Uses schema.org ProfilePage + Person, which enables:
@@ -16,7 +16,7 @@ export interface ProfilePageSchemaProps {
   pageTitle: string;
   /** Meta description */
   description: string;
-  /** Canonical page URL — must be https://www.owire.org/... */
+  /** Canonical page URL — must be https://www.objectwire.org/... */
   pageUrl: string;
   /** Full image URL for the person */
   imageUrl?: string;
@@ -48,15 +48,15 @@ export function ProfilePageSchema({
   const socialUrls = sameAs.filter(
     (url) =>
       url.startsWith('http') &&
-      !url.startsWith('https://www.owire.org') &&
+      !url.startsWith('https://www.objectwire.org') &&
       !url.startsWith('mailto:'),
   );
 
   // Derive section from pageUrl so breadcrumb matches actual page path
-  const urlSegments = pageUrl.replace('https://www.owire.org', '').split('/').filter(Boolean);
+  const urlSegments = pageUrl.replace('https://www.objectwire.org', '').split('/').filter(Boolean);
   const sectionSlug = urlSegments[0] ?? 'creator';
   const sectionName = sectionSlug.charAt(0).toUpperCase() + sectionSlug.slice(1);
-  const sectionUrl = `https://www.owire.org/${sectionSlug}`;
+  const sectionUrl = `https://www.objectwire.org/${sectionSlug}`;
 
   const schema = {
     '@context': 'https://schema.org',
@@ -70,12 +70,12 @@ export function ProfilePageSchema({
     'isPartOf': {
       '@type': 'WebSite',
       'name': 'ObjectWire News',
-      'url': 'https://www.owire.org',
+      'url': 'https://www.objectwire.org',
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
       'itemListElement': [
-        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://www.owire.org' },
+        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://www.objectwire.org' },
         { '@type': 'ListItem', 'position': 2, 'name': sectionName, 'item': sectionUrl },
         { '@type': 'ListItem', 'position': 3, 'name': personName, 'item': pageUrl },
       ],
@@ -89,7 +89,7 @@ export function ProfilePageSchema({
           '@type': 'ImageObject',
           'url': imageUrl.startsWith('http')
             ? imageUrl
-            : `https://www.owire.org${imageUrl}`,
+            : `https://www.objectwire.org${imageUrl}`,
           'width': 1200,
           'height': 675,
         },
@@ -101,15 +101,15 @@ export function ProfilePageSchema({
     'author': {
       '@type': 'Organization',
       'name': 'ObjectWire News',
-      'url': 'https://www.owire.org',
+      'url': 'https://www.objectwire.org',
     },
     'publisher': {
       '@type': 'NewsMediaOrganization',
       'name': 'ObjectWire News',
-      'url': 'https://www.owire.org',
+      'url': 'https://www.objectwire.org',
       'logo': {
         '@type': 'ImageObject',
-        'url': 'https://www.owire.org/objectwire-logo.png',
+        'url': 'https://www.objectwire.org/objectwire-logo.png',
         'width': 600,
         'height': 60,
       },

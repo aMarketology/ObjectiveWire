@@ -13,7 +13,7 @@ import {
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/sofi-stadium-world-cup-renovation-2026';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'SoFi Stadium World Cup 2026 | Corner Seats Removed for FIFA Pitch',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
       'SoFi Stadium pulls 100 corner seats per section, ships 1,600 miles of refrigerated Pacific Northwest sod, and strips all corporate branding ahead of the June 12 USA opener.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['Jack Brennan'],
     publishedTime: '2026-05-15T10:00:00Z',
     modifiedTime: '2026-05-15T10:00:00Z',

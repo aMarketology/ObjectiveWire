@@ -1,12 +1,12 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/mls/san-jose-quakes-defensive-resurgence';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1558465202-92356bf74344?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       '9 goals allowed in 8 matches. 7 goals from Timo Werner. The Quakes are relevant again in 2026.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Sports Desk'],
     publishedTime: '2026-04-04T16:00:00Z',
     modifiedTime: '2026-04-04T16:00:00Z',

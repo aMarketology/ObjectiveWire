@@ -1,6 +1,6 @@
-﻿// NewsArticle Schema Component for Google News, Perplexity, and MSN
+// NewsArticle Schema Component for Google News, Perplexity, and MSN
 // Add this to your article pages for proper indexing
-// IMPORTANT: All URLs must use https://www.owire.org (canonical www domain)
+// IMPORTANT: All URLs must use https://www.objectwire.org (canonical www domain)
 
 export interface ArticleSchemaProps {
   title: string;
@@ -46,18 +46,18 @@ export function NewsArticleSchema({
     "author": {
       "@type": "Person",
       "name": author,
-      "url": authorUrl || `https://www.owire.org/authors/${author.toLowerCase().replace(/\s+/g, '-')}`
+      "url": authorUrl || `https://www.objectwire.org/authors/${author.toLowerCase().replace(/\s+/g, '-')}`
     },
     "publisher": {
       "@type": "NewsMediaOrganization",
-      "name": "ZeroWire",
+      "name": "Objective Wire",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.owire.org/zwire-logo-square.png",
+        "url": "https://www.objectwire.org/zwire-logo-square.png",
         "width": 1001,
         "height": 1001
       },
-      "url": "https://www.owire.org",
+      "url": "https://www.objectwire.org",
       "sameAs": [
         "https://twitter.com/object_wire",
         "https://www.facebook.com/objectwire",
@@ -73,7 +73,7 @@ export function NewsArticleSchema({
     "isAccessibleForFree": true,
     "inLanguage": "en-US",
     "copyrightYear": new Date(publishedTime).getFullYear(),
-    "copyrightHolder": { "@type": "Organization", "name": "ZeroWire", "url": "https://www.owire.org" },
+    "copyrightHolder": { "@type": "Organization", "name": "Objective Wire", "url": "https://www.objectwire.org" },
     "speakable": {
       "@type": "SpeakableSpecification",
       "cssSelector": ["h1", "article"]
@@ -94,21 +94,21 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "NewsMediaOrganization",
     "additionalType": "https://schema.org/NGO",
-    "name": "ZeroWire",
-    "alternateName": "ZWire",
-    "url": "https://www.owire.org",
+    "name": "Objective Wire",
+    "alternateName": "oWire",
+    "url": "https://www.objectwire.org",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.owire.org/zwire-logo-square.png",
+      "url": "https://www.objectwire.org/zwire-logo-square.png",
       "width": 1001,
       "height": 1001
     },
-    "description": "ZeroWire is an independent, self-funded newsroom delivering verified, source-cited reporting on sports, creators, tech, and culture.",
+    "description": "Objective Wire is an independent investigative journalism and private detective agency delivering verified, source-cited reporting on creators, sports, cars, and culture. Based in Austin, Texas.",
     "foundingDate": "2024",
     "founders": [
       {
         "@type": "Person",
-        "name": "ZeroWire Editorial Team"
+        "name": "Conan D. Boyle"
       }
     ],
     "sameAs": [
@@ -119,19 +119,29 @@ export function OrganizationSchema() {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "editorial",
-      "email": "editorial@owire.org"
+      "email": "editorial@objectwire.org",
+      "telephone": "+1-575-495-0323",
+      "areaServed": "US",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2921 E 17th St Building 3, APT 3205",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "postalCode": "78702",
+        "addressCountry": "US"
+      }
     },
-    "ethicsPolicy": "https://www.owire.org/editorial-standards",
-    "correctionsPolicy": "https://www.owire.org/corrections",
-    "verificationFactCheckingPolicy": "https://www.owire.org/editorial-standards",
-    "diversityPolicy": "https://www.owire.org/editorial-standards",
-    "masthead": "https://www.owire.org/team",
-    "ownershipFundingInfo": "https://www.owire.org/about",
+    "ethicsPolicy": "https://www.objectwire.org/editorial-standards",
+    "correctionsPolicy": "https://www.objectwire.org/corrections",
+    "verificationFactCheckingPolicy": "https://www.objectwire.org/editorial-standards",
+    "diversityPolicy": "https://www.objectwire.org/editorial-standards",
+    "masthead": "https://www.objectwire.org/team",
+    "ownershipFundingInfo": "https://www.objectwire.org/about",
     "nonprofitStatus": "Nonprofit501c3",
     "funder": {
       "@type": "Organization",
-      "name": "ZeroWire (self-funded)",
-      "description": "Self-funded by the ZeroWire editorial team. No advertising, sponsored content, or political donations accepted."
+      "name": "Objective Wire LLC (self-funded)",
+      "description": "Self-funded by Conan D. Boyle. No advertising, sponsored content, or political donations accepted."
     }
   };
 
@@ -148,13 +158,13 @@ export function WebSiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "ZeroWire",
-    "url": "https://www.owire.org",
+    "name": "Objective Wire",
+    "url": "https://www.objectwire.org",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.owire.org/search?q={search_term_string}"
+        "urlTemplate": "https://www.objectwire.org/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }

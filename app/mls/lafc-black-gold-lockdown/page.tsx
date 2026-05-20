@@ -1,12 +1,12 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/mls/lafc-black-gold-lockdown';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1706675780107-7c43cc487928?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       'Just 7 goals conceded in 8 matches. LAFC are running the tightest defense in the Western Conference while still averaging 2.1 goals per game.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Sports Desk'],
     publishedTime: '2026-04-04T14:00:00Z',
     modifiedTime: '2026-04-04T14:00:00Z',

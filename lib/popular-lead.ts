@@ -1,8 +1,8 @@
-﻿/**
+/**
  * lib/popular-lead.ts
  *
  * Server-only utility.  Returns the pagePath slug of the most-viewed article
- * on owire.org over the past 7 days, using the GA4 Data API.
+ * on objectwire.org over the past 7 days, using the GA4 Data API.
  *
  * Requirements (add to .env.local):
  *   GA4_PROPERTY_ID       = "properties/XXXXXXXXX"

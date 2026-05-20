@@ -51,7 +51,7 @@ export const viewport: Viewport = {
   minimumScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: '#ffffff',
+  themeColor: '#121212',
 };
 
 export const metadata: Metadata = {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`
   },
   description: SITE_CONFIG.description,
-  keywords: ["sports news", "creators", "influencers", "athletes", "world cup", "olympics", "formula 1", "creator economy", "tabloid sports"],
+  keywords: ["investigative journalism", "private detective Austin Texas", "objective wire", "sports news", "creators", "influencers", "athletes", "world cup", "creator economy", "uncover the truth"],
   authors: [{ name: "oWire Editorial" }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
@@ -129,7 +129,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`dark ${inter.variable} ${sourceSerif.variable} ${jetbrainsMono.variable}`}>
       <head>
         {/* Canonical is set per-page via metadata.alternates.canonical.
             Do NOT hardcode a site-wide canonical here — it overrides every
@@ -138,38 +138,65 @@ export default async function RootLayout({
         <OrganizationSchema />
         <WebSiteSchema />
       </head>
-      <body className="bg-[#faf9f6] text-gray-900 antialiased font-sans dark:bg-[#121212] dark:text-gray-100">
+      <body className="bg-[#121212] text-gray-100 antialiased font-sans">
         <AuthProvider>
           <ThemeProvider>
             <FooterAuthorProvider>
             {/* ── oWire Masthead ─────────────────────────────────────────── */}
-            <header className="bg-white sticky sm:relative top-0 z-40 overflow-visible shadow-[0_2px_0_0_var(--brand-accent),0_3px_0_0_var(--brand-ink)]">
+            <header className="bg-[#1c1c1e] relative z-40 overflow-visible shadow-[0_2px_0_0_var(--brand-accent),0_3px_0_0_var(--brand-accent)]">
 
               {/* Top info strip */}
-              <div className="border-b border-gray-200 bg-[#faf9f6]">
+              <div className="border-b border-[#2d2d2d] bg-[#1c1c1e]">
                 <div className="container mx-auto px-4 py-1 flex items-center justify-between">
                   <TopStripSearch dateString={new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />
                 </div>
               </div>
 
+              {/* Section nav bar — hub dropdowns */}
+              <MainNav />
+
               {/* Nameplate */}
-              <div className="container mx-auto px-4 py-2 md:py-5 text-center">
-                <Link href="/" className="inline-block group" aria-label="oWire — home">
-                  <div className="brand-wordmark text-[2.6rem] sm:text-6xl md:text-8xl">
-                    <span className="o">o</span>Wire
+              <div className="container mx-auto px-4 py-3 md:py-6 text-center">
+                <Link href="/" className="inline-block group" aria-label="Objective Wire — home">
+                  <div className="relative inline-block">
+                    {/* Sunset image — clipped to show only the sun + upper sky, behind text */}
+                    <div
+                      className="absolute left-1/2 -translate-x-1/2 pointer-events-none overflow-hidden"
+                      aria-hidden="true"
+                      style={{
+                        bottom: '-10px',
+                        width: '260px',
+                        height: '100px',
+                        zIndex: 0,
+                        opacity: 0.75,
+                      }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/sunset.png"
+                        alt=""
+                        style={{
+                          width: '260px',
+                          height: '260px',
+                          objectFit: 'cover',
+                          objectPosition: 'center 20%',
+                          display: 'block',
+                        }}
+                      />
+                    </div>
+                    <div className="brand-wordmark text-[2.6rem] sm:text-6xl md:text-8xl relative" style={{ zIndex: 1 }}>
+                      <span className="o">Objective</span><span className="brand-wire"><span className="brand-w">W</span>ire</span>
+                    </div>
                   </div>
                   <div className="brand-rule mx-auto mt-2 w-40 md:w-72" />
-                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-gray-500 font-mono whitespace-nowrap">
-                    Sports <span className="brand-accent-text">·</span> Creators <span className="brand-accent-text">·</span> Culture
+                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-[#d97706] font-mono whitespace-nowrap">
+                    Investigate <span className="brand-accent-text">·</span> Document <span className="brand-accent-text">·</span> Publish
                   </p>
                 </Link>
               </div>
-
-              {/* Section nav bar — hub dropdowns */}
-              <MainNav />
             </header>
 
-            <main style={{ marginLeft: '10px', marginRight: '10px' }}>{children}</main>
+            <main style={{ marginLeft: '10px', marginRight: '10px', paddingTop: '48px' }}>{children}</main>
 
         {/* Footer */}
         <footer className="border-t-2 border-gray-900 dark:border-gray-700 bg-[#f9f8f5] dark:bg-[#0d0d0d] mt-24">
@@ -214,7 +241,8 @@ export default async function RootLayout({
               <div>
                 <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Newsroom</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">About oWire</Link>
+                  <Link href="/service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">PI &amp; Investigative Services</Link>
+                  <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">About Objective Wire</Link>
                   <Link href="/authors" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Our Authors</Link>
                   <Link href="/editorial-standards" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Editorial Standards</Link>
                   <Link href="/corrections" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Corrections</Link>
@@ -241,7 +269,7 @@ export default async function RootLayout({
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Our Mission</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    oWire is an independent sports and culture news network based in Austin, Texas. We publish verified, source-cited reporting on athletes, creators, and cultural moments. Accuracy over speed, always.
+                    Objective Wire is a licensed investigative media agency and 501(c)(3) nonprofit based in Austin, Texas. We take on PI cases and investigative reporting cases under our Texas PI license. Investigate. Document. Publish.
                   </p>
                 </div>
 
@@ -258,11 +286,14 @@ export default async function RootLayout({
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Contact</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    Newsroom tips, corrections, and press inquiries:{' '}
+                    Newsroom tips, corrections, press inquiries, and case submissions:{' '}
                     <Link href="/get-help/contact" className="text-blue-600 hover:text-blue-800 underline">contact form</Link>.
                     Copyright complaints:{' '}
                     <Link href="/copyright" className="text-blue-600 hover:text-blue-800 underline">copyright policy</Link>.
-                    Based in Austin, Texas, USA.
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2">
+                    2921 E 17th St Building 3, APT 3205, Austin, TX 78702<br />
+                    <a href="tel:+15754950323" className="text-blue-600 hover:text-blue-800 underline">(575) 495-0323</a>
                   </p>
                 </div>
 
@@ -275,21 +306,21 @@ export default async function RootLayout({
             <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
 
               <div className="flex items-center gap-3 text-xs text-gray-400">
-                <span className="font-bold text-gray-600 dark:text-gray-300">oWire</span>
+                <span className="font-bold text-gray-600 dark:text-gray-300">Objective Wire</span>
                 <span className="text-gray-300 dark:text-gray-700">|</span>
-                <span>Sports &amp; Culture News Network</span>
+                <span>Licensed PI Agency · 501(c)(3) Nonprofit · Investigative Media</span>
                 <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">|</span>
                 <span className="hidden sm:inline">Austin, Texas</span>
               </div>
 
               <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400">
-                <span>© 2026 oWire. All rights reserved.</span>
+                <span>© 2026 Objective Wire. All rights reserved.</span>
                 <Link href="/privacy-policy" className="hover:text-black dark:hover:text-white transition-colors">Privacy</Link>
                 <Link href="/terms-of-service" className="hover:text-black dark:hover:text-white transition-colors">Terms</Link>
                 <Link href="/copyright" className="hover:text-black dark:hover:text-white transition-colors">Copyright</Link>
                 <div className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ background: 'var(--brand-accent)' }} />
-                  <span>owire.org</span>
+                  <span>objectwire.org</span>
                 </div>
               </div>
 

@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400;
 
 const SLUG = '/mls/messi-100-goal-contributions-toronto-fc-inter-miami-2026';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 const VIDEO_ID = 'DsKhxWLKDKM';
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       'Lionel Messi hit the 100 goal contributions milestone for Inter Miami CF in MLS, combining goals and assists as Inter Miami beat Toronto FC.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Jack Brennan'],
     publishedTime: '2026-05-13T18:30:00Z',
     modifiedTime: '2026-05-13T18:30:00Z',
@@ -55,7 +55,7 @@ export default function MessiMilestoneInterMiamiToronto() {
         title="Messi 100 Goal Contributions | Inter Miami vs Toronto FC"
         description="Lionel Messi reached 100 goal contributions for Inter Miami CF in MLS 2026, combining goals and assists as Inter Miami defeated Toronto FC."
         author="Jack Brennan"
-        authorUrl="https://www.owire.org/authors/jack-brennan"
+        authorUrl="https://www.objectwire.org/authors/jack-brennan"
         publishedTime="2026-05-13T18:30:00Z"
         modifiedTime="2026-05-13T18:30:00Z"
         articleUrl={ARTICLE_URL}

@@ -10,8 +10,8 @@ import Link from 'next/link';
 // Two sections:
 //   1. External primary sources — numbered list with domain badge, author,
 //      date, blue link, optional description. Styled for journalistic credibility.
-//   2. Internal ZWire cross-links — pill-style links to related hubs
-//      and cluster articles ("Also on ZWire").
+//   2. Internal Objective Wire cross-links — pill-style links to related hubs
+//      and cluster articles ("Also on Objective Wire").
 //
 // INLINE CITATION NUMBERS
 //   Use <CitationRef n={1} /> in JSX to render a superscript [1] that scrolls
@@ -182,10 +182,10 @@ export function SourcesInterlink({
         </ol>
       )}
 
-      {/* Internal ZWire cross-links — list or card style */}
+      {/* Internal Objective Wire cross-links — list or card style */}
       {internalLinks.length > 0 && (
         <div>
-          <h3 className="text-base font-bold mb-3">Further Reading on ZWire</h3>
+          <h3 className="text-base font-bold mb-3">Further Reading on Objective Wire</h3>
 
           {internalLinkStyle === 'cards' ? (
             /* Card grid — visually prominent, good for strong interlinking */

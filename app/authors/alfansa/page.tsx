@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { AuthorArticlesServer } from '@/components/authors/AuthorArticlesServer';
@@ -7,20 +7,20 @@ import AuthorSchema from '@/components/authors/AuthorSchema';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Alfansa â€” Finance & Markets Reporter',
+  title: 'Alfansa — Finance & Markets Reporter',
   description:
     'Alfansa is ObjectWire\'s Finance & Markets Reporter and Anime & Gaming Editor, based in New York. Covering payments, fintech, markets, My Hero Academia,',
-  alternates: { canonical: 'https://www.owire.org/authors/alfansa' },
+  alternates: { canonical: 'https://www.objectwire.org/authors/alfansa' },
   openGraph: {
     title: 'Alfansa | ObjectWire Finance & Markets Reporter',
     description: 'Finance & Markets Reporter and Anime & Gaming Editor at ObjectWire. Covering fintech, payments, MHA, and gaming economics.',
-    url: 'https://www.owire.org/authors/alfansa',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org/authors/alfansa',
+    siteName: 'Objective Wire',
     type: 'profile',
   },
   twitter: {
     card: 'summary',
-    title: 'Alfansa â€” Finance & Markets Reporter',
+    title: 'Alfansa — Finance & Markets Reporter',
     description: 'Finance & Anime & Gaming dual-desk at ObjectWire. New York.',
   },
 };
@@ -43,13 +43,13 @@ export default function AlfansaAuthorPage() {
         name="Alfansa"
         jobTitle="Finance & Markets Reporter"
         description="Alfansa covers finance, markets, fintech, and payments at ObjectWire while also serving as the publication's Anime & Gaming Editor."
-        url="https://www.owire.org/authors/alfansa"
+        url="https://www.objectwire.org/authors/alfansa"
         knowsAbout={['Finance', 'Markets', 'Fintech', 'Payments', 'Crypto', 'My Hero Academia', 'Gaming']}
         location={{ city: 'New York', region: 'NY' }}
         articleCount={18}
       />
 
-      {/* â”€â”€ Full-bleed Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Full-bleed Header ───────────────────────────────────────── */}
       <div className="bg-blue-950 text-white">
         <div className="max-w-5xl mx-auto px-6 pt-10 pb-14">
           {/* Breadcrumb */}
@@ -69,12 +69,12 @@ export default function AlfansaAuthorPage() {
             {/* Identity */}
             <div className="flex-1">
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-blue-500 mb-2 font-mono">
-                Finance & Markets Reporter Â· ObjectWire
+                Finance & Markets Reporter · ObjectWire
               </p>
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Alfansa
               </h1>
-              <p className="text-blue-200 text-xl font-medium">Finance &amp; Markets Â· Anime &amp; Gaming Editor</p>
+              <p className="text-blue-200 text-xl font-medium">Finance &amp; Markets · Anime &amp; Gaming Editor</p>
             </div>
             {/* Stats */}
             <div className="flex gap-8 md:pb-1 shrink-0">
@@ -96,21 +96,21 @@ export default function AlfansaAuthorPage() {
         </div>
       </div>
 
-      {/* â”€â”€ Detail Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Detail Strip ───────────────────────────────────────────── */}
       <div className="bg-blue-900 text-white border-b border-blue-800">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center gap-6 text-xs font-mono text-blue-300">
-          <span>ðŸ“ New York, NY</span>
-          <span>ðŸ’° Finance &amp; Markets Desk</span>
-          <span>ðŸŽ® Anime &amp; Gaming Editor</span>
-          <span>ðŸ“… Reporter since 2023</span>
+          <span>📍 New York, NY</span>
+          <span>💰 Finance &amp; Markets Desk</span>
+          <span>🎮 Anime &amp; Gaming Editor</span>
+          <span>📅 Reporter since 2023</span>
         </div>
       </div>
 
-      {/* â”€â”€ Body â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Body ───────────────────────────────────────────────────── */}
       <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-          {/* â”€â”€ Sidebar â”€â”€ */}
+          {/* ── Sidebar ── */}
           <aside className="lg:col-span-4 space-y-7">
             {/* Beats */}
             <div className="border border-blue-100 p-6">
@@ -144,18 +144,18 @@ export default function AlfansaAuthorPage() {
             <div className="bg-blue-950 text-white p-6 space-y-3">
               <h2 className="text-[10px] uppercase tracking-widest font-black text-blue-600">Standards</h2>
               <Link href="/editorial-standards" className="block text-sm font-semibold hover:text-blue-300 transition-colors">
-                Editorial Standards â†’
+                Editorial Standards →
               </Link>
               <Link href="/corrections" className="block text-sm font-semibold hover:text-blue-300 transition-colors">
-                Corrections Policy â†’
+                Corrections Policy →
               </Link>
               <Link href="/about" className="block text-sm font-semibold hover:text-blue-300 transition-colors">
-                About ObjectWire â†’
+                About ObjectWire →
               </Link>
             </div>
           </aside>
 
-          {/* â”€â”€ Main column â”€â”€ */}
+          {/* ── Main column ── */}
           <div className="lg:col-span-8 space-y-12">
 
             {/* Bio */}
@@ -167,7 +167,7 @@ export default function AlfansaAuthorPage() {
                 <p>
                   Alfansa is ObjectWire&rsquo;s Finance &amp; Markets Reporter and Anime &amp; Gaming
                   Editor based in New York. With dual-desk responsibilities, Alfansa covers the
-                  intersection of global capital markets and cultural media â€” tracking how payments
+                  intersection of global capital markets and cultural media — tracking how payments
                   infrastructure, fintech valuations, and crypto policy shape the broader economy
                   alongside in-depth reporting on gaming culture and anime.
                 </p>
@@ -187,7 +187,7 @@ export default function AlfansaAuthorPage() {
                 </p>
                 <p>
                   Alfansa&rsquo;s work reflects ObjectWire&rsquo;s founding belief that finance and
-                  culture are inseparable narratives â€” the same macro forces reshaping Wall Street also
+                  culture are inseparable narratives — the same macro forces reshaping Wall Street also
                   reshape how stories are told, consumed, and monetized worldwide.
                 </p>
               </div>
@@ -202,12 +202,12 @@ export default function AlfansaAuthorPage() {
                 {[
                   {
                     label: 'Mastercard AI Disruption Selloff',
-                    detail: 'AI-powered alternatives threaten card-processing revenue â€” Mastercard stock response, analyst reaction, and fintech implications.',
+                    detail: 'AI-powered alternatives threaten card-processing revenue — Mastercard stock response, analyst reaction, and fintech implications.',
                     href: '/copyright/news/mastercard-ai-disruption-selloff',
                     date: 'March 2026',
                   },
                   {
-                    label: 'My Hero Academia â€” Final Arc Analysis',
+                    label: 'My Hero Academia — Final Arc Analysis',
                     detail: 'Comprehensive breakdown of the Final War arc, Deku\'s quirk evolution, and the manga\'s commercial legacy.',
                     href: '/entertainment/anime/my-hero-academia-final-arc',
                     date: 'February 2026',
@@ -247,12 +247,12 @@ export default function AlfansaAuthorPage() {
         </div>
       </div>
 
-      {/* â”€â”€ Footer strip â”€â”€ */}
+      {/* ── Footer strip ── */}
       <div className="border-t-2 border-blue-900 mt-8">
         <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400 font-mono">Â© 2026 ObjectWire. All rights reserved.</p>
+          <p className="text-xs text-gray-400 font-mono">© 2026 ObjectWire. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/authors" className="text-xs font-semibold text-blue-600 hover:text-blue-900 transition-colors">â† All Authors</Link>
+            <Link href="/authors" className="text-xs font-semibold text-blue-600 hover:text-blue-900 transition-colors">← All Authors</Link>
             <Link href="/about" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">About</Link>
             <Link href="/editorial-standards" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">Standards</Link>
           </div>

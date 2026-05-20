@@ -1,13 +1,13 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/2026-world-cup-48-team-field-complete-italy-out';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
-const OG_IMAGE = 'https://www.owire.org/world-cup/worldcup-usa-drama-strikes.jpg';
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const OG_IMAGE = 'https://www.objectwire.org/world-cup/worldcup-usa-drama-strikes.jpg';
 
 export const metadata: Metadata = {
   title: '2026 World Cup Field Complete | Italy Out, 48 Nations Set',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       'Iraq and DR Congo claimed the last two World Cup spots. Italy lost to Bosnia on penalties, becoming the first four-time champion to miss three straight',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['Alfansa'],
     publishedTime: '2026-04-08T10:00:00Z',
     modifiedTime: '2026-04-08T10:00:00Z',

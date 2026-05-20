@@ -794,7 +794,7 @@ export function NewsArticle({
                 <KeyTakeaways
                   items={keyTakeaways}
                   color={keyTakeawaysColor ?? 'gray'}
-                  articleUrl={url ? `https://www.owire.org${url}` : undefined}
+                  articleUrl={url ? `https://www.objectwire.org${url}` : undefined}
                 />
               )}
               {children}

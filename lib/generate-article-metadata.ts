@@ -1,4 +1,4 @@
-﻿/**
+/**
  * lib/generate-article-metadata.ts
  *
  * Shared helper that fetches an article row from any of the 3 tables
@@ -121,7 +121,7 @@ export async function generateArticleMetadata(
   const canonicalPath = r.url || r.article_url || `/${slug.replace(/-/g, '/')}`;
   const canonicalUrl = canonicalPath.startsWith('http')
     ? canonicalPath
-    : `https://www.owire.org${canonicalPath}`;
+    : `https://www.objectwire.org${canonicalPath}`;
 
   // ── Resolve image ────────────────────────────────────────────────
   const resolvedImageUrl =
@@ -133,7 +133,7 @@ export async function generateArticleMetadata(
   // When no article-specific image exists, fall back to the dynamic OG card
   // generator at /api/og which renders a branded card with title, category,
   // and a pre-populated Unsplash background (if the batch-fix script has run).
-  const ogFallback = `https://www.owire.org/api/og?slug=${encodeURIComponent(canonicalPath)}`;
+  const ogFallback = `https://www.objectwire.org/api/og?slug=${encodeURIComponent(canonicalPath)}`;
   const imageUrl = resolvedImageUrl || ogFallback;
 
   const imageAlt =

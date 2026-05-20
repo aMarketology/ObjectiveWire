@@ -1,12 +1,12 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/world-cup-2026-us-transit-prices-fans-outraged';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
 const OG_IMAGE = 'https://images.unsplash.com/photo-1544366981-43d8d59eeba9?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: 'NJ Transit plans to charge $100+ round-trip to MetLife Stadium during the World Cup final, a 900% surge from the standard $11 fare. US senators are now',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Sports Desk'],
     publishedTime: '2026-04-17T18:00:00Z',
     modifiedTime: '2026-04-17T18:00:00Z',

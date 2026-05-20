@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400;
 
 const SLUG = '/cars/ferrari/ferrari-sf90-stradale-spider-specs-price';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Ferrari SF90 | 986HP Hybrid Specs, Price, 0-60',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       'The Ferrari SF90 blends a 769hp twin-turbo V8 with three electric motors for 986 combined horsepower, all-wheel drive, and a 2.0-second 0-60 time. SF90 XX pushes to 1,016hp.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Conan D. Boyle'],
     publishedTime: '2026-05-15T15:00:00Z',
     modifiedTime: '2026-05-15T15:00:00Z',
@@ -57,7 +57,7 @@ export default function FerrariSF90Page() {
         title="Ferrari SF90 | 986HP Hybrid Specs, Price, 0-60"
         description="Ferrari SF90 Stradale Spider: 986hp twin-turbo V8 hybrid, 0-60 in 2.0 seconds, 211mph top speed. SF90 XX hits 1,016hp. Full specs, price, and drive modes explained."
         author="Conan D. Boyle"
-        authorUrl="https://www.owire.org/authors/conan-boyle"
+        authorUrl="https://www.objectwire.org/authors/conan-boyle"
         publishedTime="2026-05-15T15:00:00Z"
         modifiedTime="2026-05-15T15:00:00Z"
         articleUrl={ARTICLE_URL}

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * fix-creator-articles.ts
  *
  * Direct Supabase updater for the 8 recent creator articles.
@@ -29,7 +29,7 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const SITE = 'https://www.owire.org';
+const SITE = 'https://www.objectwire.org';
 const AUTHOR = 'Jack Brennan';
 const AUTHOR_URL = `${SITE}/authors/jack-brennan`;
 

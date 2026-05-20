@@ -1,29 +1,29 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.owire.org/corrections';
+const PAGE_URL = 'https://www.objectwire.org/corrections';
 
 export const metadata: Metadata = {
-  title: 'Corrections Policy | oWire',
+  title: 'Corrections Policy | Objective Wire',
   description:
-    'How oWire handles corrections. Errors are fixed publicly, timestamped, and the original text is preserved. Report an issue here.',
+    'How Objective Wire handles corrections. Errors are fixed publicly, timestamped, and the original text is preserved. Report an issue here.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Corrections Policy | oWire',
-    description: 'How oWire handles corrections. Errors fixed publicly and timestamped.',
+    title: 'Corrections Policy | Objective Wire',
+    description: 'How Objective Wire handles corrections. Errors fixed publicly and timestamped.',
     type: 'article',
     url: PAGE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     section: 'About',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corrections Policy | oWire',
-    description: 'How oWire handles corrections. Errors fixed publicly and timestamped.',
+    title: 'Corrections Policy | Objective Wire',
+    description: 'How Objective Wire handles corrections. Errors fixed publicly and timestamped.',
   },
 };
 
@@ -44,7 +44,7 @@ export default function CorrectionsPage() {
           Corrections Policy
         </p>
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-          How oWire handles corrections
+          How Objective Wire handles corrections
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
           We make mistakes. Hiding them is not acceptable. Every error is corrected publicly,
@@ -86,7 +86,7 @@ export default function CorrectionsPage() {
           </p>
 
           <h2>How to report an error</h2>
-          <p>If you believe oWire has published something inaccurate, contact us with:</p>
+          <p>If you believe Objective Wire has published something inaccurate, contact us with:</p>
           <ul>
             <li>The article URL</li>
             <li>The specific claim or sentence at issue</li>
@@ -96,10 +96,10 @@ export default function CorrectionsPage() {
           <p>
             Email:{' '}
             <a
-              href="mailto:corrections@owire.org"
+              href="mailto:corrections@objectwire.org"
               className="text-blue-600 hover:text-blue-800 underline"
             >
-              corrections@owire.org
+              corrections@objectwire.org
             </a>
             . We aim to acknowledge correction requests within 48 hours and to publish a correction or a
             written response within 5 business days.
@@ -107,13 +107,13 @@ export default function CorrectionsPage() {
 
           <h2>Right of reply</h2>
           <p>
-            If you are the subject of an oWire article and were not contacted before publication, or
+            If you are the subject of an Objective Wire article and were not contacted before publication, or
             if your response was not adequately reflected, write to{' '}
             <a
-              href="mailto:editorial@owire.org"
+              href="mailto:editorial@objectwire.org"
               className="text-blue-600 hover:text-blue-800 underline"
             >
-              editorial@owire.org
+              editorial@objectwire.org
             </a>
             . We will review and, where warranted, update the article with your response and a
             timestamp.

@@ -1,4 +1,4 @@
-﻿import { ImageResponse } from 'next/og';
+import { ImageResponse } from 'next/og';
 import { createClient } from '@supabase/supabase-js';
 import type { NextRequest } from 'next/server';
 
@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
     const descParam   = searchParams.get('desc');
     const imageParam  = searchParams.get('image');
 
-    let title    = titleParam  || 'ObjectWire';
+    let title    = titleParam  || 'Objective Wire';
     let category = catParam    || 'News';
     let desc     = descParam   || '';
     let bgImage  = imageParam  || null;
@@ -253,7 +253,7 @@ export async function GET(req: NextRequest) {
                     display: 'flex',
                   }}
                 >
-                  OBJECTWIRE
+                  OBJECTIVE WIRE
                 </div>
               </div>
 
@@ -265,7 +265,7 @@ export async function GET(req: NextRequest) {
                   display: 'flex',
                 }}
               >
-                owire.org
+                objectwire.org
               </div>
             </div>
           </div>

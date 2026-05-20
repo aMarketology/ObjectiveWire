@@ -10,7 +10,7 @@ import {
 export const revalidate = 86400;
 
 const SLUG = '/youtube/the-bridge';
-const PAGE_URL = `https://www.owire.org${SLUG}`;
+const PAGE_URL = `https://www.objectwire.org${SLUG}`;
 const THUMBNAIL = 'https://i.ytimg.com/vi/5ipd6EH568w/maxresdefault.jpg';
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       'Hosted by PSG star Achraf Hakimi and comedian Malik Bentalha. The Bridge bridges football, Moroccan-French culture, and viral guest episodes.',
     type: 'article',
     url: PAGE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     section: 'YouTube',
     authors: ['Jack Sterling'],
     publishedTime: '2026-05-13T12:00:00Z',
@@ -65,7 +65,7 @@ export default function TheBridgePage() {
         publishedTime: '2026-05-13T12:00:00Z',
         modifiedTime: '2026-05-13T12:00:00Z',
         author: 'Jack Sterling',
-        authorUrl: 'https://www.owire.org/authors/jack-sterling',
+        authorUrl: 'https://www.objectwire.org/authors/jack-sterling',
         articleUrl: PAGE_URL,
         imageUrl: THUMBNAIL,
         section: 'YouTube',

@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
 
@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'MLB News & Analysis | oWire',
   description: 'Major League Baseball news, scores, standings, and analysis from oWire.',
-  alternates: { canonical: 'https://www.owire.org/mlb' },
+  alternates: { canonical: 'https://www.objectwire.org/mlb' },
 };
 
 export default async function MLBHubPage() {

@@ -1,16 +1,16 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/england-scotland-stadium-row';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'England and Scotland World Cup Stadium Row | 6M Venue Dispute',
   description:
-    'England and Scotland face potential last-minute venue changes as a £6 million financial dispute between the FA, SFA, and FIFA threatens World Cup 2026 preparations at Wembley and Hampden Park.',
+    'England and Scotland face potential last-minute venue changes as a �6 million financial dispute between the FA, SFA, and FIFA threatens World Cup 2026 preparations at Wembley and Hampden Park.',
   keywords: [
     'World Cup 2026 England stadium row',
     'England World Cup venue dispute',
@@ -27,10 +27,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'England and Scotland World Cup Stadium Row | 6M Venue Dispute',
     description:
-      'A £6 million row between the FA, SFA, and FIFA threatens to force Wembley and Hampden Park out of World Cup 2026.',
+      'A �6 million row between the FA, SFA, and FIFA threatens to force Wembley and Hampden Park out of World Cup 2026.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Editorial Team'],
     publishedTime: '2026-02-16T00:00:00Z',
     modifiedTime: '2026-02-16T00:00:00Z',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'England and Scotland World Cup Stadium Row | 6M Venue Dispute',
     description:
-      'A £6 million dispute threatens to force Wembley and Hampden Park out of World Cup 2026.',
+      'A �6 million dispute threatens to force Wembley and Hampden Park out of World Cup 2026.',
   },
 };
 
@@ -73,7 +73,7 @@ export default function EnglandScotlandStadiumRowPage() {
         <Link href="/world-cup" className="text-blue-600 hover:text-blue-800 underline">
           FIFA World Cup 2026
         </Link>{' '}
-        faces an unusual threat: a £6 million financial dispute over stadium costs that could force both home nations to relocate matches away from Wembley and Hampden Park. With the tournament opening June 11, time to resolve the standoff is running out.
+        faces an unusual threat: a �6 million financial dispute over stadium costs that could force both home nations to relocate matches away from Wembley and Hampden Park. With the tournament opening June 11, time to resolve the standoff is running out.
       </p>
 
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">1. The 6 Million Dispute | What Is Being Argued</h2>
@@ -82,13 +82,13 @@ export default function EnglandScotlandStadiumRowPage() {
         The row centres on FIFA&apos;s revised venue requirements for the expanded 48-team format. Wembley Stadium and Hampden Park are being asked to meet upgraded security, hospitality, and media specifications that were not part of original hosting agreements. Neither the Football Association (FA) nor the Scottish Football Association (SFA) had budgeted for the additional outlay.
       </p>
 
-      <p>The £6 million gap breaks down across four areas:</p>
+      <p>The �6 million gap breaks down across four areas:</p>
 
       <ul className="list-disc pl-6 my-4 space-y-2">
-        <li><strong>Security upgrades</strong> — enhanced screening and perimeter controls: £2.3 million</li>
-        <li><strong>Broadcast infrastructure</strong> — 4K/8K camera positions and fibre connectivity: £1.8 million</li>
-        <li><strong>VIP hospitality</strong> — FIFA&apos;s expanded requirements for the 48-team field: £1.4 million</li>
-        <li><strong>Temporary facilities</strong> — additional media centres and mixed zones: £500,000</li>
+        <li><strong>Security upgrades</strong> � enhanced screening and perimeter controls: �2.3 million</li>
+        <li><strong>Broadcast infrastructure</strong> � 4K/8K camera positions and fibre connectivity: �1.8 million</li>
+        <li><strong>VIP hospitality</strong> � FIFA&apos;s expanded requirements for the 48-team field: �1.4 million</li>
+        <li><strong>Temporary facilities</strong> � additional media centres and mixed zones: �500,000</li>
       </ul>
 
       <p>
@@ -98,7 +98,7 @@ export default function EnglandScotlandStadiumRowPage() {
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">2. Alternative Venues | England and Scotland Contingency Plans</h2>
 
       <p>
-        Both associations have begun contingency planning. England&apos;s primary alternatives are Old Trafford (74,000 capacity, already FIFA-compliant from Euro 2028 preparations), Tottenham Hotspur Stadium (62,000), and — as a last resort — the Millennium Stadium in Cardiff.
+        Both associations have begun contingency planning. England&apos;s primary alternatives are Old Trafford (74,000 capacity, already FIFA-compliant from Euro 2028 preparations), Tottenham Hotspur Stadium (62,000), and � as a last resort � the Millennium Stadium in Cardiff.
       </p>
 
       <p>
@@ -114,7 +114,7 @@ export default function EnglandScotlandStadiumRowPage() {
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">4. FIFA Position | Deadline Firm at March 2026</h2>
 
       <p>
-        FIFA has made clear it will not bend on venue specifications. A FIFA Tournament Operations Director stated: &quot;We understand the challenges, but the World Cup belongs to the world, not to any single venue. We have absolute confidence in the UK delivering compliant stadiums — whether that&apos;s Wembley and Hampden or alternatives.&quot; The governing body set a March 2026 deadline for venue confirmation, after which relocation becomes automatic.
+        FIFA has made clear it will not bend on venue specifications. A FIFA Tournament Operations Director stated: &quot;We understand the challenges, but the World Cup belongs to the world, not to any single venue. We have absolute confidence in the UK delivering compliant stadiums � whether that&apos;s Wembley and Hampden or alternatives.&quot; The governing body set a March 2026 deadline for venue confirmation, after which relocation becomes automatic.
       </p>
 
       <p>

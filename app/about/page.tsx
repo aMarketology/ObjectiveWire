@@ -1,29 +1,29 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.owire.org/about';
+const PAGE_URL = 'https://www.objectwire.org/about';
 
 export const metadata: Metadata = {
-  title: 'About oWire | Ownership, Mission, Team',
+  title: 'About Objective Wire | Ownership, Mission, Team',
   description:
-    'oWire is an independent digital newsroom covering Creators, Cars, and Culture. Founded and owned by Conan D. Boyle. No outside investors. No sponsored content.',
+    'Objective Wire is an independent investigative journalism and private detective agency based in Austin, Texas. Founded by Conan D. Boyle. No outside investors. No sponsored content.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'About oWire | Ownership, Mission, Team',
-    description: 'Independent newsroom covering Creators, Cars, and Culture. Owned by Conan D. Boyle.',
+    title: 'About Objective Wire | Ownership, Mission, Team',
+    description: 'Investigative journalism and private detective agency based in Austin, Texas. Owned by Conan D. Boyle.',
     type: 'article',
     url: PAGE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     section: 'About',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About oWire | Ownership, Mission, Team',
-    description: 'Independent newsroom covering Creators, Cars, and Culture. Owned by Conan D. Boyle.',
+    title: 'About Objective Wire | Ownership, Mission, Team',
+    description: 'Investigative journalism and private detective agency based in Austin, Texas. Owned by Conan D. Boyle.',
   },
 };
 
@@ -44,19 +44,18 @@ export default function AboutPage() {
           Ownership &amp; Mission
         </p>
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white mb-6 leading-tight">
-          About oWire
+          About Objective Wire
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
-          oWire is an independent digital newsroom covering Creators, Cars, and Culture. We publish
-          verified, source-cited reporting on the people, vehicles, and moments that define what
-          everyone is watching right now.
+          Objective Wire is an independent investigative journalism and private detective agency based in Austin, Texas. We publish
+          verified, source-cited reporting on creators, cars, sports, and culture. We uncover the truth.
         </p>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
 
-          <h2>What oWire covers</h2>
+          <h2>What Objective Wire covers</h2>
           <p>
-            oWire focuses on three beats and nothing outside them:
+            Objective Wire focuses on three beats and nothing outside them:
           </p>
           <ul>
             <li>
@@ -78,7 +77,7 @@ export default function AboutPage() {
 
           <h2>Ownership</h2>
           <p>
-            oWire is founded and owned by <strong>Conan D. Boyle</strong>. There are no outside
+            Objective Wire is founded and owned by <strong>Conan D. Boyle</strong>. There are no outside
             shareholders, parent companies, venture investors, or holding entities. Editorial decisions
             are made by the named editorial team, not by advertisers or investors, because there are
             none.
@@ -87,14 +86,14 @@ export default function AboutPage() {
             Conan D. Boyle is the editor-in-chief and has final say on all editorial and publishing
             decisions. His author profile is public at{' '}
             <Link href="/authors/conan-boyle" className="text-blue-600 hover:text-blue-800 underline">
-              owire.org/authors/conan-boyle
+              objectwire.org/authors/conan-boyle
             </Link>
             .
           </p>
 
           <h2>Funding</h2>
           <p>
-            oWire is self-funded. We do not accept:
+            Objective Wire is self-funded. We do not accept:
           </p>
           <ul>
             <li>Display advertising or programmatic ad networks</li>
@@ -110,7 +109,7 @@ export default function AboutPage() {
 
           <h2>The editorial team</h2>
           <p>
-            Every article published on oWire carries a named byline. Our current writing staff:
+            Every article published on Objective Wire carries a named byline. Our current writing staff:
           </p>
           <ul>
             <li>
@@ -140,9 +139,50 @@ export default function AboutPage() {
             .
           </p>
 
-          <h2>Our standards</h2>
+          <h3>Volunteer contributor network</h3>
           <p>
-            oWire operates under a strict editorial code: accuracy over speed, primary sources only,
+            Beyond the core staff, Objective Wire publishes work from a network of volunteer
+            contributors across all four content pillars. Volunteer writers are not paid but receive
+            a named byline, a public author profile, and full editorial credit on every piece they
+            publish. All contributor work is held to the same sourcing and accuracy standards as
+            staff writing. No exceptions.
+          </p>
+          <p>
+            If you follow a beat closely, know a story that deserves coverage, or want to build a
+            public writing portfolio under a credible publication, we want to hear from you.
+          </p>
+
+          <div className="not-prose my-8 rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-8">
+            <p className="text-xs uppercase tracking-[0.3em] font-black text-gray-500 dark:text-gray-400 mb-2 font-mono">
+              Write for oWire
+            </p>
+            <h4 className="text-2xl font-black text-gray-900 dark:text-white mb-3">
+              Contribute to Objective Wire
+            </h4>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              We accept pitches from writers who cover cars, sports, creators, and culture.
+              Named byline on every published piece. Free to join. No word counts, no quotas,
+              no pressure, no deadlines unless you set your own.
+            </p>
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300 mb-8">
+              {['Named byline and public author profile', 'Full editorial support and fact-checking', 'Write on your schedule, no minimum commitment', 'All four content pillars open: Cars, Sports, Creators, Culture'].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-green-500 font-bold mt-0.5">✓</span> {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="mailto:editorial@objectwire.org?subject=I want to write for Objective Wire"
+              className="inline-block bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-sm"
+            >
+              Email Us to Get Started →
+            </a>
+            <p className="mt-3 text-xs text-gray-400 dark:text-gray-500">
+              Include your beat, a writing sample or link, and a brief pitch.
+            </p>
+          </div>
+          <p>
+            Objective Wire operates under a strict editorial code: accuracy over speed, primary sources only,
             no anonymous claims without corroboration, and public corrections for every error.
           </p>
           <ul>
@@ -168,13 +208,13 @@ export default function AboutPage() {
           <h2>Contact</h2>
           <p>
             Editorial:{' '}
-            <a href="mailto:editorial@owire.org" className="text-blue-600 hover:text-blue-800 underline">
-              editorial@owire.org
+            <a href="mailto:editorial@objectwire.org" className="text-blue-600 hover:text-blue-800 underline">
+              editorial@objectwire.org
             </a>
             <br />
             Corrections and tips:{' '}
-            <a href="mailto:corrections@owire.org" className="text-blue-600 hover:text-blue-800 underline">
-              corrections@owire.org
+            <a href="mailto:corrections@objectwire.org" className="text-blue-600 hover:text-blue-800 underline">
+              corrections@objectwire.org
             </a>
           </p>
 

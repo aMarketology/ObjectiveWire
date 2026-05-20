@@ -62,7 +62,7 @@ export async function generateMetadata({
       title: `${tag} | ObjectWire`,
       description: `${articles.length} articles about ${tag} on ObjectWire.`,
       url: `https://www.objectwire.org/tags/${rawTag}`,
-      siteName: 'ObjectWire',
+      siteName: 'Objective Wire',
       type: 'website',
     },
   };

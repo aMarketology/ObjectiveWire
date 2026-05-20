@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 3600;
 
 const SLUG = '/premier-league/manchester-united-vs-nottingham-forest-may-17-2026';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Manchester United vs Nottingham Forest May 17 | Preview & Storylines',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       'United are locked into third place but Forest arrive with three wins in four. A Sunday clash with plenty to settle at Old Trafford.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Conan D. Boyle'],
     publishedTime: '2026-05-14T12:00:00Z',
     modifiedTime: '2026-05-14T12:00:00Z',
@@ -52,7 +52,7 @@ export default function ManUtdVsNottinghamForestPage() {
         title="Manchester United vs Nottingham Forest May 17 | Preview & Storylines"
         description="Manchester United host Nottingham Forest at Old Trafford on Sunday May 17, 2026 at 12:30 BST. Forest arrive in excellent form with three wins from their last four."
         author="Conan D. Boyle"
-        authorUrl="https://www.owire.org/authors/conan-boyle"
+        authorUrl="https://www.objectwire.org/authors/conan-boyle"
         publishedTime="2026-05-14T12:00:00Z"
         modifiedTime="2026-05-14T12:00:00Z"
         articleUrl={ARTICLE_URL}

@@ -1,14 +1,14 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Hub } from '@/components/Hub';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 import { SEOWrapper } from '@/components/SEOWrapper';
 import { createClient } from '@/lib/supabase/server';
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // SEO METADATA
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
-export const revalidate = 86400; // Profiles rarely change — daily ISR
+export const revalidate = 86400; // Profiles rarely change � daily ISR
 
 export const metadata: Metadata = {
   title: 'Creator Hub | Profiles, News & Culture',
@@ -30,15 +30,15 @@ export const metadata: Metadata = {
     'ObjectWire creator',
   ],
   alternates: {
-    canonical: 'https://www.owire.org/creator',
+    canonical: 'https://www.objectwire.org/creator',
   },
   openGraph: {
     title: 'Creator Hub | Profiles, News & Culture',
     description:
       'In-depth profiles and breaking news covering the biggest creators across fitness, YouTube, golf, and online culture. Updated 2026.',
     type: 'website',
-    url: 'https://www.owire.org/creator',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org/creator',
+    siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // CREATOR PROFILES (curated)
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 const PROFILES = [
   {
@@ -60,7 +60,7 @@ const PROFILES = [
       'Spanish model and content creator with millions of followers across TikTok and Instagram. Known for fashion, lifestyle content, and a loyal international fanbase.',
     badge: 'PROFILE',
     thumbnail: '/influncer/mika.PNG',
-    meta: 'TikTok · Instagram · OnlyFans',
+    meta: 'TikTok � Instagram � OnlyFans',
   },
   {
     href: '/creator/queenkalin',
@@ -68,8 +68,8 @@ const PROFILES = [
     description:
       'Brazilian-born creator @xqueenkalin with 2.1M+ TikTok followers. Viral content, bold personality, and a rapidly growing presence across platforms.',
     badge: 'PROFILE',
-    emoji: '👑',
-    meta: 'TikTok · Instagram',
+    emoji: '??',
+    meta: 'TikTok � Instagram',
   },
   {
     href: '/creator/eden-gross',
@@ -78,7 +78,7 @@ const PROFILES = [
       'TikTok dance and lifestyle creator @eden.gross with nearly 1 million followers and 43.6 million total likes. Known for high-energy dance content and authentic personality.',
     badge: 'PROFILE',
     thumbnail: '/influncer/eden_gross.PNG',
-    meta: 'TikTok · Instagram',
+    meta: 'TikTok � Instagram',
   },
   {
     href: '/creator/tren-twins',
@@ -87,7 +87,7 @@ const PROFILES = [
       'Michael and Christian Gaiera, identical twin bodybuilders who became fitness sensations on YouTube and TikTok. Known for their extreme training and unfiltered content.',
     badge: 'PROFILE',
     thumbnail: '/influncer/tren_twins_wiki.PNG',
-    meta: 'YouTube · TikTok · Fitness',
+    meta: 'YouTube � TikTok � Fitness',
   },
   {
     href: '/creator/diamond-gym',
@@ -96,7 +96,7 @@ const PROFILES = [
       'The legendary gym that produced some of the biggest names in fitness content. A cultural hub for bodybuilding and creator culture in the United States.',
     badge: 'PROFILE',
     thumbnail: '/influncer/Diamond Gym.PNG',
-    meta: 'Fitness · Bodybuilding · Culture',
+    meta: 'Fitness � Bodybuilding � Culture',
   },
   {
     href: '/creator/daddywellness',
@@ -105,7 +105,7 @@ const PROFILES = [
       'Health, wellness, and lifestyle content creator pushing fitness culture forward. Candid routines, supplement reviews, and motivational content for a dedicated audience.',
     badge: 'PROFILE',
     thumbnail: '/influncer/daddy_wellness.jpg',
-    meta: 'Wellness · Lifestyle · YouTube',
+    meta: 'Wellness � Lifestyle � YouTube',
   },
   {
     href: '/creator/yellz0',
@@ -114,7 +114,7 @@ const PROFILES = [
       'Popular content creator known for bold, unfiltered takes and viral moments. Building an audience across TikTok and Instagram with authentic personality-driven content.',
     badge: 'PROFILE',
     thumbnail: '/influncer/yellz0_what_cup_size.PNG',
-    meta: 'TikTok · Instagram',
+    meta: 'TikTok � Instagram',
   },
   {
     href: '/creator/iman-gadzhi',
@@ -122,8 +122,8 @@ const PROFILES = [
     description:
       'Entrepreneur and social media educator who built a business empire before 25. Known for SMMA coaching, YouTube education, and Agency Navigator.',
     badge: 'PROFILE',
-    emoji: '💼',
-    meta: 'YouTube · Business · Education',
+    emoji: '??',
+    meta: 'YouTube � Business � Education',
   },
   {
     href: '/creator/serge-gatari',
@@ -131,8 +131,8 @@ const PROFILES = [
     description:
       'Business educator and content creator in the online marketing and agency space. Known for community building, client acquisition strategy, and business growth content.',
     badge: 'PROFILE',
-    emoji: '📈',
-    meta: 'YouTube · Business · Marketing',
+    emoji: '??',
+    meta: 'YouTube � Business � Marketing',
   },
   {
     href: '/creator/bryson-dechambeau',
@@ -140,14 +140,14 @@ const PROFILES = [
     description:
       'Two-time US Open champion turned golf content creator. The "Golf Scientist" blends elite competitive play with YouTube experiments, long-drive records, and viral moments.',
     badge: 'PROFILE',
-    emoji: '⛳',
-    meta: 'Golf · YouTube · Sports',
+    emoji: '?',
+    meta: 'Golf � YouTube � Sports',
   },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // LATEST NEWS (curated)
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 // Tags and categories used to pull fresh articles from Supabase
 const INFLUENCER_TAGS = [
@@ -209,16 +209,16 @@ async function fetchCreatorNews(): Promise<ArticleRow[]> {
     }
 
     // Sort by publish_date descending (string sort works for "Month D, YYYY" if same year)
-    // Use published_at if available — fall back to array order (already sorted)
+    // Use published_at if available � fall back to array order (already sorted)
     return deduped.slice(0, 12);
   } catch {
     return [];
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // PAGE
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 export default async function CreatorHubPage() {
   const liveNews = await fetchCreatorNews();
@@ -245,30 +245,30 @@ export default async function CreatorHubPage() {
         subtitle="Profiles, news, and culture covering the biggest names in content creation, fitness, YouTube, golf, and beyond."
         meta={
           <>
-            <span>🎥 Creator Profiles</span>
-            <span className="hidden md:inline">•</span>
-            <span>📰 Breaking News</span>
-            <span className="hidden md:inline">•</span>
-            <span>🌍 Updated 2026</span>
+            <span>?? Creator Profiles</span>
+            <span className="hidden md:inline">�</span>
+            <span>?? Breaking News</span>
+            <span className="hidden md:inline">�</span>
+            <span>?? Updated 2026</span>
           </>
         }
       >
 
-        {/* ── Coverage Overview ──────────────────────────────────────────── */}
+        {/* -- Coverage Overview -------------------------------------------- */}
         <Hub.InfoGrid
           title="Coverage Overview"
-          icon="📊"
+          icon="??"
           items={[
             { label: 'Creator Profiles', value: `${PROFILES.length}` },
-            { label: 'Categories', value: 'Fitness · Golf · Business · Lifestyle' },
-            { label: 'Platforms Tracked', value: 'YouTube · TikTok · Instagram' },
+            { label: 'Categories', value: 'Fitness � Golf � Business � Lifestyle' },
+            { label: 'Platforms Tracked', value: 'YouTube � TikTok � Instagram' },
             { label: 'Live Articles', value: `${liveNews.length}` },
           ]}
           columns={4}
         />
 
-        {/* ── Creator Profiles ───────────────────────────────────────────── */}
-        <Hub.Section title="Creator Profiles" icon="🌟" variant="card">
+        {/* -- Creator Profiles --------------------------------------------- */}
+        <Hub.Section title="Creator Profiles" icon="??" variant="card">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {PROFILES.map((profile) => (
               <Hub.Card
@@ -285,8 +285,8 @@ export default async function CreatorHubPage() {
           </div>
         </Hub.Section>
 
-        {/* ── Latest News ────────────────────────────────────────────────── */}
-        <Hub.Section title="Latest News" icon="📰" variant="default">
+        {/* -- Latest News -------------------------------------------------- */}
+        <Hub.Section title="Latest News" icon="??" variant="default">
           {liveNews.length > 0 ? (
             <div className="space-y-4">
               {liveNews.map((article) => (
@@ -296,7 +296,7 @@ export default async function CreatorHubPage() {
                   title={article.title}
                   badge="NEWS"
                   thumbnail={article.thumbnail_src}
-                  meta={`${article.publish_date}${article.category && article.category !== 'Creator' ? ` · ${article.category}` : ''}`}
+                  meta={`${article.publish_date}${article.category && article.category !== 'Creator' ? ` � ${article.category}` : ''}`}
                 />
               ))}
             </div>
@@ -305,44 +305,44 @@ export default async function CreatorHubPage() {
           )}
         </Hub.Section>
 
-        {/* ── Browse by Category ─────────────────────────────────────────── */}
-        <Hub.Section title="Browse by Category" icon="🗂️" variant="card">
+        {/* -- Browse by Category ------------------------------------------- */}
+        <Hub.Section title="Browse by Category" icon="???" variant="card">
           <Hub.LinkGrid
             columns={3}
             items={[
               {
                 href: '/creator/tren-twins',
-                emoji: '💪',
+                emoji: '??',
                 label: 'Fitness',
                 sub: 'Tren Twins, Diamond Gym, DaddyWellness',
               },
               {
                 href: '/creator/iman-gadzhi',
-                emoji: '💼',
+                emoji: '??',
                 label: 'Business',
                 sub: 'Iman Gadzhi, Serge Gatari',
               },
               {
                 href: '/creator/bryson-dechambeau',
-                emoji: '⛳',
+                emoji: '?',
                 label: 'Sports',
                 sub: 'Bryson DeChambeau',
               },
               {
                 href: '/creator/mika-lafuente',
-                emoji: '✨',
+                emoji: '?',
                 label: 'Lifestyle',
                 sub: 'Mika Lafuente, queenkalin, yellz0',
               },
               {
                 href: '/creator/mrbeast-launches-beast-games-season-2-casting',
-                emoji: '🎬',
+                emoji: '??',
                 label: 'YouTube',
                 sub: 'MrBeast, Steve Will Do It',
               },
               {
                 href: '/creator',
-                emoji: '🌐',
+                emoji: '??',
                 label: 'All Creators',
                 sub: 'Full directory',
               },

@@ -10,6 +10,18 @@ type Hub = { label: string; href: string; items: NavItem[]; cols?: 1 | 2 };
 
 const HUBS: Hub[] = [
   {
+    label: 'Local',
+    href: '/local',
+    items: [
+      { label: 'All Local', href: '/local' },
+      { label: 'Austin', href: '/local/austin' },
+      { label: 'Houston', href: '/local/houston' },
+      { label: 'Greater Texas', href: '/local/greater-texas' },
+      { label: 'Local US News', href: '/local/us-news' },
+      { label: 'Mexico + Canada', href: '/local/mexico-canada' },
+    ],
+  },
+  {
     label: 'Soccer',
     href: '/soccer',
     items: [
@@ -72,10 +84,27 @@ const HUBS: Hub[] = [
       { label: 'All Cars', href: '/cars' },
     ],
   },
+  {
+    label: 'Investigate',
+    href: '/service',
+    items: [
+      { label: 'All Services', href: '/service' },
+      { label: 'Surveillance', href: '/service/surveillance' },
+      { label: 'Infidelity Investigations', href: '/service/infidelity-investigations' },
+      { label: 'Missing Persons', href: '/service/missing-persons' },
+      { label: 'Background Checks', href: '/service/background-checks' },
+      { label: 'Skip Tracing', href: '/service/skip-tracing' },
+      { label: 'Child Custody', href: '/service/child-custody-investigations' },
+      { label: 'Digital Forensics', href: '/service/digital-forensics' },
+      { label: 'Corporate Investigations', href: '/service/corporate-investigations' },
+      { label: 'Tip the Newsroom', href: '/service/tip-the-newsroom' },
+    ],
+    cols: 2,
+  },
 ];
 
 const LINK_CLS =
-  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap hover:bg-[#b45309] hover:text-white transition-colors';
+  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap text-gray-200 hover:bg-[#d97706] hover:text-white transition-colors';
 
 export default function MainNav() {
   const [openHub, setOpenHub] = useState<string | null>(null);
@@ -95,15 +124,15 @@ export default function MainNav() {
   };
 
   return (
-    <div className="border-t border-[#0f172a]/15 bg-white">
+    <div className="border-t border-white/10 bg-[#141414]">
       <div className="container mx-auto px-4">
         <nav className="flex items-center">
 
           {/* Home icon */}
           <Link
-            href="/"
+            href="/news"
             aria-label="Home"
-            className={`${LINK_CLS} border-r border-[#0f172a]/20 shrink-0 flex items-center`}
+            className={`${LINK_CLS} border-r border-white/10 shrink-0 flex items-center`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
               <path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7A1 1 0 0 0 3 11h1v6a1 1 0 0 0 1 1h4v-4h2v4h4a1 1 0 0 0 1-1v-6h1a1 1 0 0 0 .707-1.707l-7-7Z" />
@@ -123,7 +152,7 @@ export default function MainNav() {
                 >
                   <Link
                     href={hub.href}
-                    className={`${LINK_CLS} border-r border-[#0f172a]/20 flex items-center gap-1 ${isOpen ? 'bg-[#0f172a] text-white' : ''}`}
+                    className={`${LINK_CLS} border-r border-white/10 flex items-center gap-1 ${isOpen ? 'bg-[#d97706] text-white' : ''}`}
                   >
                     {hub.label}
                     <svg
@@ -137,7 +166,7 @@ export default function MainNav() {
 
                   {isOpen && (
                     <div
-                      className="absolute top-full left-0 z-[200] bg-white rounded-b-xl shadow-xl mt-0 overflow-hidden"
+                      className="absolute top-full left-0 z-[200] bg-[#1c1c1e] rounded-b-xl shadow-2xl mt-0 overflow-hidden"
                       style={{ borderTopColor: 'var(--brand-accent)', borderTopWidth: '3px', borderTopStyle: 'solid' }}
                       onMouseEnter={cancelClose}
                       onMouseLeave={scheduleClose}
@@ -148,12 +177,16 @@ export default function MainNav() {
                             key={item.href}
                             href={item.href}
                             onClick={() => setOpenHub(null)}
-                            className={`flex items-center gap-3 py-2.5 px-3 bg-[#faf9f6] rounded-md shadow-sm border border-gray-100 hover:border-[#b45309] hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 ${idx === 0 && hub.cols === 2 ? 'col-span-2 bg-[#0f172a] hover:bg-[#0f172a] text-white border-none' : ''}`}
+                            className={`flex items-center gap-3 py-2.5 px-3 bg-[#2d2d2d] rounded-md shadow-sm border border-white/10 hover:border-[#d97706] hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 ${idx === 0 && hub.cols === 2 ? 'col-span-2 bg-[#d97706] hover:bg-[#f59e0b] text-white border-none' : ''}`}
                           >
-                            <span className={`text-[10px] font-black transition-colors leading-none tracking-[.1em] uppercase ${idx === 0 && hub.cols === 2 ? 'text-white' : 'text-[#0f172a] group-hover:text-[#b45309]'}`}>
+                            <span
+                              className={`text-[10px] font-black transition-colors leading-none tracking-[.1em] uppercase ${idx === 0 && hub.cols === 2 ? 'text-white' : 'text-gray-200 group-hover:text-[#d97706]'}`}
+                            >
                               {item.label}
                             </span>
-                            <span className={`ml-auto transition-colors ${idx === 0 && hub.cols === 2 ? 'text-gray-400' : 'text-gray-300 group-hover:text-[#b45309]'}`}>
+                            <span
+                              className={`ml-auto transition-colors ${idx === 0 && hub.cols === 2 ? 'text-white/70' : 'text-gray-500 group-hover:text-[#d97706]'}`}
+                            >
                               →
                             </span>
                           </Link>
@@ -169,12 +202,12 @@ export default function MainNav() {
           {/* Right controls */}
           <div className="flex items-center ml-auto shrink-0">
             <Link
-              href="/site-index"
-              className={`${LINK_CLS} border-l border-r border-[#0f172a]/20 hidden sm:block`}
+              href="/about"
+              className={`${LINK_CLS} border-l border-r border-white/10 hidden sm:block`}
             >
-              Index
+              About
             </Link>
-            <div className="hidden sm:block border-r border-[#0f172a]/20">
+            <div className="hidden sm:block border-r border-white/10">
               <NavUserButton />
             </div>
             {/* Mobile hamburger */}

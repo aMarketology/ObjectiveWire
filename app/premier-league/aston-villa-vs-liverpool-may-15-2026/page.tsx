@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 3600;
 
 const SLUG = '/premier-league/aston-villa-vs-liverpool-may-15-2026';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Aston Villa vs Liverpool May 15 | Champions League on the Line',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       'Both on 59 points with two games left. Whoever wins at Villa Park on May 15 controls their Champions League destiny.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Conan D. Boyle'],
     publishedTime: '2026-05-14T12:00:00Z',
     modifiedTime: '2026-05-14T12:00:00Z',
@@ -54,7 +54,7 @@ export default function AstonVillaVsLiverpoolPage() {
         title="Aston Villa vs Liverpool May 15 | Champions League on the Line"
         description="Aston Villa host Liverpool at Villa Park on May 15, 2026 at 20:00 BST. Both clubs are tied on 59 points, with Champions League qualification decided by this result."
         author="Conan D. Boyle"
-        authorUrl="https://www.owire.org/authors/conan-boyle"
+        authorUrl="https://www.objectwire.org/authors/conan-boyle"
         publishedTime="2026-05-14T12:00:00Z"
         modifiedTime="2026-05-14T12:00:00Z"
         articleUrl={ARTICLE_URL}

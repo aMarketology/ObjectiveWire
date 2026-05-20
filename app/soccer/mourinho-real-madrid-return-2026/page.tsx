@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400;
 
 const SLUG = '/soccer/mourinho-real-madrid-return-2026';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Jose Mourinho Real Madrid Return | 2026 Appointment',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       'Mourinho is back at the Bernabeu after 13 years, confirmed by Florentino Perez. Real Madrid have gone two consecutive seasons without a major trophy.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Jack Brennan'],
     publishedTime: '2026-05-13T18:00:00Z',
     modifiedTime: '2026-05-13T18:00:00Z',
@@ -54,7 +54,7 @@ export default function MourinhoRealMadrid2026() {
         title="Jose Mourinho Real Madrid Return | 2026 Appointment"
         description="Jose Mourinho is returning to Real Madrid as manager in 2026, 13 years after his first spell. Florentino Perez confirmed the appointment as Los Blancos end two trophy-less seasons."
         author="Jack Brennan"
-        authorUrl="https://www.owire.org/authors/jack-brennan"
+        authorUrl="https://www.objectwire.org/authors/jack-brennan"
         publishedTime="2026-05-13T18:00:00Z"
         modifiedTime="2026-05-13T18:00:00Z"
         articleUrl={ARTICLE_URL}

@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400;
 
 const SLUG = '/podcasts/allin';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 const VIDEO_ID = '10MdOvK-aG4';
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       'Chamath, Sacks, Jason, and Friedberg on the SpaceX-Anthropic compute deal, Anthropic monopoly fears, the White House AI safety panic, and trading the AI boom.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Jack Sterling'],
     publishedTime: '2026-05-13T19:00:00Z',
     modifiedTime: '2026-05-13T19:00:00Z',
@@ -57,7 +57,7 @@ export default function AllInPodcastRecap() {
         title="All-In Podcast | SpaceX-Anthropic Deal, AI Monopoly, FDA for AI"
         description="All-In Podcast recap: Chamath, Sacks, Jason, and Friedberg break down the SpaceX-Anthropic compute deal, whether Anthropic is the next AI monopoly, the White House FDA-for-AI proposal, and how to trade the AI boom."
         author="Jack Sterling"
-        authorUrl="https://www.owire.org/authors/jack-sterling"
+        authorUrl="https://www.objectwire.org/authors/jack-sterling"
         publishedTime="2026-05-13T19:00:00Z"
         modifiedTime="2026-05-13T19:00:00Z"
         articleUrl={ARTICLE_URL}

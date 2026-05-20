@@ -1,7 +1,7 @@
 ﻿import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'ObjectWire — Breaking news, technology, and digital culture';
+export const alt = 'Objective Wire — Licensed PI Agency & Investigative Newsroom, Austin TX';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -16,13 +16,13 @@ export default function Image() {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'flex-end',
-          background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%)',
+          background: 'linear-gradient(135deg, #1c1c1e 0%, #2d2d2d 60%, #3d2b00 100%)',
           padding: '64px',
-          fontFamily: 'system-ui, sans-serif',
+          fontFamily: 'Georgia, "Times New Roman", serif',
           position: 'relative',
         }}
       >
-        {/* Accent bar top */}
+        {/* Amber accent bar — top */}
         <div
           style={{
             position: 'absolute',
@@ -30,73 +30,118 @@ export default function Image() {
             left: 0,
             right: 0,
             height: '6px',
-            background: 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%)',
+            background: 'linear-gradient(90deg, #d97706 0%, #f59e0b 50%, #d97706 100%)',
           }}
         />
-        {/* Wordmark */}
+
+        {/* PI badge — top right */}
         <div
           style={{
+            position: 'absolute',
+            top: '40px',
+            right: '64px',
             display: 'flex',
-            alignItems: 'center',
-            gap: '16px',
-            marginBottom: '32px',
+            flexDirection: 'column',
+            alignItems: 'flex-end',
+            gap: '4px',
           }}
         >
           <div
             style={{
-              width: '48px',
-              height: '48px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '28px',
-              fontWeight: 900,
-              color: '#fff',
+              gap: '8px',
+              background: 'rgba(217, 119, 6, 0.15)',
+              border: '1px solid rgba(217, 119, 6, 0.4)',
+              borderRadius: '6px',
+              padding: '6px 14px',
             }}
           >
-            O
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#d97706' }} />
+            <span style={{ fontSize: '13px', fontWeight: 700, color: '#d97706', letterSpacing: '0.15em', fontFamily: 'monospace' }}>
+              LICENSED PI AGENCY
+            </span>
           </div>
+          <span style={{ fontSize: '11px', color: '#6b6b6b', letterSpacing: '0.1em', fontFamily: 'monospace' }}>
+            501(c)(3) NONPROFIT · AUSTIN, TX
+          </span>
+        </div>
+
+        {/* Wordmark */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'baseline',
+            gap: '0px',
+            marginBottom: '28px',
+          }}
+        >
           <span
             style={{
-              fontSize: '36px',
-              fontWeight: 800,
-              color: '#ffffff',
-              letterSpacing: '-0.5px',
+              fontSize: '72px',
+              fontWeight: 900,
+              color: '#d97706',
+              fontStyle: 'italic',
+              letterSpacing: '-2px',
+              lineHeight: 1,
             }}
           >
-            ObjectWire
+            objective
+          </span>
+          <span
+            style={{
+              fontSize: '72px',
+              fontWeight: 900,
+              color: '#f5f0e8',
+              letterSpacing: '-2px',
+              lineHeight: 1,
+            }}
+          >
+            Wire
           </span>
         </div>
 
         {/* Tagline */}
         <div
           style={{
-            fontSize: '52px',
-            fontWeight: 700,
-            color: '#ffffff',
-            lineHeight: 1.1,
-            letterSpacing: '-1px',
-            maxWidth: '900px',
-            marginBottom: '24px',
+            fontSize: '28px',
+            fontWeight: 400,
+            color: '#a3a3a3',
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            fontFamily: 'monospace',
+            marginBottom: '36px',
           }}
         >
-          Breaking news, technology, and digital culture
+          Investigate · Document · Publish
         </div>
 
-        {/* Descriptor */}
+        {/* Bottom descriptor row */}
         <div
           style={{
-            fontSize: '22px',
-            color: '#94a3b8',
-            fontWeight: 400,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '24px',
           }}
         >
-          owire.org
+          <span
+            style={{
+              fontSize: '18px',
+              color: '#d97706',
+              fontWeight: 700,
+              fontFamily: 'monospace',
+              letterSpacing: '0.05em',
+            }}
+          >
+            objectwire.org
+          </span>
+          <span style={{ color: '#4b4b4b', fontSize: '18px' }}>|</span>
+          <span style={{ fontSize: '16px', color: '#6b6b6b', fontFamily: 'monospace' }}>
+            Austin, Texas
+          </span>
         </div>
 
-        {/* Bottom accent line */}
+        {/* Amber accent bar — bottom */}
         <div
           style={{
             position: 'absolute',
@@ -104,7 +149,7 @@ export default function Image() {
             left: 0,
             right: 0,
             height: '3px',
-            background: 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%)',
+            background: 'linear-gradient(90deg, #d97706 0%, #f59e0b 50%, #d97706 100%)',
           }}
         />
       </div>

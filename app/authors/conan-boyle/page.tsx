@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,20 +11,20 @@ export const metadata: Metadata = {
   title: 'Conan Boyle, ObjectWire Science Writer',
   description:
     'Conan Boyle is a founding writer at ObjectWire in Austin, Texas, covering biotechnology, medical research, AI hardware, and emerging technology.',
-  alternates: { canonical: 'https://www.owire.org/authors/conan-boyle' },
+  alternates: { canonical: 'https://www.objectwire.org/authors/conan-boyle' },
   openGraph: {
     title: 'Conan Boyle, ObjectWire Science Writer',
     description: 'Founding writer at ObjectWire covering biotech, medical research, AI hardware, and emerging technology.',
-    url: 'https://www.owire.org/authors/conan-boyle',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org/authors/conan-boyle',
+    siteName: 'Objective Wire',
     type: 'profile',
-    images: [{ url: 'https://www.owire.org/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, ObjectWire science and technology writer' }],
+    images: [{ url: 'https://www.objectwire.org/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, ObjectWire science and technology writer' }],
   },
   twitter: {
     card: 'summary',
     title: 'Conan Boyle, ObjectWire Science Writer',
     description: 'Founding writer at ObjectWire. Biotech, medical research, AI hardware.',
-    images: ['https://www.owire.org/influncer/author/conan_doyle.jpg'],
+    images: ['https://www.objectwire.org/influncer/author/conan_doyle.jpg'],
   },
 };
 
@@ -46,14 +46,14 @@ export default function ConanBoyleAuthorPage() {
         name="Conan Boyle"
         jobTitle="Science & Technology Writer"
         description="Conan Boyle is the founding writer at ObjectWire covering biotechnology, CRISPR, medical research, AI hardware, video games, and emerging technologies."
-        url="https://www.owire.org/authors/conan-boyle"
+        url="https://www.objectwire.org/authors/conan-boyle"
         knowsAbout={['Biotechnology', 'CRISPR', 'Medical Research', 'AI Hardware', 'Emerging Technology', 'Neuroscience', 'Video Games']}
         alumniOf={[{ name: 'North Carolina State University', department: 'Journalism' }]}
         location={{ city: 'Austin', region: 'TX' }}
         articleCount={22}
       />
 
-      {/* â”€â”€ Full-bleed Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Full-bleed Header ───────────────────────────────────────── */}
       <div className="bg-gray-950 text-white">
         <div className="max-w-5xl mx-auto px-6 pt-10 pb-14">
           {/* Breadcrumb */}
@@ -80,7 +80,7 @@ export default function ConanBoyleAuthorPage() {
             {/* Identity */}
             <div className="flex-1">
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-500 mb-2 font-mono">
-                Founding Writer Â· ObjectWire
+                Founding Writer · ObjectWire
               </p>
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Conan Boyle
@@ -107,21 +107,21 @@ export default function ConanBoyleAuthorPage() {
         </div>
       </div>
 
-      {/* â”€â”€ Detail Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Detail Strip ───────────────────────────────────────────── */}
       <div className="bg-gray-900 text-white border-b border-gray-800">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center gap-6 text-xs font-mono text-gray-400">
-          <span>ðŸ“ Austin, Texas</span>
-          <span>ðŸŽ“ NC State University, Journalism</span>
-          <span>ðŸ”¬ Science &amp; Technology Desk</span>
-          <span>ðŸ“… Founding Writer Â· 2023</span>
+          <span>📍 Austin, Texas</span>
+          <span>🎓 NC State University, Journalism</span>
+          <span>🔬 Science &amp; Technology Desk</span>
+          <span>📅 Founding Writer · 2023</span>
         </div>
       </div>
 
-      {/* â”€â”€ Body â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Body ───────────────────────────────────────────────────── */}
       <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-          {/* â”€â”€ Sidebar â”€â”€ */}
+          {/* ── Sidebar ── */}
           <aside className="lg:col-span-4 space-y-7">
             {/* Beats */}
             <div className="border border-gray-200 p-6">
@@ -155,18 +155,18 @@ export default function ConanBoyleAuthorPage() {
             <div className="bg-gray-950 text-white p-6 space-y-3">
               <h2 className="text-[10px] uppercase tracking-widest font-black text-gray-500">Standards</h2>
               <Link href="/editorial-standards" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                Editorial Standards â†’
+                Editorial Standards →
               </Link>
               <Link href="/corrections" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                Corrections Policy â†’
+                Corrections Policy →
               </Link>
               <Link href="/about" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                About ObjectWire â†’
+                About ObjectWire →
               </Link>
             </div>
           </aside>
 
-          {/* â”€â”€ Main column â”€â”€ */}
+          {/* ── Main column ── */}
           <div className="lg:col-span-8 space-y-12">
 
             {/* Bio */}
@@ -193,7 +193,7 @@ export default function ConanBoyleAuthorPage() {
                   His gaming coverage brings the same analytical precision to video games. He has
                   written extensively on Nintendo&rsquo;s Switch 2 ecosystem, including the technical
                   breakdown of Donkey Kong Bananza&rsquo;s 347-million-voxel destruction engine
-                  revealed at GDC 2026, as well as Pokémon Pokopia&rsquo;s record-breaking 2.2 million
+                  revealed at GDC 2026, as well as Pok�mon Pokopia&rsquo;s record-breaking 2.2 million
                   launch copies, and Bungie&rsquo;s Marathon balance patches.
                 </p>
                 <p>
@@ -219,7 +219,7 @@ export default function ConanBoyleAuthorPage() {
                     date: 'March 12, 2026',
                   },
                   {
-                    label: 'Pokémon Pokopia, 2.2M Copies in 4 Days',
+                    label: 'Pok�mon Pokopia, 2.2M Copies in 4 Days',
                     detail: 'Switch 2 launch record, Nintendo stock +15%, Japan accounting for nearly 1M of the first-week units.',
                     href: '/video-games/nintendo/pokemon-pokopia-2-million-copies-4-days-switch-2',
                     date: 'March 12, 2026',
@@ -259,12 +259,12 @@ export default function ConanBoyleAuthorPage() {
         </div>
       </div>
 
-      {/* â”€â”€ Footer strip â”€â”€ */}
+      {/* ── Footer strip ── */}
       <div className="border-t-2 border-gray-900 mt-8">
         <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400 font-mono">Â© 2026 ObjectWire. All rights reserved.</p>
+          <p className="text-xs text-gray-400 font-mono">© 2026 ObjectWire. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/authors" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">â† All Authors</Link>
+            <Link href="/authors" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">← All Authors</Link>
             <Link href="/about" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">About</Link>
             <Link href="/editorial-standards" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">Standards</Link>
           </div>

@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Page renders dynamically — content fetched from Supabase at request time.
@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Our Authors | Editorial Standards",
   description: "ZeroWire is a verified news platform driven by our team of journalists, analysts, and contributors.",
   alternates: {
-    canonical: 'https://www.owire.org/editorial-standards/authors',
+    canonical: 'https://www.objectwire.org/editorial-standards/authors',
   },
   openGraph: {
     title: "Our Authors | Editorial Standards",
     description: "ZeroWire is a verified news platform driven by our team of journalists, analysts, and contributors.",
     type: 'article',
-    url: "https://www.owire.org/editorial-standards/authors",
+    url: "https://www.objectwire.org/editorial-standards/authors",
     siteName: 'ZeroWire',
     section: "News",
   },

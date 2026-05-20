@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,20 +11,20 @@ export const metadata: Metadata = {
   title: 'Jack Brennan, ObjectWire Investigations Reporter',
   description:
     "Jack Brennan is an investigations reporter at ObjectWire covering federal environmental policy, national security law, and regulatory agencies.",
-  alternates: { canonical: 'https://www.owire.org/authors/jack-brennan' },
+  alternates: { canonical: 'https://www.objectwire.org/authors/jack-brennan' },
   openGraph: {
     title: 'Jack Brennan, ObjectWire Investigations Reporter',
     description: 'Investigations reporter at ObjectWire covering environmental law, national security, and federal regulatory agencies.',
-    url: 'https://www.owire.org/authors/jack-brennan',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org/authors/jack-brennan',
+    siteName: 'Objective Wire',
     type: 'profile',
-    images: [{ url: 'https://www.owire.org/influncer/author/jack_brennen.JPG', width: 800, height: 800, alt: 'Jack Brennan, ObjectWire investigations reporter' }],
+    images: [{ url: 'https://www.objectwire.org/influncer/author/jack_brennen.JPG', width: 800, height: 800, alt: 'Jack Brennan, ObjectWire investigations reporter' }],
   },
   twitter: {
     card: 'summary',
     title: 'Jack Brennan, ObjectWire Investigations',
     description: 'Investigations reporter at ObjectWire. Environmental law, national security, regulatory agencies.',
-    images: ['https://www.owire.org/influncer/author/jack_brennen.JPG'],
+    images: ['https://www.objectwire.org/influncer/author/jack_brennen.JPG'],
   },
 };
 
@@ -47,7 +47,7 @@ export default function JackBrennanAuthorPage() {
         name="Jack Brennan"
         jobTitle="Investigations Reporter"
         description="Jack Brennan is ObjectWire's investigations reporter covering federal environmental policy, national security law, the Endangered Species Act, regulatory agencies, and the Trump administration."
-        url="https://www.owire.org/authors/jack-brennan"
+        url="https://www.objectwire.org/authors/jack-brennan"
         knowsAbout={['Environmental Law', 'National Security', 'Federal Agencies', 'Energy Policy', 'Regulatory Affairs', 'Investigations']}
         location={{ city: 'Washington', region: 'D.C.' }}
         articleCount={10}
@@ -109,10 +109,10 @@ export default function JackBrennanAuthorPage() {
       {/* Detail Strip */}
       <div className="bg-gray-950 text-white border-b border-gray-800">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center gap-6 text-xs font-mono text-gray-400">
-          <span>📍 Washington, D.C.</span>
-          <span>🏢 ObjectWire Newsroom</span>
-          <span>🗂 Investigations Desk</span>
-          <span>📅 Active Since 2024</span>
+          <span>?? Washington, D.C.</span>
+          <span>?? ObjectWire Newsroom</span>
+          <span>?? Investigations Desk</span>
+          <span>?? Active Since 2024</span>
         </div>
       </div>
 

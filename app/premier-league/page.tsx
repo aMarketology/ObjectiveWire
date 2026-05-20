@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
 
@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Premier League News & Analysis | oWire',
   description: 'The latest Premier League news, results, transfers, and analysis from oWire.',
-  alternates: { canonical: 'https://www.owire.org/premier-league' },
+  alternates: { canonical: 'https://www.objectwire.org/premier-league' },
 };
 
 export default async function PremierLeagueHubPage() {

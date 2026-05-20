@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '@/lib/hooks/use-auth';
@@ -123,7 +123,7 @@ export default function EngagementBar({
   }, [requireAuth, saveLoading, slug, title, url, image, category]);
 
   const handleShare = useCallback(async () => {
-    const fullUrl = `https://www.owire.org${url}`;
+    const fullUrl = `https://www.objectwire.org${url}`;
 
     if (navigator.share) {
       try {

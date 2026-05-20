@@ -1,4 +1,4 @@
-﻿// app/saved/page.tsx — Saved articles page
+// app/saved/page.tsx � Saved articles page
 
 import type { Metadata } from 'next';
 import SavedArticles    from '@/components/discovery/SavedArticles';
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     title: "Saved Articles | ObjectWire",
     description: "Your bookmarked articles on ObjectWire.",
     type: 'article',
-    url: 'https://www.owire.org',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org',
+    siteName: 'Objective Wire',
     section: "News",
   },
   twitter: {

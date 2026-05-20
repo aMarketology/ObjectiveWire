@@ -1,7 +1,7 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
     '2026 World Cup host cities',
   ],
   alternates: {
-    canonical: `https://www.owire.org${SLUG}`,
+    canonical: `https://www.objectwire.org${SLUG}`,
   },
   openGraph: {
     title: 'World Cup 2026 | DHS Shutdown Freezes $900M in Host-City',
     description:
       'All 11 U.S. host cities testified before Congress that a DHS partial shutdown has frozen $625M in World Cup security grants and $500M in counter-drone',
     type: 'article',
-    url: `https://www.owire.org${SLUG}`,
-    siteName: 'ObjectWire',
+    url: `https://www.objectwire.org${SLUG}`,
+    siteName: 'Objective Wire',
     authors: ['Alfansa'],
     publishedTime: '2026-02-25T16:00:00Z',
     modifiedTime: '2026-02-25T16:00:00Z',

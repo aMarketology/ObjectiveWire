@@ -1,435 +1,412 @@
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import type { Metadata } from 'next';
-import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
-import { ArticleSlider } from '@/components/discovery/ArticleSlider';
-import { getPopularLeadSlug } from '@/lib/popular-lead';
+
+export const dynamic = 'force-static';
+export const revalidate = false;
+
+const PAGE_URL = 'https://www.owire.org';
 
 export const metadata: Metadata = {
-  title: 'oWire | Sports, Creators & Cars',
+  title: 'ObjectWire | Austin Investigative Media Agency',
   description:
-    'oWire covers the athletes, influencers, and creators everyone is talking about — World Cup, MrBeast, Logan Paul, Ferrari, MLB, and more.',
-  alternates: { canonical: 'https://www.owire.org' },
+    'ObjectWire is an Austin-based investigative media company. Licensed PI services, investigative journalism, document review, and newsroom tips. Serving Travis County and Central Texas.',
+  keywords: [
+    'investigative services Austin TX',
+    'private investigator Austin Texas',
+    'Austin PI agency',
+    'investigative journalism Austin',
+    'surveillance Austin Texas',
+    'missing persons Austin',
+    'digital forensics Austin',
+    'background check Austin TX',
+    'corporate investigations Austin',
+    'skip tracing Austin Texas',
+    'tip the newsroom Austin',
+    'FOIA Austin Texas',
+    'ObjectWire investigative services',
+  ],
+  alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'oWire | Sports, Creators & Cars',
-    description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
-    url: 'https://www.owire.org',
-    siteName: 'oWire',
+    title: 'ObjectWire | Austin Investigative Media Agency',
+    description:
+      'Austin investigative media company. Licensed PI services and investigative journalism. Surveillance, missing persons, digital forensics, background checks, corporate investigations, FOIA, and newsroom tips.',
     type: 'website',
+    url: PAGE_URL,
+    siteName: 'ObjectWire',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'oWire | Sports, Creators & Cars',
-    description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
+    title: 'ObjectWire | Austin Investigative Media Agency',
+    description:
+      'Austin PI and investigative journalism services. Surveillance, missing persons, digital forensics, and newsroom tips.',
   },
 };
 
-export const revalidate = 3600;
-
-// ── Article shape ─────────────────────────────────────────────────────────────
-
-type Article = {
-  id: string;
-  title: string;
-  excerpt?: string;
-  href: string;
-  publishDate: string;
-  category: string;
-  author: string;
-  imageUrl?: string;
-  imageAlt?: string;
-  breaking?: boolean;
-  featured?: boolean;
-  exclusive?: boolean;
-  tags?: string[];
+const LOCAL_BUSINESS_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'ProfessionalService'],
+  name: 'ObjectWire Investigative Services',
+  description:
+    'Austin-based investigative media company offering licensed private investigator services including surveillance, missing persons, digital forensics, background checks, infidelity investigations, skip tracing, child custody, workers compensation fraud, and corporate investigations.',
+  url: PAGE_URL,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Austin',
+    addressRegion: 'TX',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 30.2672,
+    longitude: -97.7431,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Austin', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'AdministrativeArea', name: 'Travis County' },
+    { '@type': 'AdministrativeArea', name: 'Williamson County' },
+    { '@type': 'AdministrativeArea', name: 'Hays County' },
+  ],
+  knowsAbout: [
+    'Private Investigation',
+    'Surveillance',
+    'Digital Forensics',
+    'Missing Persons',
+    'Background Checks',
+    'Corporate Investigations',
+    'Investigative Journalism',
+    'FOIA',
+    'Source Protection',
+    'Whistleblower Reporting',
+    'Public Records',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Investigative Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surveillance Investigations', url: 'https://www.owire.org/service/surveillance' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Infidelity Investigations', url: 'https://www.owire.org/service/infidelity-investigations' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Missing Persons Investigations', url: 'https://www.owire.org/service/missing-persons' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Background Check Investigations', url: 'https://www.owire.org/service/background-checks' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Skip Tracing', url: 'https://www.owire.org/service/skip-tracing' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Child Custody Investigations', url: 'https://www.owire.org/service/child-custody-investigations' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workers Compensation Fraud', url: 'https://www.owire.org/service/workers-compensation-fraud' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Corporate Investigations', url: 'https://www.owire.org/service/corporate-investigations' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Digital Forensics', url: 'https://www.owire.org/service/digital-forensics' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Investigative Reporting', url: 'https://www.owire.org/service/investigative-reporting' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Newsroom Tip Submission', url: 'https://www.owire.org/service/tip-the-newsroom' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Document Review and FOIA', url: 'https://www.owire.org/service/document-review' } },
+    ],
+  },
+  sameAs: ['https://www.owire.org'],
 };
 
-// Strip unresolved template literal images (${...}) and wrong-domain images
-function cleanImageUrl(url: string | null | undefined): string | undefined {
-  if (!url) return undefined;
-  if (url.includes('${') || url.includes('objectwire.com') || url.includes('objectwire.org/og')) return undefined;
-  return url;
-}
-
-function fromRegistry(e: ContentEntry): Article {
-  return {
-    id: e.slug,
-    title: e.title.replace(/\s*[|—–\-]\s*(ObjectWire|oWire|ZWire).*$/i, '').trim(),
-    excerpt: e.description,
-    href: e.slug,
-    publishDate: e.publishDate,
-    category: e.category,
-    author: e.author,
-    imageUrl: cleanImageUrl(e.imageUrl),
-    imageAlt: e.imageAlt,
-    featured: e.featured,
-    tags: e.tags,
-  };
-}
-
-// ── Category palette ──────────────────────────────────────────────────────────
-
-const CAT_BG: Record<string, string> = {
-  sports:           'bg-[#0f172a]',
-  soccer:           'bg-[#15803d]',
-  'world-cup':      'bg-[#15803d]',
-  'premier-league': 'bg-[#4f46e5]',
-  mls:              'bg-[#0f766e]',
-  mlb:              'bg-[#b91c1c]',
-  golf:             'bg-[#10b981]',
-  creator:          'bg-[#b45309]',
-  creators:         'bg-[#b45309]',
-  youtube:          'bg-[#dc2626]',
-  cars:             'bg-[#1e3a5f]',
-};
-
-const CAT_GRADIENT: Record<string, string> = {
-  sports:           'from-[#0f172a] to-[#1e3a5f]',
-  mlb:              'from-[#7f1d1d] to-[#b91c1c]',
-  mls:              'from-[#0f766e] to-[#0d9488]',
-  'world-cup':      'from-[#14532d] to-[#15803d]',
-  creator:          'from-[#78350f] to-[#b45309]',
-  youtube:          'from-[#7f1d1d] to-[#dc2626]',
-  cars:             'from-[#0f172a] to-[#1e3a5f]',
-};
-
-function catBg(cat: string): string {
-  return CAT_BG[cat.toLowerCase()] ?? 'bg-[#0f172a]';
-}
-
-function catGradient(cat: string): string {
-  return CAT_GRADIENT[cat.toLowerCase()] ?? 'from-[#0f172a] to-[#1e3a5f]';
-}
-
-function timeAgo(dateStr: string): string {
-  if (!dateStr) return '';
-  const diff = Date.now() - new Date(dateStr).getTime();
-  const hours = Math.floor(diff / 3_600_000);
-  const days  = Math.floor(diff / 86_400_000);
-  if (hours < 1)  return 'Just now';
-  if (hours < 24) return `${hours}h ago`;
-  if (days === 1) return 'Yesterday';
-  if (days < 7)   return `${days}d ago`;
-  return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
-
-// ── Section helpers ───────────────────────────────────────────────────────────
-
-const BEATS = [
-  { label: 'World Cup',      href: '/world-cup',       icon: '🏆' },
-  { label: 'MLB',            href: '/mlb',             icon: '⚾' },
-  { label: 'MLS',            href: '/mls',             icon: '🥅' },
-  { label: 'Soccer',         href: '/soccer',          icon: '⚽' },
-  { label: 'Golf',           href: '/golf',            icon: '⛳' },
-  { label: 'YouTube',        href: '/youtube',         icon: '📺' },
-  { label: 'Creators',       href: '/creator',         icon: '⭐' },
-  { label: 'Cars',           href: '/cars',            icon: '🏎️' },
+const SERVICES = [
+  { href: '/service/surveillance', label: 'Surveillance', icon: '🎥', desc: 'Covert photo and video documentation for domestic, legal, and corporate cases.' },
+  { href: '/service/infidelity-investigations', label: 'Infidelity Investigations', icon: '🔍', desc: 'Cheating spouse and domestic partner cases with timestamped evidence.' },
+  { href: '/service/missing-persons', label: 'Missing Persons', icon: '📍', desc: 'Locate missing adults, runaways, and estranged family members.' },
+  { href: '/service/background-checks', label: 'Background Checks', icon: '📋', desc: 'Criminal history, employment verification, and identity research.' },
+  { href: '/service/skip-tracing', label: 'Skip Tracing', icon: '🗺️', desc: 'Locate debtors, witnesses, defendants, and estranged contacts.' },
+  { href: '/service/child-custody-investigations', label: 'Child Custody', icon: '⚖️', desc: 'Parental surveillance and verification for Travis County family court.' },
+  { href: '/service/workers-compensation-fraud', label: 'Workers Comp Fraud', icon: '🏥', desc: 'Claimant surveillance for insurers and defense attorneys.' },
+  { href: '/service/corporate-investigations', label: 'Corporate Investigations', icon: '🏢', desc: 'Employee misconduct, IP theft, fraud, and executive due diligence.' },
+  { href: '/service/digital-forensics', label: 'Digital Forensics', icon: '💻', desc: 'Online harassment, identity fraud, social media aliases, and dark-web exposure.' },
 ];
 
-// ── Sub-components ────────────────────────────────────────────────────────────
+const JOURNALISM_SERVICES = [
+  { href: '/service/investigative-reporting', label: 'Investigative Reporting', icon: '📰', desc: 'Published accountability journalism on public figures, institutions, and matters of public interest.' },
+  { href: '/service/tip-the-newsroom', label: 'Tip the Newsroom', icon: '📬', desc: 'Submit a confidential tip. We protect sources and pursue stories the public deserves to know.' },
+  { href: '/service/document-review', label: 'Document Review and FOIA', icon: '📁', desc: 'Submit public records, FOIA responses, or leaked materials for investigative analysis.' },
+];
 
-function CatLabel({ category, breaking }: { category: string; breaking?: boolean }) {
-  if (breaking) {
-    return (
-      <span className="inline-flex items-center gap-1.5 text-[9px] font-black px-2.5 py-1 tracking-[.2em] uppercase bg-red-600 text-white rounded-sm">
-        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0" />
-        BREAKING
-      </span>
-    );
-  }
+export default function HomePage() {
   return (
-    <span className={`inline-block text-[9px] font-black px-2.5 py-1 tracking-[.15em] uppercase text-white rounded-sm ${catBg(category)}`}>
-      {category.replace(/-/g, ' ').toUpperCase()}
-    </span>
-  );
-}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
+      />
 
-function SectionRule({ label, href }: { label: string; href?: string }) {
-  return (
-    <div className="flex items-center gap-4 mb-6 mt-12 first:mt-0">
-      <div className="h-1 w-8 bg-[#b45309] shrink-0 rounded-full" />
-      <h2 className="text-xs font-black tracking-[.25em] text-[#0f172a] uppercase whitespace-nowrap">{label}</h2>
-      <div className="h-px flex-1 bg-gradient-to-r from-[#0f172a]/20 to-transparent" />
-      {href && (
-        <Link href={href} className="text-[10px] font-black tracking-widest uppercase text-[#b45309] hover:text-[#0f172a] transition-colors whitespace-nowrap bg-[#b45309]/10 hover:bg-[#b45309]/20 px-3 py-1.5 rounded-full">
-          See All →
-        </Link>
-      )}
-    </div>
-  );
-}
+      <main className="min-h-screen bg-white dark:bg-gray-950">
 
-// Card with image or gradient fallback — never renders a broken img
-function ArticleCard({ article, size = 'md' }: { article: Article; size?: 'lg' | 'md' | 'sm' }) {
-  const aspectClass = size === 'lg' ? 'aspect-[4/3] sm:aspect-[16/9] lg:h-72' : size === 'sm' ? 'aspect-[16/9]' : 'aspect-[16/9]';
-  return (
-    <Link
-      href={article.href}
-      className="group flex flex-col bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-[#b45309]/30 transition-all duration-300 overflow-hidden transform hover:-translate-y-0.5"
-    >
-      <div className={`relative w-full ${aspectClass} overflow-hidden shrink-0`}>
-        {article.imageUrl ? (
-          <Image
-            src={article.imageUrl}
-            alt={article.imageAlt ?? article.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        ) : (
-          <div className={`w-full h-full bg-gradient-to-br ${catGradient(article.category)} flex items-center justify-center`}>
-            <span className="text-white/20 font-black text-4xl tracking-tighter">oW</span>
-          </div>
-        )}
-      </div>
-      <div className="p-4 flex flex-col flex-1">
-        <div className="mb-2">
-          <CatLabel category={article.category} breaking={article.breaking} />
-        </div>
-        <h3 className={`font-serif font-black leading-snug text-[#0f172a] group-hover:text-[#b45309] transition-colors line-clamp-3 ${size === 'lg' ? 'text-xl md:text-2xl' : 'text-base'}`}>
-          {article.title}
-        </h3>
-        {article.excerpt && size !== 'sm' && (
-          <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mt-1.5 flex-1">
-            {article.excerpt}
-          </p>
-        )}
-        <p className="text-[10px] text-gray-400 font-mono mt-3 pt-2 border-t border-gray-100">
-          {article.author} · {timeAgo(article.publishDate)}
-        </p>
-      </div>
-    </Link>
-  );
-}
+        {/* HERO */}
+        <section className="bg-gray-950 text-white">
+          <div className="container mx-auto px-4 py-16 max-w-6xl">
+            <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-4 font-mono">
+              Austin, Texas · Licensed PI Agency · 501(c)(3) Nonprofit
+            </p>
+            <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
+              Austin&apos;s Investigative<br />
+              <span className="text-purple-400">Media Agency.</span>
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
+              We investigate, document, and publish. Licensed PI services for private clients.
+              Accountability journalism for the public. The same discipline applied to both.
+            </p>
 
-// Compact headline row (no image)
-function HeadlineRow({ article }: { article: Article }) {
-  return (
-    <Link
-      href={article.href}
-      className="group flex gap-3 py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 -mx-2 px-2 transition-colors rounded"
-    >
-      {article.imageUrl && (
-        <div className="relative w-16 h-12 rounded overflow-hidden shrink-0">
-          <Image
-            src={article.imageUrl}
-            alt={article.imageAlt ?? article.title}
-            fill
-            className="object-cover"
-            sizes="64px"
-          />
-        </div>
-      )}
-      <div className="flex-1 min-w-0">
-        <CatLabel category={article.category} breaking={article.breaking} />
-        <h4 className="font-serif text-sm font-black leading-snug mt-0.5 group-hover:underline line-clamp-2 text-[#0f172a]">
-          {article.title}
-        </h4>
-        <p className="text-[10px] text-gray-400 font-mono mt-0.5">
-          {article.author} · {timeAgo(article.publishDate)}
-        </p>
-      </div>
-    </Link>
-  );
-}
-
-// ── Page ──────────────────────────────────────────────────────────────────────
-
-export default async function HomePage() {
-  const contentRegistry = await getAllEntries();
-
-  // Filter to real article pages only (2+ path segments, no dynamic routes, no meta/support)
-  const SKIP_CATS = new Set(['meta', 'support', 'legal', 'services', 'service']);
-  const allArticles: Article[] = contentRegistry
-    .filter((e) => {
-      const parts = e.slug.split('/').filter(Boolean);
-      return (
-        parts.length >= 2 &&
-        !e.slug.includes('[') &&
-        !SKIP_CATS.has(e.category.toLowerCase())
-      );
-    })
-    .map(fromRegistry)
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
-
-  // GA4 popular lead — promote most-read article to front of slider
-  try {
-    const popularSlug = await getPopularLeadSlug();
-    if (popularSlug) {
-      const idx = allArticles.findIndex((a) => a.href === popularSlug);
-      if (idx > 0) { const [p] = allArticles.splice(idx, 1); allArticles.unshift(p); }
-    }
-  } catch { /* graceful */ }
-
-  // Section splits — slugs are the source of truth for routing
-  const isSports = (a: Article) =>
-    ['sports', 'mlb', 'mls', 'soccer', 'golf', 'world-cup', 'premier-league'].includes(a.category.toLowerCase()) ||
-    ['/soccer', '/world-cup', '/mls', '/premier-league', '/mlb', '/golf'].some((p) => a.href.startsWith(p));
-
-  const isCreator = (a: Article) =>
-    a.category.toLowerCase() === 'creator' || a.href.startsWith('/creator') || a.href.startsWith('/influencer');
-
-  const isYouTube = (a: Article) =>
-    a.category.toLowerCase() === 'youtube' || a.href.startsWith('/youtube');
-
-  // Slider gets top 14 newest articles across all categories
-  const sliderArticles = allArticles.slice(0, 14);
-  const sports   = allArticles.filter(isSports).slice(0, 6);
-  const creators = allArticles.filter(isCreator).slice(0, 8);
-  const youtube  = allArticles.filter(isYouTube).slice(0, 6);
-
-  // Remaining articles not in any section (for headlines)
-  const usedHrefs = new Set([
-    ...sliderArticles.map((a) => a.href),
-    ...sports.map((a) => a.href),
-    ...creators.map((a) => a.href),
-    ...youtube.map((a) => a.href),
-  ]);
-  const remaining = allArticles.filter((a) => !usedHrefs.has(a.href));
-
-  const editionDate = new Date().toLocaleDateString('en-US', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-  });
-
-  return (
-    <div className="min-h-screen bg-[#faf9f6]">
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
-
-        {/* ── DATE RULE ─────────────────────────────────────────────────────── */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="h-px flex-1 bg-gray-300" />
-          <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest whitespace-nowrap">{editionDate}</span>
-          <div className="h-px flex-1 bg-gray-300" />
-        </div>
-
-        {/* ── BEAT NAV ──────────────────────────────────────────────────────── */}
-        <nav aria-label="Coverage beats" className="flex gap-2 overflow-x-auto pb-2 mb-8 scrollbar-hide">
-          {BEATS.map((b) => (
-            <Link
-              key={b.href}
-              href={b.href}
-              className="flex items-center gap-2 whitespace-nowrap px-4 py-2 bg-white rounded-full border border-gray-200 hover:border-[#b45309] hover:text-[#b45309] text-sm font-bold text-[#0f172a] transition-all shadow-sm shrink-0"
-            >
-              <span>{b.icon}</span>
-              <span>{b.label}</span>
-            </Link>
-          ))}
-        </nav>
-
-        {/* ── AUTO-SCROLL STORY STRIP ────────────────────────────────────── */}
-        <ArticleSlider articles={sliderArticles} />
-
-        {/* ── SPORTS ────────────────────────────────────────────────────────── */}
-        {sports.length > 0 && (
-          <section aria-label="Sports">
-            <SectionRule label="Sports" href="/world-cup" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-              {sports.slice(0, 3).map((a) => (
-                <ArticleCard key={a.id} article={a} size="md" />
+            <div className="flex flex-wrap gap-6 mb-10">
+              {[
+                { stat: 'Licensed', label: 'Texas PI Agency' },
+                { stat: '501(c)(3)', label: 'Nonprofit Organization' },
+                { stat: 'Austin, TX', label: 'Travis County Based' },
+                { stat: 'Free', label: 'Initial Consultation' },
+              ].map(({ stat, label }) => (
+                <div key={label} className="text-center">
+                  <div className="text-2xl font-black text-white">{stat}</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-widest">{label}</div>
+                </div>
               ))}
             </div>
-            {sports.length > 3 && (
-              <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-4">
-                {sports.slice(3).map((a) => <HeadlineRow key={a.id} article={a} />)}
-              </div>
-            )}
-          </section>
-        )}
 
-        {/* ── CREATORS & YOUTUBE ────────────────────────────────────────────── */}
-        {(creators.length > 0 || youtube.length > 0) && (
-          <section aria-label="Creators and YouTube">
-            <SectionRule label="Creators & YouTube" href="/creator" />
-            <div className="grid lg:grid-cols-12 gap-6">
-
-              {/* Creators — 8-col */}
-              {creators.length > 0 && (
-                <div className="lg:col-span-8">
-                  <p className="text-[10px] font-black tracking-widest uppercase text-[#b45309] mb-3 flex items-center gap-2">
-                    <Link href="/creator" className="hover:underline">Creators</Link>
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {creators.slice(0, 4).map((a) => (
-                      <ArticleCard key={a.id} article={a} size="sm" />
-                    ))}
-                  </div>
-                  {creators.length > 4 && (
-                    <div className="mt-4 bg-white rounded-xl border border-gray-100 shadow-sm p-4">
-                      {creators.slice(4, 8).map((a) => <HeadlineRow key={a.id} article={a} />)}
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* YouTube — 4-col sidebar */}
-              {youtube.length > 0 && (
-                <div className="lg:col-span-4">
-                  <p className="text-[10px] font-black tracking-widest uppercase text-red-600 mb-3 flex items-center gap-2">
-                    <Link href="/youtube" className="hover:underline">YouTube</Link>
-                  </p>
-                  <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-4">
-                    {youtube.slice(0, 8).map((a) => <HeadlineRow key={a.id} article={a} />)}
-                  </div>
-                </div>
-              )}
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/get-help"
+                className="bg-purple-600 hover:bg-purple-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+              >
+                Start a Free Consultation
+              </Link>
+              <Link
+                href="/austin-private-detective-agency"
+                className="border border-gray-600 hover:border-white text-gray-300 hover:text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+              >
+                PI Agency Details
+              </Link>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
-        {/* ── MORE STORIES ──────────────────────────────────────────────────── */}
-        {remaining.length > 0 && (
-          <section aria-label="More stories">
-            <SectionRule label="More Stories" />
-            <div className="grid lg:grid-cols-2 gap-x-10">
-              <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-4">
-                {remaining.slice(0, 10).map((a) => <HeadlineRow key={a.id} article={a} />)}
-              </div>
+        {/* PI SERVICES GRID */}
+        <section className="py-20 bg-white dark:bg-gray-950">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="mb-12">
+              <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
+                Private Investigative Services
+              </p>
+              <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
+                PI Services for Private Clients
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+                All case work is private and confidential. Results are delivered directly to you, not published.
+                Every investigation is handled by a licensed Texas PI.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {SERVICES.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  className="group border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-purple-400 hover:shadow-lg transition-all bg-white dark:bg-gray-900"
+                >
+                  <div className="text-3xl mb-4">{s.icon}</div>
+                  <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2 group-hover:text-purple-400 transition-colors">
+                    {s.label}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{s.desc}</p>
+                  <span className="text-purple-400 text-sm font-semibold group-hover:underline">
+                    Learn more →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* JOURNALISM SERVICES */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-900">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="mb-12">
+              <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
+                Media and Journalism
+              </p>
+              <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
+                Investigative Journalism Services
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+                Our journalism is editorially independent. We decide what to publish based on public
+                interest, not client fees. Results become public record.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {JOURNALISM_SERVICES.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  className="group border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-purple-400 hover:shadow-lg transition-all bg-white dark:bg-gray-800"
+                >
+                  <div className="text-3xl mb-4">{s.icon}</div>
+                  <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2 group-hover:text-purple-400 transition-colors">
+                    {s.label}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{s.desc}</p>
+                  <span className="text-purple-400 text-sm font-semibold group-hover:underline">
+                    Learn more →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WHY OBJECTWIRE */}
+        <section className="py-20 bg-white dark:bg-gray-950">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                {/* Coverage beats sidebar */}
-                <p className="text-[10px] font-black tracking-[.25em] uppercase border-b-2 border-[#1e3a5f] text-[#1e3a5f] pb-2 mb-3">
-                  Coverage Beats
+                <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
+                  Why ObjectWire
+                </p>
+                <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-6">
+                  A PI agency that is also a newsroom.
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+                  Most PI agencies collect evidence. ObjectWire also knows how to document it for
+                  publication, court proceedings, and public record, because we do all three.
+                </p>
+                <Link href="/about" className="text-purple-400 hover:text-purple-700 underline font-semibold">
+                  About ObjectWire →
+                </Link>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { icon: '✅', text: 'Licensed under Texas Occupations Code Chapter 1702' },
+                  { icon: '✅', text: 'Free initial consultation, no commitment required' },
+                  { icon: '✅', text: 'All findings are fully confidential, never published without consent' },
+                  { icon: '✅', text: '501(c)(3) nonprofit, no profit motive or shareholder pressure' },
+                  { icon: '✅', text: 'Court-ready documentation chain of custody on every case' },
+                  { icon: '✅', text: 'Scientific and digital forensics expertise on staff' },
+                  { icon: '✅', text: 'Coordinated directly with attorneys on litigation cases' },
+                  { icon: '✅', text: 'Source identity protection on all journalism tips' },
+                ].map(({ icon, text }) => (
+                  <div key={text} className="flex items-start gap-3">
+                    <span className="text-lg mt-0.5">{icon}</span>
+                    <p className="text-gray-700 dark:text-gray-300">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* HOW IT WORKS */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-900">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="mb-12 text-center">
+              <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
+                Case Process
+              </p>
+              <h2 className="text-4xl font-black text-gray-900 dark:text-white">
+                How It Works
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {[
+                { step: '01', title: 'Free Consultation', desc: 'Confidential call or message. We assess your case, objectives, and what evidence is achievable.' },
+                { step: '02', title: 'Case Brief', desc: 'We define scope, legal parameters, timeline, and cost before any field work begins.' },
+                { step: '03', title: 'Investigation', desc: 'Licensed investigators gather timestamped, geotagged documentation using professional equipment.' },
+                { step: '04', title: 'Delivery', desc: 'You receive a written case report, full photo and video file set, and a chain-of-custody record.' },
+              ].map(({ step, title, desc }) => (
+                <div key={step} className="text-center">
+                  <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4">
+                    {step}
+                  </div>
+                  <h3 className="font-black text-gray-900 dark:text-white mb-2">{title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* COVERAGE AREA */}
+        <section className="py-16 bg-white dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
+                  Service Area
+                </p>
+                <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-4">
+                  Austin and Central Texas
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                  Primary field coverage across Travis County and the greater Central Texas region.
+                  Out-of-area cases handled with travel fees disclosed at consultation.
                 </p>
                 <div className="grid grid-cols-2 gap-2">
-                  {BEATS.map((b) => (
-                    <Link
-                      key={b.href}
-                      href={b.href}
-                      className="flex items-center gap-3 py-3 px-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:border-[#b45309] hover:shadow-md transition-all duration-200 group"
-                    >
-                      <span className="text-lg shrink-0">{b.icon}</span>
-                      <span className="text-sm font-black text-[#0f172a] group-hover:text-[#b45309] transition-colors leading-none">{b.label}</span>
-                      <span className="ml-auto text-gray-300 group-hover:text-[#b45309] transition-colors text-xs">→</span>
-                    </Link>
+                  {['Austin', 'Travis County', 'Round Rock', 'Cedar Park', 'Georgetown', 'Pflugerville', 'Leander', 'San Marcos', 'Kyle', 'Buda', 'Bastrop County', 'Williamson County'].map((city) => (
+                    <div key={city} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                      <span className="text-purple-400">📍</span> {city}
+                    </div>
                   ))}
                 </div>
               </div>
+              <div className="bg-gray-900 rounded-2xl p-8 text-white">
+                <h3 className="text-xl font-black mb-2">Licensed PI Agency</h3>
+                <p className="text-gray-400 text-sm mb-6">
+                  Regulated under Texas Occupations Code Chapter 1702.<br />
+                  Enforced by the Texas Department of Public Safety.
+                </p>
+                <div className="space-y-3 text-sm text-gray-300">
+                  <div className="flex justify-between border-b border-gray-700 pb-2">
+                    <span className="font-semibold text-white">Organization</span>
+                    <span>ObjectWire LLC</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-700 pb-2">
+                    <span className="font-semibold text-white">Type</span>
+                    <span>501(c)(3) Nonprofit</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-700 pb-2">
+                    <span className="font-semibold text-white">Jurisdiction</span>
+                    <span>State of Texas</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-700 pb-2">
+                    <span className="font-semibold text-white">HQ</span>
+                    <span>Austin, TX</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-semibold text-white">Consulting</span>
+                    <span className="text-purple-400">Free, confidential</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
-        {/* ── FOOTER STRIP ──────────────────────────────────────────────────── */}
-        <section className="border-t-2 border-b-2 border-black py-6 text-center mt-12">
-          <p className="text-[9px] tracking-[.4em] uppercase font-black text-gray-500 mb-2">About oWire</p>
-          <p className="text-gray-600 max-w-xl mx-auto text-sm leading-relaxed mb-4">
-            Daily coverage of athletes, influencers, and the moments everyone is talking about. Sports, Creators, Cars. No filter.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-5 text-[10px] tracking-widest uppercase font-bold text-gray-500">
-            {[
-              { href: '/about',               label: 'About' },
-              { href: '/editorial-standards', label: 'Editorial Standards' },
-              { href: '/corrections',         label: 'Corrections' },
-              { href: '/authors',             label: 'Authors' },
-              { href: '/site-index',          label: 'Site Index' },
-              { href: '/rss.xml',             label: 'RSS' },
-            ].map(({ href, label }) => (
-              <Link key={href} href={href} className="hover:text-black hover:underline transition-colors">
-                {label}
+        {/* CTA */}
+        <section className="py-20 bg-purple-800 text-white">
+          <div className="container mx-auto px-4 max-w-4xl text-center">
+            <h2 className="text-4xl font-black mb-4">Ready to Start Your Case?</h2>
+            <p className="text-xl text-purple-100 mb-10 max-w-2xl mx-auto">
+              Free consultation. No commitment. We will tell you honestly what is achievable,
+              what evidence standards apply, and what it costs, before any work begins.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/get-help"
+                className="bg-white text-purple-800 hover:bg-purple-50 font-black px-10 py-4 rounded-lg transition-colors text-lg"
+              >
+                Start a Free Consultation
               </Link>
-            ))}
+              <Link
+                href="/austin-private-detective-agency"
+                className="border-2 border-white text-white hover:bg-white hover:text-purple-800 font-bold px-10 py-4 rounded-lg transition-colors text-lg"
+              >
+                PI Agency Overview
+              </Link>
+            </div>
+            <p className="mt-8 text-purple-200 text-sm">
+              Editorial tips and newsroom contact:{' '}
+              <a href="mailto:editorial@objectwire.org" className="underline text-white hover:text-purple-100">
+                editorial@objectwire.org
+              </a>
+            </p>
           </div>
         </section>
 
       </main>
-    </div>
+    </>
   );
 }
+

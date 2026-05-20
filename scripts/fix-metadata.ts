@@ -1,4 +1,4 @@
-﻿/**
+/**
  * fix-metadata.ts
  *
  * Systematically applies mechanical OStandard metadata fixes across all
@@ -46,7 +46,7 @@ const TARGET_ARG = (() => {
 })();
 
 const APP_DIR  = path.join(process.cwd(), 'app');
-const BASE_URL = 'https://www.owire.org';
+const BASE_URL = 'https://www.objectwire.org';
 
 const SKIP_DIRS = new Set([
   '(admin)', 'api', 'auth', 'account', 'saved', 'search',
@@ -304,7 +304,7 @@ function fixDescriptionLength(metaBlock: string, changes: string[]): string {
 }
 
 /**
- * Fix 4b: Strip "| owire.org" and "| Object Wire" brand suffix variants
+ * Fix 4b: Strip "| objectwire.org" and "| Object Wire" brand suffix variants
  * that were not caught by the original fixBrandSuffix (only matched exact "| ObjectWire").
  */
 function fixBrandSuffixVariant(metaBlock: string, changes: string[]): string {
@@ -312,7 +312,7 @@ function fixBrandSuffixVariant(metaBlock: string, changes: string[]): string {
     /(^\s*title:\s*)(["'])([^"'\n]+)\2/gm,
     (_match, prefix, quote, value) => {
       const cleaned = value
-        .replace(/\s*\|\s*ObjectWire\.org\s*$/i, '')  // legacy: also handles old owire.org brand suffix
+        .replace(/\s*\|\s*ObjectWire\.org\s*$/i, '')  // legacy: also handles old objectwire.org brand suffix
         .replace(/\s*\|\s*Object\s+Wire\s*$/i, '')
         .trim();
       if (cleaned === value) return _match;

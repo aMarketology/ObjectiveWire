@@ -34,13 +34,13 @@
     --header-height: 80px;
     --container-max: 1280px;
 
-    /* Brand color tokens (also exposed as Tailwind v4 utilities via @theme) */
-    --brand-bg: #faf9f6;
-    --brand-ink: #0f172a;
-    --brand-ink-2: #1e3a5f;
-    --brand-accent: #b45309;
-    --brand-accent-hi: #d97706;
-    --brand-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a5f 45%, #b45309 100%);
+    /* Brand color tokens — Objective Wire noir: charcoal + amber */
+    --brand-bg: #f8f7f4;
+    --brand-ink: #1c1c1e;
+    --brand-ink-2: #2d2d2d;
+    --brand-accent: #d97706;
+    --brand-accent-hi: #f59e0b;
+    --brand-gradient: linear-gradient(135deg, #1c1c1e 0%, #2d2d2d 45%, #d97706 100%);
   }
 
   * {
@@ -51,10 +51,8 @@
 
   html {
     scroll-behavior: smooth;
-    background: #faf9f6;
+    background: #121212;
     -webkit-text-size-adjust: 100%;
-    /* `clip` (not `hidden`) so descendants can use position: sticky.
-       `hidden` would make <html> a scroll container and break sticky. */
     overflow-x: clip;
   }
 
@@ -63,26 +61,16 @@
     to   { transform: translateX(-50%); }
   }
 
-  html.dark {
-    background: #121212;
-  }
-
   body {
-    background: #faf9f6;
-    color: #1a1a1a;
+    background: #121212;
+    color: #e0e0e0;
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: scroll;
-    /* See html note above — `clip` preserves position: sticky in children. */
     overflow-x: clip;
-  }
-
-  .dark body {
-    background: #121212;
-    color: #e0e0e0;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -90,12 +78,8 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: #0f0f0f;
-    font-display: swap;
-  }
-
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
     color: #f0f0f0;
+    font-display: swap;
   }
 
   /* Paragraph styling - clean sans-serif (Perplexity-style) */
@@ -103,12 +87,8 @@
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     line-height: 1.75;
-    color: #1a1a1a;
-    font-weight: 400;
-  }
-
-  .dark p {
     color: #d4d4d4;
+    font-weight: 400;
   }
 
   /* Article prose styling */
@@ -116,31 +96,19 @@
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     line-height: 1.75;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-  }
-
-  .dark .prose p {
     color: #d4d4d4;
+    margin-bottom: 1.5rem;
   }
 
   .prose li {
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     line-height: 1.75;
-    color: #1a1a1a;
-  }
-
-  .dark .prose li {
     color: #d4d4d4;
   }
 
   .prose blockquote {
     font-family: var(--font-sans);
-    color: #1a1a1a;
-  }
-
-  .dark .prose blockquote {
     color: #d4d4d4;
   }
 
@@ -150,12 +118,7 @@
   }
 
   ::selection {
-    background: #fde68a; /* amber-200 — matches brand accent */
-    color: #0f172a;
-  }
-
-  .dark ::selection {
-    background: #b45309; /* brand amber on dark */
+    background: #b45309;
     color: #faf9f6;
   }
 
@@ -197,21 +160,36 @@
   );
 }
 
-/* Tabloid wordmark — italicized lowercase 'o' + bold 'Wire' */
+/* Tabloid wordmark — italic accent 'objective' + noir ink 'Wire' */
 .brand-wordmark {
   font-family: var(--font-serif);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 0.9;
-  color: var(--brand-ink);
+  color: #f5f0e8;
 }
 .brand-wordmark .o {
   color: var(--brand-accent);
   font-style: italic;
   font-weight: 800;
+  -webkit-text-stroke: 3px #000000;
+  paint-order: stroke fill;
+}
+/* Wire portion — larger than "objective" to create display contrast */
+.brand-wordmark .brand-wire {
+  font-size: 1.35em;
+  font-weight: 900;
+  color: #f5f0e8;
+}
+.brand-wordmark .brand-w {
+  font-size: 1em;
+  vertical-align: baseline;
+  color: #ffffff;
 }
 .dark .brand-wordmark { color: #f0f0f0; }
-.dark .brand-wordmark .o { color: #f59e0b; }
+.dark .brand-wordmark .o { color: #f59e0b; -webkit-text-stroke: 3px #000000; paint-order: stroke fill; }
+.dark .brand-wordmark .brand-wire { color: #ffffff; }
+.dark .brand-wordmark .brand-w { color: #ffffff; }
 
 /* Pill / chip used for category labels in the tabloid feed */
 .brand-chip {
@@ -231,51 +209,16 @@
 }
 
 /* =============================================================================
-   BRAND OVERRIDES — Eggshell white background, clean sans-serif everywhere
-   All dark page-level backgrounds are stripped in favor of the global bg.
-   In dark mode, swap to dark surfaces instead.
+   BRAND OVERRIDES — Dark mode only
    ============================================================================= */
 
-/* Force eggshell background — overrides any dark tailwind bg-* utility on page wrappers */
-:root:not(.dark) .min-h-screen {
-  background-color: #faf9f6 !important;
-  color: #1a1a1a;
-}
-
-.dark .min-h-screen {
+.min-h-screen {
   background-color: #121212 !important;
   color: #e0e0e0;
 }
 
-/* Cards, panels, and article sections — light mode: white; dark mode: dark surface */
-:root:not(.dark) .bg-slate-900,
-:root:not(.dark) .bg-slate-800,
-:root:not(.dark) .bg-gray-900,
-:root:not(.dark) .bg-gray-800,
-:root:not(.dark) .bg-zinc-900,
-:root:not(.dark) .bg-zinc-800,
-:root:not(.dark) .bg-black,
-:root:not(.dark) .bg-neutral-900 {
-  background-color: #ffffff !important;
-  color: #1a1a1a !important;
-}
-
-/* Override dark gradient hero sections to eggshell */
-:root:not(.dark) [class*="from-slate-9"],
-:root:not(.dark) [class*="from-gray-9"],
-:root:not(.dark) [class*="from-zinc-9"],
-:root:not(.dark) [class*="from-indigo-9"] {
-  background: #faf9f6 !important;
-}
-
-/* Ensure all text in formerly-dark containers is readable */
-:root:not(.dark) .bg-slate-800\/50,
-:root:not(.dark) .bg-slate-900\/50 {
-  background-color: rgba(255,255,255,0.6) !important;
-}
-
-.dark .bg-slate-800\/50,
-.dark .bg-slate-900\/50 {
+.bg-slate-800\/50,
+.bg-slate-900\/50 {
   background-color: rgba(30,30,30,0.6) !important;
 }
 
@@ -287,20 +230,6 @@
 h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
 h2 { font-size: clamp(1.35rem, 3vw, 2rem); }
 h3 { font-size: clamp(1.15rem, 2.5vw, 1.5rem); }
-
-/* Dark text on formerly-dark badge/tag elements — only in light mode */
-:root:not(.dark) .text-white {
-  color: #0f0f0f !important;
-}
-:root:not(.dark) .text-gray-300,
-:root:not(.dark) .text-gray-400 {
-  color: #4a4a4a !important;
-}
-
-.dark .text-gray-300,
-.dark .text-gray-400 {
-  color: #9ca3af !important;
-}
 
 /* Utility Classes - keep these light */
 .container {

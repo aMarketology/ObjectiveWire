@@ -7,8 +7,8 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 
 
 const SLUG = '/youtube/sidemen/charity-match/2026-lineup-max-fosh-willne';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
-const OG_IMAGE = 'https://www.owire.org/influncer/sidemne_charity_match_26.png';
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const OG_IMAGE = 'https://www.objectwire.org/influncer/sidemne_charity_match_26.png';
 
 export const metadata: Metadata = {
   title: 'Sidemen Charity Match 2026 Lineup | Max Fosh, WillNE',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: 'Full squads revealed: KSI, xQc, Angry Ginge, Max Fosh, and WillNE headline the 2026 Sidemen Charity Match. Logan Paul, IShowSpeed, and MrBeast will not',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['ZWire Sports Desk'],
     publishedTime: '2026-04-17T19:00:00Z',
     modifiedTime: '2026-04-17T19:00:00Z',

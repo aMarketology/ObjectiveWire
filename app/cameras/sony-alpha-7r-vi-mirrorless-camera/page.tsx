@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400;
 
 const SLUG = '/cameras/sony-alpha-7r-vi-mirrorless-camera';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Sony Alpha 7R VI | 66.8MP Mirrorless Camera June 2026',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       'Sony announced the Alpha 7R VI on May 13, 2026: a 66.8MP fully-stacked Exmor RS sensor, BIONZ XR2 AI processor, 8K video, and 8.5-stop IBIS for $4,499.99.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Alfonso'],
     publishedTime: '2026-05-15T12:00:00Z',
     modifiedTime: '2026-05-15T12:00:00Z',
@@ -57,7 +57,7 @@ export default function SonyAlpha7RVIPage() {
         title="Sony Alpha 7R VI | 66.8MP Mirrorless Camera June 2026"
         description="Sony Alpha 7R VI is a 66.8MP mirrorless camera priced at $4,499.99, launching June 2026 with a fully-stacked Exmor RS sensor and BIONZ XR2 AI processor."
         author="Alfonso"
-        authorUrl="https://www.owire.org/authors/alfasa"
+        authorUrl="https://www.objectwire.org/authors/alfasa"
         publishedTime="2026-05-15T12:00:00Z"
         modifiedTime="2026-05-15T12:00:00Z"
         articleUrl={ARTICLE_URL}

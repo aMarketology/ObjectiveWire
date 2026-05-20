@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Team page changes rarely. Regenerates daily via ISR.
@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     'Meet the oWire editorial team. Founder Conan D. Boyle and staff writers Jack Sterling and Jack Brennan cover Creators, Cars, and Culture.',
   alternates: {
-    canonical: 'https://www.owire.org/team',
+    canonical: 'https://www.objectwire.org/team',
   },
   openGraph: {
     title: 'Our Team | oWire',
     description: 'Meet the journalists behind oWire. Owned by Conan D. Boyle.',
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',

@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400;
 
 const SLUG = '/mls/cavan-sullivan-first-mls-goal-philadelphia-union';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Cavan Sullivan First MLS Goal | Philadelphia Union Phenom Milestone',
@@ -33,19 +33,19 @@ export const metadata: Metadata = {
       'At 16 years and 227 days, Cavan Sullivan became the eighth-youngest goalscorer in MLS history, also adding an assist in the same match against Orlando City SC.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Alfonso'],
     publishedTime: '2026-05-15T10:00:00Z',
     modifiedTime: '2026-05-15T10:00:00Z',
     section: 'MLS',
-    images: [{ url: 'https://www.owire.org/mls/cavan_sullivan.png', width: 1200, height: 675, alt: 'Cavan Sullivan celebrating his first MLS goal for Philadelphia Union' }],
+    images: [{ url: 'https://www.objectwire.org/mls/cavan_sullivan.png', width: 1200, height: 675, alt: 'Cavan Sullivan celebrating his first MLS goal for Philadelphia Union' }],
     tags: ['Cavan Sullivan', 'Philadelphia Union', 'MLS', 'Sports Science', 'Soccer Analytics'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Cavan Sullivan Scores First MLS Goal at 16 | The Science Behind the Strike',
     description: '8th-youngest goalscorer in MLS history. A goal, an assist, and a trajectory that is right on schedule.',
-    images: ['https://www.owire.org/mls/cavan_sullivan.png'],
+    images: ['https://www.objectwire.org/mls/cavan_sullivan.png'],
   },
 };
 
@@ -56,11 +56,11 @@ export default function CavanSullivanFirstGoalPage() {
         title="Cavan Sullivan First MLS Goal | Philadelphia Union Phenom Milestone"
         description="Cavan Sullivan scored his first MLS regular-season goal for Philadelphia Union on May 13, 2026, at 16 years and 227 days, becoming the eighth-youngest scorer in MLS history."
         author="Alfonso"
-        authorUrl="https://www.owire.org/authors/alfasa"
+        authorUrl="https://www.objectwire.org/authors/alfasa"
         publishedTime="2026-05-15T10:00:00Z"
         modifiedTime="2026-05-15T10:00:00Z"
         articleUrl={ARTICLE_URL}
-        imageUrl="https://www.owire.org/mls/cavan_sullivan.png"
+        imageUrl="https://www.objectwire.org/mls/cavan_sullivan.png"
         imageWidth={1200}
         imageHeight={675}
         section="MLS"

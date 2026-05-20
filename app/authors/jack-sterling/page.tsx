@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,20 +11,20 @@ export const metadata: Metadata = {
   title: 'Jack Sterling, ObjectWire Reporter',
   description:
     'Jack Sterling is a reporter at ObjectWire covering Congress, federal investigations, and AI policy. Reach him through ObjectWire editorial contact.',
-  alternates: { canonical: 'https://www.owire.org/authors/jack-sterling' },
+  alternates: { canonical: 'https://www.objectwire.org/authors/jack-sterling' },
   openGraph: {
     title: 'Jack Sterling, ObjectWire Reporter',
     description: 'Reporter at ObjectWire covering Congress, federal investigations, and AI policy.',
-    url: 'https://www.owire.org/authors/jack-sterling',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org/authors/jack-sterling',
+    siteName: 'Objective Wire',
     type: 'profile',
-    images: [{ url: 'https://www.owire.org/influncer/author/jack_sterling.jpg', width: 800, height: 800, alt: 'Jack Sterling, ObjectWire reporter' }],
+    images: [{ url: 'https://www.objectwire.org/influncer/author/jack_sterling.jpg', width: 800, height: 800, alt: 'Jack Sterling, ObjectWire reporter' }],
   },
   twitter: {
     card: 'summary',
     title: 'Jack Sterling, ObjectWire Reporter',
     description: 'Reporter at ObjectWire. Congress, federal investigations, AI policy.',
-    images: ['https://www.owire.org/influncer/author/jack_sterling.jpg'],
+    images: ['https://www.objectwire.org/influncer/author/jack_sterling.jpg'],
   },
 };
 
@@ -46,12 +46,12 @@ export default function JackSterlingAuthorPage() {
         name="Jack Sterling"
         jobTitle="Journalist & Reporter"
         description="Jack Sterling is a journalist at ObjectWire covering breaking news, investigations, federal politics, Congress, and AI policy."
-        url="https://www.owire.org/authors/jack-sterling"
+        url="https://www.objectwire.org/authors/jack-sterling"
         knowsAbout={['Politics', 'Federal Investigations', 'Breaking News', 'Congress', 'AI Policy', 'National Security']}
         articleCount={14}
       />
 
-      {/* ── Full-bleed Header ───────────────────────────────────────── */}
+      {/* -- Full-bleed Header ----------------------------------------- */}
       <div className="bg-black text-white">
         <div className="max-w-5xl mx-auto px-6 pt-10 pb-14">
           {/* Breadcrumb */}
@@ -78,7 +78,7 @@ export default function JackSterlingAuthorPage() {
             {/* Identity */}
             <div className="flex-1">
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-500 mb-2 font-mono">
-                ObjectWire · Politics &amp; Investigations
+                ObjectWire � Politics &amp; Investigations
               </p>
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Jack Sterling
@@ -105,21 +105,21 @@ export default function JackSterlingAuthorPage() {
         </div>
       </div>
 
-      {/* ── Detail Strip ───────────────────────────────────────────── */}
+      {/* -- Detail Strip --------------------------------------------- */}
       <div className="bg-gray-950 text-white border-b border-gray-800">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center gap-6 text-xs font-mono text-gray-400">
-          <span>📍 Washington, D.C.</span>
-          <span>🏢 ObjectWire Newsroom</span>
-          <span>🗂 Politics &amp; Investigations Desk</span>
-          <span>📅 Active Since 2024</span>
+          <span>?? Washington, D.C.</span>
+          <span>?? ObjectWire Newsroom</span>
+          <span>?? Politics &amp; Investigations Desk</span>
+          <span>?? Active Since 2024</span>
         </div>
       </div>
 
-      {/* ── Body ───────────────────────────────────────────────────── */}
+      {/* -- Body ----------------------------------------------------- */}
       <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-          {/* ── Sidebar ── */}
+          {/* -- Sidebar -- */}
           <aside className="lg:col-span-4 space-y-7">
             {/* Beats */}
             <div className="border border-gray-200 p-6">
@@ -152,18 +152,18 @@ export default function JackSterlingAuthorPage() {
             <div className="bg-black text-white p-6 space-y-3">
               <h2 className="text-[10px] uppercase tracking-widest font-black text-gray-400">Standards</h2>
               <Link href="/editorial-standards" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                Editorial Standards →
+                Editorial Standards ?
               </Link>
               <Link href="/corrections" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                Corrections Policy →
+                Corrections Policy ?
               </Link>
               <Link href="/about" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                About ObjectWire →
+                About ObjectWire ?
               </Link>
             </div>
           </aside>
 
-          {/* ── Main column ── */}
+          {/* -- Main column -- */}
           <div className="lg:col-span-8 space-y-12">
 
             {/* Bio */}
@@ -235,7 +235,7 @@ export default function JackSterlingAuthorPage() {
                 <Suspense fallback={
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] uppercase tracking-widest font-black text-gray-400">All Published Articles</span>
-                    <span className="text-[10px] font-mono text-gray-300 animate-pulse">Loading…</span>
+                    <span className="text-[10px] font-mono text-gray-300 animate-pulse">Loading�</span>
                   </div>
                 }>
                   {/* Header rendered inside the server component */}
@@ -256,12 +256,12 @@ export default function JackSterlingAuthorPage() {
         </div>
       </div>
 
-      {/* ── Footer strip ── */}
+      {/* -- Footer strip -- */}
       <div className="border-t-2 border-black mt-8">
         <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400 font-mono">© 2026 ObjectWire. All rights reserved.</p>
+          <p className="text-xs text-gray-400 font-mono">� 2026 ObjectWire. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/authors" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">← All Authors</Link>
+            <Link href="/authors" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">? All Authors</Link>
             <Link href="/about" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">About</Link>
             <Link href="/editorial-standards" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">Standards</Link>
           </div>

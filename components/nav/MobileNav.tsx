@@ -9,6 +9,18 @@ type NavHub = { label: string; href: string; items: NavItem[] };
 
 const NAV_HUBS: NavHub[] = [
   {
+    label: 'Local',
+    href: '/local',
+    items: [
+      { label: 'All Local', href: '/local' },
+      { label: 'Austin', href: '/local/austin' },
+      { label: 'Houston', href: '/local/houston' },
+      { label: 'Greater Texas', href: '/local/greater-texas' },
+      { label: 'Local US News', href: '/local/us-news' },
+      { label: 'Mexico + Canada', href: '/local/mexico-canada' },
+    ],
+  },
+  {
     label: 'Soccer', href: '/soccer',
     items: [
       { label: 'All Soccer', href: '/soccer' },

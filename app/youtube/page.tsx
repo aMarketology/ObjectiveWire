@@ -10,13 +10,13 @@ const SLUG = '/youtube';
 export const metadata: Metadata = {
   title: 'YouTube News | Creators, Channels & Platform 2026',
   description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.',
-  alternates: { canonical: `https://www.owire.org${SLUG}` },
+  alternates: { canonical: `https://www.objectwire.org${SLUG}` },
   openGraph: {
     title: 'YouTube News | Creators, Channels & Platform 2026',
     description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.',
     type: 'website',
-    url: `https://www.owire.org${SLUG}`,
-    siteName: 'oWire',
+    url: `https://www.objectwire.org${SLUG}`,
+    siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',

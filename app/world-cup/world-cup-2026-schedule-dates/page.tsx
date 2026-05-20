@@ -1,12 +1,12 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 
-// Inline article — no Supabase sync. Content lives in the codebase.
+// Inline article � no Supabase sync. Content lives in the codebase.
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/world-cup-2026-schedule-dates';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       'Full FIFA World Cup 2026 schedule. Opens June 11 in Mexico. Final July 19 at MetLife Stadium, New Jersey. 48 teams, 104 matches, 16 cities across USA, Canada, and Mexico.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Sports Desk'],
     publishedTime: '2026-04-29T15:00:00Z',
     modifiedTime: '2026-04-29T15:00:00Z',
@@ -113,27 +113,27 @@ export default function WorldCup2026SchedulePage() {
           <tbody>
             <tr>
               <td><strong>Group Stage</strong></td>
-              <td>June 11 – July 2, 2026</td>
+              <td>June 11 � July 2, 2026</td>
               <td>72 matches (16 groups of 3 teams)</td>
             </tr>
             <tr>
               <td><strong>Round of 32</strong></td>
-              <td>July 4–7, 2026</td>
+              <td>July 4�7, 2026</td>
               <td>16 matches</td>
             </tr>
             <tr>
               <td><strong>Round of 16</strong></td>
-              <td>July 8–12, 2026</td>
+              <td>July 8�12, 2026</td>
               <td>8 matches</td>
             </tr>
             <tr>
               <td><strong>Quarter-finals</strong></td>
-              <td>July 13–14, 2026</td>
+              <td>July 13�14, 2026</td>
               <td>4 matches</td>
             </tr>
             <tr>
               <td><strong>Semi-finals</strong></td>
-              <td>July 16–17, 2026</td>
+              <td>July 16�17, 2026</td>
               <td>2 matches</td>
             </tr>
             <tr>
@@ -186,7 +186,7 @@ export default function WorldCup2026SchedulePage() {
           <tbody>
             <tr>
               <td><strong>New York / New Jersey</strong></td>
-              <td>MetLife Stadium — <em>Final venue</em></td>
+              <td>MetLife Stadium � <em>Final venue</em></td>
               <td>82,500</td>
             </tr>
             <tr>
@@ -266,7 +266,7 @@ export default function WorldCup2026SchedulePage() {
             <tr>
               <td><strong>Mexico</strong></td>
               <td>Mexico City</td>
-              <td>Estadio Azteca — <em>Opening match June 11</em></td>
+              <td>Estadio Azteca � <em>Opening match June 11</em></td>
             </tr>
             <tr>
               <td><strong>Mexico</strong></td>

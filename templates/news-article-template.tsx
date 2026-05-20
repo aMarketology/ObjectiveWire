@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 
@@ -27,9 +27,9 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400; // Static, regenerates daily
 
 const SLUG = '/REPLACE/WITH/PATH';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 const OG_IMAGE = '/thumbnails/REPLACE-WITH-THUMBNAIL.jpg';
-const OG_IMAGE_FULL = `https://www.owire.org${OG_IMAGE}`;
+const OG_IMAGE_FULL = `https://www.objectwire.org${OG_IMAGE}`;
 
 export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',  // max 60 chars. No em dashes. No brand suffix.
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     description: '130-155 char OG description. Lead with data or a specific claim.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'oWire',
+    siteName: 'Objective Wire',
     authors: ['Author Name'],
     publishedTime: '2026-05-13T12:00:00Z',
     modifiedTime: '2026-05-13T12:00:00Z',
@@ -68,7 +68,7 @@ export default function YourArticlePage() {
         title="Primary Keyword | Specific Detail"
         description="Matches metadata.description exactly."
         author="Author Name"
-        authorUrl="https://www.owire.org/authors/author-slug"
+        authorUrl="https://www.objectwire.org/authors/author-slug"
         publishedTime="2026-05-13T12:00:00Z"
         modifiedTime="2026-05-13T12:00:00Z"
         articleUrl={ARTICLE_URL}

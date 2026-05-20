@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SEOWrapper — System 3 from duda-js.md
  *
  * Wraps any article/page and injects:
@@ -24,7 +24,7 @@
 
 import { getEntry } from '@/lib/registry-service';
 
-const SITE_URL = 'https://www.owire.org';
+const SITE_URL = 'https://www.objectwire.org';
 const ORG_NAME = 'ZeroWire';
 
 interface SEOWrapperProps {

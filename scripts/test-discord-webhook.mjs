@@ -1,4 +1,4 @@
-﻿// scripts/test-discord-webhook.mjs
+// scripts/test-discord-webhook.mjs
 // Run: node scripts/test-discord-webhook.mjs
 
 const WEBHOOK = 'https://discord.com/api/webhooks/1485011145059205273/bmzyM2KHM82gC3YphUA_jAbsEcSt_VOKaTUElKX1BXJk99UQ2Sj6Dq829UrrEuoV71SJ';
@@ -6,7 +6,7 @@ const CHANNEL = 'https://discord.com/channels/1385068774549360772/14850097850480
 
 async function run() {
   const slug = 'test-article-' + Date.now();
-  const articleUrl = 'https://www.owire.org/' + slug;
+  const articleUrl = 'https://www.objectwire.org/' + slug;
   const threadTitle = 'Integration Test | ObjectWire';
 
   // Step 1: Create a new Forum thread (simulates first comment on an article)
@@ -19,7 +19,7 @@ async function run() {
       author: { name: 'TestUser' },
       description: 'First comment — creates a new Forum thread.',
       fields: [{ name: '📰 Article', value: `[${threadTitle}](${articleUrl})` }],
-      footer: { text: 'owire.org' },
+      footer: { text: 'objectwire.org' },
       timestamp: new Date().toISOString(),
     }],
   };
@@ -48,7 +48,7 @@ async function run() {
       color: 0x5865f2,
       author: { name: 'AnotherUser' },
       description: 'Reply — appended to the existing thread. URL bug fix confirmed.',
-      footer: { text: 'owire.org' },
+      footer: { text: 'objectwire.org' },
       timestamp: new Date().toISOString(),
     }],
   };

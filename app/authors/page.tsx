@@ -1,16 +1,16 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Authors & Contributors',
   description:
     'Meet the journalists, reporters, and editors behind ObjectWire, covering finance, markets, science, technology, anime, gaming, investigations, and',
-  alternates: { canonical: 'https://www.owire.org/authors' },
+  alternates: { canonical: 'https://www.objectwire.org/authors' },
   openGraph: {
     title: 'ObjectWire Authors & Contributors',
     description: 'Meet the journalists and editors behind ObjectWire.',
-    url: 'https://www.owire.org/authors',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org/authors',
+    siteName: 'Objective Wire',
     type: 'website',
   },
   twitter: {
@@ -22,12 +22,26 @@ export const metadata: Metadata = {
 
 const AUTHORS = [
   {
+    slug: 'max-deleonardis',
+    initials: 'MD',
+    name: 'Max Deleonardis',
+    role: 'Founder, Lead Investigator',
+    department: 'PI Agency & Editorial Operations',
+    location: 'Austin, TX',
+    bio: 'Founder of Objective Wire. Licensed Texas private investigator and editor overseeing PI agency operations, investigative reporting, and editorial strategy. Runs the Austin PI agency and directs investigations across private client cases and public accountability journalism.',
+    beats: ['Investigations', 'PI Agency', 'Austin', 'Editorial Strategy', 'Accountability Journalism'],
+    accent: 'bg-purple-700',
+    border: 'border-purple-700',
+    text: 'text-purple-700',
+    quote: 'We investigate, document, and publish.',
+  },
+  {
     slug: 'jack-sterling',
     initials: 'JS',
     name: 'Jack Sterling',
     role: 'Reporter',
     department: 'Politics & Investigations',
-    location: 'Washington, D.C.',
+    location: 'Dallas, TX',
     bio: 'General assignment reporter covering breaking news, federal investigations, Congress, and the intersection of politics and technology. Bylined on major legislative scoops and deep-dive policy analyses.',
     beats: ['Politics', 'Investigations', 'Breaking News', 'AI Policy', 'Congress'],
     accent: 'bg-black',
@@ -41,7 +55,7 @@ const AUTHORS = [
     name: 'Conan Boyle',
     role: 'Founding Writer',
     department: 'Science & Technology',
-    location: 'Austin, TX',
+    location: 'Washington, D.C.',
     bio: 'Founding writer at ObjectWire. NCSU journalism graduate covering biotechnology, CRISPR, medical research, AI hardware, gaming, and the companies shaping the future of human health and emerging tech.',
     beats: ['Biotechnology', 'CRISPR', 'AI Hardware', 'Gaming', 'Emerging Tech'],
     accent: 'bg-gray-800',
@@ -52,7 +66,7 @@ const AUTHORS = [
   {
     slug: 'alfansa',
     initials: 'AL',
-    name: 'Alfansa',
+    name: 'Alfansa Chillingsworth',
     role: 'Finance & Markets Reporter',
     department: 'Finance & Gaming',
     location: 'New York, NY',
@@ -69,7 +83,7 @@ const AUTHORS = [
     name: 'Jack Brennan',
     role: 'Investigations Reporter',
     department: 'Investigations',
-    location: 'Washington, D.C.',
+    location: 'Kenosha, WA',
     bio: 'Investigations reporter covering federal environmental law, national security, regulatory agencies, and the Trump administration. Led reporting on the first God Squad exemption since 1992 and the Endangered Species Act national security override.',
     beats: ['Investigations', 'Environmental Law', 'National Security', 'Energy Policy', 'Trump Administration'],
     accent: 'bg-green-800',
@@ -82,7 +96,7 @@ const AUTHORS = [
 export default function AuthorsPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* ── Page Header ─────────────────────────────────────────────── */}
+      {/* -- Page Header ----------------------------------------------- */}
       <div className="border-b-4 border-black">
         <div className="max-w-5xl mx-auto px-6 py-14 md:py-20">
           <nav className="flex items-center gap-2 text-xs text-gray-400 mb-10 font-mono uppercase tracking-widest">
@@ -93,20 +107,20 @@ export default function AuthorsPage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-400 mb-3 font-mono">
-                ObjectWire Newsroom
+                Objective Wire | Austin, TX
               </p>
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 leading-none mb-5">
-                Our<br />Journalists
+                Our<br />Investigators
               </h1>
               <p className="text-lg text-gray-500 max-w-xl leading-relaxed">
-                The reporters, editors, and investigators producing ObjectWire&rsquo;s coverage
-                of finance, technology, politics, science, and culture.
+                The investigators, reporters, and editors behind Objective Wire. Licensed PI work
+                for private clients. Sports, cars, and culture journalism for the public.
               </p>
             </div>
             <div className="shrink-0 flex gap-8 md:pb-1">
               <div className="text-right">
-                <p className="text-3xl font-black text-gray-900">4</p>
-                <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mt-1">Journalists</p>
+                <p className="text-3xl font-black text-gray-900">5</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mt-1">Investigators</p>
               </div>
               <div className="text-right">
                 <p className="text-3xl font-black text-gray-900">6+</p>
@@ -121,7 +135,7 @@ export default function AuthorsPage() {
         </div>
       </div>
 
-      {/* ── Author Cards ─────────────────────────────────────────────── */}
+      {/* -- Author Cards ----------------------------------------------- */}
       <div className="max-w-5xl mx-auto px-6 py-14">
         <div className="space-y-px border border-gray-200">
           {AUTHORS.map((author, i) => (
@@ -147,14 +161,14 @@ export default function AuthorsPage() {
                         </h2>
                       </Link>
                       <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mt-1">
-                        {author.role} &nbsp;·&nbsp; {author.location}
+                        {author.role} &nbsp;�&nbsp; {author.location}
                       </p>
                     </div>
                     <Link
                       href={`/authors/${author.slug}`}
                       className={`shrink-0 text-[10px] font-black uppercase tracking-widest border-b-2 ${author.border} pb-0.5 hover:opacity-60 transition-opacity`}
                     >
-                      Full Profile →
+                      Full Profile ?
                     </Link>
                   </div>
 
@@ -185,7 +199,7 @@ export default function AuthorsPage() {
         </div>
       </div>
 
-      {/* ── Editorial Standards Bar ──────────────────────────────────── */}
+      {/* -- Editorial Standards Bar ------------------------------------ */}
       <div className="bg-gray-950 text-white">
         <div className="max-w-5xl mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row md:items-center gap-8">

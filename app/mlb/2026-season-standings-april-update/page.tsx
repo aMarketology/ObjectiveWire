@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   NewsArticle,
@@ -8,7 +8,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/mlb/2026-season-standings-april-update';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'MLB 2026 Standings | Yankees Lead, Padres Surge After One Month',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
       'Yankees are 18-9 with an 8-game win streak. Padres lead the NL West at 18-8. Murakami has 10 homers in 24 games. Full MLB standings update after one month.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Sports Desk'],
     publishedTime: '2026-05-04T14:30:00Z',
     modifiedTime: '2026-05-04T14:30:00Z',
@@ -79,7 +79,7 @@ export default function MLB2026StandingsAprilPage() {
       tags={['MLB', 'Yankees', 'Padres', 'Braves', '2026 Standings', 'Baseball']}
       trending
     >
-      {/* ── INTRO ────────────────────────────────────────────────────────── */}
+      {/* -- INTRO ---------------------------------------------------------- */}
       <p>
         With roughly one-sixth of the 2026 schedule in the books, the{' '}
         <Link href="/mlb" className="text-blue-600 hover:text-blue-800 underline">
@@ -99,7 +99,7 @@ export default function MLB2026StandingsAprilPage() {
         projections that won&apos;t stabilise until Memorial Day.
       </p>
 
-      {/* ── KEY STATS ────────────────────────────────────────────────────── */}
+      {/* -- KEY STATS ------------------------------------------------------ */}
       <HighlightBox type="stat" color="orange">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 py-2">
           {[
@@ -118,7 +118,7 @@ export default function MLB2026StandingsAprilPage() {
         </div>
       </HighlightBox>
 
-      {/* ── SECTION 1 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 1 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         1. AL East | Yankees Running Away Early
       </h2>
@@ -150,7 +150,7 @@ export default function MLB2026StandingsAprilPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 2 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 2 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         2. AL Central and West | Cleveland Leads, Texas Ties Oakland
       </h2>
@@ -213,7 +213,7 @@ export default function MLB2026StandingsAprilPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 3 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 3 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         3. NL East | Braves Dominant, Phillies Climbing Back
       </h2>
@@ -235,7 +235,7 @@ export default function MLB2026StandingsAprilPage() {
         ceiling narrows for at least two weeks.
       </p>
 
-      {/* ── SECTION 4 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 4 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         4. NL Central | Reds and Cubs Trading Momentum
       </h2>
@@ -266,7 +266,7 @@ export default function MLB2026StandingsAprilPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 5 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 5 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         5. NL West | Padres Lead, Dodgers a Half-Game Back
       </h2>
@@ -326,7 +326,7 @@ export default function MLB2026StandingsAprilPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 6 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 6 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         6. Breakout Stars | Murakami Makes History, Rushing Emerges
       </h2>
@@ -342,10 +342,10 @@ export default function MLB2026StandingsAprilPage() {
       <p>
         Dodgers catcher Dalton Rushing has contributed multiple multi-homer games, emerging as
         a presence in the middle of a lineup already loaded with offensive threats. Seattle
-        outfielder Julio Rodríguez delivered a two-run homer on April 25 that added to what
+        outfielder Julio Rodr�guez delivered a two-run homer on April 25 that added to what
         has been a strong start for a player who arrived at spring training as a focal point of
         the Mariners&apos; rebuild. Veterans like Ben Rice of the Yankees and Angels pitcher
-        José Soriano have posted elite metrics in hard-hit rates and chase rates, rounding out
+        Jos� Soriano have posted elite metrics in hard-hit rates and chase rates, rounding out
         a picture of youth and power thriving alongside established contributors.
       </p>
 
@@ -360,7 +360,7 @@ export default function MLB2026StandingsAprilPage() {
         </p>
       </HighlightBox>
 
-      {/* ── SECTION 7 ────────────────────────────────────────────────────── */}
+      {/* -- SECTION 7 ------------------------------------------------------ */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         7. Injuries and Transactions | Lindor, Dodd, and Rotation Concerns
       </h2>
@@ -392,7 +392,7 @@ export default function MLB2026StandingsAprilPage() {
         </p>
       </HighlightBox>
 
-      {/* ── OUTLOOK ──────────────────────────────────────────────────────── */}
+      {/* -- OUTLOOK -------------------------------------------------------- */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         8. Outlook | What May Will Reveal
       </h2>
@@ -421,7 +421,7 @@ export default function MLB2026StandingsAprilPage() {
         for more on the technology reshaping how MLB games are called in 2026.
       </p>
 
-      {/* ── SOURCES ──────────────────────────────────────────────────────── */}
+      {/* -- SOURCES -------------------------------------------------------- */}
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
         Sources
       </h2>

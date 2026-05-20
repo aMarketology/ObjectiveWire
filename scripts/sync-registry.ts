@@ -237,9 +237,9 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
       content.match(/const\s+OG_IMAGE\s*=\s*['"`]([^'"`\$\{][^'"`]*)['"`]/) ||
       content.match(/imageUrl\s*:\s*['"`]([^'"`]+)['"`]/);
     const rawImageUrl = ogImageMatch?.[1]?.trim();
-    // Resolve relative thumbnail paths to absolute owire.org URLs for OG consistency
+    // Resolve relative thumbnail paths to absolute objectwire.org URLs for OG consistency
     const imageUrl = rawImageUrl?.startsWith('/')
-      ? `https://www.owire.org${rawImageUrl}`
+      ? `https://www.objectwire.org${rawImageUrl}`
       : rawImageUrl;
 
     const ogImageWidthMatch = content.match(/images\s*:\s*\[\s*\{[^}]*width\s*:\s*(\d+)/);
@@ -376,10 +376,11 @@ function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
     authorSlug: meta.authorSlug,
     priority: detectPriority(meta.slug, category),
     changeFrequency: detectChangeFrequency(category),
-    // Scanned values win; preserve existing if scan didn't find them
-    imageUrl:    meta.imageUrl    ?? existing?.imageUrl,
-    imageWidth:  meta.imageWidth  ?? existing?.imageWidth,
-    imageHeight: meta.imageHeight ?? existing?.imageHeight,
+    // Scanned values win; preserve existing if scan didn't find them;
+    // fall back to auto-generated Satori OG image so no entry is imageless.
+    imageUrl:    meta.imageUrl    ?? existing?.imageUrl    ?? `https://www.objectwire.org/api/og?slug=${encodeURIComponent(meta.slug)}`,
+    imageWidth:  meta.imageWidth  ?? existing?.imageWidth  ?? 1200,
+    imageHeight: meta.imageHeight ?? existing?.imageHeight ?? 630,
     imageAlt:    meta.imageAlt    ?? existing?.imageAlt,
     featured:    existing?.featured ?? false,
   };

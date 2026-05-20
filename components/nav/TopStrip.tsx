@@ -120,7 +120,7 @@ export default function TopStrip({ dateString }: { dateString: string }) {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Search oWire…"
+                  placeholder="Search Objective Wire…"
                   className="text-sm font-mono border-b-2 border-black bg-transparent outline-none w-56 sm:w-80 py-1 placeholder-gray-400 text-gray-900 transition-all duration-200"
                   autoComplete="off"
                 />
@@ -208,7 +208,7 @@ export default function TopStrip({ dateString }: { dateString: string }) {
               </a>
               <span className="text-xs font-mono text-gray-500 hidden sm:block">Est. 2024 ·</span>
               <ThemeToggle />
-              <span className="text-xs font-mono hidden sm:block" style={{ color: 'var(--brand-accent)' }}>Sports · Creators</span>
+              <span className="text-xs font-mono hidden sm:block" style={{ color: 'var(--brand-accent)' }}>PI Agency · 501(c)(3) Newsroom</span>
             </>
           )}
         </div>

@@ -1,12 +1,12 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/porsche';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: 'Porsche | Company Profile, Models, History, 2026',
     description: 'From Stuttgart to Le Mans. The 911, the Taycan, and the future. Full Porsche company profile for 2026.',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     images: [{ url: OG_IMAGE, width: 1200, height: 675, alt: 'Porsche company profile 2026' }],
     publishedTime: '2026-04-21T23:45:00Z',
     modifiedTime: '2026-04-21T23:45:00Z',

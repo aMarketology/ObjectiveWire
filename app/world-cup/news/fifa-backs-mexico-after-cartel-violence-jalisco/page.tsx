@@ -1,7 +1,7 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
     'FIFA World Cup 2026 Mexico safety',
   ],
   alternates: {
-    canonical: `https://www.owire.org${SLUG}`,
+    canonical: `https://www.objectwire.org${SLUG}`,
   },
   openGraph: {
     title: 'FIFA Backs Mexico After CJNG Violence Targets Jalisco',
     description:
       'The killing of El Mencho on February 22 triggered 252+ violent incidents across Jalisco in 72 hours. Estadio Akron in Guadalajara hosts four World Cup',
     type: 'article',
-    url: `https://www.owire.org${SLUG}`,
-    siteName: 'ObjectWire',
+    url: `https://www.objectwire.org${SLUG}`,
+    siteName: 'Objective Wire',
     authors: ['Alfansa'],
     publishedTime: '2026-02-25T18:00:00Z',
     modifiedTime: '2026-02-25T18:00:00Z',

@@ -1,12 +1,12 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/ford';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
 const OG_IMAGE =
   'https://images.unsplash.com/photo-1612825173281-9a193378527e?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     description:
       'CEO Jim Farley calls 2026 a "come to Jesus" moment for US automakers. Sales down 9%, F-Series hit by Novelis fire, EVs down 70%. The $30K UEV platform is Ford\'s answer.',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['ObjectWire Auto Desk'],
     publishedTime: '2026-04-25T14:00:00Z',
     modifiedTime: '2026-04-25T14:00:00Z',

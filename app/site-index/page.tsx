@@ -1,23 +1,23 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
 import { SiteIndexTree } from './SiteIndexTree';
 
-export const revalidate = 3600; // ISR 1h — regenerates when new articles are added
+export const revalidate = 3600; // ISR 1h � regenerates when new articles are added
 
 export const metadata: Metadata = {
   title: 'Site Index',
   description:
     'Browse the complete ObjectWire article index organized by category and tags. Explore 400+ verified articles across technology, gaming, finance, politics,',
   alternates: {
-    canonical: 'https://www.owire.org/site-index',
+    canonical: 'https://www.objectwire.org/site-index',
   },
   openGraph: {
     title: 'Site Index',
     description:
       'Browse the complete ObjectWire article index organized by category and tags.',
     type: 'website',
-    url: 'https://www.owire.org/site-index',
-    siteName: 'ObjectWire',
+    url: 'https://www.objectwire.org/site-index',
+    siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-/* ── Hub slugs / categories that should NOT appear as articles ──────────── */
+/* -- Hub slugs / categories that should NOT appear as articles ------------ */
 const HUB_SLUGS = new Set([
   '/', '/news', '/tech', '/technology', '/finance', '/search', '/site-index',
   '/youtube', '/editorial-standards', '/social', '/entertainment', '/blog',
@@ -50,11 +50,11 @@ function isArticle(e: ContentEntry): boolean {
   const parts = e.slug.split('/').filter(Boolean);
   if (parts.length < 2) return false;
   if (e.description.length < 60) return false;
-  if (e.title.startsWith('›') || e.title.startsWith('ObjectWire coverage')) return false;
+  if (e.title.startsWith('�') || e.title.startsWith('ObjectWire coverage')) return false;
   return true;
 }
 
-/* ── Category display order ────────────────────────────────────────────── */
+/* -- Category display order ---------------------------------------------- */
 const CATEGORY_ORDER = [
   'News', 'Technology', 'Gaming', 'Finance', 'Politics', 'Sports',
   'Entertainment', 'Science', 'World Affairs', 'Investigations',
@@ -132,7 +132,7 @@ export default async function SiteIndexPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <nav className="text-xs text-gray-500 mb-4 font-sans">
             <a href="/" className="hover:text-gray-900 transition-colors">Home</a>
-            <span className="mx-2">→</span>
+            <span className="mx-2">?</span>
             <span className="text-gray-900">Site Index</span>
           </nav>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">

@@ -1,13 +1,13 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
-// Page renders dynamically — content fetched from Supabase at request time.
+// Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/trump-iran-world-cup-2026-usa-hosting-controversy';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
-const OG_IMAGE = 'https://www.owire.org/world-cup/worldcup-usa-drama-strikes.jpg';
+const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const OG_IMAGE = 'https://www.objectwire.org/world-cup/worldcup-usa-drama-strikes.jpg';
 
 export const metadata: Metadata = {
   title: 'Trump Iran Comments | World Cup USA Hosting Controversy',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       "Trump has flagged Iran as a security risk for 2026 World Cup matches on US soil. FIFA says its statutes prevent it from blocking qualified nations on",
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
     authors: ['Alfansa'],
     publishedTime: '2026-04-08T10:30:00Z',
     modifiedTime: '2026-04-08T10:30:00Z',
