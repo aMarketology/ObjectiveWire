@@ -249,7 +249,7 @@ public/og-assets/
 
 ```bash
 # .env.local and Railway env
-UNSPLASH_ACCESS_KEY=Xf48MkOY-E_ughjz6FJ1d_heBKDy0YcF_qpIDoVi1FQ
+UNSPLASH_ACCESS_KEY=-QnuCnH9-8EQpkZafUFroTi6AUVuHR1A5u4FFb66vrQ
 ```
 
 ### Edge Function (Core Handler)

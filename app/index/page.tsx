@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 
 // Site index changes when new articles are added. Regenerates daily via ISR.
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "Site Index | Complete Sitemap",

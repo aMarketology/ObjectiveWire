@@ -5,13 +5,12 @@ import RelatedArticles from '@/components/discovery/RelatedArticles';
 import ArticleFooter from '@/components/articles/ArticleFooter';
 import { HubBacklink } from '@/components/HubBacklink';
 import ArticleTOC from '@/components/articles/ArticleTOC';
+import BookFlipReader from '@/components/articles/BookFlipReader';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 import type { BreadcrumbItem } from '@/components/nav/Breadcrumb';
 import FAQAccordion, { FAQSchema } from '@/components/FAQAccordion';
 import type { FAQItem } from '@/components/FAQAccordion';
 import { MoreFromHub, type MoreFromHubItem } from '@/components/discovery/MoreFromHub';
-import { KeyTakeaways } from '@/components/articles/KeyTakeaways';
-import type { KeyTakeawaysProps } from '@/components/articles/KeyTakeaways';
 
 // =============================================================================
 // NEWS ARTICLE COMPONENT - Flashy, engaging article layout
@@ -70,19 +69,15 @@ export interface NewsArticleProps {
   breadcrumbs?: BreadcrumbItem[];
   /** FAQ items rendered at the bottom of the article body + FAQPage JSON-LD schema. */
   faqItems?: FAQItem[];
-  /**
-   * Key Takeaways rendered at the top of the article body.
-   * 3-5 declarative sentences. Each sentence must stand alone as a citable fact.
-   * Renders an ItemList JSON-LD block for AI extraction.
-   */
-  keyTakeaways?: string[];
-  /** Accent color for the KeyTakeaways block. Default: 'gray' */
-  keyTakeawaysColor?: KeyTakeawaysProps['color'];
   /** Server-rendered "More from this Hub" related articles strip — important for SEO crawlability. */
   moreFromHub?: MoreFromHubItem[];
   /** Optional hub label + href for the MoreFromHub heading. */
   moreFromHubLabel?: string;
   moreFromHubHref?: string;
+  /** Key takeaways shown at the top of the article — emits ItemList JSON-LD for AI crawlers. */
+  keyTakeaways?: string[];
+  /** Color accent for the KeyTakeaways block. */
+  keyTakeawaysColor?: 'red' | 'blue' | 'green' | 'purple' | 'orange';
 }
 
 // =============================================================================
@@ -620,12 +615,13 @@ export function TagsSection({ tags }: { tags: string[] }) {
       </h3>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag, index) => (
-          <span
+          <Link
             key={index}
-            className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 cursor-pointer transition-colors"
+            href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}
+            className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
           >
             #{tag}
-          </span>
+          </Link>
         ))}
       </div>
     </div>
@@ -710,11 +706,13 @@ export function NewsArticle({
   url,
   breadcrumbs,
   faqItems,
-  keyTakeaways,
-  keyTakeawaysColor,
   moreFromHub,
   moreFromHubLabel,
   moreFromHubHref,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  keyTakeaways,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  keyTakeawaysColor,
 }: NewsArticleProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-gray-950">
@@ -752,30 +750,27 @@ export function NewsArticle({
         exclusive={exclusive}
       />
 
-      {/* Article Content — TOC pinned to far-left margin, body in center, Related on right.
-          Sticky TOC + Related stop at the bottom of the body (engagement footer
-          renders below this flex so both rails unstick before comments).
+      {/* Article Content — CSS Grid 3-column: [TOC] [body] [related].
+          Grid (not flex) is used because every grid cell spans the full grid
+          row height automatically, giving both sticky sidebars guaranteed room
+          to scroll without any self-start / flex-stretch gymnastics.
 
-          KEY: parent flex must NOT have items-start, and sticky asides must NOT
-          have self-start — those collapse the flex-item box to content height and
-          break position:sticky. The article body gets self-start instead so it
-          doesn't stretch. Both sidebars stretch to the full flex-row height and
-          sticky has room to scroll within that contained area. */}
+          On mobile the grid collapses to a single column via Tailwind responsive
+          grid-cols overrides below. */}
       <div className="container mx-auto px-4 sm:px-6 py-8 md:py-12 max-w-7xl">
-        <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr_220px] gap-8 lg:gap-10">
 
-          {/* Left rail — sticky table of contents (lg+ only, hidden on mobile).
-              No self-start here — flex stretch gives it the full column height
-              so sticky:top-6 can scroll within the body length.
-              Negative margin pulls it into the gutter without taking body width. */}
-          <aside className="hidden lg:block lg:w-44 xl:w-52 shrink-0 lg:-ml-16 xl:-ml-32">
-            <div className="lg:sticky lg:top-6">
+          {/* Left rail — sticky TOC (lg+ only, hidden on mobile).
+              No overflow, no self-start — the grid cell spans the full row
+              height automatically so sticky:top-6 has room to scroll. */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-6">
               <ArticleTOC />
             </div>
           </aside>
 
-          {/* Main body — flex-1, self-start so it doesn't stretch vertically */}
-          <article className="w-full lg:flex-1 min-w-0 self-start">
+          {/* Main body — center column. No self-start needed in grid. */}
+          <article className="w-full min-w-0">
             <div data-article-body="true" className="max-w-none font-serif text-gray-900 dark:text-gray-100
               [&_p]:!font-serif [&_p]:!text-[18px] [&_p]:!leading-[1.75] [&_p]:!text-gray-800 [&_p]:!mb-6 lg:[&_p]:!text-justify lg:[&_p]:!hyphens-auto dark:[&_p]:!text-gray-200
               [&>div>p:first-of-type]:!text-[20px] [&>div>p:first-of-type]:!font-medium
@@ -790,21 +785,33 @@ export function NewsArticle({
               [&_ul]:!font-serif [&_ul]:!text-[18px] [&_ul]:!leading-[1.75] [&_li]:!text-gray-800 dark:[&_li]:!text-gray-200 [&_li]:!my-2
               [&_hr]:!border-gray-300 [&_hr]:!my-12
             ">
-              {keyTakeaways && keyTakeaways.length > 0 && (
-                <KeyTakeaways
-                  items={keyTakeaways}
-                  color={keyTakeawaysColor ?? 'gray'}
-                  articleUrl={url ? `https://www.objectwire.org${url}` : undefined}
-                />
-              )}
               {children}
             </div>
+
+            {/* Book-flip reader — page-turn animation + JS proximity scroll-snap per H2. */}
+            <BookFlipReader />
+
+            {/* FAQ Section — inside article column so sticky rails extend past it. */}
+            {faqItems && faqItems.length > 0 && (
+              <div className="mt-12 max-w-3xl">
+                <FAQSchema items={faqItems} />
+                <FAQAccordion items={faqItems} heading="Frequently Asked Questions" color="blue" />
+              </div>
+            )}
+
+            {/* Server-rendered MoreFromHub — inside article column so sticky rails stay locked. */}
+            {moreFromHub && moreFromHub.length > 0 && (
+              <MoreFromHub
+                items={moreFromHub}
+                hubLabel={moreFromHubLabel ?? category}
+                hubHref={moreFromHubHref}
+              />
+            )}
           </article>
 
-          {/* Right rail — sticky Related Articles + Hub backlink.
-              No self-start — same stretch trick as the left rail. */}
-          <aside className="w-full lg:w-1/5 shrink-0">
-            <div className="lg:sticky lg:top-6">
+          {/* Right rail — sticky Related Articles + Hub backlink. */}
+          <aside>
+            <div className="sticky top-6">
               <HubBacklink category={category} topicTag={topicTag} />
               <RelatedArticles
                 currentSlug={slug ?? ''}
@@ -816,25 +823,8 @@ export function NewsArticle({
 
         </div>
 
-        {/* FAQ Section */}
-        {faqItems && faqItems.length > 0 && (
-          <div className="mt-12 max-w-3xl">
-            <FAQSchema items={faqItems} />
-            <FAQAccordion items={faqItems} heading="Frequently Asked Questions" color="blue" />
-          </div>
-        )}
-
-        {/* Server-rendered MoreFromHub — crawlable by Google for SEO interlinking. */}
-        {moreFromHub && moreFromHub.length > 0 && (
-          <MoreFromHub
-            items={moreFromHub}
-            hubLabel={moreFromHubLabel ?? category}
-            hubHref={moreFromHubHref}
-          />
-        )}
-
-        {/* Engagement stack — Tags, ReactionBar, Comments, Author, Newsletter.
-            Rendered OUTSIDE the sticky flex so both rails unstick before comments. */}
+        {/* Engagement stack — renders in a full-width row BELOW the grid.
+            Both sticky rails naturally release here, right before comments. */}
         <div className="mt-12">
           <ArticleFooter
             slug={slug ?? ''}
