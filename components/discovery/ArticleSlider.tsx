@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -55,25 +56,31 @@ function timeAgo(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
-// Card width + gap in px — must match the CSS calc
+// Card width + gap in px — must match the inline styles below
 const CARD_W = 300;
 const CARD_GAP = 16;
 
-function SliderCard({ article }: { article: SliderArticle }) {
+// Auto-scroll speed in px per frame (at ~60fps).
+// 0.5 ≈ 30 px/s  |  0.8 ≈ 48 px/s  |  1.0 ≈ 60 px/s
+const SCROLL_SPEED = 0.5;
+
+function SliderCard({ article, onClick }: { article: SliderArticle; onClick?: (e: React.MouseEvent) => void }) {
   return (
     <Link
       href={article.href}
-      className="group relative shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300"
+      onClick={onClick}
+      draggable={false}
+      className="group relative shrink-0 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-300 select-none"
       style={{ width: CARD_W, height: 400 }}
       tabIndex={0}
     >
-      {/* Background */}
       {article.imageUrl ? (
         <Image
           src={article.imageUrl}
           alt={article.imageAlt ?? article.title}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          draggable={false}
+          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out pointer-events-none"
           sizes="300px"
         />
       ) : (
@@ -109,34 +116,113 @@ function SliderCard({ article }: { article: SliderArticle }) {
 export function ArticleSlider({ articles }: { articles: SliderArticle[] }) {
   if (!articles.length) return null;
 
-  // Duplicate for seamless infinite loop
-  const track = [...articles, ...articles];
-  // Total width of one set: cards + gaps
   const oneSetW = articles.length * (CARD_W + CARD_GAP);
-  // Speed: ~40px/s feels like a news ticker
-  const durationSecs = Math.round(oneSetW / 40);
+
+  const trackRef       = useRef<HTMLDivElement>(null);
+  const offsetRef      = useRef(0);       // current translateX in px (always ≤ 0)
+  const rafRef         = useRef<number>(0);
+  const isHoveredRef   = useRef(false);   // mouse is over the slider
+  const isDraggingRef  = useRef(false);
+  const dragStartXRef  = useRef(0);
+  const dragOffsetRef  = useRef(0);       // offset snapshot at drag start
+  const dragMovedRef   = useRef(0);       // total px moved during current drag
+
+  // Normalise offset into [-oneSetW, 0)
+  function wrap(x: number): number {
+    const mod = x % oneSetW;
+    return mod > 0 ? mod - oneSetW : mod;
+  }
+
+  const applyTransform = useCallback(() => {
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+    }
+  }, []);
+
+  // rAF loop
+  useEffect(() => {
+    function tick() {
+      if (!isHoveredRef.current && !isDraggingRef.current) {
+        offsetRef.current = wrap(offsetRef.current - SCROLL_SPEED);
+        applyTransform();
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    }
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [oneSetW]);
+
+  // ── Pointer event handlers (works for both mouse and touch) ──────────────
+
+  function onPointerDown(e: React.PointerEvent) {
+    if (e.button !== undefined && e.button !== 0) return; // left-click / touch only
+    isDraggingRef.current = true;
+    dragMovedRef.current  = 0;
+    dragStartXRef.current = e.clientX;
+    dragOffsetRef.current = offsetRef.current;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    if (trackRef.current) trackRef.current.style.cursor = 'grabbing';
+  }
+
+  function onPointerMove(e: React.PointerEvent) {
+    if (!isDraggingRef.current) return;
+    const delta = e.clientX - dragStartXRef.current;
+    dragMovedRef.current = delta;
+    offsetRef.current = wrap(dragOffsetRef.current + delta);
+    applyTransform();
+  }
+
+  function onPointerUp(e: React.PointerEvent) {
+    isDraggingRef.current = false;
+    (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    if (trackRef.current) trackRef.current.style.cursor = 'grab';
+  }
+
+  // Prevent link navigation if the user actually dragged (moved > 5px)
+  function suppressClickIfDragged(e: React.MouseEvent) {
+    if (Math.abs(dragMovedRef.current) > 5) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragMovedRef.current = 0;
+    }
+  }
 
   return (
-    <section aria-label="Latest stories" className="relative -mx-4 sm:-mx-6 lg:-mx-8 mb-0">
+    <section
+      aria-label="Latest stories"
+      className="relative -mx-4 sm:-mx-6 lg:-mx-8 mb-0 touch-pan-x"
+      onMouseEnter={() => { isHoveredRef.current = true; }}
+      onMouseLeave={() => {
+        isHoveredRef.current  = false;
+        isDraggingRef.current = false;
+        if (trackRef.current) trackRef.current.style.cursor = 'grab';
+      }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+    >
       {/* Fade edges */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-[#faf9f6] to-transparent z-10" />
       <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-[#faf9f6] to-transparent z-10" />
 
-      {/* Scrolling track — pause on hover */}
       <div className="overflow-hidden py-2">
         <div
-          className="flex gap-4 w-max will-change-transform [animation-play-state:running] hover:[animation-play-state:paused]"
-          style={{
-            animation: `owire-scroll-left ${durationSecs}s linear infinite`,
-            paddingLeft: '1rem',
-            paddingRight: '1rem',
-          }}
+          ref={trackRef}
+          className="flex w-max will-change-transform"
+          style={{ gap: CARD_GAP, paddingLeft: '1rem', paddingRight: '1rem', cursor: 'grab' }}
         >
-          {track.map((a, i) => (
-            <SliderCard key={`${a.id}-${i}`} article={a} />
+          {/* Duplicate for seamless infinite loop */}
+          {[...articles, ...articles].map((a, i) => (
+            <SliderCard
+              key={`${a.id}-${i}`}
+              article={a}
+              onClick={suppressClickIfDragged}
+            />
           ))}
         </div>
       </div>
     </section>
   );
 }
+
