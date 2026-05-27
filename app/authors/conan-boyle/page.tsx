@@ -77,7 +77,7 @@ export default function ConanBoyleAuthorPage() {
             </div>
             <div className="flex-1">
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-500 mb-2 font-mono">
-                Founding Reporter · oWire
+                Founding Reporter Â· oWire
               </p>
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Conan Boyle

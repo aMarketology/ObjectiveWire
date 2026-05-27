@@ -30,7 +30,6 @@ export const metadata: Metadata = {
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
-    section: 'Local',
   },
   twitter: {
     card: 'summary_large_image',
@@ -123,11 +122,11 @@ export default function HoustonHubPage() {
         </p>
       </Hub.Section>
 
-      <Hub.Banner
-        title="Tip the Houston Newsroom"
-        description="Know about an energy company, an HPD incident, or a port contract that needs investigation? Our reporters are licensed and protected."
-        cta={{ href: '/service/tip-the-newsroom', label: 'Submit a Secure Tip' }}
-      />
+      <Hub.Banner gradient="from-amber-600 to-orange-600">
+        <h2 className="text-2xl font-bold mb-2">Tip the Houston Newsroom</h2>
+        <p className="mb-4 opacity-90">Know about an energy company, an HPD incident, or a port contract that needs investigation? Our reporters are licensed and protected.</p>
+        <a href="/service/tip-the-newsroom" className="inline-block bg-white text-amber-700 font-semibold px-6 py-2 rounded-lg hover:bg-amber-50 transition">Submit a Secure Tip</a>
+      </Hub.Banner>
     </Hub>
   );
 }
