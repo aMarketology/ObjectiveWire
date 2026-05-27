@@ -190,13 +190,13 @@ export default async function RootLayout({
                   </div>
                   <div className="brand-rule mx-auto mt-2 w-40 md:w-72" />
                   <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-[#d97706] font-mono whitespace-nowrap">
-                    Investigate <span className="brand-accent-text">·</span> Document <span className="brand-accent-text">·</span> Publish
+                    Texas Investigations <span className="brand-accent-text">·</span> Documented <span className="brand-accent-text">·</span> Published
                   </p>
                 </Link>
               </div>
             </header>
 
-            <main style={{ marginLeft: '10px', marginRight: '10px', paddingTop: '48px' }}>{children}</main>
+            <main className="mx-auto max-w-screen-2xl px-0">{children}</main>
 
         {/* Footer */}
         <footer className="border-t-2 border-gray-900 dark:border-gray-700 bg-[#f9f8f5] dark:bg-[#0d0d0d] mt-24">
@@ -211,29 +211,27 @@ export default async function RootLayout({
               {/* Brand column */}
               <FooterAuthorSlot />
 
-              {/* Sports */}
+              {/* Texas Coverage */}
               <div>
-                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Sports</h4>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Texas Coverage</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/soccer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Soccer</Link>
-                  <Link href="/world-cup" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">World Cup 2026</Link>
-                  <Link href="/premier-league" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Premier League</Link>
-                  <Link href="/mls" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLS</Link>
-                  <Link href="/mlb" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLB</Link>
-                  <Link href="/golf" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Golf</Link>
+                  <Link href="/blog" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Texas Blog</Link>
+                  <Link href="/local/austin" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Austin</Link>
+                  <Link href="/local/houston" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Houston</Link>
+                  <Link href="/local/greater-texas" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Greater Texas</Link>
                 </div>
               </div>
 
-              {/* Creators & Culture */}
+              {/* PI Services */}
               <div>
-                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Creators</h4>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">PI Services</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/creator" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">All Creators</Link>
-                  <Link href="/creator/news" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Creator News</Link>
-                  <Link href="/youtube" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">YouTube</Link>
-                  <Link href="/creator/mrbeast" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MrBeast</Link>
-                  <Link href="/creator/alix-earle" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Alix Earle</Link>
-                  <Link href="/cars" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Cars</Link>
+                  <Link href="/service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">All Services</Link>
+                  <Link href="/service/surveillance" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Surveillance</Link>
+                  <Link href="/service/missing-persons" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Missing Persons</Link>
+                  <Link href="/service/background-checks" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Background Checks</Link>
+                  <Link href="/service/skip-tracing" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Skip Tracing</Link>
+                  <Link href="/service/digital-forensics" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Digital Forensics</Link>
                 </div>
               </div>
 
@@ -269,7 +267,9 @@ export default async function RootLayout({
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Our Mission</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    Objective Wire is a licensed investigative media agency and 501(c)(3) nonprofit based in Austin, Texas. We take on PI cases and investigative reporting cases under our Texas PI license. Investigate. Document. Publish.
+                    Objective Wire is a 501(c)(3) nonprofit investigative agency incorporated in Wyoming
+                    and operating throughout Texas. Private investigative services, field work, and
+                    public-interest reporting, documented and verified.
                   </p>
                 </div>
 
@@ -308,7 +308,7 @@ export default async function RootLayout({
               <div className="flex items-center gap-3 text-xs text-gray-400">
                 <span className="font-bold text-gray-600 dark:text-gray-300">Objective Wire</span>
                 <span className="text-gray-300 dark:text-gray-700">|</span>
-                <span>Licensed PI Agency · 501(c)(3) Nonprofit · Investigative Media</span>
+                <span>501(c)(3) Wyoming Nonprofit · Investigative Services Throughout Texas</span>
                 <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">|</span>
                 <span className="hidden sm:inline">Austin, Texas</span>
               </div>

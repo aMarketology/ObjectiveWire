@@ -19,11 +19,12 @@ export default function FooterAuthorSlot() {
       </Link>
 
       <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
-        Investigative Journalism &amp; Private Detective Agency
+        Investigative Services &amp; Public-Interest Media
       </p>
 
       <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-        Independent investigative journalism and private detective agency. Verified reporting on creators, sports, cars, and culture. We uncover the truth.
+        501(c)(3) nonprofit investigative agency incorporated in Wyoming, operating throughout Texas.
+        Surveillance, missing persons, background checks, digital forensics, and public-interest reporting.
       </p>
 
       {/* Location */}

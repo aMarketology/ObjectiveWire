@@ -5,7 +5,7 @@ import { ServicePage, ServiceSection } from '@/components/articles/ServicePage';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectwire.org/service/corporate-investigations';
+const PAGE_URL = 'https://www.objectivewire.org/service/corporate-investigations';
 
 export const metadata: Metadata = {
   title: 'Corporate Investigations Austin TX | ObjectWire',
@@ -43,7 +43,7 @@ const SERVICE_SCHEMA = {
   description: 'Licensed employee misconduct, IP theft, fraud, and executive due diligence investigations for Austin, Texas businesses.',
   serviceType: 'Private Investigation — Corporate',
   areaServed: { '@type': 'City', name: 'Austin', containedInPlace: { '@type': 'State', name: 'Texas' } },
-  provider: { '@type': 'LocalBusiness', name: 'ObjectWire Investigative Services', url: 'https://www.objectwire.org/service' },
+  provider: { '@type': 'LocalBusiness', name: 'ObjectWire Investigative Services', url: 'https://www.objectivewire.org/service' },
   url: PAGE_URL,
 };
 
@@ -51,8 +51,8 @@ const BREADCRUMB_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectwire.org' },
-    { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: 'https://www.objectwire.org/service' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.org' },
+    { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: 'https://www.objectivewire.org/service' },
     { '@type': 'ListItem', position: 3, name: 'Corporate Investigations', item: PAGE_URL },
   ],
 };

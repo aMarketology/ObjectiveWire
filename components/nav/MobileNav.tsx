@@ -9,73 +9,40 @@ type NavHub = { label: string; href: string; items: NavItem[] };
 
 const NAV_HUBS: NavHub[] = [
   {
-    label: 'Local',
-    href: '/local',
+    label: 'Services',
+    href: '/service',
     items: [
-      { label: 'All Local', href: '/local' },
+      { label: 'All Services', href: '/service' },
+      { label: 'Surveillance', href: '/service/surveillance' },
+      { label: 'Missing Persons', href: '/service/missing-persons' },
+      { label: 'Background Checks', href: '/service/background-checks' },
+      { label: 'Infidelity Investigations', href: '/service/infidelity-investigations' },
+      { label: 'Skip Tracing', href: '/service/skip-tracing' },
+      { label: 'Child Custody', href: '/service/child-custody-investigations' },
+      { label: 'Digital Forensics', href: '/service/digital-forensics' },
+      { label: 'Corporate Investigations', href: '/service/corporate-investigations' },
+      { label: 'Tip the Newsroom', href: '/service/tip-the-newsroom' },
+    ],
+  },
+  {
+    label: 'Texas Blog', href: '/blog',
+    items: [
+      { label: 'All Articles', href: '/blog' },
       { label: 'Austin', href: '/local/austin' },
       { label: 'Houston', href: '/local/houston' },
       { label: 'Greater Texas', href: '/local/greater-texas' },
-      { label: 'Local US News', href: '/local/us-news' },
-      { label: 'Mexico + Canada', href: '/local/mexico-canada' },
     ],
   },
   {
-    label: 'Soccer', href: '/soccer',
+    label: 'About', href: '/about',
     items: [
-      { label: 'All Soccer', href: '/soccer' },
-      { label: 'World Cup', href: '/world-cup' },
-      { label: 'MLS', href: '/mls' },
-      { label: 'Premier League', href: '/premier-league' },
+      { label: 'About Us', href: '/about' },
+      { label: 'Authors', href: '/authors' },
+      { label: 'Editorial Standards', href: '/editorial-standards' },
+      { label: 'Corrections', href: '/corrections' },
     ],
   },
-  {
-    label: 'MLB', href: '/mlb',
-    items: [
-      { label: 'All MLB', href: '/mlb' },
-    ],
-  },
-  {
-    label: 'Golf', href: '/golf',
-    items: [
-      { label: 'All Golf', href: '/golf' },
-    ],
-  },
-  {
-    label: 'YouTube', href: '/youtube',
-    items: [
-      { label: 'All YouTube', href: '/youtube' },
-      { label: 'Logan Paul', href: '/youtube/logan-paul' },
-      { label: 'Sidemen', href: '/youtube/sidemen' },
-      { label: 'NELK Boys', href: '/youtube/nelk-boys' },
-      { label: 'Mat Armstrong', href: '/youtube/mat-armstrong' },
-      { label: 'TheFellas', href: '/youtube/thefellas' },
-    ],
-  },
-  {
-    label: 'Creators', href: '/creator',
-    items: [
-      { label: 'All Creators', href: '/creator' },
-      { label: 'Creator News', href: '/creator/news' },
-      { label: 'MrBeast', href: '/creator/mrbeast' },
-      { label: 'Iman Gadzhi', href: '/creator/iman-gadzhi' },
-      { label: 'Lean Beef Patty', href: '/creator/lean-beef-patty' },
-      { label: 'Ari Kytsya', href: '/creator/ari-kytsya' },
-      { label: 'Abby Berner', href: '/creator/abby-berner' },
-      { label: 'Tren Twins', href: '/creator/tren-twins' },
-      { label: 'Emma Chamberlain', href: '/creator/emma-chamberlain' },
-      { label: 'Alix Earle', href: '/creator/alix-earle' },
-      { label: 'Charli D’Amelio', href: '/creator/charli-damelio' },
-      { label: 'Pokimane', href: '/creator/pokimane' },
-      { label: 'Valkyrae', href: '/creator/valkyrae' },
-    ],
-  },
-  {
-    label: 'Cars', href: '/cars',
-    items: [
-      { label: 'All Cars', href: '/cars' },
-    ],
-  },
+
 ];
 
 const FOOTER_LINKS = [

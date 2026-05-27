@@ -5,7 +5,7 @@ import { ServicePage, ServiceSection } from '@/components/articles/ServicePage';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectwire.org/service/tip-the-newsroom';
+const PAGE_URL = 'https://www.objectivewire.org/service/tip-the-newsroom';
 
 export const metadata: Metadata = {
   title: 'Tip the Newsroom | Submit a Confidential News Tip',
@@ -48,7 +48,7 @@ const SERVICE_SCHEMA = {
   provider: {
     '@type': ['LocalBusiness', 'NewsMediaOrganization'],
     name: 'ObjectWire',
-    url: 'https://www.objectwire.org',
+    url: 'https://www.objectivewire.org',
   },
   url: PAGE_URL,
 };
@@ -57,8 +57,8 @@ const BREADCRUMB_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectwire.org' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.objectwire.org/service' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.org' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.objectivewire.org/service' },
     { '@type': 'ListItem', position: 3, name: 'Tip the Newsroom', item: PAGE_URL },
   ],
 };

@@ -5,7 +5,7 @@ import { ServicePage, ServiceSection } from '@/components/articles/ServicePage';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectwire.org/service/investigative-reporting';
+const PAGE_URL = 'https://www.objectivewire.org/service/investigative-reporting';
 
 export const metadata: Metadata = {
   title: 'Investigative Reporting Austin TX | ObjectWire',
@@ -48,7 +48,7 @@ const SERVICE_SCHEMA = {
   provider: {
     '@type': ['LocalBusiness', 'NewsMediaOrganization'],
     name: 'ObjectWire',
-    url: 'https://www.objectwire.org',
+    url: 'https://www.objectivewire.org',
   },
   url: PAGE_URL,
 };
@@ -57,8 +57,8 @@ const BREADCRUMB_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectwire.org' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.objectwire.org/service' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.org' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.objectivewire.org/service' },
     { '@type': 'ListItem', position: 3, name: 'Investigative Reporting', item: PAGE_URL },
   ],
 };

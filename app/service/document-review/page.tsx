@@ -5,7 +5,7 @@ import { ServicePage, ServiceSection } from '@/components/articles/ServicePage';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectwire.org/service/document-review';
+const PAGE_URL = 'https://www.objectivewire.org/service/document-review';
 
 export const metadata: Metadata = {
   title: 'Document Review and FOIA | ObjectWire Investigative Services',
@@ -48,7 +48,7 @@ const SERVICE_SCHEMA = {
   provider: {
     '@type': ['LocalBusiness', 'NewsMediaOrganization'],
     name: 'ObjectWire',
-    url: 'https://www.objectwire.org',
+    url: 'https://www.objectivewire.org',
   },
   url: PAGE_URL,
 };
@@ -57,8 +57,8 @@ const BREADCRUMB_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectwire.org' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.objectwire.org/service' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.org' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.objectivewire.org/service' },
     { '@type': 'ListItem', position: 3, name: 'Document Review and FOIA', item: PAGE_URL },
   ],
 };
