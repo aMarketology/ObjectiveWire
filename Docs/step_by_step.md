@@ -1,4 +1,4 @@
-# ObjectWire | Step-by-Step Action Plan
+ï»¿# ObjectWire | Step-by-Step Action Plan
 
 > Distilled from `seo_contentregistry_auto.md` + `SEO_NEXTSTEPS_CONTEXT.md`.
 > These are the highest-impact actions executable directly in this codebase, in priority order.
@@ -17,7 +17,7 @@ npm run registry:sync   # dry-run, shows all missing/broken entries
 
 For every entry missing `imageUrl`, `imageWidth`, `imageHeight`:
 - Open `lib/content-registry.ts`
-- Add the actual hosted image URL (must be on `objectivewire.org`, min 1200px wide)
+- Add the actual hosted image URL (must be on `objectivewire.com`, min 1200px wide)
 - Set `imageWidth: 1200`, `imageHeight: 675`
 - Set `imageAlt` to a descriptive string
 
@@ -75,7 +75,7 @@ Any description that:
 
 ...must be rewritten with:
 - Primary keyword in the first 60 characters
-- 130–155 total characters
+- 130ï¿½155 total characters
 - Unique, article-specific language
 
 Run `npm run audit` (after step 2) to find them all at once.
@@ -93,38 +93,38 @@ Every article page must include all of these. Use this as a copy-paste checklist
 
 export const metadata = {
   title: '[Primary Keyword] | Exact Headline | ObjectWire',   // = 60 chars, keyword first
-  description: '[Unique, 130–155 chars, keyword in first 60]',
-  keywords: ['keyword 1', 'keyword 2', ...],                  // 10–15 phrases
+  description: '[Unique, 130ï¿½155 chars, keyword in first 60]',
+  keywords: ['keyword 1', 'keyword 2', ...],                  // 10ï¿½15 phrases
   openGraph: {
     title: '...',
     description: '...',
-    url: 'https://www.objectivewire.org/[full/slug]',
+    url: 'https://www.objectivewire.com/[full/slug]',
     type: 'article',
     publishedTime: '2026-MM-DDTHH:MM:SSZ',
     section: 'Technology',                                     // Canonical category
     images: [{ url: '...', width: 1200, height: 675, alt: '...' }],
   },
-  alternates: { canonical: 'https://www.objectivewire.org/[full/slug]' },
+  alternates: { canonical: 'https://www.objectivewire.com/[full/slug]' },
 };
 
 export default function ArticlePage() {
   return (
     <SEOWrapper slug="/[full/slug]">          {/* must exactly match registry slug */}
-      <Breadcrumb />                           {/* 3–4 levels minimum */}
+      <Breadcrumb />                           {/* 3ï¿½4 levels minimum */}
       <NewsArticleSchema
         title="..."
         description="..."
-        author="First Last"                    {/* real name — not generic */}
+        author="First Last"                    {/* real name ï¿½ not generic */}
         publishedTime="2026-MM-DDTHH:MM:SSZ"
-        imageUrl="https://www.objectivewire.org/images/..."
-        articleUrl="https://www.objectivewire.org/[full/slug]"
+        imageUrl="https://www.objectivewire.com/images/..."
+        articleUrl="https://www.objectivewire.com/[full/slug]"
         section="Technology"
         keywords={['keyword 1', 'keyword 2']}
       />
       <article>
         <h1>[Title, must match metadata.title headline exactly]</h1>
         {/* content */}
-        {/* 4–6 <Link> internal links to related pages at the bottom */}
+        {/* 4ï¿½6 <Link> internal links to related pages at the bottom */}
       </article>
     </SEOWrapper>
   );
@@ -133,13 +133,13 @@ export default function ArticlePage() {
 
 ### Component Checklist per Article
 
-- [ ] `metadata` export, title (=60 chars, keyword first), description (130–155), canonical, OG image 1200×675
+- [ ] `metadata` export, title (=60 chars, keyword first), description (130ï¿½155), canonical, OG image 1200ï¿½675
 - [ ] `<SEOWrapper slug="...">`, slug matches registry exactly
 - [ ] `<NewsArticleSchema>`, all props filled with real data
 - [ ] `<Breadcrumb>`, 3+ levels
 - [ ] `<h1>`, matches metadata title headline exactly
 - [ ] Hero image, `next/image`, width + height set (prevents CLS)
-- [ ] 4–6 internal `<Link>` cards to related ObjectWire pages
+- [ ] 4ï¿½6 internal `<Link>` cards to related ObjectWire pages
 - [ ] Real author name in both `NewsArticleSchema` and registry entry
 
 ---
@@ -152,22 +152,22 @@ After `npm run build` auto-syncs the entry, go back and patch:
 {
   slug: '/[full/slug]',
   title: '[Title without | ObjectWire]',
-  description: '[Unique 130–155 char description]',  // ? patch this
+  description: '[Unique 130ï¿½155 char description]',  // ? patch this
   publishDate: 'YYYY-MM-DD',
   modifiedDate: 'YYYY-MM-DD',
   category: 'Technology',                             // ? use canonical category
-  tags: ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'],    // ? 5–10 tags
+  tags: ['tag1', 'tag2', 'tag3', 'tag4', 'tag5'],    // ? 5ï¿½10 tags
   author: 'First Last',                               // ? real name
   priority: 0.9,                                      // 0.9 breaking, 0.7 news, 0.5 evergreen
   changeFrequency: 'daily',                           // daily|weekly|monthly
-  imageUrl: 'https://www.objectivewire.org/images/...', // ? CRITICAL, patch this
+  imageUrl: 'https://www.objectivewire.com/images/...', // ? CRITICAL, patch this
   imageWidth: 1200,                                   // ? CRITICAL
   imageHeight: 675,                                   // ? CRITICAL
   imageAlt: 'Descriptive alt text',
 }
 ```
 
-**Verify inclusion:** after build + deploy, open `/news-sitemap.xml` — the slug must appear if `publishDate` is within 2 days.
+**Verify inclusion:** after build + deploy, open `/news-sitemap.xml` ï¿½ the slug must appear if `publishDate` is within 2 days.
 
 ---
 
@@ -230,7 +230,7 @@ Build hub ? sub-article clusters. Every sub-article links back to hub; hub links
 
 ---
 
-## Stage 6 | Programmatic Scaling (Month 2–3)
+## Stage 6 | Programmatic Scaling (Month 2ï¿½3)
 
 ### 6a. Scale `/define/` Pages
 
@@ -261,8 +261,8 @@ Build before the event so Google indexes them in advance:
 ```
 ? 1. Create page.tsx with metadata (title, desc, OG image, canonical)
 ? 2. Add SEOWrapper + NewsArticleSchema + Breadcrumb + h1 components
-? 3. Include hero image (1200×675+, next/image)
-? 4. Add 4–6 internal <Link> cards to related pages
+? 3. Include hero image (1200ï¿½675+, next/image)
+? 4. Add 4ï¿½6 internal <Link> cards to related pages
 ? 5. npm run build  (prebuild auto-registers entry in registry)
 ? 6. Open /news-sitemap.xml, verify slug appears
 ? 7. Patch registry entry: imageUrl + imageWidth + imageHeight + description
@@ -284,17 +284,17 @@ For breaking news via Supabase CMS (no build):
 | # | Requirement | Consequence if Missing |
 |---|---|---|
 | 1 | `metadata.title`, keyword first, = 60 chars | Won't rank for target keyword |
-| 2 | `metadata.description`, unique, 130–155 chars | Low CTR, possible demotion |
-| 3 | OG image 1200×675+ in metadata | Blocked from Top Stories, Discover |
+| 2 | `metadata.description`, unique, 130ï¿½155 chars | Low CTR, possible demotion |
+| 3 | OG image 1200ï¿½675+ in metadata | Blocked from Top Stories, Discover |
 | 4 | `canonical` URL set | Duplicate content penalty |
 | 5 | Registry entry, all fields complete | No JSON-LD, no sitemap, invisible to Google |
 | 6 | `imageUrl` + `imageWidth` + `imageHeight` in registry | Ineligible for Top Stories carousel |
 | 7 | `publishDate` accurate | Wrong news sitemap window |
-| 8 | `tags[]` with 5–10 items | Weak topical signal |
+| 8 | `tags[]` with 5ï¿½10 items | Weak topical signal |
 | 9 | `NewsArticleSchema` on page | No structured data for Google News |
 | 10 | `SEOWrapper` with correct slug | No JSON-LD injected |
 | 11 | `Breadcrumb` 3+ levels | No BreadcrumbList rich result |
-| 12 | 4–6 internal links | Low internal PageRank flow |
+| 12 | 4ï¿½6 internal links | Low internal PageRank flow |
 | 13 | `<h1>` matches metadata title | Trust signal drop (Google cross-checks) |
 | 14 | Real author name | E-E-A-T weakened |
 | 15 | `next/image` with width + height | CLS penalty in Core Web Vitals |
@@ -318,11 +318,11 @@ For breaking news via Supabase CMS (no build):
 
 | Month | Target Sessions | Pages Live |
 |---|---|---|
-| 1 | 2K–5K | 360 |
-| 3 | 12K–25K | 450 |
-| 6 | 40K–65K | 600 |
+| 1 | 2Kï¿½5K | 360 |
+| 3 | 12Kï¿½25K | 450 |
+| 6 | 40Kï¿½65K | 600 |
 | 12 | **100K+** | 900+ |
 
 ---
 
-*Source documents: [seo_contentregistry_auto.md](seo_contentregistry_auto.md) · [SEO_NEXTSTEPS_CONTEXT.md](SEO_NEXTSTEPS_CONTEXT.md) · Full strategy: [100k_organicsearch.md](100k_organicsearch.md)*
+*Source documents: [seo_contentregistry_auto.md](seo_contentregistry_auto.md) ï¿½ [SEO_NEXTSTEPS_CONTEXT.md](SEO_NEXTSTEPS_CONTEXT.md) ï¿½ Full strategy: [100k_organicsearch.md](100k_organicsearch.md)*

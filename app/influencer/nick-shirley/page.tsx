@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Nick Shirley | Investigative YouTube Creator 2026',
     description: "From urban exploration to exposing multi-million dollar fraud schemes. Nick Shirley's rise as an investigative content creator and the Feeding Our Future story.",
     type: 'article',
-    url: 'https://www.objectivewire.org/creator/nick-shirley',
+    url: 'https://www.objectivewire.com/creator/nick-shirley',
     siteName: 'OzoneNews',
     authors: ['OzoneNews Creator Desk'],
     section: 'Creator',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "Complete profile of the investigative content creator exposing fraud across America.",
   },
   alternates: {
-    canonical: 'https://www.objectivewire.org/creator/nick-shirley',
+    canonical: 'https://www.objectivewire.com/creator/nick-shirley',
   },
 };
 

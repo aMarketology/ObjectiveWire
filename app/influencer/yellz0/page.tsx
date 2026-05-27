@@ -21,14 +21,14 @@ export const metadata: Metadata = {
     'social media creator',
   ],
   alternates: {
-    canonical: 'https://www.objectivewire.org/creator/yellz0',
+    canonical: 'https://www.objectivewire.com/creator/yellz0',
   },
   openGraph: {
     title: 'Yellz0 (Aniela Verbin) | TikTok Star, Model & Content',
     description:
       'Profile of Yellz0: real name Aniela Verbin. Pennsylvania-born TikTok star with 4M+ followers, lifestyle model, and one of social media\'s most',
     type: 'article',
-    url: 'https://www.objectivewire.org/creator/yellz0',
+    url: 'https://www.objectivewire.com/creator/yellz0',
     images: [{ url: '/influncer/yellz0_what_cup_size.PNG', width: 1200, height: 675 }],
     siteName: 'OzoneNews',
     authors: ['OzoneNews Creator Desk'],

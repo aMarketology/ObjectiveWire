@@ -6,7 +6,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/leah-davies';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // restored by wiki:publish
 const OG_IMAGE = '';
 const IMAGE_URL = OG_IMAGE;
 
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     modifiedTime: '2026-04-27T12:00:00Z',
     images: [
       {
-        url: `https://www.objectivewire.org${IMAGE_URL}`,
+        url: `https://www.objectivewire.com${IMAGE_URL}`,
         width: 1200,
         height: 675,
         alt: 'Leah Davies UK house DJ portrait',

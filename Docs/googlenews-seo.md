@@ -1,4 +1,4 @@
-# Google News SEO | ObjectWire
+ï»¿# Google News SEO | ObjectWire
 
 > **How `content-registry.ts`, the Supabase articles table, and structured data work together to compete with IGN, CNN, and established media for Google News placement.**
 
@@ -41,10 +41,10 @@ It is **not** a CMS. It is metadata. The actual page content lives in `app/**/pa
   tags: ["Technology", "Cursor", "Anysphere", "SaaS", "ARR"],
   author: "Jack Wang",
   authorSlug: "jack-wang",         // Links to /authors/jack-wang
-  priority: 0.9,                   // Sitemap crawl priority (0.0–1.0)
+  priority: 0.9,                   // Sitemap crawl priority (0.0ï¿½1.0)
   changeFrequency: "weekly",
   featured: true,                  // Appears in homepage hero slot
-  imageUrl: "https://www.objectivewire.org/news/cursor.PNG",   // Required for Top Stories
+  imageUrl: "https://www.objectivewire.com/news/cursor.PNG",   // Required for Top Stories
   imageAlt: "Cursor AI code editor, Anysphere $2 billion ARR milestone",
 }
 ```
@@ -62,7 +62,7 @@ Every field has a job. None are cosmetic.
 | Requirement | Where it comes from |
 |---|---|
 | Published within the last 48 hours | `publishDate` in registry entry |
-| Valid hero image (min 1200×675 px, 16:9) | `imageUrl` + `imageWidth` + `imageHeight` in registry |
+| Valid hero image (min 1200ï¿½675 px, 16:9) | `imageUrl` + `imageWidth` + `imageHeight` in registry |
 | `NewsArticle` structured data on the page | `NewsArticleSchema` component on each page |
 | Unique, descriptive `<title>` tag | `title` in registry ? page `metadata.title` |
 | Author byline | `author` + optional `authorSlug` in registry |
@@ -92,15 +92,15 @@ This is separate from the registry but fed by the same data. The registry entry 
 
 ## 3. Will the Registry Keep Growing?
 
-**Yes — and there is a size ceiling you need to plan around.**
+**Yes ï¿½ and there is a size ceiling you need to plan around.**
 
 ### Growth trajectory
 
 | Articles | Registry size | Build time impact | Risk |
 |---|---|---|---|
-| 0–500 | ~3,000 lines | Negligible | None |
-| 500–1,500 | ~9,000 lines | Minor (+5–10s) | Low |
-| 1,500–5,000 | ~30,000 lines | Significant (+30–60s) | Medium |
+| 0ï¿½500 | ~3,000 lines | Negligible | None |
+| 500ï¿½1,500 | ~9,000 lines | Minor (+5ï¿½10s) | Low |
+| 1,500ï¿½5,000 | ~30,000 lines | Significant (+30ï¿½60s) | Medium |
 | 5,000+ | 150,000+ lines | Build breaks or times out | High |
 
 ### The real constraint
@@ -186,7 +186,7 @@ IGN took 30 years to build topic authority on gaming. The gap closes from the bo
 In a single afternoon (March 2, 2026), ObjectWire published:
 - Cursor $2B ARR story (`/technology/cursor`)
 - Hulu Mike & Nick & Nick & Alice trailer coverage (`/entertainment/hulu`)
-- Pokémon Pokopia franchise-record review (`/video-games/switch2/pokemon-pokopia`)
+- Pokï¿½mon Pokopia franchise-record review (`/video-games/switch2/pokemon-pokopia`)
 - Polyphony Digital hiring + Gran Turismo review (`/video-games/racing/polyphony-gran-turismo`)
 
 A CNN gaming desk or IGN news team requires separate writers and editors for each of those verticals. ObjectWire's architecture, registry + Supabase + reusable article components, compresses that to a single publishing session.
@@ -215,7 +215,7 @@ Run through this for every article before publishing:
 - [ ] `featured: true` for stories you want in the homepage hero
 - [ ] `authorSlug` linking to a real `/authors/[name]` profile page
 - [ ] `description` under 160 characters
-- [ ] Tags array includes at least 3–5 specific topic terms
+- [ ] Tags array includes at least 3ï¿½5 specific topic terms
 - [ ] `modifiedDate` updated whenever the article is edited
 
 ---
@@ -231,11 +231,11 @@ Every ObjectWire article page should include both of these:
   title="Article Title"
   description="Article excerpt under 160 chars."
   author="Jack Wang"
-  authorUrl="https://www.objectivewire.org/authors/jack-wang"
+  authorUrl="https://www.objectivewire.com/authors/jack-wang"
   publishedTime="2026-03-02T12:00:00Z"   // ISO 8601, required
   modifiedTime="2026-03-02T12:00:00Z"
-  imageUrl="https://www.objectivewire.org/news/cursor.PNG"
-  articleUrl="https://www.objectivewire.org/technology/cursor"
+  imageUrl="https://www.objectivewire.com/news/cursor.PNG"
+  articleUrl="https://www.objectivewire.com/technology/cursor"
   section="Technology"
   keywords={['Cursor', 'Anysphere', 'ARR', 'SaaS']}
 />
@@ -268,19 +268,19 @@ Every ObjectWire article page should include both of these:
 
 Tags power the related-article matching system. Use:
 - 1 broad category tag (`"Technology"`, `"Gaming"`)
-- 2–3 brand/entity tags (`"Cursor"`, `"Anysphere"`)
-- 1–2 topic tags (`"ARR"`, `"SaaS"`, `"AI Developer Tools"`)
+- 2ï¿½3 brand/entity tags (`"Cursor"`, `"Anysphere"`)
+- 1ï¿½2 topic tags (`"ARR"`, `"SaaS"`, `"AI Developer Tools"`)
 
 Avoid duplicating the category as a tag, it wastes a slot.
 
 ### Image requirements for Top Stories carousel
 
-Google mandates a minimum image size of **1200×675 px (16:9)** for Top Stories placement. Thumbnails that are smaller or the wrong aspect ratio disqualify the article from the carousel regardless of content quality.
+Google mandates a minimum image size of **1200ï¿½675 px (16:9)** for Top Stories placement. Thumbnails that are smaller or the wrong aspect ratio disqualify the article from the carousel regardless of content quality.
 
 Always include `imageWidth` and `imageHeight` in the registry entry:
 
 ```ts
-imageUrl: "https://www.objectivewire.org/news/cursor.PNG",
+imageUrl: "https://www.objectivewire.com/news/cursor.PNG",
 imageWidth: 1200,
 imageHeight: 675,
 imageAlt: "Cursor AI code editor interface screenshot",
@@ -315,7 +315,7 @@ Start routing to Supabase when any of these are true:
 - Opinion / editorial pieces
 - Any article where you need to edit it after publish without a deploy
 
-See [supabase-library.md § 9, Static Pages vs Dynamic Articles](supabase-library.md#9-static-pages-vs-dynamic-articles) for the full breakdown.
+See [supabase-library.md ï¿½ 9, Static Pages vs Dynamic Articles](supabase-library.md#9-static-pages-vs-dynamic-articles) for the full breakdown.
 
 ---
 

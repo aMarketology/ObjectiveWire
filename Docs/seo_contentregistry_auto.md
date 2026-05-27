@@ -1,4 +1,4 @@
-# SEO Content Registry | Automatic Ranking Chain
+ï»¿# SEO Content Registry | Automatic Ranking Chain
 
 > Every time a new article is published on ObjectWire, a chain of SEO systems must fire in the correct order, at lightning speed, for the article to have the **highest possible chance of ranking #1 in Google**. This document defines that chain, what each link does, and the hard requirements at every step.
 
@@ -43,12 +43,12 @@ Every `page.tsx` must export a `metadata` object. This is what Google reads firs
 | Field | Requirement | Why |
 |---|---|---|
 | `title` | Primary keyword first, `\| ObjectWire` at end, = 60 chars | Google truncates at ~60. Keyword-first = highest weight |
-| `description` | 130–155 chars. Primary keyword in the first 60 chars. Unique per page | This is the snippet in search results. Dupes = demotion |
-| `keywords` | 10–15 long-tail keyword phrases as an array | Google ignores the meta tag, but Bing and AI crawlers use it |
-| `canonical` | Always set to `https://www.objectivewire.org/[slug]` | Prevents duplicate content penalties |
+| `description` | 130ï¿½155 chars. Primary keyword in the first 60 chars. Unique per page | This is the snippet in search results. Dupes = demotion |
+| `keywords` | 10ï¿½15 long-tail keyword phrases as an array | Google ignores the meta tag, but Bing and AI crawlers use it |
+| `canonical` | Always set to `https://www.objectivewire.com/[slug]` | Prevents duplicate content penalties |
 | `openGraph.title` | Same as `title` or slightly reworded for social | Social shares and Google Discover use this |
 | `openGraph.description` | Same as `description` | Social shares use this |
-| `openGraph.images` | Array with `url` (1200×675+), `width`, `height`, `alt` | **Mandatory for Google Top Stories and Discover** |
+| `openGraph.images` | Array with `url` (1200ï¿½675+), `width`, `height`, `alt` | **Mandatory for Google Top Stories and Discover** |
 | `openGraph.publishedTime` | ISO 8601 datetime string | Google News requires this to determine recency |
 | `openGraph.section` | Category string (e.g. "Technology", "Gaming") | Feeds Google News section labeling |
 | `robots` | `index, follow` (default) unless draft | Never noindex a published article |
@@ -63,18 +63,18 @@ export const metadata = {
   openGraph: {
     title: 'GTA 6 Pre-Orders Open on PlayStation Store | ObjectWire',
     description: '...',
-    url: 'https://www.objectivewire.org/video-games/news/gta6-pre-orders',
+    url: 'https://www.objectivewire.com/video-games/news/gta6-pre-orders',
     type: 'article',
     publishedTime: '2026-03-04T12:00:00Z',
     section: 'Gaming',
     images: [{
-      url: 'https://www.objectivewire.org/images/gta6-preorders.jpg',
+      url: 'https://www.objectivewire.com/images/gta6-preorders.jpg',
       width: 1200,
       height: 675,
       alt: 'GTA 6 pre-order page on PlayStation Store',
     }],
   },
-  alternates: { canonical: 'https://www.objectivewire.org/video-games/news/gta6-pre-orders' },
+  alternates: { canonical: 'https://www.objectivewire.com/video-games/news/gta6-pre-orders' },
 };
 ```
 
@@ -90,11 +90,11 @@ The content registry ([lib/content-registry.ts](lib/content-registry.ts)) is the
 |---|---|---|
 | `slug` | YES | Must exactly match the page's URL path (e.g. `/video-games/news/gta6-pre-orders`) |
 | `title` | YES | Must match the `metadata.title` minus the `\| ObjectWire` suffix |
-| `description` | YES | 130–155 chars, unique, contains primary keyword, NOT "ObjectWire coverage of..." |
+| `description` | YES | 130ï¿½155 chars, unique, contains primary keyword, NOT "ObjectWire coverage of..." |
 | `publishDate` | YES | ISO format `YYYY-MM-DD`. Determines news sitemap inclusion (2-day window) |
 | `modifiedDate` | YES | Update this every time the article content changes |
 | `category` | YES | One of the canonical categories: Technology, Gaming, Sports, Entertainment, Finance, Science, News, YouTube, Reference, Meta |
-| `tags` | YES | 5–10 topic tags. These become `<news:keywords>` in the news sitemap |
+| `tags` | YES | 5ï¿½10 topic tags. These become `<news:keywords>` in the news sitemap |
 | `author` | YES | Real name preferred. "ObjectWire Editorial" only for unsigned content |
 | `priority` | YES | `0.9` breaking/featured, `0.7` standard news, `0.5` evergreen/reference |
 | `changeFrequency` | YES | `daily` for news, `weekly` for evergreen, `monthly` for reference |
@@ -215,7 +215,7 @@ Dynamic route that pulls from the content registry in real-time.
 
 ### Speed Requirements
 
-- Google News crawls news sitemaps every **5–15 minutes**
+- Google News crawls news sitemaps every **5ï¿½15 minutes**
 - A new article must be in the registry **before the build deploys** (the prebuild script handles this)
 - For breaking news via Supabase CMS: publish immediately, no build needed, the dynamic route picks it up live
 
@@ -238,7 +238,7 @@ The `robots.ts` file allows all content paths for Googlebot and Googlebot-News. 
 - Blocked: `/api/`, `/admin/`, `/preview/`
 - Sitemaps declared: `/sitemap.xml` and `/news-sitemap.xml`
 
-**No action needed per article** — this is global. Just don't put articles under `/api/` or `/admin/`.
+**No action needed per article** ï¿½ this is global. Just don't put articles under `/api/` or `/admin/`.
 
 ---
 
@@ -250,9 +250,9 @@ Google ranks pages higher when other pages on the same domain link to them. The 
 
 | Element | Count | Implementation |
 |---|---|---|
-| Interlinks grid at bottom | 4–6 links | Manual `<Link>` cards to related ObjectWire pages |
+| Interlinks grid at bottom | 4ï¿½6 links | Manual `<Link>` cards to related ObjectWire pages |
 | Hub page link to this article | 1 | Add a card on the parent hub page (e.g. `/video-games/gta-6`) |
-| Breadcrumb links | 3–4 levels | `Breadcrumb` component (auto from slug) |
+| Breadcrumb links | 3ï¿½4 levels | `Breadcrumb` component (auto from slug) |
 | Newsletter mention | 1 | `NewsletterSignupInline` component (already on every article) |
 
 ### Cluster Rule
@@ -273,8 +273,8 @@ For a static `page.tsx` article:
 ```
 ? 1. Create page.tsx with metadata export (title, desc, OG, canonical)
 ? 2. Use NewsArticle + SEOWrapper + NewsArticleSchema + Breadcrumb components
-? 3. Include hero image (1200×675+, hosted on objectivewire.org)
-? 4. Add 4–6 interlinks to related ObjectWire pages
+? 3. Include hero image (1200ï¿½675+, hosted on objectivewire.com)
+? 4. Add 4ï¿½6 interlinks to related ObjectWire pages
 ? 5. npm run build (prebuild auto-registers in content registry)
 ? 6. Verify: open /news-sitemap.xml, article should be listed
 ? 7. Push to GitHub ? deploy
@@ -300,17 +300,17 @@ These are the things that **must be right on every single article, no exceptions
 | # | Requirement | If Missing |
 |---|---|---|
 | 1 | `metadata.title` with primary keyword first | Won't rank for target keyword |
-| 2 | `metadata.description`, unique, 130–155 chars | Low CTR in search results, possible demotion |
-| 3 | `openGraph.images` with 1200×675+ image | Blocked from Top Stories, Discover, and rich results |
+| 2 | `metadata.description`, unique, 130ï¿½155 chars | Low CTR in search results, possible demotion |
+| 3 | `openGraph.images` with 1200ï¿½675+ image | Blocked from Top Stories, Discover, and rich results |
 | 4 | `canonical` URL set | Duplicate content risk across www / non-www |
 | 5 | Content registry entry with all fields filled | No JSON-LD, no sitemap, no news sitemap = invisible |
 | 6 | `imageUrl` + `imageWidth` + `imageHeight` in registry | Ineligible for Google Top Stories carousel |
 | 7 | `publishDate` set to actual publish date | Wrong news sitemap window / wrong recency signal |
-| 8 | `tags[]` with 5–10 relevant keywords | Weak topical signal in news sitemap |
+| 8 | `tags[]` with 5ï¿½10 relevant keywords | Weak topical signal in news sitemap |
 | 9 | `NewsArticleSchema` component with matching data | No structured data for Google News |
 | 10 | `SEOWrapper` with correct slug | No JSON-LD injected on page |
 | 11 | `Breadcrumb` with 3+ levels | Missing BreadcrumbList rich result |
-| 12 | 4–6 internal links to related ObjectWire pages | Low internal PageRank flow |
+| 12 | 4ï¿½6 internal links to related ObjectWire pages | Low internal PageRank flow |
 | 13 | `H1` matches `metadata.title` headline | Google cross-checks, mismatch = trust drop |
 | 14 | Real author name (not generic) | E-E-A-T signal weakened |
 | 15 | Hero image uses `next/image` with width/height | CLS penalty in Core Web Vitals |
@@ -320,8 +320,8 @@ These are the things that **must be right on every single article, no exceptions
 ## Ranking Velocity Formula
 
 ```
-Ranking Speed = (Content Quality × Technical Completeness × Internal Links × Publishing Speed)
-                ÷ Competition Level
+Ranking Speed = (Content Quality ï¿½ Technical Completeness ï¿½ Internal Links ï¿½ Publishing Speed)
+                ï¿½ Competition Level
 ```
 
 **You control the numerator. This document is the checklist for maximizing it on every article.**

@@ -61,7 +61,7 @@ npm run import-blogs  # Import RSS articles
 - **Currently localStorage** (backend integration ready)
 
 ### ? RSS Import System
-- Converts objectivewire.org RSS to structured blocks
+- Converts objectivewire.com RSS to structured blocks
 - Smart category mapping
 - Auto-generates TypeScript files
 - `npm run import-blogs`
@@ -337,7 +337,7 @@ python main.py            # Runs on localhost:8000
 
 ## Contact & Support
 
-- **Email:** jack@objectivewire.org
+- **Email:** jack@objectivewire.com
 - **Phone:** (575) 495-0323
 - **Location:** Austin, TX
 - **Development Log:** See [LOG.md](LOG.md) for complete progress history

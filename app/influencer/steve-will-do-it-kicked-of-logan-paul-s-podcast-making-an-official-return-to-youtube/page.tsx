@@ -6,7 +6,7 @@ import { WikiArticle } from '@/components/articles/WikiArticle';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/steve-will-do-it-kicked-of-logan-paul-s-podcast-making-an-official-return-to-youtube';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'SteveWillDoIt Kicked Off Impaulsive | YouTube Return 2026',

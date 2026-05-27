@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`
   },
   description: SITE_CONFIG.description,
-  keywords: ["investigative journalism", "private detective Austin Texas", "objective wire", "sports news", "creators", "influencers", "athletes", "world cup", "creator economy", "uncover the truth"],
+  keywords: ["investigative journalism", "investigative newsroom Austin", "objective wire", "sports news", "creators", "influencers", "athletes", "world cup", "creator economy", "accountability reporting"],
   authors: [{ name: "oWire Editorial" }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
@@ -189,14 +189,14 @@ export default async function RootLayout({
                     </div>
                   </div>
                   <div className="brand-rule mx-auto mt-2 w-40 md:w-72" />
-                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-[#d97706] font-mono whitespace-nowrap">
-                    Investigate <span className="brand-accent-text">·</span> Document <span className="brand-accent-text">·</span> Publish
+                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-[#c45c2a] font-mono whitespace-nowrap">
+                    Texas News <span className="brand-accent-text">·</span> Verified <span className="brand-accent-text">·</span> Published
                   </p>
                 </Link>
               </div>
             </header>
 
-            <main style={{ marginLeft: '10px', marginRight: '10px', paddingTop: '48px' }}>{children}</main>
+            <main className="pt-12">{children}</main>
 
         {/* Footer */}
         <footer className="border-t-2 border-gray-900 dark:border-gray-700 bg-[#f9f8f5] dark:bg-[#0d0d0d] mt-24">
@@ -211,29 +211,28 @@ export default async function RootLayout({
               {/* Brand column */}
               <FooterAuthorSlot />
 
-              {/* Sports */}
+              {/* Texas News */}
               <div>
-                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Sports</h4>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Texas News</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/soccer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Soccer</Link>
-                  <Link href="/world-cup" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">World Cup 2026</Link>
-                  <Link href="/premier-league" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Premier League</Link>
-                  <Link href="/mls" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLS</Link>
-                  <Link href="/mlb" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLB</Link>
-                  <Link href="/golf" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Golf</Link>
+                  <Link href="/local" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">All Texas News</Link>
+                  <Link href="/local/austin" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Austin</Link>
+                  <Link href="/local/houston" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Houston</Link>
+                  <Link href="/local/greater-texas" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Dallas-Fort Worth</Link>
+                  <Link href="/local/greater-texas" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Statewide Texas</Link>
                 </div>
               </div>
 
-              {/* Creators & Culture */}
+              {/* Texas Sports */}
               <div>
-                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Creators</h4>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Texas Sports</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/creator" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">All Creators</Link>
-                  <Link href="/creator/news" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Creator News</Link>
-                  <Link href="/youtube" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">YouTube</Link>
-                  <Link href="/creator/mrbeast" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MrBeast</Link>
-                  <Link href="/creator/alix-earle" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Alix Earle</Link>
-                  <Link href="/cars" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Cars</Link>
+                  <Link href="/sports" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">All Texas Sports</Link>
+                  <Link href="/mlb" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Astros</Link>
+                  <Link href="/mls" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">FC Dallas</Link>
+                  <Link href="/sports" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Texans</Link>
+                  <Link href="/sports" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Cowboys</Link>
+                  <Link href="/sports" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Spurs</Link>
                 </div>
               </div>
 
@@ -241,8 +240,7 @@ export default async function RootLayout({
               <div>
                 <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Newsroom</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">PI &amp; Investigative Services</Link>
-                  <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">About Objective Wire</Link>
+                  <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">About Objective Wire TX</Link>
                   <Link href="/authors" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Our Authors</Link>
                   <Link href="/editorial-standards" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Editorial Standards</Link>
                   <Link href="/corrections" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Corrections</Link>
@@ -269,7 +267,7 @@ export default async function RootLayout({
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Our Mission</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    Objective Wire is a licensed investigative media agency and 501(c)(3) nonprofit based in Austin, Texas. We take on PI cases and investigative reporting cases under our Texas PI license. Investigate. Document. Publish.
+                  Objective Wire TX is an independent Texas news publication based in Austin. Verified reporting on statewide politics, business, crime, courts, and sports. Texas News. Verified. Published.
                   </p>
                 </div>
 
@@ -308,7 +306,7 @@ export default async function RootLayout({
               <div className="flex items-center gap-3 text-xs text-gray-400">
                 <span className="font-bold text-gray-600 dark:text-gray-300">Objective Wire</span>
                 <span className="text-gray-300 dark:text-gray-700">|</span>
-                <span>Licensed PI Agency · 501(c)(3) Nonprofit · Investigative Media</span>
+                <span>Independent Texas Newsroom · Texas News Publication</span>
                 <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">|</span>
                 <span className="hidden sm:inline">Austin, Texas</span>
               </div>
@@ -320,7 +318,7 @@ export default async function RootLayout({
                 <Link href="/copyright" className="hover:text-black dark:hover:text-white transition-colors">Copyright</Link>
                 <div className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ background: 'var(--brand-accent)' }} />
-                  <span>objectwire.org</span>
+                  <span>objectivewire.com</span>
                 </div>
               </div>
 

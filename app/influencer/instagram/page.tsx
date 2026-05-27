@@ -7,7 +7,7 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const revalidate = 86400;
 
 const SLUG = '/creator/instagram';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Instagram Wiki 2026 | History, Meta Acquisition & 2.4B Users',

@@ -1,4 +1,4 @@
-# ObjectWire × Discord Integration Blueprint
+ï»¿# ObjectWire ï¿½ Discord Integration Blueprint
 
 ## The Core Idea
 
@@ -27,55 +27,55 @@ Discord Forum Channels were designed for exactly this use case, organized, searc
 
 ```
 +---------------------------------------------------------------------+
-¦                         READER ON SITE                              ¦
-¦                                                                     ¦
-¦  1. Reader clicks "Comment" on any article                          ¦
-¦  2. Signs in with Discord OAuth (or is already signed in)           ¦
-¦  3. Types comment, hits "Post"                                      ¦
-¦                                                                     ¦
+ï¿½                         READER ON SITE                              ï¿½
+ï¿½                                                                     ï¿½
+ï¿½  1. Reader clicks "Comment" on any article                          ï¿½
+ï¿½  2. Signs in with Discord OAuth (or is already signed in)           ï¿½
+ï¿½  3. Types comment, hits "Post"                                      ï¿½
+ï¿½                                                                     ï¿½
 +---------------------------------------------------------------------+
-                            ¦
+                            ï¿½
                             ?
 +---------------------------------------------------------------------+
-¦                     POST /api/discord/comments                      ¦
-¦                                                                     ¦
-¦  1. Validates Discord session + comment body (=1000 chars)          ¦
-¦  2. INSERT into Supabase `discord_comments` table                   ¦
-¦  3. Check `discord_threads` table for existing thread_id            ¦
-¦     - If none ? webhook with `thread_name: "Article Title"`         ¦
-¦       Discord auto-creates a new Forum Post, returns thread_id      ¦
-¦       Store thread_id in `discord_threads` for future comments      ¦
-¦     - If exists ? webhook with `?thread_id=<id>` query param        ¦
-¦       Comment appears as a reply in the existing Forum Post         ¦
-¦  4. Return comment to frontend for instant display                  ¦
-¦                                                                     ¦
+ï¿½                     POST /api/discord/comments                      ï¿½
+ï¿½                                                                     ï¿½
+ï¿½  1. Validates Discord session + comment body (=1000 chars)          ï¿½
+ï¿½  2. INSERT into Supabase `discord_comments` table                   ï¿½
+ï¿½  3. Check `discord_threads` table for existing thread_id            ï¿½
+ï¿½     - If none ? webhook with `thread_name: "Article Title"`         ï¿½
+ï¿½       Discord auto-creates a new Forum Post, returns thread_id      ï¿½
+ï¿½       Store thread_id in `discord_threads` for future comments      ï¿½
+ï¿½     - If exists ? webhook with `?thread_id=<id>` query param        ï¿½
+ï¿½       Comment appears as a reply in the existing Forum Post         ï¿½
+ï¿½  4. Return comment to frontend for instant display                  ï¿½
+ï¿½                                                                     ï¿½
 +---------------------------------------------------------------------+
-                            ¦
+                            ï¿½
                             ?
 +---------------------------------------------------------------------+
-¦                    DISCORD FORUM CHANNEL                             ¦
-¦                    #article-discussion                               ¦
-¦                                                                     ¦
-¦  +-------------------------------------+                            ¦
-¦  ¦ ?? Amazon's New AI Chip Challenges   ¦ ? Forum Post (auto-created¦
-¦  ¦    NVIDIA Dominance                  ¦    by first comment)       ¦
-¦  ¦                                     ¦                            ¦
-¦  ¦  JohnDoe via ObjectWire:            ¦                            ¦
-¦  ¦  "This is huge for the industry..." ¦                            ¦
-¦  ¦                                     ¦                            ¦
-¦  ¦  JaneSmith via ObjectWire:          ¦                            ¦
-¦  ¦  "I think NVIDIA will respond..."   ¦                            ¦
-¦  ¦                                     ¦                            ¦
-¦  ¦  [Read full article ?]              ¦ ? Link back to site        ¦
-¦  +-------------------------------------+                            ¦
-¦                                                                     ¦
-¦  +-------------------------------------+                            ¦
-¦  ¦ ?? KSI Announces New Boxing Match    ¦ ? Different article       ¦
-¦  ¦                                     ¦                            ¦
-¦  ¦  GamerX via ObjectWire:             ¦                            ¦
-¦  ¦  "Let's gooo!"                      ¦                            ¦
-¦  +-------------------------------------+                            ¦
-¦                                                                     ¦
+ï¿½                    DISCORD FORUM CHANNEL                             ï¿½
+ï¿½                    #article-discussion                               ï¿½
+ï¿½                                                                     ï¿½
+ï¿½  +-------------------------------------+                            ï¿½
+ï¿½  ï¿½ ?? Amazon's New AI Chip Challenges   ï¿½ ? Forum Post (auto-createdï¿½
+ï¿½  ï¿½    NVIDIA Dominance                  ï¿½    by first comment)       ï¿½
+ï¿½  ï¿½                                     ï¿½                            ï¿½
+ï¿½  ï¿½  JohnDoe via ObjectWire:            ï¿½                            ï¿½
+ï¿½  ï¿½  "This is huge for the industry..." ï¿½                            ï¿½
+ï¿½  ï¿½                                     ï¿½                            ï¿½
+ï¿½  ï¿½  JaneSmith via ObjectWire:          ï¿½                            ï¿½
+ï¿½  ï¿½  "I think NVIDIA will respond..."   ï¿½                            ï¿½
+ï¿½  ï¿½                                     ï¿½                            ï¿½
+ï¿½  ï¿½  [Read full article ?]              ï¿½ ? Link back to site        ï¿½
+ï¿½  +-------------------------------------+                            ï¿½
+ï¿½                                                                     ï¿½
+ï¿½  +-------------------------------------+                            ï¿½
+ï¿½  ï¿½ ?? KSI Announces New Boxing Match    ï¿½ ? Different article       ï¿½
+ï¿½  ï¿½                                     ï¿½                            ï¿½
+ï¿½  ï¿½  GamerX via ObjectWire:             ï¿½                            ï¿½
+ï¿½  ï¿½  "Let's gooo!"                      ï¿½                            ï¿½
+ï¿½  +-------------------------------------+                            ï¿½
+ï¿½                                                                     ï¿½
 +---------------------------------------------------------------------+
 ```
 
@@ -112,9 +112,9 @@ First comment on a new article:
     },
     "fields": [{
       "name": "?? Read Article",
-      "value": "[Amazon's New AI Chip ?](https://www.objectivewire.org/amazon/ai-chip)"
+      "value": "[Amazon's New AI Chip ?](https://www.objectivewire.com/amazon/ai-chip)"
     }],
-    "footer": { "text": "Tech · objectivewire.org" },
+    "footer": { "text": "Tech ï¿½ objectivewire.com" },
     "timestamp": "2026-03-21T15:30:00Z"
   }]
 }
@@ -216,44 +216,44 @@ When a new article is published, a webhook posts to a `#new-articles` channel in
 
 ```
                     +------------------+
-                    ¦   Reader visits   ¦
-                    ¦    article on     ¦
-                    ¦    ObjectWire     ¦
+                    ï¿½   Reader visits   ï¿½
+                    ï¿½    article on     ï¿½
+                    ï¿½    ObjectWire     ï¿½
                     +------------------+
-                             ¦
+                             ï¿½
                              ?
                     +------------------+
-                    ¦  Sees Discord     ¦
-                    ¦  comment section  ¦--? Signs up for Discord
-                    ¦  (conversion CTA) ¦     to comment
+                    ï¿½  Sees Discord     ï¿½
+                    ï¿½  comment section  ï¿½--? Signs up for Discord
+                    ï¿½  (conversion CTA) ï¿½     to comment
                     +------------------+
-                             ¦
+                             ï¿½
                              ?
                     +------------------+
-                    ¦  Posts comment    ¦
-                    ¦  on article       ¦
+                    ï¿½  Posts comment    ï¿½
+                    ï¿½  on article       ï¿½
                     +------------------+
-                             ¦
+                             ï¿½
                     +------------------+
-                    ¦                  ¦
+                    ï¿½                  ï¿½
                     ?                  ?
            +---------------+  +---------------+
-           ¦  Saved to      ¦  ¦  Appears in    ¦
-           ¦  Supabase      ¦  ¦  Discord Forum ¦
-           ¦  (site shows   ¦  ¦  (community    ¦
-           ¦   comments)    ¦  ¦   sees it)     ¦
+           ï¿½  Saved to      ï¿½  ï¿½  Appears in    ï¿½
+           ï¿½  Supabase      ï¿½  ï¿½  Discord Forum ï¿½
+           ï¿½  (site shows   ï¿½  ï¿½  (community    ï¿½
+           ï¿½   comments)    ï¿½  ï¿½   sees it)     ï¿½
            +---------------+  +----------------+
-                                      ¦
+                                      ï¿½
                                       ?
                              +------------------+
-                             ¦  Discord members  ¦
-                             ¦  see discussion,  ¦
-                             ¦  click article    ¦--? MORE site traffic
-                             ¦  link to read it  ¦
+                             ï¿½  Discord members  ï¿½
+                             ï¿½  see discussion,  ï¿½
+                             ï¿½  click article    ï¿½--? MORE site traffic
+                             ï¿½  link to read it  ï¿½
                              +------------------+
 ```
 
-**Every comment creates two pieces of content** — one on the site, one in Discord. Both drive traffic to the other.
+**Every comment creates two pieces of content** ï¿½ one on the site, one in Discord. Both drive traffic to the other.
 
 ---
 
@@ -261,26 +261,26 @@ When a new article is published, a webhook posts to a `#new-articles` channel in
 
 ```
 OBJECTWIRE DISCORD SERVER
-¦
+ï¿½
 +-- ?? ANNOUNCEMENTS
-¦   +-- #new-articles        ? Webhook: auto-posts when articles publish
-¦   +-- #site-updates        ? Manual: feature announcements, changelog
-¦
+ï¿½   +-- #new-articles        ? Webhook: auto-posts when articles publish
+ï¿½   +-- #site-updates        ? Manual: feature announcements, changelog
+ï¿½
 +-- ?? ARTICLE DISCUSSION (Forum Channel)
-¦   +-- #article-discussion  ? Webhook: comments auto-create/append posts
-¦
+ï¿½   +-- #article-discussion  ? Webhook: comments auto-create/append posts
+ï¿½
 +-- ??? COMMUNITY
-¦   +-- #general             ? Free chat
-¦   +-- #tech                ? Beat-specific discussion
-¦   +-- #entertainment
-¦   +-- #news
-¦   +-- #introductions       ? New members introduce themselves
-¦
+ï¿½   +-- #general             ? Free chat
+ï¿½   +-- #tech                ? Beat-specific discussion
+ï¿½   +-- #entertainment
+ï¿½   +-- #news
+ï¿½   +-- #introductions       ? New members introduce themselves
+ï¿½
 +-- ?? BEATS (Read-only)
-¦   +-- #tech-feed           ? Webhook: new tech articles auto-post
-¦   +-- #news-feed           ? Webhook: new news articles auto-post
-¦   +-- #entertainment-feed  ? Webhook: new entertainment articles auto-post
-¦
+ï¿½   +-- #tech-feed           ? Webhook: new tech articles auto-post
+ï¿½   +-- #news-feed           ? Webhook: new news articles auto-post
+ï¿½   +-- #entertainment-feed  ? Webhook: new entertainment articles auto-post
+ï¿½
 +-- ?? META
     +-- #feedback            ? Community feedback on the site
     +-- #bug-reports         ? Report site issues
@@ -331,7 +331,7 @@ DISCORD_NEW_ARTICLES_WEBHOOK_URL=https://discord.com/api/webhooks/{id}/{token}
    - Copy the webhook URL ? paste into `.env.local` as `DISCORD_COMMENTS_WEBHOOK_URL`
 
 3. **Set up the Discord OAuth app** (already done)
-   - Ensure redirect URL is set to `https://www.objectivewire.org/api/auth/callback/discord`
+   - Ensure redirect URL is set to `https://www.objectivewire.com/api/auth/callback/discord`
 
 ### Code Side (What we'll build)
 

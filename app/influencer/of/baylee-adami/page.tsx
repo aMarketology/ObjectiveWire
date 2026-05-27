@@ -15,7 +15,7 @@ import Link from 'next/link';
 export const revalidate = 86400;
 
 const SLUG = '/influencer/of/baylee-adami';
-const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.com${SLUG}`;
 const IMAGE_URL = '/influncer/baylee-adami.jpg';
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     tags: ['Baylee Adami', 'TikTok', 'Illinois', 'Plus-Size Model', 'Fashion Nova'],
     images: [
       {
-        url: `https://www.objectivewire.org${IMAGE_URL}`,
+        url: `https://www.objectivewire.com${IMAGE_URL}`,
         width: 1200,
         height: 675,
         alt: 'Baylee Adami, TikTok creator and plus-size model',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: 'Baylee Adami | 1.4M TikTok, Plus-Size Model, Bio 2026',
     description:
       'Baylee Adami profile: age 21, TikTok @bayleeadami, Fashion Nova ambassador, dance and fitness creator from Illinois.',
-    images: [`https://www.objectivewire.org${IMAGE_URL}`],
+    images: [`https://www.objectivewire.com${IMAGE_URL}`],
   },
 };
 
@@ -82,7 +82,7 @@ export default function BayleeAdamiPage() {
         modifiedTime: '2026-05-21T12:00:00Z',
         author: 'ObjectWire Influencer Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectivewire.org${IMAGE_URL}`,
+        imageUrl: `https://www.objectivewire.com${IMAGE_URL}`,
         section: 'Influencer',
         keywords: [
           'Baylee Adami',
@@ -97,9 +97,9 @@ export default function BayleeAdamiPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectivewire.org' },
-        { name: 'Influencer', item: 'https://www.objectivewire.org/influencer' },
-        { name: 'OF', item: 'https://www.objectivewire.org/influencer/of' },
+        { name: 'Home', item: 'https://www.objectivewire.com' },
+        { name: 'Influencer', item: 'https://www.objectivewire.com/influencer' },
+        { name: 'OF', item: 'https://www.objectivewire.com/influencer/of' },
         { name: 'Baylee Adami', item: PAGE_URL },
       ]}
       hero={{

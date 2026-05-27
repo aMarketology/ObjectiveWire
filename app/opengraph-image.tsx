@@ -1,7 +1,7 @@
 ﻿import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Objective Wire — Licensed PI Agency & Investigative Newsroom, Austin TX';
+export const alt = 'Objective Wire — Independent Investigative Newsroom, Austin TX';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -59,7 +59,7 @@ export default function Image() {
           >
             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#d97706' }} />
             <span style={{ fontSize: '13px', fontWeight: 700, color: '#d97706', letterSpacing: '0.15em', fontFamily: 'monospace' }}>
-              LICENSED PI AGENCY
+              INDEPENDENT NEWSROOM
             </span>
           </div>
           <span style={{ fontSize: '11px', color: '#6b6b6b', letterSpacing: '0.1em', fontFamily: 'monospace' }}>

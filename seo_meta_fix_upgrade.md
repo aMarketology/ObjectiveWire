@@ -1,20 +1,20 @@
-# SEO Meta Fix & Upgrade Plan
+ï»¿# SEO Meta Fix & Upgrade Plan
 
 **Status:** Active
 **Owner:** Editorial / Engineering
 **Created:** April 24, 2026
-**Last Updated:** April 25, 2026 (M2 production verified ? — critical uppercase URL bug discovered)
+**Last Updated:** April 25, 2026 (M2 production verified ? ï¿½ critical uppercase URL bug discovered)
 **Trigger:** Major impressions drop in Google Search Console two days ago (April 22, 2026).
 **Goal:** Stop the bleed, restore canonical hygiene, and harden the SEO pipeline so this class of regression cannot recur.
 
 ---
 
-## Progress Log — April 24, 2026
+## Progress Log ï¿½ April 24, 2026
 
 | Phase | Milestone | Status | Notes |
 |---|---|---|---|
 | 0 | Hotfix in working copy | ? Done | layout canonical removed, `public/robots.txt` deleted |
-| 1 | M1 Deploy hotfix | ? Done | All 4 commits pushed ? Railway deploying (`847fd21`…`9c15099`) |
+| 1 | M1 Deploy hotfix | ? Done | All 4 commits pushed ? Railway deploying (`847fd21`ï¿½`9c15099`) |
 | 1 | M2 Verify production | ? Done (Apr 25) | robots 122 lines, news-sitemap 37 URLs (3-day), canonical = 1 per page ? |
 | 1 | M3 GSC reindex | ? Ready (manual) | Submit sitemap + Request Indexing on top 10 traffic articles |
 | 2 | M4 Canonical guardrail | ? Done | `scripts/validate-canonicals.ts` + prebuild |
@@ -29,15 +29,15 @@
 | 3 | M13 CWV review | ? Not started | |
 | 3 | M14 Admin SEO dashboard | ? Not started | |
 | 4 | M15-M18 | ? Not started | |
-| **??** | **M19 Uppercase URL cleanup** | **?? NEW — critical** | **6 paths with capital letters — see Critical Issues section** |
+| **??** | **M19 Uppercase URL cleanup** | **?? NEW ï¿½ critical** | **6 paths with capital letters ï¿½ see Critical Issues section** |
 
-### Recent commits — **all pushed to Railway** (April 24, 2026)
+### Recent commits ï¿½ **all pushed to Railway** (April 24, 2026)
 
 | SHA | Description |
 |---|---|
 | `847fd21` | Dynamic OG, PWA manifest, DB url field fixes (M1 hotfix payload) |
 | `eb6904b` | M10 audit script + first gap CSV (`Docs/seo-reports/internal-links-gap.csv`) + npm scripts |
-| `9dc5354` | M10 cluster fix: GTA 6 hub, GTA 6 news, Pokémon Pokopia internal links |
+| `9dc5354` | M10 cluster fix: GTA 6 hub, GTA 6 news, Pokï¿½mon Pokopia internal links |
 | `9c15099` | M8 news sitemap window 2?3 + plan doc update |
 
 ---
@@ -48,7 +48,7 @@
 
 **6 article routes use capital letters in their directory names**, which violates the lowercase-only slug rule (`copilot-instructions.md`) and creates real SEO risk:
 
-- Linux/Railway is case-sensitive — `/trump/WLFI-stablecoin` and `/trump/wlfi-stablecoin` are different URLs to the server.
+- Linux/Railway is case-sensitive ï¿½ `/trump/WLFI-stablecoin` and `/trump/wlfi-stablecoin` are different URLs to the server.
 - Google indexes them as separate pages, splitting authority.
 - Internal links inconsistent in case will 404 on production but work locally on Windows.
 - Sitemap and JSON-LD canonicals reference the uppercase form, locking the bad URL into Google's index.
@@ -71,19 +71,19 @@
 ### Issue #3 | Production health = GREEN ?
 
 Confirmed live (Googlebot UA, April 25):
-- `https://www.objectivewire.org/robots.txt` ? 122 lines (dynamic ?, not the deleted static)
-- `https://www.objectivewire.org/sitemap.xml` ? 700 URLs ?
-- `https://www.objectivewire.org/news-sitemap.xml` ? 37 URLs in 3-day window ? (M8 working)
+- `https://www.objectivewire.com/robots.txt` ? 122 lines (dynamic ?, not the deleted static)
+- `https://www.objectivewire.com/sitemap.xml` ? 700 URLs ?
+- `https://www.objectivewire.com/news-sitemap.xml` ? 37 URLs in 3-day window ? (M8 working)
 - `/entertainment/news/fortnite-moves-into-movies` canonical = self ?, count = 1 ?
 - `/influencer/ari-kytsya` canonical count = 1 ?
 - `/crypto/news/anchorage-usat-expands-to-celo-network` canonical count = 1 ?
-- Homepage canonical = `https://www.objectivewire.org`, count = 1 ?
+- Homepage canonical = `https://www.objectivewire.com`, count = 1 ?
 
 The April 22 impressions cliff is now stopped. M3 (GSC reindex) is the user-side action needed to accelerate recovery.
 
 ---
 
-## M19 — Uppercase URL Cleanup (NEW, CRITICAL)
+## M19 ï¿½ Uppercase URL Cleanup (NEW, CRITICAL)
 
 **Goal:** Move all 6 uppercase routes to lowercase canonical paths with 301 redirects from the old paths.
 
@@ -110,13 +110,13 @@ The April 22 impressions cliff is now stopped. M3 (GSC reindex) is the user-side
 
 ---
 
-## M10 Internal Link Audit — Snapshot
+## M10 Internal Link Audit ï¿½ Snapshot
 
 **Tooling shipped:**
-- `scripts/audit-internal-links.ts` — counts UNIQUE internal link destinations per article, grouped by table.
-- `npm run audit:links` — full audit to stdout.
-- `npm run audit:links:csv` — writes `Docs/seo-reports/internal-links-gap.csv`.
-- `scripts/fix-cluster-links.ts` — pattern-based content_html patcher for cluster fixes (GTA 6, Switch 2 done).
+- `scripts/audit-internal-links.ts` ï¿½ counts UNIQUE internal link destinations per article, grouped by table.
+- `npm run audit:links` ï¿½ full audit to stdout.
+- `npm run audit:links:csv` ï¿½ writes `Docs/seo-reports/internal-links-gap.csv`.
+- `scripts/fix-cluster-links.ts` ï¿½ pattern-based content_html patcher for cluster fixes (GTA 6, Switch 2 done).
 
 **Minimums enforced (unique internal hrefs):**
 - `articles` (NewsArticle): = 4
@@ -131,7 +131,7 @@ The April 22 impressions cliff is now stopped. M3 (GSC reindex) is the user-side
 | `jack_articles` | 8 / 82 | 10% | 74 |
 | `article_pages` | 17 / 39 | 44% | 22 |
 | `creator_articles` | 3 / 29 | 10% | 26 |
-| `alysa_articles` | 0 / 0 | — | 0 |
+| `alysa_articles` | 0 / 0 | ï¿½ | 0 |
 | **Total failing** | **298** | | |
 
 **Pillar gap snapshot (failing articles by pillar):**
@@ -156,14 +156,14 @@ Links added across these three: `/video-games`, `/open-ai`, `/finance`, `/video-
 
 ### Lessons learned (M10 patcher)
 
-- Supabase stores apostrophes as `&apos;` in `content_html` — match against the entity, not the literal `'`.
+- Supabase stores apostrophes as `&apos;` in `content_html` ï¿½ match against the entity, not the literal `'`.
 - `\r\n` line breaks split phrases mid-sentence; search for substrings on one side of the break.
 - Audit counts UNIQUE destinations (deduped via `Set`), not total `<a>` tags. A patch that wraps a second occurrence of an already-linked URL adds **zero** new unique links.
 - The pattern-replacement approach scales poorly past ~5 articles per script. **Next step (M10b below) is a generalized rewrite.**
 
 ---
 
-## M10b — Bulk Internal Link Backfill (NEW)
+## M10b ï¿½ Bulk Internal Link Backfill (NEW)
 
 **Goal:** Drive the 298 failing articles to = minimum without writing a per-article patch script each time.
 
@@ -181,28 +181,28 @@ Links added across these three: `/video-games`, `/open-ai`, `/finance`, `/video-
 **Acceptance:** `npm run audit:links` shows = 50 failing articles within 2 weeks.
 
 **Priority order for batches:**
-1. Video Games (priority pillar, 40 failing) — leverages existing GTA 6 / Switch 2 / Nintendo content
-2. Tech / AI (priority pillar, 68 failing) — leverages `/open-ai`, `/google`, `/apple`, `/nvidia` hubs
+1. Video Games (priority pillar, 40 failing) ï¿½ leverages existing GTA 6 / Switch 2 / Nintendo content
+2. Tech / AI (priority pillar, 68 failing) ï¿½ leverages `/open-ai`, `/google`, `/apple`, `/nvidia` hubs
 3. Finance (18 failing)
 4. Influencer (30 failing)
-5. Other (67 failing — assess on case-by-case)
+5. Other (67 failing ï¿½ assess on case-by-case)
 
 
 
 ---
 
-## TL;DR — Root Cause
+## TL;DR ï¿½ Root Cause
 
 Two production bugs were silently neutering ObjectWire's SEO surface:
 
-1. **Site-wide canonical override.** [app/layout.tsx](app/layout.tsx) hardcoded `<link rel="canonical" href={SITE_CONFIG.url} />` inside `<head>`. Every page emitted **two** canonical tags — its own self-canonical from `metadata.alternates.canonical`, plus a second one pointing to `https://www.objectivewire.org`. Google's canonicalizer collapsed many article URLs into the homepage, suppressing them from search.
+1. **Site-wide canonical override.** [app/layout.tsx](app/layout.tsx) hardcoded `<link rel="canonical" href={SITE_CONFIG.url} />` inside `<head>`. Every page emitted **two** canonical tags ï¿½ its own self-canonical from `metadata.alternates.canonical`, plus a second one pointing to `https://www.objectivewire.com`. Google's canonicalizer collapsed many article URLs into the homepage, suppressing them from search.
 2. **Static `public/robots.txt` shadowing the dynamic [app/robots.ts](app/robots.ts).** Next.js serves files in `/public` before route handlers, so the rich dynamic robots config (AI bots, tracking-param disallows, Bingbot, Applebot, etc.) was never actually live.
 
 Both are fixed in the working copy. This document covers the **deploy, verify, and structural upgrade** plan.
 
 ---
 
-## Phase 0 | Hotfix (Already Applied — Pre-Deploy)
+## Phase 0 | Hotfix (Already Applied ï¿½ Pre-Deploy)
 
 Status: code changes complete on `main` working tree, **not yet committed or pushed.**
 
@@ -244,12 +244,12 @@ After deploy, run these checks (Googlebot UA):
 
 | URL | Expected |
 |---|---|
-| `https://www.objectivewire.org/robots.txt` | 300+ line dynamic robots, AI bot rules present |
-| `https://www.objectivewire.org/sitemap.xml` | 200, ~690 URLs, no change |
-| `https://www.objectivewire.org/news-sitemap.xml` | 200, =30 URLs in 2-day window |
-| `https://www.objectivewire.org/entertainment/news/fortnite-moves-into-movies` | **Exactly one** `<link rel="canonical">` pointing at self |
-| `https://www.objectivewire.org/crypto/news/anchorage-usat-expands-to-celo-network` | Same |
-| `https://www.objectivewire.org/influencer/ari-kytsya` | Same |
+| `https://www.objectivewire.com/robots.txt` | 300+ line dynamic robots, AI bot rules present |
+| `https://www.objectivewire.com/sitemap.xml` | 200, ~690 URLs, no change |
+| `https://www.objectivewire.com/news-sitemap.xml` | 200, =30 URLs in 2-day window |
+| `https://www.objectivewire.com/entertainment/news/fortnite-moves-into-movies` | **Exactly one** `<link rel="canonical">` pointing at self |
+| `https://www.objectivewire.com/crypto/news/anchorage-usat-expands-to-celo-network` | Same |
+| `https://www.objectivewire.com/influencer/ari-kytsya` | Same |
 
 Acceptance: `grep -c 'rel="canonical"'` on each article page returns `1`.
 
@@ -258,7 +258,7 @@ Within 24h of M2:
 1. URL Inspection ? Request Indexing on the top 10 traffic articles (use the GSC Performance report from before the drop to pick them).
 2. Resubmit `sitemap.xml` and `news-sitemap.xml` in GSC.
 3. Monitor the **Pages** report. Expected to see "Duplicate, Google chose different canonical than user" and "Alternate page with proper canonical" classifications drain over 7-14 days.
-4. Monitor **Performance > Search Results** for impressions recovery — expected partial recovery within 72h, full recovery within 14d.
+4. Monitor **Performance > Search Results** for impressions recovery ï¿½ expected partial recovery within 72h, full recovery within 14d.
 
 ---
 
@@ -270,7 +270,7 @@ Within 24h of M2:
 Implementation:
 1. Add a build-time validator: `scripts/validate-canonicals.ts`
    - Walk every `app/**/page.tsx`.
-   - Parse `metadata.alternates.canonical` — flag pages that lack it.
+   - Parse `metadata.alternates.canonical` ï¿½ flag pages that lack it.
    - Flag pages where `canonical` does not match the expected URL derived from the file path.
    - Wire into `prebuild` script in `package.json` so a missing/wrong canonical fails the build.
 2. Add a runtime guard in [app/layout.tsx](app/layout.tsx) (a code comment block + ESLint rule) banning any literal `rel="canonical"` JSX in `app/layout.tsx` or shared components.
@@ -332,17 +332,17 @@ These are improvements unblocked once the hotfix lands. They will compound impre
   - Missing or wrong `alternates.canonical`.
   - Missing `openGraph.images` (article + creator pages).
   - Missing `openGraph.publishedTime` on articles.
-  - Em dashes (`—`) anywhere in title/description (OStandard violation).
+  - Em dashes (`ï¿½`) anywhere in title/description (OStandard violation).
   - `&` in `H1`/headings or article body prose (OStandard violation, runtime check via `content_html`).
 - Run as `npm run audit:meta`. Output: CSV of violations grouped by category.
 
 Acceptance: report runs cleanly across all current pages or produces an actionable list.
 
 ### Milestone M10 | Internal link density audit ? Done (audit shipped April 24, 2026)
-- New script: `scripts/audit-internal-links.ts` — counts UNIQUE internal `<Link>` and `<a href="/...">` destinations per article. Set-based dedup so duplicate hrefs count once.
+- New script: `scripts/audit-internal-links.ts` ï¿½ counts UNIQUE internal `<Link>` and `<a href="/...">` destinations per article. Set-based dedup so duplicate hrefs count once.
 - npm scripts: `audit:links`, `audit:links:csv`.
 - Initial gap report: `Docs/seo-reports/internal-links-gap.csv` (301 articles below minimum at audit time).
-- Follow-up tracked under **M10b — Bulk Internal Link Backfill** (see Progress Log section).
+- Follow-up tracked under **M10b ï¿½ Bulk Internal Link Backfill** (see Progress Log section).
 
 Acceptance: ? produces gap report. Editorial works through it cluster by cluster.
 
@@ -360,7 +360,7 @@ Acceptance: passes for `fortnite-moves-into-movies`, `anchorage-usat-...`, `ari-
 Implementation:
 1. Audit script: `scripts/audit-images.ts`
    - Every `content_registry` row must have `imageUrl`, `imageWidth`, `imageHeight`. Flag missing.
-   - Every article OG image must be = 1200×675.
+   - Every article OG image must be = 1200ï¿½675.
    - Every `hero_image_alt` must be = 30 chars.
 2. Editorial backfill pass on top 50 articles by GSC impressions.
 
@@ -429,7 +429,7 @@ For each pillar in `copilot-instructions.md`:
 | Risk | Mitigation |
 |---|---|
 | Canonical fix triggers a recanonicalization storm and short-term ranking volatility | Expected; Google typically stabilizes within 14 days. Monitor GSC daily. |
-| Removing `public/robots.txt` accidentally exposes a path that was implicitly allowed | None — dynamic `app/robots.ts` allows all by default with stricter disallows than the static file. |
+| Removing `public/robots.txt` accidentally exposes a path that was implicitly allowed | None ï¿½ dynamic `app/robots.ts` allows all by default with stricter disallows than the static file. |
 | Build-time validators (M4-M6) block legitimate emergency publishes | Add `--allow-canonical-mismatch` and `--allow-orphan` override flags, restricted to env var `OBJECTWIRE_OVERRIDE=true`. |
 | News sitemap window expansion (M8) causes Google to flag stale entries | Window is still well below Google's 30-day NewsArticle freshness limit; safe. |
 | Schema validator (M11) flags pages we cannot quickly fix | Run in report-only mode first; promote to build-blocking after backlog cleared. |
@@ -476,7 +476,7 @@ M18 Quarterly SEO health report (recurring)
 ## Definition of Done (overall)
 
 - [ ] M1 deployed
-- [ ] M2 verified — every audited page emits exactly one canonical
+- [ ] M2 verified ï¿½ every audited page emits exactly one canonical
 - [ ] M3 reindex requests submitted; impressions trending back up week-over-week
 - [ ] M4 + M6 wired into `prebuild`; deliberate regressions fail the build
 - [ ] M5 + M7 producing weekly + daily reports respectively
@@ -489,8 +489,8 @@ M18 Quarterly SEO health report (recurring)
 
 ## Open Questions (decide before M4 onward)
 
-1. Should validator scripts run in CI (GitHub Actions on PR) or only on `prebuild`? Recommendation: **both** — `prebuild` blocks deploy, CI gives PR-level feedback.
+1. Should validator scripts run in CI (GitHub Actions on PR) or only on `prebuild`? Recommendation: **both** ï¿½ `prebuild` blocks deploy, CI gives PR-level feedback.
 2. Do we want a Slack/Discord webhook for M7 alerts? If yes, which channel?
 3. For M14 dashboard, do we want GSC API integration in v1 or v2? v1 is faster; v2 is more useful.
-4. For M15, what is the override flag mechanism — env var, CLI flag, or commit message convention?
+4. For M15, what is the override flag mechanism ï¿½ env var, CLI flag, or commit message convention?
 

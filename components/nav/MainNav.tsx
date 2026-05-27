@@ -10,101 +10,61 @@ type Hub = { label: string; href: string; items: NavItem[]; cols?: 1 | 2 };
 
 const HUBS: Hub[] = [
   {
-    label: 'Local',
+    label: 'Texas News',
     href: '/local',
     items: [
-      { label: 'All Local', href: '/local' },
+      { label: 'All Texas News', href: '/local' },
       { label: 'Austin', href: '/local/austin' },
       { label: 'Houston', href: '/local/houston' },
-      { label: 'Greater Texas', href: '/local/greater-texas' },
-      { label: 'Local US News', href: '/local/us-news' },
-      { label: 'Mexico + Canada', href: '/local/mexico-canada' },
+      { label: 'Dallas-Fort Worth', href: '/local/greater-texas' },
+      { label: 'Statewide', href: '/local/greater-texas' },
     ],
   },
   {
-    label: 'Soccer',
-    href: '/soccer',
+    label: 'Texas Sports',
+    href: '/sports',
     items: [
-      { label: 'All Soccer', href: '/soccer' },
-      { label: 'World Cup', href: '/world-cup' },
-      { label: 'MLS', href: '/mls' },
-      { label: 'Premier League', href: '/premier-league' },
+      { label: 'All Sports', href: '/sports' },
+      { label: 'Astros', href: '/mlb' },
+      { label: 'FC Dallas', href: '/mls' },
+      { label: 'Texans', href: '/sports' },
+      { label: 'Cowboys', href: '/sports' },
+      { label: 'Spurs', href: '/sports' },
     ],
   },
   {
-    label: 'MLB',
-    href: '/mlb',
+    label: 'Business',
+    href: '/business',
     items: [
-      { label: 'All MLB', href: '/mlb' },
+      { label: 'All Business', href: '/business' },
+      { label: 'Energy Sector', href: '/business' },
+      { label: 'Austin Tech', href: '/business' },
+      { label: 'Real Estate', href: '/business' },
     ],
   },
   {
-    label: 'Golf',
-    href: '/golf',
+    label: 'Crime & Courts',
+    href: '/crime',
     items: [
-      { label: 'All Golf', href: '/golf' },
+      { label: 'All Crime', href: '/crime' },
+      { label: 'Courts', href: '/crime' },
+      { label: 'FOIA', href: '/crime' },
+      { label: 'Criminal Justice', href: '/crime' },
     ],
   },
   {
-    label: 'YouTube',
-    href: '/youtube',
+    label: 'About',
+    href: '/about',
     items: [
-      { label: 'All YouTube', href: '/youtube' },
-      { label: 'Logan Paul', href: '/youtube/logan-paul' },
-      { label: 'Sidemen', href: '/youtube/sidemen' },
-      { label: 'NELK Boys', href: '/youtube/nelk-boys' },
-      { label: 'Mat Armstrong', href: '/youtube/mat-armstrong' },
-      { label: 'TheFellas', href: '/youtube/thefellas' },
+      { label: 'About Us', href: '/about' },
+      { label: 'Authors', href: '/authors' },
+      { label: 'Contact', href: '/get-help/contact' },
     ],
-  },
-  {
-    label: 'Creators',
-    href: '/creator',
-    cols: 2,
-    items: [
-      { label: 'All Creators', href: '/creator' },
-      { label: 'Creator News', href: '/creator/news' },
-      { label: 'MrBeast', href: '/creator/mrbeast' },
-      { label: 'Iman Gadzhi', href: '/creator/iman-gadzhi' },
-      { label: 'Lean Beef Patty', href: '/creator/lean-beef-patty' },
-      { label: 'Ari Kytsya', href: '/creator/ari-kytsya' },
-      { label: 'Abby Berner', href: '/creator/abby-berner' },
-      { label: 'Tren Twins', href: '/creator/tren-twins' },
-      { label: 'Emma Chamberlain', href: '/creator/emma-chamberlain' },
-      { label: 'Alix Earle', href: '/creator/alix-earle' },
-      { label: 'Charli D’Amelio', href: '/creator/charli-damelio' },
-      { label: 'Pokimane', href: '/creator/pokimane' },
-      { label: 'Valkyrae', href: '/creator/valkyrae' },
-    ],
-  },
-  {
-    label: 'Cars',
-    href: '/cars',
-    items: [
-      { label: 'All Cars', href: '/cars' },
-    ],
-  },
-  {
-    label: 'Investigate',
-    href: '/service',
-    items: [
-      { label: 'All Services', href: '/service' },
-      { label: 'Surveillance', href: '/service/surveillance' },
-      { label: 'Infidelity Investigations', href: '/service/infidelity-investigations' },
-      { label: 'Missing Persons', href: '/service/missing-persons' },
-      { label: 'Background Checks', href: '/service/background-checks' },
-      { label: 'Skip Tracing', href: '/service/skip-tracing' },
-      { label: 'Child Custody', href: '/service/child-custody-investigations' },
-      { label: 'Digital Forensics', href: '/service/digital-forensics' },
-      { label: 'Corporate Investigations', href: '/service/corporate-investigations' },
-      { label: 'Tip the Newsroom', href: '/service/tip-the-newsroom' },
-    ],
-    cols: 2,
   },
 ];
 
 const LINK_CLS =
-  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap text-gray-200 hover:bg-[#d97706] hover:text-white transition-colors';
+  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap text-gray-200 hover:bg-[#c45c2a] hover:text-white transition-colors';
 
 export default function MainNav() {
   const [openHub, setOpenHub] = useState<string | null>(null);
@@ -130,7 +90,7 @@ export default function MainNav() {
 
           {/* Home icon */}
           <Link
-            href="/news"
+            href="/"
             aria-label="Home"
             className={`${LINK_CLS} border-r border-white/10 shrink-0 flex items-center`}
           >

@@ -6,7 +6,7 @@ import { WikiArticle } from '@/components/articles/WikiArticle';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/iman-gadzhi';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Iman Gadzhi | Digital Marketing Entrepreneur & Educator',

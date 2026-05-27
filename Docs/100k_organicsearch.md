@@ -1,4 +1,4 @@
-# 100K Organic Search | ObjectWire Growth Plan
+ï»¿# 100K Organic Search | ObjectWire Growth Plan
 
 > **Goal:** Reach 100,000 monthly organic search sessions within 12 months.
 > **Last updated:** April 4, 2026
@@ -50,9 +50,9 @@
 
 ---
 
-## Phase 1 | Foundation Fixes (Weeks 1-3) — MOSTLY COMPLETE
+## Phase 1 | Foundation Fixes (Weeks 1-3) ï¿½ MOSTLY COMPLETE
 
-### 1.1 Registry Data Quality Pass — ? DONE (Supabase migration)
+### 1.1 Registry Data Quality Pass ï¿½ ? DONE (Supabase migration)
 
 Registry moved to Supabase `content_registry` table. All fields available: `description`, `imageUrl`, `imageWidth`, `imageHeight`, `imageAlt`. Auto-synced on build.
 
@@ -169,7 +169,7 @@ export default async function HubPage() {
 
 **Target: Build deep clusters around 10 high-volume keyword families.**
 
-### 3.1 Cluster Architecture — ? PROVEN
+### 3.1 Cluster Architecture ï¿½ ? PROVEN
 
 Each cluster follows this pattern (already working on Video Games, MLS, Crypto):
 
@@ -209,11 +209,11 @@ All sub-articles link back to the hub. The hub auto-discovers sub-articles via `
 | Month 3 | 6 (+Google, Nvidia) | 90 | 420 |
 | Month 4 | 8 (+OpenAI, Olympics) | 120 | 450 |
 | Month 5 | 10 (+World Cup, Finance) | 150 | 480 |
-| Month 6–12 | Expand + maintain | 300+ | 630+ |
+| Month 6ï¿½12 | Expand + maintain | 300+ | 630+ |
 
 ---
 
-## Phase 4 | Google News Acceleration (Ongoing) — PARTIALLY COMPLETE
+## Phase 4 | Google News Acceleration (Ongoing) ï¿½ PARTIALLY COMPLETE
 
 ### 4.1 Top Stories Eligibility Checklist
 
@@ -234,7 +234,7 @@ Google News rewards **first-to-publish**. When a story breaks:
 1. Publish a 300-word stub within 30 minutes using the admin editor
 2. Set `status: 'published'` immediately, it enters the news sitemap
 3. Update the article with depth over the next 2 hours
-4. Google re-crawls news sitemaps every 5–15 minutes
+4. Google re-crawls news sitemaps every 5ï¿½15 minutes
 
 The Supabase CMS supports this workflow, no build/deploy needed for new articles.
 
@@ -248,7 +248,7 @@ Google News devalues articles after 48 hours. Strategy:
 
 ---
 
-## Phase 5 | Technical SEO & Performance (Weeks 2–6)
+## Phase 5 | Technical SEO & Performance (Weeks 2ï¿½6)
 
 ### 5.1 Internal Linking Automation
 
@@ -260,12 +260,12 @@ Current article tags: ["GTA 6", "Rockstar Games", "Pre-orders"]
 Suggested: GTA 6 hub, GTA 6 pre-orders tracker, Take-Two earnings
 ```
 
-Place this at the bottom of every article automatically. Target: 4–6 internal links per article, zero manual effort.
+Place this at the bottom of every article automatically. Target: 4ï¿½6 internal links per article, zero manual effort.
 
 ### 5.2 Breadcrumb Depth
 
-Current: Most articles have 2–3 breadcrumb levels.
-Target: Every article has 3–4+ levels reflecting the hub/cluster hierarchy.
+Current: Most articles have 2ï¿½3 breadcrumb levels.
+Target: Every article has 3ï¿½4+ levels reflecting the hub/cluster hierarchy.
 
 ```
 Home ? Video Games ? Racing ? Forza Horizon 6
@@ -288,7 +288,7 @@ Current: Static pages via Next.js are fast. Ensure:
 
 ---
 
-## Phase 6 | Programmatic Content (Months 3–6)
+## Phase 6 | Programmatic Content (Months 3ï¿½6)
 
 ### 6.1 Definition Pages
 
@@ -301,7 +301,7 @@ The `/define/` section (13 pages) is a programmatic SEO goldmine. Scale to 200+ 
 
 Each definition page:
 - Targets a "what is X" keyword (high volume, low competition)
-- Links to 3–5 related ObjectWire articles
+- Links to 3ï¿½5 related ObjectWire articles
 - Takes < 10 minutes to create with a standard template
 
 ### 6.2 Company Profiles
@@ -353,14 +353,14 @@ ObjectWire already has `/about`, `/editorial-standards`, `/authors/*`, these are
 
 | Month | Est. Monthly Organic Sessions | Indexed Pages | Key Driver |
 |---|---|---|---|
-| 1 | 2,000–5,000 | 360 | Foundation fixes + registry cleanup + Publisher Center |
-| 2 | 5,000–12,000 | 400 | Gaming cluster completion (GTA 6, Forza, Switch 2) |
-| 3 | 12,000–25,000 | 450 | Google News inclusion + tech cluster + first Discover hits |
-| 4 | 20,000–40,000 | 500 | Compound growth from clusters + breaking news velocity |
-| 5 | 30,000–50,000 | 550 | World Cup pre-event content + definition pages scaling |
-| 6 | 40,000–65,000 | 600+ | Seasonal peaks (E3, WWDC) + programmatic content |
-| 8 | 60,000–80,000 | 700+ | Topical authority established in 3+ verticals |
-| 10 | 80,000–95,000 | 800+ | Google Discover traffic + Bing/Apple News |
+| 1 | 2,000ï¿½5,000 | 360 | Foundation fixes + registry cleanup + Publisher Center |
+| 2 | 5,000ï¿½12,000 | 400 | Gaming cluster completion (GTA 6, Forza, Switch 2) |
+| 3 | 12,000ï¿½25,000 | 450 | Google News inclusion + tech cluster + first Discover hits |
+| 4 | 20,000ï¿½40,000 | 500 | Compound growth from clusters + breaking news velocity |
+| 5 | 30,000ï¿½50,000 | 550 | World Cup pre-event content + definition pages scaling |
+| 6 | 40,000ï¿½65,000 | 600+ | Seasonal peaks (E3, WWDC) + programmatic content |
+| 8 | 60,000ï¿½80,000 | 700+ | Topical authority established in 3+ verticals |
+| 10 | 80,000ï¿½95,000 | 800+ | Google Discover traffic + Bing/Apple News |
 | 12 | **100,000+** | 900+ | Compound authority across all pillars |
 
 ---
@@ -373,8 +373,8 @@ ObjectWire already has `/about`, `/editorial-standards`, `/authors/*`, these are
 | Average position | GSC ? Performance ? Queries | < 20 for pillar keywords |
 | Click-through rate | GSC ? Performance | > 3% (improve titles if below) |
 | Top Stories appearances | GSC ? Performance ? Search Appearance | 10+/week by month 3 |
-| News sitemap articles | `/news-sitemap.xml` | 3–5 articles within 2-day window at all times |
-| Internal links per page | Manual audit / Screaming Frog | 4–6 minimum |
+| News sitemap articles | `/news-sitemap.xml` | 3ï¿½5 articles within 2-day window at all times |
+| Internal links per page | Manual audit / Screaming Frog | 4ï¿½6 minimum |
 | Core Web Vitals | GSC ? Core Web Vitals | All green (LCP < 2.5s, CLS < 0.1) |
 | Registry completeness | `scripts/audit-registry.ts` | 0 entries with missing image/description |
 
@@ -392,7 +392,7 @@ ObjectWire already has `/about`, `/editorial-standards`, `/authors/*`, these are
 
 ---
 
-*This plan builds on ObjectWire's existing technical infrastructure — the content registry, auto-sync, news sitemap, structured data, and Supabase CMS are all operational. The gap is content volume and data completeness, not tooling.*
+*This plan builds on ObjectWire's existing technical infrastructure ï¿½ the content registry, auto-sync, news sitemap, structured data, and Supabase CMS are all operational. The gap is content volume and data completeness, not tooling.*
 
 ---
 
@@ -416,7 +416,7 @@ Still need to merge:
 ### D.2 Google News Publisher Center
 
 - Register at [Google Publisher Center](https://publishercenter.google.com/)
-- Verify `objectivewire.org` ownership
+- Verify `objectivewire.com` ownership
 - Submit `/news-sitemap.xml` as the news feed
 - Label sections: Technology, Gaming, Entertainment, Finance, Science
 - Upload publisher logo (min 1000x1000 square)

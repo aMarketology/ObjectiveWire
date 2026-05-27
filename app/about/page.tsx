@@ -5,16 +5,16 @@ import { Breadcrumb } from '@/components/nav/Breadcrumb';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org/about';
+const PAGE_URL = 'https://www.objectivewire.com/about';
 
 export const metadata: Metadata = {
   title: 'About Objective Wire | Ownership, Mission, Team',
   description:
-    'Objective Wire is an independent investigative journalism and private detective agency based in Austin, Texas. Founded by Conan D. Boyle. No outside investors. No sponsored content.',
+    'Objective Wire is an independent investigative newsroom based in Austin, Texas. Founded by Conan D. Boyle. No outside investors. No sponsored content.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: 'About Objective Wire | Ownership, Mission, Team',
-    description: 'Investigative journalism and private detective agency based in Austin, Texas. Owned by Conan D. Boyle.',
+    description: 'Independent investigative newsroom based in Austin, Texas. Owned by Conan D. Boyle.',
     type: 'article',
     url: PAGE_URL,
     siteName: 'Objective Wire',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'About Objective Wire | Ownership, Mission, Team',
-    description: 'Investigative journalism and private detective agency based in Austin, Texas. Owned by Conan D. Boyle.',
+    description: 'Independent investigative newsroom based in Austin, Texas. Owned by Conan D. Boyle.',
   },
 };
 
@@ -47,8 +47,8 @@ export default function AboutPage() {
           About Objective Wire
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
-          Objective Wire is an independent investigative journalism and private detective agency based in Austin, Texas. We publish
-          verified, source-cited reporting on creators, cars, sports, and culture. We uncover the truth.
+          Objective Wire is an independent investigative newsroom based in Austin, Texas. We publish
+          verified, source-cited reporting on creators, cars, sports, and culture.
         </p>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">

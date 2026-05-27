@@ -6,8 +6,8 @@ import { KeyTakeaways } from '@/components/articles/KeyTakeaways';
 export const revalidate = 86400;
 
 const SLUG = '/youtube/england-vs-france-charity-match-2026';
-const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
-const OG_IMAGE = `https://www.objectivewire.org${SLUG}/opengraph-image`;
+const PAGE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = `https://www.objectivewire.com${SLUG}/opengraph-image`;
 
 export const metadata: Metadata = {
   title: 'England vs France Creator Match 2026 | Eleven All-Stars 2 at Parc des Princes',

@@ -8,12 +8,12 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Creator News | Latest from YouTube, TikTok & Social Media',
   description: 'Breaking creator news: MrBeast, Logan Paul, Pokimane, Ari Kytsya, and more. Updated daily.',
-  alternates: { canonical: 'https://www.objectivewire.org/creator/news' },
+  alternates: { canonical: 'https://www.objectivewire.com/creator/news' },
   openGraph: {
     title: 'Creator News | YouTube, TikTok & Social Media',
     description: 'The latest news from the biggest names in online content creation.',
     type: 'website',
-    url: 'https://www.objectivewire.org/creator/news',
+    url: 'https://www.objectivewire.com/creator/news',
     siteName: 'OzoneNews',
   },
   twitter: {

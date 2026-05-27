@@ -4,12 +4,12 @@ import { Hub } from '@/components/Hub';
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.objectivewire.org/local/austin';
+const PAGE_URL = 'https://www.objectivewire.com/local/austin';
 
 export const metadata: Metadata = {
   title: 'Austin News | Investigative Reporting Austin TX | Objective Wire',
   description:
-    'Licensed investigative news from Austin, Texas. Travis County, City of Austin, APD, local politics, public records, and accountability journalism by named reporters.',
+    'Investigative news from Austin, Texas. Travis County, City of Austin, APD, local politics, public records, and accountability journalism by named reporters.',
   keywords: [
     'Austin investigative news',
     'Austin Texas news 2026',
@@ -26,16 +26,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Austin News | Investigative Reporting Austin TX | Objective Wire',
     description:
-      'Licensed investigative news from Austin and Travis County. City Hall, APD, public records, and accountability journalism.',
+      'Investigative news from Austin and Travis County. City Hall, APD, public records, and accountability journalism.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
-    section: 'Local',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Austin Investigative News | Objective Wire',
-    description: 'Licensed PI-backed journalism from Austin, TX. Travis County, City Hall, public records.',
+    description: 'Independent investigative journalism from Austin, TX. Travis County, City Hall, public records.',
   },
 };
 
@@ -44,7 +43,7 @@ const jsonLd = {
   '@type': 'NewsMediaOrganization',
   name: 'Objective Wire',
   url: PAGE_URL,
-  description: 'Licensed investigative newsroom covering Austin, Texas and Travis County.',
+  description: 'Independent investigative newsroom covering Austin, Texas and Travis County.',
   areaServed: [
     { '@type': 'City', name: 'Austin', containedIn: { '@type': 'State', name: 'Texas' } },
     { '@type': 'AdministrativeArea', name: 'Travis County' },
@@ -63,7 +62,7 @@ export default function AustinHubPage() {
       meta={
         <>
           <span>📍 Travis County, TX</span>
-          <span>🔍 Licensed PI Reporters</span>
+          <span>📋 Texas FOIA Requests</span>
           <span>📋 Public Records</span>
         </>
       }
@@ -119,18 +118,16 @@ export default function AustinHubPage() {
       <Hub.Section title="Austin Stories" icon="📰" id="stories">
         <p className="text-gray-500 text-lg">Austin investigations in progress. Stories publish as reporting is complete.</p>
         <p className="text-gray-400 text-sm mt-2">
-          Have a lead? <a href="/service/tip-the-newsroom" className="text-blue-600 hover:text-blue-800 underline">Submit a tip to the newsroom.</a>
+          Have a lead? <a href="/get-help" className="text-blue-600 hover:text-blue-800 underline">Submit a tip to the newsroom.</a>
         </p>
       </Hub.Section>
 
-      <Hub.Section title="Why Licensed Reporters Matter in Austin" icon="⚖️" id="why" variant="highlight">
+      <Hub.Section title="Why Austin Reporting Standards Matter" icon="⚖️" id="why" variant="highlight">
         <Hub.Prose>
           <p>
-            Texas PI license holders have legal authority to conduct surveillance, run background
-            investigations, and locate individuals under Chapter 1702 of the Texas Occupations Code.
-            When an Objective Wire reporter investigates a City of Austin contractor, they are not
-            just filing FOIA requests. They can conduct field surveillance, run asset searches, and
-            develop sources using methods available only to licensed investigators.
+            Every Objective Wire story on Austin city hall, Travis County courts, or APD
+            is sourced from primary documents: FOIA responses, official filings, court records,
+            and named on-record sources. We do not publish anonymous claims without corroboration.
           </p>
           <p>
             This is what separates Austin investigative journalism at Objective Wire from every other
@@ -140,19 +137,19 @@ export default function AustinHubPage() {
         <Hub.InfoGrid
           columns={2}
           items={[
-            { label: 'PI License Authority', value: 'Texas Occ. Code Ch. 1702' },
             { label: 'FOIA Jurisdiction', value: 'Texas Public Information Act' },
             { label: 'Court Records Access', value: 'Travis County District Clerk' },
+            { label: 'Editorial Standard', value: 'Primary Sources Only' },
             { label: 'Organization Type', value: '501(c)(3) Nonprofit' },
           ]}
         />
       </Hub.Section>
 
-      <Hub.Banner
-        title="Tip the Austin Newsroom"
-        description="Know about a city contract, a use-of-force incident, or a story Austin media won't touch? Our reporters are licensed and protected."
-        cta={{ href: '/service/tip-the-newsroom', label: 'Submit a Secure Tip' }}
-      />
+      <Hub.Banner>
+        <h2 className="text-2xl font-bold mb-2">Tip the Austin Newsroom</h2>
+        <p className="mb-4">Know about a city contract, a use-of-force incident, or a story Austin media won&apos;t touch? Reach our editorial team directly.</p>
+        <a href="/get-help" className="inline-block bg-white text-blue-700 font-semibold px-6 py-2 rounded-lg hover:bg-blue-50 transition">Submit a Secure Tip</a>
+      </Hub.Banner>
     </Hub>
   );
 }

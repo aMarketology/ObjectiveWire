@@ -14,7 +14,7 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/emma-chamberlain';
-const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.com${SLUG}`;
 const IMAGE_URL = '/influncer/emma-chamberlain-profile.jpg';
 
 export const metadata: Metadata = {
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-04-29T12:00:00Z',
     modifiedTime: '2026-04-29T12:00:00Z',
     tags: ['Emma Chamberlain', 'Creator', 'YouTube', 'Chamberlain Coffee', 'Fashion'],
-    images: [{ url: `https://www.objectivewire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Emma Chamberlain, YouTube creator and Chamberlain Coffee founder' }],
+    images: [{ url: `https://www.objectivewire.com${IMAGE_URL}`, width: 1200, height: 675, alt: 'Emma Chamberlain, YouTube creator and Chamberlain Coffee founder' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Emma Chamberlain | 11M YouTube, Chamberlain Coffee Founder',
     description: 'Emma Chamberlain profile: age 25, YouTube creator, Chamberlain Coffee, Met Gala host, Louis Vuitton ambassador, and net worth 2026.',
-    images: [`https://www.objectivewire.org${IMAGE_URL}`],
+    images: [`https://www.objectivewire.com${IMAGE_URL}`],
   },
 };
 
@@ -75,7 +75,7 @@ export default function EmmaChamberlinPage() {
         modifiedTime: '2026-04-29T12:00:00Z',
         author: 'OzoneNews Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.objectivewire.org${IMAGE_URL}`,
+        imageUrl: `https://www.objectivewire.com${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Emma Chamberlain', 'Emma Chamberlain age 2026', 'Emma Chamberlain YouTube',
@@ -85,8 +85,8 @@ export default function EmmaChamberlinPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.objectivewire.org' },
-        { name: 'Creator', item: 'https://www.objectivewire.org/creator' },
+        { name: 'Home', item: 'https://www.objectivewire.com' },
+        { name: 'Creator', item: 'https://www.objectivewire.com/creator' },
         { name: 'Emma Chamberlain', item: PAGE_URL },
       ]}
       hero={{

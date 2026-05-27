@@ -103,7 +103,7 @@ export function OrganizationSchema() {
       "width": 1001,
       "height": 1001
     },
-    "description": "Objective Wire is an independent investigative journalism and private detective agency delivering verified, source-cited reporting on creators, sports, cars, and culture. Based in Austin, Texas.",
+    "description": "Objective Wire is an independent investigative newsroom delivering verified, source-cited reporting on creators, sports, cars, and culture. Based in Austin, Texas.",
     "foundingDate": "2024",
     "founders": [
       {

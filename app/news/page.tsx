@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   title: 'News | Sports, Creators & Cars | oWire',
   description:
     'Latest news from oWire. Sports, creators, cars, and culture. World Cup, MLB, MrBeast, Logan Paul, Ferrari, and more.',
-  alternates: { canonical: 'https://www.objectivewire.org/news' },
+  alternates: { canonical: 'https://www.objectivewire.com/news' },
   openGraph: {
     title: 'News | Sports, Creators & Cars | oWire',
     description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
-    url: 'https://www.objectivewire.org/news',
+    url: 'https://www.objectivewire.com/news',
     siteName: 'oWire',
     type: 'website',
   },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-// ── Article shape ─────────────────────────────────────────────────────────────
+// â”€â”€ Article shape â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 type Article = {
   id: string;
@@ -89,7 +89,7 @@ function fromRegistry(e: ContentEntry): Article {
   const cleaned = cleanImageUrl(e.imageUrl);
   return {
     id: e.slug,
-    title: e.title.replace(/\s*[|—–\-]\s*(ObjectWire|oWire|ZWire).*$/i, '').trim(),
+    title: e.title.replace(/\s*[|â€”â€“\-]\s*(ObjectWire|oWire|ZWire).*$/i, '').trim(),
     excerpt: e.description,
     href: e.slug,
     publishDate: e.publishDate,
@@ -102,7 +102,7 @@ function fromRegistry(e: ContentEntry): Article {
   };
 }
 
-// ── Category palette ──────────────────────────────────────────────────────────
+// â”€â”€ Category palette â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const CAT_BG: Record<string, string> = {
   sports:           'bg-[#0f172a]',
@@ -148,7 +148,7 @@ function timeAgo(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-// ── Section helpers ───────────────────────────────────────────────────────────
+// â”€â”€ Section helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const BEATS = [
   { label: 'World Cup',      href: '/world-cup',       icon: '??' },
@@ -161,7 +161,7 @@ const BEATS = [
   { label: 'Cars',           href: '/cars',            icon: '???' },
 ];
 
-// ── Sub-components ────────────────────────────────────────────────────────────
+// â”€â”€ Sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function CatLabel({ category, breaking }: { category: string; breaking?: boolean }) {
   if (breaking) {
@@ -194,7 +194,7 @@ function SectionRule({ label, href }: { label: string; href?: string }) {
   );
 }
 
-// Card with image or gradient fallback — never renders a broken img
+// Card with image or gradient fallback â€” never renders a broken img
 function ArticleCard({ article, size = 'md', priority = false }: { article: Article; size?: 'lg' | 'md' | 'sm'; priority?: boolean }) {
   const aspectClass = size === 'lg' ? 'aspect-[4/3] sm:aspect-[16/9] lg:h-72' : size === 'sm' ? 'aspect-[16/9]' : 'aspect-[16/9]';
   return (
@@ -232,7 +232,7 @@ function ArticleCard({ article, size = 'md', priority = false }: { article: Arti
           </p>
         )}
         <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono mt-3 pt-2 border-t border-white/10 dark:border-[#2e2e2e]">
-          {article.author} � {timeAgo(article.publishDate)}
+          {article.author} · {timeAgo(article.publishDate)}
         </p>
       </div>
     </Link>
@@ -264,14 +264,14 @@ function HeadlineRow({ article }: { article: Article }) {
           {article.title}
         </h4>
         <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono mt-0.5">
-          {article.author} � {timeAgo(article.publishDate)}
+          {article.author} · {timeAgo(article.publishDate)}
         </p>
       </div>
     </Link>
   );
 }
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+// â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default async function HomePage() {
   const contentRegistry = await getAllEntries();
@@ -290,7 +290,7 @@ export default async function HomePage() {
     .map(fromRegistry)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
-  // GA4 popular lead — promote most-read article to front of slider
+  // GA4 popular lead â€” promote most-read article to front of slider
   try {
     const popularSlug = await getPopularLeadSlug();
     if (popularSlug) {
@@ -299,7 +299,7 @@ export default async function HomePage() {
     }
   } catch { /* graceful */ }
 
-  // Section splits — slugs are the source of truth for routing
+  // Section splits â€” slugs are the source of truth for routing
   const isSports = (a: Article) =>
     ['sports', 'mlb', 'mls', 'soccer', 'golf', 'world-cup', 'premier-league'].includes(a.category.toLowerCase()) ||
     ['/soccer', '/world-cup', '/mls', '/premier-league', '/mlb', '/golf'].some((p) => a.href.startsWith(p));
@@ -333,14 +333,14 @@ export default async function HomePage() {
     <div className="min-h-screen bg-[#121212] dark:bg-[#111111]">
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
 
-        {/* ── DATE RULE ─────────────────────────────────────────────────────── */}
+        {/* â”€â”€ DATE RULE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="flex items-center gap-3 mb-6">
           <div className="h-px flex-1 bg-white/20" />
           <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest whitespace-nowrap">{editionDate}</span>
           <div className="h-px flex-1 bg-white/20" />
         </div>
 
-        {/* ── BEAT NAV ──────────────────────────────────────────────────────── */}
+        {/* â”€â”€ BEAT NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <nav aria-label="Coverage beats" className="flex gap-2 overflow-x-auto pb-2 mb-8 scrollbar-hide">
           {BEATS.map((b) => (
             <Link
@@ -354,10 +354,10 @@ export default async function HomePage() {
           ))}
         </nav>
 
-        {/* ── AUTO-SCROLL STORY STRIP ────────────────────────────────────── */}
+        {/* â”€â”€ AUTO-SCROLL STORY STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <ArticleSlider articles={sliderArticles} />
 
-        {/* ── SPORTS ────────────────────────────────────────────────────────── */}
+        {/* â”€â”€ SPORTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {sports.length > 0 && (
           <section aria-label="Sports">
             <SectionRule label="Sports" href="/world-cup" />
@@ -374,13 +374,13 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* ── CREATORS & YOUTUBE ────────────────────────────────────────────── */}
+        {/* â”€â”€ CREATORS & YOUTUBE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {(creators.length > 0 || youtube.length > 0) && (
           <section aria-label="Creators and YouTube">
             <SectionRule label="Creators & YouTube" href="/creator" />
             <div className="grid lg:grid-cols-12 gap-6">
 
-              {/* Creators — 8-col */}
+              {/* Creators â€” 8-col */}
               {creators.length > 0 && (
                 <div className="lg:col-span-8">
                   <p className="text-[10px] font-black tracking-widest uppercase text-[#b45309] mb-3 flex items-center gap-2">
@@ -399,7 +399,7 @@ export default async function HomePage() {
                 </div>
               )}
 
-              {/* YouTube — 4-col sidebar */}
+              {/* YouTube â€” 4-col sidebar */}
               {youtube.length > 0 && (
                 <div className="lg:col-span-4">
                   <p className="text-[10px] font-black tracking-widest uppercase text-red-600 mb-3 flex items-center gap-2">
@@ -414,7 +414,7 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* ── MORE STORIES ──────────────────────────────────────────────────── */}
+        {/* â”€â”€ MORE STORIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {remaining.length > 0 && (
           <section aria-label="More stories">
             <SectionRule label="More Stories" />
@@ -445,7 +445,7 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* ── FOOTER STRIP ──────────────────────────────────────────────────── */}
+        {/* â”€â”€ FOOTER STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <section className="border-t-2 border-b-2 border-white/20 dark:border-[#444] py-6 text-center mt-12">
           <p className="text-[9px] tracking-[.4em] uppercase font-black text-gray-400 dark:text-gray-400 mb-2">About oWire</p>
           <p className="text-gray-300 dark:text-gray-300 max-w-xl mx-auto text-sm leading-relaxed mb-4">
@@ -471,3 +471,4 @@ export default async function HomePage() {
     </div>
   );
 }
+

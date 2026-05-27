@@ -4,37 +4,37 @@ import Link from 'next/link';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org';
+const PAGE_URL = 'https://www.objectivewire.com';
 
 export const metadata: Metadata = {
-  title: 'oWire | Licensed Investigative Newsroom, Austin TX',
+  title: 'oWire | Independent Investigative Newsroom',
   description:
-    'Objective Wire is a licensed investigative newsroom and 501(c)(3) nonprofit in Austin, Texas. Our reporters hold Texas PI credentials, applied to original reporting on public records, accountability, cars, creators, and culture.',
+    'Objective Wire is an independent investigative newsroom in Austin, Texas. Original reporting on public records, accountability, cars, creators, sports, and culture. Named bylines, primary sources, public corrections.',
   keywords: [
     'investigative newsroom Austin',
-    'licensed investigative journalism',
-    'Texas investigative reporter',
-    'public records journalism Texas',
+    'investigative journalism',
     'Austin accountability journalism',
-    'nonprofit newsroom Austin',
+    'public records journalism Texas',
+    'nonprofit newsroom Austin Texas',
     'investigative reporting Texas',
     'FOIA Austin Texas',
+    'independent newsroom',
     'oWire',
     'Objective Wire',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'oWire | Licensed Investigative Newsroom, Austin TX',
+    title: 'oWire | Independent Investigative Newsroom',
     description:
-      'A licensed investigative newsroom in Austin, Texas. Original reporting backed by Texas PI credentials, public records, and primary-source verification.',
+      'An independent investigative newsroom in Austin, Texas. Original reporting on public records, accountability, cars, creators, sports, and culture.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'oWire | Licensed Investigative Newsroom',
-    description: 'Licensed investigative newsroom. Public records, accountability, original reporting from Austin.',
+    title: 'oWire | Independent Investigative Newsroom',
+    description: 'Independent investigative newsroom. Public records, accountability, original reporting from Austin.',
   },
 };
 
@@ -44,9 +44,9 @@ const NEWS_MEDIA_SCHEMA = {
   name: 'Objective Wire',
   alternateName: 'oWire',
   url: PAGE_URL,
-  logo: 'https://www.objectivewire.org/opengraph-image',
+  logo: 'https://www.owire.org/opengraph-image',
   description:
-    'A licensed investigative newsroom and 501(c)(3) nonprofit based in Austin, Texas. Reporters hold Texas PI credentials, enabling original investigative journalism on public records, accountability, cars, creators, and culture.',
+    'An independent investigative newsroom and 501(c)(3) nonprofit based in Austin, Texas. Original reporting on public records, accountability, cars, creators, sports, and culture.',
   foundingDate: '2023',
   foundingLocation: { '@type': 'Place', name: 'Austin, Texas' },
   address: {
@@ -60,27 +60,28 @@ const NEWS_MEDIA_SCHEMA = {
     { '@type': 'State', name: 'Texas' },
     { '@type': 'Country', name: 'United States' },
   ],
-  ethicsPolicy: 'https://www.objectivewire.org/editorial-standards',
-  diversityPolicy: 'https://www.objectivewire.org/editorial-standards',
-  correctionsPolicy: 'https://www.objectivewire.org/corrections',
-  masthead: 'https://www.objectivewire.org/authors',
-  missionCoveragePrioritiesPolicy: 'https://www.objectivewire.org/about',
+  ethicsPolicy: 'https://www.owire.org/editorial-standards',
+  diversityPolicy: 'https://www.owire.org/editorial-standards',
+  correctionsPolicy: 'https://www.owire.org/corrections',
+  masthead: 'https://www.owire.org/authors',
+  missionCoveragePrioritiesPolicy: 'https://www.owire.org/about',
   knowsAbout: [
     'Investigative Journalism',
     'Public Records',
     'FOIA',
     'Source Protection',
     'Accountability Reporting',
-    'Texas Private Investigation Code 1702',
+    'Creator Economy',
+    'Sports Journalism',
   ],
-  sameAs: ['https://www.objectivewire.org'],
+  sameAs: ['https://www.owire.org'],
 };
 
 const TRUST_BADGES = [
-  { label: 'Texas Licensed', value: 'PI Code Ch. 1702' },
   { label: 'Tax Status', value: '501(c)(3) Nonprofit' },
   { label: 'Founded', value: 'Austin, TX, 2023' },
   { label: 'Editorial Model', value: 'Primary Sources Only' },
+  { label: 'Bylines', value: 'Named Author, Every Article' },
 ];
 
 const PILLARS = [
@@ -103,10 +104,10 @@ const PILLARS = [
     desc: 'Profiles, brand deals, platform shifts, and original interviews with creators and athletes.',
   },
   {
-    href: '/service',
-    kicker: 'Investigative Methods',
-    title: 'How Our Reporters Investigate',
-    desc: 'The licensed tools our reporters use, surveillance, skip tracing, and document review.',
+    href: '/soccer',
+    kicker: 'Sports',
+    title: 'World Cup, MLS, Premier League',
+    desc: 'Match reporting, transfer news, and sports culture from the World Cup, Premier League, MLS, MLB, and golf.',
   },
 ];
 
@@ -123,8 +124,8 @@ const METHODS = [
   },
   {
     step: '03',
-    title: 'Licensed Field Work',
-    desc: 'Where surveillance, skip tracing, or background research is needed, our Texas PI credential keeps the work legal and admissible.',
+    title: 'Document Research',
+    desc: 'Public records, FOIA filings, court documents, and financial disclosures are pulled and cross-referenced. Every claim traces to a primary document or named source.',
   },
   {
     step: '04',
@@ -134,7 +135,7 @@ const METHODS = [
 ];
 
 const STANDARDS = [
-  { icon: 'L', text: 'Licensed under Texas Occupations Code Chapter 1702 by the Department of Public Safety.' },
+  { icon: 'I', text: 'Independent and self-funded. No paywall, no advertisers, no shareholders, and no outside investors influencing coverage decisions.' },
   { icon: 'N', text: '501(c)(3) nonprofit. No paywall, no shareholders, no profit motive driving coverage decisions.' },
   { icon: 'P', text: 'Primary sources only. Every fact traces to a named individual, document, or filing.' },
   { icon: 'C', text: 'Published corrections policy. Errors are corrected publicly, timestamped, and preserved.' },
@@ -159,25 +160,25 @@ export default function HomePage() {
         <section className="bg-white border-b border-gray-200">
           <div className="container mx-auto px-4 py-20 max-w-6xl">
             <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-5 font-mono">
-              Austin, Texas, Licensed Investigative Newsroom, 501(c)(3) Nonprofit
+              Austin, Texas &mdash; Independent Investigative Newsroom, Est. 2023
             </p>
             <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-6 max-w-4xl text-gray-900">
-              The Licensed<br />
+              The <br />
               <span className="text-amber-500">Investigative Newsroom.</span>
             </h1>
             <p className="text-xl text-gray-700 max-w-2xl mb-5 leading-relaxed">
-              oWire reporters hold Texas Private Investigator credentials. We apply licensed
-              investigative methods, surveillance, public records, skip tracing, and document
-              review, to original journalism that other newsrooms cannot legally produce.
+              oWire publishes primary-source reporting on creators, cars, sports, and culture.
+              Every story carries a named byline, verified sourcing, and a public corrections
+              record.
             </p>
             <p className="text-base text-gray-500 max-w-2xl mb-10 leading-relaxed">
-              Independent, nonprofit, and accountable. Every story carries a named byline,
-              dated timestamps, and full primary-source citations.
+              Independent, nonprofit, and accountable. No paywall, no shareholders, no
+              advertiser influence over coverage decisions.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/service/tip-the-newsroom"
+                href="/get-help"
                 className="bg-gray-900 hover:bg-gray-800 text-white font-black px-8 py-4 transition-colors text-lg"
               >
                 Tip the Newsroom
@@ -219,8 +220,8 @@ export default function HomePage() {
                 What oWire Investigates
               </h2>
               <p className="text-lg text-gray-600">
-                oWire focuses on four beats: local Austin accountability, cars and supercars,
-                creators and culture, and the investigative methods themselves.
+                oWire covers four beats: local Austin accountability, cars and supercars,
+                creators and culture, and sports.
               </p>
             </div>
 
@@ -261,8 +262,8 @@ export default function HomePage() {
                 How a Story Becomes a Story
               </h2>
               <p className="text-lg text-gray-600">
-                The license is not the product. The license is what makes the journalism
-                possible. Here is what happens between a tip and a published article.
+                Every published article at oWire goes through the same four-step process.
+                Here is what happens between a tip and a published article.
               </p>
             </div>
 
@@ -287,7 +288,7 @@ export default function HomePage() {
                   Why You Can Trust oWire
                 </p>
                 <h2 className="text-4xl font-black text-gray-900 mb-6">
-                  Independent. Licensed. Accountable.
+                  Independent. Sourced. Accountable.
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   oWire is structured to remove the typical pressures that distort journalism.
@@ -349,9 +350,8 @@ export default function HomePage() {
                 <p className="text-gray-600 leading-relaxed mb-5">
                   Conan Boyle is the founding reporter at oWire and the publication&rsquo;s
                   lead investigative journalist. A graduate of NC State University&rsquo;s
-                  journalism program, Boyle holds a Texas Private Investigator credential
-                  under the Department of Public Safety, which he applies directly to original
-                  reporting on Austin public records, Travis County courts, and the cars beat.
+                  Boyle covers Austin public records, Travis County courts,
+                  supercars, and culture with a focus on primary-source accountability reporting.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {['Investigative Reporting', 'Public Records', 'Texas FOIA', 'Supercars', 'Austin Accountability'].map((b) => (
@@ -385,7 +385,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/service/tip-the-newsroom"
+                href="/get-help"
                 className="bg-amber-500 text-gray-950 hover:bg-amber-400 font-black px-10 py-4 transition-colors text-lg"
               >
                 Submit a Tip

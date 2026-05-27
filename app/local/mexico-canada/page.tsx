@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org/local/mexico-canada';
+const PAGE_URL = 'https://www.objectivewire.com/local/mexico-canada';
 
 export const metadata: Metadata = {
   title: 'Mexico + Canada News | Cross-Border Coverage | oWire',

@@ -5,23 +5,23 @@ import { WikiArticle } from '@/components/articles/WikiArticle';
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Austin Private Detective + Investigative Journalism Services",
-  description: "Based in Austin, Texas, we provide discreet, results-driven private detective services for individuals, businesses, and legal professionals.",
+  title: "Tip the Newsroom | Contact Objective Wire",
+  description: "Submit a confidential tip to Objective Wire. Our newsroom accepts public records leads, whistleblower tips, and accountability story pitches.",
   alternates: {
-    canonical: 'https://www.objectwire.org/get-help',
+    canonical: 'https://www.objectivewire.com/get-help',
   },
   openGraph: {
-    title: "Austin Private Detective + Investigative Journalism Services",
-    description: "Based in Austin, Texas, we provide discreet, results-driven private detective services for individuals, businesses, and legal professionals.",
+    title: "Tip the Newsroom | Contact Objective Wire",
+    description: "Submit a confidential tip to Objective Wire. Our newsroom accepts public records leads, whistleblower tips, and accountability story pitches.",
     type: 'article',
-    url: "https://www.objectwire.org/get-help",
+    url: "https://www.objectivewire.com/get-help",
     siteName: 'Objective Wire',
     section: "News",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Austin Private Detective + Investigative Journalism Services",
-    description: "Based in Austin, Texas, we provide discreet, results-driven private detective services for individuals, businesses, and legal professionals.",
+    title: "Tip the Newsroom | Contact Objective Wire",
+    description: "Submit a confidential tip to Objective Wire. Public records leads, whistleblower tips, and accountability story pitches.",
   },
 };
 

@@ -6,7 +6,7 @@ These rules apply to **every** GitHub Copilot request in this workspace.
 
 ## What ZWire Is
 
-ZWire (ZeroWire) is a verified news and culture platform built on Next.js 15, React 19, Supabase (PostgreSQL), and Tailwind CSS. Published at **objectivewire.org**. The editorial mission is accuracy over speed, primary sources only, and transparent corrections. It is not a blog, aggregator, or opinion site. Every article must be verifiable, sourced, and written for real search intent.
+ZWire (ZeroWire) is a verified news and culture platform built on Next.js 15, React 19, Supabase (PostgreSQL), and Tailwind CSS. Published at **objectivewire.com**. The editorial mission is accuracy over speed, primary sources only, and transparent corrections. It is not a blog, aggregator, or opinion site. Every article must be verifiable, sourced, and written for real search intent.
 
 **ZWire covers four content pillars — nothing outside these:**
 
@@ -19,7 +19,7 @@ ZWire (ZeroWire) is a verified news and culture platform built on Next.js 15, Re
 
 **Do NOT create content in verticals outside these pillars.** No gaming, no general tech/AI, no finance, no politics.
 
-Production: Railway ? `objectivewire.org` (domain is **objectivewire.org**, NOT objectwire.org) | Repo: `aMarketology/ZeroWire`
+Production: Railway ? `objectivewire.com` (domain is **objectivewire.com**, NOT objectwire.org) | Repo: `aMarketology/ZeroWire`
 
 ---
 
@@ -102,7 +102,7 @@ All fetching is server-side. Zero client-side Supabase calls in page components.
 
 **This is the reference article all new `NewsArticle` pages must match.**
 
-Live: `https://www.objectivewire.org/entertainment/news/fortnite-moves-into-movies`
+Live: `https://www.objectivewire.com/entertainment/news/fortnite-moves-into-movies`
 Slug: `entertainment-news-fortnite-moves-into-movies` | Table: `articles` | Component: `NewsArticleDB`
 
 ### Why it is the standard
@@ -129,12 +129,12 @@ export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',  // max 60 chars, no brand suffix, no em dashes, no &
   description: '130-155 chars. Primary keyword in first 60 chars. No generic phrases.',
   keywords: ['keyword 1', 'keyword 2', /* 10-18 targeted keywords */],
-  alternates: { canonical: `https://www.objectivewire.org${SLUG}` },
+  alternates: { canonical: `https://www.objectivewire.com${SLUG}` },
   openGraph: {
     title: 'Article Title Without Brand Suffix',
     description: 'Slightly different from meta description, emphasize data/hook.',
     type: 'article',
-    url: `https://www.objectivewire.org${SLUG}`,
+    url: `https://www.objectivewire.com${SLUG}`,
     siteName: 'ObjectWire',
     authors: ['Author Name'],
     publishedTime: '2026-03-12T00:00:00Z',
@@ -183,7 +183,7 @@ Every `NewsArticle` article must have ALL of these populated before `wiki:publis
 
 **This is the reference article all new `JackArticle` pages must match.**
 
-Live: `https://www.objectivewire.org/crypto/news/anchorage-usat-expands-to-celo-network`
+Live: `https://www.objectivewire.com/crypto/news/anchorage-usat-expands-to-celo-network`
 Slug: `crypto-news-anchorage-usat-expands-to-celo-network` | Table: `jack_articles` | Component: `JackArticleDB`
 
 ### Why it is the standard
@@ -207,8 +207,8 @@ import { JackArticleDB } from '@/components/JackArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/your/path/here';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`; // REQUIRED — wiki:publish removes this, add it back manually
-const OG_IMAGE = 'https://www.objectivewire.org/your-image.png';
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // REQUIRED — wiki:publish removes this, add it back manually
+const OG_IMAGE = 'https://www.objectivewire.com/your-image.png';
 
 export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',
@@ -241,7 +241,7 @@ export default function YourPage() {
 `wiki:publish` **always removes** the `const ARTICLE_URL = ...` line from the stub but leaves `ARTICLE_URL` references in `metadata.alternates.canonical` and `metadata.openGraph.url`. **After every `wiki:publish` on a JackArticle, manually re-add:**
 
 ```ts
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 ```
 
 Place it immediately after the `const SLUG = ...` line. This applies to NewsArticle stubs too when they use `ARTICLE_URL`.
@@ -252,7 +252,7 @@ Place it immediately after the `const SLUG = ...` line. This applies to NewsArti
 
 **This is the reference article all new `CreatorArticle` pages must match.**
 
-Live: `https://www.objectivewire.org/influencer/ari-kytsya`
+Live: `https://www.objectivewire.com/influencer/ari-kytsya`
 Slug: `influencer-ari-kytsya` | Table: `creator_articles` | Component: `CreatorArticleDB`
 
 ### Why it is the standard
@@ -278,7 +278,7 @@ import { CreatorArticleDB } from '@/components/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/influencer/your-creator';
-const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.com${SLUG}`;
 const IMAGE_URL = '/influncer/yourCreator.jpg';  // local public file
 
 export const metadata: Metadata = {
@@ -307,7 +307,7 @@ export const metadata: Metadata = {
     tags: ['Creator Name', 'Influencer', 'City', 'Platform'],
     publishedTime: '2026-04-02T12:00:00Z',
     modifiedTime: '2026-04-02T12:00:00Z',
-    images: [{ url: `https://www.objectivewire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Creator Name portrait' }],
+    images: [{ url: `https://www.objectivewire.com${IMAGE_URL}`, width: 1200, height: 675, alt: 'Creator Name portrait' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -329,7 +329,7 @@ export default function InfluencerYourCreatorPage() {
 | `schema_description` | 130-155 chars, name first, platforms + location |
 | `schema_author` | `"ObjectWire Influencer Desk"` |
 | `schema_article_url` | Full canonical URL |
-| `schema_image_url` | Full URL to portrait image (`https://www.objectivewire.org/influncer/...`) |
+| `schema_image_url` | Full URL to portrait image (`https://www.objectivewire.com/influncer/...`) |
 | `schema_section` | `"Influencer"` |
 | `schema_keywords` | Array of 15-18 terms matching `page.tsx` keywords |
 | `schema_published_time` | ISO-8601 |
@@ -423,7 +423,7 @@ npm run wiki:status    # diagnostic: shows sync state across filesystem, registr
 - **`sync-registry.ts` runs at every build** — it reads metadata from `page.tsx` files and upserts `content_registry`. This is the only Supabase write needed for new content.
 - **Never use `<ArticlePageDB>` (or any `*DB` component) in a new content file.** The `*DB` variants are legacy for existing DB-backed stubs only.
 - Slug is derived automatically from the file path. Do not set it manually in the file.
-- **After every `wiki:publish` (legacy), check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.objectivewire.org${SLUG}\`` after the SLUG line.
+- **After every `wiki:publish` (legacy), check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.objectivewire.com${SLUG}\`` after the SLUG line.
 
 ---
 
@@ -543,7 +543,7 @@ Every article that ships must have all of the following:
 
 ## SEO Growth Context
 
-ZWire's current SEO state (May 2026): ~120 registry entries, domain objectivewire.org. Growth target: 100K monthly organic sessions on Bing + Google within 12 months.
+ZWire's current SEO state (May 2026): ~120 registry entries, domain objectivewire.com. Growth target: 100K monthly organic sessions on Bing + Google within 12 months.
 
 **Priority content pillars and clusters to build or expand:**
 
@@ -745,7 +745,7 @@ These rules were added after a production canonical bug caused a major impressio
 
 ### Schema / JSON-LD rules
 
-- All URLs in JSON-LD must use `https://www.objectivewire.org` (with www). Non-www URLs cause a canonical mismatch between schema and the canonical tag.
+- All URLs in JSON-LD must use `https://www.objectivewire.com` (with www). Non-www URLs cause a canonical mismatch between schema and the canonical tag.
 - Author fallback URL resolves to `/authors/[slug]`, not `/team/[slug]`.
 - `lib/seo.ts` has been deleted. Do not recreate it. Use `@/lib/seo-utils` or `@/lib/generate-article-metadata`.
 

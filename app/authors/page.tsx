@@ -25,11 +25,11 @@ const AUTHORS = [
     slug: 'max-deleonardis',
     initials: 'MD',
     name: 'Max Deleonardis',
-    role: 'Founder, Lead Investigator',
-    department: 'PI Agency & Editorial Operations',
+    role: 'Founder, Editor-in-Chief',
+    department: 'Editorial Operations',
     location: 'Austin, TX',
-    bio: 'Founder of Objective Wire. Licensed Texas private investigator and editor overseeing PI agency operations, investigative reporting, and editorial strategy. Runs the Austin PI agency and directs investigations across private client cases and public accountability journalism.',
-    beats: ['Investigations', 'PI Agency', 'Austin', 'Editorial Strategy', 'Accountability Journalism'],
+    bio: 'Founder of Objective Wire. Editor-in-chief overseeing investigative reporting, editorial strategy, and newsroom operations. Covers accountability journalism and the cars beat from Austin, Texas.',
+    beats: ['Investigations', 'Editorial Strategy', 'Austin', 'Accountability Journalism', 'Cars'],
     accent: 'bg-purple-700',
     border: 'border-purple-700',
     text: 'text-purple-700',
@@ -113,8 +113,8 @@ export default function AuthorsPage() {
                 Our<br />Investigators
               </h1>
               <p className="text-lg text-gray-500 max-w-xl leading-relaxed">
-                The investigators, reporters, and editors behind Objective Wire. Licensed PI work
-                for private clients. Sports, cars, and culture journalism for the public.
+                The reporters and editors behind Objective Wire. Original journalism on cars,
+                creators, sports, and local Texas accountability.
               </p>
             </div>
             <div className="shrink-0 flex gap-8 md:pb-1">

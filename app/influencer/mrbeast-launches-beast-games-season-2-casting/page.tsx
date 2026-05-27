@@ -7,8 +7,8 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const revalidate = 86400;
 
 const SLUG = '/creator/mrbeast-launches-beast-games-season-2-casting';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
-const OG_IMAGE = 'https://www.objectivewire.org/influncer/usa/mr_beast.png';
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = 'https://www.objectivewire.com/influncer/usa/mr_beast.png';
 
 export const metadata: Metadata = {
   title: 'MrBeast Beast Games Season 2 | Casting, How to Apply',

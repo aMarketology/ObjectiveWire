@@ -7,8 +7,8 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const revalidate = 86400;
 
 const SLUG = '/creator/daddywellness';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
-const OG_IMAGE = 'https://www.objectivewire.org/influncer/daddy_wellness.jpg';
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = 'https://www.objectivewire.com/influncer/daddy_wellness.jpg';
 
 export const metadata: Metadata = {
   title: 'Daddy Wellness (Richie Lovelace) | Wellness Creator, 2M Followers',

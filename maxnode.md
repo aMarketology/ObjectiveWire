@@ -1,3 +1,3 @@
-zerowire is objectivewire.org 
+﻿zerowire is objectivewire.com 
 owire branch on main is zerowire.news 
 main branch is objectwire.org

@@ -1,6 +1,6 @@
-# ObjectWire | Supabase Reference
+ï»¿# ObjectWire | Supabase Reference
 **Last updated:** March 26, 2026  
-**Production:** Railway ? `Autolab350/Objectwire-Frontend` main ? `objectivewire.org`  
+**Production:** Railway ? `Autolab350/Objectwire-Frontend` main ? `objectivewire.com`  
 **Supabase:** `https://kzcwclprrtonpsnownbl.supabase.co`
 
 ---
@@ -90,7 +90,7 @@ Slugs for `content/articles/*.ts` articles are set manually in the file and matc
 
 ### Three Workflows
 
-**Workflow A — `content/articles/*.ts` ? `npm run content:publish`**  
+**Workflow A ï¿½ `content/articles/*.ts` ? `npm run content:publish`**  
 Best for: news articles, features, anything using `NewsArticle` layout.
 
 ```bash
@@ -107,11 +107,11 @@ npm run content:dry-run
 npm run content:publish
 ```
 
-The article lands in the `articles` table and is live at `objectivewire.org/blog/your-slug`.
+The article lands in the `articles` table and is live at `objectivewire.com/blog/your-slug`.
 
 ---
 
-**Workflow B — Write inline in `page.tsx` ? `wiki:migrate` ? `wiki:trim`**  
+**Workflow B ï¿½ Write inline in `page.tsx` ? `wiki:migrate` ? `wiki:trim`**  
 Best for: existing static pages being migrated to DB-backed rendering.
 
 ```bash
@@ -124,7 +124,7 @@ npm run registry:write            # add missing entries to content_registry
 
 ---
 
-**Workflow C — `/admin/editor` UI**  
+**Workflow C ï¿½ `/admin/editor` UI**  
 Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or non-developer contributors. Articles appear in `articles` table with `status: 'draft'` until published.
 
 ---
@@ -162,7 +162,7 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 | `exclusive` | BOOLEAN |, | "EXCLUSIVE" badge |
 | `url` | TEXT |, | Canonical path override e.g. `/california/my-article` |
 
-**Note:** `jack_articles` has **no `status` column**. Never query `status` from `jack_articles` — Supabase will error.
+**Note:** `jack_articles` has **no `status` column**. Never query `status` from `jack_articles` ï¿½ Supabase will error.
 
 ---
 
@@ -179,12 +179,12 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 | `tags` | TEXT[] | Topic tags for related-article matching |
 | `author` | TEXT | Byline display name |
 | `author_slug` | TEXT | e.g. `conan-boyle` |
-| `priority` | NUMERIC | Sitemap priority 0.0–1.0 |
+| `priority` | NUMERIC | Sitemap priority 0.0ï¿½1.0 |
 | `change_frequency` | TEXT | `daily` `weekly` `monthly` etc. |
 | `featured` | BOOLEAN | Homepage hero/featured slot |
 | `component_type` | TEXT | `standard_article` (default) |
 | `image_url` | TEXT | OG / hero image |
-| `image_width` / `image_height` | INTEGER | Required for Google Top Stories (min 1200×675) |
+| `image_width` / `image_height` | INTEGER | Required for Google Top Stories (min 1200ï¿½675) |
 | `image_alt` | TEXT | Alt text for hero |
 | `image_credit` | TEXT | Attribution string |
 
@@ -221,7 +221,7 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 | `news_article` | `dangerouslySetInnerHTML` on `content_html` |
 
 **`generateMetadata` now emits:**
-- Canonical URL: `https://www.objectivewire.org/blog/${slug}`
+- Canonical URL: `https://www.objectivewire.com/blog/${slug}`
 - `openGraph.publishedTime` from `content_registry.publish_date`
 - `openGraph.modifiedTime` from `content_registry.modified_date`  
 - `openGraph.images` from `content_registry.image_url`
@@ -247,7 +247,7 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 
 ### High Priority
 
-**A — ISR on finalized articles**  
+**A ï¿½ ISR on finalized articles**  
 Six March 24 batch articles are still on `force-dynamic`. Switch to `revalidate = 3600` for CDN caching:
 
 | File | Table |
@@ -265,7 +265,7 @@ git commit -m "perf: switch March 24 articles to ISR revalidate=3600"
 git push origin main
 ```
 
-**B — Deploy current changes**
+**B ï¿½ Deploy current changes**
 ```bash
 git add -A
 git commit -m "feat: content_registry in Supabase, two-step blog fetch, registry:migrate script"
@@ -276,8 +276,8 @@ git push origin main
 
 ### Medium Priority
 
-**C — `wiki:status` diagnostic script**  
-`scripts/wiki-status.ts` — not yet built. Would scan `app/**/page.tsx`, check `content_registry`, and query all three Supabase tables in one pass, printing a CLI table:
+**C ï¿½ `wiki:status` diagnostic script**  
+`scripts/wiki-status.ts` ï¿½ not yet built. Would scan `app/**/page.tsx`, check `content_registry`, and query all three Supabase tables in one pass, printing a CLI table:
 
 ```
 PATH                                    FILE   REGISTRY  SUPABASE
@@ -287,7 +287,7 @@ app/blackrock/page.tsx                  FULL   ?        ,
 
 Add to `package.json`: `"wiki:status": "npx tsx scripts/wiki-status.ts"`
 
-**D — `wiki:publish` unified command**  
+**D ï¿½ `wiki:publish` unified command**  
 `scripts/wiki-publish.ts`, replaces the three-step `migrate ? register ? trim` sequence with one atomic command. Validates thumbnail exists before writing, restores from `.bak` on failure.
 
 Add to `package.json`: `"wiki:publish": "npx tsx scripts/wiki-publish.ts -- --file app/..."`
@@ -296,13 +296,13 @@ Add to `package.json`: `"wiki:publish": "npx tsx scripts/wiki-publish.ts -- --fi
 
 ### Low Priority / Future
 
-**E — On-demand revalidation via Supabase webhook**  
+**E ï¿½ On-demand revalidation via Supabase webhook**  
 When an article is updated in Supabase, instantly flush the CDN cache for that path. Requires:
 1. `app/api/revalidate/route.ts`, calls `revalidatePath(path)`, protected by `REVALIDATION_SECRET`
-2. Supabase Database Webhook on `articles` UPDATE ? `POST https://objectivewire.org/api/revalidate`
+2. Supabase Database Webhook on `articles` UPDATE ? `POST https://objectivewire.com/api/revalidate`
 3. Add `REVALIDATION_SECRET` to Railway environment variables
 
-**F — Google News sitemap ping after each publish**  
+**F ï¿½ Google News sitemap ping after each publish**  
 Run `npm run sitemap:ping` after each `content:publish` or `registry:migrate` to notify Google/Bing of updated sitemaps.
 
 ---

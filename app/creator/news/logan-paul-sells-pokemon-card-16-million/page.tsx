@@ -7,7 +7,7 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const revalidate = 86400;
 
 const SLUG = '/creator/news/logan-paul-sells-pokemon-card-16-million';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Logan Paul Sells 1/1 Pikachu Illustrator | $16 Million Record',

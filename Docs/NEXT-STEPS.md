@@ -1,4 +1,4 @@
-# ?? News Network Approval Roadmap
+﻿# ?? News Network Approval Roadmap
 ## Google News, Perplexity AI, and MSN News
 
 ## Current Status: Pre-Application Phase
@@ -64,8 +64,8 @@ import { NewsArticleSchema } from '@/components/NewsArticleSchema';
   author="Author Name"
   publishedTime="2026-01-15T10:00:00Z"
   modifiedTime="2026-01-15T12:00:00Z"
-  imageUrl="https://objectivewire.org/images/article-image.jpg"
-  articleUrl="https://objectivewire.org/your-article-slug"
+  imageUrl="https://objectivewire.com/images/article-image.jpg"
+  articleUrl="https://objectivewire.com/your-article-slug"
   section="Technology"
   keywords={["keyword1", "keyword2", "keyword3"]}
 />
@@ -126,10 +126,10 @@ app/
 **Status:** Needs work
 
 **Required elements for `/contact`:**
-- [ ] General inquiries email: `info@objectivewire.org`
-- [ ] Editorial email: `editorial@objectivewire.org`
-- [ ] Tips/submissions email: `tips@objectivewire.org`
-- [ ] Press inquiries email: `press@objectivewire.org`
+- [ ] General inquiries email: `info@objectivewire.com`
+- [ ] Editorial email: `editorial@objectivewire.com`
+- [ ] Tips/submissions email: `tips@objectivewire.com`
+- [ ] Press inquiries email: `press@objectivewire.com`
 - [ ] Physical mailing address
 - [ ] Contact form
 - [ ] Response time expectations
@@ -154,8 +154,8 @@ app/
 
 Add to `public/robots.txt`:
 ```
-Sitemap: https://objectivewire.org/sitemap.xml
-Sitemap: https://objectivewire.org/news-sitemap.xml
+Sitemap: https://objectivewire.com/sitemap.xml
+Sitemap: https://objectivewire.com/news-sitemap.xml
 ```
 
 ---
@@ -309,14 +309,14 @@ Sitemap: https://objectivewire.org/news-sitemap.xml
 ## ?? Important URLs & Resources
 
 ### Your Site URLs
-- Homepage: https://objectivewire.org
-- RSS Feed: https://objectivewire.org/rss.xml
-- Sitemap: https://objectivewire.org/sitemap.xml
-- News Sitemap: https://objectivewire.org/news-sitemap.xml
-- Editorial Standards: https://objectivewire.org/editorial-standards
-- About: https://objectivewire.org/about
-- Contact: https://objectivewire.org/contact
-- Corrections: https://objectivewire.org/corrections
+- Homepage: https://objectivewire.com
+- RSS Feed: https://objectivewire.com/rss.xml
+- Sitemap: https://objectivewire.com/sitemap.xml
+- News Sitemap: https://objectivewire.com/news-sitemap.xml
+- Editorial Standards: https://objectivewire.com/editorial-standards
+- About: https://objectivewire.com/about
+- Contact: https://objectivewire.com/contact
+- Corrections: https://objectivewire.com/corrections
 
 ### Platform Portals
 - Google Publisher Center: https://publishercenter.google.com

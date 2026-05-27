@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org/local/us-news';
+const PAGE_URL = 'https://www.objectivewire.com/local/us-news';
 
 export const metadata: Metadata = {
   title: 'Local US News | Domestic Investigative Coverage | oWire',

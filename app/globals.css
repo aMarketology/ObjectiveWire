@@ -15,12 +15,13 @@
   --font-serif: var(--font-source-serif), Georgia, 'Times New Roman', serif;
   --font-mono: var(--font-jetbrains), monospace;
 
-  /* oWire brand tokens — match CreatorArticle hero gradient */
-  --color-brand-bg: #faf9f6;
-  --color-brand-ink: #0f172a;
-  --color-brand-ink-2: #1e3a5f;
-  --color-brand-accent: #b45309;
-  --color-brand-accent-hi: #d97706;
+  /* Objective Wire TX — rust newspaper palette */
+  --color-brand-bg: #faf7f2;
+  --color-brand-ink: #1a1a1a;
+  --color-brand-ink-2: #2d0a00;
+  --color-brand-accent: #c45c2a;
+  --color-brand-accent-hi: #d4723e;
+  --color-brand-red: #8b2000;
 }
 
 @layer base {
@@ -34,13 +35,14 @@
     --header-height: 80px;
     --container-max: 1280px;
 
-    /* Brand color tokens — Objective Wire noir: charcoal + amber */
-    --brand-bg: #f8f7f4;
-    --brand-ink: #1c1c1e;
-    --brand-ink-2: #2d2d2d;
-    --brand-accent: #d97706;
-    --brand-accent-hi: #f59e0b;
-    --brand-gradient: linear-gradient(135deg, #1c1c1e 0%, #2d2d2d 45%, #d97706 100%);
+    /* Objective Wire TX — rust newspaper palette */
+    --brand-bg: #faf7f2;
+    --brand-ink: #1a1a1a;
+    --brand-ink-2: #2d0a00;
+    --brand-accent: #c45c2a;
+    --brand-accent-hi: #d4723e;
+    --brand-red: #8b2000;
+    --brand-gradient: linear-gradient(135deg, #1a1a1a 0%, #3a1000 45%, #c45c2a 100%);
   }
 
   * {
@@ -118,8 +120,8 @@
   }
 
   ::selection {
-    background: #b45309;
-    color: #faf9f6;
+    background: #c45c2a;
+    color: #faf7f2;
   }
 
   /* News page animations */

@@ -1,7 +1,7 @@
-# ObjectWire Writing & Publishing Guide
+ï»¿# ObjectWire Writing & Publishing Guide
 
 **Last updated:** March 26, 2026  
-**Production:** Railway ? `objectivewire.org`  
+**Production:** Railway ? `objectivewire.com`  
 **Supabase:** `https://kzcwclpurrtonpsnownbl.supabase.co`
 
 ---
@@ -31,13 +31,13 @@ ObjectWire uses **Next.js Server Components + Supabase** to deliver fully-render
 ### What happens when someone visits an article URL
 
 ```
-Reader / Googlebot ? objectivewire.org/california/california-tech-layoffs-2026-...
-        ¦
+Reader / Googlebot ? objectivewire.com/california/california-tech-layoffs-2026-...
+        ï¿½
         ?
 app/.../page.tsx   (Next.js Server Component, runs on Railway)
   export const dynamic = 'force-dynamic'   ? re-queries Supabase on every request
   return <NewsArticleDB slug="california-california-tech-layoffs-..." />
-        ¦
+        ï¿½
         ?
 components/NewsArticleDB.tsx   (async Server Component)
   const supabase = await createClient()
@@ -47,14 +47,14 @@ components/NewsArticleDB.tsx   (async Server Component)
     .eq('slug', slug)
     .single()
   // row contains: title, subtitle, content_html, author_name, publish_date, tags...
-        ¦
+        ï¿½
         ?
 components/NewsArticle.tsx   (renders the row into semantic HTML)
   <article itemScope itemType="https://schema.org/NewsArticle">
     <h1>{row.title}</h1>
     <div dangerouslySetInnerHTML={{ __html: row.content_html }} />
   </article>
-        ¦
+        ï¿½
         ?
 Next.js serialises the React tree ? pure HTML string ? sent to browser
 
@@ -98,7 +98,7 @@ import { NewsArticleDB } from '@/components/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/section/your-article-slug';
-const FULL_URL = `https://www.objectivewire.org${SLUG}`;
+const FULL_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Your Article Title | ObjectWire',
@@ -175,10 +175,10 @@ const article: Article = {
   breaking: false,
   exclusive: false,
 
-  // -- Legacy (leave empty — use content_html instead) -----------------------
+  // -- Legacy (leave empty ï¿½ use content_html instead) -----------------------
   content: [],
 
-  // -- Body — write all article HTML here ------------------------------------
+  // -- Body ï¿½ write all article HTML here ------------------------------------
   content_html: `
 <div class="prose prose-lg max-w-none">
 
@@ -334,7 +334,7 @@ The **content-registry slug** uses the full URL path with a leading slash:
 **File:** `lib/content-registry.ts`
 
 Every page needs an entry here. `SEOWrapper` reads this file to:
-- Emit `<script type="application/ld+json">` — NewsArticle / BreadcrumbList structured data
+- Emit `<script type="application/ld+json">` ï¿½ NewsArticle / BreadcrumbList structured data
 - Populate `app/sitemap.ts`, general sitemap
 - Populate `app/news-sitemap.xml/`, Google News sitemap
 
@@ -344,7 +344,7 @@ Every page needs an entry here. `SEOWrapper` reads this file to:
 |---|---|---|
 | `slug` | ? | Full URL path with leading slash |
 | `title` | ? | Full SEO title |
-| `description` | ? | 150–160 char meta description |
+| `description` | ? | 150ï¿½160 char meta description |
 | `publishDate` | ? | `YYYY-MM-DD` format |
 | `category` | ? | Used for sitemap section grouping |
 | `author` | ? | Display name |
@@ -355,7 +355,7 @@ Every page needs an entry here. `SEOWrapper` reads this file to:
 | `tags` | ? | Array of topic strings |
 | `trending` |, | Adds to trending feeds |
 | `featured` |, | Adds to featured sections |
-| `priority` |, | Sitemap priority 0.0–1.0. Default: `0.6` |
+| `priority` |, | Sitemap priority 0.0ï¿½1.0. Default: `0.6` |
 
 ### Sync tool
 
@@ -569,7 +569,7 @@ Switch `force-dynamic` ? `revalidate = 3600` on any article once it is final and
 
 Run this on any live article to confirm SSR is working:
 
-1. Open `objectivewire.org/{your-article-path}` in a browser
+1. Open `objectivewire.com/{your-article-path}` in a browser
 2. Right-click ? **View Page Source** (not DevTools, actual source)
 3. `Ctrl + F` ? search for the article headline
 4. **Headline visible in source** ? SSR working ?, Googlebot can index it
@@ -604,26 +604,26 @@ Before committing and pushing any new article:
 
 ```
 +-----------------------------------------------------------------+
-¦                    OBJECTWIRE CONTENT PIPELINE                   ¦
-+-----------------------------------------------------------------¦
-¦                                                                   ¦
-¦  WRITE                  STORE                    RENDER           ¦
-¦                                                                   ¦
-¦  content/articles/      Supabase                 app/.../         ¦
-¦  *.ts                   articles table           page.tsx          ¦
-¦  (NewsArticle)    ---?  (content_html,     ---?  NewsArticleDB    ¦
-¦                          author, tags...)         NewsArticle      ¦
-¦                                                                   ¦
-¦  app/.../page.tsx        Supabase                app/.../         ¦
-¦  (full JackArticle) --?  jack_articles     ---?  page.tsx (stub)  ¦
-¦  wiki:migrate            table                   JackArticleDB    ¦
-¦  wiki:trim                                        JackArticle      ¦
-¦                                                                   ¦
-¦  lib/content-registry.ts                                          ¦
-¦  (SEO / sitemap layer)  ?---------------------------------------- ¦
-¦  populated manually                                               ¦
-¦  after every new page                                             ¦
-¦                                                                   ¦
+ï¿½                    OBJECTWIRE CONTENT PIPELINE                   ï¿½
++-----------------------------------------------------------------ï¿½
+ï¿½                                                                   ï¿½
+ï¿½  WRITE                  STORE                    RENDER           ï¿½
+ï¿½                                                                   ï¿½
+ï¿½  content/articles/      Supabase                 app/.../         ï¿½
+ï¿½  *.ts                   articles table           page.tsx          ï¿½
+ï¿½  (NewsArticle)    ---?  (content_html,     ---?  NewsArticleDB    ï¿½
+ï¿½                          author, tags...)         NewsArticle      ï¿½
+ï¿½                                                                   ï¿½
+ï¿½  app/.../page.tsx        Supabase                app/.../         ï¿½
+ï¿½  (full JackArticle) --?  jack_articles     ---?  page.tsx (stub)  ï¿½
+ï¿½  wiki:migrate            table                   JackArticleDB    ï¿½
+ï¿½  wiki:trim                                        JackArticle      ï¿½
+ï¿½                                                                   ï¿½
+ï¿½  lib/content-registry.ts                                          ï¿½
+ï¿½  (SEO / sitemap layer)  ?---------------------------------------- ï¿½
+ï¿½  populated manually                                               ï¿½
+ï¿½  after every new page                                             ï¿½
+ï¿½                                                                   ï¿½
 +-----------------------------------------------------------------+
 ```
 

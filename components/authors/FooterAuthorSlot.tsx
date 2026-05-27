@@ -15,15 +15,15 @@ export default function FooterAuthorSlot() {
         <div className="w-9 h-9 bg-black flex items-center justify-center rounded-sm shadow-sm shrink-0">
           <span className="text-white font-black text-base tracking-tight">o</span>
         </div>
-        <span className="font-black text-xl tracking-tight text-gray-900 dark:text-white">Objective Wire</span>
+        <span className="font-black text-xl tracking-tight text-gray-900 dark:text-white">Objective Wire TX</span>
       </Link>
 
       <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
-        Investigative Journalism &amp; Private Detective Agency
+        Independent Texas Newsroom
       </p>
 
       <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-        Independent investigative journalism and private detective agency. Verified reporting on creators, sports, cars, and culture. We uncover the truth.
+        Independent Texas news publication. Verified reporting on statewide politics, business, crime, courts, and sports.
       </p>
 
       {/* Location */}
