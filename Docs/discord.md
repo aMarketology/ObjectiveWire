@@ -1,4 +1,4 @@
-﻿# ObjectWire × Discord Integration Blueprint
+# ObjectWire � Discord Integration Blueprint
 
 ## The Core Idea
 
@@ -26,57 +26,57 @@ Discord Forum Channels were designed for exactly this use case, organized, searc
 ### The Flow
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         READER ON SITE                              │
-│                                                                     │
-│  1. Reader clicks "Comment" on any article                          │
-│  2. Signs in with Discord OAuth (or is already signed in)           │
-│  3. Types comment, hits "Post"                                      │
-│                                                                     │
-└───────────────────────────┬─────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                     POST /api/discord/comments                      │
-│                                                                     │
-│  1. Validates Discord session + comment body (≤1000 chars)          │
-│  2. INSERT into Supabase `discord_comments` table                   │
-│  3. Check `discord_threads` table for existing thread_id            │
-│     - If none → webhook with `thread_name: "Article Title"`         │
-│       Discord auto-creates a new Forum Post, returns thread_id      │
-│       Store thread_id in `discord_threads` for future comments      │
-│     - If exists → webhook with `?thread_id=<id>` query param        │
-│       Comment appears as a reply in the existing Forum Post         │
-│  4. Return comment to frontend for instant display                  │
-│                                                                     │
-└───────────────────────────┬─────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                    DISCORD FORUM CHANNEL                             │
-│                    #article-discussion                               │
-│                                                                     │
-│  ┌─────────────────────────────────────┐                            │
-│  │ 📰 Amazon's New AI Chip Challenges   │ ← Forum Post (auto-created│
-│  │    NVIDIA Dominance                  │    by first comment)       │
-│  │                                     │                            │
-│  │  JohnDoe via ObjectWire:            │                            │
-│  │  "This is huge for the industry..." │                            │
-│  │                                     │                            │
-│  │  JaneSmith via ObjectWire:          │                            │
-│  │  "I think NVIDIA will respond..."   │                            │
-│  │                                     │                            │
-│  │  [Read full article →]              │ ← Link back to site        │
-│  └─────────────────────────────────────┘                            │
-│                                                                     │
-│  ┌─────────────────────────────────────┐                            │
-│  │ 📰 KSI Announces New Boxing Match    │ ← Different article       │
-│  │                                     │                            │
-│  │  GamerX via ObjectWire:             │                            │
-│  │  "Let's gooo!"                      │                            │
-│  └─────────────────────────────────────┘                            │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
++---------------------------------------------------------------------+
+�                         READER ON SITE                              �
+�                                                                     �
+�  1. Reader clicks "Comment" on any article                          �
+�  2. Signs in with Discord OAuth (or is already signed in)           �
+�  3. Types comment, hits "Post"                                      �
+�                                                                     �
++---------------------------------------------------------------------+
+                            �
+                            ?
++---------------------------------------------------------------------+
+�                     POST /api/discord/comments                      �
+�                                                                     �
+�  1. Validates Discord session + comment body (=1000 chars)          �
+�  2. INSERT into Supabase `discord_comments` table                   �
+�  3. Check `discord_threads` table for existing thread_id            �
+�     - If none ? webhook with `thread_name: "Article Title"`         �
+�       Discord auto-creates a new Forum Post, returns thread_id      �
+�       Store thread_id in `discord_threads` for future comments      �
+�     - If exists ? webhook with `?thread_id=<id>` query param        �
+�       Comment appears as a reply in the existing Forum Post         �
+�  4. Return comment to frontend for instant display                  �
+�                                                                     �
++---------------------------------------------------------------------+
+                            �
+                            ?
++---------------------------------------------------------------------+
+�                    DISCORD FORUM CHANNEL                             �
+�                    #article-discussion                               �
+�                                                                     �
+�  +-------------------------------------+                            �
+�  � ?? Amazon's New AI Chip Challenges   � ? Forum Post (auto-created�
+�  �    NVIDIA Dominance                  �    by first comment)       �
+�  �                                     �                            �
+�  �  JohnDoe via ObjectWire:            �                            �
+�  �  "This is huge for the industry..." �                            �
+�  �                                     �                            �
+�  �  JaneSmith via ObjectWire:          �                            �
+�  �  "I think NVIDIA will respond..."   �                            �
+�  �                                     �                            �
+�  �  [Read full article ?]              � ? Link back to site        �
+�  +-------------------------------------+                            �
+�                                                                     �
+�  +-------------------------------------+                            �
+�  � ?? KSI Announces New Boxing Match    � ? Different article       �
+�  �                                     �                            �
+�  �  GamerX via ObjectWire:             �                            �
+�  �  "Let's gooo!"                      �                            �
+�  +-------------------------------------+                            �
+�                                                                     �
++---------------------------------------------------------------------+
 ```
 
 ### What Discord Users See
@@ -111,10 +111,10 @@ First comment on a new article:
       "icon_url": "https://cdn.discordapp.com/avatars/123/abc.png"
     },
     "fields": [{
-      "name": "📰 Read Article",
-      "value": "[Amazon's New AI Chip →](https://www.owire.org/amazon/ai-chip)"
+      "name": "?? Read Article",
+      "value": "[Amazon's New AI Chip ?](https://www.objectivewire.org/amazon/ai-chip)"
     }],
-    "footer": { "text": "Tech · owire.org" },
+    "footer": { "text": "Tech � objectivewire.org" },
     "timestamp": "2026-03-21T15:30:00Z"
   }]
 }
@@ -140,7 +140,7 @@ The `thread_id` is stored in a `discord_threads` table so we never create duplic
 | discord_id | TEXT | Commenter's Discord user ID |
 | discord_username | TEXT | Display name |
 | discord_avatar | TEXT | Avatar CDN URL |
-| body | TEXT | Comment text (≤1000 chars) |
+| body | TEXT | Comment text (=1000 chars) |
 | created_at | TIMESTAMPTZ | When posted |
 
 ### New: `discord_threads` (needs to be created)
@@ -153,7 +153,7 @@ The `thread_id` is stored in a `discord_threads` table so we never create duplic
 | thread_name | TEXT | Article title used when creating |
 | created_at | TIMESTAMPTZ | When the forum post was first created |
 
-This ensures: one article → one Forum Post → all comments threaded together.
+This ensures: one article ? one Forum Post ? all comments threaded together.
 
 ---
 
@@ -168,10 +168,10 @@ The `<DiscordComments>` component appears at the bottom of every article. It has
 **For signed-out users:**
 - Large Discord-branded sign-in gate with the message: *"Sign in with Discord to join the conversation"*
 - Subtext: *"Your comments appear live in our Discord server, every post grows the community."*
-- Link: *"Don't have Discord? Join our server first →"* pointing to `discord.gg/objectwire`
+- Link: *"Don't have Discord? Join our server first ?"* pointing to `discord.gg/objectwire`
 
 **After posting a comment:**
-- Success toast includes: *"See it live in Discord →"* with invite link
+- Success toast includes: *"See it live in Discord ?"* with invite link
 
 **Community growth banner (always visible):**
 - Bottom of comment section: *"Every comment appears live in our Discord server."*
@@ -179,7 +179,7 @@ The `<DiscordComments>` component appears at the bottom of every article. It has
 
 ### 2. ReactionBar "Comment" Button (Every Article)
 
-The existing ReactionBar on every article has a 💬 Comment button that scrolls to `#discord-comments`. This means:
+The existing ReactionBar on every article has a ?? Comment button that scrolls to `#discord-comments`. This means:
 - Users see the Discord branding every time they want to engage
 - The comment section doubles as a Discord recruitment funnel
 
@@ -196,7 +196,7 @@ On article pages, include a "Join the Discussion" card in the sidebar:
 
 ### 5. Newsletter Signup Confirmation
 
-After newsletter signup, show: *"Want real-time updates? Join our Discord →"*
+After newsletter signup, show: *"Want real-time updates? Join our Discord ?"*
 
 ### 6. User Profile Dropdown
 
@@ -208,52 +208,52 @@ The existing `UserProfile` dropdown already shows Discord link status. When a us
 When a new article is published, a webhook posts to a `#new-articles` channel in Discord:
 - Article title, thumbnail, category, excerpt
 - Direct link to the article
-- This drives Discord users → website traffic
+- This drives Discord users ? website traffic
 
 ---
 
 ## Growth Flywheel
 
 ```
-                    ┌──────────────────┐
-                    │   Reader visits   │
-                    │    article on     │
-                    │    ObjectWire     │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │  Sees Discord     │
-                    │  comment section  │──→ Signs up for Discord
-                    │  (conversion CTA) │     to comment
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │  Posts comment    │
-                    │  on article       │
-                    └────────┬─────────┘
-                             │
-                    ┌────────┴─────────┐
-                    │                  │
-                    ▼                  ▼
-           ┌───────────────┐  ┌───────────────┐
-           │  Saved to      │  │  Appears in    │
-           │  Supabase      │  │  Discord Forum │
-           │  (site shows   │  │  (community    │
-           │   comments)    │  │   sees it)     │
-           └───────────────┘  └───────┬────────┘
-                                      │
-                                      ▼
-                             ┌──────────────────┐
-                             │  Discord members  │
-                             │  see discussion,  │
-                             │  click article    │──→ MORE site traffic
-                             │  link to read it  │
-                             └──────────────────┘
+                    +------------------+
+                    �   Reader visits   �
+                    �    article on     �
+                    �    ObjectWire     �
+                    +------------------+
+                             �
+                             ?
+                    +------------------+
+                    �  Sees Discord     �
+                    �  comment section  �--? Signs up for Discord
+                    �  (conversion CTA) �     to comment
+                    +------------------+
+                             �
+                             ?
+                    +------------------+
+                    �  Posts comment    �
+                    �  on article       �
+                    +------------------+
+                             �
+                    +------------------+
+                    �                  �
+                    ?                  ?
+           +---------------+  +---------------+
+           �  Saved to      �  �  Appears in    �
+           �  Supabase      �  �  Discord Forum �
+           �  (site shows   �  �  (community    �
+           �   comments)    �  �   sees it)     �
+           +---------------+  +----------------+
+                                      �
+                                      ?
+                             +------------------+
+                             �  Discord members  �
+                             �  see discussion,  �
+                             �  click article    �--? MORE site traffic
+                             �  link to read it  �
+                             +------------------+
 ```
 
-**Every comment creates two pieces of content** — one on the site, one in Discord. Both drive traffic to the other.
+**Every comment creates two pieces of content** � one on the site, one in Discord. Both drive traffic to the other.
 
 ---
 
@@ -261,29 +261,29 @@ When a new article is published, a webhook posts to a `#new-articles` channel in
 
 ```
 OBJECTWIRE DISCORD SERVER
-│
-├── 📢 ANNOUNCEMENTS
-│   ├── #new-articles        ← Webhook: auto-posts when articles publish
-│   └── #site-updates        ← Manual: feature announcements, changelog
-│
-├── 💬 ARTICLE DISCUSSION (Forum Channel)
-│   └── #article-discussion  ← Webhook: comments auto-create/append posts
-│
-├── 🗣️ COMMUNITY
-│   ├── #general             ← Free chat
-│   ├── #tech                ← Beat-specific discussion
-│   ├── #entertainment
-│   ├── #news
-│   └── #introductions       ← New members introduce themselves
-│
-├── 📰 BEATS (Read-only)
-│   ├── #tech-feed           ← Webhook: new tech articles auto-post
-│   ├── #news-feed           ← Webhook: new news articles auto-post
-│   └── #entertainment-feed  ← Webhook: new entertainment articles auto-post
-│
-└── 🔧 META
-    ├── #feedback            ← Community feedback on the site
-    └── #bug-reports         ← Report site issues
+�
++-- ?? ANNOUNCEMENTS
+�   +-- #new-articles        ? Webhook: auto-posts when articles publish
+�   +-- #site-updates        ? Manual: feature announcements, changelog
+�
++-- ?? ARTICLE DISCUSSION (Forum Channel)
+�   +-- #article-discussion  ? Webhook: comments auto-create/append posts
+�
++-- ??? COMMUNITY
+�   +-- #general             ? Free chat
+�   +-- #tech                ? Beat-specific discussion
+�   +-- #entertainment
+�   +-- #news
+�   +-- #introductions       ? New members introduce themselves
+�
++-- ?? BEATS (Read-only)
+�   +-- #tech-feed           ? Webhook: new tech articles auto-post
+�   +-- #news-feed           ? Webhook: new news articles auto-post
+�   +-- #entertainment-feed  ? Webhook: new entertainment articles auto-post
+�
++-- ?? META
+    +-- #feedback            ? Community feedback on the site
+    +-- #bug-reports         ? Report site issues
 ```
 
 ### Key Channels
@@ -304,10 +304,10 @@ DISCORD_CLIENT_ID=your_app_client_id
 DISCORD_CLIENT_SECRET=your_app_client_secret
 
 # Forum Channel webhook | the ONLY webhook needed for comments
-# Create in: Server Settings → Integrations → Webhooks → target #article-discussion
+# Create in: Server Settings ? Integrations ? Webhooks ? target #article-discussion
 DISCORD_COMMENTS_WEBHOOK_URL=https://discord.com/api/webhooks/{id}/{token}
 
-# (Phase 2) New article notification webhook → #new-articles channel
+# (Phase 2) New article notification webhook ? #new-articles channel
 DISCORD_NEW_ARTICLES_WEBHOOK_URL=https://discord.com/api/webhooks/{id}/{token}
 ```
 
@@ -318,20 +318,20 @@ DISCORD_NEW_ARTICLES_WEBHOOK_URL=https://discord.com/api/webhooks/{id}/{token}
 ### Discord Side (One-time, ~5 minutes)
 
 1. **Create the Forum Channel**
-   - Server Settings → Channels → Create Channel
+   - Server Settings ? Channels ? Create Channel
    - Name: `article-discussion`
    - Type: **Forum**
    - Default sort: Recent Activity
    - Available tags: `Tech`, `News`, `Entertainment`, `Finance`, `Sports` (match your beats)
 
 2. **Create a Webhook for that channel**
-   - Server Settings → Integrations → Webhooks → New Webhook
+   - Server Settings ? Integrations ? Webhooks ? New Webhook
    - Name: `ObjectWire Comments`
    - Channel: `#article-discussion`
-   - Copy the webhook URL → paste into `.env.local` as `DISCORD_COMMENTS_WEBHOOK_URL`
+   - Copy the webhook URL ? paste into `.env.local` as `DISCORD_COMMENTS_WEBHOOK_URL`
 
 3. **Set up the Discord OAuth app** (already done)
-   - Ensure redirect URL is set to `https://www.owire.org/api/auth/callback/discord`
+   - Ensure redirect URL is set to `https://www.objectivewire.org/api/auth/callback/discord`
 
 ### Code Side (What we'll build)
 
@@ -354,7 +354,7 @@ DISCORD_NEW_ARTICLES_WEBHOOK_URL=https://discord.com/api/webhooks/{id}/{token}
 | P1 | Discord invite link in site header | 10 min |
 | P1 | New article notification webhook (#new-articles) | 30 min |
 | P2 | Beat-specific article feed channels | 30 min |
-| P2 | Bi-directional sync (Discord replies → site) | Requires bot |
+| P2 | Bi-directional sync (Discord replies ? site) | Requires bot |
 | P3 | Member count widget on site | 15 min |
 
 ---
@@ -374,7 +374,7 @@ DISCORD_NEW_ARTICLES_WEBHOOK_URL=https://discord.com/api/webhooks/{id}/{token}
 
 ## Phase 2: Bi-Directional Sync (Future)
 
-Currently the flow is **one-way: site → Discord.** Phase 2 adds the reverse:
+Currently the flow is **one-way: site ? Discord.** Phase 2 adds the reverse:
 
 - A lightweight Discord bot listens for new messages in the Forum Channel
 - When a Discord-native user replies to a Forum Post, the bot calls `POST /api/discord/comments/sync` with the message content

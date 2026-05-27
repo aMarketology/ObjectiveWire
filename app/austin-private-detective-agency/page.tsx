@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.owire.org/austin-private-detective-agency';
+const PAGE_URL = 'https://www.objectivewire.org/austin-private-detective-agency';
 
 export const metadata: Metadata = {
   title: 'Austin Private Detective Agency | Objective Wire PI Services',
@@ -140,7 +140,7 @@ const CREDENTIALS = [
   { label: 'Governing Law', value: 'TX Occupations Code Ch. 1702' },
   { label: 'Entity Type', value: '501(c)(3) Nonprofit' },
   { label: 'Primary Coverage', value: 'Travis County & Central Texas' },
-  { label: 'Consultation', value: 'Free & confidential' },
+  { label: 'Newsroom Tips', value: 'Confidential & protected' },
   { label: 'Evidence Standard', value: 'Court-admissible documentation' },
 ];
 
@@ -182,26 +182,28 @@ export default function AustinPrivateDetectivePage() {
         <section className="bg-gradient-to-br from-[#1c1c1e] via-[#2d1a4a] to-[#1c1c1e] border-b border-white/10">
           <div className="container mx-auto px-4 py-20 max-w-6xl">
             <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-4 font-mono">
-              Austin, Texas · Licensed PI Agency · 501(c)(3) Nonprofit · Sports &amp; Culture News
+              Austin, Texas · Licensed Investigative Media · 501(c)(3) Nonprofit
             </p>
             <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
-              Austin's Investigative<br />
-              <span className="text-[#d97706]">Media Agency.</span>
+              Austin&apos;s Licensed<br />
+              <span className="text-[#d97706]">Investigative Newsroom.</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mb-4 leading-relaxed">
-              We investigate, document, and publish. Licensed PI services for private clients.
-              Accountability journalism for the public. The same discipline applied to both.
+              oWire reporters hold Texas PI licenses. The same tools used in licensed investigations,
+              surveillance, skip tracing, background research, are applied to the stories we report
+              and publish.
             </p>
             <p className="text-base text-gray-500 max-w-2xl mb-10 leading-relaxed">
-              A licensed Texas PI agency and 501(c)(3) nonprofit, and an independent sports and
-              culture news network covering supercars, football, creators, and more — all from Austin.
+              We are a 501(c)(3) nonprofit news outlet. The PI license is not the product,
+              it is the credential that enables a deeper, more rigorous form of journalism
+              than most outlets can legally perform.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/get-help"
+                href="/service/tip-the-newsroom"
                 className="bg-purple-600 hover:bg-purple-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
               >
-                Free Consultation
+                Tip the Newsroom
               </Link>
               <Link
                 href="/news"
@@ -277,7 +279,7 @@ export default function AustinPrivateDetectivePage() {
                 <p className="text-gray-300 leading-relaxed mb-6">
                   A network of independent reporters covering supercars, Premier League, MLB,
                   MLS, golf, the 2026 World Cup, and creator culture. Published daily to
-                  owire.org. Editorially independent, primary sources only, named bylines on
+                  objectivewire.org. Editorially independent, primary sources only, named bylines on
                   every story.
                 </p>
                 <ul className="space-y-2 mb-8">
@@ -343,7 +345,7 @@ export default function AustinPrivateDetectivePage() {
               </h2>
               <p className="text-lg text-gray-400 max-w-2xl">
                 Alongside the PI agency, oWire runs a sports and culture news desk. Named reporters.
-                Primary sources. Verified facts. Published to owire.org every day across these beats.
+                Primary sources. Verified facts. Published to objectivewire.org every day across these beats.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

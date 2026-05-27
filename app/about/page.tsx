@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/nav/Breadcrumb';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectwire.org/about';
+const PAGE_URL = 'https://www.objectivewire.org/about';
 
 export const metadata: Metadata = {
   title: 'About Objective Wire | Ownership, Mission, Team',

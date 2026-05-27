@@ -1,7 +1,7 @@
-﻿# ObjectWire Writing & Publishing Guide
+# ObjectWire Writing & Publishing Guide
 
 **Last updated:** March 26, 2026  
-**Production:** Railway → `owire.org`  
+**Production:** Railway ? `objectivewire.org`  
 **Supabase:** `https://kzcwclpurrtonpsnownbl.supabase.co`
 
 ---
@@ -31,14 +31,14 @@ ObjectWire uses **Next.js Server Components + Supabase** to deliver fully-render
 ### What happens when someone visits an article URL
 
 ```
-Reader / Googlebot → owire.org/california/california-tech-layoffs-2026-...
-        │
-        ▼
+Reader / Googlebot ? objectivewire.org/california/california-tech-layoffs-2026-...
+        �
+        ?
 app/.../page.tsx   (Next.js Server Component, runs on Railway)
-  export const dynamic = 'force-dynamic'   ← re-queries Supabase on every request
+  export const dynamic = 'force-dynamic'   ? re-queries Supabase on every request
   return <NewsArticleDB slug="california-california-tech-layoffs-..." />
-        │
-        ▼
+        �
+        ?
 components/NewsArticleDB.tsx   (async Server Component)
   const supabase = await createClient()
   const { data: row } = await supabase
@@ -47,20 +47,20 @@ components/NewsArticleDB.tsx   (async Server Component)
     .eq('slug', slug)
     .single()
   // row contains: title, subtitle, content_html, author_name, publish_date, tags...
-        │
-        ▼
+        �
+        ?
 components/NewsArticle.tsx   (renders the row into semantic HTML)
   <article itemScope itemType="https://schema.org/NewsArticle">
     <h1>{row.title}</h1>
     <div dangerouslySetInnerHTML={{ __html: row.content_html }} />
   </article>
-        │
-        ▼
-Next.js serialises the React tree → pure HTML string → sent to browser
+        �
+        ?
+Next.js serialises the React tree ? pure HTML string ? sent to browser
 
-✅ Googlebot reads the headline and body in the first byte of the response
-✅ Zero JavaScript required
-✅ Supabase keys never exposed to the browser
+? Googlebot reads the headline and body in the first byte of the response
+? Zero JavaScript required
+? Supabase keys never exposed to the browser
 ```
 
 ### Why this matters for SEO
@@ -98,7 +98,7 @@ import { NewsArticleDB } from '@/components/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/section/your-article-slug';
-const FULL_URL = `https://www.owire.org${SLUG}`;
+const FULL_URL = `https://www.objectivewire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Your Article Title | ObjectWire',
@@ -126,7 +126,7 @@ export default function YourArticlePage() {
 }
 ```
 
-> **Slug rule:** Join the path segments with dashes. `app/california/my-article/page.tsx` → slug `california-my-article`. See [Section 5](#5-slug-format-rules).
+> **Slug rule:** Join the path segments with dashes. `app/california/my-article/page.tsx` ? slug `california-my-article`. See [Section 5](#5-slug-format-rules).
 
 ---
 
@@ -138,13 +138,13 @@ Create `content/articles/your-slug.ts`:
 import type { Article } from '../../content/types';
 
 const article: Article = {
-  // ── Required ──────────────────────────────────────────────────────────────
+  // -- Required --------------------------------------------------------------
   title: 'Your Full Article Title',
   slug: 'section-your-article-slug',   // must match the slug in page.tsx exactly
   category: 'Technology',
   status: 'published',
 
-  // ── Meta ──────────────────────────────────────────────────────────────────
+  // -- Meta ------------------------------------------------------------------
   subtitle: 'Optional bold deck line shown under the headline.',
   excerpt: 'One or two sentences used on cards and in meta descriptions.',
   tags: ['Tag1', 'Tag2', 'Tag3'],
@@ -154,31 +154,31 @@ const article: Article = {
   publish_date: 'March 26, 2026',      // display string shown on the article
   published_at: '2026-03-26T15:00:00Z', // ISO, used for sorting and schema
 
-  // ── Author ────────────────────────────────────────────────────────────────
+  // -- Author ----------------------------------------------------------------
   author_name: 'Conan Boyle',
   author_role: 'Science & Technology Writer',
   author_slug: 'conan-boyle',
   author_bio: 'Short bio shown in the author card on the article.',
 
-  // ── Images ────────────────────────────────────────────────────────────────
+  // -- Images ----------------------------------------------------------------
   hero_image_src: '/default/your-image.jpg',   // path under /public/
   hero_image_alt: 'Alt text for the hero image',
   thumbnail_src: '/default/your-thumb.jpg',
   thumbnail_alt: 'Alt text for thumbnail',
 
-  // ── URL ───────────────────────────────────────────────────────────────────
+  // -- URL -------------------------------------------------------------------
   url: '/section/your-article-slug',    // canonical path, used by ArticleViewTracker
 
-  // ── Flags ─────────────────────────────────────────────────────────────────
+  // -- Flags -----------------------------------------------------------------
   featured: false,
   trending: false,
   breaking: false,
   exclusive: false,
 
-  // ── Legacy (leave empty — use content_html instead) ───────────────────────
+  // -- Legacy (leave empty � use content_html instead) -----------------------
   content: [],
 
-  // ── Body — write all article HTML here ────────────────────────────────────
+  // -- Body � write all article HTML here ------------------------------------
   content_html: `
 <div class="prose prose-lg max-w-none">
 
@@ -227,7 +227,7 @@ npx tsx scripts/publish-content.ts --file your-slug --dry-run
 Expected output:
 ```
 [DRY RUN] Found 1 article file(s)
-  ✓  your-slug.ts
+  ?  your-slug.ts
      slug: section-your-article-slug | status: published | category: Technology
 [DRY RUN] Done, 1 upserted, 0 skipped, 0 failed
 ```
@@ -284,8 +284,8 @@ JackArticles live in `jack_articles` table. The workflow is different, content i
 
 ```
 Write full article in page.tsx
-  → npm run wiki:migrate     (migrates content → jack_articles Supabase row)
-  → npm run wiki:trim        (replaces page.tsx with a small stub that fetches from DB)
+  ? npm run wiki:migrate     (migrates content ? jack_articles Supabase row)
+  ? npm run wiki:trim        (replaces page.tsx with a small stub that fetches from DB)
 ```
 
 **CRITICAL ORDER:** Always migrate BEFORE trim. Trimming first = empty DB row = 404 in production.
@@ -334,7 +334,7 @@ The **content-registry slug** uses the full URL path with a leading slash:
 **File:** `lib/content-registry.ts`
 
 Every page needs an entry here. `SEOWrapper` reads this file to:
-- Emit `<script type="application/ld+json">` — NewsArticle / BreadcrumbList structured data
+- Emit `<script type="application/ld+json">` � NewsArticle / BreadcrumbList structured data
 - Populate `app/sitemap.ts`, general sitemap
 - Populate `app/news-sitemap.xml/`, Google News sitemap
 
@@ -342,20 +342,20 @@ Every page needs an entry here. `SEOWrapper` reads this file to:
 
 | Field | Required | Notes |
 |---|---|---|
-| `slug` | ✅ | Full URL path with leading slash |
-| `title` | ✅ | Full SEO title |
-| `description` | ✅ | 150–160 char meta description |
-| `publishDate` | ✅ | `YYYY-MM-DD` format |
-| `category` | ✅ | Used for sitemap section grouping |
-| `author` | ✅ | Display name |
-| `authorSlug` | ✅ | Links to `/authors/{slug}` |
-| `imageUrl` | ✅ | Path under `/public/` or absolute URL |
-| `imageWidth` | ✅ | Default: `1200` |
-| `imageHeight` | ✅ | Default: `630` |
-| `tags` | ✅ | Array of topic strings |
+| `slug` | ? | Full URL path with leading slash |
+| `title` | ? | Full SEO title |
+| `description` | ? | 150�160 char meta description |
+| `publishDate` | ? | `YYYY-MM-DD` format |
+| `category` | ? | Used for sitemap section grouping |
+| `author` | ? | Display name |
+| `authorSlug` | ? | Links to `/authors/{slug}` |
+| `imageUrl` | ? | Path under `/public/` or absolute URL |
+| `imageWidth` | ? | Default: `1200` |
+| `imageHeight` | ? | Default: `630` |
+| `tags` | ? | Array of topic strings |
 | `trending` |, | Adds to trending feeds |
 | `featured` |, | Adds to featured sections |
-| `priority` |, | Sitemap priority 0.0–1.0. Default: `0.6` |
+| `priority` |, | Sitemap priority 0.0�1.0. Default: `0.6` |
 
 ### Sync tool
 
@@ -417,7 +417,7 @@ gaming     | crypto | ai | automotive | education | culture
 red | blue | green | purple | orange | pink | yellow
 ```
 
-### Category → default color mapping (from `push-articles-to-supabase.ts`)
+### Category ? default color mapping (from `push-articles-to-supabase.ts`)
 
 | Category | Color |
 |---|---|
@@ -522,7 +522,7 @@ Write the article body directly as an HTML string in `content_html`. Use semanti
 | `npm run content:publish -- --file my-slug` | Pushes a single article file |
 | `npm run content:publish -- --dry-run` | Preview only, no writes |
 | `npm run content:publish -- --status published` | Only push `status: 'published'` files |
-| `npm run wiki:migrate` | Migrates JackArticle `page.tsx` content → `jack_articles` Supabase row |
+| `npm run wiki:migrate` | Migrates JackArticle `page.tsx` content ? `jack_articles` Supabase row |
 | `npm run wiki:trim` | Replaces full `page.tsx` with stub after migration |
 | `npm run registry:sync` | Dry-run scan for missing `content-registry.ts` entries |
 | `npm run registry:write` | Auto-write stub entries to `content-registry.ts` |
@@ -561,7 +561,7 @@ npm run wiki:trim
 | ArticlePage / wiki | `export const revalidate = 86400` | Rarely changes, maximises cache |
 | Admin / account pages | Client-side only | Not indexed, SSR not needed |
 
-Switch `force-dynamic` → `revalidate = 3600` on any article once it is final and no longer live-updating.
+Switch `force-dynamic` ? `revalidate = 3600` on any article once it is final and no longer live-updating.
 
 ---
 
@@ -569,11 +569,11 @@ Switch `force-dynamic` → `revalidate = 3600` on any article once it is final a
 
 Run this on any live article to confirm SSR is working:
 
-1. Open `owire.org/{your-article-path}` in a browser
-2. Right-click → **View Page Source** (not DevTools, actual source)
-3. `Ctrl + F` → search for the article headline
-4. **Headline visible in source** → SSR working ✅, Googlebot can index it
-5. **No headline / only `<script>` tags** → JS-heavy ❌, content is not indexed
+1. Open `objectivewire.org/{your-article-path}` in a browser
+2. Right-click ? **View Page Source** (not DevTools, actual source)
+3. `Ctrl + F` ? search for the article headline
+4. **Headline visible in source** ? SSR working ?, Googlebot can index it
+5. **No headline / only `<script>` tags** ? JS-heavy ?, content is not indexed
 
 All ObjectWire articles using `NewsArticleDB`, `JackArticleDB`, or `ArticlePageDB` pass this test, the Supabase fetch runs on the server before the HTML is sent.
 
@@ -603,34 +603,34 @@ Before committing and pushing any new article:
 ## Architecture Summary
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    OBJECTWIRE CONTENT PIPELINE                   │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  WRITE                  STORE                    RENDER           │
-│                                                                   │
-│  content/articles/      Supabase                 app/.../         │
-│  *.ts                   articles table           page.tsx          │
-│  (NewsArticle)    ───►  (content_html,     ───►  NewsArticleDB    │
-│                          author, tags...)         NewsArticle      │
-│                                                                   │
-│  app/.../page.tsx        Supabase                app/.../         │
-│  (full JackArticle) ──►  jack_articles     ───►  page.tsx (stub)  │
-│  wiki:migrate            table                   JackArticleDB    │
-│  wiki:trim                                        JackArticle      │
-│                                                                   │
-│  lib/content-registry.ts                                          │
-│  (SEO / sitemap layer)  ◄──────────────────────────────────────── │
-│  populated manually                                               │
-│  after every new page                                             │
-│                                                                   │
-└─────────────────────────────────────────────────────────────────┘
++-----------------------------------------------------------------+
+�                    OBJECTWIRE CONTENT PIPELINE                   �
++-----------------------------------------------------------------�
+�                                                                   �
+�  WRITE                  STORE                    RENDER           �
+�                                                                   �
+�  content/articles/      Supabase                 app/.../         �
+�  *.ts                   articles table           page.tsx          �
+�  (NewsArticle)    ---?  (content_html,     ---?  NewsArticleDB    �
+�                          author, tags...)         NewsArticle      �
+�                                                                   �
+�  app/.../page.tsx        Supabase                app/.../         �
+�  (full JackArticle) --?  jack_articles     ---?  page.tsx (stub)  �
+�  wiki:migrate            table                   JackArticleDB    �
+�  wiki:trim                                        JackArticle      �
+�                                                                   �
+�  lib/content-registry.ts                                          �
+�  (SEO / sitemap layer)  ?---------------------------------------- �
+�  populated manually                                               �
+�  after every new page                                             �
+�                                                                   �
++-----------------------------------------------------------------+
 ```
 
 **Three tables. One rule per table:**
 
 | Table | Written by | `status` column? | Fetched by |
 |---|---|---|---|
-| `articles` | `publish-content.ts` | ✅ `draft` / `published` | `NewsArticleDB` |
-| `jack_articles` | `wiki:migrate` | ❌ none | `JackArticleDB` |
-| `article_pages` | `wiki:migrate` | ❌ none | `ArticlePageDB` |
+| `articles` | `publish-content.ts` | ? `draft` / `published` | `NewsArticleDB` |
+| `jack_articles` | `wiki:migrate` | ? none | `JackArticleDB` |
+| `article_pages` | `wiki:migrate` | ? none | `ArticlePageDB` |

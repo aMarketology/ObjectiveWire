@@ -5,7 +5,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/of/mikaela-testa';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Mikaela Testa | Age, Instagram, OnlyFans, Bio 2026',

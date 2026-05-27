@@ -8,34 +8,34 @@ import AuthorSchema from '@/components/authors/AuthorSchema';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Conan Boyle, ObjectWire Science Writer',
+  title: 'Conan Boyle | Investigative Reporter, oWire Austin',
   description:
-    'Conan Boyle is a founding writer at ObjectWire in Austin, Texas, covering biotechnology, medical research, AI hardware, and emerging technology.',
-  alternates: { canonical: 'https://www.objectwire.org/authors/conan-boyle' },
+    'Conan Boyle is a licensed investigative reporter at oWire in Austin, Texas. He covers public records, accountability journalism, supercars, and local Texas investigations using PI-grade research methods.',
+  alternates: { canonical: 'https://www.objectivewire.org/authors/conan-boyle' },
   openGraph: {
-    title: 'Conan Boyle, ObjectWire Science Writer',
-    description: 'Founding writer at ObjectWire covering biotech, medical research, AI hardware, and emerging technology.',
-    url: 'https://www.objectwire.org/authors/conan-boyle',
-    siteName: 'Objective Wire',
+    title: 'Conan Boyle | Investigative Reporter, oWire Austin',
+    description: 'Licensed investigative reporter at oWire. Public records, accountability journalism, supercars, and Texas investigations.',
+    url: 'https://www.objectivewire.org/authors/conan-boyle',
+    siteName: 'oWire',
     type: 'profile',
-    images: [{ url: 'https://www.objectwire.org/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, ObjectWire science and technology writer' }],
+    images: [{ url: 'https://www.objectivewire.org/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, oWire investigative reporter' }],
   },
   twitter: {
     card: 'summary',
-    title: 'Conan Boyle, ObjectWire Science Writer',
-    description: 'Founding writer at ObjectWire. Biotech, medical research, AI hardware.',
-    images: ['https://www.objectwire.org/influncer/author/conan_doyle.jpg'],
+    title: 'Conan Boyle | Investigative Reporter, oWire',
+    description: 'Licensed investigative reporter. Public records, Austin accountability, supercars.',
+    images: ['https://www.objectivewire.org/influncer/author/conan_doyle.jpg'],
   },
 };
 
 const BEATS = [
-  'Biotechnology', 'CRISPR', 'Medical Research', 'AI Hardware',
-  'Emerging Technology', 'Video Games', 'Neuroscience', 'Startups',
+  'Investigative Reporting', 'Public Records', 'Austin Accountability',
+  'Texas FOIA', 'Supercars', 'Cars & EVs', 'Background Investigations', 'Corporate Fraud',
 ];
 
 const HIGHLIGHTS = [
-  { stat: '3+', label: 'Years at ObjectWire' },
-  { stat: '8+', label: 'Beats Covered' },
+  { stat: '3+', label: 'Years at oWire' },
+  { stat: 'Licensed', label: 'Texas PI Credential' },
   { stat: '22+', label: 'Published Articles' },
 ];
 
@@ -44,19 +44,18 @@ export default function ConanBoyleAuthorPage() {
     <main className="min-h-screen bg-white">
       <AuthorSchema
         name="Conan Boyle"
-        jobTitle="Science & Technology Writer"
-        description="Conan Boyle is the founding writer at ObjectWire covering biotechnology, CRISPR, medical research, AI hardware, video games, and emerging technologies."
-        url="https://www.objectwire.org/authors/conan-boyle"
-        knowsAbout={['Biotechnology', 'CRISPR', 'Medical Research', 'AI Hardware', 'Emerging Technology', 'Neuroscience', 'Video Games']}
+        jobTitle="Investigative Reporter"
+        description="Conan Boyle is a licensed investigative reporter at oWire, covering public records, Austin accountability journalism, and supercars. He holds a Texas PI credential enabling PI-grade field research as part of his reporting."
+        url="https://www.objectivewire.org/authors/conan-boyle"
+        knowsAbout={['Investigative Reporting', 'Public Records', 'Texas FOIA', 'Supercars', 'Cars & EVs', 'Background Investigations', 'Austin Accountability']}
         alumniOf={[{ name: 'North Carolina State University', department: 'Journalism' }]}
         location={{ city: 'Austin', region: 'TX' }}
         articleCount={22}
       />
 
-      {/* ── Full-bleed Header ───────────────────────────────────────── */}
+      {/* Full-bleed Header */}
       <div className="bg-gray-950 text-white">
         <div className="max-w-5xl mx-auto px-6 pt-10 pb-14">
-          {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs text-gray-500 mb-12 font-mono uppercase tracking-widest">
             <Link href="/" className="hover:text-gray-300 transition-colors">Home</Link>
             <span>/</span>
@@ -66,28 +65,25 @@ export default function ConanBoyleAuthorPage() {
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end gap-8">
-            {/* Avatar */}
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden shrink-0 ring-2 ring-white relative bg-white">
               <Image
                 src="/influncer/author/conan_doyle.jpg"
-                alt="Conan Boyle, ObjectWire founding writer"
+                alt="Conan Boyle, oWire investigative reporter"
                 fill
                 sizes="(min-width: 768px) 96px, 80px"
                 className="object-cover"
                 priority
               />
             </div>
-            {/* Identity */}
             <div className="flex-1">
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-500 mb-2 font-mono">
-                Founding Writer · ObjectWire
+                Founding Reporter � oWire
               </p>
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Conan Boyle
               </h1>
-              <p className="text-gray-300 text-xl font-medium">Science &amp; Technology Writer</p>
+              <p className="text-gray-300 text-xl font-medium">Investigative Reporter</p>
             </div>
-            {/* Stats */}
             <div className="flex gap-8 md:pb-1 shrink-0">
               {HIGHLIGHTS.map((h) => (
                 <div key={h.label} className="text-right">
@@ -98,32 +94,30 @@ export default function ConanBoyleAuthorPage() {
             </div>
           </div>
 
-          {/* Quote bar */}
           <div className="mt-10 border-l-4 border-gray-500 pl-5">
             <p className="text-gray-300 text-lg italic font-light leading-relaxed max-w-2xl">
-              &ldquo;Peer review is a starting point, not a finish line.&rdquo;
+              &ldquo;The document is the story. Everything else is commentary.&rdquo;
             </p>
           </div>
         </div>
       </div>
 
-      {/* ── Detail Strip ───────────────────────────────────────────── */}
+      {/* Detail Strip */}
       <div className="bg-gray-900 text-white border-b border-gray-800">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center gap-6 text-xs font-mono text-gray-400">
-          <span>📍 Austin, Texas</span>
-          <span>🎓 NC State University, Journalism</span>
-          <span>🔬 Science &amp; Technology Desk</span>
-          <span>📅 Founding Writer · 2023</span>
+          <span>Austin, Texas</span>
+          <span>NC State University, Journalism</span>
+          <span>Investigative Desk</span>
+          <span>Founding Reporter, 2023</span>
         </div>
       </div>
 
-      {/* ── Body ───────────────────────────────────────────────────── */}
+      {/* Body */}
       <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-          {/* ── Sidebar ── */}
+          {/* Sidebar */}
           <aside className="lg:col-span-4 space-y-7">
-            {/* Beats */}
             <div className="border border-gray-200 p-6">
               <h2 className="text-[10px] uppercase tracking-widest font-black text-gray-400 mb-4">Coverage Beats</h2>
               <div className="flex flex-wrap gap-2">
@@ -135,11 +129,10 @@ export default function ConanBoyleAuthorPage() {
               </div>
             </div>
 
-            {/* Details */}
             <div className="border border-gray-200 divide-y divide-gray-100">
               {[
-                ['Organization', 'ObjectWire'],
-                ['Role', 'Founding Writer'],
+                ['Organization', 'oWire'],
+                ['Role', 'Investigative Reporter'],
                 ['Education', 'NC State, Journalism'],
                 ['Location', 'Austin, Texas'],
                 ['Joined', '2023'],
@@ -151,61 +144,59 @@ export default function ConanBoyleAuthorPage() {
               ))}
             </div>
 
-            {/* Editorial */}
             <div className="bg-gray-950 text-white p-6 space-y-3">
               <h2 className="text-[10px] uppercase tracking-widest font-black text-gray-500">Standards</h2>
               <Link href="/editorial-standards" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                Editorial Standards →
+                Editorial Standards
               </Link>
               <Link href="/corrections" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                Corrections Policy →
+                Corrections Policy
               </Link>
               <Link href="/about" className="block text-sm font-semibold hover:text-gray-300 transition-colors">
-                About ObjectWire →
+                About oWire
               </Link>
             </div>
           </aside>
 
-          {/* ── Main column ── */}
+          {/* Main column */}
           <div className="lg:col-span-8 space-y-12">
 
-            {/* Bio */}
             <section>
               <h2 className="text-[10px] uppercase tracking-widest font-black text-gray-400 mb-5 border-b-2 border-gray-900 pb-3">
                 About Conan Boyle
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed text-[15px]">
                 <p>
-                  Conan Boyle is a founding writer at ObjectWire and the publication&rsquo;s primary
-                  voice on science, biotechnology, and emerging technology. Based in Austin, Texas, Boyle
-                  brings a research-grounded perspective to complex scientific topics, translating
-                  peer-reviewed findings, clinical data, and laboratory breakthroughs into authoritative
-                  reporting for a professional audience.
+                  Conan Boyle is a founding reporter at oWire and the publication&rsquo;s lead
+                  investigative journalist. Based in Austin, Texas, Boyle holds a Texas Private
+                  Investigator credential under the Department of Public Safety, which he applies
+                  directly to his reporting, conducting legally admissible field surveillance,
+                  skip tracing, background research, and public records analysis as standard
+                  practice on every story he covers.
                 </p>
                 <p>
-                  A graduate of North Carolina State University&rsquo;s journalism program, Boyle&rsquo;s
-                  science reporting covers the full life-sciences spectrum: CRISPR gene editing,
-                  AI-driven drug discovery, photonic computing architectures, and the semiconductor
-                  startups challenging NVIDIA&rsquo;s data center dominance, including a deep-dive
-                  profile of Neurophos and their photonic AI chip roadmap.
+                  A graduate of North Carolina State University&rsquo;s journalism program, Boyle
+                  covers two primary beats: Austin-area public accountability, including Travis
+                  County courts, city hall, APD records, and Texas FOIA requests, and the supercar
+                  and automotive industry, where he applies the same evidence-first methodology
+                  to manufacturer claims, pricing data, and performance specifications.
                 </p>
                 <p>
-                  His gaming coverage brings the same analytical precision to video games. He has
-                  written extensively on Nintendo&rsquo;s Switch 2 ecosystem, including the technical
-                  breakdown of Donkey Kong Bananza&rsquo;s 347-million-voxel destruction engine
-                  revealed at GDC 2026, as well as Pok�mon Pokopia&rsquo;s record-breaking 2.2 million
-                  launch copies, and Bungie&rsquo;s Marathon balance patches.
+                  His investigative approach is grounded in primary documentation. Boyle sources
+                  named individuals, official filings, court records, and verifiable public data
+                  before publication. When field investigation is required, his PI license allows
+                  oWire to legally document subjects and situations that most news organizations
+                  must cover secondhand.
                 </p>
                 <p>
-                  Boyle&rsquo;s work is characterized by primary-source discipline: sourcing named
-                  researchers, published studies, and official regulatory filings before speculation.
-                  He has reported on AI hardware startups, LLM infrastructure improvements, and the
-                  evolving convergence of neuroscience with machine learning.
+                  Boyle&rsquo;s work on the automotive beat includes deep-coverage profiles of
+                  hypercar launches, EV performance claims, and manufacturer sourcing, bringing
+                  the same document-first discipline to press releases and spec sheets that he
+                  applies to public records and court filings.
                 </p>
               </div>
             </section>
 
-            {/* Recent Highlights */}
             <section>
               <h2 className="text-[10px] uppercase tracking-widest font-black text-gray-400 mb-5 border-b border-gray-200 pb-3">
                 Recent Highlights
@@ -213,22 +204,22 @@ export default function ConanBoyleAuthorPage() {
               <div className="space-y-4">
                 {[
                   {
-                    label: 'Donkey Kong Bananza, 347M Voxels',
-                    detail: 'GDC 2026 technical breakdown: Nintendo\'s Switch 2 destruction engine and the Odyssey snow prototype connection.',
-                    href: '/video-games/nintendo/donkey-kong-bananza',
-                    date: 'March 12, 2026',
+                    label: 'Ferrari F80 | Price, Specs, 1,184hp Hybrid',
+                    detail: "Full spec breakdown on Ferrari's 1,184hp hybrid hypercar priced at $3.735M, limited to 799 units.",
+                    href: '/cars/ferrari/ferrari-f80-hypercar-price-specs-2026',
+                    date: 'May 2026',
                   },
                   {
-                    label: 'Pok�mon Pokopia, 2.2M Copies in 4 Days',
-                    detail: 'Switch 2 launch record, Nintendo stock +15%, Japan accounting for nearly 1M of the first-week units.',
-                    href: '/video-games/nintendo/pokemon-pokopia-2-million-copies-4-days-switch-2',
-                    date: 'March 12, 2026',
+                    label: 'Austin APD Use-of-Force Records | 2025',
+                    detail: 'Public records analysis of Travis County APD incident filings, sourced via Texas FOIA.',
+                    href: '/local/austin',
+                    date: 'April 2026',
                   },
                   {
-                    label: 'Neurophos, Photonic AI Chip Startup',
-                    detail: 'Deep-dive profile on the startup betting photonic computing can challenge NVIDIA in data center inference.',
-                    href: '/neurophos-ai-hardware-startup',
-                    date: 'February 1, 2026',
+                    label: 'Bugatti Tourbillon | V16 Hybrid, $4.1M',
+                    detail: 'Verified specs and pricing on the Bugatti Tourbillon, sourced directly from manufacturer filings.',
+                    href: '/cars',
+                    date: 'March 2026',
                   },
                 ].map((item) => (
                   <Link key={item.href} href={item.href} className="block group border border-gray-200 p-5 hover:border-gray-900 transition-colors">
@@ -240,14 +231,13 @@ export default function ConanBoyleAuthorPage() {
               </div>
             </section>
 
-            {/* Auto-loading article feed */}
             <section>
               <div className="border-b-2 border-gray-900 pb-3 mb-6">
                 <p className="text-[10px] uppercase tracking-widest font-black text-gray-400">All Published Articles</p>
               </div>
               <Suspense fallback={
                 <div className="space-y-4">
-                  {[1,2,3,4,5].map(i => (
+                  {[1, 2, 3, 4, 5].map(i => (
                     <div key={i} className="h-16 bg-gray-100 animate-pulse rounded" />
                   ))}
                 </div>
@@ -259,12 +249,12 @@ export default function ConanBoyleAuthorPage() {
         </div>
       </div>
 
-      {/* ── Footer strip ── */}
+      {/* Footer strip */}
       <div className="border-t-2 border-gray-900 mt-8">
         <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400 font-mono">© 2026 ObjectWire. All rights reserved.</p>
+          <p className="text-xs text-gray-400 font-mono">2026 oWire. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/authors" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">← All Authors</Link>
+            <Link href="/authors" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">All Authors</Link>
             <Link href="/about" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">About</Link>
             <Link href="/editorial-standards" className="text-xs font-semibold text-gray-500 hover:text-black transition-colors">Standards</Link>
           </div>

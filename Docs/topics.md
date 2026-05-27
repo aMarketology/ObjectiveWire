@@ -1,20 +1,20 @@
-ï»¿# Content Topics â€” April 2026
+# Content Topics — April 2026
 
 ---
 
-## Session Log â€” April 29, 2026
+## Session Log — April 29, 2026
 
 ### Transparency and Trust Overhaul
 
-**Problem identified:** ObjectWire lacked visible editorial policies, named author credentials, ownership disclosure, and funding transparency â€” all factors that reduce credibility and hurt Google's E-E-A-T scoring on news sites.
+**Problem identified:** ObjectWire lacked visible editorial policies, named author credentials, ownership disclosure, and funding transparency — all factors that reduce credibility and hurt Google's E-E-A-T scoring on news sites.
 
 **Changes made:**
 
-#### Author pages â€” real headshots replacing initials
+#### Author pages — real headshots replacing initials
 All three author pages converted from placeholder initials to real photos using `next/image`:
-- `/authors/jack-sterling` â€” `public/influncer/author/jack_sterling.jpg`
-- `/authors/jack-brennan` â€” `public/influncer/author/jack_brennen.JPG`
-- `/authors/conan-boyle` â€” `public/influncer/author/conan_doyle.jpg`
+- `/authors/jack-sterling` — `public/influncer/author/jack_sterling.jpg`
+- `/authors/jack-brennan` — `public/influncer/author/jack_brennen.JPG`
+- `/authors/conan-boyle` — `public/influncer/author/conan_doyle.jpg`
 
 Meta titles simplified from SEO-stuffed pipe-separated strings to plain human names:
 - `Jack Sterling, ObjectWire Reporter`
@@ -23,12 +23,12 @@ Meta titles simplified from SEO-stuffed pipe-separated strings to plain human na
 
 OG/Twitter card images now include author headshot URLs so social previews show faces.
 
-#### Footer â€” sitewide ownership disclosure
+#### Footer — sitewide ownership disclosure
 `app/layout.tsx` footer updated:
 - Added a visible "Ownership and funding" paragraph on every page disclosing: self-funded nonprofit, no advertising, no sponsored content, no political donations, with links to about / editorial-standards / corrections.
-- Bottom bar updated from "Â© 2026 ObjectWire News. All rights reserved." to "Â© 2026 ObjectWire. Self-funded nonprofit newsroom."
+- Bottom bar updated from "© 2026 ObjectWire News. All rights reserved." to "© 2026 ObjectWire. Self-funded nonprofit newsroom."
 
-#### OrganizationSchema â€” JSON-LD updated
+#### OrganizationSchema — JSON-LD updated
 `components/articles/NewsArticleSchema.tsx` `OrganizationSchema`:
 - Added `additionalType: "https://schema.org/NGO"`
 - Added `nonprofitStatus: "Nonprofit501c3"`
@@ -40,7 +40,7 @@ Ships on every page in the site's `<head>`.
 
 ---
 
-### Static Page Migration (Supabase â†’ Codebase)
+### Static Page Migration (Supabase ? Codebase)
 
 **Problem identified:** `about`, `editorial-standards`, and `corrections` were all `force-dynamic` Supabase fetches. Googlebot received no content on the first byte. Content lived in a database table (`wiki_articles`) that was invisible to crawlers.
 
@@ -48,32 +48,32 @@ Ships on every page in the site's `<head>`.
 
 **Pages migrated:**
 
-#### `/about` â€” `app/about/page.tsx`
+#### `/about` — `app/about/page.tsx`
 - `force-static`, no Supabase
 - Full ownership and funding disclosure (self-funded, nonprofit, no ads/sponsorships/affiliates/political donations)
 - Lists all 3 authors with profile links
 - Explains editorial accountability rules
-- Contact info: `editorial@owire.org`
+- Contact info: `editorial@objectivewire.org`
 - Datestamped April 29, 2026
 
-#### `/editorial-standards` â€” `app/editorial-standards/page.tsx`
+#### `/editorial-standards` — `app/editorial-standards/page.tsx`
 - `force-static`, no Supabase
 - 10 numbered standards: accuracy over speed, primary sources only, attribution, news vs analysis, conflicts of interest, AI use in newsroom, corrections, right of reply, source protection, diversity of coverage
 - Explicitly states AI is not used to write published copy
-- Contact: `editorial@owire.org`
+- Contact: `editorial@objectivewire.org`
 
-#### `/corrections` â€” `app/corrections/page.tsx`
+#### `/corrections` — `app/corrections/page.tsx`
 - `force-static`, no Supabase
 - Defines what gets corrected, how a correction looks on the page (original text preserved, timestamped), what is NOT a correction (routine updates), how to report an error, right of reply, removals/unpublishing policy
-- Contact: `corrections@owire.org`
+- Contact: `corrections@objectivewire.org`
 
 **Why this matters for SEO:**
-- `force-static` pages are prerendered HTML â€” Googlebot gets full content instantly
+- `force-static` pages are prerendered HTML — Googlebot gets full content instantly
 - `force-dynamic` on evergreen pages prevents proper caching and hurts TTFB
 - Real, substantive content in page source (not a `<WikiArticle>` shell) signals quality to crawlers
 - E-E-A-T scoring for YMYL/news: Google's Quality Rater Guidelines specifically look for ownership, funding, named authors, and correction policies
 
-**Orphaned rows:** `wiki_articles` rows for `about`, `editorial-standards`, `corrections` still exist in Supabase. Nothing reads them. No action needed â€” they do not affect SEO or crawling.
+**Orphaned rows:** `wiki_articles` rows for `about`, `editorial-standards`, `corrections` still exist in Supabase. Nothing reads them. No action needed — they do not affect SEO or crawling.
 
 **Policy going forward:** What is already in Supabase stays in Supabase. Only future evergreen pages that would otherwise be `force-dynamic` purely for content (not personalization) are candidates for codebase migration. No mass migration.
 
@@ -83,7 +83,7 @@ Ships on every page in the site's `<head>`.
 
 ## Female Influencer / YouTuber Article Targets
 
-### Tier 1 â€” High Search Volume, Strong SEO
+### Tier 1 — High Search Volume, Strong SEO
 
 | Creator | Angle | Est. Monthly Search |
 |---|---|---|
@@ -97,23 +97,23 @@ Ships on every page in the site's `<head>`.
 
 ## Fortnite Article Targets (2026)
 
-### Chapter 6 Season 2 â€” "Lawless" (Active Season)
+### Chapter 6 Season 2 — "Lawless" (Active Season)
 
 | Topic | Search Angle | Status |
 |---|---|---|
-| **Chapter 6 Season 2 map changes** | Japanese/yakuza aesthetic, Shogun POI, cherry blossoms | **LIVE** â€” `app/video-games/fortnite/chapter-6-season-2-map-changes/` |
-| **Season 2 Battle Pass breakdown** | All skins, secret styles, bonus rewards | **LIVE** â€” `app/video-games/fortnite/chapter-6-season-2-battle-pass/` |
-| **New weapons tier list** | Katanas, SMGs, LMGs added this season | **LIVE** â€” `app/video-games/fortnite/chapter-6-season-2-weapons-tier-list/` |
+| **Chapter 6 Season 2 map changes** | Japanese/yakuza aesthetic, Shogun POI, cherry blossoms | **LIVE** — `app/video-games/fortnite/chapter-6-season-2-map-changes/` |
+| **Season 2 Battle Pass breakdown** | All skins, secret styles, bonus rewards | **LIVE** — `app/video-games/fortnite/chapter-6-season-2-battle-pass/` |
+| **New weapons tier list** | Katanas, SMGs, LMGs added this season | **LIVE** — `app/video-games/fortnite/chapter-6-season-2-weapons-tier-list/` |
 | **Ranked mode changes S2** | New ranked system, lobbies rebalance | Not started |
 
-**Hub:** `app/video-games/fortnite/page.tsx` â€” **LIVE**
+**Hub:** `app/video-games/fortnite/page.tsx` — **LIVE**
 
 ### Creator Collaborations (Next)
 
 | Collab | Notes |
 |---|---|
-| **Fortnite x Naruto (Season returns)** | Perennial high-search rerun â€” every return gets search spike |
-| **Fortnite Icon Series 2026** | New creator skins announced â€” Loserfruit crossover angle |
+| **Fortnite x Naruto (Season returns)** | Perennial high-search rerun — every return gets search spike |
+| **Fortnite Icon Series 2026** | New creator skins announced — Loserfruit crossover angle |
 | **Fortnite x MrBeast** | Any ongoing or announced tie-ins |
 | **Fortnite Festival Season** | Current music lineup, how to unlock songs |
 | **FNCS 2026 Spring** | Competitive scene, prize pool, bracket results |
@@ -128,7 +128,7 @@ Ships on every page in the site's `<head>`.
 
 ---
 
-## Image SEO â€” How to Do It Right
+## Image SEO — How to Do It Right
 
 Every article must have at least one optimized image. These rules apply to both `thumbnail_src` (Supabase field) and any images inside `content_html`.
 
@@ -138,18 +138,18 @@ Name the file with the primary keyword before uploading. Google reads the filena
 - Bad: `IMG_4921.jpg` or `image1.png`
 
 ### 2. Alt Text
-Every `<img>` tag needs descriptive `alt` text containing the primary keyword. Do not stuff â€” one natural keyword phrase is enough.
+Every `<img>` tag needs descriptive `alt` text containing the primary keyword. Do not stuff — one natural keyword phrase is enough.
 ```html
 <img
   src="/influncer/valkyrae-profile.jpg"
   alt="Valkyrae (Rachel Hofstetter) 100 Thieves co-owner and YouTube Gaming creator"
 />
 ```
-In Supabase: populate `thumbnail_alt` and `hero_image_alt` fields â€” these map directly to the rendered `alt` attribute.
+In Supabase: populate `thumbnail_alt` and `hero_image_alt` fields — these map directly to the rendered `alt` attribute.
 
 ### 3. Dimensions and Format
 - Minimum 1200 x 675px for hero/OG images (required for Google Top Stories rich cards)
-- Use `.webp` wherever possible â€” 25-35% smaller than JPEG, same quality
+- Use `.webp` wherever possible — 25-35% smaller than JPEG, same quality
 - Fallback `.jpg` for creator portrait shots if `.webp` conversion unavailable
 
 ### 4. Open Graph Image
@@ -157,7 +157,7 @@ Set `openGraph.images` in `page.tsx` metadata with explicit `width`, `height`, a
 ```ts
 openGraph: {
   images: [{
-    url: 'https://www.owire.org/influncer/valkyrae-profile.jpg',
+    url: 'https://www.objectivewire.org/influncer/valkyrae-profile.jpg',
     width: 1200,
     height: 675,
     alt: 'Valkyrae YouTube Gaming profile 2026',
@@ -171,24 +171,24 @@ Missing `width`/`height` causes Google to skip the image in rich snippets.
 |---|---|
 | `thumbnail_src` | Full URL or `/public`-relative path. Triggers the animated genie header in NewsArticleDB. |
 | `thumbnail_alt` | Descriptive alt text, primary keyword included. |
-| `hero_image_src` | For CreatorArticleDB â€” portrait, min 800px wide. |
-| `hero_image_alt` | For CreatorArticleDB â€” name + role. |
-| `schema_image_url` | Full `https://www.owire.org/...` URL. Used in JSON-LD. Must be absolute. |
+| `hero_image_src` | For CreatorArticleDB — portrait, min 800px wide. |
+| `hero_image_alt` | For CreatorArticleDB — name + role. |
+| `schema_image_url` | Full `https://www.objectivewire.org/...` URL. Used in JSON-LD. Must be absolute. |
 
 ### 6. Image Placement in Content
 - Hero/thumbnail: above the fold, handled automatically by the component
 - Supporting images: place after the second or third paragraph, not at the top
 - For CreatorArticle: `<CreatorImageGallery>` goes **after** the `<CreatorQuote>` block, not at the top (per gold standard)
-- Caption every image â€” Google surfaces captions in Google Images and Discover
+- Caption every image — Google surfaces captions in Google Images and Discover
 
 ### 7. Structured Data
 The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` from the `content_registry` entry. Always set these three fields in the registry row when publishing. Missing values = ineligible for Google Top Stories.
 
 ---
 
-## GTA 6 Cluster â€” `/video-games/gta-6` (5M+/mo)
+## GTA 6 Cluster — `/video-games/gta-6` (5M+/mo)
 
-**Hub:** `app/video-games/gta-6/page.tsx` â€” **LIVE** (migrated to codebase, force-static)
+**Hub:** `app/video-games/gta-6/page.tsx` — **LIVE** (migrated to codebase, force-static)
 
 ### Sub-Articles
 
@@ -211,11 +211,11 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 
 ---
 
-## Nintendo Switch 2 Cluster â€” `/video-games/switch2`
+## Nintendo Switch 2 Cluster — `/video-games/switch2`
 
 > **Note:** Switch 2 launched June 5, **2025** (not 2026). The original hub and launch/pre-order articles were deleted April 29, 2026 after containing inaccurate dates. Do not rebuild those pages without verifying current facts.
 
-**Hub:** `app/video-games/switch2/` â€” exists but stripped back
+**Hub:** `app/video-games/switch2/` — exists but stripped back
 
 ### Sub-Articles Currently Live
 
@@ -224,9 +224,9 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 | **Pokemon Pokopia (Switch 2)** | `app/video-games/switch2/pokemon-pokopia/` | LIVE |
 | **Super Mario Wonder Switch 2 edition** | `app/video-games/switch2/super-mario-wonder-switch2-edition-bellabel-park/` | LIVE |
 
-### Deleted (inaccurate â€” do not recreate without fact-checking)
-- `nintendo-switch-2-launch-games` â€” had wrong launch year
-- `nintendo-switch-2-pre-order-guide` â€” had wrong launch year
+### Deleted (inaccurate — do not recreate without fact-checking)
+- `nintendo-switch-2-launch-games` — had wrong launch year
+- `nintendo-switch-2-pre-order-guide` — had wrong launch year
 
 ### Future targets (verify facts first)
 - Switch 2 game reviews as they release
@@ -235,9 +235,9 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 
 ---
 
-## OpenAI / AI Cluster â€” `/open-ai` (3M+/mo)
+## OpenAI / AI Cluster — `/open-ai` (3M+/mo)
 
-**Hub:** `/open-ai` â€” covers OpenAI news, GPT releases, Sora, safety controversies
+**Hub:** `/open-ai` — covers OpenAI news, GPT releases, Sora, safety controversies
 
 ### High-Priority Sub-Articles
 
@@ -253,15 +253,15 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 | **AI image generators compared** | `best-ai-image-generators-2026` | Midjourney, DALL-E, Flux, Stable Diffusion |
 
 ### Related Hub Pages Already Existing
-- `/claude` â€” Anthropic Claude coverage
-- `/google` â€” Gemini updates
-- `/nvidia` â€” AI hardware
+- `/claude` — Anthropic Claude coverage
+- `/google` — Gemini updates
+- `/nvidia` — AI hardware
 
 ---
 
-## Tech Cluster â€” Apple, Google, Nvidia, Microsoft
+## Tech Cluster — Apple, Google, Nvidia, Microsoft
 
-### Apple â€” `/apple` (1M+/mo)
+### Apple — `/apple` (1M+/mo)
 
 | Article | Slug | Angle |
 |---|---|---|
@@ -270,7 +270,7 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 | **WWDC 2026 recap** | `wwdc-2026-announcements` | iOS 20, macOS, new hardware reveals |
 | **Mac with M5 chip** | `apple-m5-chip-macbook-pro` | Performance uplift, MacBook Pro specs |
 
-### Google â€” `/google` (2M+/mo)
+### Google — `/google` (2M+/mo)
 
 | Article | Slug | Angle |
 |---|---|---|
@@ -279,7 +279,7 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 | **Google Search AI Mode** | `google-search-ai-mode-2026` | AI Overviews rollout, what it means for SEO |
 | **Google Pixel 10** | `google-pixel-10-specs-price` | Release window, Tensor G5, camera upgrades |
 
-### Nvidia â€” `/nvidia` (800K+/mo)
+### Nvidia — `/nvidia` (800K+/mo)
 
 | Article | Slug | Angle |
 |---|---|---|
@@ -290,7 +290,7 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 
 ---
 
-## Crypto Cluster â€” `/crypto` 
+## Crypto Cluster — `/crypto` 
 
 ### Active Article Targets
 
@@ -304,7 +304,7 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 
 ---
 
-## Entertainment Cluster â€” `/entertainment`
+## Entertainment Cluster — `/entertainment`
 
 ### Streaming Wars 2026
 
@@ -327,7 +327,7 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 
 ## Seasonal Clusters
 
-### 2026 FIFA World Cup â€” `/world-cup`
+### 2026 FIFA World Cup — `/world-cup`
 
 | Article | Slug | Angle |
 |---|---|---|
@@ -336,7 +336,7 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 | **England World Cup squad** | `england-world-cup-2026-squad` | Predicted lineup, key players |
 | **World Cup 2026 favorites** | `world-cup-2026-favorites-odds` | France, England, Brazil, Argentina betting odds |
 
-### 2026 Winter Olympics â€” `/winter-olympics`
+### 2026 Winter Olympics — `/winter-olympics`
 
 | Article | Slug | Angle |
 |---|---|---|
@@ -346,7 +346,7 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 
 ---
 
-## Politics Cluster â€” `/trump`
+## Politics Cluster — `/trump`
 
 ### Active Article Targets
 
@@ -359,9 +359,9 @@ The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` 
 
 ---
 
-## Content Velocity Targets â€” April/May 2026
+## Content Velocity Targets — April/May 2026
 
-These are time-sensitive. Publish within the next 2â€“4 weeks to capture current search demand.
+These are time-sensitive. Publish within the next 2–4 weeks to capture current search demand.
 
 | Article | Priority | Status | Why Now |
 |---|---|---|---|
@@ -369,9 +369,9 @@ These are time-sensitive. Publish within the next 2â€“4 weeks to capture current
 | Fortnite C6S2 map changes | HIGH | **LIVE** | Active season |
 | Fortnite C6S2 battle pass | HIGH | **LIVE** | Active season |
 | Fortnite C6S2 weapons tier list | HIGH | **LIVE** | Active season |
-| ~~Nintendo Switch 2 pre-order guide~~ | ~~URGENT~~ | **DELETED** (wrong year) | â€” |
-| ~~Switch 2 launch games full list~~ | ~~URGENT~~ | **DELETED** (wrong year) | â€” |
+| ~~Nintendo Switch 2 pre-order guide~~ | ~~URGENT~~ | **DELETED** (wrong year) | — |
+| ~~Switch 2 launch games full list~~ | ~~URGENT~~ | **DELETED** (wrong year) | — |
 | GPT-5 features and release date | HIGH | Not started | Expected announcement Q2 2026 |
-| World Cup 2026 schedule | HIGH | Not started | June start â€” search climbing |
+| World Cup 2026 schedule | HIGH | Not started | June start — search climbing |
 | Netflix Q2 2026 earnings recap | MEDIUM | Not started | Publish within 24h of earnings |
 | Nvidia RTX 5090 review | MEDIUM | Not started | Hardware cycle |

@@ -1,4 +1,4 @@
-ï»¿# ZWire Copilot Instructions
+# ZWire Copilot Instructions
 
 These rules apply to **every** GitHub Copilot request in this workspace.
 
@@ -6,9 +6,9 @@ These rules apply to **every** GitHub Copilot request in this workspace.
 
 ## What ZWire Is
 
-ZWire (ZeroWire) is a verified news and culture platform built on Next.js 15, React 19, Supabase (PostgreSQL), and Tailwind CSS. Published at **owire.org**. The editorial mission is accuracy over speed, primary sources only, and transparent corrections. It is not a blog, aggregator, or opinion site. Every article must be verifiable, sourced, and written for real search intent.
+ZWire (ZeroWire) is a verified news and culture platform built on Next.js 15, React 19, Supabase (PostgreSQL), and Tailwind CSS. Published at **objectivewire.org**. The editorial mission is accuracy over speed, primary sources only, and transparent corrections. It is not a blog, aggregator, or opinion site. Every article must be verifiable, sourced, and written for real search intent.
 
-**ZWire covers four content pillars â€” nothing outside these:**
+**ZWire covers four content pillars — nothing outside these:**
 
 | Pillar | Beats | Example routes |
 |---|---|---|
@@ -19,44 +19,44 @@ ZWire (ZeroWire) is a verified news and culture platform built on Next.js 15, Re
 
 **Do NOT create content in verticals outside these pillars.** No gaming, no general tech/AI, no finance, no politics.
 
-Production: Railway â†’ `owire.org` (domain is **owire.org**, NOT objectwire.org) | Repo: `aMarketology/ZeroWire`
+Production: Railway ? `objectivewire.org` (domain is **objectivewire.org**, NOT objectwire.org) | Repo: `aMarketology/ZeroWire`
 
 ---
 
-## OStandard â€” Always Enforced
+## OStandard — Always Enforced
 
 Whenever writing or editing any article, component, Supabase record, or editorial copy, follow the full OStandard spec defined in `.github/skills/ostandard/SKILL.md`.
 
 ### Core rules (quick reference):
 
-- **No em dashes (`â€”`) EVER â€” anywhere.** Not in titles, headings, metadata, prose, JSX strings, Supabase fields, or code comments. Use `|` in headings. Use `,` in prose. Rewrite if needed. Non-negotiable and checked by the build guard.
-- **No en dashes (`â€“`) ever.** Use `-` or rewrite the sentence.
+- **No em dashes (`—`) EVER — anywhere.** Not in titles, headings, metadata, prose, JSX strings, Supabase fields, or code comments. Use `|` in headings. Use `,` in prose. Rewrite if needed. Non-negotiable and checked by the build guard.
+- **No en dashes (`–`) ever.** Use `-` or rewrite the sentence.
 - **No `&` in H1/H2/H3 headings or article body prose.** Use `,` or rewrite. `&` is allowed in `metadata.title` and `openGraph.title` only.
 - **Headings use `|`** as a separator, never `:` followed by a dependent clause.
 - Subheadings must be niche and specific, not generic (`"Background"`, `"Overview"` are banned).
-- Meta description: 130â€“155 chars, contains primary keyword, no generic phrases.
-- `metadata.title` format: `Primary Keyword | Specific Detail` â€” **no brand suffix** (`| ObjectWire` is dropped). Max 60 chars. No em dashes. `&` allowed.
+- Meta description: 130–155 chars, contains primary keyword, no generic phrases.
+- `metadata.title` format: `Primary Keyword | Specific Detail` — **no brand suffix** (`| ObjectWire` is dropped). Max 60 chars. No em dashes. `&` allowed.
 - Every article slug must be lowercase, hyphen-only, no stop words.
-- `tags` must be an array of 4â€“8 real proper nouns (no generic terms).
+- `tags` must be an array of 4–8 real proper nouns (no generic terms).
 - `category` must be one of: `News`, `Tech`, `Finance`, `Entertainment`, `World`, `Politics`, `Science`, `Sports`, `Culture`, `Crypto`, `Gaming`.
 - `published_at` must be a full ISO-8601 timestamp (e.g. `2026-03-28T14:00:00Z`).
 
 ### Em Dash Zero-Tolerance Reference
 
-Never use `â€”`. Replace every instance with these substitutions:
+Never use `—`. Replace every instance with these substitutions:
 
 | Context | Wrong | Correct |
 |---|---|---|
-| Heading separator | `Title â€” Subtitle` | `Title \| Subtitle` |
-| Prose parenthetical | `The update â€” which ships Friday â€” adds X` | `The update, which ships Friday, adds X` |
-| Prose break | `It launched â€” and immediately crashed` | `It launched, and immediately crashed` |
-| Quote/attribution footer | `â€” Jack Sterling` | `, Jack Sterling` |
-| OG/Twitter description | `New feature â€” here's what changed` | `New feature, here is what changed` |
-| Supabase subtitle/description | `Record sales â€” 5M in 48h` | `Record sales, 5M in 48 hours` |
+| Heading separator | `Title — Subtitle` | `Title \| Subtitle` |
+| Prose parenthetical | `The update — which ships Friday — adds X` | `The update, which ships Friday, adds X` |
+| Prose break | `It launched — and immediately crashed` | `It launched, and immediately crashed` |
+| Quote/attribution footer | `— Jack Sterling` | `, Jack Sterling` |
+| OG/Twitter description | `New feature — here's what changed` | `New feature, here is what changed` |
+| Supabase subtitle/description | `Record sales — 5M in 48h` | `Record sales, 5M in 48 hours` |
 
 ---
 
-## Article Architecture â€” Content in Code, Metadata in Supabase
+## Article Architecture — Content in Code, Metadata in Supabase
 
 **Rule (May 2026):** Article bodies and subheadings live in code (`page.tsx` files). Only critical metadata is stored in Supabase.
 
@@ -70,7 +70,7 @@ Never use `â€”`. Replace every instance with these substitutions:
 
 - **New articles**: Write as `<NewsArticle>`, `<JackArticle>`, etc. with full content in the file. Do NOT run `wiki:publish` to strip them to DB stubs.
 - **`*DB` components** (`NewsArticleDB`, `JackArticleDB`, etc.) are **legacy only**. They fetch body content from Supabase on every request and are not used for new articles.
-- **`content_registry`** is the single source of truth for the homepage, hub pages, sitemaps, and related articles. It is populated at build time by `sync-registry.ts` â€” no per-request Supabase calls needed for listings.
+- **`content_registry`** is the single source of truth for the homepage, hub pages, sitemaps, and related articles. It is populated at build time by `sync-registry.ts` — no per-request Supabase calls needed for listings.
 - **Hub pages** use `export const revalidate = 3600` (ISR, 1-hour TTL). Never `force-dynamic` on hub/index pages.
 - **Article pages** use `export const revalidate = 86400` or no export (static). Full body content is in code so there is nothing to fetch from Supabase at render time.
 - **Homepage** makes exactly 1 Supabase call: `getAllEntries()` from `content_registry`. No `getAllArticles()`, no `getCreatorArticles()`, no `getJackArticles()`.
@@ -83,18 +83,18 @@ Every article belongs to exactly one Supabase table. Use the correct component o
 
 | Component | Supabase Table | Use For |
 |---|---|---|
-| `NewsArticleDB` | `articles` | **Legacy only** â€” existing DB stub pages |
-| `JackArticleDB` | `jack_articles` | **Legacy only** â€” existing DB stub pages |
-| `ArticlePageDB` | `article_pages` | **Legacy only** â€” existing DB stub pages |
-| `CreatorArticleDB` | `creator_articles` | **Legacy only** â€” existing DB stub pages |
-| `AlysaArticleDB` | `alysa_articles` | **Legacy only** â€” existing DB stub pages |
-| `NewsArticle` | None (content in code) | **All new articles** â€” body stays in page.tsx |
-| `JackArticle` | None (content in code) | **All new JackArticle** â€” body stays in page.tsx |
+| `NewsArticleDB` | `articles` | **Legacy only** — existing DB stub pages |
+| `JackArticleDB` | `jack_articles` | **Legacy only** — existing DB stub pages |
+| `ArticlePageDB` | `article_pages` | **Legacy only** — existing DB stub pages |
+| `CreatorArticleDB` | `creator_articles` | **Legacy only** — existing DB stub pages |
+| `AlysaArticleDB` | `alysa_articles` | **Legacy only** — existing DB stub pages |
+| `NewsArticle` | None (content in code) | **All new articles** — body stays in page.tsx |
+| `JackArticle` | None (content in code) | **All new JackArticle** — body stays in page.tsx |
 | `CreatorArticle` | None (content in code) | **All new creator profiles** |
 
 **`jack_articles` has no `status` column.** Never query `status` from it.
 
-All fetching is server-side. Zero client-side Supabase calls in page components. New article `page.tsx` files do NOT export `dynamic = 'force-dynamic'` â€” use `revalidate = 86400` or omit entirely for static generation.
+All fetching is server-side. Zero client-side Supabase calls in page components. New article `page.tsx` files do NOT export `dynamic = 'force-dynamic'` — use `revalidate = 86400` or omit entirely for static generation.
 
 ---
 
@@ -102,18 +102,18 @@ All fetching is server-side. Zero client-side Supabase calls in page components.
 
 **This is the reference article all new `NewsArticle` pages must match.**
 
-Live: `https://www.owire.org/entertainment/news/fortnite-moves-into-movies`
+Live: `https://www.objectivewire.org/entertainment/news/fortnite-moves-into-movies`
 Slug: `entertainment-news-fortnite-moves-into-movies` | Table: `articles` | Component: `NewsArticleDB`
 
 ### Why it is the standard
 
-1. **Layout** â€” 80/20 grid: main article body left (80%), `RelatedArticles` sticky sidebar right (20%)
-2. **Related Articles sidebar** â€” auto-populated by `RelatedArticles` (client component). Queries `articles` by category, cross-ranks with the user's `localStorage` reading history tags. No manual curation needed. It just works.
-3. **Animated thumbnail** â€” when there is no hero image, a `thumbnail_src` set in Supabase renders inside the gradient header with the "genie float" animation (golden flare sweep, subtle bob). This is the preferred header style for news/tech/gaming articles.
-4. **Full engagement stack** â€” every article gets: `ReactionBar` (like/share/save), `DiscordComments`, `NewsletterSignupInline`, `ArticleViewTracker`, `TagsSection`, and an author card footer. These are automatic. Do not remove them.
-5. **Metadata quality** â€” 18 targeted keywords, full `openGraph` block with `publishedTime` + `section`, `twitter` card, canonical URL.
-6. **Content depth** â€” specific named figures (153 productions, 65% GDC stat, 44% YoY ICVFX growth), data tables, H2 headings with numbers and `|` separators, internal links to hub pages.
-7. **Internal linking** â€” minimum 4 internal links per article. Must include: hub backlink, 2 cluster sibling links, 1 author page link. All links blue and underlined (see Interlinking Rules section).
+1. **Layout** — 80/20 grid: main article body left (80%), `RelatedArticles` sticky sidebar right (20%)
+2. **Related Articles sidebar** — auto-populated by `RelatedArticles` (client component). Queries `articles` by category, cross-ranks with the user's `localStorage` reading history tags. No manual curation needed. It just works.
+3. **Animated thumbnail** — when there is no hero image, a `thumbnail_src` set in Supabase renders inside the gradient header with the "genie float" animation (golden flare sweep, subtle bob). This is the preferred header style for news/tech/gaming articles.
+4. **Full engagement stack** — every article gets: `ReactionBar` (like/share/save), `DiscordComments`, `NewsletterSignupInline`, `ArticleViewTracker`, `TagsSection`, and an author card footer. These are automatic. Do not remove them.
+5. **Metadata quality** — 18 targeted keywords, full `openGraph` block with `publishedTime` + `section`, `twitter` card, canonical URL.
+6. **Content depth** — specific named figures (153 productions, 65% GDC stat, 44% YoY ICVFX growth), data tables, H2 headings with numbers and `|` separators, internal links to hub pages.
+7. **Internal linking** — minimum 4 internal links per article. Must include: hub backlink, 2 cluster sibling links, 1 author page link. All links blue and underlined (see Interlinking Rules section).
 
 ### `page.tsx` stub pattern (after `wiki:publish`)
 
@@ -129,12 +129,12 @@ export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',  // max 60 chars, no brand suffix, no em dashes, no &
   description: '130-155 chars. Primary keyword in first 60 chars. No generic phrases.',
   keywords: ['keyword 1', 'keyword 2', /* 10-18 targeted keywords */],
-  alternates: { canonical: `https://www.owire.org${SLUG}` },
+  alternates: { canonical: `https://www.objectivewire.org${SLUG}` },
   openGraph: {
     title: 'Article Title Without Brand Suffix',
     description: 'Slightly different from meta description, emphasize data/hook.',
     type: 'article',
-    url: `https://www.owire.org${SLUG}`,
+    url: `https://www.objectivewire.org${SLUG}`,
     siteName: 'ObjectWire',
     authors: ['Author Name'],
     publishedTime: '2026-03-12T00:00:00Z',
@@ -172,7 +172,7 @@ Every `NewsArticle` article must have ALL of these populated before `wiki:publis
 | `author_name` | Display name |
 | `author_slug` | Kebab-case, links to `/authors/[slug]` |
 | `read_time` | String, e.g. `"7 min read"` |
-| `thumbnail_src` | Real hosted image URL â€” triggers the animated genie header |
+| `thumbnail_src` | Real hosted image URL — triggers the animated genie header |
 | `thumbnail_alt` | Descriptive alt text for the thumbnail |
 | `tags` | Array of 4-8 proper nouns |
 | `url` | Full canonical path: `/entertainment/news/fortnite-moves-into-movies` |
@@ -183,20 +183,20 @@ Every `NewsArticle` article must have ALL of these populated before `wiki:publis
 
 **This is the reference article all new `JackArticle` pages must match.**
 
-Live: `https://www.owire.org/crypto/news/anchorage-usat-expands-to-celo-network`
+Live: `https://www.objectivewire.org/crypto/news/anchorage-usat-expands-to-celo-network`
 Slug: `crypto-news-anchorage-usat-expands-to-celo-network` | Table: `jack_articles` | Component: `JackArticleDB`
 
 ### Why it is the standard
 
-1. **Layout** â€” `layout="news"` with `accentColor` matched to topic (green for crypto/finance, blue for tech, orange for policy)
-2. **Full sub-component stack** â€” every premium article uses: `JackStats`, `JackCardGrid`, `JackCard`, `JackCallout`, `JackSideBlock`, `JackProcess`, `JackIndicatorGrid`, `JackQuote`, `JackSection` (numbered)
-3. **Timeline** â€” 5-7 item chronological `timeline` array showing the story arc
-4. **Sources** â€” numbered `sources` array with real URLs. Every factual claim must be traceable.
-5. **Related articles** â€” 4-6 manually curated `relatedArticles` with accurate `categoryColor`
-6. **Author** â€” always `Jack Sterling` (slug: `jack-sterling`), department varies by beat
-7. **Breadcrumbs** â€” 3 levels: hub, sub-hub, article
-8. **Content depth** â€” specific named figures, percentages, dates. No vague claims.
-9. **Internal linking** â€” minimum 5 internal links per JackArticle. Link to cluster hub, 2-3 related sub-articles, and 1 author page. External source links open in `_blank` with `rel="noopener noreferrer"`. All links blue and underlined.
+1. **Layout** — `layout="news"` with `accentColor` matched to topic (green for crypto/finance, blue for tech, orange for policy)
+2. **Full sub-component stack** — every premium article uses: `JackStats`, `JackCardGrid`, `JackCard`, `JackCallout`, `JackSideBlock`, `JackProcess`, `JackIndicatorGrid`, `JackQuote`, `JackSection` (numbered)
+3. **Timeline** — 5-7 item chronological `timeline` array showing the story arc
+4. **Sources** — numbered `sources` array with real URLs. Every factual claim must be traceable.
+5. **Related articles** — 4-6 manually curated `relatedArticles` with accurate `categoryColor`
+6. **Author** — always `Jack Sterling` (slug: `jack-sterling`), department varies by beat
+7. **Breadcrumbs** — 3 levels: hub, sub-hub, article
+8. **Content depth** — specific named figures, percentages, dates. No vague claims.
+9. **Internal linking** — minimum 5 internal links per JackArticle. Link to cluster hub, 2-3 related sub-articles, and 1 author page. External source links open in `_blank` with `rel="noopener noreferrer"`. All links blue and underlined.
 
 ### `page.tsx` stub pattern (after `wiki:publish`)
 
@@ -207,8 +207,8 @@ import { JackArticleDB } from '@/components/JackArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/your/path/here';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`; // REQUIRED â€” wiki:publish removes this, add it back manually
-const OG_IMAGE = 'https://www.owire.org/your-image.png';
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`; // REQUIRED — wiki:publish removes this, add it back manually
+const OG_IMAGE = 'https://www.objectivewire.org/your-image.png';
 
 export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',
@@ -241,7 +241,7 @@ export default function YourPage() {
 `wiki:publish` **always removes** the `const ARTICLE_URL = ...` line from the stub but leaves `ARTICLE_URL` references in `metadata.alternates.canonical` and `metadata.openGraph.url`. **After every `wiki:publish` on a JackArticle, manually re-add:**
 
 ```ts
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 ```
 
 Place it immediately after the `const SLUG = ...` line. This applies to NewsArticle stubs too when they use `ARTICLE_URL`.
@@ -252,22 +252,22 @@ Place it immediately after the `const SLUG = ...` line. This applies to NewsArti
 
 **This is the reference article all new `CreatorArticle` pages must match.**
 
-Live: `https://www.owire.org/influencer/ari-kytsya`
+Live: `https://www.objectivewire.org/influencer/ari-kytsya`
 Slug: `influencer-ari-kytsya` | Table: `creator_articles` | Component: `CreatorArticleDB`
 
 ### Why it is the standard
 
-1. **Layout** â€” 2/3 article body + 1/3 sticky sidebar. The sidebar IS the Wikipedia-style infobox. No `RelatedArticles`.
-2. **Wikipedia-style infobox** â€” sidebar portrait image with name/subtitle overlay, followed by a row table: Born, Nationality, Based in, Occupation, all social handles (linked with `href`), business email, agency, follower counts.
-3. **Hero CTA buttons** â€” Instagram, TikTok, YouTube linked from the gradient header. Use `variant: 'secondary'` with emoji icons.
-4. **Photo gallery mid-article** â€” `CreatorImageGallery` placed after the primary content sections, NOT at the top. Put it after the quote block.
-5. **Keyword-rich H2s** â€” Every `CreatorSection heading` includes the subject's full name as primary keyword: `"Ari Kytsya TikTok | 5M Followers from Seattle"`, `"Ari Kytsya and Yung Gravy | Relationship"`. Generic headings like `"Background"` or `"Overview"` are banned.
-6. **Full sub-component stack** â€” `CreatorSection`, `CreatorStat` (3 stats at top), `CreatorCalloutBox`, `CreatorQuote`, `CreatorImageGallery`, `CreatorTable`.
-7. **Social links section** â€” a dedicated `CreatorSection` near the bottom lists all official accounts as `<a>` links + `CreatorTable` with platform, handle, followers, focus.
-8. **Engagement footer** â€” `ArticleViewTracker` + `ArticleFooter` (like/save/share/Discord). No `NewsletterSignupInline`.
-9. **15-18 keywords** â€” includes `[name] age`, `[name] age 2026`, `[name] Instagram`, `[name] TikTok`, `[name] real name`, `[name] 2026`, and topic variants like `notburnttoasthehe TikTok`.
-10. **Article Info sidebar card** â€” below the infobox, a styled card shows Published, Updated, Author, Category in the same row style as the infobox.
-11. **Internal linking** â€” minimum 3 internal links per CreatorArticle. Social handle links in the infobox rows must use `<a href>` with `target="_blank" rel="noopener noreferrer"`. Body links to related profiles and hub pages must be blue and underlined.
+1. **Layout** — 2/3 article body + 1/3 sticky sidebar. The sidebar IS the Wikipedia-style infobox. No `RelatedArticles`.
+2. **Wikipedia-style infobox** — sidebar portrait image with name/subtitle overlay, followed by a row table: Born, Nationality, Based in, Occupation, all social handles (linked with `href`), business email, agency, follower counts.
+3. **Hero CTA buttons** — Instagram, TikTok, YouTube linked from the gradient header. Use `variant: 'secondary'` with emoji icons.
+4. **Photo gallery mid-article** — `CreatorImageGallery` placed after the primary content sections, NOT at the top. Put it after the quote block.
+5. **Keyword-rich H2s** — Every `CreatorSection heading` includes the subject's full name as primary keyword: `"Ari Kytsya TikTok | 5M Followers from Seattle"`, `"Ari Kytsya and Yung Gravy | Relationship"`. Generic headings like `"Background"` or `"Overview"` are banned.
+6. **Full sub-component stack** — `CreatorSection`, `CreatorStat` (3 stats at top), `CreatorCalloutBox`, `CreatorQuote`, `CreatorImageGallery`, `CreatorTable`.
+7. **Social links section** — a dedicated `CreatorSection` near the bottom lists all official accounts as `<a>` links + `CreatorTable` with platform, handle, followers, focus.
+8. **Engagement footer** — `ArticleViewTracker` + `ArticleFooter` (like/save/share/Discord). No `NewsletterSignupInline`.
+9. **15-18 keywords** — includes `[name] age`, `[name] age 2026`, `[name] Instagram`, `[name] TikTok`, `[name] real name`, `[name] 2026`, and topic variants like `notburnttoasthehe TikTok`.
+10. **Article Info sidebar card** — below the infobox, a styled card shows Published, Updated, Author, Category in the same row style as the infobox.
+11. **Internal linking** — minimum 3 internal links per CreatorArticle. Social handle links in the infobox rows must use `<a href>` with `target="_blank" rel="noopener noreferrer"`. Body links to related profiles and hub pages must be blue and underlined.
 
 ### `page.tsx` stub pattern (after `wiki:publish`)
 
@@ -278,7 +278,7 @@ import { CreatorArticleDB } from '@/components/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/influencer/your-creator';
-const PAGE_URL = `https://www.owire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
 const IMAGE_URL = '/influncer/yourCreator.jpg';  // local public file
 
 export const metadata: Metadata = {
@@ -307,7 +307,7 @@ export const metadata: Metadata = {
     tags: ['Creator Name', 'Influencer', 'City', 'Platform'],
     publishedTime: '2026-04-02T12:00:00Z',
     modifiedTime: '2026-04-02T12:00:00Z',
-    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Creator Name portrait' }],
+    images: [{ url: `https://www.objectivewire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Creator Name portrait' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -329,12 +329,12 @@ export default function InfluencerYourCreatorPage() {
 | `schema_description` | 130-155 chars, name first, platforms + location |
 | `schema_author` | `"ObjectWire Influencer Desk"` |
 | `schema_article_url` | Full canonical URL |
-| `schema_image_url` | Full URL to portrait image (`https://www.owire.org/influncer/...`) |
+| `schema_image_url` | Full URL to portrait image (`https://www.objectivewire.org/influncer/...`) |
 | `schema_section` | `"Influencer"` |
 | `schema_keywords` | Array of 15-18 terms matching `page.tsx` keywords |
 | `schema_published_time` | ISO-8601 |
 | `schema_modified_time` | ISO-8601 |
-| `breadcrumbs` | Array: Home â†’ Influencer â†’ Creator Name |
+| `breadcrumbs` | Array: Home ? Influencer ? Creator Name |
 | `hero_image_src` | Local public path (`/influncer/ariK.jpg`) |
 | `hero_image_alt` | Descriptive alt text |
 | `hero_gradient` | CSS gradient string matching creator brand colors |
@@ -351,30 +351,30 @@ export default function InfluencerYourCreatorPage() {
 | `sidebar_meta_updated_date` | Display string or omit |
 | `sidebar_meta_author` | `"ObjectWire Influencer Desk"` |
 | `sidebar_meta_category` | `"Influencer"` |
-| `content_html` | Full component-tagged HTML â€” see section order below |
+| `content_html` | Full component-tagged HTML — see section order below |
 
 ### `content_html` section order (gold standard)
 
-1. `<CreatorSection heading="Who Is [Name]">` â€” 2-paragraph bio
+1. `<CreatorSection heading="Who Is [Name]">` — 2-paragraph bio
 2. `<div>` with 3 `<CreatorStat>` cards (primary platform followers, secondary platform, age)
-3. `<CreatorSection heading="[Name] [Platform] | Followers + City">` â€” platform origin story
-4. `<CreatorSection heading="[Name] Content | Topic, Topic, Topic">` â€” content style
-5. `<CreatorCalloutBox heading="Content Categories">` â€” labeled list
-6. `<CreatorSection heading="[Name] [Monetization] | Dual-Platform Model">` â€” platform economics
-7. `<CreatorQuote>` â€” direct quote with attribution
-8. `<CreatorImageGallery>` â€” 2-3 photos with captions (**here, not at the top**)
-9. Notable event sections (lecture, relationship, incident) â€” one `CreatorSection` each
+3. `<CreatorSection heading="[Name] [Platform] | Followers + City">` — platform origin story
+4. `<CreatorSection heading="[Name] Content | Topic, Topic, Topic">` — content style
+5. `<CreatorCalloutBox heading="Content Categories">` — labeled list
+6. `<CreatorSection heading="[Name] [Monetization] | Dual-Platform Model">` — platform economics
+7. `<CreatorQuote>` — direct quote with attribution
+8. `<CreatorImageGallery>` — 2-3 photos with captions (**here, not at the top**)
+9. Notable event sections (lecture, relationship, incident) — one `CreatorSection` each
 10. `<CreatorCalloutBox>` for safety / controversy context (color `"red"` if serious)
 11. `<CreatorSection heading="[Name] Social Media | Official Accounts 2026">` with `<ul>` of linked handles
 12. `<CreatorSection heading="[Name] Social Media Accounts | 2026 Follower Counts">` + `<CreatorTable>`
-13. `<CreatorSection heading="[Name] 2026 | Creator Profile Summary">` â€” closing context
+13. `<CreatorSection heading="[Name] 2026 | Creator Profile Summary">` — closing context
 
 ---
 
 ## Slug Format Rules
 
-- `app/california/my-article/page.tsx` â†’ slug: `california-my-article`
-- `app/trump/foo/page.tsx` â†’ slug: `trump-foo`
+- `app/california/my-article/page.tsx` ? slug: `california-my-article`
+- `app/trump/foo/page.tsx` ? slug: `trump-foo`
 - Slugs match the full path joined with dashes, no leading slash, all lowercase.
 - The slug in `page.tsx` and the slug in the Supabase row must be identical.
 
@@ -382,9 +382,9 @@ export default function InfluencerYourCreatorPage() {
 
 ## Publishing Workflows
 
-**Workflow A â€” Full content in code (DEFAULT for all new articles, May 2026+):**
+**Workflow A — Full content in code (DEFAULT for all new articles, May 2026+):**
 
-Write the full `page.tsx` with `<NewsArticle>`, `<JackArticle>`, or `<CreatorArticle>` â€” body and subheadings stay in the file. Then run `sync-registry.ts` to register the metadata in `content_registry`:
+Write the full `page.tsx` with `<NewsArticle>`, `<JackArticle>`, or `<CreatorArticle>` — body and subheadings stay in the file. Then run `sync-registry.ts` to register the metadata in `content_registry`:
 ```bash
 npm run build   # sync-registry.ts runs automatically as part of prebuild
 ```
@@ -394,7 +394,7 @@ npx tsx scripts/sync-registry.ts --write
 ```
 The page is statically generated at build time. No Supabase call on every request. Use `export const revalidate = 86400` if you want periodic ISR refresh, or omit for fully static.
 
-**Workflow B â€” `wiki:publish` (legacy, only for migrating existing DB-based content):**
+**Workflow B — `wiki:publish` (legacy, only for migrating existing DB-based content):**
 
 If you have an existing full content file that was previously stripped to a stub, run:
 ```bash
@@ -402,7 +402,7 @@ npm run wiki:publish -- --file app/your/path/page.tsx
 ```
 This upserts to the appropriate Supabase table and trims to a DB stub. **Do not use for new articles.**
 
-**Workflow C â€” content file â†’ Supabase (for `articles` table only, news format, legacy):**
+**Workflow C — content file ? Supabase (for `articles` table only, news format, legacy):**
 ```bash
 cp content/articles/_template.ts content/articles/[category]/your-slug.ts
 # fill fields and content_html
@@ -410,9 +410,9 @@ npm run content:dry-run
 npm run content:publish
 ```
 
-**Workflow D â€” `/admin/editor` UI** â€” use only for quick edits or non-developer contributors.
+**Workflow D — `/admin/editor` UI** — use only for quick edits or non-developer contributors.
 
-**Workflow E â€” bulk sync (use with caution):**
+**Workflow E — bulk sync (use with caution):**
 ```bash
 npm run wiki:sync      # upserts all pages + deletes orphan Supabase rows
 npm run wiki:status    # diagnostic: shows sync state across filesystem, registry, Supabase
@@ -420,10 +420,10 @@ npm run wiki:status    # diagnostic: shows sync state across filesystem, registr
 
 ### Critical rules
 - **New articles: body stays in code.** Do not push body content to Supabase for new articles.
-- **`sync-registry.ts` runs at every build** â€” it reads metadata from `page.tsx` files and upserts `content_registry`. This is the only Supabase write needed for new content.
+- **`sync-registry.ts` runs at every build** — it reads metadata from `page.tsx` files and upserts `content_registry`. This is the only Supabase write needed for new content.
 - **Never use `<ArticlePageDB>` (or any `*DB` component) in a new content file.** The `*DB` variants are legacy for existing DB-backed stubs only.
 - Slug is derived automatically from the file path. Do not set it manually in the file.
-- **After every `wiki:publish` (legacy), check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.owire.org${SLUG}\`` after the SLUG line.
+- **After every `wiki:publish` (legacy), check the stub for `ARTICLE_URL` references.** The trimmer removes the `const` but leaves usages. Re-add `const ARTICLE_URL = \`https://www.objectivewire.org${SLUG}\`` after the SLUG line.
 
 ---
 
@@ -451,7 +451,7 @@ After publishing, every article also needs a `content_registry` entry. Missing e
 
 ## AI-First Extraction SEO (May 2026)
 
-oWire targets AI citation in ChatGPT, Perplexity, Gemini, and Copilot â€” not just Google blue-links. The following rules are **mandatory on every new article**. An article without these is incomplete regardless of SEO metadata quality.
+oWire targets AI citation in ChatGPT, Perplexity, Gemini, and Copilot — not just Google blue-links. The following rules are **mandatory on every new article**. An article without these is incomplete regardless of SEO metadata quality.
 
 ### KeyTakeaways (required on every NewsArticle)
 
@@ -460,9 +460,9 @@ Every `NewsArticle` must pass a `keyTakeaways` prop with 3-5 items:
 ```tsx
 keyTakeaways={[
   '[Subject] is a [complete definition with key specs/price/date].',
-  '[Key quantitative fact â€” a number, price, or date that stands alone].',
-  '[Technical or comparative fact â€” engine, performance, architecture].',
-  '[Availability or status fact â€” sold out, units, delivery date].',
+  '[Key quantitative fact — a number, price, or date that stands alone].',
+  '[Technical or comparative fact — engine, performance, architecture].',
+  '[Availability or status fact — sold out, units, delivery date].',
 ]}
 keyTakeawaysColor="red"  // red for cars, blue for tech, green for finance
 ```
@@ -472,7 +472,7 @@ Rules:
 - Item 1 = full definition: "X is a [category] that [key descriptor, price, manufacturer]."
 - No em dashes. No marketing language ("incredible", "amazing"). No hooks.
 - The `KeyTakeaways` component emits `ItemList` JSON-LD for AI crawlers automatically.
-- Import: the component is wired into `NewsArticle` â€” just pass the array prop.
+- Import: the component is wired into `NewsArticle` — just pass the array prop.
 
 ### FAQItems (required on every NewsArticle)
 
@@ -488,10 +488,10 @@ faqItems={[
 ```
 
 Rules:
-- Question 1 **must** be "What is [Subject]?" or "Who is [Name]?" â€” the definitional query.
+- Question 1 **must** be "What is [Subject]?" or "Who is [Name]?" — the definitional query.
 - Questions must match actual search queries (lower-case question, no trailing punctuation except `?`).
 - Answers: sentence 1 = direct answer. Max 3 sentences. No hedging ("It depends on...").
-- `FAQSchema` JSON-LD is emitted automatically by `NewsArticle` â€” no manual schema required.
+- `FAQSchema` JSON-LD is emitted automatically by `NewsArticle` — no manual schema required.
 
 ### Article Opener (answer-first, no hooks)
 
@@ -513,7 +513,7 @@ All articles must use a named individual author. Never use desk names ("Auto Des
 | Creator / YouTube | Jack Sterling | `jack-sterling` |
 | Sports / Culture | Jack Brennan | `jack-brennan` |
 
-### Hub Pages â€” Citable Intro Copy
+### Hub Pages — Citable Intro Copy
 
 Every hub page (`/cars`, `/cars/ferrari`, `/creator`, etc.) must have a `<Hub.Prose>` section (or equivalent `<p>` block for custom hub layouts) with:
 - Sentence 1: direct definition of what the hub covers ("oWire Cars covers hypercars, supercars, and EVs from...")
@@ -526,8 +526,8 @@ Every hub page (`/cars`, `/cars/ferrari`, `/creator`, etc.) must have a `<Hub.Pr
 
 Every article that ships must have all of the following:
 
-- `metadata.title` â€” keyword + specific detail (`"Ferrari F80 | Price, Specs, 2026"`) â€” no brand suffix, max 60 chars
-- `metadata.description` â€” 130-155 chars, primary keyword in first 60 chars
+- `metadata.title` — keyword + specific detail (`"Ferrari F80 | Price, Specs, 2026"`) — no brand suffix, max 60 chars
+- `metadata.description` — 130-155 chars, primary keyword in first 60 chars
 - `canonical` URL set in `alternates`
 - `openGraph` block with title, description, image (1200x675), `publishedTime`, `section`
 - `NewsArticleSchema` component matching the `content_registry` entry exactly
@@ -536,14 +536,14 @@ Every article that ships must have all of the following:
 - H2 headings (one per major section, keyword-rich, contain primary keyword)
 - 4-6 internal links to related oWire pages
 - `imageUrl`, `imageWidth`, `imageHeight` in the registry entry (required for Google Top Stories)
-- `keyTakeaways` prop â€” 3-5 answer-first sentences (see AI-First Extraction SEO section above)
-- `faqItems` prop â€” 3-6 Q&A pairs, first question is "What is X?" (see above)
+- `keyTakeaways` prop — 3-5 answer-first sentences (see AI-First Extraction SEO section above)
+- `faqItems` prop — 3-6 Q&A pairs, first question is "What is X?" (see above)
 
 ---
 
 ## SEO Growth Context
 
-ZWire's current SEO state (May 2026): ~120 registry entries, domain owire.org. Growth target: 100K monthly organic sessions on Bing + Google within 12 months.
+ZWire's current SEO state (May 2026): ~120 registry entries, domain objectivewire.org. Growth target: 100K monthly organic sessions on Bing + Google within 12 months.
 
 **Priority content pillars and clusters to build or expand:**
 
@@ -564,7 +564,7 @@ Sub-articles within a cluster must link to the hub, and the hub must link to all
 
 ---
 
-## Interlinking Rules â€” Enforced on Every Article Type
+## Interlinking Rules — Enforced on Every Article Type
 
 Internal linking is mandatory on every publish. An article without proper internal links is incomplete, regardless of content quality.
 
@@ -580,13 +580,13 @@ Internal linking is mandatory on every publish. An article without proper intern
 
 ### Required link types (all article types)
 
-1. **Hub backlink** â€” every sub-article must link to its parent hub within the first 3 paragraphs. Example: `/video-games/gta-6/release-date` must link to `/video-games/gta-6`.
-2. **Cluster cross-links** â€” link to 2-3 sibling articles in the same cluster.
-3. **Author page link** â€” link to `/authors/[slug]` at least once per article if the author has a profile page.
-4. **Pillar hub links** â€” on first mention of a priority topic (GTA 6, OpenAI, Nintendo Switch 2, etc.), link to the pillar hub.
-5. **No orphan pages** â€” every new page must be linked from at least one existing page (hub, sibling article, or category index).
+1. **Hub backlink** — every sub-article must link to its parent hub within the first 3 paragraphs. Example: `/video-games/gta-6/release-date` must link to `/video-games/gta-6`.
+2. **Cluster cross-links** — link to 2-3 sibling articles in the same cluster.
+3. **Author page link** — link to `/authors/[slug]` at least once per article if the author has a profile page.
+4. **Pillar hub links** — on first mention of a priority topic (GTA 6, OpenAI, Nintendo Switch 2, etc.), link to the pillar hub.
+5. **No orphan pages** — every new page must be linked from at least one existing page (hub, sibling article, or category index).
 
-### Link styling â€” non-negotiable, applies everywhere
+### Link styling — non-negotiable, applies everywhere
 
 Every link in article prose must be blue and underlined. No exceptions.
 
@@ -647,24 +647,24 @@ The `prose` Tailwind class applies default link colors but they are overridden b
 
 ## Editorial Principles
 
-1. **Accuracy over speed** â€” verify before publishing, never chase breaking news without sourcing.
-2. **Primary sources only** â€” cite origins, not aggregators. Every claim must be traceable.
-3. **Transparent corrections** â€” errors corrected publicly, timestamped, original text preserved.
-4. **Clear separation** â€” news vs. opinion labeled, sponsored content disclosed.
-5. **Named authors** â€” all articles must have a byline with a valid `author_slug`.
+1. **Accuracy over speed** — verify before publishing, never chase breaking news without sourcing.
+2. **Primary sources only** — cite origins, not aggregators. Every claim must be traceable.
+3. **Transparent corrections** — errors corrected publicly, timestamped, original text preserved.
+4. **Clear separation** — news vs. opinion labeled, sponsored content disclosed.
+5. **Named authors** — all articles must have a byline with a valid `author_slug`.
 
 ---
 
 ## General Code Standards
 
-- TypeScript strict mode is on â€” no `any` types without justification.
+- TypeScript strict mode is on — no `any` types without justification.
 - All Supabase queries go through `lib/blog-service.ts` or `lib/supabase/`.
 - Server components fetch data; client components handle interaction only.
-- Never hardcode Supabase URLs or keys â€” use env vars (`NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`).
-- Tailwind only â€” no inline `style={{}}` unless absolutely necessary.
+- Never hardcode Supabase URLs or keys — use env vars (`NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`).
+- Tailwind only — no inline `style={{}}` unless absolutely necessary.
 - File names: kebab-case for pages/routes, PascalCase for components.
 - `content_html` bodies must be wrapped in `<div class="prose prose-lg max-w-none">`.
-- Blockquote footers use `, Name, Title` format â€” never start with `â€”`.
+- Blockquote footers use `, Name, Title` format — never start with `—`.
 
 ### Internal Link Styling
 
@@ -673,7 +673,7 @@ All `<Link>` elements (internal) and `<a>` elements (external) inside article bo
 <Link href="/path" className="text-blue-600 hover:text-blue-800 underline">anchor text</Link>
 <a href="https://external.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">external text</a>
 ```
-Never render internal or external links as unstyled black text. Every hyperlink in article prose must be visually distinguishable â€” blue, underlined, matching the standard browser default.
+Never render internal or external links as unstyled black text. Every hyperlink in article prose must be visually distinguishable — blue, underlined, matching the standard browser default.
 
 This applies in all contexts:
 - JSX in `.tsx` files
@@ -708,9 +708,9 @@ Raw `<table>` is acceptable only inside `<JackSection>` sub-components within Ja
 ### Homepage Article Pipeline
 
 The homepage (`app/page.tsx`) sources articles from three Supabase tables via `lib/article-service.ts`:
-- `articles` â€” via `getAllArticles()`
-- `creator_articles` â€” via `getCreatorArticles()`
-- `jack_articles` â€” via `getJackArticles()` (added April 2, 2026)
+- `articles` — via `getAllArticles()`
+- `creator_articles` — via `getCreatorArticles()`
+- `jack_articles` — via `getJackArticles()` (added April 2, 2026)
 
 All three are merged and sorted by `publishDate` before display. JackArticles appear on the homepage as long as their `article_url` field is populated with the canonical path.
 
@@ -745,12 +745,12 @@ These rules were added after a production canonical bug caused a major impressio
 
 ### Schema / JSON-LD rules
 
-- All URLs in JSON-LD must use `https://www.owire.org` (with www). Non-www URLs cause a canonical mismatch between schema and the canonical tag.
+- All URLs in JSON-LD must use `https://www.objectivewire.org` (with www). Non-www URLs cause a canonical mismatch between schema and the canonical tag.
 - Author fallback URL resolves to `/authors/[slug]`, not `/team/[slug]`.
 - `lib/seo.ts` has been deleted. Do not recreate it. Use `@/lib/seo-utils` or `@/lib/generate-article-metadata`.
 
 ### Prebuild pipeline (runs before every `next build`)
 
-1. `validate-public.ts` â€” blocks if conflicting static files exist in `/public`
-2. `validate-canonicals.ts` â€” blocks if hardcoded canonical found in layouts; warns on missing page canonicals
-3. `sync-registry.ts --write` â€” syncs `content_registry` with filesystem
+1. `validate-public.ts` — blocks if conflicting static files exist in `/public`
+2. `validate-canonicals.ts` — blocks if hardcoded canonical found in layouts; warns on missing page canonicals
+3. `sync-registry.ts --write` — syncs `content_registry` with filesystem

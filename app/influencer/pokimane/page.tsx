@@ -14,7 +14,7 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/pokimane';
-const PAGE_URL = `https://www.owire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
 const IMAGE_URL = '/influncer/pokimane-profile.jpg';
 
 export const metadata: Metadata = {
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
     publishedTime: '2026-04-29T12:00:00Z',
     modifiedTime: '2026-04-29T12:00:00Z',
     tags: ['Pokimane', 'Creator', 'Twitch', 'YouTube', 'Midnight'],
-    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Pokimane, gaming creator and Midnight founder' }],
+    images: [{ url: `https://www.objectivewire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Pokimane, gaming creator and Midnight founder' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Pokimane | Retired from Twitch, 8M YouTube Subscribers',
     description: 'Pokimane profile: real name Imane Anys, age 29, Twitch retirement 2024, Midnight snack brand, net worth, and YouTube 2026.',
-    images: [`https://www.owire.org${IMAGE_URL}`],
+    images: [`https://www.objectivewire.org${IMAGE_URL}`],
   },
 };
 
@@ -75,7 +75,7 @@ export default function PokimanePage() {
         modifiedTime: '2026-04-29T12:00:00Z',
         author: 'OzoneNews Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.owire.org${IMAGE_URL}`,
+        imageUrl: `https://www.objectivewire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Pokimane', 'Imane Anys', 'Pokimane age 2026', 'Pokimane Twitch retirement',
@@ -84,8 +84,8 @@ export default function PokimanePage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.owire.org' },
-        { name: 'Creator', item: 'https://www.owire.org/creator' },
+        { name: 'Home', item: 'https://www.objectivewire.org' },
+        { name: 'Creator', item: 'https://www.objectivewire.org/creator' },
         { name: 'Pokimane', item: PAGE_URL },
       ]}
       hero={{

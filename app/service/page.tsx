@@ -155,24 +155,29 @@ export default function ServicesHubPage() {
           </div>
           <div className="container mx-auto px-4 py-16 max-w-6xl">
             <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-400 mb-4 font-mono">
-              Austin, Texas · Licensed PI Agency · 501(c)(3) Nonprofit
+              Austin, Texas · Licensed Investigative Journalists · 501(c)(3) Nonprofit
             </p>
             <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
               Austin&apos;s Investigative<br />
-              <span className="text-blue-400">Media Agency.</span>
+              <span className="text-blue-400">Media Outlet.</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
-              We investigate, document, and publish. Licensed PI services for private clients.
-              Accountability journalism for the public. The same discipline applied to both.
+            <p className="text-xl text-gray-300 max-w-2xl mb-6 leading-relaxed">
+              Our reporters hold Texas PI licenses. That means court-admissible surveillance,
+              legal skip tracing, and verified background research, applied to stories the
+              public deserves to know.
+            </p>
+            <p className="text-base text-gray-400 max-w-2xl mb-10 leading-relaxed">
+              We are a news outlet first. The license enables the journalism, giving oWire
+              access to investigative methods most reporters cannot legally use.
             </p>
 
             {/* Stat badges */}
             <div className="flex flex-wrap gap-6 mb-10">
               {[
                 { stat: 'Licensed', label: 'Texas PI Agency' },
-                { stat: '501(c)(3)', label: 'Nonprofit Organization' },
+                { stat: '501(c)(3)', label: 'Nonprofit Newsroom' },
                 { stat: 'Austin, TX', label: 'Travis County Based' },
-                { stat: 'Free', label: 'Initial Consultation' },
+                { stat: 'Tip Us', label: 'Submit a Story' },
               ].map(({ stat, label }) => (
                 <div key={label} className="text-center">
                   <div className="text-2xl font-black text-white">{stat}</div>
@@ -183,16 +188,16 @@ export default function ServicesHubPage() {
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/get-help"
+                href="/service/tip-the-newsroom"
                 className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
               >
-                Start a Free Consultation
+                Tip the Newsroom
               </Link>
               <Link
                 href="/austin-private-detective-agency"
                 className="border border-gray-600 hover:border-white text-gray-300 hover:text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
               >
-                PI Agency Details
+                About Our License
               </Link>
             </div>
           </div>
@@ -203,14 +208,15 @@ export default function ServicesHubPage() {
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="mb-12">
               <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-600 mb-3 font-mono">
-                Private Investigative Services
+                Investigative Methods
               </p>
               <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-                PI Services for Private Clients
+                How Our Reporters Investigate
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-                All case work is private and confidential. Results are delivered directly to you, not published.
-                Every investigation is handled by a licensed Texas PI.
+                These are the licensed investigative methods our reporters apply to public-interest stories.
+                oWire reporters hold Texas PI credentials, enabling legal surveillance, skip tracing, and
+                background research as part of the reporting process.
               </p>
             </div>
 
@@ -281,11 +287,13 @@ export default function ServicesHubPage() {
                   Why ObjectWire
                 </p>
                 <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-6">
-                  A PI agency that is also a newsroom.
+                  A newsroom that is also licensed to investigate.
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  Most PI agencies collect evidence. ObjectWire also knows how to document it for
-                  publication, court proceedings, and public record, because we do all three.
+                  Most news outlets rely on secondhand sources. oWire reporters hold Texas PI
+                  credentials, which means we can legally conduct surveillance, pull public
+                  records, and verify identities as part of original reporting, then publish
+                  what we find.
                 </p>
                 <Link
                   href="/about"

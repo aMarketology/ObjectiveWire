@@ -11,7 +11,7 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const revalidate = 86400;
 
 const SLUG = '/creator/zavala-himself';
-const PAGE_URL = `https://www.owire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
 const IMAGE_URL = '/influncer/zavala-himself.jpg';
 
 export const metadata: Metadata = {
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-04T12:00:00Z',
     modifiedTime: '2026-05-04T12:00:00Z',
     tags: ['Zavala Him Self', 'TikTok', 'Twitch', 'YouTube', 'Creator', 'Gaming'],
-    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Zavala Him Self, multi-platform content creator' }],
+    images: [{ url: `https://www.objectivewire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Zavala Him Self, multi-platform content creator' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Zavala Him Self | 1.3M TikTok, Twitch, YouTube Bio 2026',
     description:
       'Zavala Him Self creator profile: TikTok @zavalahimself 1.3M followers, Twitch live streams, ZavalaHimselfYT challenges and vlogs.',
-    images: [`https://www.owire.org${IMAGE_URL}`],
+    images: [`https://www.objectivewire.org${IMAGE_URL}`],
   },
 };
 
@@ -73,7 +73,7 @@ export default function ZavalaHimselfPage() {
         modifiedTime: '2026-05-04T12:00:00Z',
         author: 'OzoneNews Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.owire.org${IMAGE_URL}`,
+        imageUrl: `https://www.objectivewire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Zavala Him Self',
@@ -88,8 +88,8 @@ export default function ZavalaHimselfPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.owire.org' },
-        { name: 'Creator', item: 'https://www.owire.org/creator' },
+        { name: 'Home', item: 'https://www.objectivewire.org' },
+        { name: 'Creator', item: 'https://www.objectivewire.org/creator' },
         { name: 'Zavala Him Self', item: PAGE_URL },
       ]}
       hero={{

@@ -1,6 +1,6 @@
-﻿# ObjectWire | Supabase Reference
+# ObjectWire | Supabase Reference
 **Last updated:** March 26, 2026  
-**Production:** Railway → `Autolab350/Objectwire-Frontend` main → `owire.org`  
+**Production:** Railway ? `Autolab350/Objectwire-Frontend` main ? `objectivewire.org`  
 **Supabase:** `https://kzcwclprrtonpsnownbl.supabase.co`
 
 ---
@@ -9,25 +9,25 @@
 
 | System | Status |
 |---|---|
-| `lib/supabase/server.ts`, server client | ✅ Done |
-| `lib/supabase/client.ts`, browser client | ✅ Done |
-| `lib/blog-service.ts`, CRUD layer | ✅ Done |
-| `lib/registry-service.ts`, async registry reads from DB | ✅ Done |
-| `articles` table + schema | ✅ Live in Supabase |
-| `jack_articles` table + schema | ✅ Live in Supabase |
-| `article_pages` table + schema | ✅ Live in Supabase |
-| `content_registry` table + schema | ✅ Live, migrated March 26 (465 entries) |
-| `components/NewsArticleDB.tsx` | ✅ SSR, queries `articles` by slug |
-| `components/JackArticleDB.tsx` | ✅ SSR, queries `jack_articles` by slug |
-| `components/ArticlePageDB.tsx` | ✅ SSR, queries `article_pages` by slug |
-| `app/blog/[slug]/page.tsx`, two-step fetch | ✅ Upgraded March 26, registry → articles |
-| `scripts/migrate-registry.ts` + `npm run registry:migrate` | ✅ Done March 26 |
-| SSR "View Source" test | ✅ All articles deliver full HTML to Googlebot |
-| `npm run build`, 793/793 pages, 0 errors | ✅ Passing |
-| ISR (`revalidate`) on finalized articles | ⏳ Pending, still on `force-dynamic` |
-| `wiki:status` diagnostic script | ⏳ Not built yet |
-| `wiki:publish` unified pipeline command | ⏳ Not built yet |
-| On-demand revalidation via Supabase webhook | ⏳ Phase 3 future task |
+| `lib/supabase/server.ts`, server client | ? Done |
+| `lib/supabase/client.ts`, browser client | ? Done |
+| `lib/blog-service.ts`, CRUD layer | ? Done |
+| `lib/registry-service.ts`, async registry reads from DB | ? Done |
+| `articles` table + schema | ? Live in Supabase |
+| `jack_articles` table + schema | ? Live in Supabase |
+| `article_pages` table + schema | ? Live in Supabase |
+| `content_registry` table + schema | ? Live, migrated March 26 (465 entries) |
+| `components/NewsArticleDB.tsx` | ? SSR, queries `articles` by slug |
+| `components/JackArticleDB.tsx` | ? SSR, queries `jack_articles` by slug |
+| `components/ArticlePageDB.tsx` | ? SSR, queries `article_pages` by slug |
+| `app/blog/[slug]/page.tsx`, two-step fetch | ? Upgraded March 26, registry ? articles |
+| `scripts/migrate-registry.ts` + `npm run registry:migrate` | ? Done March 26 |
+| SSR "View Source" test | ? All articles deliver full HTML to Googlebot |
+| `npm run build`, 793/793 pages, 0 errors | ? Passing |
+| ISR (`revalidate`) on finalized articles | ? Pending, still on `force-dynamic` |
+| `wiki:status` diagnostic script | ? Not built yet |
+| `wiki:publish` unified pipeline command | ? Not built yet |
+| On-demand revalidation via Supabase webhook | ? Phase 3 future task |
 
 ---
 
@@ -39,9 +39,9 @@ Every article belongs to exactly one table. Routing is determined by which compo
 
 | Component | Table | Use Case |
 |---|---|---|
-| `NewsArticle` → `NewsArticleDB` | `articles` | News, breaking, gaming, tech, features |
-| `JackArticle` → `JackArticleDB` | `jack_articles` | Research reports, investigations, long-form |
-| `ArticlePage` → `ArticlePageDB` | `article_pages` | Profiles, wiki-style, evergreen guides |
+| `NewsArticle` ? `NewsArticleDB` | `articles` | News, breaking, gaming, tech, features |
+| `JackArticle` ? `JackArticleDB` | `jack_articles` | Research reports, investigations, long-form |
+| `ArticlePage` ? `ArticlePageDB` | `article_pages` | Profiles, wiki-style, evergreen guides |
 | `blog/[slug]/page.tsx` | `articles` (+ `content_registry`) | Admin-editor articles, `npm run content:publish` |
 
 ### SSR Pipeline
@@ -49,28 +49,28 @@ Every article belongs to exactly one table. Routing is determined by which compo
 All article fetching happens server-side. Zero client-side Supabase calls in page components.
 
 ```
-Request → page.tsx (Next.js Server Component)
+Request ? page.tsx (Next.js Server Component)
   export const dynamic = 'force-dynamic'
   return <NewsArticleDB slug="my-slug" />
-        ↓
+        ?
   NewsArticleDB.tsx (async Server Component)
     const supabase = await createClient()
     const { data } = await supabase.from('articles').select('*').eq('slug', slug)
-        ↓
+        ?
   NewsArticle.tsx (presentational, 'use client' for interactions only)
     <article itemScope itemType="https://schema.org/NewsArticle">
       <div dangerouslySetInnerHTML={{ __html: row.content_html }} />
     </article>
-        ↓
-  Response: complete HTML, Googlebot sees full article on first byte ✅
+        ?
+  Response: complete HTML, Googlebot sees full article on first byte ?
 ```
 
 ### Slug Format
 
 Slugs for `wiki:migrate` articles are formed from the directory path:
 ```
-app/trump/foo/page.tsx           → trump-foo
-app/copyright/news/bar/page.tsx  → copyright-news-bar
+app/trump/foo/page.tsx           ? trump-foo
+app/copyright/news/bar/page.tsx  ? copyright-news-bar
 ```
 
 Slugs for `content/articles/*.ts` articles are set manually in the file and match the URL path minus the leading slash.
@@ -90,7 +90,7 @@ Slugs for `content/articles/*.ts` articles are set manually in the file and matc
 
 ### Three Workflows
 
-**Workflow A — `content/articles/*.ts` → `npm run content:publish`**  
+**Workflow A � `content/articles/*.ts` ? `npm run content:publish`**  
 Best for: news articles, features, anything using `NewsArticle` layout.
 
 ```bash
@@ -107,24 +107,24 @@ npm run content:dry-run
 npm run content:publish
 ```
 
-The article lands in the `articles` table and is live at `owire.org/blog/your-slug`.
+The article lands in the `articles` table and is live at `objectivewire.org/blog/your-slug`.
 
 ---
 
-**Workflow B — Write inline in `page.tsx` → `wiki:migrate` → `wiki:trim`**  
+**Workflow B � Write inline in `page.tsx` ? `wiki:migrate` ? `wiki:trim`**  
 Best for: existing static pages being migrated to DB-backed rendering.
 
 ```bash
-npm run wiki:migrate              # extract JSX → HTML → Supabase (ALWAYS first)
+npm run wiki:migrate              # extract JSX ? HTML ? Supabase (ALWAYS first)
 npm run wiki:trim                 # replace full file with 3-line stub (ALWAYS second)
 npm run registry:write            # add missing entries to content_registry
 ```
 
-⚠️ **Critical rule:** Always `wiki:migrate` BEFORE `wiki:trim`. Trim first = no Supabase row = 404 in production.
+?? **Critical rule:** Always `wiki:migrate` BEFORE `wiki:trim`. Trim first = no Supabase row = 404 in production.
 
 ---
 
-**Workflow C — `/admin/editor` UI**  
+**Workflow C � `/admin/editor` UI**  
 Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or non-developer contributors. Articles appear in `articles` table with `status: 'draft'` until published.
 
 ---
@@ -133,20 +133,20 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 
 | Column | Type | Required | Notes |
 |---|---|---|---|
-| `slug` | TEXT | ✅ | URL path slug, no leading slash |
-| `title` | TEXT | ✅ | Full headline |
+| `slug` | TEXT | ? | URL path slug, no leading slash |
+| `title` | TEXT | ? | Full headline |
 | `subtitle` | TEXT |, | Deck / subheadline |
-| `category` | TEXT | ✅ | e.g. `Gaming`, `Tech`, `Finance` |
+| `category` | TEXT | ? | e.g. `Gaming`, `Tech`, `Finance` |
 | `category_color` | TEXT |, | `red` `blue` `green` `purple` `orange` |
 | `topic_tag` | TEXT |, | `technology` `news` `finance` `gaming` `crypto` `ai` `politics` etc. |
-| `publish_date` | TEXT | ✅ | Display string: `"March 18, 2026"` |
+| `publish_date` | TEXT | ? | Display string: `"March 18, 2026"` |
 | `published_at` | TIMESTAMPTZ |, | ISO for sorting: `2026-03-18T18:00:00Z` |
-| `status` | TEXT | ✅ | `'draft'` or `'published'` |
-| `content_html` | TEXT | ✅ | Full HTML body, rendered by NewsArticleDB |
+| `status` | TEXT | ? | `'draft'` or `'published'` |
+| `content_html` | TEXT | ? | Full HTML body, rendered by NewsArticleDB |
 | `read_time` | TEXT |, | `"6 min read"` |
 | `author_name` | TEXT |, | `"Conan Boyle"` |
 | `author_role` | TEXT |, | `"Gaming Reporter"` |
-| `author_slug` | TEXT |, | `"conan-boyle"` → links to `/authors/conan-boyle` |
+| `author_slug` | TEXT |, | `"conan-boyle"` ? links to `/authors/conan-boyle` |
 | `author_bio` | TEXT |, | Short bio sentence |
 | `author_avatar` | TEXT |, | `/authors/conan-boyle.jpg` |
 | `author_twitter` | TEXT |, | `"@conanboyle"` |
@@ -162,7 +162,7 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 | `exclusive` | BOOLEAN |, | "EXCLUSIVE" badge |
 | `url` | TEXT |, | Canonical path override e.g. `/california/my-article` |
 
-**Note:** `jack_articles` has **no `status` column**. Never query `status` from `jack_articles` — Supabase will error.
+**Note:** `jack_articles` has **no `status` column**. Never query `status` from `jack_articles` � Supabase will error.
 
 ---
 
@@ -179,12 +179,12 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 | `tags` | TEXT[] | Topic tags for related-article matching |
 | `author` | TEXT | Byline display name |
 | `author_slug` | TEXT | e.g. `conan-boyle` |
-| `priority` | NUMERIC | Sitemap priority 0.0–1.0 |
+| `priority` | NUMERIC | Sitemap priority 0.0�1.0 |
 | `change_frequency` | TEXT | `daily` `weekly` `monthly` etc. |
 | `featured` | BOOLEAN | Homepage hero/featured slot |
 | `component_type` | TEXT | `standard_article` (default) |
 | `image_url` | TEXT | OG / hero image |
-| `image_width` / `image_height` | INTEGER | Required for Google Top Stories (min 1200×675) |
+| `image_width` / `image_height` | INTEGER | Required for Google Top Stories (min 1200�675) |
 | `image_alt` | TEXT | Alt text for hero |
 | `image_credit` | TEXT | Attribution string |
 
@@ -194,16 +194,16 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 
 | Command | What it does |
 |---|---|
-| `npm run content:publish` | Push `content/articles/*.ts` → Supabase `articles` |
+| `npm run content:publish` | Push `content/articles/*.ts` ? Supabase `articles` |
 | `npm run content:dry-run` | Preview, no writes |
-| `npm run registry:migrate` | Upsert all `contentRegistry` entries → Supabase `content_registry` |
+| `npm run registry:migrate` | Upsert all `contentRegistry` entries ? Supabase `content_registry` |
 | `npm run registry:migrate-dry` | Preview registry migration |
-| `npm run registry:sync` | Scan `app/**/page.tsx` → detect missing registry entries (dry run) |
+| `npm run registry:sync` | Scan `app/**/page.tsx` ? detect missing registry entries (dry run) |
 | `npm run registry:write` | Same but writes stubs to `lib/content-registry.ts` |
-| `npm run wiki:migrate` | Extract inline page JSX → HTML → Supabase (run BEFORE trim) |
+| `npm run wiki:migrate` | Extract inline page JSX ? HTML ? Supabase (run BEFORE trim) |
 | `npm run wiki:trim` | Replace full `page.tsx` with 3-line DB stub (run AFTER migrate) |
 | `npm run wiki:sync` | Full bidirectional sync: migrate + trim + delete orphans |
-| `npm run build` | Next.js build, currently 793/793 pages, 0 errors ✅ |
+| `npm run build` | Next.js build, currently 793/793 pages, 0 errors ? |
 
 ---
 
@@ -221,7 +221,7 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 | `news_article` | `dangerouslySetInnerHTML` on `content_html` |
 
 **`generateMetadata` now emits:**
-- Canonical URL: `https://www.owire.org/blog/${slug}`
+- Canonical URL: `https://www.objectivewire.org/blog/${slug}`
 - `openGraph.publishedTime` from `content_registry.publish_date`
 - `openGraph.modifiedTime` from `content_registry.modified_date`  
 - `openGraph.images` from `content_registry.image_url`
@@ -247,7 +247,7 @@ Exists at `/admin/editor`. Not the primary workflow. Use only for quick edits or
 
 ### High Priority
 
-**A — ISR on finalized articles**  
+**A � ISR on finalized articles**  
 Six March 24 batch articles are still on `force-dynamic`. Switch to `revalidate = 3600` for CDN caching:
 
 | File | Table |
@@ -265,7 +265,7 @@ git commit -m "perf: switch March 24 articles to ISR revalidate=3600"
 git push origin main
 ```
 
-**B — Deploy current changes**
+**B � Deploy current changes**
 ```bash
 git add -A
 git commit -m "feat: content_registry in Supabase, two-step blog fetch, registry:migrate script"
@@ -276,19 +276,19 @@ git push origin main
 
 ### Medium Priority
 
-**C — `wiki:status` diagnostic script**  
-`scripts/wiki-status.ts` — not yet built. Would scan `app/**/page.tsx`, check `content_registry`, and query all three Supabase tables in one pass, printing a CLI table:
+**C � `wiki:status` diagnostic script**  
+`scripts/wiki-status.ts` � not yet built. Would scan `app/**/page.tsx`, check `content_registry`, and query all three Supabase tables in one pass, printing a CLI table:
 
 ```
 PATH                                    FILE   REGISTRY  SUPABASE
-app/trump/ice-arrest-sfo/page.tsx       STUB   ✅        ✅
-app/blackrock/page.tsx                  FULL   ❌        , 
+app/trump/ice-arrest-sfo/page.tsx       STUB   ?        ?
+app/blackrock/page.tsx                  FULL   ?        , 
 ```
 
 Add to `package.json`: `"wiki:status": "npx tsx scripts/wiki-status.ts"`
 
-**D — `wiki:publish` unified command**  
-`scripts/wiki-publish.ts`, replaces the three-step `migrate → register → trim` sequence with one atomic command. Validates thumbnail exists before writing, restores from `.bak` on failure.
+**D � `wiki:publish` unified command**  
+`scripts/wiki-publish.ts`, replaces the three-step `migrate ? register ? trim` sequence with one atomic command. Validates thumbnail exists before writing, restores from `.bak` on failure.
 
 Add to `package.json`: `"wiki:publish": "npx tsx scripts/wiki-publish.ts -- --file app/..."`
 
@@ -296,13 +296,13 @@ Add to `package.json`: `"wiki:publish": "npx tsx scripts/wiki-publish.ts -- --fi
 
 ### Low Priority / Future
 
-**E — On-demand revalidation via Supabase webhook**  
+**E � On-demand revalidation via Supabase webhook**  
 When an article is updated in Supabase, instantly flush the CDN cache for that path. Requires:
 1. `app/api/revalidate/route.ts`, calls `revalidatePath(path)`, protected by `REVALIDATION_SECRET`
-2. Supabase Database Webhook on `articles` UPDATE → `POST https://owire.org/api/revalidate`
+2. Supabase Database Webhook on `articles` UPDATE ? `POST https://objectivewire.org/api/revalidate`
 3. Add `REVALIDATION_SECRET` to Railway environment variables
 
-**F — Google News sitemap ping after each publish**  
+**F � Google News sitemap ping after each publish**  
 Run `npm run sitemap:ping` after each `content:publish` or `registry:migrate` to notify Google/Bing of updated sitemaps.
 
 ---
@@ -328,9 +328,9 @@ Run `npm run sitemap:ping` after each `content:publish` or `registry:migrate` to
 | `lib/blog-service.ts` | All `articles` table CRUD functions |
 | `lib/registry-service.ts` | Async `content_registry` reads, replaces static TS array at runtime |
 | `lib/content-registry.ts` | TypeScript metadata array (465 entries) + `ContentEntry` type |
-| `scripts/publish-content.ts` | Push `content/articles/*.ts` → `articles` table |
-| `scripts/migrate-registry.ts` | Upsert `contentRegistry` → `content_registry` table |
-| `scripts/migrate-wiki-content.ts` | Extract inline page JSX → `articles` / `jack_articles` |
+| `scripts/publish-content.ts` | Push `content/articles/*.ts` ? `articles` table |
+| `scripts/migrate-registry.ts` | Upsert `contentRegistry` ? `content_registry` table |
+| `scripts/migrate-wiki-content.ts` | Extract inline page JSX ? `articles` / `jack_articles` |
 | `scripts/trim-wiki-pages.ts` | Replace full `page.tsx` with 3-line stub |
 | `scripts/sync-registry.ts` | Auto-detect and write missing `contentRegistry` stubs |
 | `scripts/push-articles-to-supabase.ts` | One-time migration (184 legacy articles) |

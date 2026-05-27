@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     'Logan Paul collectibles',
   ],
   alternates: {
-    canonical: 'https://www.owire.org/creator/news/logan-paul-sells-pokemon-card-16-million',
+    canonical: 'https://www.objectivewire.org/creator/news/logan-paul-sells-pokemon-card-16-million',
   },
   openGraph: {
     title: 'Logan Paul Sells 1/1 Pikachu Illustrator for $16 Million',
     description:
       'Logan Paul sells the world\'s rarest Pokémon card for $16 million at auction, nearly tripling the $5.275M he paid in 2022. Full breakdown of the iconic',
     type: 'article',
-    url: 'https://www.owire.org/creator/news/logan-paul-sells-pokemon-card-16-million',
+    url: 'https://www.objectivewire.org/creator/news/logan-paul-sells-pokemon-card-16-million',
     siteName: 'OzoneNews',
     authors: ['OzoneNews Editorial'],
     section: 'Creator',

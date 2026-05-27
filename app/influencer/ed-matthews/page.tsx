@@ -11,7 +11,7 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const revalidate = 86400;
 
 const SLUG = '/creator/ed-matthews';
-const PAGE_URL = `https://www.owire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
 const IMAGE_URL = '/influncer/ed-matthews.jpg';
 
 export const metadata: Metadata = {
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-04T12:00:00Z',
     modifiedTime: '2026-05-04T12:00:00Z',
     tags: ['Ed Matthews', 'TikTok', 'Boxing', 'UK Creator', 'Influencer', 'British'],
-    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Ed Matthews, British creator and influencer boxer' }],
+    images: [{ url: `https://www.objectivewire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Ed Matthews, British creator and influencer boxer' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ed Matthews | British Creator, Influencer Boxer, Bio 2026',
     description:
       'Ed Matthews profile: TikTok @edmatthewstokky, influencer boxing record, Elsa Rae, HED Fitness, net worth, and 2026 creator career.',
-    images: [`https://www.owire.org${IMAGE_URL}`],
+    images: [`https://www.objectivewire.org${IMAGE_URL}`],
   },
 };
 
@@ -73,7 +73,7 @@ export default function EdMatthewsPage() {
         modifiedTime: '2026-05-04T12:00:00Z',
         author: 'OzoneNews Creator Desk',
         articleUrl: PAGE_URL,
-        imageUrl: `https://www.owire.org${IMAGE_URL}`,
+        imageUrl: `https://www.objectivewire.org${IMAGE_URL}`,
         section: 'Creator',
         keywords: [
           'Ed Matthews',
@@ -88,8 +88,8 @@ export default function EdMatthewsPage() {
         ],
       }}
       breadcrumbs={[
-        { name: 'Home', item: 'https://www.owire.org' },
-        { name: 'Creator', item: 'https://www.owire.org/creator' },
+        { name: 'Home', item: 'https://www.objectivewire.org' },
+        { name: 'Creator', item: 'https://www.objectivewire.org/creator' },
         { name: 'Ed Matthews', item: PAGE_URL },
       ]}
       hero={{

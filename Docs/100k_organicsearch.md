@@ -1,4 +1,4 @@
-﻿# 100K Organic Search | ObjectWire Growth Plan
+# 100K Organic Search | ObjectWire Growth Plan
 
 > **Goal:** Reach 100,000 monthly organic search sessions within 12 months.
 > **Last updated:** April 4, 2026
@@ -13,25 +13,25 @@
 
 | Feature | Status | Details |
 |---|---|---|
-| Content Registry | ✅ Done | Migrated from local TS to Supabase `content_registry` table. Auto-synced on every build via `prebuild` script. |
-| Sitemap (main) | ✅ Done | Dynamic, registry-driven, sorted by priority, 24h revalidation. `app/sitemap.ts` |
-| News Sitemap | ✅ Done | 2-day rolling window, auto-feeds from registry. `app/news-sitemap.xml/route.ts` |
-| JSON-LD Structured Data | ✅ Done | `NewsArticle` + `BreadcrumbList` schema on every article. |
-| Breadcrumbs | ✅ Done | Visual + JSON-LD `BreadcrumbList` schema. Accessible. `components/nav/Breadcrumb.tsx` |
-| RelatedArticles | ✅ Done | Automatic client component. Reads user `localStorage` reading history, matches by category + tags, ranks by overlap + recency. Zero manual curation. |
-| GA4 Integration | ✅ Done | Client-side page views on every navigation. Measurement ID: `G-9FM4W3K6GV`. `components/GoogleAnalytics.tsx` |
-| Custom Event Tracking | ✅ Done | `article_engagement`, `time_spent`, `article_reaction`, `email_signup` events via `lib/tracking.ts`. |
-| Server-Side Analytics | ✅ Done | Measurement Protocol API at `/api/analytics/identify`. Hashed email, visitor identity persisted. |
-| Article View Tracking | ✅ Done | `ArticleViewTracker` component logs per-user views to `article_view_history` table (slug, title, url, image, category). Max 50 items, 7-day TTL. |
-| Scroll Depth + Time on Page | ✅ Done | `usePageTracking()` hook captures scroll milestones and dwell time. |
-| Author Pages | ✅ Done | 5 named authors (Jack Sterling, Jack Wang, Jack Brennan, Conan Boyle, Alfansa) + authors index. |
-| Hub Pages | ✅ Partial | 5 active hubs built with `Hub.tsx`: Video Games, Crypto, MLS, Influencer, MHA. 50+ hub slugs defined but pages not yet created. |
-| Definition Pages | ✅ Partial | 16+ pages in `/define/`. Target is 100+. |
-| Newsletter | ✅ Done | `NewsletterSignupInline` on every `NewsArticle` page. |
-| Article Components | ✅ Done | Full system: `NewsArticle`, `JackArticle`, `CreatorArticle`, `ArticlePage` + DB variants. |
-| Admin Editor | ✅ Done | `/admin/editor` → Supabase → `/blog/[slug]` for non-developer publishing. |
-| wiki:publish Pipeline | ✅ Done | Single command upserts to Supabase, adds registry entry, trims to stub. |
-| Page Count | ✅ 560 pages | Up from ~330 baseline. Growth of 70% in 3 weeks. |
+| Content Registry | ? Done | Migrated from local TS to Supabase `content_registry` table. Auto-synced on every build via `prebuild` script. |
+| Sitemap (main) | ? Done | Dynamic, registry-driven, sorted by priority, 24h revalidation. `app/sitemap.ts` |
+| News Sitemap | ? Done | 2-day rolling window, auto-feeds from registry. `app/news-sitemap.xml/route.ts` |
+| JSON-LD Structured Data | ? Done | `NewsArticle` + `BreadcrumbList` schema on every article. |
+| Breadcrumbs | ? Done | Visual + JSON-LD `BreadcrumbList` schema. Accessible. `components/nav/Breadcrumb.tsx` |
+| RelatedArticles | ? Done | Automatic client component. Reads user `localStorage` reading history, matches by category + tags, ranks by overlap + recency. Zero manual curation. |
+| GA4 Integration | ? Done | Client-side page views on every navigation. Measurement ID: `G-9FM4W3K6GV`. `components/GoogleAnalytics.tsx` |
+| Custom Event Tracking | ? Done | `article_engagement`, `time_spent`, `article_reaction`, `email_signup` events via `lib/tracking.ts`. |
+| Server-Side Analytics | ? Done | Measurement Protocol API at `/api/analytics/identify`. Hashed email, visitor identity persisted. |
+| Article View Tracking | ? Done | `ArticleViewTracker` component logs per-user views to `article_view_history` table (slug, title, url, image, category). Max 50 items, 7-day TTL. |
+| Scroll Depth + Time on Page | ? Done | `usePageTracking()` hook captures scroll milestones and dwell time. |
+| Author Pages | ? Done | 5 named authors (Jack Sterling, Jack Wang, Jack Brennan, Conan Boyle, Alfansa) + authors index. |
+| Hub Pages | ? Partial | 5 active hubs built with `Hub.tsx`: Video Games, Crypto, MLS, Influencer, MHA. 50+ hub slugs defined but pages not yet created. |
+| Definition Pages | ? Partial | 16+ pages in `/define/`. Target is 100+. |
+| Newsletter | ? Done | `NewsletterSignupInline` on every `NewsArticle` page. |
+| Article Components | ? Done | Full system: `NewsArticle`, `JackArticle`, `CreatorArticle`, `ArticlePage` + DB variants. |
+| Admin Editor | ? Done | `/admin/editor` ? Supabase ? `/blog/[slug]` for non-developer publishing. |
+| wiki:publish Pipeline | ? Done | Single command upserts to Supabase, adds registry entry, trims to stub. |
+| Page Count | ? 560 pages | Up from ~330 baseline. Growth of 70% in 3 weeks. |
 
 ### What Still Needs to Be Done
 
@@ -50,9 +50,9 @@
 
 ---
 
-## Phase 1 | Foundation Fixes (Weeks 1-3) — MOSTLY COMPLETE
+## Phase 1 | Foundation Fixes (Weeks 1-3) � MOSTLY COMPLETE
 
-### 1.1 Registry Data Quality Pass — ✅ DONE (Supabase migration)
+### 1.1 Registry Data Quality Pass � ? DONE (Supabase migration)
 
 Registry moved to Supabase `content_registry` table. All fields available: `description`, `imageUrl`, `imageWidth`, `imageHeight`, `imageAlt`. Auto-synced on build.
 
@@ -80,9 +80,9 @@ The `Hub.tsx` component is battle-tested (Video Games, Crypto, MLS, Influencer, 
 
 | Hub | Path | Search Volume | Existing Pages | Status | Sub-Articles Needed |
 |---|---|---|---|---|---|
-| **Video Games** | `/video-games` | 5M+/mo combined | 28 | ✅ Hub exists | GTA 6 cluster (7), Switch 2 cluster (5), Forza (5) |
-| **Crypto** | `/crypto` | 1M+/mo | 15+ | ✅ Hub exists | Bitcoin halving, stablecoin regulation, DeFi protocol deep-dives |
-| **MLS** | `/mls` | 500K+/mo seasonal | 4 | ✅ Hub exists | Team profiles, transfer tracker, match previews, standings updates |
+| **Video Games** | `/video-games` | 5M+/mo combined | 28 | ? Hub exists | GTA 6 cluster (7), Switch 2 cluster (5), Forza (5) |
+| **Crypto** | `/crypto` | 1M+/mo | 15+ | ? Hub exists | Bitcoin halving, stablecoin regulation, DeFi protocol deep-dives |
+| **MLS** | `/mls` | 500K+/mo seasonal | 4 | ? Hub exists | Team profiles, transfer tracker, match previews, standings updates |
 
 #### Tier 2 | High Volume, Needs Hub Page
 
@@ -150,17 +150,17 @@ export default async function HubPage() {
 ### 2.5 SEO-First Article Checklist (Every Article Ships With)
 
 ```
-✅ metadata.title       | keyword + specific detail (max 60 chars, no brand suffix)
-✅ metadata.description | 130-155 chars, primary keyword in first 60 chars
-✅ metadata.keywords    | 10-15 long-tail keywords
-✅ canonical URL        | always set in alternates
-✅ openGraph            | title, description, image (1200x675), publishedTime, section
-✅ NewsArticleSchema    | matches registry entry exactly
-✅ SEOWrapper           | slug pointed at registry
-✅ Breadcrumb           | 3-4 levels deep
-✅ H2 headings          | one per major section, keyword-rich, uses | separator
-✅ Internal links       | 4-6 interlinks to related ObjectWire pages
-✅ thumbnail + imageUrl | real Unsplash image, 1200px+ wide
+? metadata.title       | keyword + specific detail (max 60 chars, no brand suffix)
+? metadata.description | 130-155 chars, primary keyword in first 60 chars
+? metadata.keywords    | 10-15 long-tail keywords
+? canonical URL        | always set in alternates
+? openGraph            | title, description, image (1200x675), publishedTime, section
+? NewsArticleSchema    | matches registry entry exactly
+? SEOWrapper           | slug pointed at registry
+? Breadcrumb           | 3-4 levels deep
+? H2 headings          | one per major section, keyword-rich, uses | separator
+? Internal links       | 4-6 interlinks to related ObjectWire pages
+? thumbnail + imageUrl | real Unsplash image, 1200px+ wide
 ```
 
 ---
@@ -169,16 +169,16 @@ export default async function HubPage() {
 
 **Target: Build deep clusters around 10 high-volume keyword families.**
 
-### 3.1 Cluster Architecture — ✅ PROVEN
+### 3.1 Cluster Architecture � ? PROVEN
 
 Each cluster follows this pattern (already working on Video Games, MLS, Crypto):
 
 ```
 Hub Page (Hub.tsx, high authority, broad keyword)
- ├── Sub-article 1 (NewsArticle, specific long-tail)
- ├── Sub-article 2 (NewsArticle, specific long-tail)
- ├── Sub-article 3 (JackArticle, deep investigation)
- └── Sub-article N
+ +-- Sub-article 1 (NewsArticle, specific long-tail)
+ +-- Sub-article 2 (NewsArticle, specific long-tail)
+ +-- Sub-article 3 (JackArticle, deep investigation)
+ +-- Sub-article N
 ```
 
 All sub-articles link back to the hub. The hub auto-discovers sub-articles via `scanAllContent()`. Internal linking is **the single highest-leverage SEO tactic** for a new publisher.
@@ -187,17 +187,17 @@ All sub-articles link back to the hub. The hub auto-discovers sub-articles via `
 
 | # | Hub URL | Hub Keyword (monthly vol) | Status | Sub-Articles Needed |
 |---|---|---|---|---|
-| 1 | `/video-games/gta-6` | "GTA 6" (5M+/mo) | ✅ Hub exists | Pre-orders, price by country, PC release, map size, characters, online mode, system requirements |
+| 1 | `/video-games/gta-6` | "GTA 6" (5M+/mo) | ? Hub exists | Pre-orders, price by country, PC release, map size, characters, online mode, system requirements |
 | 2 | `/video-games/switch2` | "Nintendo Switch 2" (2M+/mo) | Needs hub | Switch 2 specs, launch games, price, backwards compatibility, Joy-Con 2 |
 | 3 | `/video-games/forza-horizon-6` | "Forza Horizon 6" (500K+/mo) | Needs hub | Car list, map breakdown, editions comparison, Japan routes, PC specs |
 | 4 | `/open-ai` | "OpenAI" (3M+/mo) | 3 pages, needs hub | GPT-5, ChatGPT Pro, o3 model, Sora video, pricing changes |
 | 5 | `/google` | "Google news" (2M+/mo) | 3 pages, needs hub | Gemini 3, Google AI Plus, Agentic Vision, Pixel 11 |
 | 6 | `/nvidia` | "Nvidia news" (800K+/mo) | 2 pages, needs hub | RTX 5090, CUDA updates, AI hardware, Blackwell B200 |
 | 7 | `/apple` | "Apple news" (1M+/mo) | 11 pages, hub exists | iPhone 18, WWDC 2026, Core AI framework, Mac Mini M5 |
-| 8 | `/mls` | "MLS" (500K+/mo) | ✅ Hub + 3 articles | Team profiles (28 remaining), transfer tracker, match previews, standings |
+| 8 | `/mls` | "MLS" (500K+/mo) | ? Hub + 3 articles | Team profiles (28 remaining), transfer tracker, match previews, standings |
 | 9 | `/world-cup` | "2026 World Cup" (5M+ seasonal) | Needs hub | Groups, schedule, venues, USA cities, ticket prices |
 | 10 | `/winter-olympics` | "2026 Winter Olympics" (1M+ seasonal) | 32 pages, strong | Medal tracker, event schedule, maintain coverage |
-| 11 | `/crypto` | "Crypto" (1M+/mo) | ✅ Hub exists | Bitcoin halving, stablecoin regulation, DeFi deep-dives |
+| 11 | `/crypto` | "Crypto" (1M+/mo) | ? Hub exists | Bitcoin halving, stablecoin regulation, DeFi deep-dives |
 | 12 | `/finance` | "Finance news" (500K+/mo) | Needs hub | Fed decisions, bank earnings, IPO tracker |
 
 ### 3.3 Cluster Completion Targets
@@ -209,23 +209,23 @@ All sub-articles link back to the hub. The hub auto-discovers sub-articles via `
 | Month 3 | 6 (+Google, Nvidia) | 90 | 420 |
 | Month 4 | 8 (+OpenAI, Olympics) | 120 | 450 |
 | Month 5 | 10 (+World Cup, Finance) | 150 | 480 |
-| Month 6–12 | Expand + maintain | 300+ | 630+ |
+| Month 6�12 | Expand + maintain | 300+ | 630+ |
 
 ---
 
-## Phase 4 | Google News Acceleration (Ongoing) — PARTIALLY COMPLETE
+## Phase 4 | Google News Acceleration (Ongoing) � PARTIALLY COMPLETE
 
 ### 4.1 Top Stories Eligibility Checklist
 
 | Requirement | Status | Notes |
 |---|---|---|
-| Published within last 2 days | ✅ Done | Auto via `publishDate` filter in news-sitemap |
-| `NewsArticle` JSON-LD on page | ✅ Done | `NewsArticleSchema` component on every article |
-| Listed in news sitemap | ✅ Done | Auto from content registry, 2-day window |
-| `imageUrl` >= 1200px wide | ⚠️ Partial | Fixed on new articles (Unsplash API), legacy articles still need images |
-| Publisher registered in Google Publisher Center | ❌ Not done | **Must do this week** |
-| Transparent authorship | ✅ Done | 5 named authors with profile pages |
-| Original reporting | ✅ Done | All content is original analysis + sourcing |
+| Published within last 2 days | ? Done | Auto via `publishDate` filter in news-sitemap |
+| `NewsArticle` JSON-LD on page | ? Done | `NewsArticleSchema` component on every article |
+| Listed in news sitemap | ? Done | Auto from content registry, 2-day window |
+| `imageUrl` >= 1200px wide | ?? Partial | Fixed on new articles (Unsplash API), legacy articles still need images |
+| Publisher registered in Google Publisher Center | ? Not done | **Must do this week** |
+| Transparent authorship | ? Done | 5 named authors with profile pages |
+| Original reporting | ? Done | All content is original analysis + sourcing |
 
 ### 4.2 Breaking News Velocity
 
@@ -234,7 +234,7 @@ Google News rewards **first-to-publish**. When a story breaks:
 1. Publish a 300-word stub within 30 minutes using the admin editor
 2. Set `status: 'published'` immediately, it enters the news sitemap
 3. Update the article with depth over the next 2 hours
-4. Google re-crawls news sitemaps every 5–15 minutes
+4. Google re-crawls news sitemaps every 5�15 minutes
 
 The Supabase CMS supports this workflow, no build/deploy needed for new articles.
 
@@ -248,7 +248,7 @@ Google News devalues articles after 48 hours. Strategy:
 
 ---
 
-## Phase 5 | Technical SEO & Performance (Weeks 2–6)
+## Phase 5 | Technical SEO & Performance (Weeks 2�6)
 
 ### 5.1 Internal Linking Automation
 
@@ -256,21 +256,21 @@ Build a `RelatedArticles` component that reads the content registry and auto-sug
 
 ```
 Current article tags: ["GTA 6", "Rockstar Games", "Pre-orders"]
-        ↓ scan registry for tag overlap
+        ? scan registry for tag overlap
 Suggested: GTA 6 hub, GTA 6 pre-orders tracker, Take-Two earnings
 ```
 
-Place this at the bottom of every article automatically. Target: 4–6 internal links per article, zero manual effort.
+Place this at the bottom of every article automatically. Target: 4�6 internal links per article, zero manual effort.
 
 ### 5.2 Breadcrumb Depth
 
-Current: Most articles have 2–3 breadcrumb levels.
-Target: Every article has 3–4+ levels reflecting the hub/cluster hierarchy.
+Current: Most articles have 2�3 breadcrumb levels.
+Target: Every article has 3�4+ levels reflecting the hub/cluster hierarchy.
 
 ```
-Home → Video Games → Racing → Forza Horizon 6
-Home → Video Games → GTA 6 → Pre-Orders Tracker
-Home → Technology → Google → Gemini 3 Flash
+Home ? Video Games ? Racing ? Forza Horizon 6
+Home ? Video Games ? GTA 6 ? Pre-Orders Tracker
+Home ? Technology ? Google ? Gemini 3 Flash
 ```
 
 ### 5.3 Page Speed
@@ -288,20 +288,20 @@ Current: Static pages via Next.js are fast. Ensure:
 
 ---
 
-## Phase 6 | Programmatic Content (Months 3–6)
+## Phase 6 | Programmatic Content (Months 3�6)
 
 ### 6.1 Definition Pages
 
 The `/define/` section (13 pages) is a programmatic SEO goldmine. Scale to 200+ definition pages:
 
-- "What is CUDA" → `/define/cuda`
-- "What is LLM" → `/define/llm`
-- "What is Tokamak" → `/define/tokamak`
+- "What is CUDA" ? `/define/cuda`
+- "What is LLM" ? `/define/llm`
+- "What is Tokamak" ? `/define/tokamak`
 - Template: 300-word definition + related ObjectWire articles + schema.org `DefinedTerm` markup
 
 Each definition page:
 - Targets a "what is X" keyword (high volume, low competition)
-- Links to 3–5 related ObjectWire articles
+- Links to 3�5 related ObjectWire articles
 - Takes < 10 minutes to create with a standard template
 
 ### 6.2 Company Profiles
@@ -329,7 +329,7 @@ Scale `/events/` before major 2026 events:
 ### 7.1 Google Discover
 
 Google Discover (mobile feed) drives massive traffic for publishers. Requirements:
-- High-quality hero images (1200px+) ← Phase 1 image fix
+- High-quality hero images (1200px+) ? Phase 1 image fix
 - Engaging titles (not clickbait, but compelling)
 - E-E-A-T signals (author pages, about page, editorial standards)
 
@@ -353,14 +353,14 @@ ObjectWire already has `/about`, `/editorial-standards`, `/authors/*`, these are
 
 | Month | Est. Monthly Organic Sessions | Indexed Pages | Key Driver |
 |---|---|---|---|
-| 1 | 2,000–5,000 | 360 | Foundation fixes + registry cleanup + Publisher Center |
-| 2 | 5,000–12,000 | 400 | Gaming cluster completion (GTA 6, Forza, Switch 2) |
-| 3 | 12,000–25,000 | 450 | Google News inclusion + tech cluster + first Discover hits |
-| 4 | 20,000–40,000 | 500 | Compound growth from clusters + breaking news velocity |
-| 5 | 30,000–50,000 | 550 | World Cup pre-event content + definition pages scaling |
-| 6 | 40,000–65,000 | 600+ | Seasonal peaks (E3, WWDC) + programmatic content |
-| 8 | 60,000–80,000 | 700+ | Topical authority established in 3+ verticals |
-| 10 | 80,000–95,000 | 800+ | Google Discover traffic + Bing/Apple News |
+| 1 | 2,000�5,000 | 360 | Foundation fixes + registry cleanup + Publisher Center |
+| 2 | 5,000�12,000 | 400 | Gaming cluster completion (GTA 6, Forza, Switch 2) |
+| 3 | 12,000�25,000 | 450 | Google News inclusion + tech cluster + first Discover hits |
+| 4 | 20,000�40,000 | 500 | Compound growth from clusters + breaking news velocity |
+| 5 | 30,000�50,000 | 550 | World Cup pre-event content + definition pages scaling |
+| 6 | 40,000�65,000 | 600+ | Seasonal peaks (E3, WWDC) + programmatic content |
+| 8 | 60,000�80,000 | 700+ | Topical authority established in 3+ verticals |
+| 10 | 80,000�95,000 | 800+ | Google Discover traffic + Bing/Apple News |
 | 12 | **100,000+** | 900+ | Compound authority across all pillars |
 
 ---
@@ -369,13 +369,13 @@ ObjectWire already has `/about`, `/editorial-standards`, `/authors/*`, these are
 
 | Metric | Tool | Target |
 |---|---|---|
-| Indexed pages | Google Search Console → Coverage | 100% of published pages |
-| Average position | GSC → Performance → Queries | < 20 for pillar keywords |
-| Click-through rate | GSC → Performance | > 3% (improve titles if below) |
-| Top Stories appearances | GSC → Performance → Search Appearance | 10+/week by month 3 |
-| News sitemap articles | `/news-sitemap.xml` | 3–5 articles within 2-day window at all times |
-| Internal links per page | Manual audit / Screaming Frog | 4–6 minimum |
-| Core Web Vitals | GSC → Core Web Vitals | All green (LCP < 2.5s, CLS < 0.1) |
+| Indexed pages | Google Search Console ? Coverage | 100% of published pages |
+| Average position | GSC ? Performance ? Queries | < 20 for pillar keywords |
+| Click-through rate | GSC ? Performance | > 3% (improve titles if below) |
+| Top Stories appearances | GSC ? Performance ? Search Appearance | 10+/week by month 3 |
+| News sitemap articles | `/news-sitemap.xml` | 3�5 articles within 2-day window at all times |
+| Internal links per page | Manual audit / Screaming Frog | 4�6 minimum |
+| Core Web Vitals | GSC ? Core Web Vitals | All green (LCP < 2.5s, CLS < 0.1) |
 | Registry completeness | `scripts/audit-registry.ts` | 0 entries with missing image/description |
 
 ---
@@ -384,7 +384,7 @@ ObjectWire already has `/about`, `/editorial-standards`, `/authors/*`, these are
 
 1. **Register ObjectWire in Google Publisher Center**, unlocks Google News eligibility
 2. **Run registry audit script**, identify all entries missing `imageUrl` and fix top 50
-3. **Consolidate "Tech" → "Technology" and "Gaming" → merge with "Video Games"** in registry + sync script
+3. **Consolidate "Tech" ? "Technology" and "Gaming" ? merge with "Video Games"** in registry + sync script
 4. **Write 3 GTA 6 cluster sub-articles**, pre-orders, PC release, system requirements
 5. **Submit sitemaps in Google Search Console**, both `/sitemap.xml` and `/news-sitemap.xml`
 6. **Register on Bing News PubHub**, free, takes 10 minutes
@@ -392,7 +392,7 @@ ObjectWire already has `/about`, `/editorial-standards`, `/authors/*`, these are
 
 ---
 
-*This plan builds on ObjectWire's existing technical infrastructure — the content registry, auto-sync, news sitemap, structured data, and Supabase CMS are all operational. The gap is content volume and data completeness, not tooling.*
+*This plan builds on ObjectWire's existing technical infrastructure � the content registry, auto-sync, news sitemap, structured data, and Supabase CMS are all operational. The gap is content volume and data completeness, not tooling.*
 
 ---
 
@@ -416,7 +416,7 @@ Still need to merge:
 ### D.2 Google News Publisher Center
 
 - Register at [Google Publisher Center](https://publishercenter.google.com/)
-- Verify `owire.org` ownership
+- Verify `objectivewire.org` ownership
 - Submit `/news-sitemap.xml` as the news feed
 - Label sections: Technology, Gaming, Entertainment, Finance, Science
 - Upload publisher logo (min 1000x1000 square)

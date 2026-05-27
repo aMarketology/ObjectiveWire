@@ -1,8 +1,8 @@
-ï»¿# ZeroWire | ROADMAP
+# ZeroWire | ROADMAP
 ## Last Updated: May 6, 2026
 
 > **Mission:** Reach 100K monthly organic sessions. Become the verified-first news platform Google News trusts.
-> **Production:** `owire.org` | Railway | Next.js 15 + React 19 + Supabase + Tailwind
+> **Production:** `objectivewire.org` | Railway | Next.js 15 + React 19 + Supabase + Tailwind
 > **Repo:** `aMarketology/ZeroWire` | Branch: `main`
 
 ---
@@ -24,8 +24,8 @@
 
 | Category | Count | Priority |
 |---|---|---|
-| Creator | 37 | Low â€” oversaturated |
-| YouTube | 33 | Low â€” thin traffic |
+| Creator | 37 | Low — oversaturated |
+| YouTube | 33 | Low — thin traffic |
 | Sports | 13 | Medium |
 | Meta | 12 | Medium |
 | Cars | 6 | Medium |
@@ -71,25 +71,25 @@
 
 ---
 
-## Phase 1 | Fix the Foundation (May 6â€“May 20)
+## Phase 1 | Fix the Foundation (May 6–May 20)
 
 **Goal:** Make every existing page count. Fix what's broken before building new.
 
-### 1.1 Google Publisher Center Registration â€” P1 (30 min)
+### 1.1 Google Publisher Center Registration — P1 (30 min)
 
 Required for Google News eligibility and Top Stories placement. Unblocks 3x CTR on news content.
 
 - [ ] Register at [publishercenter.google.com](https://publishercenter.google.com)
-- [ ] Verify ownership of `owire.org` (Google Search Console)
+- [ ] Verify ownership of `objectivewire.org` (Google Search Console)
 - [ ] Upload 1000x1000 publisher logo
 - [ ] Submit `/news-sitemap.xml`
 - [ ] Set publication name: "ObjectWire"
 
-Also register at [Bing PubHub](https://www.bing.com/webmasters/pubhub) â€” 10 min.
+Also register at [Bing PubHub](https://www.bing.com/webmasters/pubhub) — 10 min.
 
 ---
 
-### 1.2 Fix JackArticle Internal Links â€” P1 (1â€“2 days)
+### 1.2 Fix JackArticle Internal Links — P1 (1–2 days)
 
 There are ~28 JackArticle pages in `jack_articles` with 0 internal links. Google's internal link signal is weak across the entire site. Every JackArticle needs minimum 5 internal links per the OStandard spec.
 
@@ -109,7 +109,7 @@ The fix is simple: open each `page.tsx` DB stub or static page, add `<Link>` cal
 
 ---
 
-### 1.3 Sync Registry for All DB Stubs â€” P1 (1 day)
+### 1.3 Sync Registry for All DB Stubs — P1 (1 day)
 
 28 JackArticle stubs live in Supabase but are absent from `registry-data.json`. This means they are:
 - Not in `sitemap.xml`
@@ -118,18 +118,18 @@ The fix is simple: open each `page.tsx` DB stub or static page, add `<Link>` cal
 - Not in related articles
 - Invisible to author pages
 
-**Fix:** Convert high-value DB stubs to static `NewsArticle` or `JackArticle` pages with content in code. Then re-run `npx tsx scripts/sync-registry.ts --write`. Start with the Tech/AI cluster â€” highest traffic potential.
+**Fix:** Convert high-value DB stubs to static `NewsArticle` or `JackArticle` pages with content in code. Then re-run `npx tsx scripts/sync-registry.ts --write`. Start with the Tech/AI cluster — highest traffic potential.
 
 Priority conversion order:
-1. `/technology/cursor` â€” Cursor $2B ARR (high search volume)
-2. `/tech/news/tsmc-asml-record-earnings-q1-2026-ai-chip-demand` â€” chip demand
+1. `/technology/cursor` — Cursor $2B ARR (high search volume)
+2. `/tech/news/tsmc-asml-record-earnings-q1-2026-ai-chip-demand` — chip demand
 3. `/video-games/forza-horizon-6/news/pre-launch-511k-steam-presales-alinea-analytics-2026`
 4. `/finance/dollar-surges-euro-slumps-jobs-report-april-3-2026`
 5. `/entertainment/hbo-max/euphoria-season-3-premiere-hbo-5-year-time-jump-2026`
 
 ---
 
-### 1.4 Fix Author Attribution â€” P2 (2 hours)
+### 1.4 Fix Author Attribution — P2 (2 hours)
 
 Only 3 of 120 registry entries have a named `authorSlug`. The author pages show nothing because `AuthorArticlesServer` queries registry by `authorSlug`. Every `NewsArticle` and `JackArticle` page needs an `author` prop with `authorSlug`.
 
@@ -139,30 +139,30 @@ author={{ name: 'Jack Sterling', role: 'Senior Reporter', authorSlug: 'jack-ster
 ```
 
 Author slugs to target:
-- `jack-sterling` â€” crypto, finance, tech investigations
-- `jack-wang` â€” gaming, tech, Asia coverage
-- `jack-brennan` â€” investigations, politics, environmental
-- `alfansa` â€” entertainment, culture, influencer
-- `conan-boyle` â€” sports, MLS, soccer
+- `jack-sterling` — crypto, finance, tech investigations
+- `jack-wang` — gaming, tech, Asia coverage
+- `jack-brennan` — investigations, politics, environmental
+- `alfansa` — entertainment, culture, influencer
+- `conan-boyle` — sports, MLS, soccer
 
 After adding `authorSlug` props, run `npx tsx scripts/sync-registry.ts --write` to propagate.
 
 ---
 
-### 1.5 Jack Brennan Author Page Audit â€” P2 (1 day)
+### 1.5 Jack Brennan Author Page Audit — P2 (1 day)
 
 The bio claims "10+ Published Articles" but only 1 exists in registry. Options:
 - Update the stat to match reality ("1+ Published Articles") until more are written
-- Write 2â€“3 more Jack Brennan investigations to match the claim
+- Write 2–3 more Jack Brennan investigations to match the claim
 
 Additional Jack Brennan article ideas (his beat: environmental law, national security, federal agencies):
-- Follow-up: `CBD/Earthjustice TRO against God Squad exemption` â€” the D.C. District court case
+- Follow-up: `CBD/Earthjustice TRO against God Squad exemption` — the D.C. District court case
 - ESA enforcement rollback: `Trump admin suspends NMFS vessel speed restrictions for Rice's whale`
 - FERC energy infrastructure: `FERC fast-tracks Gulf LNG terminal permits under national security rule`
 
 ---
 
-## Phase 2 | Build the Content Engine (May 20 â€“ June 30)
+## Phase 2 | Build the Content Engine (May 20 – June 30)
 
 **Goal:** Launch 5 high-traffic content pillars. Hit 500+ indexed pages.
 
@@ -174,7 +174,7 @@ All hubs use `Hub.tsx` (already battle-tested in `/video-games`, `/crypto`, `/ml
 |---|---|---|---|
 | `/video-games/gta-6` | "GTA 6" | 5M+/mo | Pre-orders, PC release, map, characters, online, specs (6 articles) |
 | `/video-games/switch2` | "Nintendo Switch 2" | 2M+/mo | Specs, games, price, Joy-Con, backward compat (5 articles) |
-| `/open-ai` | "OpenAI" | 3M+/mo | GPT-5 pricing, o1 updates, government deals, enterprise (4â€“5 articles) |
+| `/open-ai` | "OpenAI" | 3M+/mo | GPT-5 pricing, o1 updates, government deals, enterprise (4–5 articles) |
 | `/google` | "Google news" | 2M+/mo | Gemini 3, Pixel 11, AI Plus, Project Genie (4 articles, 2 stubs exist) |
 | `/finance` | "finance news" | 500K+/mo | Fed rate, bank earnings, crypto regulation, market moves (5 articles) |
 | `/apple` | "Apple news" | 1M+/mo | iPhone 18, WWDC 2026, Core AI, M5 MacBook (11 pages exist, add 4 more) |
@@ -223,7 +223,7 @@ Search volume: 3M+ monthly. Only 3 pages exist now.
 
 ### 2.4 Publishing Cadence
 
-Target: **5â€“7 new articles per week.** Minimum to maintain Google News freshness signal.
+Target: **5–7 new articles per week.** Minimum to maintain Google News freshness signal.
 
 | Day | Pillar | Author |
 |---|---|---|
@@ -236,7 +236,7 @@ Target: **5â€“7 new articles per week.** Minimum to maintain Google News freshne
 
 ---
 
-## Phase 3 | Scale to 500+ Pages (July â€“ September 2026)
+## Phase 3 | Scale to 500+ Pages (July – September 2026)
 
 **Goal:** Programmatic + editorial mix. Establish topical authority in 5 verticals.
 
@@ -246,7 +246,7 @@ Currently ~13 pages. Target: 200+.
 
 High-value examples: "What is CUDA", "What is LLM", "What is a prediction market", "What is ESA Section 7", "What is RTX 5090", "What is Gemini 2.5 Pro".
 
-Low competition, high volume. Each definition page should be 400â€“700 words with `NewsArticle` component and internal links to relevant cluster pages.
+Low competition, high volume. Each definition page should be 400–700 words with `NewsArticle` component and internal links to relevant cluster pages.
 
 ---
 
@@ -256,7 +256,7 @@ Low competition, high volume. Each definition page should be 400â€“700 words wit
 |---|---|---|
 | `/nvidia` | Hub + 5 sub-articles (RTX 5090, GTC, CUDA, GB200, NIM) | `Hub.tsx` + `NewsArticle` |
 | `/apple` | 4 more sub-articles to fill out existing 11 | `NewsArticle` |
-| `/google` | Fill out 4 stubs | Convert `JackArticleDB` â†’ static |
+| `/google` | Fill out 4 stubs | Convert `JackArticleDB` ? static |
 | `/amazon` | AWS stubs already exist, convert to static | `NewsArticle` |
 
 ---
@@ -266,8 +266,8 @@ Low competition, high volume. Each definition page should be 400â€“700 words wit
 Every article needs a 1200x675 OG image with `imageUrl`, `imageWidth: 1200`, `imageHeight: 675` in the registry. Missing images block Google Top Stories.
 
 **Options:**
-1. Vercel OG image generation at `/api/og?title=...&category=...` â€” generates on demand, zero manual work
-2. Use Unsplash API for hero images â€” key already stored in user memory
+1. Vercel OG image generation at `/api/og?title=...&category=...` — generates on demand, zero manual work
+2. Use Unsplash API for hero images — key already stored in user memory
 
 ---
 
@@ -279,7 +279,7 @@ Every article needs a 1200x675 OG image with `imageUrl`, `imageWidth: 1200`, `im
 | Newsletter | Already built (`NewsletterSignupInline`). Goal: 500 subscribers by end of year |
 | Apple News | Submit after Google News approval |
 | MSN News | Register at Microsoft PubHub after Google News |
-| ObjectWire BlackBook | Prediction market integration â€” see `Docs/BLACKBOOK_BLUEPRINT.md` |
+| ObjectWire BlackBook | Prediction market integration — see `Docs/BLACKBOOK_BLUEPRINT.md` |
 
 ---
 

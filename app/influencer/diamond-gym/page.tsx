@@ -6,7 +6,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/diamond-gym';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 const OG_IMAGE = '/influncer/Diamond Gym.PNG';
 
 export const metadata: Metadata = {

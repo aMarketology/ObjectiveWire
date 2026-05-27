@@ -6,7 +6,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/ari-kytsya';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 const IMAGE_URL = '/influncer/ariK.jpg';
 
 export const metadata: Metadata = {

@@ -6,7 +6,7 @@ import { KeyTakeaways } from '@/components/articles/KeyTakeaways';
 export const revalidate = 86400;
 
 const SLUG = '/youtube/markiplier';
-const PAGE_URL = `https://www.owire.org${SLUG}`;
+const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: "Markiplier Iron Lung Film | YouTube Debut May 31, 2026",

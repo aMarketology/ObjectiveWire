@@ -1,121 +1,145 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.owire.org';
+const PAGE_URL = 'https://www.objectivewire.org';
 
 export const metadata: Metadata = {
-  title: 'ObjectWire | Austin Investigative Media Agency',
+  title: 'oWire | Licensed Investigative Newsroom, Austin TX',
   description:
-    'ObjectWire is an Austin-based investigative media company. Licensed PI services, investigative journalism, document review, and newsroom tips. Serving Travis County and Central Texas.',
+    'Objective Wire is a licensed investigative newsroom and 501(c)(3) nonprofit in Austin, Texas. Our reporters hold Texas PI credentials, applied to original reporting on public records, accountability, cars, creators, and culture.',
   keywords: [
-    'investigative services Austin TX',
-    'private investigator Austin Texas',
-    'Austin PI agency',
-    'investigative journalism Austin',
-    'surveillance Austin Texas',
-    'missing persons Austin',
-    'digital forensics Austin',
-    'background check Austin TX',
-    'corporate investigations Austin',
-    'skip tracing Austin Texas',
-    'tip the newsroom Austin',
+    'investigative newsroom Austin',
+    'licensed investigative journalism',
+    'Texas investigative reporter',
+    'public records journalism Texas',
+    'Austin accountability journalism',
+    'nonprofit newsroom Austin',
+    'investigative reporting Texas',
     'FOIA Austin Texas',
-    'ObjectWire investigative services',
+    'oWire',
+    'Objective Wire',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'ObjectWire | Austin Investigative Media Agency',
+    title: 'oWire | Licensed Investigative Newsroom, Austin TX',
     description:
-      'Austin investigative media company. Licensed PI services and investigative journalism. Surveillance, missing persons, digital forensics, background checks, corporate investigations, FOIA, and newsroom tips.',
+      'A licensed investigative newsroom in Austin, Texas. Original reporting backed by Texas PI credentials, public records, and primary-source verification.',
     type: 'website',
     url: PAGE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ObjectWire | Austin Investigative Media Agency',
-    description:
-      'Austin PI and investigative journalism services. Surveillance, missing persons, digital forensics, and newsroom tips.',
+    title: 'oWire | Licensed Investigative Newsroom',
+    description: 'Licensed investigative newsroom. Public records, accountability, original reporting from Austin.',
   },
 };
 
-const LOCAL_BUSINESS_SCHEMA = {
+const NEWS_MEDIA_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'ProfessionalService'],
-  name: 'ObjectWire Investigative Services',
-  description:
-    'Austin-based investigative media company offering licensed private investigator services including surveillance, missing persons, digital forensics, background checks, infidelity investigations, skip tracing, child custody, workers compensation fraud, and corporate investigations.',
+  '@type': ['NewsMediaOrganization', 'NGO'],
+  name: 'Objective Wire',
+  alternateName: 'oWire',
   url: PAGE_URL,
+  logo: 'https://www.objectivewire.org/opengraph-image',
+  description:
+    'A licensed investigative newsroom and 501(c)(3) nonprofit based in Austin, Texas. Reporters hold Texas PI credentials, enabling original investigative journalism on public records, accountability, cars, creators, and culture.',
+  foundingDate: '2023',
+  foundingLocation: { '@type': 'Place', name: 'Austin, Texas' },
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Austin',
     addressRegion: 'TX',
     addressCountry: 'US',
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 30.2672,
-    longitude: -97.7431,
-  },
   areaServed: [
-    { '@type': 'City', name: 'Austin', containedInPlace: { '@type': 'State', name: 'Texas' } },
-    { '@type': 'AdministrativeArea', name: 'Travis County' },
-    { '@type': 'AdministrativeArea', name: 'Williamson County' },
-    { '@type': 'AdministrativeArea', name: 'Hays County' },
+    { '@type': 'City', name: 'Austin' },
+    { '@type': 'State', name: 'Texas' },
+    { '@type': 'Country', name: 'United States' },
   ],
+  ethicsPolicy: 'https://www.objectivewire.org/editorial-standards',
+  diversityPolicy: 'https://www.objectivewire.org/editorial-standards',
+  correctionsPolicy: 'https://www.objectivewire.org/corrections',
+  masthead: 'https://www.objectivewire.org/authors',
+  missionCoveragePrioritiesPolicy: 'https://www.objectivewire.org/about',
   knowsAbout: [
-    'Private Investigation',
-    'Surveillance',
-    'Digital Forensics',
-    'Missing Persons',
-    'Background Checks',
-    'Corporate Investigations',
     'Investigative Journalism',
+    'Public Records',
     'FOIA',
     'Source Protection',
-    'Whistleblower Reporting',
-    'Public Records',
+    'Accountability Reporting',
+    'Texas Private Investigation Code 1702',
   ],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Investigative Services',
-    itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surveillance Investigations', url: 'https://www.owire.org/service/surveillance' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Infidelity Investigations', url: 'https://www.owire.org/service/infidelity-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Missing Persons Investigations', url: 'https://www.owire.org/service/missing-persons' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Background Check Investigations', url: 'https://www.owire.org/service/background-checks' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Skip Tracing', url: 'https://www.owire.org/service/skip-tracing' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Child Custody Investigations', url: 'https://www.owire.org/service/child-custody-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workers Compensation Fraud', url: 'https://www.owire.org/service/workers-compensation-fraud' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Corporate Investigations', url: 'https://www.owire.org/service/corporate-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Digital Forensics', url: 'https://www.owire.org/service/digital-forensics' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Investigative Reporting', url: 'https://www.owire.org/service/investigative-reporting' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Newsroom Tip Submission', url: 'https://www.owire.org/service/tip-the-newsroom' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Document Review and FOIA', url: 'https://www.owire.org/service/document-review' } },
-    ],
-  },
-  sameAs: ['https://www.owire.org'],
+  sameAs: ['https://www.objectivewire.org'],
 };
 
-const SERVICES = [
-  { href: '/service/surveillance', label: 'Surveillance', icon: '🎥', desc: 'Covert photo and video documentation for domestic, legal, and corporate cases.' },
-  { href: '/service/infidelity-investigations', label: 'Infidelity Investigations', icon: '🔍', desc: 'Cheating spouse and domestic partner cases with timestamped evidence.' },
-  { href: '/service/missing-persons', label: 'Missing Persons', icon: '📍', desc: 'Locate missing adults, runaways, and estranged family members.' },
-  { href: '/service/background-checks', label: 'Background Checks', icon: '📋', desc: 'Criminal history, employment verification, and identity research.' },
-  { href: '/service/skip-tracing', label: 'Skip Tracing', icon: '🗺️', desc: 'Locate debtors, witnesses, defendants, and estranged contacts.' },
-  { href: '/service/child-custody-investigations', label: 'Child Custody', icon: '⚖️', desc: 'Parental surveillance and verification for Travis County family court.' },
-  { href: '/service/workers-compensation-fraud', label: 'Workers Comp Fraud', icon: '🏥', desc: 'Claimant surveillance for insurers and defense attorneys.' },
-  { href: '/service/corporate-investigations', label: 'Corporate Investigations', icon: '🏢', desc: 'Employee misconduct, IP theft, fraud, and executive due diligence.' },
-  { href: '/service/digital-forensics', label: 'Digital Forensics', icon: '💻', desc: 'Online harassment, identity fraud, social media aliases, and dark-web exposure.' },
+const TRUST_BADGES = [
+  { label: 'Texas Licensed', value: 'PI Code Ch. 1702' },
+  { label: 'Tax Status', value: '501(c)(3) Nonprofit' },
+  { label: 'Founded', value: 'Austin, TX, 2023' },
+  { label: 'Editorial Model', value: 'Primary Sources Only' },
 ];
 
-const JOURNALISM_SERVICES = [
-  { href: '/service/investigative-reporting', label: 'Investigative Reporting', icon: '📰', desc: 'Published accountability journalism on public figures, institutions, and matters of public interest.' },
-  { href: '/service/tip-the-newsroom', label: 'Tip the Newsroom', icon: '📬', desc: 'Submit a confidential tip. We protect sources and pursue stories the public deserves to know.' },
-  { href: '/service/document-review', label: 'Document Review and FOIA', icon: '📁', desc: 'Submit public records, FOIA responses, or leaked materials for investigative analysis.' },
+const PILLARS = [
+  {
+    href: '/local/austin',
+    kicker: 'Local Accountability',
+    title: 'Austin and Travis County',
+    desc: 'Public records reporting on city hall, APD, Travis County courts, and Texas FOIA filings.',
+  },
+  {
+    href: '/cars',
+    kicker: 'Cars and Supercars',
+    title: 'Hypercars, EVs, Manufacturers',
+    desc: 'Verified specs, pricing, and manufacturer claims, sourced from filings, not press releases.',
+  },
+  {
+    href: '/creator',
+    kicker: 'Creators and Culture',
+    title: 'Creator Economy Reporting',
+    desc: 'Profiles, brand deals, platform shifts, and original interviews with creators and athletes.',
+  },
+  {
+    href: '/service',
+    kicker: 'Investigative Methods',
+    title: 'How Our Reporters Investigate',
+    desc: 'The licensed tools our reporters use, surveillance, skip tracing, and document review.',
+  },
+];
+
+const METHODS = [
+  {
+    step: '01',
+    title: 'Tip Received',
+    desc: 'Tips arrive via SecureDrop-style intake. Source identity is protected by editorial policy and Texas reporter privilege.',
+  },
+  {
+    step: '02',
+    title: 'Verification',
+    desc: 'We pull primary documents, court filings, public records, and FOIA responses. No story moves without verified sourcing.',
+  },
+  {
+    step: '03',
+    title: 'Licensed Field Work',
+    desc: 'Where surveillance, skip tracing, or background research is needed, our Texas PI credential keeps the work legal and admissible.',
+  },
+  {
+    step: '04',
+    title: 'Publication',
+    desc: 'Stories are published with named authors, full source citations, dated timestamps, and a transparent corrections record.',
+  },
+];
+
+const STANDARDS = [
+  { icon: 'L', text: 'Licensed under Texas Occupations Code Chapter 1702 by the Department of Public Safety.' },
+  { icon: 'N', text: '501(c)(3) nonprofit. No paywall, no shareholders, no profit motive driving coverage decisions.' },
+  { icon: 'P', text: 'Primary sources only. Every fact traces to a named individual, document, or filing.' },
+  { icon: 'C', text: 'Published corrections policy. Errors are corrected publicly, timestamped, and preserved.' },
+  { icon: 'S', text: 'Source protection by editorial policy and Texas reporter privilege.' },
+  { icon: 'A', text: 'Named author bylines on every published article. No anonymous editorial.' },
 ];
 
 export default function HomePage() {
@@ -123,164 +147,171 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(NEWS_MEDIA_SCHEMA) }}
       />
 
-      <main className="min-h-screen bg-white dark:bg-gray-950">
+      {/* Editorial top rule */}
+      <div className="h-[3px] bg-gray-900 w-full" />
+
+      <main className="min-h-screen bg-[#f0f0f0]">
 
         {/* HERO */}
-        <section className="bg-gray-950 text-white">
-          <div className="container mx-auto px-4 py-16 max-w-6xl">
-            <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-4 font-mono">
-              Austin, Texas · Licensed PI Agency · 501(c)(3) Nonprofit
+        <section className="bg-white border-b border-gray-200">
+          <div className="container mx-auto px-4 py-20 max-w-6xl">
+            <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-5 font-mono">
+              Austin, Texas, Licensed Investigative Newsroom, 501(c)(3) Nonprofit
             </p>
-            <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
-              Austin&apos;s Investigative<br />
-              <span className="text-purple-400">Media Agency.</span>
+            <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-6 max-w-4xl text-gray-900">
+              The Licensed<br />
+              <span className="text-amber-500">Investigative Newsroom.</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
-              We investigate, document, and publish. Licensed PI services for private clients.
-              Accountability journalism for the public. The same discipline applied to both.
+            <p className="text-xl text-gray-700 max-w-2xl mb-5 leading-relaxed">
+              oWire reporters hold Texas Private Investigator credentials. We apply licensed
+              investigative methods, surveillance, public records, skip tracing, and document
+              review, to original journalism that other newsrooms cannot legally produce.
             </p>
-
-            <div className="flex flex-wrap gap-6 mb-10">
-              {[
-                { stat: 'Licensed', label: 'Texas PI Agency' },
-                { stat: '501(c)(3)', label: 'Nonprofit Organization' },
-                { stat: 'Austin, TX', label: 'Travis County Based' },
-                { stat: 'Free', label: 'Initial Consultation' },
-              ].map(({ stat, label }) => (
-                <div key={label} className="text-center">
-                  <div className="text-2xl font-black text-white">{stat}</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-widest">{label}</div>
-                </div>
-              ))}
-            </div>
+            <p className="text-base text-gray-500 max-w-2xl mb-10 leading-relaxed">
+              Independent, nonprofit, and accountable. Every story carries a named byline,
+              dated timestamps, and full primary-source citations.
+            </p>
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/get-help"
-                className="bg-purple-600 hover:bg-purple-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+                href="/service/tip-the-newsroom"
+                className="bg-gray-900 hover:bg-gray-800 text-white font-black px-8 py-4 transition-colors text-lg"
               >
-                Start a Free Consultation
+                Tip the Newsroom
               </Link>
               <Link
-                href="/austin-private-detective-agency"
-                className="border border-gray-600 hover:border-white text-gray-300 hover:text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+                href="/editorial-standards"
+                className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-bold px-8 py-4 transition-colors text-lg"
               >
-                PI Agency Details
+                Editorial Standards
               </Link>
             </div>
           </div>
         </section>
 
-        {/* PI SERVICES GRID */}
-        <section className="py-20 bg-white dark:bg-gray-950">
+        {/* TRUST STRIP */}
+        <section className="bg-[#e8e8e8] border-b border-gray-300">
+          <div className="container mx-auto px-4 py-6 max-w-6xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-300">
+              {TRUST_BADGES.map(({ label, value }, i) => (
+                <div key={label} className={`text-center md:text-left ${i === 0 ? '' : 'pl-6'}`}>
+                  <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500 mb-1.5 font-mono">
+                    {label}
+                  </p>
+                  <p className="text-sm md:text-base font-black text-gray-900">{value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* COVERAGE PILLARS */}
+        <section className="py-20 bg-[#f0f0f0]">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="mb-12">
-              <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
-                Private Investigative Services
+            <div className="mb-12 max-w-3xl">
+              <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 mb-3 font-mono">
+                Coverage
               </p>
-              <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-                PI Services for Private Clients
+              <h2 className="text-4xl font-black text-gray-900 mb-4">
+                What oWire Investigates
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-                All case work is private and confidential. Results are delivered directly to you, not published.
-                Every investigation is handled by a licensed Texas PI.
+              <p className="text-lg text-gray-600">
+                oWire focuses on four beats: local Austin accountability, cars and supercars,
+                creators and culture, and the investigative methods themselves.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SERVICES.map((s) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {PILLARS.map((p) => (
                 <Link
-                  key={s.href}
-                  href={s.href}
-                  className="group border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-purple-400 hover:shadow-lg transition-all bg-white dark:bg-gray-900"
+                  key={p.href}
+                  href={p.href}
+                  className="group block bg-white hover:shadow-md transition-all"
                 >
-                  <div className="text-3xl mb-4">{s.icon}</div>
-                  <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2 group-hover:text-purple-400 transition-colors">
-                    {s.label}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{s.desc}</p>
-                  <span className="text-purple-400 text-sm font-semibold group-hover:underline">
-                    Learn more →
-                  </span>
+                  <div className="h-[3px] bg-gray-900 group-hover:bg-amber-500 transition-colors" />
+                  <div className="border border-t-0 border-gray-200 p-8">
+                    <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500 mb-3 font-mono">
+                      {p.kicker}
+                    </p>
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-amber-600 transition-colors">
+                      {p.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed mb-5">{p.desc}</p>
+                    <span className="text-gray-900 text-sm font-bold group-hover:underline">
+                      Read coverage &rarr;
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* JOURNALISM SERVICES */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        {/* HOW WE INVESTIGATE */}
+        <section className="py-20 bg-white border-y border-gray-200">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="mb-12">
-              <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
-                Media and Journalism
+            <div className="mb-14 max-w-3xl">
+              <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 mb-3 font-mono">
+                Methodology
               </p>
-              <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-                Investigative Journalism Services
+              <h2 className="text-4xl font-black text-gray-900 mb-4">
+                How a Story Becomes a Story
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-                Our journalism is editorially independent. We decide what to publish based on public
-                interest, not client fees. Results become public record.
+              <p className="text-lg text-gray-600">
+                The license is not the product. The license is what makes the journalism
+                possible. Here is what happens between a tip and a published article.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {JOURNALISM_SERVICES.map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  className="group border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-purple-400 hover:shadow-lg transition-all bg-white dark:bg-gray-800"
-                >
-                  <div className="text-3xl mb-4">{s.icon}</div>
-                  <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2 group-hover:text-purple-400 transition-colors">
-                    {s.label}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{s.desc}</p>
-                  <span className="text-purple-400 text-sm font-semibold group-hover:underline">
-                    Learn more →
-                  </span>
-                </Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+              {METHODS.map(({ step, title, desc }) => (
+                <div key={step} className="bg-[#f9f9f9] p-8">
+                  <p className="text-5xl font-black text-gray-200 mb-4 font-mono leading-none">{step}</p>
+                  <h3 className="font-black text-gray-900 mb-2 text-lg">{title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{desc}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* WHY OBJECTWIRE */}
-        <section className="py-20 bg-white dark:bg-gray-950">
+        {/* EDITORIAL STANDARDS */}
+        <section className="py-20 bg-[#f0f0f0]">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
-                  Why ObjectWire
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 mb-3 font-mono">
+                  Why You Can Trust oWire
                 </p>
-                <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-6">
-                  A PI agency that is also a newsroom.
+                <h2 className="text-4xl font-black text-gray-900 mb-6">
+                  Independent. Licensed. Accountable.
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  Most PI agencies collect evidence. ObjectWire also knows how to document it for
-                  publication, court proceedings, and public record, because we do all three.
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  oWire is structured to remove the typical pressures that distort journalism.
+                  We are a 501(c)(3) nonprofit with no paywall, no shareholders, and no
+                  advertiser veto over coverage. Every reporter operates under a published
+                  editorial code and a public corrections policy.
                 </p>
-                <Link href="/about" className="text-purple-400 hover:text-purple-700 underline font-semibold">
-                  About ObjectWire →
-                </Link>
+                <div className="flex flex-col gap-3">
+                  <Link href="/editorial-standards" className="text-gray-900 hover:underline font-bold text-sm border-b border-gray-300 pb-3">
+                    Read our editorial standards &rarr;
+                  </Link>
+                  <Link href="/corrections" className="text-gray-900 hover:underline font-bold text-sm border-b border-gray-300 pb-3">
+                    Corrections policy &rarr;
+                  </Link>
+                  <Link href="/authors" className="text-gray-900 hover:underline font-bold text-sm">
+                    Meet the reporters &rarr;
+                  </Link>
+                </div>
               </div>
-              <div className="space-y-4">
-                {[
-                  { icon: '✅', text: 'Licensed under Texas Occupations Code Chapter 1702' },
-                  { icon: '✅', text: 'Free initial consultation, no commitment required' },
-                  { icon: '✅', text: 'All findings are fully confidential, never published without consent' },
-                  { icon: '✅', text: '501(c)(3) nonprofit, no profit motive or shareholder pressure' },
-                  { icon: '✅', text: 'Court-ready documentation chain of custody on every case' },
-                  { icon: '✅', text: 'Scientific and digital forensics expertise on staff' },
-                  { icon: '✅', text: 'Coordinated directly with attorneys on litigation cases' },
-                  { icon: '✅', text: 'Source identity protection on all journalism tips' },
-                ].map(({ icon, text }) => (
-                  <div key={text} className="flex items-start gap-3">
-                    <span className="text-lg mt-0.5">{icon}</span>
-                    <p className="text-gray-700 dark:text-gray-300">{text}</p>
+              <div className="bg-white border border-gray-200 divide-y divide-gray-100">
+                {STANDARDS.map(({ icon, text }) => (
+                  <div key={text} className="flex items-start gap-4 px-6 py-4">
+                    <span className="font-mono font-black text-gray-900 text-xs mt-0.5 min-w-[1rem]">{icon}</span>
+                    <p className="text-gray-700 leading-relaxed text-sm">{text}</p>
                   </div>
                 ))}
               </div>
@@ -288,125 +319,87 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* HOW IT WORKS */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        {/* MASTHEAD / FOUNDER */}
+        <section className="py-20 bg-white border-y border-gray-200">
           <div className="container mx-auto px-4 max-w-6xl">
-            <div className="mb-12 text-center">
-              <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
-                Case Process
-              </p>
-              <h2 className="text-4xl font-black text-gray-900 dark:text-white">
-                How It Works
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              {[
-                { step: '01', title: 'Free Consultation', desc: 'Confidential call or message. We assess your case, objectives, and what evidence is achievable.' },
-                { step: '02', title: 'Case Brief', desc: 'We define scope, legal parameters, timeline, and cost before any field work begins.' },
-                { step: '03', title: 'Investigation', desc: 'Licensed investigators gather timestamped, geotagged documentation using professional equipment.' },
-                { step: '04', title: 'Delivery', desc: 'You receive a written case report, full photo and video file set, and a chain-of-custody record.' },
-              ].map(({ step, title, desc }) => (
-                <div key={step} className="text-center">
-                  <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4">
-                    {step}
-                  </div>
-                  <h3 className="font-black text-gray-900 dark:text-white mb-2">{title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* COVERAGE AREA */}
-        <section className="py-16 bg-white dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] font-black text-purple-400 mb-3 font-mono">
-                  Service Area
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500 mb-3 font-mono">
+                  Masthead
                 </p>
-                <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-4">
-                  Austin and Central Texas
+                <h2 className="text-4xl font-black text-gray-900 mb-4">
+                  The Newsroom
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  Primary field coverage across Travis County and the greater Central Texas region.
-                  Out-of-area cases handled with travel fees disclosed at consultation.
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  Named bylines on every story. Reporters with public profiles, verified
+                  credentials, and traceable work histories.
                 </p>
-                <div className="grid grid-cols-2 gap-2">
-                  {['Austin', 'Travis County', 'Round Rock', 'Cedar Park', 'Georgetown', 'Pflugerville', 'Leander', 'San Marcos', 'Kyle', 'Buda', 'Bastrop County', 'Williamson County'].map((city) => (
-                    <div key={city} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-                      <span className="text-purple-400">📍</span> {city}
-                    </div>
+                <Link href="/authors" className="text-gray-900 font-bold hover:underline text-sm">
+                  View all authors &rarr;
+                </Link>
+              </div>
+
+              <div className="lg:col-span-2 border border-gray-200 bg-[#f9f9f9] p-8">
+                <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500 mb-2 font-mono">
+                  Founding Reporter, oWire
+                </p>
+                <h3 className="text-3xl font-black text-gray-900 mb-3">
+                  Conan Boyle
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-5">
+                  Conan Boyle is the founding reporter at oWire and the publication&rsquo;s
+                  lead investigative journalist. A graduate of NC State University&rsquo;s
+                  journalism program, Boyle holds a Texas Private Investigator credential
+                  under the Department of Public Safety, which he applies directly to original
+                  reporting on Austin public records, Travis County courts, and the cars beat.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {['Investigative Reporting', 'Public Records', 'Texas FOIA', 'Supercars', 'Austin Accountability'].map((b) => (
+                    <span key={b} className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-white text-gray-600 border border-gray-300">
+                      {b}
+                    </span>
                   ))}
                 </div>
-              </div>
-              <div className="bg-gray-900 rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-black mb-2">Licensed PI Agency</h3>
-                <p className="text-gray-400 text-sm mb-6">
-                  Regulated under Texas Occupations Code Chapter 1702.<br />
-                  Enforced by the Texas Department of Public Safety.
-                </p>
-                <div className="space-y-3 text-sm text-gray-300">
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">Organization</span>
-                    <span>ObjectWire LLC</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">Type</span>
-                    <span>501(c)(3) Nonprofit</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">Jurisdiction</span>
-                    <span>State of Texas</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">HQ</span>
-                    <span>Austin, TX</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-semibold text-white">Consulting</span>
-                    <span className="text-purple-400">Free, confidential</span>
-                  </div>
-                </div>
+                <Link
+                  href="/authors/conan-boyle"
+                  className="inline-block bg-gray-900 text-white hover:bg-gray-800 font-bold px-6 py-3 transition-colors text-sm"
+                >
+                  Full bio and published work
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-20 bg-purple-800 text-white">
+        {/* TIP THE NEWSROOM CTA */}
+        <section className="py-20 bg-gray-900 text-white">
           <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h2 className="text-4xl font-black mb-4">Ready to Start Your Case?</h2>
-            <p className="text-xl text-purple-100 mb-10 max-w-2xl mx-auto">
-              Free consultation. No commitment. We will tell you honestly what is achievable,
-              what evidence standards apply, and what it costs, before any work begins.
+            <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-4 font-mono">
+              Have a Story
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black mb-5">Tip the Newsroom.</h2>
+            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Confidential. Source identity protected. Whistleblowers, public records leaks,
+              corporate misconduct, and accountability tips reviewed by a named editor within
+              48 hours.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/get-help"
-                className="bg-white text-purple-800 hover:bg-purple-50 font-black px-10 py-4 rounded-lg transition-colors text-lg"
+                href="/service/tip-the-newsroom"
+                className="bg-amber-500 text-gray-950 hover:bg-amber-400 font-black px-10 py-4 transition-colors text-lg"
               >
-                Start a Free Consultation
+                Submit a Tip
               </Link>
               <Link
-                href="/austin-private-detective-agency"
-                className="border-2 border-white text-white hover:bg-white hover:text-purple-800 font-bold px-10 py-4 rounded-lg transition-colors text-lg"
+                href="/about"
+                className="border border-gray-700 hover:border-gray-400 text-gray-400 hover:text-white font-bold px-10 py-4 transition-colors text-lg"
               >
-                PI Agency Overview
+                About oWire
               </Link>
             </div>
-            <p className="mt-8 text-purple-200 text-sm">
-              Editorial tips and newsroom contact:{' '}
-              <a href="mailto:editorial@objectwire.org" className="underline text-white hover:text-purple-100">
-                editorial@objectwire.org
-              </a>
-            </p>
           </div>
         </section>
-
       </main>
     </>
   );
 }
-

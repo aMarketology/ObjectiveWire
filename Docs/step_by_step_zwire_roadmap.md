@@ -1,7 +1,7 @@
-﻿# ZWire (ZeroWire) | Step-by-Step Roadmap
+# ZWire (ZeroWire) | Step-by-Step Roadmap
 ## Last Updated: May 6, 2026
 
-> **Domain:** `owire.org` | **Brand:** ZWire (display) / ZeroWire (long form)
+> **Domain:** `objectivewire.org` | **Brand:** ZWire (display) / ZeroWire (long form)
 > **Stack:** Next.js 15, React 19, Supabase, Tailwind CSS, Railway
 > **Goal:** 100K monthly organic sessions. Google News approved.
 
@@ -12,7 +12,7 @@
 | What | Number | Context |
 |---|---|---|
 | Page routes | 151 | `app/**/page.tsx` (excl. admin) |
-| Registry entries | 120 | `lib/registry-data.json` — local JSON, no Supabase |
+| Registry entries | 120 | `lib/registry-data.json` � local JSON, no Supabase |
 | Pages not in registry | 31 | DB stubs, utility pages |
 | Named author pages | 5 | jack-sterling, jack-wang, jack-brennan, alfansa, conan-boyle |
 | Articles attributed to authors | 3 | jack-brennan (1), entertainment-desk (1), sports-desk (1) |
@@ -20,7 +20,7 @@
 | High-traffic content pillars live | 0 | GTA 6, Switch 2, OpenAI, Apple, Finance all missing |
 | Google Publisher Center | Not registered | Blocking Top Stories |
 
-**The core problem:** 58% of the registry is Creator + YouTube. Zero gaming, tech, AI, finance, or news entries. The highest-traffic verticals are completely absent from the registry — and therefore from the sitemap, RSS, and related articles.
+**The core problem:** 58% of the registry is Creator + YouTube. Zero gaming, tech, AI, finance, or news entries. The highest-traffic verticals are completely absent from the registry � and therefore from the sitemap, RSS, and related articles.
 
 ---
 
@@ -30,13 +30,13 @@ Understanding this saves hours of debugging.
 
 ```
 git push main
-  └── Railway triggers: npm run build
-        └── prebuild (runs automatically before build):
-              1. validate-public.ts      ← fails if robots.txt or sitemap.xml exist in /public
-              2. validate-canonicals.ts  ← fails if a hardcoded canonical is in any layout
-              3. sync-registry.ts --write ← scans app/**/page.tsx, writes lib/registry-data.json
-        └── next build
-              └── Generates static pages, ISR hub pages, API routes
+  +-- Railway triggers: npm run build
+        +-- prebuild (runs automatically before build):
+              1. validate-public.ts      ? fails if robots.txt or sitemap.xml exist in /public
+              2. validate-canonicals.ts  ? fails if a hardcoded canonical is in any layout
+              3. sync-registry.ts --write ? scans app/**/page.tsx, writes lib/registry-data.json
+        +-- next build
+              +-- Generates static pages, ISR hub pages, API routes
 ```
 
 ### Key files
@@ -46,25 +46,25 @@ git push main
 | `lib/registry-data.json` | Single source of truth for all content metadata |
 | `scripts/sync-registry.ts` | Scans app/**/page.tsx and writes registry (runs at prebuild) |
 | `lib/registry-service.ts` | Query layer: getAllEntries, getArticlesByCategory, getRelatedArticles, etc. |
-| `app/sitemap.ts` | Main sitemap — reads registry-data.json directly |
-| `app/news-sitemap.xml/route.ts` | Google News sitemap — rolling 2-day window from registry |
-| `app/rss.xml/route.ts` | RSS feed — reads registry, last 30 entries |
+| `app/sitemap.ts` | Main sitemap � reads registry-data.json directly |
+| `app/news-sitemap.xml/route.ts` | Google News sitemap � rolling 2-day window from registry |
+| `app/rss.xml/route.ts` | RSS feed � reads registry, last 30 entries |
 | `components/articles/NewsArticle.tsx` | Default component for all new articles |
 | `components/Hub.tsx` | Hub page component (used by Video Games, Crypto, MLS, Influencer, MHA) |
 | `components/articles/NewsArticleSchema.tsx` | JSON-LD: OrganizationSchema, NewsArticleSchema, WebSiteSchema |
-| `lib/site-config.ts` | SITE_CONFIG: name="ZWire", url="https://www.owire.org" |
+| `lib/site-config.ts` | SITE_CONFIG: name="ZWire", url="https://www.objectivewire.org" |
 
 ### Article routing rule (critical)
 
 New articles: body content lives in `page.tsx`. No Supabase. Revalidate at build or ISR.
 
 ```tsx
-// NEW ARTICLE — content in code
+// NEW ARTICLE � content in code
 import { NewsArticle } from '@/components/articles/NewsArticle';
 export const revalidate = 86400;   // static, re-generated daily
 // OR omit revalidate entirely for fully static
 
-// LEGACY DB STUB — body in Supabase
+// LEGACY DB STUB � body in Supabase
 import { NewsArticleDB } from '@/components/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 ```
@@ -74,45 +74,45 @@ Never use `*DB` components for new content. They call `notFound()` when Supabase
 ---
 
 ## STAGE 1 | Brand + Technical Foundation
-### (Do these once — most are already done)
+### (Do these once � most are already done)
 
 ---
 
-### Step 1.1 | Brand Rename to ZWire / ZeroWire ✅ DONE (May 6, 2026)
+### Step 1.1 | Brand Rename to ZWire / ZeroWire ? DONE (May 6, 2026)
 
 The following files were updated to reflect the ZWire brand:
 
 | File | Change |
 |---|---|
 | `lib/site-config.ts` | `name: "ZWire"`, `author: "ZWire Editorial"` |
-| `components/articles/NewsArticleSchema.tsx` | OrganizationSchema, publisher fields → "ZeroWire" / "ZWire" |
+| `components/articles/NewsArticleSchema.tsx` | OrganizationSchema, publisher fields ? "ZeroWire" / "ZWire" |
 | `components/SEOWrapper.tsx` | `ORG_NAME = 'ZeroWire'` |
-| `app/layout.tsx` | Footer text + copyright → ZWire |
-| `app/about/page.tsx` | All "ObjectWire" → "ZeroWire" |
-| `app/editorial-standards/page.tsx` | All "ObjectWire" → "ZeroWire" |
+| `app/layout.tsx` | Footer text + copyright ? ZWire |
+| `app/about/page.tsx` | All "ObjectWire" ? "ZeroWire" |
+| `app/editorial-standards/page.tsx` | All "ObjectWire" ? "ZeroWire" |
 | `app/editorial-standards/authors/page.tsx` | siteName, descriptions updated |
 
-**Domain stays `owire.org`.** The brand shown on the site and in Google's knowledge graph is now ZeroWire.
+**Domain stays `objectivewire.org`.** The brand shown on the site and in Google's knowledge graph is now ZeroWire.
 
 ---
 
-### Step 1.2 | Local Content Registry Migration ✅ DONE
+### Step 1.2 | Local Content Registry Migration ? DONE
 
 `content_registry` Supabase table is replaced by `lib/registry-data.json`. All SEO files (sitemap, RSS, news sitemap) read from local JSON. Zero Supabase reads at render time for content listings.
 
-Workflow: edit a `page.tsx` → run `npx tsx scripts/sync-registry.ts --write` → changes propagate everywhere.
+Workflow: edit a `page.tsx` ? run `npx tsx scripts/sync-registry.ts --write` ? changes propagate everywhere.
 
 ---
 
-### Step 1.3 | Canonical + Public Directory Validation ✅ DONE
+### Step 1.3 | Canonical + Public Directory Validation ? DONE
 
-- `scripts/validate-canonicals.ts` — blocks build if any layout has a hardcoded canonical
-- `scripts/validate-public.ts` — blocks build if `public/robots.txt` or `public/sitemap.xml` exist
-- Both run as part of `prebuild` — no manual checks needed
+- `scripts/validate-canonicals.ts` � blocks build if any layout has a hardcoded canonical
+- `scripts/validate-public.ts` � blocks build if `public/robots.txt` or `public/sitemap.xml` exist
+- Both run as part of `prebuild` � no manual checks needed
 
 ---
 
-### Step 1.4 | Google Publisher Center Registration 🔲 TODO (30 min)
+### Step 1.4 | Google Publisher Center Registration ?? TODO (30 min)
 
 Required to be eligible for Google News Top Stories. Do this before writing any more news articles.
 
@@ -122,48 +122,48 @@ Required to be eligible for Google News Top Stories. Do this before writing any 
 2. Click "Add publication"
 3. Fill in:
    - Publication name: `ZeroWire`
-   - Website URL: `https://www.owire.org`
+   - Website URL: `https://www.objectivewire.org`
 4. Verify site ownership via Google Search Console (DNS TXT or HTML file method)
-5. Upload publisher logo — **must be 1000x1000 square PNG**
+5. Upload publisher logo � **must be 1000x1000 square PNG**
    - The current `objectwire-logo.png` (horizontal wordmark) does not meet this requirement
    - Create a square ZWire logo: white background, "ZW" or "ZeroWire" centered, min 1000x1000
-   - Place it at `public/zwire-logo-square.png` and use URL `https://www.owire.org/zwire-logo-square.png`
+   - Place it at `public/zwire-logo-square.png` and use URL `https://www.objectivewire.org/zwire-logo-square.png`
    - Update `components/articles/NewsArticleSchema.tsx` logo URL to this new file
 6. News settings:
-   - News sitemap URL: `https://www.owire.org/news-sitemap.xml`
+   - News sitemap URL: `https://www.objectivewire.org/news-sitemap.xml`
    - Content language: English
    - Country: United States
 7. Editorial policy URLs:
-   - About / ownership: `https://www.owire.org/about`
-   - Editorial standards: `https://www.owire.org/editorial-standards`
-   - Corrections: `https://www.owire.org/corrections`
-8. Submit. Google reviews within 1–7 days.
+   - About / ownership: `https://www.objectivewire.org/about`
+   - Editorial standards: `https://www.objectivewire.org/editorial-standards`
+   - Corrections: `https://www.objectivewire.org/corrections`
+8. Submit. Google reviews within 1�7 days.
 
 **Also register on Bing News PubHub** (10 min): [bing.com/webmasters/pubhub](https://www.bing.com/webmasters/pubhub)
 
 ---
 
-### Step 1.5 | Google Search Console Setup 🔲 TODO (if not already done)
+### Step 1.5 | Google Search Console Setup ?? TODO (if not already done)
 
 Required before Publisher Center verification works.
 
 1. Go to [search.google.com/search-console](https://search.google.com/search-console)
-2. Add property → URL prefix → `https://www.owire.org`
+2. Add property ? URL prefix ? `https://www.objectivewire.org`
 3. Verify via DNS TXT record (add to Railway or your DNS provider)
 4. Submit sitemaps:
-   - `https://www.owire.org/sitemap.xml`
-   - `https://www.owire.org/news-sitemap.xml`
+   - `https://www.objectivewire.org/sitemap.xml`
+   - `https://www.objectivewire.org/news-sitemap.xml`
 
 ---
 
 ## STAGE 2 | Fix What Exists Before Building New
-### (Do in Week 1–2)
+### (Do in Week 1�2)
 
 The 28 JackArticle Supabase stubs have 0 internal links. Google sees these as thin orphan pages. Fix them before creating new content.
 
 ---
 
-### Step 2.1 | Convert High-Value JackArticle Stubs to Static Pages (1–2 days)
+### Step 2.1 | Convert High-Value JackArticle Stubs to Static Pages (1�2 days)
 
 These stubs live in `jack_articles` Supabase but are NOT in `registry-data.json`. That means they are invisible to: sitemap, RSS, news sitemap, related articles, author pages.
 
@@ -171,7 +171,7 @@ These stubs live in `jack_articles` Supabase but are NOT in `registry-data.json`
 
 | Current stub slug | Route | Why |
 |---|---|---|
-| `technology-cursor` | `/technology/cursor` | Cursor $2B ARR — high search volume |
+| `technology-cursor` | `/technology/cursor` | Cursor $2B ARR � high search volume |
 | `tech-news-tsmc-asml-record-earnings-q1-2026-ai-chip-demand` | `/tech/news/tsmc-asml-...` | Chip demand, evergreen |
 | `video-games-forza-horizon-6-news-pre-launch-511k-steam-presales` | `/video-games/forza-horizon-6/news/...` | 511K Steam pre-sales |
 | `finance-dollar-surges-euro-slumps-jobs-report-april-3-2026` | `/finance/dollar-surges-...` | Finance cluster anchor |
@@ -232,10 +232,10 @@ Every page needs minimum links per type:
 ```
 
 **Quick wins (link to hub from every sub-article):**
-- All `/trump/*` articles → link to each other + `/politics` hub (when built)
-- All `/tech/*` articles → link to each other + a tech hub
-- All `/video-games/*` articles → link to `/video-games` hub (already exists)
-- All `/finance/*` articles → link to `/finance` hub (build it in Stage 3)
+- All `/trump/*` articles ? link to each other + `/politics` hub (when built)
+- All `/tech/*` articles ? link to each other + a tech hub
+- All `/video-games/*` articles ? link to `/video-games` hub (already exists)
+- All `/finance/*` articles ? link to `/finance` hub (build it in Stage 3)
 
 ---
 
@@ -266,34 +266,34 @@ After adding props to 20+ articles: `npx tsx scripts/sync-registry.ts --write`
 
 Currently the bio says "10+ Published Articles" but only 1 exists in registry. Either:
 - Update stat to match reality (easy fix), OR
-- Write 2–3 more Jack Brennan investigations (recommended)
+- Write 2�3 more Jack Brennan investigations (recommended)
 
 **Suggested Jack Brennan articles (his beat: environmental law, national security):**
 
-1. `/trump/esa-rice-whale-tro` — CBD/Earthjustice TRO against God Squad exemption in D.C. District Court
-2. `/trump/ferc-gulf-lng-terminal-national-security` — FERC fast-tracks Gulf LNG permits under national security rule
-3. `/politics/nmfs-vessel-speed-restrictions-suspended-rice-whale` — NMFS suspends whale vessel speed restrictions after God Squad vote
+1. `/trump/esa-rice-whale-tro` � CBD/Earthjustice TRO against God Squad exemption in D.C. District Court
+2. `/trump/ferc-gulf-lng-terminal-national-security` � FERC fast-tracks Gulf LNG permits under national security rule
+3. `/politics/nmfs-vessel-speed-restrictions-suspended-rice-whale` � NMFS suspends whale vessel speed restrictions after God Squad vote
 
 Each should have `authorSlug: 'jack-brennan'` in the author prop. Run sync after creating.
 
 **Quick stat fix if not writing new articles:**
 ```tsx
-// app/authors/jack-brennan/page.tsx — change the HIGHLIGHTS array
+// app/authors/jack-brennan/page.tsx � change the HIGHLIGHTS array
 const HIGHLIGHTS = [
   { stat: '2+', label: 'Years Reporting' },
   { stat: '8+', label: 'Beats Covered' },
-  { stat: '1+', label: 'Published Articles' },  // ← lower until more are written
+  { stat: '1+', label: 'Published Articles' },  // ? lower until more are written
 ];
 ```
 
 ---
 
 ## STAGE 3 | Build High-Traffic Content Pillars
-### (Weeks 2–6)
+### (Weeks 2�6)
 
 ---
 
-### Step 3.1 | GTA 6 Cluster — Highest Priority
+### Step 3.1 | GTA 6 Cluster � Highest Priority
 
 **Search volume: 5M+/month.** Build this cluster before the Fall 2026 launch window drives searches to peak.
 
@@ -301,7 +301,7 @@ const HIGHLIGHTS = [
 
 | Step | File | Component | Author |
 |---|---|---|---|
-| 1 | `app/video-games/gta-6/page.tsx` | `Hub.tsx` | — |
+| 1 | `app/video-games/gta-6/page.tsx` | `Hub.tsx` | � |
 | 2 | `app/video-games/gta-6/release-date/page.tsx` | `NewsArticle` | jack-wang |
 | 3 | `app/video-games/gta-6/pre-order/page.tsx` | `NewsArticle` | jack-wang |
 | 4 | `app/video-games/gta-6/system-requirements/page.tsx` | `NewsArticle` | jack-wang |
@@ -312,10 +312,10 @@ const HIGHLIGHTS = [
 **Hub page pattern:**
 ```tsx
 // app/video-games/gta-6/page.tsx
-export const revalidate = 3600;  // ISR — hub pages update hourly
+export const revalidate = 3600;  // ISR � hub pages update hourly
 ```
 
-**Interlinking rule:** every sub-article links to the hub in paragraph 1–3. Hub links to every sub-article in a card grid.
+**Interlinking rule:** every sub-article links to the hub in paragraph 1�3. Hub links to every sub-article in a card grid.
 
 ---
 
@@ -325,7 +325,7 @@ export const revalidate = 3600;  // ISR — hub pages update hourly
 
 | File | Component | Author |
 |---|---|---|
-| `app/open-ai/page.tsx` | `Hub.tsx` | — |
+| `app/open-ai/page.tsx` | `Hub.tsx` | � |
 | `app/open-ai/gpt-5-pricing/page.tsx` | `NewsArticle` | jack-sterling |
 | `app/open-ai/gpt-5-vs-gpt-4/page.tsx` | `NewsArticle` | jack-sterling |
 | `app/open-ai/o1-model-updates-2026/page.tsx` | `NewsArticle` | jack-sterling |
@@ -348,7 +348,7 @@ Sub-articles: Fed rate decisions, bank earnings, crypto regulation, market index
 
 ### Step 3.4 | Publishing Cadence
 
-Target: **5–7 new articles per week** to maintain Google News freshness signal.
+Target: **5�7 new articles per week** to maintain Google News freshness signal.
 
 | Day | Vertical | Author |
 |---|---|---|
@@ -368,47 +368,47 @@ Run through this before every publish:
 
 ```
 METADATA
-□ title ≤ 60 chars, primary keyword first, no em dashes, no brand suffix
-□ description 130–155 chars, primary keyword in first 60 chars
-□ keywords[] — 10–18 specific phrases
-□ alternates.canonical set to full https://www.owire.org/... URL
-□ openGraph block: title, description, image (1200x675), publishedTime, section, authors[]
-□ twitter card block
-□ No em dashes (—) anywhere in metadata. Use | in headings, comma in prose.
+? title = 60 chars, primary keyword first, no em dashes, no brand suffix
+? description 130�155 chars, primary keyword in first 60 chars
+? keywords[] � 10�18 specific phrases
+? alternates.canonical set to full https://www.objectivewire.org/... URL
+? openGraph block: title, description, image (1200x675), publishedTime, section, authors[]
+? twitter card block
+? No em dashes (�) anywhere in metadata. Use | in headings, comma in prose.
 
 CONTENT
-□ No generic H2s ("Background", "Overview" are banned)
-□ H2s use | as separator, are keyword-rich and niche
-□ Every factual claim traceable to a primary source
-□ Named figures, specific numbers, dates
-□ No unsourced claims
+? No generic H2s ("Background", "Overview" are banned)
+? H2s use | as separator, are keyword-rich and niche
+? Every factual claim traceable to a primary source
+? Named figures, specific numbers, dates
+? No unsourced claims
 
 LINKS
-□ Min 4 internal links (NewsArticle) | 5 (JackArticle) | 3 (CreatorArticle)
-□ Hub backlink in first 3 paragraphs
-□ 2–3 sibling article cross-links
-□ Author page link (/authors/[slug])
-□ All links: className="text-blue-600 hover:text-blue-800 underline"
-□ External links: target="_blank" rel="noopener noreferrer"
+? Min 4 internal links (NewsArticle) | 5 (JackArticle) | 3 (CreatorArticle)
+? Hub backlink in first 3 paragraphs
+? 2�3 sibling article cross-links
+? Author page link (/authors/[slug])
+? All links: className="text-blue-600 hover:text-blue-800 underline"
+? External links: target="_blank" rel="noopener noreferrer"
 
 COMPONENTS
-□ author prop with authorSlug set (so article appears on author page)
-□ breadcrumbs array with 3 levels minimum
-□ tags[] — 4–8 proper nouns, no generic terms
-□ category — one of: News, Tech, Finance, Entertainment, World, Politics, Science, Sports, Culture, Crypto, Gaming
-□ publishDate — human string, e.g. "May 6, 2026"
-□ topicTag set (gaming, politics, technology, finance, entertainment, etc.)
+? author prop with authorSlug set (so article appears on author page)
+? breadcrumbs array with 3 levels minimum
+? tags[] � 4�8 proper nouns, no generic terms
+? category � one of: News, Tech, Finance, Entertainment, World, Politics, Science, Sports, Culture, Crypto, Gaming
+? publishDate � human string, e.g. "May 6, 2026"
+? topicTag set (gaming, politics, technology, finance, entertainment, etc.)
 
 AFTER WRITING
-□ npx tsx scripts/sync-registry.ts --write
-□ Verify new entry appears in lib/registry-data.json with authorSlug populated
-□ Check no TypeScript errors
+? npx tsx scripts/sync-registry.ts --write
+? Verify new entry appears in lib/registry-data.json with authorSlug populated
+? Check no TypeScript errors
 ```
 
 ---
 
 ## STAGE 5 | Scale to 500+ Pages
-### (July – September 2026)
+### (July � September 2026)
 
 ---
 
@@ -416,7 +416,7 @@ AFTER WRITING
 
 Currently ~13 pages. Target: 200+. Low competition, high volume, zero time pressure.
 
-Pattern: "What is [term]", 400–700 words, `NewsArticle` component, `revalidate = false` (fully static), internal links to related cluster pages.
+Pattern: "What is [term]", 400�700 words, `NewsArticle` component, `revalidate = false` (fully static), internal links to related cluster pages.
 
 Priority terms: CUDA, LLM, Transformer, RAG, LoRA, ESA Section 7, God Squad, CLOB, Prediction Market, RTX 5090, Inference, Fine-Tuning, Vector Database, VRAM, Tokenizer...
 
@@ -438,8 +438,8 @@ Priority terms: CUDA, LLM, Transformer, RAG, LoRA, ESA Section 7, God Squad, CLO
 Every article needs `imageUrl` (1200x675+) in the registry for Google Top Stories eligibility.
 
 Two options:
-1. **Vercel OG generation** — build `/api/og?title=...&category=...` endpoint that generates images on demand. Set these URLs as `imageUrl` in metadata. Zero manual effort per article.
-2. **Unsplash API** — source images at article creation time. Key stored in user memory.
+1. **Vercel OG generation** � build `/api/og?title=...&category=...` endpoint that generates images on demand. Set these URLs as `imageUrl` in metadata. Zero manual effort per article.
+2. **Unsplash API** � source images at article creation time. Key stored in user memory.
 
 Whichever approach: update `imageUrl`, `imageWidth: 1200`, `imageHeight: 675` in every article's metadata openGraph block. Sync picks this up automatically.
 
@@ -454,7 +454,7 @@ Whichever approach: update `imageUrl`, `imageWidth: 1200`, `imageHeight: 675` in
 | Apple News | Google News approved | Submit at Apple News Publisher |
 | MSN News | 50+ articles, editorial standards live | Register at Microsoft PubHub |
 | Newsletter | Already built | Goal: 500 subscribers by EOY |
-| ZeroWire BlackBook | Separate build | Prediction market integration — see `Docs/BLACKBOOK_BLUEPRINT.md` |
+| ZeroWire BlackBook | Separate build | Prediction market integration � see `Docs/BLACKBOOK_BLUEPRINT.md` |
 
 ---
 
@@ -467,7 +467,7 @@ npx tsx scripts/sync-registry.ts --write
 # Check current build state
 npm run wiki:status
 
-# Full build (runs: validate-public → validate-canonicals → sync-registry → next build)
+# Full build (runs: validate-public ? validate-canonicals ? sync-registry ? next build)
 npm run build
 
 # Check for TypeScript errors on a specific file
@@ -483,8 +483,8 @@ npx tsc --noEmit
 
 | Rule | Wrong | Correct |
 |---|---|---|
-| No em dashes | `Title — Subtitle` | `Title \| Subtitle` |
-| No em dashes in prose | `The update — which ships Friday — adds X` | `The update, which ships Friday, adds X` |
+| No em dashes | `Title � Subtitle` | `Title \| Subtitle` |
+| No em dashes in prose | `The update � which ships Friday � adds X` | `The update, which ships Friday, adds X` |
 | No brand suffix in title | `GTA 6 Release Date \| ZeroWire` | `GTA 6 Release Date \| Fall 2026 Window` |
 | H2 separators | `H2: Background` | `H2: GTA 6 Background \| Vice City Setting` |
 | Generic headings banned | `## Overview` | `## GTA 6 Map \| Vice City Confirmed` |

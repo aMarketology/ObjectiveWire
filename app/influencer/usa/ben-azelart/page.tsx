@@ -6,7 +6,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/usa/ben-azelart';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 const IMAGE_URL = '/influncer/usa/ben_azelart.png';
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     modifiedTime: '2026-04-02T14:30:00Z',
     images: [
       {
-        url: `https://www.owire.org${IMAGE_URL}`,
+        url: `https://www.objectivewire.org${IMAGE_URL}`,
         width: 1200,
         height: 675,
         alt: 'Ben Azelart, YouTuber and skateboarder',

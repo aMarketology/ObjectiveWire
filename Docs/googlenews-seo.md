@@ -1,4 +1,4 @@
-﻿# Google News SEO | ObjectWire
+# Google News SEO | ObjectWire
 
 > **How `content-registry.ts`, the Supabase articles table, and structured data work together to compete with IGN, CNN, and established media for Google News placement.**
 
@@ -41,10 +41,10 @@ It is **not** a CMS. It is metadata. The actual page content lives in `app/**/pa
   tags: ["Technology", "Cursor", "Anysphere", "SaaS", "ARR"],
   author: "Jack Wang",
   authorSlug: "jack-wang",         // Links to /authors/jack-wang
-  priority: 0.9,                   // Sitemap crawl priority (0.0–1.0)
+  priority: 0.9,                   // Sitemap crawl priority (0.0�1.0)
   changeFrequency: "weekly",
   featured: true,                  // Appears in homepage hero slot
-  imageUrl: "https://www.owire.org/news/cursor.PNG",   // Required for Top Stories
+  imageUrl: "https://www.objectivewire.org/news/cursor.PNG",   // Required for Top Stories
   imageAlt: "Cursor AI code editor, Anysphere $2 billion ARR milestone",
 }
 ```
@@ -62,9 +62,9 @@ Every field has a job. None are cosmetic.
 | Requirement | Where it comes from |
 |---|---|
 | Published within the last 48 hours | `publishDate` in registry entry |
-| Valid hero image (min 1200×675 px, 16:9) | `imageUrl` + `imageWidth` + `imageHeight` in registry |
+| Valid hero image (min 1200�675 px, 16:9) | `imageUrl` + `imageWidth` + `imageHeight` in registry |
 | `NewsArticle` structured data on the page | `NewsArticleSchema` component on each page |
-| Unique, descriptive `<title>` tag | `title` in registry → page `metadata.title` |
+| Unique, descriptive `<title>` tag | `title` in registry ? page `metadata.title` |
 | Author byline | `author` + optional `authorSlug` in registry |
 | Publisher name matches Google News registration | Hardcoded as ObjectWire in schema components |
 
@@ -92,21 +92,21 @@ This is separate from the registry but fed by the same data. The registry entry 
 
 ## 3. Will the Registry Keep Growing?
 
-**Yes — and there is a size ceiling you need to plan around.**
+**Yes � and there is a size ceiling you need to plan around.**
 
 ### Growth trajectory
 
 | Articles | Registry size | Build time impact | Risk |
 |---|---|---|---|
-| 0–500 | ~3,000 lines | Negligible | None |
-| 500–1,500 | ~9,000 lines | Minor (+5–10s) | Low |
-| 1,500–5,000 | ~30,000 lines | Significant (+30–60s) | Medium |
+| 0�500 | ~3,000 lines | Negligible | None |
+| 500�1,500 | ~9,000 lines | Minor (+5�10s) | Low |
+| 1,500�5,000 | ~30,000 lines | Significant (+30�60s) | Medium |
 | 5,000+ | 150,000+ lines | Build breaks or times out | High |
 
 ### The real constraint
 
 The registry requires a **code deploy** to add an article. That means:
-- Writing the article → editing a TypeScript file → committing → pushing → waiting for build
+- Writing the article ? editing a TypeScript file ? committing ? pushing ? waiting for build
 - One syntax error in the file fails the **entire build**, every page goes down
 
 This is acceptable at current scale. It becomes a liability at velocity publishing (5+ articles/day).
@@ -123,7 +123,7 @@ ObjectWire runs two parallel content systems. Understanding which to use for eac
 
 ```
 STATIC REGISTRY PAGES                    SUPABASE ARTICLES
-─────────────────────────────────────    ─────────────────────────────────────
+-------------------------------------    -------------------------------------
 app/**/page.tsx + content-registry.ts    Supabase `articles` table + /blog/[slug]
 
 Purpose: Topical authority anchors       Purpose: News velocity + daily editorial
@@ -142,12 +142,12 @@ Google News: Via news-sitemap.xml        Google News: Via DB-driven sitemap feed
 
 | Signal | Use static registry | Use Supabase |
 |---|---|---|
-| Will this page be linked to permanently? | ✅ |, |
-| Is this time-sensitive (< 48 hours)? |, | ✅ |
-| Will you update it within a week? |, | ✅ |
-| Is it a hub / profile / evergreen reference? | ✅ |, |
-| Publishing more than once a day? |, | ✅ |
-| Needs custom layout components? | ✅ |, |
+| Will this page be linked to permanently? | ? |, |
+| Is this time-sensitive (< 48 hours)? |, | ? |
+| Will you update it within a week? |, | ? |
+| Is it a hub / profile / evergreen reference? | ? |, |
+| Publishing more than once a day? |, | ? |
+| Needs custom layout components? | ? |, |
 
 ---
 
@@ -170,13 +170,13 @@ Google News ranking is determined by two factors: **relevance** (does the articl
 
 ```
 Publish deep article on topic X
-  → Google crawls it, indexes it
-  → Reader clicks through from News
-  → Dwell time signals quality
-  → Other sites cite it
-  → Google increases authority for topic X
-  → Next ObjectWire article on topic X ranks faster and higher
-  → Repeat
+  ? Google crawls it, indexes it
+  ? Reader clicks through from News
+  ? Dwell time signals quality
+  ? Other sites cite it
+  ? Google increases authority for topic X
+  ? Next ObjectWire article on topic X ranks faster and higher
+  ? Repeat
 ```
 
 IGN took 30 years to build topic authority on gaming. The gap closes from the bottom up by **owning niches they under-cover**, racing games, AI developer tools, SaaS revenue milestones, Nintendo Switch 2 exclusives, and publishing faster and more accurately than their generalist desks can staff.
@@ -186,7 +186,7 @@ IGN took 30 years to build topic authority on gaming. The gap closes from the bo
 In a single afternoon (March 2, 2026), ObjectWire published:
 - Cursor $2B ARR story (`/technology/cursor`)
 - Hulu Mike & Nick & Nick & Alice trailer coverage (`/entertainment/hulu`)
-- Pokémon Pokopia franchise-record review (`/video-games/switch2/pokemon-pokopia`)
+- Pok�mon Pokopia franchise-record review (`/video-games/switch2/pokemon-pokopia`)
 - Polyphony Digital hiring + Gran Turismo review (`/video-games/racing/polyphony-gran-turismo`)
 
 A CNN gaming desk or IGN news team requires separate writers and editors for each of those verticals. ObjectWire's architecture, registry + Supabase + reusable article components, compresses that to a single publishing session.
@@ -203,7 +203,7 @@ Run through this for every article before publishing:
 
 - [ ] `publishDate` set to today's date in registry entry (or `published_at = NOW()` in Supabase)
 - [ ] `imageUrl` present and resolving (test in browser)
-- [ ] `imageWidth` ≥ 1200 and `imageHeight` ≥ 675 in registry entry (16:9 ratio for Top Stories)
+- [ ] `imageWidth` = 1200 and `imageHeight` = 675 in registry entry (16:9 ratio for Top Stories)
 - [ ] `NewsArticleSchema` component included on the page with `publishedTime` in ISO 8601
 - [ ] `author` field filled (not "ObjectWire Editorial" for Google News, use a real byline when possible)
 - [ ] `<title>` tag is unique, no two pages with identical titles
@@ -215,7 +215,7 @@ Run through this for every article before publishing:
 - [ ] `featured: true` for stories you want in the homepage hero
 - [ ] `authorSlug` linking to a real `/authors/[name]` profile page
 - [ ] `description` under 160 characters
-- [ ] Tags array includes at least 3–5 specific topic terms
+- [ ] Tags array includes at least 3�5 specific topic terms
 - [ ] `modifiedDate` updated whenever the article is edited
 
 ---
@@ -231,11 +231,11 @@ Every ObjectWire article page should include both of these:
   title="Article Title"
   description="Article excerpt under 160 chars."
   author="Jack Wang"
-  authorUrl="https://www.owire.org/authors/jack-wang"
+  authorUrl="https://www.objectivewire.org/authors/jack-wang"
   publishedTime="2026-03-02T12:00:00Z"   // ISO 8601, required
   modifiedTime="2026-03-02T12:00:00Z"
-  imageUrl="https://www.owire.org/news/cursor.PNG"
-  articleUrl="https://www.owire.org/technology/cursor"
+  imageUrl="https://www.objectivewire.org/news/cursor.PNG"
+  articleUrl="https://www.objectivewire.org/technology/cursor"
   section="Technology"
   keywords={['Cursor', 'Anysphere', 'ARR', 'SaaS']}
 />
@@ -268,19 +268,19 @@ Every ObjectWire article page should include both of these:
 
 Tags power the related-article matching system. Use:
 - 1 broad category tag (`"Technology"`, `"Gaming"`)
-- 2–3 brand/entity tags (`"Cursor"`, `"Anysphere"`)
-- 1–2 topic tags (`"ARR"`, `"SaaS"`, `"AI Developer Tools"`)
+- 2�3 brand/entity tags (`"Cursor"`, `"Anysphere"`)
+- 1�2 topic tags (`"ARR"`, `"SaaS"`, `"AI Developer Tools"`)
 
 Avoid duplicating the category as a tag, it wastes a slot.
 
 ### Image requirements for Top Stories carousel
 
-Google mandates a minimum image size of **1200×675 px (16:9)** for Top Stories placement. Thumbnails that are smaller or the wrong aspect ratio disqualify the article from the carousel regardless of content quality.
+Google mandates a minimum image size of **1200�675 px (16:9)** for Top Stories placement. Thumbnails that are smaller or the wrong aspect ratio disqualify the article from the carousel regardless of content quality.
 
 Always include `imageWidth` and `imageHeight` in the registry entry:
 
 ```ts
-imageUrl: "https://www.owire.org/news/cursor.PNG",
+imageUrl: "https://www.objectivewire.org/news/cursor.PNG",
 imageWidth: 1200,
 imageHeight: 675,
 imageAlt: "Cursor AI code editor interface screenshot",
@@ -315,7 +315,7 @@ Start routing to Supabase when any of these are true:
 - Opinion / editorial pieces
 - Any article where you need to edit it after publish without a deploy
 
-See [supabase-library.md § 9, Static Pages vs Dynamic Articles](supabase-library.md#9-static-pages-vs-dynamic-articles) for the full breakdown.
+See [supabase-library.md � 9, Static Pages vs Dynamic Articles](supabase-library.md#9-static-pages-vs-dynamic-articles) for the full breakdown.
 
 ---
 
@@ -323,18 +323,18 @@ See [supabase-library.md § 9, Static Pages vs Dynamic Articles](supabase-librar
 
 ```
 lib/
-  content-registry.ts          ← The registry itself (source of truth for static pages)
+  content-registry.ts          ? The registry itself (source of truth for static pages)
 
 app/
-  news-sitemap.xml/route.ts    ← Reads registry → generates Google News sitemap XML
-  sitemap.ts                   ← Reads registry → generates full site sitemap
-  robots.ts                    ← Allows Googlebot, links to both sitemaps
+  news-sitemap.xml/route.ts    ? Reads registry ? generates Google News sitemap XML
+  sitemap.ts                   ? Reads registry ? generates full site sitemap
+  robots.ts                    ? Allows Googlebot, links to both sitemaps
 
 components/
-  NewsArticleSchema.tsx        ← Emits NewsArticle JSON-LD on every article page
-  SEOWrapper.tsx               ← Emits BreadcrumbList JSON-LD, reads registry by slug
+  NewsArticleSchema.tsx        ? Emits NewsArticle JSON-LD on every article page
+  SEOWrapper.tsx               ? Emits BreadcrumbList JSON-LD, reads registry by slug
 
 Docs/
-  supabase-library.md          ← Supabase pipeline, admin editor, DB-driven articles
-  googlenews-seo.md            ← This file
+  supabase-library.md          ? Supabase pipeline, admin editor, DB-driven articles
+  googlenews-seo.md            ? This file
 ```

@@ -1,15 +1,15 @@
-Ôªø---
+---
 name: ostandard
 description: "Use when: writing, editing, or reviewing any ObjectWire article component or Supabase article record. Covers the full publish pipeline, component routing, SEO standards, heading conventions, and content structure. Invoke with: OStandard, article standard, writing standard, article component, Supabase article, wiki:publish, publish article."
 ---
 
-# OStandard ‚Äî ObjectWire Article & SEO Writing Standard
+# OStandard ó ObjectWire Article & SEO Writing Standard
 
 Every article component written for ObjectWire, and every article record synced to Supabase, **must** conform to this standard without exception.
 
 ---
 
-## 1. Component Routing ‚Äî Pick the Right Table
+## 1. Component Routing ó Pick the Right Table
 
 Every article belongs to exactly one component and one Supabase table. **Use the wrong component and you will query the wrong table.**
 
@@ -33,29 +33,29 @@ The script auto-detects which component you used by scanning the JSX source. No 
 
 ### Step-by-step
 
-**Step 1 ‚Äî Write the full `page.tsx`** with real JSX content inside the component:
+**Step 1 ó Write the full `page.tsx`** with real JSX content inside the component:
 
 ```tsx
 import type { Metadata } from 'next';
-import { ArticlePage, Section, Quote } from '@/components/ArticlePage';   // ‚Üê full component, NOT ArticlePageDB
+import { ArticlePage, Section, Quote } from '@/components/ArticlePage';   // ? full component, NOT ArticlePageDB
 
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Your Title | ObjectWire',
-  description: '140‚Äì160 char description with primary keyword in first 60 chars.',
-  alternates: { canonical: 'https://www.owire.org/your/path' },
+  description: '140ñ160 char description with primary keyword in first 60 chars.',
+  alternates: { canonical: 'https://www.objectivewire.org/your/path' },
   openGraph: {
     type: 'article',
-    url: 'https://www.owire.org/your/path',
-    images: [{ url: 'https://www.owire.org/artist/your-image.png', width: 1200, height: 675, alt: '...' }],
+    url: 'https://www.objectivewire.org/your/path',
+    images: [{ url: 'https://www.objectivewire.org/artist/your-image.png', width: 1200, height: 675, alt: '...' }],
   },
 };
 
 export default function YourPage() {
   return (
     <ArticlePage
-      title="Your Title"              // ‚Üê REQUIRED ‚Äî must be present
+      title="Your Title"              // ? REQUIRED ó must be present
       subtitle="One-line description"
       category="Music"
       lastUpdated="March 30, 2026"
@@ -89,7 +89,7 @@ export default function YourPage() {
 }
 ```
 
-**Step 2 ‚Äî Run the publish script:**
+**Step 2 ó Run the publish script:**
 
 ```bash
 npm run wiki:publish -- --file app/your/path/page.tsx
@@ -103,7 +103,7 @@ The script automatically:
 5. Trims `page.tsx` to a 3-line stub pointing at `<ArticlePageDB slug="..." />`
 6. Verifies the Supabase row exists and prints confirmation
 
-**Step 3 ‚Äî Dry-run first if unsure:**
+**Step 3 ó Dry-run first if unsure:**
 
 ```bash
 npm run wiki:publish -- --file app/your/path/page.tsx --dry-run
@@ -116,8 +116,8 @@ Prints the row that would be upserted without writing anything.
 The slug is derived from the **file path**, not anything inside the file:
 
 ```
-app/artists/yeat/ADL-26/page.tsx  ‚Üí  slug: "artists-yeat-ADL-26"
-app/trump/foo-bar/page.tsx        ‚Üí  slug: "trump-foo-bar"
+app/artists/yeat/ADL-26/page.tsx  ?  slug: "artists-yeat-ADL-26"
+app/trump/foo-bar/page.tsx        ?  slug: "trump-foo-bar"
 ```
 
 The slug in the file's `ArticlePageDB` stub and the Supabase row will be set to this automatically. You do not set it manually.
@@ -125,12 +125,12 @@ The slug in the file's `ArticlePageDB` stub and the Supabase row will be set to 
 ### Never do this manually
 
 ```tsx
-// ‚ùå WRONG ‚Äî writing a stub before running the script
+// ? WRONG ó writing a stub before running the script
 export default function Page() {
   return <ArticlePageDB slug="artists-yeat-ADL-26" />;
 }
 
-// ‚ùå WRONG ‚Äî using ArticlePageDB in a full content page
+// ? WRONG ó using ArticlePageDB in a full content page
 import { ArticlePageDB } from '@/components/ArticlePageDB';
 ```
 
@@ -149,28 +149,28 @@ import { ArticlePageDB } from '@/components/ArticlePageDB';
 
 ## 4. Title Formatting
 
-### `metadata.title` ‚Äî the SEO page title
+### `metadata.title` ó the SEO page title
 
 - **No brand suffix.** Do not append `| ObjectWire` to `metadata.title`. Google already displays the site name from structured data. Adding it wastes characters.
-  - ‚úÖ `DeepLoad Malware | AI Obfuscation, ClickFix, Enterprise Credential Theft`
-  - ‚ùå `DeepLoad Malware | AI Obfuscation and ClickFix | ObjectWire`
+  - ? `DeepLoad Malware | AI Obfuscation, ClickFix, Enterprise Credential Theft`
+  - ? `DeepLoad Malware | AI Obfuscation and ClickFix | ObjectWire`
 
 - **Max 60 characters.** Google truncates titles at ~60 chars in SERPs. Count before publishing.
-  - ‚úÖ `Mario Kart World 1.6.0 | Bob-omb Blast Returns` ‚Äî 48 chars
-  - ‚ùå `Mario Kart World Version 1.6.0 | Bob-omb Blast Returns on Switch 2 | ObjectWire` ‚Äî 83 chars
+  - ? `Mario Kart World 1.6.0 | Bob-omb Blast Returns` ó 48 chars
+  - ? `Mario Kart World Version 1.6.0 | Bob-omb Blast Returns on Switch 2 | ObjectWire` ó 83 chars
 
-- **Primary keyword must appear in the first 30‚Äì40 characters** ‚Äî before any `|` separator.
+- **Primary keyword must appear in the first 30ñ40 characters** ó before any `|` separator.
 
-- **Use `|` as the separator**, never `:`, `‚Äî`, or `‚Äì`.
-  - ‚úÖ `Square Bitcoin Payments | 4 Million US Merchants`
-  - ‚ùå `Square Enables Bitcoin ‚Äî 4 Million Merchants`
-  - ‚ùå `Square Bitcoin Payments: What It Means for Merchants`
+- **Use `|` as the separator**, never `:`, `ó`, or `ñ`.
+  - ? `Square Bitcoin Payments | 4 Million US Merchants`
+  - ? `Square Enables Bitcoin ó 4 Million Merchants`
+  - ? `Square Bitcoin Payments: What It Means for Merchants`
 
-- **Never use an em dash `‚Äî`, en dash `‚Äì`** anywhere ‚Äî headings, titles, meta, prose. Replace with `,`, `|`, or rewrite.
+- **Never use an em dash `ó`, en dash `ñ`** anywhere ó headings, titles, meta, prose. Replace with `,`, `|`, or rewrite.
 - **`&` is allowed in `metadata.title` and `openGraph.title` only.** Never use `&` in H1/H2/H3 headings or article body prose.
-  - ‚úÖ `metadata.title: 'AI Obfuscation & ClickFix | Enterprise Malware Alert'`
-  - ‚úÖ `openGraph.title: 'DeepLoad | AI Junk Code & ClickFix Bypass Security'`
-  - ‚ùå `<h2>AI Obfuscation & ClickFix Tactics</h2>` ‚Äî use `,` instead in headings
+  - ? `metadata.title: 'AI Obfuscation & ClickFix | Enterprise Malware Alert'`
+  - ? `openGraph.title: 'DeepLoad | AI Junk Code & ClickFix Bypass Security'`
+  - ? `<h2>AI Obfuscation & ClickFix Tactics</h2>` ó use `,` instead in headings
 
 - Titles should be **sentence-case** for standard articles, **title-case** for breaking/featured pieces.
 
@@ -178,9 +178,9 @@ import { ArticlePageDB } from '@/components/ArticlePageDB';
 
 ## 5. Meta Description
 
-- 130‚Äì155 characters
+- 130ñ155 characters
 - Primary keyword in the **first 60 characters**
-- Written as a direct, factual summary ‚Äî no clickbait phrasing
+- Written as a direct, factual summary ó no clickbait phrasing
 - No trailing punctuation
 - No generic phrases ("learn more", "find out", "click here")
 
@@ -191,14 +191,14 @@ import { ArticlePageDB } from '@/components/ArticlePageDB';
 Every article **must** have multiple niche, specific, and relevant subheadings. Generic headings like "Background" or "Overview" are banned.
 
 ### Rules
-- **H1** ‚Äî Article title only. One per article.
-- **H2** ‚Äî Major section breaks. Must be specific and keyword-rich.
-- **H3** ‚Äî Sub-points within an H2 section.
-- **Never use `‚Äî` or `‚Äì` in any heading.** Use `|` or restructure.
-- Headings must describe what the section actually contains ‚Äî a reader skimming only the headings should understand the full narrative arc.
+- **H1** ó Article title only. One per article.
+- **H2** ó Major section breaks. Must be specific and keyword-rich.
+- **H3** ó Sub-points within an H2 section.
+- **Never use `ó` or `ñ` in any heading.** Use `|` or restructure.
+- Headings must describe what the section actually contains ó a reader skimming only the headings should understand the full narrative arc.
 
 ### Good vs Bad Subheadings
-| ‚ùå Avoid | ‚úÖ Use Instead |
+| ? Avoid | ? Use Instead |
 |---|---|
 | Background | How the Policy Was Drafted in 2024 |
 | Overview | What DOGE's Budget Cuts Actually Target |
@@ -210,36 +210,36 @@ Every article **must** have multiple niche, specific, and relevant subheadings. 
 | Article Length | Minimum H2s | Minimum H3s |
 |---|---|---|
 | Short (< 600 words) | 2 | 1 |
-| Standard (600‚Äì1200 words) | 4 | 2 |
-| Long-form (1200‚Äì2500 words) | 6 | 4 |
+| Standard (600ñ1200 words) | 4 | 2 |
+| Long-form (1200ñ2500 words) | 6 | 4 |
 | Feature / Investigation (2500+) | 8 | 6 |
 
 ---
 
-## 7. SEO ‚Äî Keyword Usage
+## 7. SEO ó Keyword Usage
 
 - **Primary keyword** must appear in: H1, first 100 words of body, at least one H2, meta description
-- **Secondary keywords** (2‚Äì4) appear naturally in subheadings and body
-- No keyword stuffing ‚Äî every keyword must read as natural editorial language
+- **Secondary keywords** (2ñ4) appear naturally in subheadings and body
+- No keyword stuffing ó every keyword must read as natural editorial language
 - Use niche long-tail variants in H3s (e.g. "how DOGE layoffs affect federal contractors in Virginia")
 
 ---
 
 ## 8. Content Depth
 
-- Every article must have **specific, verifiable facts** ‚Äî numbers, names, dates, sources
-- Subheadings must match actual content ‚Äî no filler sections
-- **Each H2 section must be self-contained** ‚Äî a reader jumping directly to it should understand it without reading prior sections
+- Every article must have **specific, verifiable facts** ó numbers, names, dates, sources
+- Subheadings must match actual content ó no filler sections
+- **Each H2 section must be self-contained** ó a reader jumping directly to it should understand it without reading prior sections
 - Every long-form piece must include at least one of:
   - A data table or comparison block
-  - A quoted statement or attributed claim (use `, Name, Title` format in blockquote footer ‚Äî never `‚Äî`)
+  - A quoted statement or attributed claim (use `, Name, Title` format in blockquote footer ó never `ó`)
   - A timeline or numbered list of key events
 
 ---
 
 ## 9. `article_pages` Column Reference
 
-The `article_pages` Supabase table has **no `description` column**. `extractPageContent` in `wiki-publish.ts` must never attempt to write one. All structured fields are now extracted automatically by `wiki:publish` from the JSX props ‚Äî **do not upsert them manually**.
+The `article_pages` Supabase table has **no `description` column**. `extractPageContent` in `wiki-publish.ts` must never attempt to write one. All structured fields are now extracted automatically by `wiki:publish` from the JSX props ó **do not upsert them manually**.
 
 | Column | Source in JSX |
 |---|---|
@@ -289,23 +289,23 @@ infoBox={{
 
 - **Always include a real local image** in the `infoBox.image` prop and in OG/Twitter metadata
 - Store images in `public/artist/`, `public/influncer/`, or the relevant subfolder under `public/`
-- Path format: `/artist/Yeat-adl.png` (no `/public` prefix ‚Äî Next.js serves `public/` at root)
-- OG image must be at least **1200√ó675px**
-- The `wiki:publish` script warns `‚ö†Ô∏è none detected` if no thumbnail is found ‚Äî add the image before publishing or add it to the infoBox via a targeted Supabase update after
+- Path format: `/artist/Yeat-adl.png` (no `/public` prefix ó Next.js serves `public/` at root)
+- OG image must be at least **1200◊675px**
+- The `wiki:publish` script warns `?? none detected` if no thumbnail is found ó add the image before publishing or add it to the infoBox via a targeted Supabase update after
 
 ---
 
 ## 10. Slug Conventions
 
-- Derived automatically from the file path by the publish script ‚Äî segments joined with `-`
-- **All folder names must be lowercase** ‚Äî Railway runs Linux (case-sensitive). A folder named `ADL-26` will 404 when users visit `/adl-26`. Always use `adl-26`.
+- Derived automatically from the file path by the publish script ó segments joined with `-`
+- **All folder names must be lowercase** ó Railway runs Linux (case-sensitive). A folder named `ADL-26` will 404 when users visit `/adl-26`. Always use `adl-26`.
 - Hyphen-only, no stop words
-- ‚úÖ `app/artists/yeat/adl-26/page.tsx` ‚Üí slug `artists-yeat-adl-26`
-- ‚ùå `app/artists/yeat/ADL-26/page.tsx` ‚Üí deploys but 404s on Linux
+- ? `app/artists/yeat/adl-26/page.tsx` ? slug `artists-yeat-adl-26`
+- ? `app/artists/yeat/ADL-26/page.tsx` ? deploys but 404s on Linux
 
 **If you accidentally create an uppercase folder:**
 ```bash
-# Two-step git rename (required on macOS ‚Äî git is case-insensitive by default)
+# Two-step git rename (required on macOS ó git is case-insensitive by default)
 git mv app/artists/yeat/ADL-26 app/artists/yeat/adl-26-tmp
 git mv app/artists/yeat/adl-26-tmp app/artists/yeat/adl-26
 ```
@@ -315,7 +315,7 @@ Then delete the stale uppercase Supabase row if one was already created.
 
 ## 12. Gold Standard Article | `NewsArticle` Template
 
-**Reference:** `https://www.owire.org/entertainment/news/fortnite-moves-into-movies`
+**Reference:** `https://www.objectivewire.org/entertainment/news/fortnite-moves-into-movies`
 **Slug:** `entertainment-news-fortnite-moves-into-movies` | **Table:** `articles` | **Component:** `NewsArticleDB`
 
 This is the canonical example of a fully correct ObjectWire `NewsArticle`. Every new article using `NewsArticleDB` must match this standard before publishing.
@@ -325,9 +325,9 @@ This is the canonical example of a fully correct ObjectWire `NewsArticle`. Every
 | Feature | Detail |
 |---|---|
 | **Layout** | 80/20 grid: article body (left, 80%) + `RelatedArticles` sticky sidebar (right, 20%) |
-| **Related Articles** | `RelatedArticles` client component ‚Äî auto-queries `articles` by category, re-ranks by user `localStorage` history tags. Zero manual curation. |
+| **Related Articles** | `RelatedArticles` client component ó auto-queries `articles` by category, re-ranks by user `localStorage` history tags. Zero manual curation. |
 | **Animated thumbnail header** | `thumbnail_src` in Supabase renders a "genie float" animated image in the gradient header (golden flare sweep, bob animation). Preferred over hero images for news/gaming/tech. |
-| **Engagement stack** | `ReactionBar`, `DiscordComments`, `NewsletterSignupInline`, `ArticleViewTracker`, `TagsSection`, author card footer ‚Äî all automatic |
+| **Engagement stack** | `ReactionBar`, `DiscordComments`, `NewsletterSignupInline`, `ArticleViewTracker`, `TagsSection`, author card footer ó all automatic |
 | **Metadata** | 18 targeted keywords, full `openGraph` with `publishedTime` + `section`, `twitter` card, canonical URL |
 | **Content depth** | Named data points, stats, data tables, H2s with numbers and `|`, internal hub links |
 
@@ -351,12 +351,12 @@ export const metadata: Metadata = {
     'keyword two',
     // 10-18 targeted long-tail variants
   ],
-  alternates: { canonical: `https://www.owire.org${SLUG}` },
+  alternates: { canonical: `https://www.objectivewire.org${SLUG}` },
   openGraph: {
     title: 'Article Title Without Brand Suffix',
-    description: 'Slightly different ‚Äî emphasize the data hook or key stat.',
+    description: 'Slightly different ó emphasize the data hook or key stat.',
     type: 'article',
-    url: `https://www.owire.org${SLUG}`,
+    url: `https://www.objectivewire.org${SLUG}`,
     siteName: 'ObjectWire',
     authors: ['Author Name'],
     publishedTime: '2026-03-12T00:00:00Z',
@@ -366,7 +366,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Twitter headline ‚Äî hook-first, one key stat or claim',
+    title: 'Twitter headline ó hook-first, one key stat or claim',
     description: 'Data-led. Punchy. No generic summary.',
   },
 };
@@ -413,21 +413,21 @@ export default function YourPage() {
 
 ### Required Supabase `articles` fields checklist
 
-- [ ] `title` ‚Äî no em dashes, `|` for separators
-- [ ] `subtitle` ‚Äî data-led, one sentence, no trailing period
-- [ ] `category` ‚Äî valid value
-- [ ] `status` ‚Äî `'published'`
-- [ ] `topic_tag` ‚Äî valid `TopicTagType` (e.g. `"gaming"`, `"entertainment"`, `"ai"`)
-- [ ] `breaking` / `trending` / `exclusive` ‚Äî only `true` when genuinely applicable
-- [ ] `content_html` ‚Äî full body in `<div class="prose prose-lg max-w-none">`
-- [ ] `publish_date` ‚Äî `"March 12, 2026"`
-- [ ] `published_at` ‚Äî `2026-03-12T00:00:00Z`
+- [ ] `title` ó no em dashes, `|` for separators
+- [ ] `subtitle` ó data-led, one sentence, no trailing period
+- [ ] `category` ó valid value
+- [ ] `status` ó `'published'`
+- [ ] `topic_tag` ó valid `TopicTagType` (e.g. `"gaming"`, `"entertainment"`, `"ai"`)
+- [ ] `breaking` / `trending` / `exclusive` ó only `true` when genuinely applicable
+- [ ] `content_html` ó full body in `<div class="prose prose-lg max-w-none">`
+- [ ] `publish_date` ó `"March 12, 2026"`
+- [ ] `published_at` ó `2026-03-12T00:00:00Z`
 - [ ] `author_name` + `author_slug`
-- [ ] `read_time` ‚Äî `"7 min read"`
-- [ ] `thumbnail_src` ‚Äî real hosted image URL (triggers animated genie header)
-- [ ] `thumbnail_alt` ‚Äî descriptive alt text
-- [ ] `tags` ‚Äî 4-8 proper nouns
-- [ ] `url` ‚Äî full canonical path (e.g. `/entertainment/news/fortnite-moves-into-movies`)
+- [ ] `read_time` ó `"7 min read"`
+- [ ] `thumbnail_src` ó real hosted image URL (triggers animated genie header)
+- [ ] `thumbnail_alt` ó descriptive alt text
+- [ ] `tags` ó 4-8 proper nouns
+- [ ] `url` ó full canonical path (e.g. `/entertainment/news/fortnite-moves-into-movies`)
 
 ---
 
@@ -437,7 +437,7 @@ These are built into `NewsArticle` and render automatically. **Never remove them
 
 | Feature | Component | Trigger |
 |---|---|---|
-| Animated thumbnail in gradient header | `NewsHeader` | `thumbnail_src` set in Supabase ‚Äî golden flare + bob animation |
+| Animated thumbnail in gradient header | `NewsHeader` | `thumbnail_src` set in Supabase ó golden flare + bob animation |
 | Related articles sticky sidebar | `RelatedArticles` | Always rendered. Queries by `category`, re-ranks by user history tags |
 | Reaction bar (like/share/save) | `ReactionBar` | Always rendered below article body |
 | Tags section | `TagsSection` | Rendered when `tags` array has 1+ items |
@@ -451,36 +451,36 @@ These are built into `NewsArticle` and render automatically. **Never remove them
 ## 14. Publish Checklist
 
 ### For all article types
-- [ ] Route folder name is **all lowercase** ‚Äî no `ADL-26`, only `adl-26`
+- [ ] Route folder name is **all lowercase** ó no `ADL-26`, only `adl-26`
 - [ ] `metadata.title` uses `|`, max 60 chars, no brand suffix (`| ObjectWire` dropped), no em dashes (`&` allowed here only)
-- [ ] `metadata.description` is 130‚Äì155 chars, primary keyword in first 60 chars
-- [ ] `canonical` URL set in `alternates` ‚Äî lowercase path matching the folder name
+- [ ] `metadata.description` is 130ñ155 chars, primary keyword in first 60 chars
+- [ ] `canonical` URL set in `alternates` ó lowercase path matching the folder name
 - [ ] `openGraph` block complete: title, description, `publishedTime`, `section`
 - [ ] `twitter` block with `summary_large_image` card
-- [ ] All H2 subheadings are niche and specific ‚Äî no "Background", "Overview", "Details"
-- [ ] No `‚Äî` or `‚Äì` anywhere in the file
+- [ ] All H2 subheadings are niche and specific ó no "Background", "Overview", "Details"
+- [ ] No `ó` or `ñ` anywhere in the file
 - [ ] `category` is a valid value: `News`, `Tech`, `Finance`, `Entertainment`, `World`, `Politics`, `Science`, `Sports`, `Culture`, `Music`
-- [ ] Ran `npm run wiki:publish -- --file <path>` and got `‚úÖ Published successfully!`
+- [ ] Ran `npm run wiki:publish -- --file <path>` and got `? Published successfully!`
 - [ ] Committed: `git add -A && git commit -m "feat: publish /your/path"` and pushed
 
 ### Additional checks for `NewsArticle` / `articles` table
-- [ ] Full `<NewsArticle>` component with JSX body ‚Äî **not** a DB stub before running `wiki:publish`
-- [ ] `thumbnail_src` is a real hosted image URL ‚Äî this activates the animated genie header
+- [ ] Full `<NewsArticle>` component with JSX body ó **not** a DB stub before running `wiki:publish`
+- [ ] `thumbnail_src` is a real hosted image URL ó this activates the animated genie header
 - [ ] `thumbnail_alt` is a descriptive string (not empty)
 - [ ] `topic_tag` is a valid `TopicTagType` value
 - [ ] `status` is `'published'`
 - [ ] `author_slug` is set (kebab-case, valid `/authors/[slug]` route)
-- [ ] `tags` array has 4‚Äì8 proper nouns (no generic terms)
+- [ ] `tags` array has 4ñ8 proper nouns (no generic terms)
 - [ ] `url` field matches the canonical path exactly
 - [ ] Body `content_html` is wrapped in `<div class="prose prose-lg max-w-none">`
 - [ ] At least one data table or stat callout in the content
-- [ ] 4‚Äì6 internal links to ObjectWire hub pages in the body
+- [ ] 4ñ6 internal links to ObjectWire hub pages in the body
 
 ### Additional checks for `ArticlePage` / `article_pages` table
-- [ ] Full `<ArticlePage>` with JSX body ‚Äî **not** a DB stub before running `wiki:publish`
-- [ ] `title` prop is present on `<ArticlePage>` ‚Äî it is **required**, the build will fail without it
+- [ ] Full `<ArticlePage>` with JSX body ó **not** a DB stub before running `wiki:publish`
+- [ ] `title` prop is present on `<ArticlePage>` ó it is **required**, the build will fail without it
 - [ ] `subtitle`, `tableOfContents`, `infoBox`, `relatedLinks`, `backLink` props all set
 - [ ] `infoBox.image.src` points to a real file in `public/` (e.g. `/artist/Yeat-adl.png`)
-- [ ] OG image is local path (1200√ó675), included in both `openGraph.images` and `twitter.images`
+- [ ] OG image is local path (1200◊675), included in both `openGraph.images` and `twitter.images`
 - [ ] `<Section>` components used for body (not raw `<div className="prose">`)
 - [ ] `<Quote>` uses `source="..."` prop (not `attribution="..."`)

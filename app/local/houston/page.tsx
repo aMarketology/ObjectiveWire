@@ -1,57 +1,133 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Hub } from '@/components/Hub';
 
 export const dynamic = 'force-static';
-export const revalidate = false;
+export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.owire.org/local/houston';
+const PAGE_URL = 'https://www.objectivewire.org/local/houston';
 
 export const metadata: Metadata = {
-  title: 'Houston News | Investigative Reporting Houston TX | oWire',
+  title: 'Houston News | Investigative Reporting Houston TX | Objective Wire',
   description:
-    'Investigative news and public records coverage from Houston, Texas. Harris County, HPD, energy sector, local politics, and community stories.',
+    'Licensed investigative news from Houston, Texas. Harris County, HPD, energy sector, port authority, and accountability journalism by named Texas reporters.',
+  keywords: [
+    'Houston investigative news',
+    'Houston Texas news 2026',
+    'Harris County accountability journalism',
+    'Houston HPD news',
+    'Houston energy sector reporting',
+    'Houston public records journalism',
+    'Harris County news',
+    'Houston TX local news',
+    'Objective Wire Houston',
+    'Texas licensed investigative reporter Houston',
+  ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Houston News | oWire',
-    description: 'Investigative news and public records coverage from Houston, Texas.',
+    title: 'Houston News | Investigative Reporting Houston TX | Objective Wire',
+    description:
+      'Licensed investigative news from Houston and Harris County. HPD, energy sector, port, and accountability journalism.',
     type: 'website',
     url: PAGE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
+    section: 'Local',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Houston News | oWire',
-    description: 'Investigative news from Houston, TX.',
+    title: 'Houston Investigative News | Objective Wire',
+    description: 'Licensed PI-backed journalism from Houston, TX. Harris County, energy, HPD.',
   },
 };
 
-export default function HoustonPage() {
-  return (
-    <main className="min-h-screen bg-white dark:bg-gray-950">
-      <section className="bg-gray-950 text-white">
-        <div className="container mx-auto px-4 py-16 max-w-6xl">
-          <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-400 mb-4 font-mono">
-            Local Coverage · Houston, Texas
-          </p>
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
-            Houston<br />
-            <span className="text-blue-400">News &amp; Investigations.</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
-            Investigative reporting on Houston and Harris County. Public records, HPD,
-            energy sector accountability, local politics, and community journalism.
-          </p>
-          <Link href="/local" className="text-blue-400 hover:text-blue-300 underline text-sm font-semibold">
-            ← All Local Coverage
-          </Link>
-        </div>
-      </section>
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsMediaOrganization',
+  name: 'Objective Wire',
+  url: PAGE_URL,
+  description: 'Licensed investigative newsroom covering Houston, Texas and Harris County.',
+  areaServed: [
+    { '@type': 'City', name: 'Houston', containedIn: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'AdministrativeArea', name: 'Harris County' },
+  ],
+};
 
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <p className="text-gray-500 dark:text-gray-400">Houston stories coming soon.</p>
-        </div>
-      </section>
-    </main>
+export default function HoustonHubPage() {
+  return (
+    <Hub
+      badge="Houston, Texas"
+      badgeColor="from-red-700 to-orange-600"
+      title="Houston Investigative News"
+      subtitle="Original reporting from Houston and Harris County. Energy sector, HPD, port authority, courts, and accountability journalism by licensed Texas reporters."
+      updatedAt="2026-05-26"
+      jsonLd={jsonLd}
+      meta={
+        <>
+          <span>📍 Harris County, TX</span>
+          <span>🔍 Licensed PI Reporters</span>
+          <span>⛽ Energy Beat</span>
+        </>
+      }
+    >
+      <Hub.Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Local', href: '/local' },
+          { label: 'Houston' },
+        ]}
+      />
+
+      <Hub.StatBar
+        items={[
+          { value: 'Houston TX', label: 'Primary Beat' },
+          { value: 'Harris County', label: 'Jurisdiction' },
+          { value: 'FOIA + Field', label: 'Methods' },
+          { value: 'Named', label: 'All Bylines' },
+        ]}
+      />
+
+      <Hub.Section title="What We Cover in Houston" icon="🛢️" id="coverage">
+        <Hub.Prose>
+          <p>
+            Houston is the fourth-largest city in the United States and the energy capital of the
+            country. It is also chronically underserved by investigative journalism. The port of
+            Houston, the refinery corridor along the Ship Channel, Harris County\'s sprawling court
+            system, and HPD\'s use-of-force record are all high-value beats that Objective Wire
+            covers using licensed PI methods and primary-source reporting.
+          </p>
+          <p>
+            Our Houston beats include Harris County contracts and procurement, Houston Police
+            Department disciplinary and use-of-force records, the Port of Houston Authority, the
+            Texas energy sector, and environmental accountability along the Gulf Coast.
+          </p>
+        </Hub.Prose>
+      </Hub.Section>
+
+      <Hub.Section title="Houston Coverage Beats" icon="📋" id="beats" variant="card">
+        <Hub.LinkGrid
+          columns={3}
+          items={[
+            { href: '/local/houston', emoji: '⛽', label: 'Energy Sector', sub: 'Refineries, pipelines, port authority, Shell, ExxonMobil' },
+            { href: '/local/houston', emoji: '⚖️', label: 'Harris County Courts', sub: 'Civil, criminal, family court filings' },
+            { href: '/local/houston', emoji: '👮', label: 'Houston HPD', sub: 'Use of force, disciplinary records, FOIA' },
+            { href: '/local/houston', emoji: '🚢', label: 'Port of Houston', sub: 'Contracts, operations, federal oversight' },
+            { href: '/local/houston', emoji: '🌊', label: 'Environmental', sub: 'Ship Channel, refinery emissions, flooding accountability' },
+            { href: '/service/tip-the-newsroom', emoji: '📬', label: 'Submit a Tip', sub: 'Documents, leads, or whistleblower contacts' },
+          ]}
+        />
+      </Hub.Section>
+
+      <Hub.Section title="Houston Stories" icon="📰" id="stories">
+        <p className="text-gray-500 text-lg">Houston investigations in progress. Stories publish as reporting is complete.</p>
+        <p className="text-gray-400 text-sm mt-2">
+          Have a lead? <a href="/service/tip-the-newsroom" className="text-blue-600 hover:text-blue-800 underline">Submit a tip to the newsroom.</a>
+        </p>
+      </Hub.Section>
+
+      <Hub.Banner
+        title="Tip the Houston Newsroom"
+        description="Know about an energy company, an HPD incident, or a port contract that needs investigation? Our reporters are licensed and protected."
+        cta={{ href: '/service/tip-the-newsroom', label: 'Submit a Secure Tip' }}
+      />
+    </Hub>
   );
 }

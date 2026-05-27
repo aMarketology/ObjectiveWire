@@ -6,7 +6,7 @@ import { CreatorArticleDB } from '@/components/articles/CreatorArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/colleen-sheehan';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`; // restored by wiki:publish
 const PAGE_URL = ARTICLE_URL;
 const OG_IMAGE = '';
 const IMAGE_URL = OG_IMAGE;
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     tags: ['Colleen Sheehan', 'colleen.333', 'Creator', 'Instagram', 'Boston'],
     publishedTime: '2026-04-27T12:00:00Z',
     modifiedTime: '2026-04-27T12:00:00Z',
-    images: [{ url: `https://www.owire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Colleen Sheehan portrait' }],
+    images: [{ url: `https://www.objectivewire.org${IMAGE_URL}`, width: 1200, height: 675, alt: 'Colleen Sheehan portrait' }],
   },
   twitter: {
     card: 'summary_large_image',

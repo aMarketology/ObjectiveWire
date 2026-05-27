@@ -1,57 +1,147 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Hub } from '@/components/Hub';
 
 export const dynamic = 'force-static';
-export const revalidate = false;
+export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.owire.org/local/greater-texas';
+const PAGE_URL = 'https://www.objectivewire.org/local/greater-texas';
 
 export const metadata: Metadata = {
-  title: 'Greater Texas News | Statewide Coverage | oWire',
+  title: 'Greater Texas News | Statewide Investigative Reporting | Objective Wire',
   description:
-    'Statewide Texas news and investigative reporting. Coverage from the Panhandle to the Valley, including Dallas, San Antonio, El Paso, Lubbock, and beyond.',
+    'Statewide Texas investigative reporting. Workers comp fraud, missing persons, public corruption, and accountability journalism from Dallas, San Antonio, El Paso, and the Valley.',
+  keywords: [
+    'Greater Texas news',
+    'Texas statewide investigative reporting',
+    'Texas workers compensation fraud',
+    'Texas missing persons reporting',
+    'Texas public corruption news',
+    'Dallas investigative news',
+    'San Antonio accountability journalism',
+    'El Paso news',
+    'Rio Grande Valley news',
+    'Texas licensed investigative reporter',
+    'Objective Wire Texas',
+  ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Greater Texas News | oWire',
-    description: 'Statewide Texas news and investigative reporting.',
+    title: 'Greater Texas News | Statewide Investigative Reporting | Objective Wire',
+    description:
+      'Statewide Texas investigative reporting. Workers comp fraud, missing persons, public corruption, Panhandle to the Valley.',
     type: 'website',
     url: PAGE_URL,
-    siteName: 'ObjectWire',
+    siteName: 'Objective Wire',
+    section: 'Local',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Greater Texas News | oWire',
-    description: 'Statewide Texas investigative news coverage.',
+    title: 'Greater Texas News | Objective Wire',
+    description: 'Statewide Texas investigative reporting. Workers comp, missing persons, public corruption.',
   },
 };
 
-export default function GreaterTexasPage() {
-  return (
-    <main className="min-h-screen bg-white dark:bg-gray-950">
-      <section className="bg-gray-950 text-white">
-        <div className="container mx-auto px-4 py-16 max-w-6xl">
-          <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-400 mb-4 font-mono">
-            Local Coverage · Greater Texas
-          </p>
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
-            Greater Texas<br />
-            <span className="text-blue-400">Statewide Coverage.</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mb-10 leading-relaxed">
-            Investigative reporting across the state of Texas. From the Panhandle to the Rio Grande Valley,
-            public records and accountability journalism statewide.
-          </p>
-          <Link href="/local" className="text-blue-400 hover:text-blue-300 underline text-sm font-semibold">
-            ← All Local Coverage
-          </Link>
-        </div>
-      </section>
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsMediaOrganization',
+  name: 'Objective Wire',
+  url: PAGE_URL,
+  description: 'Texas-licensed investigative newsroom covering all of Texas statewide.',
+  areaServed: { '@type': 'State', name: 'Texas' },
+};
 
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <p className="text-gray-500 dark:text-gray-400">Greater Texas stories coming soon.</p>
-        </div>
-      </section>
-    </main>
+export default function GreaterTexasHubPage() {
+  return (
+    <Hub
+      badge="Greater Texas"
+      badgeColor="from-green-700 to-teal-600"
+      title="Greater Texas Reporting"
+      subtitle="Objective Wire covers all of Texas, from the Panhandle to the Rio Grande Valley. Our licensed reporters investigate workers compensation fraud, missing persons cases, public corruption, and environmental accountability across the state."
+      updatedAt="2026-05-26"
+      jsonLd={jsonLd}
+      meta={
+        <>
+          <span>📍 Statewide, Texas</span>
+          <span>🔍 Licensed PI Reporters</span>
+          <span>📋 Texas PIA Requests</span>
+        </>
+      }
+    >
+      <Hub.Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Local', href: '/local' },
+          { label: 'Greater Texas' },
+        ]}
+      />
+
+      <Hub.StatBar
+        items={[
+          { value: 'Statewide', label: 'Coverage Area' },
+          { value: 'Ch. 1702', label: 'TX PI License' },
+          { value: 'FOIA + Field', label: 'Methods' },
+          { value: '254 Counties', label: 'Jurisdiction' },
+        ]}
+      />
+
+      <Hub.Section title="What We Cover Statewide" icon="🤠" id="coverage">
+        <Hub.Prose>
+          <p>
+            Texas has 254 counties, 29 million people, and a public records law, the Texas Public
+            Information Act, that is among the strongest in the country. Objective Wire reporters
+            use Texas PI credentials to investigate stories that span county lines: workers
+            compensation fraud rings, missing persons cases, public contract corruption, and
+            environmental violations by oil and gas operators.
+          </p>
+          <p>
+            We prioritize stories that no single local outlet can pursue because they require
+            multi-county investigation, surveillance, or source development across long distances.
+            Licensed PI methods make this possible in ways that traditional reporters cannot match.
+          </p>
+        </Hub.Prose>
+      </Hub.Section>
+
+      <Hub.Section title="Statewide Coverage Beats" icon="📋" id="beats" variant="card">
+        <Hub.LinkGrid
+          columns={3}
+          items={[
+            { href: '/service/workers-compensation-fraud', emoji: '🏥', label: 'Workers Comp Fraud', sub: 'Surveillance, field investigation, employer fraud' },
+            { href: '/service/missing-persons', emoji: '🔎', label: 'Missing Persons', sub: 'Skip tracing, field investigation, family cases' },
+            { href: '/local/greater-texas', emoji: '🏛️', label: 'Public Corruption', sub: 'County contracts, elected officials, procurement fraud' },
+            { href: '/local/greater-texas', emoji: '🌵', label: 'Environmental', sub: 'Oil and gas, ag runoff, border region pollution' },
+            { href: '/local/greater-texas', emoji: '🚔', label: 'Law Enforcement', sub: 'Misconduct, use of force, civil asset forfeiture' },
+            { href: '/service/tip-the-newsroom', emoji: '📬', label: 'Submit a Tip', sub: 'Statewide tips, documents, whistleblowers' },
+          ]}
+        />
+      </Hub.Section>
+
+      <Hub.Section title="Texas Regions" icon="🗺️" id="regions">
+        <Hub.InfoGrid
+          columns={4}
+          items={[
+            { label: 'Central Texas', value: 'Austin, Waco, Temple' },
+            { label: 'North Texas', value: 'Dallas, Fort Worth, Denton' },
+            { label: 'South Texas', value: 'San Antonio, Laredo, RGV' },
+            { label: 'West Texas', value: 'El Paso, Midland, Lubbock' },
+            { label: 'East Texas', value: 'Tyler, Nacogdoches, Beaumont' },
+            { label: 'Gulf Coast', value: 'Houston, Corpus Christi, Port A' },
+            { label: 'Panhandle', value: 'Amarillo, Lubbock, Abilene' },
+            { label: 'Border Region', value: 'El Paso, Eagle Pass, Del Rio' },
+          ]}
+        />
+      </Hub.Section>
+
+      <Hub.Section title="Greater Texas Stories" icon="📰" id="stories">
+        <p className="text-gray-500 text-lg">Statewide investigations in progress. Stories publish as reporting is complete.</p>
+        <p className="text-gray-400 text-sm mt-2">
+          Have a statewide lead? <a href="/service/tip-the-newsroom" className="text-blue-600 hover:text-blue-800 underline">Submit a tip to the newsroom.</a>
+        </p>
+      </Hub.Section>
+
+      <Hub.Banner
+        title="Statewide Tips Welcome"
+        description="Investigating workers comp fraud, a corrupt county official, or a missing persons case anywhere in Texas? Our licensed reporters can help."
+        cta={{ href: '/service/tip-the-newsroom', label: 'Submit a Secure Tip' }}
+      />
+    </Hub>
   );
 }

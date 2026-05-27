@@ -6,7 +6,7 @@ import { WikiArticle } from '@/components/articles/WikiArticle';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/creator/serge-gatari';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Serge Gatari | AI Expert & Digital Marketing Educator',

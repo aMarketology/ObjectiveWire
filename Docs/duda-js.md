@@ -1,4 +1,4 @@
-﻿# Why Duda's Built-In SEO Is So Strong — And How to Replicate It in JavaScript
+# Why Duda's Built-In SEO Is So Strong � And How to Replicate It in JavaScript
 
 > Internal reference document for ObjectWire engineering.
 > Last updated: February 21, 2026
@@ -11,7 +11,7 @@ Duda is a website builder that handles SEO **automatically at the infrastructure
 
 ### 1. Server-Side Rendering by Default
 
-Duda serves fully rendered HTML to crawlers. Google, Bing, Perplexity — they all receive complete page content on the first request. No JavaScript execution needed.
+Duda serves fully rendered HTML to crawlers. Google, Bing, Perplexity � they all receive complete page content on the first request. No JavaScript execution needed.
 
 ### 2. Automatic Structured Data
 
@@ -51,7 +51,7 @@ If a meta description was missing, Duda would auto-generate one from the first ~
 
 ### 7. Internal Linking Structure
 
-Duda's navigation system automatically created crawlable internal links. The header, footer, and breadcrumbs were all server-rendered `<a>` tags — not JavaScript-rendered links.
+Duda's navigation system automatically created crawlable internal links. The header, footer, and breadcrumbs were all server-rendered `<a>` tags � not JavaScript-rendered links.
 
 ### 8. Proper HTTP Headers
 
@@ -66,30 +66,30 @@ Duda's navigation system automatically created crawlable internal links. The hea
 
 Our current setup is missing several critical SEO systems that Duda handled automatically:
 
-### ✅ FIXED — Sitemap with Real Dates
+### ? FIXED � Sitemap with Real Dates
 
-`lib/content-registry.ts` now drives `app/sitemap.ts`. Every registered entry has a real `publishDate` and `modifiedDate` — no more deploy-timestamp faking.
+`lib/content-registry.ts` now drives `app/sitemap.ts`. Every registered entry has a real `publishDate` and `modifiedDate` � no more deploy-timestamp faking.
 
-### ✅ FIXED — Structured Data on Key Pages
+### ? FIXED � Structured Data on Key Pages
 
-`SEOWrapper` (`components/SEOWrapper.tsx`) injects `NewsArticle` + `BreadcrumbList` JSON-LD on any page that wraps with it — driven entirely by the content registry.
+`SEOWrapper` (`components/SEOWrapper.tsx`) injects `NewsArticle` + `BreadcrumbList` JSON-LD on any page that wraps with it � driven entirely by the content registry.
 
-### ✅ FIXED — Real Author Attribution with Profile URLs
+### ? FIXED � Real Author Attribution with Profile URLs
 
-`ContentEntry` now has an optional `authorSlug` field. `SEOWrapper` automatically resolves the author's profile URL (`/authors/{slug}`) and emits it in the JSON-LD `author.url` and `sameAs` fields — enabling Google News author verification for **Conan Boyle** and other named contributors.
+`ContentEntry` now has an optional `authorSlug` field. `SEOWrapper` automatically resolves the author's profile URL (`/authors/{slug}`) and emits it in the JSON-LD `author.url` and `sameAs` fields � enabling Google News author verification for **Conan Boyle** and other named contributors.
 
 Named author entries in the registry so far:
-- **Conan Boyle** (`authorSlug: 'conan-boyle'`) — Neurophos, NASA, Blitzy, IronSpring, Anthropic/Claude article
+- **Conan Boyle** (`authorSlug: 'conan-boyle'`) � Neurophos, NASA, Blitzy, IronSpring, Anthropic/Claude article
 
-For entries using generic desk names (e.g. "ObjectWire Tech Desk"), no author URL is emitted — intentional, since desks don't have profile pages.
+For entries using generic desk names (e.g. "ObjectWire Tech Desk"), no author URL is emitted � intentional, since desks don't have profile pages.
 
-### ❌ INCOMPLETE — Only 38 of 251 Pages in the Registry
+### ? INCOMPLETE � Only 38 of 251 Pages in the Registry
 
 The site has **251 `page.tsx` files** but the content registry only has **38 entries**. The `/site-index` therefore shows 38 pages. Every unregistered page is also invisible to the sitemap and gets no `SEOWrapper` structured data.
 
 **Priority: register all content pages.** Skip admin/api/feeds routes.
 
-### ⚠️ DUPLICATE JSON-LD ON ~30 PAGES
+### ?? DUPLICATE JSON-LD ON ~30 PAGES
 
 Pages that were built before `SEOWrapper` existed use inline `<NewsArticleSchema>` components AND are wrapped in `<SEOWrapper>`. This emits two `NewsArticle` JSON-LD blocks per page. Google tolerates it but it's noise.
 
@@ -103,11 +103,11 @@ Affected pages (sample):
 - `video-games/mha/ultra-rumble/season-15/strike-overhaul`
 - ~25 others
 
-### ❌ No Automatic Meta Fallbacks
+### ? No Automatic Meta Fallbacks
 
 If a page is missing a `description` in its `metadata` export, Next.js renders nothing. Duda would have auto-generated one. Unregistered pages with no `description` in their `metadata` export are at risk.
 
-### ❌ No Google Ping on Publish
+### ? No Google Ping on Publish
 
 Duda pinged Google every time content was published. Our site only gets re-crawled when Google decides to visit. Script exists at `scripts/ping-google.ts` but is not wired to a deploy hook.
 
@@ -160,7 +160,7 @@ import { MetadataRoute } from 'next';
 import { contentRegistry } from '@/lib/content-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.owire.org';
+  const baseUrl = 'https://www.objectivewire.org';
 
   return contentRegistry.map((entry) => ({
     url: `${baseUrl}${entry.slug}`,
@@ -194,9 +194,9 @@ export function SEOWrapper({ slug, children }: { slug: string; children: React.R
     publisher: {
       '@type': 'Organization',
       name: 'ObjectWire',
-      url: 'https://www.owire.org',
+      url: 'https://www.objectivewire.org',
     },
-    mainEntityOfPage: `https://www.owire.org${entry.slug}`,
+    mainEntityOfPage: `https://www.objectivewire.org${entry.slug}`,
   };
 
   const breadcrumbSchema = {
@@ -206,7 +206,7 @@ export function SEOWrapper({ slug, children }: { slug: string; children: React.R
       '@type': 'ListItem',
       position: i + 1,
       name: segment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
-      item: `https://www.owire.org/${arr.slice(0, i + 1).join('/')}`,
+      item: `https://www.objectivewire.org/${arr.slice(0, i + 1).join('/')}`,
     })),
   };
 
@@ -237,7 +237,7 @@ import { contentRegistry } from '../lib/content-registry';
 async function pingGoogle() {
   // Ping sitemap
   await fetch(
-    `https://www.google.com/ping?sitemap=https://www.owire.org/sitemap.xml`
+    `https://www.google.com/ping?sitemap=https://www.objectivewire.org/sitemap.xml`
   );
 
   // For faster indexing, use Google Indexing API
@@ -302,17 +302,17 @@ export function RelatedArticles({ currentSlug, category, tags }: {
 
 | System | Duda (automatic) | ObjectWire (current) | Status |
 |--------|------------------|---------------------:|--------|
-| Sitemap with real `lastmod` | ✅ | ✅ Content registry drives sitemap | Done |
-| Structured data every page | ✅ | ⚠️ ~38/251 pages via SEOWrapper | Partial — need to register all pages |
-| Breadcrumbs every page | ✅ | ⚠️ Auto-generated by SEOWrapper for registered pages only | Partial |
-| Named author with profile URL | ✅ | ✅ `authorSlug` → `/authors/conan-boyle` in JSON-LD | Done |
-| Meta description fallback | ✅ | ❌ Missing on unregistered pages | Not built |
-| Canonical URLs | ✅ | ⚠️ Partial — set per page in `metadata` exports | Partial |
-| Google ping on publish | ✅ | ❌ Script exists, not wired to deploy hook | Not wired |
-| Real publish dates | ✅ | ✅ Registry stores real ISO dates | Done |
-| Image optimization | ✅ | ⚠️ Next.js `<Image>` used on some pages | Partial |
-| Core Web Vitals | ✅ Auto-optimized | ⚠️ Untested | Needs audit |
-| Duplicate JSON-LD | N/A | ❌ ~30 pages have both `NewsArticleSchema` + `SEOWrapper` | Needs cleanup |
+| Sitemap with real `lastmod` | ? | ? Content registry drives sitemap | Done |
+| Structured data every page | ? | ?? ~38/251 pages via SEOWrapper | Partial � need to register all pages |
+| Breadcrumbs every page | ? | ?? Auto-generated by SEOWrapper for registered pages only | Partial |
+| Named author with profile URL | ? | ? `authorSlug` ? `/authors/conan-boyle` in JSON-LD | Done |
+| Meta description fallback | ? | ? Missing on unregistered pages | Not built |
+| Canonical URLs | ? | ?? Partial � set per page in `metadata` exports | Partial |
+| Google ping on publish | ? | ? Script exists, not wired to deploy hook | Not wired |
+| Real publish dates | ? | ? Registry stores real ISO dates | Done |
+| Image optimization | ? | ?? Next.js `<Image>` used on some pages | Partial |
+| Core Web Vitals | ? Auto-optimized | ?? Untested | Needs audit |
+| Duplicate JSON-LD | N/A | ? ~30 pages have both `NewsArticleSchema` + `SEOWrapper` | Needs cleanup |
 
 ---
 
@@ -320,16 +320,16 @@ export function RelatedArticles({ currentSlug, category, tags }: {
 
 | # | Task | Status | Impact |
 |---|------|--------|--------|
-| 1 | Content Registry — central metadata for all URLs | ✅ Done (`lib/content-registry.ts`) | Highest |
-| 2 | Fix Sitemap — use registry dates for `<lastmod>` | ✅ Done (`app/sitemap.ts`) | High |
-| 3 | SEOWrapper — structured data + breadcrumbs | ✅ Done (`components/SEOWrapper.tsx`) | High |
-| 4 | Named author attribution with profile URL | ✅ Done (`authorSlug` in ContentEntry + SEOWrapper) | High |
-| **5** | **Register all 251 pages in the content registry** | **❌ Only 38/251 done** | **Highest** |
-| 6 | Remove duplicate `<NewsArticleSchema>` from SEOWrapper pages | ❌ Pending | Medium |
-| 7 | Post-deploy Google ping | ❌ Script exists, not wired | Medium |
-| 8 | Meta description fallback system | ❌ Not built | Medium |
-| 9 | Related articles on every page | ✅ `getRelatedArticles()` exists, used on some pages | Low |
-| 10 | Google Search Console Indexing API | ❌ Not built | Low |
+| 1 | Content Registry � central metadata for all URLs | ? Done (`lib/content-registry.ts`) | Highest |
+| 2 | Fix Sitemap � use registry dates for `<lastmod>` | ? Done (`app/sitemap.ts`) | High |
+| 3 | SEOWrapper � structured data + breadcrumbs | ? Done (`components/SEOWrapper.tsx`) | High |
+| 4 | Named author attribution with profile URL | ? Done (`authorSlug` in ContentEntry + SEOWrapper) | High |
+| **5** | **Register all 251 pages in the content registry** | **? Only 38/251 done** | **Highest** |
+| 6 | Remove duplicate `<NewsArticleSchema>` from SEOWrapper pages | ? Pending | Medium |
+| 7 | Post-deploy Google ping | ? Script exists, not wired | Medium |
+| 8 | Meta description fallback system | ? Not built | Medium |
+| 9 | Related articles on every page | ? `getRelatedArticles()` exists, used on some pages | Low |
+| 10 | Google Search Console Indexing API | ? Not built | Low |
 
 ### Next Immediate Action: Fill the Registry
 
@@ -356,10 +356,10 @@ Template for each entry:
 
 ## Key Takeaway
 
-> **Duda's SEO strength was never about being "better" — it was about being automatic.**
+> **Duda's SEO strength was never about being "better" � it was about being automatic.**
 > Every page got structured data, breadcrumbs, canonical URLs, and real timestamps without
 > the developer doing anything. In Next.js, you must build these systems yourself. The
-> content registry is the foundation — everything else flows from it.
+> content registry is the foundation � everything else flows from it.
 
 ---
 

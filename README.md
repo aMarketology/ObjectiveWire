@@ -1,4 +1,4 @@
-﻿# ObjectWire Frontend
+# ObjectWire Frontend
 
 **Professional intelligence platform with block-based article editor and AI-ready architecture**
 
@@ -10,19 +10,19 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/) [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green)](https://fastapi.tiangolo.com/)
 
-## 📚 Documentation
+## ?? Documentation
 
 **Core Setup & Architecture:**
 - [INSTALLATION.md](INSTALLATION.md), Setup and environment configuration
 - [SUPABASE_SETUP.md](SUPABASE_SETUP.md), Database, CLI workflow, and integration guide
 - [ARCHITECTURE_SPRINT.md](ARCHITECTURE_SPRINT.md), Two-room architecture pattern
 
-**Component System:** 🆕
+**Component System:** ??
 - [COMPONENT-SYSTEM-SUMMARY.md](Docs/COMPONENT-SYSTEM-SUMMARY.md), Overview of DynamicNewsArticle component
 - [DYNAMIC-NEWS-ARTICLE-COMPONENT.md](Docs/DYNAMIC-NEWS-ARTICLE-COMPONENT.md), Complete technical documentation
 - [QUICK-START-ARTICLE-TEMPLATE.md](Docs/QUICK-START-ARTICLE-TEMPLATE.md), 5-minute getting started guide
 - [COMPONENT-VISUAL-GUIDE.md](Docs/COMPONENT-VISUAL-GUIDE.md), Visual reference and layouts
-- [MIGRATION-GUIDE.md](Docs/MIGRATION-GUIDE.md) — Before/after migration examples
+- [MIGRATION-GUIDE.md](Docs/MIGRATION-GUIDE.md) � Before/after migration examples
 
 **Strategic Documents:**
 - [WHITEPAPER.md](WHITEPAPER.md), Platform vision and business strategy
@@ -38,13 +38,13 @@
 
 ```bash
 npm install           # Install dependencies
-npm run dev           # Start dev server → localhost:3000
+npm run dev           # Start dev server ? localhost:3000
 npm run import-blogs  # Import RSS articles
 ```
 
 ## Features
 
-### ✅ DynamicNewsArticle Component System 🆕
+### ? DynamicNewsArticle Component System ??
 - **Reusable SEO-optimized article template** based on Minnesota fraud article
 - **7 specialized sub-components** (CaseOverview, ProcessDiagram, KeyFigures, etc.)
 - **70-80% code reduction** per article
@@ -53,20 +53,20 @@ npm run import-blogs  # Import RSS articles
 - **Comprehensive documentation** with examples
 - See: [Example Article](/app/example-investigation/page.tsx) or [Component Docs](Docs/COMPONENT-SYSTEM-SUMMARY.md)
 
-### ✅ Block-Based Article Editor (`/admin`)
+### ? Block-Based Article Editor (`/admin`)
 - 7 content block types with specialized editors
 - Drag-and-drop reordering
 - Live preview and publishing
 - Category & metadata management
 - **Currently localStorage** (backend integration ready)
 
-### ✅ RSS Import System
-- Converts owire.org RSS to structured blocks
+### ? RSS Import System
+- Converts objectivewire.org RSS to structured blocks
 - Smart category mapping
 - Auto-generates TypeScript files
 - `npm run import-blogs`
 
-### ✅ Article Rendering
+### ? Article Rendering
 - Flexible block-based content structure
 - Hover effects on **bold** text
 - Animated statistics
@@ -88,69 +88,69 @@ npm run import-blogs  # Import RSS articles
 
 ```
 ObjectWire-Frontend/
-│
-├── app/                          # Next.js App Router
-│   ├── admin/page.tsx            # Article editor dashboard
-│   ├── blog/                     # Blog pages and article routing
-│   ├── editorial-standards/      # Editorial policy page
-│   ├── globals.css               # Global styles
-│   ├── layout.tsx                # Root layout (nav/footer)
-│   └── page.tsx                  # Homepage
-│
-├── backend/                      # FastAPI backend (Python)
-│   ├── app/
-│   │   ├── routers/
-│   │   │   ├── articles.py       # Article API endpoints
-│   │   │   ├── categories.py     # Category management
-│   │   │   └── dashboard.py      # Dashboard data
-│   │   ├── config.py             # Backend configuration
-│   │   ├── database.py           # Database connection
-│   │   └── models.py             # SQLAlchemy models
-│   ├── main.py                   # FastAPI app entry point
-│   └── requirements.txt          # Python dependencies
-│
-├── components/                   # React components
-│   ├── article-renderer.tsx      # Block-based article renderer
-│   └── ui/                       # Radix UI components
-│       ├── badge.tsx
-│       ├── button.tsx
-│       ├── card.tsx
-│       ├── input.tsx
-│       ├── label.tsx
-│       ├── select.tsx
-│       ├── separator.tsx
-│       ├── tabs.tsx
-│       └── textarea.tsx
-│
-├── lib/                          # Utilities and contexts
-│   ├── articles-context.tsx      # Article state management
-│   └── utils.ts                  # Helper functions
-│
-├── scripts/                      # Build and utility scripts
-│   ├── import-rss-to-blocks.ts   # RSS to blocks converter (active)
-│   ├── start-dashboard.sh        # Dashboard startup script
-│   └── legacy/
-│       └── import-rss-blogs.ts   # Old RSS importer
-│
-├── config/                       # Configuration files
-│   └── package-scripts.json      # NPM scripts config
-│
-├── public/                       # Static assets
-│   └── editorial-standards.md    # Markdown version of standards
-│
-├── Docs/                         # Original documentation
-│   ├── Objectwire Whitepaper.md
-│   ├── Editorial Standard.txt
-│   ├── Private Policy.txt
-│   └── Terms of Services.txt
-│
-├── components.json               # shadcn/ui config
-├── next.config.ts                # Next.js configuration
-├── tsconfig.json                 # TypeScript configuration
-├── postcss.config.mjs            # PostCSS configuration
-├── package.json                  # Node dependencies
-├── LOG.md                        # Development log & progress
-└── README.md                     # Project overview (this file)
+�
++-- app/                          # Next.js App Router
+�   +-- admin/page.tsx            # Article editor dashboard
+�   +-- blog/                     # Blog pages and article routing
+�   +-- editorial-standards/      # Editorial policy page
+�   +-- globals.css               # Global styles
+�   +-- layout.tsx                # Root layout (nav/footer)
+�   +-- page.tsx                  # Homepage
+�
++-- backend/                      # FastAPI backend (Python)
+�   +-- app/
+�   �   +-- routers/
+�   �   �   +-- articles.py       # Article API endpoints
+�   �   �   +-- categories.py     # Category management
+�   �   �   +-- dashboard.py      # Dashboard data
+�   �   +-- config.py             # Backend configuration
+�   �   +-- database.py           # Database connection
+�   �   +-- models.py             # SQLAlchemy models
+�   +-- main.py                   # FastAPI app entry point
+�   +-- requirements.txt          # Python dependencies
+�
++-- components/                   # React components
+�   +-- article-renderer.tsx      # Block-based article renderer
+�   +-- ui/                       # Radix UI components
+�       +-- badge.tsx
+�       +-- button.tsx
+�       +-- card.tsx
+�       +-- input.tsx
+�       +-- label.tsx
+�       +-- select.tsx
+�       +-- separator.tsx
+�       +-- tabs.tsx
+�       +-- textarea.tsx
+�
++-- lib/                          # Utilities and contexts
+�   +-- articles-context.tsx      # Article state management
+�   +-- utils.ts                  # Helper functions
+�
++-- scripts/                      # Build and utility scripts
+�   +-- import-rss-to-blocks.ts   # RSS to blocks converter (active)
+�   +-- start-dashboard.sh        # Dashboard startup script
+�   +-- legacy/
+�       +-- import-rss-blogs.ts   # Old RSS importer
+�
++-- config/                       # Configuration files
+�   +-- package-scripts.json      # NPM scripts config
+�
++-- public/                       # Static assets
+�   +-- editorial-standards.md    # Markdown version of standards
+�
++-- Docs/                         # Original documentation
+�   +-- Objectwire Whitepaper.md
+�   +-- Editorial Standard.txt
+�   +-- Private Policy.txt
+�   +-- Terms of Services.txt
+�
++-- components.json               # shadcn/ui config
++-- next.config.ts                # Next.js configuration
++-- tsconfig.json                 # TypeScript configuration
++-- postcss.config.mjs            # PostCSS configuration
++-- package.json                  # Node dependencies
++-- LOG.md                        # Development log & progress
++-- README.md                     # Project overview (this file)
 ```
 
 ## Tech Stack
@@ -204,50 +204,50 @@ Access at `/admin` to:
 ### Current (Phase 3.3)
 ```
 RSS Feed 
-  ↓
+  ?
 scripts/import-rss-to-blocks.ts
-  ↓
+  ?
 lib/articles-context.tsx (React Context)
-  ↓
+  ?
 localStorage (browser)
-  ↓
-Admin Dashboard (/admin) ↔ Blog Pages (/blog)
+  ?
+Admin Dashboard (/admin) ? Blog Pages (/blog)
 ```
 
 ### Planned (Phase 4-5)
 ```
 RSS Feed / LLM Input
-  ↓
+  ?
 Backend FastAPI Service
-  ↓
+  ?
 Multiple LLM Providers (Grok, Gemini, OpenAI)
-  ↓
+  ?
 Auto-generated Article Blocks
-  ↓
+  ?
 PostgreSQL Database
-  ↓
+  ?
 Frontend API Client
-  ↓
-Admin Dashboard ↔ Blog Pages ↔ Email/RSS Distribution
+  ?
+Admin Dashboard ? Blog Pages ? Email/RSS Distribution
 ```
 
 ## Roadmap
 
-### ✅ Phase 3.3 (Complete)
+### ? Phase 3.3 (Complete)
 - Block-based article editor
 - Admin dashboard fully functional
 - RSS import system with block conversion
 - Component library (Radix UI)
 - State management via React Context
 
-### 🚧 Phase 4 (Next)
+### ?? Phase 4 (Next)
 - Connect frontend to FastAPI backend
 - Replace localStorage with API calls to `/backend/app/routers/articles.py`
 - User authentication for admin access
 - Media upload and asset management
 - Version history and revision tracking
 
-### 📋 Phase 5 (Planned)
+### ?? Phase 5 (Planned)
 - **LLM Integration:**
   - Multiple providers: Grok API, Gemini API, OpenAI API
   - Provider selection based on task type
@@ -257,7 +257,7 @@ Admin Dashboard ↔ Blog Pages ↔ Email/RSS Distribution
   - Auto-categorization and tagging
   - SEO optimization
 - **Automated Publishing:**
-  - RSS → AI processing → auto-publish pipeline
+  - RSS ? AI processing ? auto-publish pipeline
   - Scheduled content generation
   - Multi-language support
   - A/B testing for headlines
@@ -266,15 +266,15 @@ Admin Dashboard ↔ Blog Pages ↔ Email/RSS Distribution
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| Frontend Admin | ✅ Complete | Fully functional dashboard |
-| Block Editor | ✅ Complete | All 7 block types working |
-| RSS Import | ✅ Complete | Auto-converts to blocks |
-| Blog Display | ✅ Complete | Block renderer working |
-| localStorage | ✅ Complete | Temporary, works for now |
-| Backend API | ⏳ Ready | FastAPI server ready, not connected |
-| Authentication | ❌ Not started | Phase 4 task |
-| LLM Integration | ❌ Not started | Phase 5 task |
-| Database | ❌ Not started | PostgreSQL/Supabase in Phase 4 |
+| Frontend Admin | ? Complete | Fully functional dashboard |
+| Block Editor | ? Complete | All 7 block types working |
+| RSS Import | ? Complete | Auto-converts to blocks |
+| Blog Display | ? Complete | Block renderer working |
+| localStorage | ? Complete | Temporary, works for now |
+| Backend API | ? Ready | FastAPI server ready, not connected |
+| Authentication | ? Not started | Phase 4 task |
+| LLM Integration | ? Not started | Phase 5 task |
+| Database | ? Not started | PostgreSQL/Supabase in Phase 4 |
 
 ## Installation & Setup
 
@@ -337,7 +337,7 @@ python main.py            # Runs on localhost:8000
 
 ## Contact & Support
 
-- **Email:** jack@owire.org
+- **Email:** jack@objectivewire.org
 - **Phone:** (575) 495-0323
 - **Location:** Austin, TX
 - **Development Log:** See [LOG.md](LOG.md) for complete progress history

@@ -6,8 +6,8 @@ import { KeyTakeaways } from '@/components/articles/KeyTakeaways';
 export const revalidate = 86400;
 
 const SLUG = '/youtube/chicos-toxicos';
-const PAGE_URL = `https://www.owire.org${SLUG}`;
-const OG_IMAGE = `https://www.owire.org${SLUG}/opengraph-image`;
+const PAGE_URL = `https://www.objectivewire.org${SLUG}`;
+const OG_IMAGE = `https://www.objectivewire.org${SLUG}/opengraph-image`;
 
 export const metadata: Metadata = {
   title: 'Chicos Toxicos | Amigos Toxicos Tequila, Bradley Martyn, 2026',

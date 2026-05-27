@@ -1,4 +1,4 @@
-﻿# 📰 News Network Approval Roadmap
+# ?? News Network Approval Roadmap
 ## Google News, Perplexity AI, and MSN News
 
 ## Current Status: Pre-Application Phase
@@ -7,49 +7,49 @@ ObjectWire is building towards approval from major news aggregators. This docume
 
 ---
 
-## 🎯 Requirements Overview
+## ?? Requirements Overview
 
 ### 1. **Technical Requirements** (Infrastructure)
 | Requirement | Status | Priority | Platform |
 |-------------|--------|----------|----------|
-| robots.txt allows Googlebot-News | ✅ Done | P0 | Google |
-| News-specific sitemap (`/news-sitemap.xml`) | ✅ Done | P0 | Google |
-| NewsArticle Schema component | ✅ Done | P0 | All |
-| Organization Schema on site | ✅ Done | P0 | All |
-| WebSite Schema with SearchAction | ✅ Done | P0 | Google |
-| Mobile-responsive design | ✅ Done | P0 | All |
-| HTTPS enabled | ✅ Done | P0 | All |
-| Fast page load (<3s) | ✅ Done | P0 | All |
-| RSS Feed (`/rss.xml`) | ✅ Done | P0 | All |
-| Unique, canonical URLs | ✅ Done | P0 | All |
+| robots.txt allows Googlebot-News | ? Done | P0 | Google |
+| News-specific sitemap (`/news-sitemap.xml`) | ? Done | P0 | Google |
+| NewsArticle Schema component | ? Done | P0 | All |
+| Organization Schema on site | ? Done | P0 | All |
+| WebSite Schema with SearchAction | ? Done | P0 | Google |
+| Mobile-responsive design | ? Done | P0 | All |
+| HTTPS enabled | ? Done | P0 | All |
+| Fast page load (<3s) | ? Done | P0 | All |
+| RSS Feed (`/rss.xml`) | ? Done | P0 | All |
+| Unique, canonical URLs | ? Done | P0 | All |
 
 ### 2. **Content Requirements** (Editorial)
 | Requirement | Status | Priority | Platform |
 |-------------|--------|----------|----------|
-| Original, timely news content | ✅ Done | P0 | All |
-| Clear author attribution | ✅ Done | P0 | All |
-| Publication dates visible | ✅ Done | P0 | All |
-| Editorial standards page | ✅ Done | P0 | All |
-| About page | ✅ Done | P0 | All |
-| Contact information | ⏳ **ACTION NEEDED** | P0 | All |
-| Privacy policy | ✅ Done | P0 | All |
-| Minimum 3-5 articles per week | ⏳ **ACTION NEEDED** | P1 | All |
+| Original, timely news content | ? Done | P0 | All |
+| Clear author attribution | ? Done | P0 | All |
+| Publication dates visible | ? Done | P0 | All |
+| Editorial standards page | ? Done | P0 | All |
+| About page | ? Done | P0 | All |
+| Contact information | ? **ACTION NEEDED** | P0 | All |
+| Privacy policy | ? Done | P0 | All |
+| Minimum 3-5 articles per week | ? **ACTION NEEDED** | P1 | All |
 
 ### 3. **Publisher Requirements** (Trust & Credibility)
 | Requirement | Status | Priority | Platform |
 |-------------|--------|----------|----------|
-| Clear ownership/publisher info | ⏳ **ACTION NEEDED** | P0 | All |
-| Physical address or location | ⏳ **ACTION NEEDED** | P0 | Google/MSN |
-| Corrections policy page | ⏳ **ACTION NEEDED** | P1 | Google |
-| Staff/contributor pages | ❌ **NOT STARTED** | P1 | All |
-| Individual author profile pages | ❌ **NOT STARTED** | P1 | All |
-| Masthead/editorial team | ❌ **NOT STARTED** | P1 | MSN |
+| Clear ownership/publisher info | ? **ACTION NEEDED** | P0 | All |
+| Physical address or location | ? **ACTION NEEDED** | P0 | Google/MSN |
+| Corrections policy page | ? **ACTION NEEDED** | P1 | Google |
+| Staff/contributor pages | ? **NOT STARTED** | P1 | All |
+| Individual author profile pages | ? **NOT STARTED** | P1 | All |
+| Masthead/editorial team | ? **NOT STARTED** | P1 | MSN |
 
 ---
 
-## 🔴 IMMEDIATE ACTION ITEMS (Do These First)
+## ?? IMMEDIATE ACTION ITEMS (Do These First)
 
-### ☐ 1. Add NewsArticle Schema to Every Article Page
+### ? 1. Add NewsArticle Schema to Every Article Page
 **Status:** Component created, needs integration
 
 The schema component is at `components/NewsArticleSchema.tsx`. You need to add it to each article page:
@@ -64,8 +64,8 @@ import { NewsArticleSchema } from '@/components/NewsArticleSchema';
   author="Author Name"
   publishedTime="2026-01-15T10:00:00Z"
   modifiedTime="2026-01-15T12:00:00Z"
-  imageUrl="https://owire.org/images/article-image.jpg"
-  articleUrl="https://owire.org/your-article-slug"
+  imageUrl="https://objectivewire.org/images/article-image.jpg"
+  articleUrl="https://objectivewire.org/your-article-slug"
   section="Technology"
   keywords={["keyword1", "keyword2", "keyword3"]}
 />
@@ -77,7 +77,7 @@ import { NewsArticleSchema } from '@/components/NewsArticleSchema';
 
 ---
 
-### ☐ 2. Create Individual Author Pages
+### ? 2. Create Individual Author Pages
 **Status:** Not started
 
 Create a `/team` directory with individual author pages:
@@ -108,7 +108,7 @@ app/
 
 ---
 
-### ☐ 3. Enhance About Page with Ownership Info
+### ? 3. Enhance About Page with Ownership Info
 **Status:** Needs enhancement
 
 **Add to `/about` page:**
@@ -122,21 +122,21 @@ app/
 
 ---
 
-### ☐ 4. Create/Enhance Contact Page
+### ? 4. Create/Enhance Contact Page
 **Status:** Needs work
 
 **Required elements for `/contact`:**
-- [ ] General inquiries email: `info@owire.org`
-- [ ] Editorial email: `editorial@owire.org`
-- [ ] Tips/submissions email: `tips@owire.org`
-- [ ] Press inquiries email: `press@owire.org`
+- [ ] General inquiries email: `info@objectivewire.org`
+- [ ] Editorial email: `editorial@objectivewire.org`
+- [ ] Tips/submissions email: `tips@objectivewire.org`
+- [ ] Press inquiries email: `press@objectivewire.org`
 - [ ] Physical mailing address
 - [ ] Contact form
 - [ ] Response time expectations
 
 ---
 
-### ☐ 5. Create Corrections Policy Page
+### ? 5. Create Corrections Policy Page
 **Status:** Page exists, verify content
 
 **Required for `/corrections`:**
@@ -149,18 +149,18 @@ app/
 
 ---
 
-### ☐ 6. Update robots.txt with News Sitemap
+### ? 6. Update robots.txt with News Sitemap
 **Status:** Needs update
 
 Add to `public/robots.txt`:
 ```
-Sitemap: https://owire.org/sitemap.xml
-Sitemap: https://owire.org/news-sitemap.xml
+Sitemap: https://objectivewire.org/sitemap.xml
+Sitemap: https://objectivewire.org/news-sitemap.xml
 ```
 
 ---
 
-### ☐ 7. Create Required Image Assets
+### ? 7. Create Required Image Assets
 **Status:** Not started
 
 **For Google Publisher Center:**
@@ -174,9 +174,9 @@ Sitemap: https://owire.org/news-sitemap.xml
 
 ---
 
-## 📋 Platform-Specific Requirements
+## ?? Platform-Specific Requirements
 
-### 🔵 Google News Publisher Center
+### ?? Google News Publisher Center
 
 **Application URL:** https://publishercenter.google.com
 
@@ -196,7 +196,7 @@ Sitemap: https://owire.org/news-sitemap.xml
 
 ---
 
-### 🟣 Perplexity AI Indexing
+### ?? Perplexity AI Indexing
 
 **How Perplexity finds content:**
 - Crawls RSS feeds
@@ -220,7 +220,7 @@ Sitemap: https://owire.org/news-sitemap.xml
 
 ---
 
-### 🟢 MSN News / Microsoft Start
+### ?? MSN News / Microsoft Start
 
 **Partner Portal:** https://partnerhub.msn.com
 
@@ -247,7 +247,7 @@ Sitemap: https://owire.org/news-sitemap.xml
 
 ---
 
-## 📅 Publishing Schedule Template
+## ?? Publishing Schedule Template
 
 ### Recommended Weekly Cadence (5-7 articles)
 
@@ -267,9 +267,9 @@ Sitemap: https://owire.org/news-sitemap.xml
 
 ---
 
-## 🗓️ Implementation Timeline
+## ??? Implementation Timeline
 
-### Week 1: Technical Setup ✅ (Mostly Complete)
+### Week 1: Technical Setup ? (Mostly Complete)
 - [x] NewsArticle Schema component created
 - [x] Organization Schema added to layout
 - [x] News sitemap created (`/news-sitemap.xml`)
@@ -306,17 +306,17 @@ Sitemap: https://owire.org/news-sitemap.xml
 
 ---
 
-## 🔗 Important URLs & Resources
+## ?? Important URLs & Resources
 
 ### Your Site URLs
-- Homepage: https://owire.org
-- RSS Feed: https://owire.org/rss.xml
-- Sitemap: https://owire.org/sitemap.xml
-- News Sitemap: https://owire.org/news-sitemap.xml
-- Editorial Standards: https://owire.org/editorial-standards
-- About: https://owire.org/about
-- Contact: https://owire.org/contact
-- Corrections: https://owire.org/corrections
+- Homepage: https://objectivewire.org
+- RSS Feed: https://objectivewire.org/rss.xml
+- Sitemap: https://objectivewire.org/sitemap.xml
+- News Sitemap: https://objectivewire.org/news-sitemap.xml
+- Editorial Standards: https://objectivewire.org/editorial-standards
+- About: https://objectivewire.org/about
+- Contact: https://objectivewire.org/contact
+- Corrections: https://objectivewire.org/corrections
 
 ### Platform Portals
 - Google Publisher Center: https://publishercenter.google.com
@@ -333,7 +333,7 @@ Sitemap: https://owire.org/news-sitemap.xml
 
 ---
 
-## ✅ Quick Checklist Before Applying
+## ? Quick Checklist Before Applying
 
 ### Technical (All Required)
 - [ ] NewsArticle JSON-LD on all articles

@@ -1,4 +1,4 @@
-Ôªø# Image SEO ‚Äî ObjectWire Engineering Reference
+# Image SEO ó ObjectWire Engineering Reference
 
 > How to upload, store, display, and mark up images so they appear in Google Images,
 > rank inside news articles, and never trigger a copyright claim.
@@ -7,7 +7,7 @@
 
 ---
 
-## Part 1: Copyright ‚Äî What You Can and Cannot Use
+## Part 1: Copyright ó What You Can and Cannot Use
 
 This is the most important section. Getting it wrong costs money.
 
@@ -19,23 +19,23 @@ This is the most important section. Getting it wrong costs money.
 | **Unsplash** | Unsplash License | Free for editorial use, no attribution required |
 | **Pexels** | Pexels License | Same as Unsplash |
 | **US Government work** (NASA, DARPA, DoD, White House photos) | Public Domain | Any photo taken by a US federal employee in official capacity is public domain |
-| **Library of Congress** | Varies | Most historical photos are public domain ‚Äî check each item |
+| **Library of Congress** | Varies | Most historical photos are public domain ó check each item |
 | **Your own screenshots** | Yours | Screenshots of public software UIs (app stores, websites) are generally fair use for editorial commentary |
 | **AI-generated images** (Midjourney, DALL-E, Flux) | Varies | Midjourney: commercial license with subscription. DALL-E: OpenAI grants you usage rights. Document which model you used. |
 
 ### What to avoid completely
 
-- **Getty Images / AP / Reuters / AFP** ‚Äî They actively scan the web with image fingerprinting and send DMCA notices + invoices ($1,000‚Äì$10,000 per image)
-- **Google image search results** ‚Äî These are just indexed copies of other people's images; "available for reuse" filter is unreliable
-- **Celebrity / athlete photos from fan sites** ‚Äî Almost always stolen from wire services
-- **Movie/TV stills** ‚Äî Covered by studio copyright; use only for direct criticism/review (fair use, small crop)
-- **Social media screenshots of private posts** ‚Äî Legally murky; only use public posts and credit the original poster
+- **Getty Images / AP / Reuters / AFP** ó They actively scan the web with image fingerprinting and send DMCA notices + invoices ($1,000ñ$10,000 per image)
+- **Google image search results** ó These are just indexed copies of other people's images; "available for reuse" filter is unreliable
+- **Celebrity / athlete photos from fan sites** ó Almost always stolen from wire services
+- **Movie/TV stills** ó Covered by studio copyright; use only for direct criticism/review (fair use, small crop)
+- **Social media screenshots of private posts** ó Legally murky; only use public posts and credit the original poster
 
-### Fair Use ‚Äî when you can use copyrighted images
+### Fair Use ó when you can use copyrighted images
 
 Fair use protects you when **all four** of these apply:
 
-1. The use is **transformative** (commentary, criticism, news reporting ‚Äî not decoration)
+1. The use is **transformative** (commentary, criticism, news reporting ó not decoration)
 2. You used the **minimum necessary** (small crop, not the full HQ version)
 3. The image is **factually newsworthy** (not just making the page look nice)
 4. The use does **not harm the market** for the original
@@ -46,7 +46,7 @@ For ObjectWire: a small crop of a product screenshot in a review = fine. Using t
 
 ## Part 2: Where to Store Images
 
-### Option A ‚Äî `/public/images/` (simple, current setup)
+### Option A ó `/public/images/` (simple, current setup)
 
 ```
 public/
@@ -66,7 +66,7 @@ public/
 
 Use this for: logos, team photos, UI assets, anything under ~200 KB.
 
-### Option B ‚Äî Supabase Storage (recommended for article photos)
+### Option B ó Supabase Storage (recommended for article photos)
 
 ObjectWire already uses Supabase. Add a `media` bucket:
 
@@ -107,7 +107,7 @@ const nextConfig = {
 };
 ```
 
-### Option C ‚Äî Cloudflare Images (~$5/month, ideal for scale)
+### Option C ó Cloudflare Images (~$5/month, ideal for scale)
 
 Upload once, get a URL like `https://imagedelivery.net/[hash]/breezy-johnson/public`.  
 Serves WebP automatically. Infinite transform variants (crop, resize) via URL params.  
@@ -133,23 +133,23 @@ The `imageUrl` field powers Google's rich results and the `NewsArticleSchema`:
   author: 'ObjectWire Sports Desk',
   priority: 0.9,
   changeFrequency: 'weekly',
-  // ‚Üê Add this whenever the article has a real image
-  imageUrl: 'https://www.owire.org/images/articles/winter-olympics/breezy-johnson-finish.webp',
+  // ? Add this whenever the article has a real image
+  imageUrl: 'https://www.objectivewire.org/images/articles/winter-olympics/breezy-johnson-finish.webp',
 },
 ```
 
-Google requires a `NewsArticle` image that is **at least 1200 √ó 675 px** and **16:9 ratio** for the Top Stories carousel. Smaller images are still indexed but won't appear in the visual carousel.
+Google requires a `NewsArticle` image that is **at least 1200 ◊ 675 px** and **16:9 ratio** for the Top Stories carousel. Smaller images are still indexed but won't appear in the visual carousel.
 
 ---
 
-## Part 4: Displaying Images ‚Äî `NewsArticle` Style
+## Part 4: Displaying Images ó `NewsArticle` Style
 
 For standard news articles use Next.js `<Image>` with the standard ObjectWire aspect ratio:
 
 ```tsx
 import Image from 'next/image';
 
-// Hero image ‚Äî full width, 16:9
+// Hero image ó full width, 16:9
 <div className="relative w-full aspect-video mb-6 rounded-lg overflow-hidden">
   <Image
     src="/images/articles/winter-olympics/breezy-johnson-finish.webp"
@@ -157,7 +157,7 @@ import Image from 'next/image';
     fill
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 900px"
     className="object-cover"
-    priority          // ‚Üê always set on above-the-fold hero images
+    priority          // ? always set on above-the-fold hero images
   />
 </div>
 
@@ -188,7 +188,7 @@ Google reads `alt` to understand what the image shows. These practices directly 
 
 ---
 
-## Part 5: Displaying Images ‚Äî Wikipedia / `ArticlePage` Style
+## Part 5: Displaying Images ó Wikipedia / `ArticlePage` Style
 
 The `ArticlePage` component (`components/ArticlePage.tsx`) has a built-in `InfoBox` with an `image` prop. This renders the infobox image exactly like Wikipedia's right-aligned sidebar:
 
@@ -202,7 +202,7 @@ import { ArticlePage } from '@/components/ArticlePage';
   infoBox={{
     title: "Breezy Johnson",
     image: {
-      // Image must be square or portrait for infoboxes ‚Äî ideally 300√ó400
+      // Image must be square or portrait for infoboxes ó ideally 300◊400
       src: "https://upload.wikimedia.org/wikipedia/commons/thumb/.../300px-Breezy_Johnson.jpg",
       alt: "Breezy Johnson competing in alpine skiing at the 2026 Winter Olympics",
       caption: "Johnson at Milan Cortina 2026. Photo: Wikimedia Commons (CC BY-SA 2.0)",
@@ -218,7 +218,7 @@ import { ArticlePage } from '@/components/ArticlePage';
 </ArticlePage>
 ```
 
-**Infobox image sizing:** The `ArticlePage` component renders these at `300 px` wide. Upload at **600 √ó 800 px minimum** (2√ó for retina). Portrait or square only ‚Äî landscape photos look bad in the narrow sidebar.
+**Infobox image sizing:** The `ArticlePage` component renders these at `300 px` wide. Upload at **600 ◊ 800 px minimum** (2◊ for retina). Portrait or square only ó landscape photos look bad in the narrow sidebar.
 
 ---
 
@@ -237,7 +237,7 @@ The `SEOWrapper` component already injects a `NewsArticle` schema that includes 
   "headline": "...",
   "image": {
     "@type": "ImageObject",
-    "url": "https://www.owire.org/images/articles/breezy-johnson-finish.webp",
+    "url": "https://www.objectivewire.org/images/articles/breezy-johnson-finish.webp",
     "width": 1200,
     "height": 675
   }
@@ -247,17 +247,17 @@ The `SEOWrapper` component already injects a `NewsArticle` schema that includes 
 To include `width` and `height` in the schema (Google recommends it), extend `ContentEntry` and `SEOWrapper`:
 
 ```typescript
-// lib/content-registry.ts ‚Äî add to interface
+// lib/content-registry.ts ó add to interface
 export interface ContentEntry {
   // ... existing fields
   imageUrl?: string;
-  imageWidth?: number;   // ‚Üê add
-  imageHeight?: number;  // ‚Üê add
+  imageWidth?: number;   // ? add
+  imageHeight?: number;  // ? add
 }
 ```
 
 ```tsx
-// components/SEOWrapper.tsx ‚Äî update image field in articleSchema
+// components/SEOWrapper.tsx ó update image field in articleSchema
 image: entry.imageUrl
   ? {
       '@type': 'ImageObject',
@@ -276,12 +276,12 @@ Rule: `[person-or-subject]-[event]-[year].webp`
 
 ### 3. `loading="lazy"` vs `priority`
 
-- Above-the-fold hero image ‚Üí always `priority` (prevents LCP penalty)
-- All other images ‚Üí Next.js lazy-loads by default (no extra code needed)
+- Above-the-fold hero image ? always `priority` (prevents LCP penalty)
+- All other images ? Next.js lazy-loads by default (no extra code needed)
 
 ### 4. WebP format
 
-Always serve WebP. It's 25‚Äì35% smaller than JPEG at the same quality.  
+Always serve WebP. It's 25ñ35% smaller than JPEG at the same quality.  
 If you upload a JPEG, Next.js `<Image>` converts it to WebP automatically when served.  
 When uploading to Supabase, convert before uploading using:
 
@@ -295,14 +295,14 @@ cwebp.exe -q 85 photo.jpg -o photo.webp
 
 ### 5. Canonical URL for the image
 
-Ensure the image URL is stable and consistent. Never hotlink from Wikipedia ‚Äî download and re-host, then give attribution. This prevents 404s if Wikimedia renames or deletes the file.
+Ensure the image URL is stable and consistent. Never hotlink from Wikipedia ó download and re-host, then give attribution. This prevents 404s if Wikimedia renames or deletes the file.
 
 ### 6. Sitemap image extension
 
 Google supports `<image:image>` tags in sitemaps. Add it to the sitemap entry for pages with a hero image:
 
 ```typescript
-// app/sitemap.ts ‚Äî extended version (future enhancement)
+// app/sitemap.ts ó extended version (future enhancement)
 // Note: Next.js MetadataRoute.Sitemap does not natively support image: extension
 // To add image tags, return raw XML from app/sitemap.xml/route.ts instead
 
@@ -313,7 +313,7 @@ export async function GET() {
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   ${entries.map(e => `
   <url>
-    <loc>https://www.owire.org${e.slug}</loc>
+    <loc>https://www.objectivewire.org${e.slug}</loc>
     <lastmod>${e.modifiedDate}</lastmod>
     <image:image>
       <image:loc>${e.imageUrl}</image:loc>
@@ -370,22 +370,22 @@ For CC0 / public domain:
 Before publishing any article with images:
 
 ```
-‚òê Image source is CC0, CC-BY, public domain, owned, or licensed
-‚òê File name is descriptive: subject-event-year.webp
-‚òê Alt text describes the specific moment, people, and location
-‚òê Hero image is 1200 √ó 675 px minimum (16:9) for Google Top Stories
-‚òê Infobox image is portrait/square, 600 px minimum wide
-‚òê imageUrl added to contentRegistry entry
-‚òê Attribution caption visible on page (if CC-BY)
-‚òê Image hosted on owire.org or Supabase (not hotlinked from source)
-‚òê priority set on hero image, lazy on all others
+? Image source is CC0, CC-BY, public domain, owned, or licensed
+? File name is descriptive: subject-event-year.webp
+? Alt text describes the specific moment, people, and location
+? Hero image is 1200 ◊ 675 px minimum (16:9) for Google Top Stories
+? Infobox image is portrait/square, 600 px minimum wide
+? imageUrl added to contentRegistry entry
+? Attribution caption visible on page (if CC-BY)
+? Image hosted on objectivewire.org or Supabase (not hotlinked from source)
+? priority set on hero image, lazy on all others
 ```
 
 ---
 
 ## Part 9: Priority Implementation Order
 
-1. **Add `imageUrl` to existing high-priority registry entries** ‚Äî winter Olympics, Disney, any article with an existing image already referenced in page code
+1. **Add `imageUrl` to existing high-priority registry entries** ó winter Olympics, Disney, any article with an existing image already referenced in page code
 2. **Extend `SEOWrapper` to include `width`/`height`** in `ImageObject` schema
 3. **Convert `app/sitemap.ts` to raw XML** so image sitemap extension can be added
 4. **Audit all `ArticlePage` infoBoxes** for missing or hotlinked images

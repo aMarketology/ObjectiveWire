@@ -7,7 +7,7 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 export const revalidate = 86400;
 
 const SLUG = '/creator/bryson-dechambeau';
-const ARTICLE_URL = `https://www.owire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Bryson DeChambeau | 2-Time US Open Champion, LIV Golf Star',

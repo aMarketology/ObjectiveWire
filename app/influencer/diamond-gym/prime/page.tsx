@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     'PRIME hydration 2026',
   ],
   alternates: {
-    canonical: 'https://www.owire.org/creator/diamond-gym/prime',
+    canonical: 'https://www.objectivewire.org/creator/diamond-gym/prime',
   },
   openGraph: {
     title: 'PRIME x Diamond Gym | Logan Paul Hydration Sponsor Deal',
     description:
       "Logan Paul's PRIME Hydration partners with Diamond Gym in Maplewood, NJ. The deal includes a Special Edition TTD bottle and Prime Protein, repositioning PRIME in the bodybuilding market.",
     type: 'article',
-    url: 'https://www.owire.org/creator/diamond-gym/prime',
+    url: 'https://www.objectivewire.org/creator/diamond-gym/prime',
     siteName: 'OzoneNews',
     authors: ['OzoneNews Creator Desk'],
     publishedTime: '2026-02-20T10:00:00Z',
