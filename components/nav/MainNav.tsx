@@ -10,46 +10,30 @@ type Hub = { label: string; href: string; items: NavItem[]; cols?: 1 | 2 };
 
 const HUBS: Hub[] = [
   {
-    label: 'Texas News',
-    href: '/local',
+    label: 'Services',
+    href: '/service',
+    cols: 2,
     items: [
-      { label: 'All Texas News', href: '/local' },
+      { label: 'All Services', href: '/service' },
+      { label: 'Surveillance', href: '/service/surveillance' },
+      { label: 'Missing Persons', href: '/service/missing-persons' },
+      { label: 'Background Checks', href: '/service/background-checks' },
+      { label: 'Infidelity Investigations', href: '/service/infidelity-investigations' },
+      { label: 'Skip Tracing', href: '/service/skip-tracing' },
+      { label: 'Child Custody', href: '/service/child-custody-investigations' },
+      { label: 'Digital Forensics', href: '/service/digital-forensics' },
+      { label: 'Corporate Investigations', href: '/service/corporate-investigations' },
+      { label: 'Tip the Newsroom', href: '/service/tip-the-newsroom' },
+    ],
+  },
+  {
+    label: 'Texas Blog',
+    href: '/blog',
+    items: [
+      { label: 'All Articles', href: '/blog' },
       { label: 'Austin', href: '/local/austin' },
       { label: 'Houston', href: '/local/houston' },
-      { label: 'Dallas-Fort Worth', href: '/local/greater-texas' },
-      { label: 'Statewide', href: '/local/greater-texas' },
-    ],
-  },
-  {
-    label: 'Texas Sports',
-    href: '/sports',
-    items: [
-      { label: 'All Sports', href: '/sports' },
-      { label: 'Astros', href: '/mlb' },
-      { label: 'FC Dallas', href: '/mls' },
-      { label: 'Texans', href: '/sports' },
-      { label: 'Cowboys', href: '/sports' },
-      { label: 'Spurs', href: '/sports' },
-    ],
-  },
-  {
-    label: 'Business',
-    href: '/business',
-    items: [
-      { label: 'All Business', href: '/business' },
-      { label: 'Energy Sector', href: '/business' },
-      { label: 'Austin Tech', href: '/business' },
-      { label: 'Real Estate', href: '/business' },
-    ],
-  },
-  {
-    label: 'Crime & Courts',
-    href: '/crime',
-    items: [
-      { label: 'All Crime', href: '/crime' },
-      { label: 'Courts', href: '/crime' },
-      { label: 'FOIA', href: '/crime' },
-      { label: 'Criminal Justice', href: '/crime' },
+      { label: 'Greater Texas', href: '/local/greater-texas' },
     ],
   },
   {
@@ -58,13 +42,14 @@ const HUBS: Hub[] = [
     items: [
       { label: 'About Us', href: '/about' },
       { label: 'Authors', href: '/authors' },
-      { label: 'Contact', href: '/get-help/contact' },
+      { label: 'Editorial Standards', href: '/editorial-standards' },
+      { label: 'Corrections', href: '/corrections' },
     ],
   },
 ];
 
 const LINK_CLS =
-  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap text-gray-200 hover:bg-[#c45c2a] hover:text-white transition-colors';
+  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap text-gray-200 hover:bg-[#d97706] hover:text-white transition-colors';
 
 export default function MainNav() {
   const [openHub, setOpenHub] = useState<string | null>(null);
