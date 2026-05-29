@@ -7,7 +7,7 @@ import { Timeline } from '@/components/articles/NewsArticle';
 export const revalidate = 86400;
 
 const SLUG = '/youtube/history';
-const PAGE_URL = `https://www.objectivewire.com${SLUG}`;
+const PAGE_URL = `https://www.owire.org${SLUG}`;
 const OG_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.png';
 
 export const metadata: Metadata = {

@@ -110,7 +110,7 @@ export default async function Image() {
                 textTransform: 'uppercase',
               }}
             >
-              objectivewire.com
+              OWIRE.ORG
             </span>
           </div>
 
