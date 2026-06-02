@@ -6,27 +6,25 @@ import { ArticleSlider } from '@/components/discovery/ArticleSlider';
 import { getPopularLeadSlug } from '@/lib/popular-lead';
 
 export const metadata: Metadata = {
-  title: 'News | Sports, Creators & Cars | oWire',
+  title: 'News | Investigations, Sports, Creators & Cars | oWire',
   description:
-    'Latest news from oWire. Sports, creators, cars, and culture. World Cup, MLB, MrBeast, Logan Paul, Ferrari, and more.',
+    'Latest from oWire. Texas investigations, sports, creators, cars, and culture. World Cup, MLB, MrBeast, Logan Paul, Ferrari, and more.',
   alternates: { canonical: 'https://www.objectivewire.org/news' },
   openGraph: {
-    title: 'News | Sports, Creators & Cars | oWire',
-    description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
+    title: 'News | Investigations, Sports, Creators & Cars | oWire',
+    description: 'Texas investigations and daily coverage of athletes, influencers, and the moments everyone is talking about.',
     url: 'https://www.objectivewire.org/news',
     siteName: 'oWire',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'News | Sports, Creators & Cars | oWire',
-    description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
+    title: 'News | Investigations, Sports, Creators & Cars | oWire',
+    description: 'Texas investigations and daily coverage of athletes, influencers, and the moments everyone is talking about.',
   },
 };
 
 export const revalidate = 3600;
-
-// ââ Article shape âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 type Article = {
   id: string;
@@ -44,7 +42,6 @@ type Article = {
   tags?: string[];
 };
 
-// Strip unresolved template literal images (${...}) and wrong-domain images
 function cleanImageUrl(url: string | null | undefined): string | undefined {
   if (!url) return undefined;
   if (
@@ -57,7 +54,6 @@ function cleanImageUrl(url: string | null | undefined): string | undefined {
   return url;
 }
 
-// Curated Unsplash fallbacks per content category (no API call needed)
 const UNSPLASH_FALLBACK: Record<string, string> = {
   mlb:              'https://images.unsplash.com/photo-1605901309584-818e25452571?w=1200&h=675&fit=crop',
   mls:              'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=675&fit=crop',
@@ -76,6 +72,7 @@ const UNSPLASH_FALLBACK: Record<string, string> = {
   tech:             'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=675&fit=crop',
   finance:          'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=675&fit=crop',
   crypto:           'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=675&fit=crop',
+  investigations:   'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&h=675&fit=crop',
 };
 
 function unsplashFallback(category: string): string {
@@ -89,7 +86,7 @@ function fromRegistry(e: ContentEntry): Article {
   const cleaned = cleanImageUrl(e.imageUrl);
   return {
     id: e.slug,
-    title: e.title.replace(/\s*[|ââ\-]\s*(ObjectWire|oWire|ZWire).*$/i, '').trim(),
+    title: e.title.replace(/\s*[|\u2014\u2013\-]\s*(ObjectWire|oWire|ZWire).*$/i, '').trim(),
     excerpt: e.description,
     href: e.slug,
     publishDate: e.publishDate,
@@ -101,8 +98,6 @@ function fromRegistry(e: ContentEntry): Article {
     tags: e.tags,
   };
 }
-
-// ââ Category palette ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 const CAT_BG: Record<string, string> = {
   sports:           'bg-[#0f172a]',
@@ -116,6 +111,7 @@ const CAT_BG: Record<string, string> = {
   creators:         'bg-[#b45309]',
   youtube:          'bg-[#dc2626]',
   cars:             'bg-[#1e3a5f]',
+  investigations:   'bg-[#92400e]',
 };
 
 const CAT_GRADIENT: Record<string, string> = {
@@ -126,6 +122,7 @@ const CAT_GRADIENT: Record<string, string> = {
   creator:          'from-[#78350f] to-[#b45309]',
   youtube:          'from-[#7f1d1d] to-[#dc2626]',
   cars:             'from-[#0f172a] to-[#1e3a5f]',
+  investigations:   'from-[#78350f] to-[#92400e]',
 };
 
 function catBg(cat: string): string {
@@ -148,20 +145,17 @@ function timeAgo(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-// ââ Section helpers âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-
 const BEATS = [
-  { label: 'World Cup',      href: '/world-cup',       icon: '??' },
-  { label: 'MLB',            href: '/mlb',             icon: '?' },
-  { label: 'MLS',            href: '/mls',             icon: '??' },
-  { label: 'Soccer',         href: '/soccer',          icon: '?' },
-  { label: 'Golf',           href: '/golf',            icon: '?' },
-  { label: 'YouTube',        href: '/youtube',         icon: '??' },
-  { label: 'Creators',       href: '/creator',         icon: '?' },
-  { label: 'Cars',           href: '/cars',            icon: '???' },
+  { label: 'Investigations', href: '/blog',       icon: '🔎' },
+  { label: 'World Cup',      href: '/world-cup',  icon: '🏆' },
+  { label: 'MLB',            href: '/mlb',        icon: '⚾' },
+  { label: 'MLS',            href: '/mls',        icon: '⚽' },
+  { label: 'Soccer',         href: '/soccer',     icon: '⚽' },
+  { label: 'Golf',           href: '/golf',       icon: '⛳' },
+  { label: 'YouTube',        href: '/youtube',    icon: '▶️' },
+  { label: 'Creators',       href: '/creator',    icon: '🎬' },
+  { label: 'Cars',           href: '/cars',       icon: '🚗' },
 ];
-
-// ââ Sub-components ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 function CatLabel({ category, breaking }: { category: string; breaking?: boolean }) {
   if (breaking) {
@@ -187,16 +181,15 @@ function SectionRule({ label, href }: { label: string; href?: string }) {
       <div className="h-px flex-1 bg-gradient-to-r from-white/15 to-transparent" />
       {href && (
         <Link href={href} className="text-[10px] font-black tracking-widest uppercase text-[#b45309] hover:text-white transition-colors whitespace-nowrap bg-[#b45309]/10 hover:bg-[#b45309]/20 px-3 py-1.5 rounded-full">
-          See All ?
+          See All &rarr;
         </Link>
       )}
     </div>
   );
 }
 
-// Card with image or gradient fallback â never renders a broken img
 function ArticleCard({ article, size = 'md', priority = false }: { article: Article; size?: 'lg' | 'md' | 'sm'; priority?: boolean }) {
-  const aspectClass = size === 'lg' ? 'aspect-[4/3] sm:aspect-[16/9] lg:h-72' : size === 'sm' ? 'aspect-[16/9]' : 'aspect-[16/9]';
+  const aspectClass = size === 'lg' ? 'aspect-[4/3] sm:aspect-[16/9] lg:h-72' : 'aspect-[16/9]';
   return (
     <Link
       href={article.href}
@@ -232,14 +225,13 @@ function ArticleCard({ article, size = 'md', priority = false }: { article: Arti
           </p>
         )}
         <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono mt-3 pt-2 border-t border-white/10 dark:border-[#2e2e2e]">
-          {article.author} · {timeAgo(article.publishDate)}
+          {article.author} &middot; {timeAgo(article.publishDate)}
         </p>
       </div>
     </Link>
   );
 }
 
-// Compact headline row (no image)
 function HeadlineRow({ article }: { article: Article }) {
   return (
     <Link
@@ -264,19 +256,16 @@ function HeadlineRow({ article }: { article: Article }) {
           {article.title}
         </h4>
         <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono mt-0.5">
-          {article.author} · {timeAgo(article.publishDate)}
+          {article.author} &middot; {timeAgo(article.publishDate)}
         </p>
       </div>
     </Link>
   );
 }
 
-// ââ Page ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-
-export default async function HomePage() {
+export default async function NewsPage() {
   const contentRegistry = await getAllEntries();
 
-  // Filter to real article pages only (2+ path segments, no dynamic routes, no meta/support)
   const SKIP_CATS = new Set(['meta', 'support', 'legal', 'services', 'service']);
   const allArticles: Article[] = contentRegistry
     .filter((e) => {
@@ -290,7 +279,6 @@ export default async function HomePage() {
     .map(fromRegistry)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
-  // GA4 popular lead â promote most-read article to front of slider
   try {
     const popularSlug = await getPopularLeadSlug();
     if (popularSlug) {
@@ -299,7 +287,6 @@ export default async function HomePage() {
     }
   } catch { /* graceful */ }
 
-  // Section splits â slugs are the source of truth for routing
   const isSports = (a: Article) =>
     ['sports', 'mlb', 'mls', 'soccer', 'golf', 'world-cup', 'premier-league'].includes(a.category.toLowerCase()) ||
     ['/soccer', '/world-cup', '/mls', '/premier-league', '/mlb', '/golf'].some((p) => a.href.startsWith(p));
@@ -310,15 +297,18 @@ export default async function HomePage() {
   const isYouTube = (a: Article) =>
     a.category.toLowerCase() === 'youtube' || a.href.startsWith('/youtube');
 
-  // Slider gets top 14 newest articles across all categories
-  const sliderArticles = allArticles.slice(0, 14);
-  const sports   = allArticles.filter(isSports).slice(0, 6);
-  const creators = allArticles.filter(isCreator).slice(0, 8);
-  const youtube  = allArticles.filter(isYouTube).slice(0, 6);
+  const isInvestigations = (a: Article) =>
+    a.href.startsWith('/blog/') || a.category.toLowerCase() === 'investigations';
 
-  // Remaining articles not in any section (for headlines)
+  const sliderArticles  = allArticles.slice(0, 14);
+  const investigations  = allArticles.filter(isInvestigations).slice(0, 6);
+  const sports          = allArticles.filter(isSports).slice(0, 6);
+  const creators        = allArticles.filter(isCreator).slice(0, 8);
+  const youtube         = allArticles.filter(isYouTube).slice(0, 6);
+
   const usedHrefs = new Set([
     ...sliderArticles.map((a) => a.href),
+    ...investigations.map((a) => a.href),
     ...sports.map((a) => a.href),
     ...creators.map((a) => a.href),
     ...youtube.map((a) => a.href),
@@ -333,14 +323,12 @@ export default async function HomePage() {
     <div className="min-h-screen bg-[#121212] dark:bg-[#111111]">
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
 
-        {/* ââ DATE RULE âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */}
         <div className="flex items-center gap-3 mb-6">
           <div className="h-px flex-1 bg-white/20" />
           <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest whitespace-nowrap">{editionDate}</span>
           <div className="h-px flex-1 bg-white/20" />
         </div>
 
-        {/* ââ BEAT NAV ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */}
         <nav aria-label="Coverage beats" className="flex gap-2 overflow-x-auto pb-2 mb-8 scrollbar-hide">
           {BEATS.map((b) => (
             <Link
@@ -354,10 +342,34 @@ export default async function HomePage() {
           ))}
         </nav>
 
-        {/* ââ AUTO-SCROLL STORY STRIP ââââââââââââââââââââââââââââââââââââââ */}
         <ArticleSlider articles={sliderArticles} />
 
-        {/* ââ SPORTS ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */}
+        {investigations.length > 0 && (
+          <section aria-label="Texas Investigations">
+            <SectionRule label="Texas Investigations" href="/blog" />
+            <div className="grid lg:grid-cols-12 gap-6 mb-2">
+              <div className="lg:col-span-7">
+                <ArticleCard article={investigations[0]} size="lg" priority />
+              </div>
+              <div className="lg:col-span-5">
+                <div className="bg-[#1c1c1e] rounded-xl border border-white/10 shadow-sm p-4 h-full">
+                  <p className="text-[9px] font-black tracking-[.25em] uppercase text-[#d97706] mb-3 border-b border-white/10 pb-2">
+                    Latest from the Texas Desk
+                  </p>
+                  {investigations.slice(1).map((a) => (
+                    <HeadlineRow key={a.id} article={a} />
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-end mb-4">
+              <Link href="/blog" className="text-[10px] font-black tracking-widest uppercase text-[#d97706] hover:text-white transition-colors bg-[#d97706]/10 hover:bg-[#d97706]/20 px-3 py-1.5 rounded-full">
+                All Investigations &rarr;
+              </Link>
+            </div>
+          </section>
+        )}
+
         {sports.length > 0 && (
           <section aria-label="Sports">
             <SectionRule label="Sports" href="/world-cup" />
@@ -374,16 +386,13 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* ââ CREATORS & YOUTUBE ââââââââââââââââââââââââââââââââââââââââââââââ */}
         {(creators.length > 0 || youtube.length > 0) && (
           <section aria-label="Creators and YouTube">
             <SectionRule label="Creators & YouTube" href="/creator" />
             <div className="grid lg:grid-cols-12 gap-6">
-
-              {/* Creators â 8-col */}
               {creators.length > 0 && (
                 <div className="lg:col-span-8">
-                  <p className="text-[10px] font-black tracking-widest uppercase text-[#b45309] mb-3 flex items-center gap-2">
+                  <p className="text-[10px] font-black tracking-widest uppercase text-[#b45309] mb-3">
                     <Link href="/creator" className="hover:underline">Creators</Link>
                   </p>
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -398,11 +407,9 @@ export default async function HomePage() {
                   )}
                 </div>
               )}
-
-              {/* YouTube â 4-col sidebar */}
               {youtube.length > 0 && (
                 <div className="lg:col-span-4">
-                  <p className="text-[10px] font-black tracking-widest uppercase text-red-600 mb-3 flex items-center gap-2">
+                  <p className="text-[10px] font-black tracking-widest uppercase text-red-600 mb-3">
                     <Link href="/youtube" className="hover:underline">YouTube</Link>
                   </p>
                   <div className="bg-[#1c1c1e] dark:bg-[#1c1c1c] rounded-xl border border-white/10 dark:border-[#2e2e2e] shadow-sm p-4">
@@ -414,7 +421,6 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* ââ MORE STORIES ââââââââââââââââââââââââââââââââââââââââââââââââââââ */}
         {remaining.length > 0 && (
           <section aria-label="More stories">
             <SectionRule label="More Stories" />
@@ -423,7 +429,6 @@ export default async function HomePage() {
                 {remaining.slice(0, 10).map((a) => <HeadlineRow key={a.id} article={a} />)}
               </div>
               <div>
-                {/* Coverage beats sidebar */}
                 <p className="text-[10px] font-black tracking-[.25em] uppercase border-b-2 border-white/30 text-gray-100 pb-2 mb-3">
                   Coverage Beats
                 </p>
@@ -436,7 +441,7 @@ export default async function HomePage() {
                     >
                       <span className="text-lg shrink-0">{b.icon}</span>
                       <span className="text-sm font-black text-white dark:text-gray-100 group-hover:text-[#d97706] transition-colors leading-none">{b.label}</span>
-                      <span className="ml-auto text-gray-300 group-hover:text-[#d97706] transition-colors text-xs">?</span>
+                      <span className="ml-auto text-gray-300 group-hover:text-[#d97706] transition-colors text-xs">&rarr;</span>
                     </Link>
                   ))}
                 </div>
@@ -445,14 +450,14 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* ââ FOOTER STRIP ââââââââââââââââââââââââââââââââââââââââââââââââââââ */}
         <section className="border-t-2 border-b-2 border-white/20 dark:border-[#444] py-6 text-center mt-12">
-          <p className="text-[9px] tracking-[.4em] uppercase font-black text-gray-400 dark:text-gray-400 mb-2">About oWire</p>
-          <p className="text-gray-300 dark:text-gray-300 max-w-xl mx-auto text-sm leading-relaxed mb-4">
-            Daily coverage of athletes, influencers, and the moments everyone is talking about. Sports, Creators, Cars. No filter.
+          <p className="text-[9px] tracking-[.4em] uppercase font-black text-gray-400 mb-2">About oWire</p>
+          <p className="text-gray-300 max-w-xl mx-auto text-sm leading-relaxed mb-4">
+            Texas investigations and daily coverage of athletes, influencers, and the moments everyone is talking about.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-5 text-[10px] tracking-widest uppercase font-bold text-gray-400">
             {[
+              { href: '/blog',                label: 'Investigations' },
               { href: '/about',               label: 'About' },
               { href: '/editorial-standards', label: 'Editorial Standards' },
               { href: '/corrections',         label: 'Corrections' },

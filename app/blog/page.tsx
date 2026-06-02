@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getAllEntries } from '@/lib/registry-service';
+import type { ContentEntry } from '@/lib/content-registry';
 
 export const revalidate = 3600;
 
 const PAGE_URL = 'https://www.objectivewire.org/blog';
 
 export const metadata: Metadata = {
-  title: 'Texas Blog | Objective Wire',
+  title: 'Texas Investigations | Objective Wire',
   description:
-    'Public-interest reporting on Texas from Objective Wire. Austin city hall, Houston energy sector, Travis County courts, public records, and statewide accountability journalism from our nonprofit investigative team.',
+    'Public-interest investigative reporting from Objective Wire. Austin city hall, Houston courts, Travis County public records, workers comp fraud, and statewide accountability journalism from a 501(c)(3) nonprofit newsroom.',
   keywords: [
     'Texas investigative reporting',
     'Austin public records journalism',
@@ -18,16 +20,30 @@ export const metadata: Metadata = {
     'Objective Wire Texas blog',
     'Austin investigative news',
     'Texas public interest reporting',
+    'workers comp fraud Texas',
+    'Texas public corruption',
+    'APD accountability',
+    'Harris County courts',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Texas Blog | Objective Wire',
-    description: 'Public-interest reporting on Texas. Austin, Houston, Greater Texas, courts, and community accountability.',
+    title: 'Texas Investigations | Objective Wire',
+    description:
+      'Public-interest reporting on Texas. Austin, Houston, Greater Texas, courts, public records, and accountability journalism.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Texas Investigations | Objective Wire',
+    description: 'Nonprofit investigative reporting across Texas, sourced from public records and court filings.',
+  },
 };
+
+// ---------------------------------------------------------------------------
+// Static data
+// ---------------------------------------------------------------------------
 
 const REGIONS = [
   {
@@ -59,7 +75,16 @@ const BEATS = [
   { label: 'Community', desc: 'Local stories that affect neighborhoods and communities across Central Texas.' },
 ];
 
-export default function TexasBlogPage() {
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
+
+export default async function TexasBlogPage() {
+  const all = await getAllEntries();
+  const articles: ContentEntry[] = all.filter(
+    (e) => e.slug.startsWith('/blog/') && e.slug.split('/').filter(Boolean).length >= 2
+  );
+
   return (
     <>
       <div className="h-[3px] bg-gray-900 w-full" />
@@ -72,7 +97,7 @@ export default function TexasBlogPage() {
             <nav className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-6">
               <Link href="/" className="hover:text-gray-700 transition-colors">Objective Wire</Link>
               <span className="mx-2">›</span>
-              <span className="text-gray-600">Texas Blog</span>
+              <span className="text-gray-600">Texas Investigations</span>
             </nav>
             <div className="border-l-4 border-amber-500 pl-6">
               <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-amber-600 mb-3 font-mono">
@@ -90,8 +115,51 @@ export default function TexasBlogPage() {
           </div>
         </section>
 
-        {/* REGIONS */}
+        {/* LATEST INVESTIGATIONS FEED */}
         <section className="py-16 bg-[#f8f7f4]">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="mb-10 flex items-end justify-between">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-2 font-mono">
+                  Latest Investigations
+                </p>
+                <h2 className="font-serif text-3xl font-black text-gray-900">Recently Published</h2>
+              </div>
+              {articles.length > 6 && (
+                <Link
+                  href="/blog/archive"
+                  className="text-xs font-mono font-bold uppercase tracking-widest text-amber-600 hover:underline"
+                >
+                  All stories &rarr;
+                </Link>
+              )}
+            </div>
+
+            {articles.length === 0 ? (
+              <div className="border-2 border-dashed border-gray-300 bg-white p-14 text-center">
+                <div className="inline-block bg-amber-100 border border-amber-300 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-amber-700 mb-5">
+                  Newsroom
+                </div>
+                <p className="font-serif text-2xl font-black text-gray-900 mb-3">
+                  First investigations coming soon.
+                </p>
+                <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed">
+                  The Objective Wire investigative team is preparing its first batch of Texas reporting.
+                  Submit a tip below or check back shortly.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {articles.slice(0, 9).map((article) => (
+                  <ArticleCard key={article.slug} article={article} />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* REGIONS */}
+        <section className="py-16 bg-white border-y border-gray-200">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="mb-10">
               <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-2 font-mono">Coverage Regions</p>
@@ -102,7 +170,7 @@ export default function TexasBlogPage() {
                 <Link
                   key={r.href}
                   href={r.href}
-                  className="group block bg-white border border-gray-200 hover:border-amber-500 hover:shadow-lg transition-all"
+                  className="group block bg-[#f8f7f4] border border-gray-200 hover:border-amber-500 hover:shadow-lg transition-all"
                 >
                   <div className="h-1 bg-gray-900 group-hover:bg-amber-500 transition-colors" />
                   <div className="p-7">
@@ -120,13 +188,13 @@ export default function TexasBlogPage() {
         </section>
 
         {/* BEATS */}
-        <section className="py-16 bg-white border-y border-gray-200">
+        <section className="py-16 bg-[#f8f7f4]">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="mb-10">
               <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-2 font-mono">Editorial Beats</p>
               <h2 className="font-serif text-3xl font-black text-gray-900">What We Cover</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
               {BEATS.map(({ label, desc }) => (
                 <div key={label} className="bg-white p-6">
                   <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-600 mb-2">Beat</p>
@@ -143,7 +211,9 @@ export default function TexasBlogPage() {
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-4 font-mono">About This Publication</p>
+                <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-4 font-mono">
+                  About This Publication
+                </p>
                 <h2 className="font-serif text-4xl font-black mb-4">
                   Independent. Nonprofit. Statewide.
                 </h2>
@@ -157,7 +227,9 @@ export default function TexasBlogPage() {
                 </p>
               </div>
               <div className="bg-white/5 border border-white/10 p-8">
-                <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-3 font-mono">Have a Story?</p>
+                <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-3 font-mono">
+                  Have a Story?
+                </p>
                 <h3 className="font-serif text-2xl font-black mb-3">Tip the Newsroom.</h3>
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">
                   Confidential. Source identity protected. Whistleblowers, public records leaks,
@@ -176,5 +248,49 @@ export default function TexasBlogPage() {
 
       </main>
     </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Article card sub-component
+// ---------------------------------------------------------------------------
+
+function ArticleCard({ article }: { article: ContentEntry }) {
+  const date = article.publishDate
+    ? new Date(article.publishDate).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      })
+    : null;
+
+  return (
+    <Link
+      href={article.slug}
+      className="group block bg-white border border-gray-200 hover:border-amber-500 hover:shadow-md transition-all"
+    >
+      <div className="h-[3px] bg-gray-200 group-hover:bg-amber-500 transition-colors" />
+      <div className="p-6">
+        {article.category && (
+          <p className="text-[9px] font-mono font-bold uppercase tracking-[0.25em] text-amber-600 mb-2">
+            {article.category}
+          </p>
+        )}
+        <h3 className="font-serif text-lg font-black text-gray-900 leading-snug mb-2 group-hover:text-amber-800 transition-colors line-clamp-3">
+          {article.title}
+        </h3>
+        {article.description && (
+          <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4">
+            {article.description}
+          </p>
+        )}
+        <div className="flex items-center justify-between">
+          {date && <span className="text-[10px] font-mono text-gray-400">{date}</span>}
+          <span className="text-xs font-bold text-gray-400 group-hover:text-amber-600 transition-colors">
+            Read &rarr;
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }

@@ -316,6 +316,76 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* LATEST INVESTIGATIONS */}
+        <section className="py-20 bg-gray-900 border-b border-gray-800">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-amber-500 mb-2 font-mono">Texas Desk</p>
+                <h2 className="font-serif text-4xl font-black text-white">Latest Investigations</h2>
+              </div>
+              <Link href="/blog" className="hidden md:inline-block border border-amber-500/40 hover:border-amber-500 text-amber-500 hover:text-amber-400 font-black text-xs tracking-widest uppercase px-5 py-3 transition-colors">
+                All Investigations &rarr;
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  href: '/blog/karmelo-anthony-murder-trial-frisco-track-meet-stabbing',
+                  tag: 'Criminal Trial',
+                  title: 'Karmelo Anthony Murder Trial | Frisco Track Meet Stabbing, Collin County',
+                  desc: 'Karmelo Anthony, 18, faces first-degree murder in the April 2025 stabbing of Austin Metcalf at a Frisco high school track meet. Trial date set in Collin County.',
+                  author: 'Alfonso M.',
+                  date: 'May 2026',
+                },
+                {
+                  href: '/blog/texas-ag-cam-solar-lawsuit-deceptive-practices',
+                  tag: 'AG Investigation',
+                  title: 'Texas AG Sues CAM Solar | Deceptive Sales Practices Across Texas',
+                  desc: 'Texas Attorney General Ken Paxton filed suit against CAM Solar alleging deceptive door-to-door sales, misleading financing terms, and failure to install purchased systems.',
+                  author: 'Alfonso M.',
+                  date: 'May 2026',
+                },
+                {
+                  href: '/blog/texas-ag-golden-qi-h1b-visa-fraud-north-texas',
+                  tag: 'Fraud',
+                  title: 'Golden Qi H-1B Visa Fraud | North Texas Staffing Scheme',
+                  desc: 'Texas AG charges Golden Qi staffing with running a fraudulent H-1B visa sponsorship operation, collecting fees from foreign workers for jobs that did not exist.',
+                  author: 'Alfonso M.',
+                  date: 'May 2026',
+                },
+              ].map((article) => (
+                <Link
+                  key={article.href}
+                  href={article.href}
+                  className="group block bg-[#1a1a1a] border border-gray-800 hover:border-amber-500/40 transition-all"
+                >
+                  <div className="h-[3px] bg-gray-800 group-hover:bg-amber-500 transition-colors" />
+                  <div className="p-6">
+                    <span className="inline-block text-[9px] font-black px-2.5 py-1 tracking-[.15em] uppercase text-white bg-[#92400e] rounded-sm mb-3">
+                      {article.tag}
+                    </span>
+                    <h3 className="font-serif font-black text-white group-hover:text-amber-400 transition-colors leading-snug text-base mb-2 line-clamp-3">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
+                      {article.desc}
+                    </p>
+                    <p className="text-[10px] text-gray-500 font-mono border-t border-gray-800 pt-3">
+                      {article.author} &middot; {article.date}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 md:hidden text-center">
+              <Link href="/blog" className="inline-block border border-amber-500/40 hover:border-amber-500 text-amber-500 font-black text-xs tracking-widest uppercase px-5 py-3 transition-colors">
+                All Investigations &rarr;
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="py-20 bg-gray-900 text-white">
           <div className="container mx-auto px-4 max-w-4xl text-center">
