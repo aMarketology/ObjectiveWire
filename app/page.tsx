@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import HomeArticleSlider from '@/components/HomeArticleSlider';
+import { getLatestArticles } from '@/lib/registry-service';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
@@ -148,7 +150,9 @@ const HOW_IT_WORKS = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const latestArticles = await getLatestArticles(24);
+
   return (
     <>
       <script
@@ -157,6 +161,8 @@ export default function HomePage() {
       />
 
       <div className="h-[3px] bg-gray-900 w-full" />
+
+      <HomeArticleSlider articles={latestArticles} />
 
       <main className="min-h-screen bg-[#f0f0f0]">
 

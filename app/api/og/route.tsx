@@ -32,6 +32,24 @@ function accentFor(category: string): string {
 }
 
 /**
+ * Fetch an external image and return it as a base64 data URI.
+ * Satori (edge runtime) cannot load external URLs in <img> — they must be
+ * inlined as data URIs. Returns null on any failure so we fall back gracefully.
+ */
+async function fetchImageAsDataURI(url: string): Promise<string | null> {
+  try {
+    const res = await fetch(url, { cache: 'force-cache' });
+    if (!res.ok) return null;
+    const contentType = res.headers.get('content-type') ?? 'image/jpeg';
+    const arrayBuffer = await res.arrayBuffer();
+    const base64 = Buffer.from(arrayBuffer).toString('base64');
+    return `data:${contentType};base64,${base64}`;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Dynamic OG image generator.
  *
  * Query params (all optional if ?slug is provided):
@@ -59,7 +77,7 @@ export async function GET(req: NextRequest) {
     let title    = titleParam  || 'Objective Wire';
     let category = catParam    || 'News';
     let desc     = descParam   || '';
-    let bgImage  = imageParam  || null;
+    let bgImageUrl: string | null = imageParam || null;
 
     // ── Fetch from content_registry when slug is provided ──────────
     if (slug) {
@@ -75,10 +93,10 @@ export async function GET(req: NextRequest) {
           .maybeSingle();
 
         if (data) {
-          title    = data.title       || title;
-          category = data.category    || category;
-          desc     = data.description || desc;
-          bgImage  = bgImage          || data.image_url || null;
+          title      = data.title       || title;
+          category   = data.category    || category;
+          desc       = data.description || desc;
+          bgImageUrl = bgImageUrl       || data.image_url || null;
         }
       }
     }
@@ -87,6 +105,11 @@ export async function GET(req: NextRequest) {
     const displayTitle = title.length > 85 ? title.slice(0, 83) + '\u2026' : title;
     const displayDesc  = desc.length  > 130 ? desc.slice(0, 128) + '\u2026' : desc;
     const titleFontSz  = displayTitle.length > 60 ? 46 : 54;
+
+    // ── Fetch background image as base64 data URI ──────────────────
+    // Satori (edge runtime) silently drops <img src="https://..."> — external
+    // URLs must be pre-fetched and inlined as data URIs before passing to JSX.
+    const bgDataURI = bgImageUrl ? await fetchImageAsDataURI(bgImageUrl) : null;
 
     return new ImageResponse(
       (
@@ -100,11 +123,11 @@ export async function GET(req: NextRequest) {
             background: '#0a0f1e',
           }}
         >
-          {/* ── Background photo (dimmed) ───────────────────────── */}
-          {bgImage && (
+          {/* ── Background photo — inlined as data URI ──────────── */}
+          {bgDataURI && (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
-              src={bgImage}
+              src={bgDataURI}
               alt=""
               style={{
                 position: 'absolute',
@@ -113,18 +136,19 @@ export async function GET(req: NextRequest) {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: 0.22,
+                opacity: 1,
               }}
             />
           )}
 
-          {/* ── Dark scrim so text is always readable ───────────── */}
+          {/* ── Bottom-heavy dark scrim — text always readable ───── */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              background:
-                'linear-gradient(155deg, rgba(10,15,30,0.92) 0%, rgba(10,15,30,0.70) 45%, rgba(10,15,30,0.88) 100%)',
+              background: bgDataURI
+                ? 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.70) 45%, rgba(0,0,0,0.25) 100%)'
+                : 'linear-gradient(155deg, rgba(10,15,30,0.97) 0%, rgba(10,15,30,0.85) 100%)',
               display: 'flex',
             }}
           />
@@ -206,7 +230,7 @@ export async function GET(req: NextRequest) {
                 <div
                   style={{
                     fontSize: '21px',
-                    color: '#94a3b8',
+                    color: '#e2e8f0',
                     lineHeight: 1.45,
                     maxWidth: '920px',
                     display: 'flex',
@@ -261,11 +285,11 @@ export async function GET(req: NextRequest) {
               <div
                 style={{
                   fontSize: '18px',
-                  color: '#64748b',
+                  color: '#94a3b8',
                   display: 'flex',
                 }}
               >
-                objectwire.org
+                objectivewire.com
               </div>
             </div>
           </div>
@@ -299,3 +323,4 @@ export async function GET(req: NextRequest) {
     );
   }
 }
+
