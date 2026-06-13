@@ -34,6 +34,15 @@ const NAV_HUBS: NavHub[] = [
     ],
   },
   {
+    label: 'Directory', href: '/directory',
+    items: [
+      { label: 'All Entities', href: '/directory' },
+      { label: 'Austin', href: '/directory/austin' },
+      { label: 'Houston', href: '/directory/houston' },
+      { label: 'Greater Texas', href: '/directory/greater-texas' },
+    ],
+  },
+  {
     label: 'About', href: '/about',
     items: [
       { label: 'About Us', href: '/about' },

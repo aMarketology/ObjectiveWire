@@ -10,6 +10,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
   const registry = registryDataRaw as ContentEntry[];
 
+  // Directory pages — static, content lives in code (not registry)
+  const directoryEntries: MetadataRoute.Sitemap = [
+    // ── Index & region hubs ──────────────────────────────────────────────────
+    { url: `${baseUrl}/directory`,                                                      lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.8 },
+    { url: `${baseUrl}/directory/austin`,                                               lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${baseUrl}/directory/houston`,                                              lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.6 },
+    { url: `${baseUrl}/directory/greater-texas`,                                        lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.6 },
+    // ── Austin listing pages ─────────────────────────────────────────────────
+    { url: `${baseUrl}/directory/austin/government`,                                    lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${baseUrl}/directory/austin/companies`,                                     lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${baseUrl}/directory/austin/organizations`,                                 lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.7 },
+    // ── Austin government profiles ───────────────────────────────────────────
+    { url: `${baseUrl}/directory/austin/government/travis-county-da`,                  lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/directory/austin/government/austin-energy`,                     lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/directory/austin/government/capital-metro`,                     lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
+    // ── Austin company profiles ──────────────────────────────────────────────
+    { url: `${baseUrl}/directory/austin/companies/tyler-technologies`,                 lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
+  ];
+
   const staticEntries: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -17,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'hourly',
       priority: 1.0,
     },
+    ...directoryEntries,
   ];
 
   const registryEntries: MetadataRoute.Sitemap = registry.map(entry => ({
