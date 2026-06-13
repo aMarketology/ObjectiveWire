@@ -6,23 +6,23 @@ export const revalidate = 3600;
 const PAGE_URL = 'https://www.objectivewire.org/directory/austin';
 
 export const metadata: Metadata = {
-  title: 'Austin Directory | Travis County Entities & Agencies',
+  title: 'Austin Directory | Travis County Agencies, Organizations & Companies',
   description:
-    'Documented profiles of Austin and Travis County government agencies, elected officials, nonprofits, and organizations. Primary-source records by Objective Wire.',
+    'Documented profiles of Austin and Travis County government agencies, organizations, and companies of public interest. Primary-source records by Objective Wire.',
   keywords: [
     'Austin directory',
     'Travis County government',
     'Austin agencies directory',
-    'Travis County officials',
+    'Austin organizations',
     'Austin public records',
     'Austin investigative journalism',
     'Objective Wire Austin',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Austin Directory | Travis County Entities & Agencies',
+    title: 'Austin Directory | Travis County Agencies, Organizations & Companies',
     description:
-      'Primary-source profiles of Austin and Travis County entities. Government, officials, nonprofits, and companies of public interest.',
+      'Primary-source profiles of Austin and Travis County government agencies, organizations, and companies of public interest.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
@@ -36,32 +36,18 @@ export const metadata: Metadata = {
 
 const ENTITY_TYPES = [
   {
-    label: 'Government',
+    label: 'Government & Organizations',
     href: '/directory/austin/government',
-    description: 'Agencies, courts, DA, APD, city and county offices.',
+    description: 'Agencies, courts, DA, APD, city and county offices, nonprofits, and civic organizations.',
     icon: '⚖️',
-    count: '1 profile',
+    count: '3 profiles',
   },
   {
-    label: 'Officials',
-    href: '/directory/austin/officials',
-    description: 'Elected and appointed public figures in Travis County.',
-    icon: '👤',
-    count: 'Coming soon',
-  },
-  {
-    label: 'Organizations',
-    href: '/directory/austin/organizations',
-    description: 'Nonprofits, PACs, civic associations in Austin.',
-    icon: '🏢',
-    count: 'Coming soon',
-  },
-  {
-    label: 'Companies',
+    label: 'Companies & Contractors',
     href: '/directory/austin/companies',
-    description: 'Austin businesses of public interest and accountability.',
+    description: 'Austin businesses, government contractors, and companies of public interest.',
     icon: '🏗️',
-    count: 'Coming soon',
+    count: '1 profile',
   },
 ];
 
@@ -90,8 +76,9 @@ export default function AustinDirectoryPage() {
             Austin Directory
           </h1>
           <p className="text-base text-gray-400 leading-relaxed max-w-2xl">
-            Documented profiles of entities in Austin and Travis County. Government agencies, elected
-            officials, nonprofits, and companies covered by Objective Wire investigators.
+            Documented profiles of government agencies, organizations, and companies in Austin and
+            Travis County. Every entry sourced from primary records — court filings, procurement
+            databases, regulatory documents, and public disclosures.
           </p>
         </header>
 

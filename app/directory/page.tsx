@@ -8,24 +8,24 @@ const PAGE_URL = 'https://www.objectivewire.org/directory';
 export const metadata: Metadata = {
   title: 'Texas Entity Directory | Austin, Houston & Greater TX',
   description:
-    'Public-interest directory of Texas government agencies, elected officials, nonprofits, and organizations. Documented by Objective Wire licensed investigators.',
+    'Public-interest directory of Texas government agencies, organizations, and companies. Documented by Objective Wire licensed investigators.',
   keywords: [
     'Texas government directory',
     'Travis County agencies',
-    'Austin government officials',
+    'Harris County government agencies',
     'Texas public records',
-    'Texas elected officials directory',
-    'Houston government agencies',
+    'Houston government directory',
     'Texas investigative journalism',
     'Objective Wire directory',
     'Texas entity profiles',
     'Austin public interest',
+    'Texas contractors directory',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: 'Texas Entity Directory | Austin, Houston & Greater TX',
     description:
-      'Documented profiles of Texas government agencies, officials, nonprofits, and companies. Primary-source records by Objective Wire.',
+      'Documented profiles of Texas government agencies, organizations, and companies. Primary-source records by Objective Wire.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Texas Entity Directory | Objective Wire',
     description:
-      'Government agencies, elected officials, nonprofits, and companies. Primary-source documentation.',
+      'Government agencies, organizations, and companies. Primary-source documentation.',
   },
 };
 
@@ -45,23 +45,23 @@ const REGION_DIRS = [
     label: 'Austin',
     href: '/directory/austin',
     description:
-      'Travis County, City of Austin, APD, municipal courts, and local elected officials.',
+      'Travis County DA, Austin Energy, Capital Metro, Tyler Technologies, and Travis County agencies.',
     icon: '🏛️',
-    count: '1 profile',
+    count: '4 profiles',
   },
   {
     label: 'Houston',
     href: '/directory/houston',
     description:
-      'Harris County, City of Houston, HPD, port authority, and regional agencies.',
+      'Harris County DA, Flood Control District, Port of Houston, CenterPoint Energy, and METRO.',
     icon: '🌃',
-    count: 'Coming soon',
+    count: '3 profiles',
   },
   {
     label: 'Greater Texas',
     href: '/directory/greater-texas',
     description:
-      'Statewide agencies, departments, comptroller, attorney general, and legislature.',
+      'Statewide agencies — HHSC, DPS, GLO, TxDOT, AG office, TEA, and state contractors.',
     icon: '⭐',
     count: 'Coming soon',
   },
@@ -69,27 +69,15 @@ const REGION_DIRS = [
 
 const ENTITY_TYPES = [
   {
-    label: 'Government',
+    label: 'Government & Organizations',
     href: '/directory/austin/government',
-    description: 'Agencies, departments, courts, and elected offices.',
+    description: 'Government agencies, special districts, transit authorities, ports, nonprofits, and civic organizations.',
     icon: '⚖️',
   },
   {
-    label: 'Officials',
-    href: '/directory/austin/officials',
-    description: 'Elected and appointed public figures.',
-    icon: '👤',
-  },
-  {
-    label: 'Organizations',
-    href: '/directory/austin/organizations',
-    description: 'Nonprofits, PACs, civic associations.',
-    icon: '🏢',
-  },
-  {
-    label: 'Companies',
+    label: 'Companies & Contractors',
     href: '/directory/austin/companies',
-    description: 'Businesses of public interest and accountability.',
+    description: 'Private companies, energy firms, engineering contractors, and tech vendors doing business with government.',
     icon: '🏗️',
   },
 ];
@@ -119,8 +107,8 @@ export default function DirectoryIndexPage() {
             Texas Entity<br />Directory
           </h1>
           <p className="text-base md:text-lg text-gray-400 leading-relaxed max-w-2xl mb-6">
-            Documented profiles of the government agencies, elected officials, organizations, and
-            companies that Objective Wire covers. Every entry is sourced from primary records,
+            Documented profiles of the government agencies, organizations, and companies that
+            Objective Wire covers across Texas. Every entry sourced from primary records,
             public filings, and official documents.
           </p>
           <div className="flex flex-wrap gap-4 text-xs text-gray-600">
@@ -176,7 +164,7 @@ export default function DirectoryIndexPage() {
           <h2 className="text-[11px] font-black uppercase tracking-[.16em] text-gray-500 mb-5">
             Browse by Entity Type
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {ENTITY_TYPES.map((type) => (
               <Link
                 key={type.href}

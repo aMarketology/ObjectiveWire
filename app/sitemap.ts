@@ -27,6 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/directory/austin/government/capital-metro`,                     lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
     // ── Austin company profiles ──────────────────────────────────────────────
     { url: `${baseUrl}/directory/austin/companies/tyler-technologies`,                 lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
+    // ── Houston listing pages ─────────────────────────────────────────────────
+    { url: `${baseUrl}/directory/houston/government`,                                  lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${baseUrl}/directory/houston/companies`,                                   lastModified: new Date('2026-06-13'), changeFrequency: 'weekly',  priority: 0.7 },
+    // ── Houston government profiles ───────────────────────────────────────────
+    { url: `${baseUrl}/directory/houston/government/harris-county-da`,                lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/directory/houston/government/harris-county-flood-control`,     lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
+    // ── Houston company profiles ──────────────────────────────────────────────
+    { url: `${baseUrl}/directory/houston/companies/port-houston`,                     lastModified: new Date('2026-06-13'), changeFrequency: 'monthly', priority: 0.8 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = [
