@@ -78,6 +78,15 @@ export interface ArticlePageProps {
   slug?: string;
   /** Canonical URL path (e.g. "/influencer/daddywellness") — used for view-history records. */
   url?: string;
+  /** Optional author details surfaced in the ArticleFooter author card. */
+  author?: {
+    name: string;
+    role?: string;
+    avatar?: string;
+    twitter?: string;
+    authorSlug?: string;
+    bio?: string;
+  };
 }
 
 // =============================================================================
@@ -439,6 +448,7 @@ export function ArticlePage({
   breadcrumbs,
   slug,
   url,
+  author,
 }: ArticlePageProps) {
   return (
     <main className="min-h-screen bg-white">
@@ -483,6 +493,7 @@ export function ArticlePage({
               title={title}
               url={url}
               category={category}
+              author={author}
             />
           </article>
 
