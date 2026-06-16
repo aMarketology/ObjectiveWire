@@ -40,7 +40,7 @@ const ENTITY_TYPES = [
     href: '/directory/austin/government',
     description: 'Agencies, courts, DA, APD, city and county offices, nonprofits, and civic organizations.',
     icon: '⚖️',
-    count: '3 profiles',
+    count: '3 profiles + 15 orgs',
   },
   {
     label: 'Companies & Contractors',
