@@ -151,7 +151,7 @@ const HOW_IT_WORKS = [
 ];
 
 export default async function HomePage() {
-  const latestArticles = await getLatestArticles(24);
+  const latestArticles = await getLatestArticles(72);
 
   return (
     <>
