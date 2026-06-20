@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-switzerland-1-qatar-1-group-b';
 const URL_PATH = '/world-cup/2026/switzerland-1-qatar-1-group-b';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-switzerland-1-qatar-1-group-b.jpg';
 export const metadata: Metadata = {
   title: 'Switzerland 1–1 Qatar | World Cup 2026 Group B Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-13T22:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Switzerland', 'Qatar', 'Group B', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function SwitzerlandQatarPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Switzerland 1–1 Qatar: 23 Shots, a Penalty, and a Last-Gasp Gut Punch' }}
       tags={['World Cup 2026', 'Switzerland', 'Qatar', 'Group B', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

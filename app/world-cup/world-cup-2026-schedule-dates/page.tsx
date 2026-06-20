@@ -6,7 +6,7 @@ import { NewsArticle } from '@/components/articles/NewsArticle';
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/world-cup-2026-schedule-dates';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {

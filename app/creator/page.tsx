@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     'ObjectWire creator',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/creator',
+    canonical: 'https://www.objectivewire.com/creator',
   },
   openGraph: {
     title: 'Creator Hub | Profiles, News & Culture',
     description:
       'In-depth profiles and breaking news covering the biggest creators across fitness, YouTube, golf, and online culture. Updated 2026.',
     type: 'website',
-    url: 'https://www.objectwire.org/creator',
+    url: 'https://www.objectivewire.com/creator',
     siteName: 'Objective Wire',
   },
   twitter: {

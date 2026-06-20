@@ -69,7 +69,7 @@ function buildOGBlock(title: string, description: string, canonical: string, sec
     title: ${JSON.stringify(title)},
     description: ${JSON.stringify(ogDesc)},
     type: 'article',
-    url: ${canonical ? JSON.stringify(canonical) : "'https://www.objectwire.org'"},
+    url: ${canonical ? JSON.stringify(canonical) : "'https://www.objectivewire.com'"},
     siteName: 'ObjectWire',
     section: ${JSON.stringify(section)},
   },

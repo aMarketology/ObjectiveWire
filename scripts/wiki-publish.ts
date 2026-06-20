@@ -149,7 +149,7 @@ function extractJSXPropValue(source: string, propName: string): unknown | null {
   // Resolve common variable references (SLUG, ARTICLE_URL)
   const slugConstMatch = source.match(/const\s+SLUG\s*=\s*['"`]([^'"`]+)['"`]/);
   const slugVal = slugConstMatch ? slugConstMatch[1] : '';
-  const articleUrlVal = `https://www.objectwire.org${slugVal}`;
+  const articleUrlVal = `https://www.objectivewire.com${slugVal}`;
 
   // eslint-disable-next-line no-new-func
   try { return new Function('SLUG', 'ARTICLE_URL', `return (${raw})`)(slugVal, articleUrlVal); }
@@ -598,7 +598,7 @@ function buildStub(
   const slugConst    = slugConstMatch    ? slugConstMatch[0]    : `const SLUG = '/${slug.replace(/-/g, '/')}';`;
   const ogImageConst = ogImageConstMatch ? ogImageConstMatch[0] : `const OG_IMAGE = '';`;
   // Always regenerate ARTICLE_URL from SLUG so it's never missing in the stub
-  const articleUrlConst = `const ARTICLE_URL = \`https://www.objectwire.org\${SLUG}\`; // restored by wiki:publish`;
+  const articleUrlConst = `const ARTICLE_URL = \`https://www.objectivewire.com\${SLUG}\`; // restored by wiki:publish`;
 
   const imports: Record<string, string> = {
     JackArticle:    "import { JackArticleDB } from '@/components/articles/JackArticleDB';",

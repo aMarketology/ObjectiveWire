@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   title: 'News | Sports, Creators & Cars | oWire',
   description:
     'Latest news from oWire. Sports, creators, cars, and culture. World Cup, MLB, MrBeast, Logan Paul, Ferrari, and more.',
-  alternates: { canonical: 'https://www.objectivewire.org/news' },
+  alternates: { canonical: 'https://www.objectivewire.com/news' },
   openGraph: {
     title: 'News | Sports, Creators & Cars | oWire',
     description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
-    url: 'https://www.objectivewire.org/news',
+    url: 'https://www.objectivewire.com/news',
     siteName: 'oWire',
     type: 'website',
   },
@@ -50,8 +50,8 @@ function cleanImageUrl(url: string | null | undefined): string | undefined {
   if (
     url.includes('${') ||
     url.includes('objectwire.com') ||
-    url.includes('objectwire.org/og') ||
-    url.includes('objectwire.org/api/og') ||
+    url.includes('objectivewire.com/og') ||
+    url.includes('objectivewire.com/api/og') ||
     url.includes('/api/og?')
   ) return undefined;
   return url;

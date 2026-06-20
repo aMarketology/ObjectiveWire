@@ -4,7 +4,7 @@ import { Hub } from '@/components/Hub';
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.objectivewire.org/local';
+const PAGE_URL = 'https://www.objectivewire.com/local';
 
 export const metadata: Metadata = {
   title: 'Local Texas News | Licensed Investigative Reporting | Objective Wire',
@@ -42,7 +42,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'NewsMediaOrganization',
   name: 'Objective Wire',
-  url: 'https://www.objectivewire.org/local',
+  url: 'https://www.objectivewire.com/local',
   description:
     'Texas-licensed investigative news network covering Austin, Houston, and Greater Texas. Reporters hold Texas PI credentials.',
   areaServed: [

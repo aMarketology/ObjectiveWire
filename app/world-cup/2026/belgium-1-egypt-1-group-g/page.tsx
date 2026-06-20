@@ -5,12 +5,12 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-belgium-1-egypt-1-group-g';
 const URL_PATH = '/world-cup/2026/belgium-1-egypt-1-group-g';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-belgium-1-egypt-1-group-g.jpg';
 export const metadata: Metadata = {
   title: 'Belgium 1–1 Egypt | World Cup 2026 Group G Match Report',
-  description:
-    "Egypt's Emam Ashour scored his first international goal to put the Pharaohs 1–0 up before Belgium leveled via an own goal, leaving Group G's opening fixture at 1–1.",
+  description: "Egypt's Emam Ashour scored his first international goal to put the Pharaohs 1–0 up before Belgium leveled via an own goal, leaving Group G's opening fixture at 1–1.",
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Belgium 1–1 Egypt | World Cup 2026 Group G',
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-15T22:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Belgium', 'Egypt', 'Group G', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +49,7 @@ export default function BelgiumEgyptPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Belgium 1–1 Egypt: Ashours Rocket Stuns the Red Devils and Leaves Group G Open' }}
       tags={['World Cup 2026', 'Belgium', 'Egypt', 'Group G', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

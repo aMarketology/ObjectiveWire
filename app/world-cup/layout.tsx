@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'World Cup 2026 | ObjectWire',
   description: 'Coverage, analysis, and news about the 2026 FIFA World Cup.',
   alternates: {
-    canonical: 'https://www.objectwire.org/world-cup',
+    canonical: 'https://www.objectivewire.com/world-cup',
   },
 };
 

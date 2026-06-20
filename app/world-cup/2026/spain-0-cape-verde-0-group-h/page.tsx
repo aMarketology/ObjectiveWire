@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-spain-0-cape-verde-0-group-h';
 const URL_PATH = '/world-cup/2026/spain-0-cape-verde-0-group-h';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-spain-0-cape-verde-0-group-h.jpg';
 export const metadata: Metadata = {
   title: 'Spain 0–0 Cape Verde | World Cup 2026 Group H Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-15T21:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Spain', 'Cape Verde', 'Group H', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function SpainCapeVerdePage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Spain 0–0 Cape Verde: One of the Greatest World Cup Shocks — Vozinha, 40, Is Heroic' }}
       tags={['World Cup 2026', 'Spain', 'Cape Verde', 'Group H', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

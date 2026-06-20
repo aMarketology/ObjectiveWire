@@ -4,7 +4,7 @@ import { JackArticleDB } from '@/components/JackArticleDB';
 export const revalidate = 86400;
 
 const SLUG = '/copyright/news/aoc-mlb-polymarket-gambling-warning';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: "AOC MLB Polymarket | $300M Gambling Deal Warning",

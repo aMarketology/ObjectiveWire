@@ -6,7 +6,7 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 3600;
 
 const SLUG = '/premier-league/wolverhampton-vs-fulham-may-17-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Wolverhampton vs Fulham May 17 | Wolves\' Final Home Game as a Relegated Club',
@@ -52,7 +52,7 @@ export default function WolvesVsFulhamPage() {
         title="Wolverhampton vs Fulham May 17 | Wolves' Final Home Game as a Relegated Club"
         description="Wolverhampton Wanderers host Fulham at Molineux on May 17, 2026. Wolves are relegated with 18 points, the worst record in the Premier League this season."
         author="Conan D. Boyle"
-        authorUrl="https://www.objectwire.org/authors/conan-boyle"
+        authorUrl="https://www.objectivewire.com/authors/conan-boyle"
         publishedTime="2026-05-14T12:00:00Z"
         modifiedTime="2026-05-14T12:00:00Z"
         articleUrl={ARTICLE_URL}

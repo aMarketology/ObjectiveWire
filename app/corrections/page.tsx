@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/nav/Breadcrumb';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectwire.org/corrections';
+const PAGE_URL = 'https://www.objectivewire.com/corrections';
 
 export const metadata: Metadata = {
   title: 'Corrections Policy | Objective Wire',
@@ -96,10 +96,10 @@ export default function CorrectionsPage() {
           <p>
             Email:{' '}
             <a
-              href="mailto:corrections@objectwire.org"
+              href="mailto:corrections@objectivewire.com"
               className="text-blue-600 hover:text-blue-800 underline"
             >
-              corrections@objectwire.org
+              corrections@objectivewire.com
             </a>
             . We aim to acknowledge correction requests within 48 hours and to publish a correction or a
             written response within 5 business days.
@@ -110,10 +110,10 @@ export default function CorrectionsPage() {
             If you are the subject of an Objective Wire article and were not contacted before publication, or
             if your response was not adequately reflected, write to{' '}
             <a
-              href="mailto:editorial@objectwire.org"
+              href="mailto:editorial@objectivewire.com"
               className="text-blue-600 hover:text-blue-800 underline"
             >
-              editorial@objectwire.org
+              editorial@objectivewire.com
             </a>
             . We will review and, where warranted, update the article with your response and a
             timestamp.

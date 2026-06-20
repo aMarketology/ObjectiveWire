@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description: "Comprehensive site index showing all pages and sections of ObjectWire. Navigate our complete content hierarchy.",
   keywords: ["sitemap", "site index", "navigation", "ObjectWire pages"],
   alternates: {
-    canonical: 'https://www.objectwire.org/index',
+    canonical: 'https://www.objectivewire.com/index',
   },
   openGraph: {
     title: "Site Index | Complete Sitemap",
     description: "Comprehensive site index showing all pages and sections of ObjectWire. Navigate our complete content hierarchy.",
     type: 'article',
-    url: "https://www.objectwire.org/index",
+    url: "https://www.objectivewire.com/index",
     siteName: 'Objective Wire',
     section: "News",
   },

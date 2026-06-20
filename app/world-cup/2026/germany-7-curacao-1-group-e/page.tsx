@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-germany-7-curacao-1-group-e';
 const URL_PATH = '/world-cup/2026/germany-7-curacao-1-group-e';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-germany-7-curacao-1-group-e.jpg';
 export const metadata: Metadata = {
   title: 'Germany 7–1 Curaçao | World Cup 2026 Group E Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-14T21:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Germany', 'Curaçao', 'Group E', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function GermanyCuracaoPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Germany 7–1 Curaçao: A Statement Scoreline and a Historic Moment for the Island Nation' }}
       tags={['World Cup 2026', 'Germany', 'Curaçao', 'Group E', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

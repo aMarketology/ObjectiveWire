@@ -4,7 +4,7 @@ import { Hub } from '@/components/Hub';
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.objectivewire.org/local/austin';
+const PAGE_URL = 'https://www.objectivewire.com/local/austin';
 
 export const metadata: Metadata = {
   title: 'Austin News | Investigative Reporting Austin TX | Objective Wire',

@@ -11,20 +11,20 @@ export const metadata: Metadata = {
   title: 'Conan Boyle | Investigative Reporter, oWire Austin',
   description:
     'Conan Boyle is a licensed investigative reporter at oWire in Austin, Texas. He covers public records, accountability journalism, supercars, and local Texas investigations using PI-grade research methods.',
-  alternates: { canonical: 'https://www.objectivewire.org/authors/conan-boyle' },
+  alternates: { canonical: 'https://www.objectivewire.com/authors/conan-boyle' },
   openGraph: {
     title: 'Conan Boyle | Investigative Reporter, oWire Austin',
     description: 'Licensed investigative reporter at oWire. Public records, accountability journalism, supercars, and Texas investigations.',
-    url: 'https://www.objectivewire.org/authors/conan-boyle',
+    url: 'https://www.objectivewire.com/authors/conan-boyle',
     siteName: 'oWire',
     type: 'profile',
-    images: [{ url: 'https://www.objectivewire.org/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, oWire investigative reporter' }],
+    images: [{ url: 'https://www.objectivewire.com/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, oWire investigative reporter' }],
   },
   twitter: {
     card: 'summary',
     title: 'Conan Boyle | Investigative Reporter, oWire',
     description: 'Licensed investigative reporter. Public records, Austin accountability, supercars.',
-    images: ['https://www.objectivewire.org/influncer/author/conan_doyle.jpg'],
+    images: ['https://www.objectivewire.com/influncer/author/conan_doyle.jpg'],
   },
 };
 
@@ -46,7 +46,7 @@ export default function ConanBoyleAuthorPage() {
         name="Conan Boyle"
         jobTitle="Investigative Reporter"
         description="Conan Boyle is a licensed investigative reporter at oWire, covering public records, Austin accountability journalism, and supercars. He holds a Texas PI credential enabling PI-grade field research as part of his reporting."
-        url="https://www.objectivewire.org/authors/conan-boyle"
+        url="https://www.objectivewire.com/authors/conan-boyle"
         knowsAbout={['Investigative Reporting', 'Public Records', 'Texas FOIA', 'Supercars', 'Cars & EVs', 'Background Investigations', 'Austin Accountability']}
         alumniOf={[{ name: 'North Carolina State University', department: 'Journalism' }]}
         location={{ city: 'Austin', region: 'TX' }}

@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: 'All Topics & Tags',
   description:
     'Browse all topics covered by ObjectWire, technology, gaming, finance, entertainment, sports, and more.',
-  alternates: { canonical: 'https://www.objectwire.org/tags' },
+  alternates: { canonical: 'https://www.objectivewire.com/tags' },
   openGraph: {
     title: 'All Topics & Tags',
     description: 'Browse every topic covered by ObjectWire.',
-    url: 'https://www.objectwire.org/tags',
+    url: 'https://www.objectivewire.com/tags',
     siteName: 'Objective Wire',
     type: 'website',
   },

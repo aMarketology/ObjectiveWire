@@ -1,7 +1,7 @@
 ﻿import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Objective Wire — Independent Investigative Newsroom, Austin TX';
+export const alt = 'Objective Wire | Sports, Creators, Cars & Culture Network';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -63,8 +63,8 @@ export default function Image() {
             </span>
           </div>
           <span style={{ fontSize: '11px', color: '#6b6b6b', letterSpacing: '0.1em', fontFamily: 'monospace' }}>
-            501(c)(3) NONPROFIT · AUSTIN, TX
-          </span>
+              SPORTS · CREATORS · CARS · CULTURE
+            </span>
         </div>
 
         {/* Wordmark */}
@@ -113,7 +113,7 @@ export default function Image() {
             marginBottom: '36px',
           }}
         >
-          Investigate · Document · Publish
+          World Cup · Premier League · Supercars · Creators
         </div>
 
         {/* Bottom descriptor row */}
@@ -133,7 +133,7 @@ export default function Image() {
               letterSpacing: '0.05em',
             }}
           >
-            objectwire.org
+            objectivewire.com
           </span>
           <span style={{ color: '#4b4b4b', fontSize: '18px' }}>|</span>
           <span style={{ fontSize: '16px', color: '#6b6b6b', fontFamily: 'monospace' }}>

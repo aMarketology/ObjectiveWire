@@ -8,7 +8,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/mlb/2026-season-standings-april-update';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'MLB 2026 Standings | Yankees Lead, Padres Surge After One Month',

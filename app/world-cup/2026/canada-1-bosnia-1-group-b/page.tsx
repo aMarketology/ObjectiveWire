@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-canada-1-bosnia-1-group-b';
 const URL_PATH = '/world-cup/2026/canada-1-bosnia-1-group-b';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-canada-1-bosnia-1-group-b.jpg';
 export const metadata: Metadata = {
   title: 'Canada 1–1 Bosnia and Herzegovina | World Cup 2026 Group B Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-12T22:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Canada', 'Bosnia', 'Group B', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function CanadaBosniaPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Canada 1–1 Bosnia and Herzegovina: Larin Rescues Point in Rollercoaster Toronto Opener' }}
       tags={['World Cup 2026', 'Canada', 'Bosnia and Herzegovina', 'Group B', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

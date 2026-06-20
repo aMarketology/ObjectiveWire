@@ -237,10 +237,10 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
       content.match(/const\s+OG_IMAGE\s*=\s*['"`]([^'"`\$\{][^'"`]*)['"`]/) ||
       content.match(/imageUrl\s*:\s*['"`]([^'"`]+)['"`]/);
     const rawImageUrl = ogImageMatch?.[1]?.trim();
-    // Resolve relative thumbnail paths to absolute objectwire.org URLs for OG consistency
-    const imageUrl = rawImageUrl?.startsWith('/')
-      ? `https://www.objectwire.org${rawImageUrl}`
-      : rawImageUrl;
+    // Keep /thumbnails/ and /public/ paths as relative so they resolve against
+    // whatever origin serves them (localhost OR production). External URLs
+    // (https://...) are stored as-is for OG image crawlers.
+    const imageUrl = rawImageUrl ?? undefined;
 
     const ogImageWidthMatch = content.match(/images\s*:\s*\[\s*\{[^}]*width\s*:\s*(\d+)/);
     const imageWidth = ogImageWidthMatch ? parseInt(ogImageWidthMatch[1], 10) : undefined;
@@ -378,7 +378,7 @@ function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
     changeFrequency: detectChangeFrequency(category),
     // Scanned values win; preserve existing if scan didn't find them;
     // fall back to auto-generated Satori OG image so no entry is imageless.
-    imageUrl:    meta.imageUrl    ?? existing?.imageUrl    ?? `https://www.objectwire.org/api/og?slug=${encodeURIComponent(meta.slug)}`,
+    imageUrl:    meta.imageUrl    ?? existing?.imageUrl    ?? `https://www.objectivewire.com/api/og?slug=${encodeURIComponent(meta.slug)}`,
     imageWidth:  meta.imageWidth  ?? existing?.imageWidth  ?? 1200,
     imageHeight: meta.imageHeight ?? existing?.imageHeight ?? 630,
     imageAlt:    meta.imageAlt    ?? existing?.imageAlt,

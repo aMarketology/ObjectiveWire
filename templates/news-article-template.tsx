@@ -27,9 +27,9 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 export const revalidate = 86400; // Static, regenerates daily
 
 const SLUG = '/REPLACE/WITH/PATH';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 const OG_IMAGE = '/thumbnails/REPLACE-WITH-THUMBNAIL.jpg';
-const OG_IMAGE_FULL = `https://www.objectwire.org${OG_IMAGE}`;
+const OG_IMAGE_FULL = `https://www.objectivewire.com${OG_IMAGE}`;
 
 export const metadata: Metadata = {
   title: 'Primary Keyword | Specific Detail',  // max 60 chars. No em dashes. No brand suffix.
@@ -68,7 +68,7 @@ export default function YourArticlePage() {
         title="Primary Keyword | Specific Detail"
         description="Matches metadata.description exactly."
         author="Author Name"
-        authorUrl="https://www.objectwire.org/authors/author-slug"
+        authorUrl="https://www.objectivewire.com/authors/author-slug"
         publishedTime="2026-05-13T12:00:00Z"
         modifiedTime="2026-05-13T12:00:00Z"
         articleUrl={ARTICLE_URL}

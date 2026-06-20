@@ -181,7 +181,7 @@ export default function TopStripSearch({ dateString }: { dateString: string }) {
           </a>
           <span className="text-xs font-mono text-gray-500 hidden sm:block whitespace-nowrap">Est. 2024 ·</span>
           <ThemeToggle />
-          <span className="text-xs font-mono hidden sm:block whitespace-nowrap" style={{ color: 'var(--brand-accent)' }}>Independent Newsroom · 501(c)(3)</span>
+          <span className="text-xs font-mono hidden sm:block whitespace-nowrap" style={{ color: 'var(--brand-accent)' }}>Sports · Creators · Cars · Culture</span>
         </div>
       )}
     </>

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Texas Blog | Objective Wire',
   description: 'Public-interest reporting on Texas from Objective Wire. Austin, Houston, Greater Texas, courts, public records, and community accountability journalism.',
   alternates: {
-    canonical: 'https://www.objectivewire.org/blog',
+    canonical: 'https://www.objectivewire.com/blog',
   },
 };
 

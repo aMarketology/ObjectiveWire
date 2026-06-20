@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-sweden-5-tunisia-1-group-f';
 const URL_PATH = '/world-cup/2026/sweden-5-tunisia-1-group-f';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-sweden-5-tunisia-1-group-f.jpg';
 export const metadata: Metadata = {
   title: 'Sweden 5–1 Tunisia | World Cup 2026 Group F Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-15T01:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Sweden', 'Tunisia', 'Group F', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function SwedenTunisiaPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Sweden 5–1 Tunisia: Ruthless Svensson Side Emerges as Group F Dark Horse' }}
       tags={['World Cup 2026', 'Sweden', 'Tunisia', 'Group F', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

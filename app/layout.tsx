@@ -51,7 +51,7 @@ export const viewport: Viewport = {
   minimumScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: '#121212',
+  themeColor: '#2a2a2e',
 };
 
 export const metadata: Metadata = {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`
   },
   description: SITE_CONFIG.description,
-  keywords: ["investigative journalism", "private detective Austin Texas", "objective wire", "sports news", "creators", "influencers", "athletes", "world cup", "creator economy", "uncover the truth"],
+  keywords: ["sports news", "World Cup 2026", "Premier League", "MLS", "MLB", "golf news", "supercars", "creators", "influencers", "YouTube creators", "TikTok news", "creator economy", "Objective Wire", "oWire", "verified news"],
   authors: [{ name: "oWire Editorial" }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
@@ -138,15 +138,15 @@ export default async function RootLayout({
         <OrganizationSchema />
         <WebSiteSchema />
       </head>
-      <body className="bg-[#121212] text-gray-100 antialiased font-sans">
+      <body className="bg-[#2a2a2e] text-gray-100 antialiased font-sans">
         <AuthProvider>
           <ThemeProvider>
             <FooterAuthorProvider>
             {/* ── oWire Masthead ─────────────────────────────────────────── */}
-            <header className="bg-[#1c1c1e] relative z-40 overflow-visible shadow-[0_2px_0_0_var(--brand-accent),0_3px_0_0_var(--brand-accent)]">
+            <header className="bg-[#2a2a2e] relative z-40 overflow-visible shadow-[0_2px_0_0_var(--brand-accent),0_3px_0_0_var(--brand-accent)]">
 
               {/* Top info strip */}
-              <div className="border-b border-[#2d2d2d] bg-[#1c1c1e]">
+              <div className="border-b border-[#3a3a3e] bg-[#252528]">
                 <div className="container mx-auto px-4 py-1 flex items-center justify-between">
                   <TopStripSearch dateString={new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />
                 </div>
@@ -189,8 +189,8 @@ export default async function RootLayout({
                     </div>
                   </div>
                   <div className="brand-rule mx-auto mt-2 w-40 md:w-72" />
-                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-[#d97706] font-mono whitespace-nowrap">
-                    Texas Investigations <span className="brand-accent-text">·</span> Documented <span className="brand-accent-text">·</span> Published
+                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-[#e07b39] font-mono whitespace-nowrap">
+                     Sports <span className="brand-accent-text">·</span> World Cup <span className="brand-accent-text">·</span> Luxury Cars <span className="brand-accent-text">·</span> Documented
                   </p>
                 </Link>
               </div>
@@ -211,27 +211,29 @@ export default async function RootLayout({
               {/* Brand column */}
               <FooterAuthorSlot />
 
-              {/* Texas Coverage */}
+              {/* Sports Coverage */}
               <div>
-                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Texas Coverage</h4>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Sports Coverage</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/blog" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Texas Blog</Link>
-                  <Link href="/local/austin" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Austin</Link>
-                  <Link href="/local/houston" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Houston</Link>
-                  <Link href="/local/greater-texas" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Greater Texas</Link>
+                  <Link href="/world-cup" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">World Cup 2026</Link>
+                  <Link href="/premier-league" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Premier League</Link>
+                  <Link href="/mls" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLS</Link>
+                  <Link href="/mlb" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">MLB</Link>
+                  <Link href="/golf" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Golf</Link>
+                  <Link href="/soccer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Soccer</Link>
                 </div>
               </div>
 
-              {/* PI Services */}
+              {/* Cars & Creators */}
               <div>
-                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">PI Services</h4>
+                <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Cars & Creators</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">All Services</Link>
-                  <Link href="/service/surveillance" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Surveillance</Link>
-                  <Link href="/service/missing-persons" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Missing Persons</Link>
-                  <Link href="/service/background-checks" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Background Checks</Link>
-                  <Link href="/service/skip-tracing" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Skip Tracing</Link>
-                  <Link href="/service/digital-forensics" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Digital Forensics</Link>
+                  <Link href="/cars" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Cars Hub</Link>
+                  <Link href="/cars/ferrari" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Ferrari</Link>
+                  <Link href="/cars/porsche" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Porsche</Link>
+                  <Link href="/creator" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Creators Hub</Link>
+                  <Link href="/youtube" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">YouTube News</Link>
+                  <Link href="/influencer" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Influencer Profiles</Link>
                 </div>
               </div>
 
@@ -239,7 +241,6 @@ export default async function RootLayout({
               <div>
                 <h4 className="font-black text-[10px] uppercase tracking-widest text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">Newsroom</h4>
                 <div className="flex flex-col gap-2.5">
-                  <Link href="/service" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">PI &amp; Investigative Services</Link>
                   <Link href="/about" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">About Objective Wire</Link>
                   <Link href="/authors" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Our Authors</Link>
                   <Link href="/editorial-standards" className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">Editorial Standards</Link>
@@ -267,9 +268,7 @@ export default async function RootLayout({
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Our Mission</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    Objective Wire is a 501(c)(3) nonprofit investigative agency incorporated in Wyoming
-                    and operating throughout Texas. Private investigative services, field work, and
-                    public-interest reporting, documented and verified.
+                    Objective Wire is a verified sports, creators, and culture network. We cover World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy with accuracy over speed and primary sources only.
                   </p>
                 </div>
 
@@ -286,14 +285,13 @@ export default async function RootLayout({
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Contact</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    Newsroom tips, corrections, press inquiries, and case submissions:{' '}
+                    Newsroom tips, corrections, and press inquiries:{' '}
                     <Link href="/get-help/contact" className="text-blue-600 hover:text-blue-800 underline">contact form</Link>.
                     Copyright complaints:{' '}
                     <Link href="/copyright" className="text-blue-600 hover:text-blue-800 underline">copyright policy</Link>.
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-2">
-                    2921 E 17th St Building 3, APT 3205, Austin, TX 78702<br />
-                    <a href="tel:+15754950323" className="text-blue-600 hover:text-blue-800 underline">(575) 495-0323</a>
+                    <a href="mailto:editorial@objectivewire.com" className="text-blue-600 hover:text-blue-800 underline">editorial@objectivewire.com</a>
                   </p>
                 </div>
 
@@ -308,9 +306,9 @@ export default async function RootLayout({
               <div className="flex items-center gap-3 text-xs text-gray-400">
                 <span className="font-bold text-gray-600 dark:text-gray-300">Objective Wire</span>
                 <span className="text-gray-300 dark:text-gray-700">|</span>
-                <span>501(c)(3) Wyoming Nonprofit · Investigative Services Throughout Texas</span>
+                <span>Sports · Creators · Cars · Culture</span>
                 <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">|</span>
-                <span className="hidden sm:inline">Austin, Texas</span>
+                <span className="hidden sm:inline">objectivewire.com</span>
               </div>
 
               <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400">
@@ -320,7 +318,7 @@ export default async function RootLayout({
                 <Link href="/copyright" className="hover:text-black dark:hover:text-white transition-colors">Copyright</Link>
                 <div className="flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ background: 'var(--brand-accent)' }} />
-                  <span>objectwire.org</span>
+                  <span>objectivewire.com</span>
                 </div>
               </div>
 

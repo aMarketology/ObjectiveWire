@@ -5,7 +5,7 @@ import { ServicePage, ServiceSection } from '@/components/articles/ServicePage';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org/service/background-checks';
+const PAGE_URL = 'https://www.objectivewire.com/service/background-checks';
 
 export const metadata: Metadata = {
   title: 'Background Check Investigations Austin TX | ObjectWire',
@@ -43,7 +43,7 @@ const SERVICE_SCHEMA = {
   description: 'Licensed criminal history, employment verification, and identity investigation services in Austin, Texas.',
   serviceType: 'Private Investigation — Background Check',
   areaServed: { '@type': 'City', name: 'Austin', containedInPlace: { '@type': 'State', name: 'Texas' } },
-  provider: { '@type': 'LocalBusiness', name: 'ObjectWire Investigative Services', url: 'https://www.objectivewire.org/service' },
+  provider: { '@type': 'LocalBusiness', name: 'ObjectWire Investigative Services', url: 'https://www.objectivewire.com/service' },
   url: PAGE_URL,
 };
 
@@ -51,8 +51,8 @@ const BREADCRUMB_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.org' },
-    { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: 'https://www.objectivewire.org/service' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.com' },
+    { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: 'https://www.objectivewire.com/service' },
     { '@type': 'ListItem', position: 3, name: 'Background Checks', item: PAGE_URL },
   ],
 };

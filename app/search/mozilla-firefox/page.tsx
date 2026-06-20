@@ -19,16 +19,16 @@ export const metadata: Metadata = {
     "Mozilla Foundation",
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/mozilla-firefox',
+    canonical: 'https://www.objectivewire.com/mozilla-firefox',
   },
   openGraph: {
     title: "Mozilla Firefox: Open-Source Web Browser & Privacy-Focused Technology",
     description: "Complete guide to Mozilla Foundation and Firefox browser, covering history, features, privacy focus, and market position.",
     type: "article",
-    url: "https://www.objectwire.org/mozilla-firefox",
+    url: "https://www.objectivewire.com/mozilla-firefox",
     images: [
       {
-        url: "https://www.objectwire.org/images/mozilla-firefox-og.jpg",
+        url: "https://www.objectivewire.com/images/mozilla-firefox-og.jpg",
         width: 1200,
         height: 630,
         alt: "Mozilla Firefox browser",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mozilla Firefox: Open-Source Web Browser",
     description: "Comprehensive overview of Mozilla Foundation and Firefox browser technology.",
-    images: ["https://www.objectwire.org/images/mozilla-firefox-twitter.jpg"],
+    images: ["https://www.objectivewire.com/images/mozilla-firefox-twitter.jpg"],
   },
 };
 
@@ -55,8 +55,8 @@ export default function MozillaFirefoxPage() {
         author="ObjectWire Technology Desk"
         publishedTime={publishedDate}
         modifiedTime={publishedDate}
-        imageUrl="https://www.objectwire.org/images/mozilla-firefox.jpg"
-        articleUrl="https://www.objectwire.org/mozilla-firefox"
+        imageUrl="https://www.objectivewire.com/images/mozilla-firefox.jpg"
+        articleUrl="https://www.objectivewire.com/mozilla-firefox"
         section="Technology & Software"
         keywords={["Mozilla", "Firefox", "web browser", "open source", "privacy"]}
       />

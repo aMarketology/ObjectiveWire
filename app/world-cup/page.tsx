@@ -14,7 +14,7 @@ export const revalidate = 3600;
 
 const SLUG = 'world-cup-for-americans-2026-guide';
 const URL_PATH = '/world-cup';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
 export const metadata: Metadata = {
   title: "How the World Cup Works for Americans | 2026 FIFA World Cup Guide",

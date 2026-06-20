@@ -14,7 +14,7 @@ import {
 export const revalidate = 86400;
 
 const SLUG = '/mlb/home-run-prop-analysis-may-15-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'MLB Home Run Props May 15 | Ramos, Alonso, Bolte Data',

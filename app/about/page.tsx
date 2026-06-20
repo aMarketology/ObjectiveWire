@@ -86,7 +86,7 @@ export default function AboutPage() {
             Conan D. Boyle is the editor-in-chief and has final say on all editorial and publishing
             decisions. His author profile is public at{' '}
             <Link href="/authors/conan-boyle" className="text-blue-600 hover:text-blue-800 underline">
-              objectwire.org/authors/conan-boyle
+              objectivewire.com/authors/conan-boyle
             </Link>
             .
           </p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
               ))}
             </ul>
             <a
-              href="mailto:editorial@objectwire.org?subject=I want to write for Objective Wire"
+              href="mailto:editorial@objectivewire.com?subject=I want to write for Objective Wire"
               className="inline-block bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-sm"
             >
               Email Us to Get Started →
@@ -208,13 +208,13 @@ export default function AboutPage() {
           <h2>Contact</h2>
           <p>
             Editorial:{' '}
-            <a href="mailto:editorial@objectwire.org" className="text-blue-600 hover:text-blue-800 underline">
-              editorial@objectwire.org
+            <a href="mailto:editorial@objectivewire.com" className="text-blue-600 hover:text-blue-800 underline">
+              editorial@objectivewire.com
             </a>
             <br />
             Corrections and tips:{' '}
-            <a href="mailto:corrections@objectwire.org" className="text-blue-600 hover:text-blue-800 underline">
-              corrections@objectwire.org
+            <a href="mailto:corrections@objectivewire.com" className="text-blue-600 hover:text-blue-800 underline">
+              corrections@objectivewire.com
             </a>
           </p>
 

@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/nav/Breadcrumb';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org/service';
+const PAGE_URL = 'https://www.objectivewire.com/service';
 
 export const metadata: Metadata = {
   title: 'Investigative Services Austin TX | ObjectWire',
@@ -84,28 +84,28 @@ const LOCAL_BUSINESS_SCHEMA = {
     '@type': 'OfferCatalog',
     name: 'Investigative Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surveillance Investigations', url: 'https://www.objectivewire.org/service/surveillance' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Infidelity Investigations', url: 'https://www.objectivewire.org/service/infidelity-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Missing Persons Investigations', url: 'https://www.objectivewire.org/service/missing-persons' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Background Check Investigations', url: 'https://www.objectivewire.org/service/background-checks' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Skip Tracing', url: 'https://www.objectivewire.org/service/skip-tracing' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Child Custody Investigations', url: 'https://www.objectivewire.org/service/child-custody-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workers Compensation Fraud', url: 'https://www.objectivewire.org/service/workers-compensation-fraud' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Corporate Investigations', url: 'https://www.objectivewire.org/service/corporate-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Digital Forensics', url: 'https://www.objectivewire.org/service/digital-forensics' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Investigative Reporting', url: 'https://www.objectivewire.org/service/investigative-reporting' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Newsroom Tip Submission', url: 'https://www.objectivewire.org/service/tip-the-newsroom' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Document Review and FOIA', url: 'https://www.objectivewire.org/service/document-review' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surveillance Investigations', url: 'https://www.objectivewire.com/service/surveillance' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Infidelity Investigations', url: 'https://www.objectivewire.com/service/infidelity-investigations' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Missing Persons Investigations', url: 'https://www.objectivewire.com/service/missing-persons' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Background Check Investigations', url: 'https://www.objectivewire.com/service/background-checks' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Skip Tracing', url: 'https://www.objectivewire.com/service/skip-tracing' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Child Custody Investigations', url: 'https://www.objectivewire.com/service/child-custody-investigations' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workers Compensation Fraud', url: 'https://www.objectivewire.com/service/workers-compensation-fraud' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Corporate Investigations', url: 'https://www.objectivewire.com/service/corporate-investigations' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Digital Forensics', url: 'https://www.objectivewire.com/service/digital-forensics' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Investigative Reporting', url: 'https://www.objectivewire.com/service/investigative-reporting' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Newsroom Tip Submission', url: 'https://www.objectivewire.com/service/tip-the-newsroom' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Document Review and FOIA', url: 'https://www.objectivewire.com/service/document-review' } },
     ],
   },
-  sameAs: ['https://www.objectivewire.org'],
+  sameAs: ['https://www.objectivewire.com'],
 };
 
 const BREADCRUMB_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.org' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.com' },
     { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: PAGE_URL },
   ],
 };
@@ -433,8 +433,8 @@ export default function ServicesHubPage() {
             </div>
             <p className="mt-8 text-blue-200 text-sm">
               Editorial tips and newsroom contact:{' '}
-              <a href="mailto:editorial@objectwire.org" className="underline text-white hover:text-blue-100">
-                editorial@objectwire.org
+              <a href="mailto:editorial@objectivewire.com" className="underline text-white hover:text-blue-100">
+                editorial@objectivewire.com
               </a>
             </p>
           </div>

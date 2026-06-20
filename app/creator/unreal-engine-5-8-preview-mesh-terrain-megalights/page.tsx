@@ -8,7 +8,7 @@ import { PrismTable } from '@/components/articles/PrismTable';
 export const revalidate = 86400;
 
 const SLUG = '/creator/unreal-engine-5-8-preview-mesh-terrain-megalights';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Unreal Engine 5.8 Preview | Mesh Terrain, MegaLights 2026',
@@ -63,7 +63,7 @@ export default function UnrealEngine58PreviewPage() {
         title="Unreal Engine 5.8 Preview | Mesh Terrain, MegaLights 2026"
         description="Epic Games released Unreal Engine 5.8 Preview on May 12, 2026, introducing experimental Mesh Terrain and production-ready MegaLights for film, broadcast, and creator workflows."
         author="Jack Sterling"
-        authorUrl="https://www.objectwire.org/authors/jack-sterling"
+        authorUrl="https://www.objectivewire.com/authors/jack-sterling"
         publishedTime="2026-05-15T14:00:00Z"
         modifiedTime="2026-05-15T14:00:00Z"
         articleUrl={ARTICLE_URL}

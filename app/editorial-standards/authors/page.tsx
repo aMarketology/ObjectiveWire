@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Our Authors | Editorial Standards",
   description: "ZeroWire is a verified news platform driven by our team of journalists, analysts, and contributors.",
   alternates: {
-    canonical: 'https://www.objectwire.org/editorial-standards/authors',
+    canonical: 'https://www.objectivewire.com/editorial-standards/authors',
   },
   openGraph: {
     title: "Our Authors | Editorial Standards",
     description: "ZeroWire is a verified news platform driven by our team of journalists, analysts, and contributors.",
     type: 'article',
-    url: "https://www.objectwire.org/editorial-standards/authors",
+    url: "https://www.objectivewire.com/editorial-standards/authors",
     siteName: 'ZeroWire',
     section: "News",
   },

@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-scotland-1-haiti-0-group-c';
 const URL_PATH = '/world-cup/2026/scotland-1-haiti-0-group-c';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-scotland-1-haiti-0-group-c.jpg';
 export const metadata: Metadata = {
   title: 'Scotland 1–0 Haiti | World Cup 2026 Group C Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-13T21:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Scotland', 'Haiti', 'Group C', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function ScotlandHaitiPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Scotland 1–0 Haiti: 28-Year Wait Ends With a Winning World Cup Return' }}
       tags={['World Cup 2026', 'Scotland', 'Haiti', 'Group C', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

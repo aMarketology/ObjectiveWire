@@ -6,7 +6,7 @@ import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/porsche';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {

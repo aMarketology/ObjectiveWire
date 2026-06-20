@@ -4,7 +4,7 @@
 # Usage: bash scripts/mint-worldcup-thumbnails.sh
 # ─────────────────────────────────────────────────────────────────────────────
 
-BASE="http://localhost:3000"
+BASE="http://localhost:3001"
 TOKEN="satori_0c00f62203a65529f7dac2f75b74e684f3806484f23724a3"
 NETWORK="ozone"
 LAYOUT="breaking"

@@ -6,7 +6,7 @@ import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/ford';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // restored by wiki:publish
 const OG_IMAGE =
   'https://images.unsplash.com/photo-1612825173281-9a193378527e?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
 

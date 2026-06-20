@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Soccer News & Analysis | oWire',
   description: 'The latest from the Premier League, MLS, World Cup, and global soccer.',
-  alternates: { canonical: 'https://www.objectwire.org/soccer' }
+  alternates: { canonical: 'https://www.objectivewire.com/soccer' }
 };
 
 export default async function SoccerHubPage() {

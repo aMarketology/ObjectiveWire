@@ -7,8 +7,8 @@ import { SourcesInterlink } from '@/components/SourcesInterlink';
 
 
 const SLUG = '/youtube/sidemen/charity-match/2026-lineup-max-fosh-willne';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const OG_IMAGE = 'https://www.objectwire.org/influncer/sidemne_charity_match_26.png';
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = 'https://www.objectivewire.com/influncer/sidemne_charity_match_26.png';
 
 export const metadata: Metadata = {
   title: 'Sidemen Charity Match 2026 Lineup | Max Fosh, WillNE',

@@ -208,7 +208,7 @@ async function triggerUnsplashDownload(): Promise<void> {
       exif: {
         IFD0: {
           ImageDescription: alt,
-          Copyright:        `© ${year} ZWire | objectwire.org`,
+          Copyright:        `© ${year} ZWire | objectivewire.com`,
           Artist:           author,
           // XPKeywords is a UTF-16LE blob — skip for TS simplicity; Google reads alt/filename
           Software:         'ZWire Thumbnail Minter',

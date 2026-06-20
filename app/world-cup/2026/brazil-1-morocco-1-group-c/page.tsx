@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-brazil-1-morocco-1-group-c';
 const URL_PATH = '/world-cup/2026/brazil-1-morocco-1-group-c';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-brazil-1-morocco-1-group-c.jpg';
 export const metadata: Metadata = {
   title: 'Brazil 1–1 Morocco | World Cup 2026 Group C Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-13T23:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Brazil', 'Morocco', 'Group C', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function BrazilMoroccoPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Brazil 1–1 Morocco: The Seleção Are Held as Group C Blows Wide Open' }}
       tags={['World Cup 2026', 'Brazil', 'Morocco', 'Group C', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

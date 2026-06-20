@@ -4,7 +4,7 @@ import { NewsArticle } from '@/components/articles/NewsArticle';
 export const metadata: Metadata = {
   title: 'Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar',
   description: 'Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.',
-  alternates: { canonical: 'https://www.objectwire.org/cars/bugatti-tourbillon-v16-hybrid-reveal-2026' }
+  alternates: { canonical: 'https://www.objectivewire.com/cars/bugatti-tourbillon-v16-hybrid-reveal-2026' }
 };
 
 export default function Page() {

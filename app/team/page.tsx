@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Meet the oWire editorial team. Founder Conan D. Boyle and staff writers Jack Sterling and Jack Brennan cover Creators, Cars, and Culture.',
   alternates: {
-    canonical: 'https://www.objectwire.org/team',
+    canonical: 'https://www.objectivewire.com/team',
   },
   openGraph: {
     title: 'Our Team | oWire',

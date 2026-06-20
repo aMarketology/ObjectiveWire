@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'ObjectWire',
-    short_name: 'ObjectWire',
-    description: 'Breaking news, technology, and digital culture',
+    name: 'Objective Wire',
+    short_name: 'oWire',
+    description: 'World Cup 2026, Premier League, MLS, MLB, supercars, creators, and culture. Verified sports and culture news.',
     start_url: '/',
     display: 'standalone',
     background_color: '#faf9f6',

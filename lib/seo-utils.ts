@@ -43,13 +43,13 @@ export function generateArticleMetadata(options: ArticleMetadataOptions): Metada
   const resolvedKeywords = keywords ?? tags;
 
   // Auto-generate OG image via Satori when no explicit image is provided
-  const SITE_URL = 'https://www.objectwire.org';
+  const SITE_URL = 'https://www.objectivewire.com';
   let fallbackOgImage: string | undefined;
   if (!ogImage && images.length === 0 && resolvedCanonical) {
     const slug = resolvedCanonical.startsWith(SITE_URL)
       ? resolvedCanonical.slice(SITE_URL.length)
-      : resolvedCanonical.startsWith('https://objectwire.org')
-        ? resolvedCanonical.slice('https://objectwire.org'.length)
+      : resolvedCanonical.startsWith('https://objectivewire.com')
+        ? resolvedCanonical.slice('https://objectivewire.com'.length)
         : resolvedCanonical.startsWith('/') ? resolvedCanonical : null;
     if (slug) fallbackOgImage = `${SITE_URL}/api/og?slug=${encodeURIComponent(slug)}`;
   }

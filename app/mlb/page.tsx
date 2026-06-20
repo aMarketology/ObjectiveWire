@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'MLB News & Analysis | oWire',
   description: 'Major League Baseball news, scores, standings, and analysis from oWire.',
-  alternates: { canonical: 'https://www.objectwire.org/mlb' },
+  alternates: { canonical: 'https://www.objectivewire.com/mlb' },
 };
 
 export default async function MLBHubPage() {

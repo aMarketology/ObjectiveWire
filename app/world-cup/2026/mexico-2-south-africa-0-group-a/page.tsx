@@ -5,8 +5,9 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-mexico-2-south-africa-0-group-a';
 const URL_PATH = '/world-cup/2026/mexico-2-south-africa-0-group-a';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-mexico-2-south-africa-0-group-a.jpg';
 export const metadata: Metadata = {
   title: 'Mexico 2–0 South Africa | World Cup 2026 Group A Match Report',
   description:
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-11T22:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Mexico', 'South Africa', 'Group A', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +50,7 @@ export default function MexicoSouthAfricaPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Mexico 2–0 South Africa: Co-Hosts Open in Chaos at Estadio Azteca' }}
       tags={['World Cup 2026', 'Mexico', 'South Africa', 'Group A', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

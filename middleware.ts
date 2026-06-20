@@ -10,7 +10,7 @@ import { createServerClient } from '@supabase/ssr';
 
 // NOTE: We inline these values here because middleware runs on Edge Runtime
 // and cannot import from lib/ directly in all cases
-const SITE_URL = 'https://www.objectwire.org'; // Changed to www as canonical
+const SITE_URL = 'https://www.objectivewire.com'; // Changed to www as canonical
 
 // Tracking parameters to strip (prevents index bloat)
 const PARAMS_TO_STRIP = [
@@ -187,10 +187,10 @@ export async function middleware(request: NextRequest) {
   // ==========================================================================
   const host = request.headers.get('host') || '';
 
-  // objectwire.org → www.objectwire.org (permanent 301)
-  if (host === 'objectwire.org') {
+  // objectivewire.com → www.objectivewire.com (permanent 301)
+  if (host === 'objectivewire.com') {
     const newUrl = new URL(request.url);
-    newUrl.host = 'www.objectwire.org';
+    newUrl.host = 'www.objectivewire.com';
     return NextResponse.redirect(newUrl, 301);
   }
   

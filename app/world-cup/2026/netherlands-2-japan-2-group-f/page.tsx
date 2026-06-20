@@ -5,12 +5,12 @@ export const revalidate = 86400;
 
 const SLUG = 'world-cup-2026-netherlands-2-japan-2-group-f';
 const URL_PATH = '/world-cup/2026/netherlands-2-japan-2-group-f';
-const CANONICAL = `https://www.objectwire.org${URL_PATH}`;
+const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
+const OG_IMAGE = '/thumbnails/world-cup-2026-netherlands-2-japan-2-group-f.jpg';
 export const metadata: Metadata = {
   title: 'Netherlands 2–2 Japan | World Cup 2026 Group F Match Report',
-  description:
-    "Daichi Kamada's 88th-minute equalizer completed a stunning Japan comeback from 2–1 down to draw 2–2 with the Netherlands in Dallas, with three goals coming in a wild 13-minute second-half spell.",
+  description: "Daichi Kamada's 88th-minute equalizer completed a stunning Japan comeback from 2–1 down to draw 2–2 with the Netherlands in Dallas, with three goals coming in a wild 13-minute second-half spell.",
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Netherlands 2–2 Japan | World Cup 2026 Group F',
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-06-14T23:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Netherlands', 'Japan', 'Group F', 'Match Report'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +49,7 @@ export default function NetherlandsJapanPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: 'Netherlands 2–2 Japan: Kamadas 88th-Minute Strike Produces the Tournaments Best Match' }}
       tags={['World Cup 2026', 'Netherlands', 'Japan', 'Group F', 'Match Report']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

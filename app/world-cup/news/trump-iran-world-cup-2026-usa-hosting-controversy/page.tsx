@@ -6,8 +6,8 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/trump-iran-world-cup-2026-usa-hosting-controversy';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const OG_IMAGE = 'https://www.objectwire.org/world-cup/worldcup-usa-drama-strikes.jpg';
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = 'https://www.objectivewire.com/world-cup/worldcup-usa-drama-strikes.jpg';
 
 export const metadata: Metadata = {
   title: 'Trump Iran Comments | World Cup USA Hosting Controversy',

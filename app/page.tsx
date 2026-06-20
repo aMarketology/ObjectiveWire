@@ -6,73 +6,60 @@ import { getLatestArticles } from '@/lib/registry-service';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org';
+const PAGE_URL = 'https://www.objectivewire.com';
 
 export const metadata: Metadata = {
-  title: 'Objective Wire | Private Investigative Services Throughout Texas',
+  title: 'Objective Wire | Sports, Creators, Cars & Culture',
   description:
-    'Objective Wire is a 501(c)(3) nonprofit investigative agency and public-interest magazine serving all of Texas. Surveillance, missing persons, background checks, skip tracing, digital forensics, and public-interest reporting.',
+    'Objective Wire is a verified sports, creators, and culture network covering World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy. Accuracy over speed, primary sources only.',
   keywords: [
-    'private investigator Texas',
-    'Texas private detective agency',
-    'investigative services Texas',
-    'surveillance Texas',
-    'missing persons Texas',
-    'background check Texas',
-    'skip tracing Texas',
-    'digital forensics Texas',
+    'World Cup 2026',
+    'Premier League news',
+    'MLS 2026',
+    'MLB news',
+    'golf news',
+    'supercar news',
+    'creator news',
+    'YouTube creators',
+    'TikTok news',
+    'influencer profiles',
     'Objective Wire',
-    'nonprofit investigative agency Texas',
-    'Austin private investigator',
-    'Houston private investigator',
+    'oWire',
+    'sports network',
+    'verified news',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Objective Wire | Private Investigative Services Throughout Texas',
+    title: 'Objective Wire | Sports, Creators, Cars & Culture',
     description:
-      '501(c)(3) nonprofit investigative agency serving Texas. Surveillance, missing persons, background checks, skip tracing, and digital forensics. Free consultation.',
+      'Verified sports and culture coverage. World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy. Accuracy over speed.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Objective Wire | Texas PI Services',
-    description: 'Nonprofit investigative agency serving all of Texas. Surveillance, missing persons, background checks, digital forensics.',
+    title: 'Objective Wire | Sports, Creators, Cars & Culture',
+    description: 'World Cup 2026, Premier League, MLS, supercars, and creator economy. Verified news, primary sources only.',
   },
 };
 
-const LOCAL_BUSINESS_SCHEMA = {
+const SITE_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'ProfessionalService'],
-  name: 'Objective Wire Investigative Services',
-  alternateName: 'Objective Wire',
+  '@type': 'NewsMediaOrganization',
+  name: 'Objective Wire',
+  alternateName: 'oWire',
   url: PAGE_URL,
   description:
-    '501(c)(3) nonprofit investigative agency and public-interest magazine serving all of Texas. Surveillance, missing persons, background checks, skip tracing, digital forensics, corporate investigations, and public-interest reporting.',
-  foundingDate: '2023',
-  nonprofitStatus: 'Nonprofit501c3',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Austin',
-    addressRegion: 'TX',
-    addressCountry: 'US',
+    'Objective Wire is a verified sports, creators, and culture network covering World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy.',
+  foundingDate: '2024',
+  email: 'editorial@objectivewire.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.objectivewire.com/zwire-logo-square.png',
+    width: 1001,
+    height: 1001,
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 30.2672,
-    longitude: -97.7431,
-  },
-  areaServed: [
-    { '@type': 'State', name: 'Texas' },
-    { '@type': 'City', name: 'Austin' },
-    { '@type': 'City', name: 'Houston' },
-    { '@type': 'City', name: 'Dallas' },
-    { '@type': 'City', name: 'San Antonio' },
-    { '@type': 'AdministrativeArea', name: 'Travis County' },
-  ],
-  telephone: '(575) 495-0323',
-  email: 'editorial@objectivewire.org',
 };
 
 const SERVICES = [
@@ -157,7 +144,7 @@ export default async function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA) }}
       />
 
       <div className="h-[3px] bg-gray-900 w-full" />
@@ -170,27 +157,25 @@ export default async function HomePage() {
         <section className="bg-white border-b border-gray-200">
           <div className="container mx-auto px-4 py-20 max-w-6xl">
             <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-400 mb-6 font-mono">
-              Texas &nbsp;·&nbsp; Investigative Services &nbsp;·&nbsp; Public-Interest Media &nbsp;·&nbsp; 501(c)(3)
+              Sports &nbsp;·&nbsp; World Cup 2026 &nbsp;·&nbsp; Luxury Cars &nbsp;·&nbsp; Creators
             </p>
             <h1 className="font-serif text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-6 max-w-4xl text-gray-900">
-              Texas Investigations.<br />
-              <span className="text-amber-600">Documented &amp; Published.</span>
+              Sports. Creators.<br />
+              <span className="text-amber-600">Verified &amp; Published.</span>
             </h1>
             <p className="text-xl text-gray-700 max-w-2xl mb-5 leading-relaxed font-serif">
-              Objective Wire is a 501(c)(3) nonprofit investigative agency serving individuals,
-              attorneys, and businesses throughout Texas. We conduct surveillance, locate missing
-              persons, run background checks, and handle digital forensics with full documentation.
+              Objective Wire covers the 2026 FIFA World Cup, Premier League, MLS, MLB,
+              supercars, and the creator economy — accuracy over speed, primary sources only.
             </p>
             <p className="text-base text-gray-500 max-w-2xl mb-10 leading-relaxed">
-              Incorporated as a nonprofit in Wyoming and operating statewide. We also publish
-              public-interest reporting on Texas through our investigative media team.
+              Named authors. Transparent corrections. No aggregation, no opinion masquerading as news.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/service"
+                href="/world-cup"
                 className="bg-gray-900 hover:bg-gray-800 text-white font-black px-8 py-4 transition-colors text-lg"
               >
-                View All Services
+                World Cup 2026
               </Link>
               <Link
                 href="/about"
@@ -207,10 +192,10 @@ export default async function HomePage() {
           <div className="container mx-auto px-4 py-6 max-w-6xl">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-300">
               {[
-                { label: 'Serving', value: 'All of Texas' },
-                { label: 'Services', value: '9 PI Specialties' },
-                { label: 'Incorporated', value: '501(c)(3) Wyoming Nonprofit' },
-                { label: 'Consultations', value: 'Free & Confidential' },
+                { label: 'Coverage', value: 'World Cup 2026' },
+                { label: 'Also', value: 'Cars & Creators' },
+                { label: 'Approach', value: 'Primary Sources Only' },
+                { label: 'Authors', value: 'Named Bylines' },
               ].map(({ label, value }, i) => (
                 <div key={label} className={`text-center md:text-left ${i === 0 ? '' : 'pl-6'}`}>
                   <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500 mb-1.5 font-mono">{label}</p>

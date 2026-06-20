@@ -6,8 +6,8 @@ import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/tesla-semi-truckers-mass-production-nevada-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const IMAGE_URL = 'https://www.objectwire.org/entertainment/waymo.jpg';
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const IMAGE_URL = 'https://www.objectivewire.com/entertainment/waymo.jpg';
 
 export const metadata: Metadata = {
   title: 'Tesla Semi Wins Over Truckers Ahead of Mass Production Ramp',

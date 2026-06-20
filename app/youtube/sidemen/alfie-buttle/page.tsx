@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   description: "Complete profile of AB (Alfie Buttle), British fitness content creator known for gym transformations, Young LA brand partnership, and appearances with the Sidemen.",
   keywords: ["AB", "Alfie Buttle", "Sidemen", "YouTube", "Fitness", "Young LA", "Gym Content", "UK Fitness"],
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/alfie-buttle',
+    canonical: 'https://www.objectivewire.com/youtube/sidemen/alfie-buttle',
   },
   openGraph: {
     title: "AB (Alfie Buttle) | Fitness YouTuber & Sidemen Collaborator",
     description: "Complete profile of AB (Alfie Buttle), British fitness content creator known for gym transformations, Young LA brand partnership, and appearances with the Sidemen.",
     type: 'article',
-    url: "https://www.objectwire.org/youtube/sidemen/alfie-buttle",
+    url: "https://www.objectivewire.com/youtube/sidemen/alfie-buttle",
     siteName: 'Objective Wire',
     section: "Entertainment",
   },

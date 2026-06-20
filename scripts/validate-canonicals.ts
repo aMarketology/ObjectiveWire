@@ -152,7 +152,7 @@ function checkPageCanonicals(): string[] {
       if (!content.includes('canonical')) {
         violations.push(
           `  ✗  app/${rel}  →  article page exports metadata but no canonical URL found. ` +
-          `Add: alternates: { canonical: \`https://www.objectwire.org/your/path\` }`
+          `Add: alternates: { canonical: \`https://www.objectivewire.com/your/path\` }`
         );
       }
       continue;
@@ -167,7 +167,7 @@ function checkPageCanonicals(): string[] {
     if (!hasCanonical) {
       violations.push(
         `  ⚠  app/${rel}  →  no canonical URL in metadata export. ` +
-        `Add: alternates: { canonical: \`https://www.objectwire.org/your/path\` }`
+        `Add: alternates: { canonical: \`https://www.objectivewire.com/your/path\` }`
       );
     }
   }

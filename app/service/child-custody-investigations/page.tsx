@@ -5,7 +5,7 @@ import { ServicePage, ServiceSection } from '@/components/articles/ServicePage';
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectivewire.org/service/child-custody-investigations';
+const PAGE_URL = 'https://www.objectivewire.com/service/child-custody-investigations';
 
 export const metadata: Metadata = {
   title: 'Child Custody Investigations Austin TX | ObjectWire',
@@ -43,7 +43,7 @@ const SERVICE_SCHEMA = {
   description: 'Licensed parental surveillance and documentation for child custody proceedings in Travis County Family Court, Austin, Texas.',
   serviceType: 'Private Investigation — Child Custody',
   areaServed: { '@type': 'City', name: 'Austin', containedInPlace: { '@type': 'State', name: 'Texas' } },
-  provider: { '@type': 'LocalBusiness', name: 'ObjectWire Investigative Services', url: 'https://www.objectivewire.org/service' },
+  provider: { '@type': 'LocalBusiness', name: 'ObjectWire Investigative Services', url: 'https://www.objectivewire.com/service' },
   url: PAGE_URL,
 };
 
@@ -51,8 +51,8 @@ const BREADCRUMB_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.org' },
-    { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: 'https://www.objectivewire.org/service' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.com' },
+    { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: 'https://www.objectivewire.com/service' },
     { '@type': 'ListItem', position: 3, name: 'Child Custody Investigations', item: PAGE_URL },
   ],
 };

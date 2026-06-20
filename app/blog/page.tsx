@@ -3,26 +3,26 @@ import Link from 'next/link';
 
 export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.objectivewire.org/blog';
+const PAGE_URL = 'https://www.objectivewire.com/blog';
 
 export const metadata: Metadata = {
-  title: 'Texas Blog | Objective Wire',
+  title: 'Blog | Objective Wire',
   description:
-    'Public-interest reporting on Texas from Objective Wire. Austin city hall, Houston energy sector, Travis County courts, public records, and statewide accountability journalism from our nonprofit investigative team.',
+    'News, analysis, and reporting from Objective Wire. Sports, creators, cars, and culture, verified and source-cited.',
   keywords: [
-    'Texas investigative reporting',
-    'Austin public records journalism',
-    'Houston accountability reporting',
-    'Travis County courts',
-    'Texas nonprofit journalism',
-    'Objective Wire Texas blog',
-    'Austin investigative news',
-    'Texas public interest reporting',
+    'Objective Wire blog',
+    'sports news blog',
+    'creator news',
+    'World Cup 2026 news',
+    'Premier League blog',
+    'verified sports reporting',
+    'oWire news',
+    'objectivewire.com',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Texas Blog | Objective Wire',
-    description: 'Public-interest reporting on Texas. Austin, Houston, Greater Texas, courts, and community accountability.',
+    title: 'Blog | Objective Wire',
+    description: 'Sports, creators, cars, and culture reporting from Objective Wire. Verified, source-cited, and accurate.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
@@ -76,7 +76,7 @@ export default function TexasBlogPage() {
             </nav>
             <div className="border-l-4 border-amber-500 pl-6">
               <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-amber-600 mb-3 font-mono">
-                501(c)(3) Nonprofit · Public-Interest Reporting · Throughout Texas
+                Sports · Creators · Cars · Culture
               </p>
               <h1 className="font-serif text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 text-gray-900">
                 Texas.<br />Investigated &amp; Reported.
@@ -145,12 +145,10 @@ export default function TexasBlogPage() {
               <div>
                 <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-500 mb-4 font-mono">About This Publication</p>
                 <h2 className="font-serif text-4xl font-black mb-4">
-                  Independent. Nonprofit. Statewide.
+                  Independent. Verified. Accurate.
                 </h2>
                 <p className="text-gray-400 leading-relaxed mb-4">
-                  Objective Wire is a 501(c)(3) nonprofit incorporated in Wyoming and operating throughout Texas.
-                  Our investigative team handles both private cases and public-interest reporting using the same
-                  documented, evidence-based methodology.
+                  Objective Wire is a sports, creators, and culture network. We cover World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy with accuracy over speed and primary sources only.
                 </p>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   Primary sources only. Named authors. Public corrections. No paywall.

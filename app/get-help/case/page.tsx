@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Contact Us | The Objective Wire",
   description: "Contact Object Wire for inquiries, tips, or story submissions. Get in touch with our team today.",
   alternates: {
-    canonical: 'https://www.objectwire.org/case',
+    canonical: 'https://www.objectivewire.com/case',
   },
   openGraph: {
     title: "Contact Us | The Objective Wire",
     description: "Contact Object Wire for inquiries, tips, or story submissions. Get in touch with our team today.",
     type: 'article',
-    url: "https://www.objectwire.org/case",
+    url: "https://www.objectivewire.com/case",
     siteName: 'Objective Wire',
     section: "News",
   },

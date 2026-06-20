@@ -5,7 +5,7 @@ import { NewsArticle } from '@/components/articles/NewsArticle';
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/england-scotland-stadium-row';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'England and Scotland World Cup Stadium Row | 6M Venue Dispute',
