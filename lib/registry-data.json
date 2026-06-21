@@ -250,6 +250,70 @@
     "featured": false
   },
   {
+    "slug": "/local/greater-texas/camp-mystic-flood-report-2026",
+    "title": "Camp Mystic Flood | Texas Finds 28 Deaths Were Preventable",
+    "description": "A Texas legislative report released June 18, 2026, found that 28 deaths at Camp Mystic during the July 4, 2025, Guadalupe River flood were preventable, citing a centralized plan, a cell phone ban, and a culture of complacency.",
+    "publishDate": "2026-06-21",
+    "modifiedDate": "2026-06-21",
+    "category": "Local",
+    "tags": [
+      "Local"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "imageAlt": "Floodwaters on the Guadalupe River in Central Texas, 2025",
+    "featured": false
+  },
+  {
+    "slug": "/local/greater-texas/texas-educator-misconduct-dashboard-2026",
+    "title": "Texas Educator Misconduct Dashboard | TEA Launches Public Tracker",
+    "description": "The Texas Education Agency launched its Educator Misconduct Reporting Dashboard on June 2, 2026, tracking 13,000 annual reports, SBEC sanctions, and a Do Not Hire Registry that grows by 300 to 500 educators per year.",
+    "publishDate": "2026-06-21",
+    "modifiedDate": "2026-06-21",
+    "category": "Local",
+    "tags": [
+      "Local"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "imageAlt": "Texas school classroom representing educator accountability reporting",
+    "featured": false
+  },
+  {
+    "slug": "/world-cup/news/fifa-world-cup-2026-ticketing-crisis-state-probes",
+    "title": "FIFA World Cup 2026 Ticketing Crisis | 4 States Sue",
+    "description": "New York, New Jersey, Texas, and California have launched formal probes into FIFA over bait-and-switch seat reclassifications, unchecked dynamic pricing, and resale tickets reaching $13,000 during the 2026 World Cup.",
+    "publishDate": "2026-06-21",
+    "modifiedDate": "2026-06-21",
+    "category": "Sports",
+    "tags": [
+      "World Cup",
+      "Soccer",
+      "FIFA",
+      "News",
+      "Fifa World Cup 2026 Ticketing Crisis State Probes"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "imageAlt": "Crowded football stadium during the 2026 FIFA World Cup",
+    "featured": false
+  },
+  {
     "slug": "/world-cup",
     "title": "FIFA World Cup 2026 | Schedule, Teams, Host Cities & News",
     "description": "Complete coverage of FIFA World Cup 2026 across the USA, Mexico, and Canada. 48 teams, 104 matches, 16 host cities, schedules, qualified teams, tournament news.",
@@ -522,8 +586,8 @@
   },
   {
     "slug": "/blog",
-    "title": "Texas Investigations | Objective Wire",
-    "description": "Public-interest investigative reporting from Objective Wire. Austin courts, Houston fraud, workers comp, public corruption, and statewide accountability journalism sourced from public records and original field work.",
+    "title": "Blog | Objective Wire",
+    "description": "News, analysis, and reporting from Objective Wire. Sports, creators, cars, and culture, verified and source-cited.",
     "publishDate": "2026-05-29",
     "modifiedDate": "2026-05-29",
     "category": "Blog",
@@ -693,27 +757,6 @@
     "priority": 0.6,
     "changeFrequency": "weekly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcars%2F2025-nissan-z-vs-toyota-gr-supra-comparison",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/cars/bugatti-tourbillon-v16-hybrid-reveal-2026",
-    "title": "Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar",
-    "description": "Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.",
-    "publishDate": "2026-05-22",
-    "modifiedDate": "2026-05-22",
-    "category": "Cars",
-    "tags": [
-      "Cars",
-      "Automotive",
-      "Bugatti Tourbillon V16 Hybrid Reveal 2026"
-    ],
-    "author": "ObjectWire Editorial",
-    "authorSlug": "conan-boyle",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcars%2Fbugatti-tourbillon-v16-hybrid-reveal-2026",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
@@ -2253,6 +2296,27 @@
     "priority": 0.6,
     "changeFrequency": "weekly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fmlb%2Frobot-umpires-abs-challenge-2026",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/cars/bugatti-tourbillon-v16-hybrid-reveal-2026",
+    "title": "Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar",
+    "description": "Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.",
+    "publishDate": "2026-05-01",
+    "modifiedDate": "2026-05-01",
+    "category": "Cars",
+    "tags": [
+      "Cars",
+      "Automotive",
+      "Bugatti Tourbillon V16 Hybrid Reveal 2026"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "conan-boyle",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcars%2Fbugatti-tourbillon-v16-hybrid-reveal-2026",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false

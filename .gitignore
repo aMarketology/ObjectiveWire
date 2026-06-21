@@ -52,13 +52,12 @@ next-env.d.ts
 supabase/.temp
 supabase/functions/.vscode
 
-
 # Google service account credential files — NEVER commit these
 *-[a-f0-9]*.json
 objectwireorg-76d014b98819.json
 
-# Un-ignore registry-data.json — it must be branch-tracked so each branch
+# Un-ignore registry-data.json — must be branch-tracked so each branch
 # (org, main) has its own correct version. The *-[a-f0-9]*.json pattern above
-# accidentally matches "registry-data" (the 'a' in 'data' is in hex range a-f).
+# accidentally matches "registry-data" because 'd' falls in hex range a-f.
 !lib/registry-data.json
 

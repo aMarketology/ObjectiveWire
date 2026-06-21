@@ -24,8 +24,9 @@
 
 import { getEntry } from '@/lib/registry-service';
 
-const SITE_URL = 'https://www.objectwire.org';
-const ORG_NAME = 'ZeroWire';
+const SITE_URL = 'https://www.objectivewire.com';
+const ORG_NAME = 'Objective Wire';
+const ORG_LOGO = `${SITE_URL}/zwire-logo-square.png`;
 
 interface SEOWrapperProps {
   slug: string;
@@ -60,17 +61,17 @@ export async function SEOWrapper({ slug, children }: SEOWrapperProps) {
         author: {
           '@type': 'Person',
           name: entry.author,
-          ...(authorUrl ? { url: authorUrl } : {}),
+          ...(authorUrl ? { url: authorUrl, sameAs: [authorUrl] } : {}),
         },
-        // sameAs let Google cross-reference the author profile
-        ...(authorUrl ? { sameAs: [authorUrl] } : {}),
         publisher: {
           '@type': 'Organization',
           name: ORG_NAME,
           url: SITE_URL,
           logo: {
             '@type': 'ImageObject',
-            url: `${SITE_URL}/objectwire-logo.png`,
+            url: ORG_LOGO,
+            width: 1001,
+            height: 1001,
           },
         },
         mainEntityOfPage: `${SITE_URL}${slug}`,
