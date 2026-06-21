@@ -224,8 +224,13 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     if (!rawDesc || rawDesc.startsWith('ObjectWire coverage of') || rawDesc.length < 60) return null;
 
     // ── Extract openGraph.publishedTime ───────────────────────────────────
+    // First try: direct string literal  publishedTime: '2026-...'
     const pubTimeMatch = content.match(/publishedTime\s*:\s*['"`]([^'"`\r\n]{10,30})['"`]/);
-    const publishedTime = pubTimeMatch?.[1]?.trim();
+    // Second try: const PUBLISHED = '2026-...' referenced as publishedTime: PUBLISHED
+    const pubConstMatch = !pubTimeMatch
+      ? content.match(/const\s+PUBLISHED\s*=\s*['"`]([^'"`\r\n]{10,30})['"`]/)
+      : null;
+    const publishedTime = (pubTimeMatch?.[1] ?? pubConstMatch?.[1])?.trim();
 
     // ── Extract openGraph.images[0] — url, width, height, alt ───────────
     // Priority order:
@@ -359,10 +364,12 @@ function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
     ? meta.extractedTags
     : categoryTags;
 
-  // Real publishedTime from the file wins; fall back to existing date; last resort: today
+  // Real publishedTime from the file wins; fall back to existing date;
+  // last resort: a far-past sentinel so undated hub/utility pages always sort
+  // BELOW real articles in homepage feeds — never pollute the top of the feed.
   const publishDate = meta.publishedTime
     ? meta.publishedTime.split('T')[0]
-    : existing?.publishDate ?? TODAY;
+    : existing?.publishDate ?? '2020-01-01';
 
   return {
     slug: meta.slug,

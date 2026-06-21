@@ -17,7 +17,9 @@ export const metadata: Metadata = {
     type: 'article',
     url: "https://www.objectivewire.com/2025-nissan-z-vs-toyota-gr-supra-comparison",
     siteName: 'Objective Wire',
-    section: "News",
+    section: "Cars",
+    publishedTime: '2026-05-22T10:00:00Z',
+    modifiedTime: '2026-05-22T10:00:00Z',
   },
   twitter: {
     card: 'summary_large_image',

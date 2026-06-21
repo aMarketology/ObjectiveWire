@@ -217,69 +217,6 @@
     "featured": false
   },
   {
-    "slug": "/cars/2025-nissan-z-vs-toyota-gr-supra-comparison",
-    "title": "2025 Nissan Z vs Toyota GR Supra | Full Comparison, Specs",
-    "description": "This head-to-head breakdown covers engine specs, design, interior, technology, pricing, and real-world driving dynamics to help you decide between the",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "Cars",
-    "tags": [
-      "Cars",
-      "Automotive",
-      "2025 Nissan Z Vs Toyota Gr Supra Comparison"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcars%2F2025-nissan-z-vs-toyota-gr-supra-comparison",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/cars/bugatti-tourbillon-v16-hybrid-reveal-2026",
-    "title": "Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar",
-    "description": "Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "Cars",
-    "tags": [
-      "Cars",
-      "Automotive",
-      "Bugatti Tourbillon V16 Hybrid Reveal 2026"
-    ],
-    "author": "ObjectWire Editorial",
-    "authorSlug": "conan-boyle",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcars%2Fbugatti-tourbillon-v16-hybrid-reveal-2026",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/cars/ferrari/ferrari-luce-electric-2026",
-    "title": "Ferrari Luce | First Electric Ferrari, Price, Specs 2026",
-    "description": "Ferrari Luce revealed: 1,113hp quad-motor EV, 122 kWh 880V battery, 330-mile range, 0-62 in 2.5 seconds. Price from $530K. Global reveal May 25, 2026.",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "Cars",
-    "tags": [
-      "Cars",
-      "Automotive",
-      "Ferrari",
-      "Ferrari Luce Electric 2026"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "/thumbnails/ferrari-luce-electric-2026.jpg",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "imageAlt": "Ferrari Luce four-door electric GT interior cockpit 2026",
-    "featured": false
-  },
-  {
     "slug": "/cars/ferrari",
     "title": "Ferrari | F80 Hypercar, Models, Formula 1 News 2026",
     "description": "Ferrari hub: F80 hypercar specs, LaFerrari successor, Formula 1 2026 season, current model lineup. All Ferrari news and profiles on ZWire.",
@@ -1003,108 +940,6 @@
     "priority": 0.8,
     "changeFrequency": "monthly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fterms-of-service",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/youtube",
-    "title": "YouTube News | Creators, Channels & Platform 2026",
-    "description": "YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.8,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fyoutube",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/youtube/sidemen/alfie-buttle",
-    "title": "AB (Alfie Buttle) | Fitness YouTuber & Sidemen Collaborator",
-    "description": "Complete profile of AB (Alfie Buttle), British fitness content creator known for gym transformations, Young LA brand partnership, and appearances with the Sidemen.",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "Sidemen",
-      "Alfie Buttle"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fyoutube%2Fsidemen%2Falfie-buttle",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/youtube/sidemen/charity-match",
-    "title": "Sidemen Charity Match 2026 | History, Players & Guide",
-    "description": "Complete guide to the Sidemen Charity Match 2026 - The world",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "Sidemen",
-      "Charity Match"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fyoutube%2Fsidemen%2Fcharity-match",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/youtube/sidemen/italian-bach",
-    "title": "Italian Bach | YouTube Content Creator & Sidemen",
-    "description": "Complete profile of Italian Bach (Isaac Butterfield), British-Italian YouTube creator known for his appearances with the Sidemen and distinctive comedy style.",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "Sidemen",
-      "Italian Bach"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fyoutube%2Fsidemen%2Fitalian-bach",
-    "imageWidth": 1200,
-    "imageHeight": 630,
-    "featured": false
-  },
-  {
-    "slug": "/youtube/spanish",
-    "title": "Top Spanish YouTubers 2026 | Ibai, AuronPlay, ElRubius",
-    "description": "Complete guide to the biggest Spanish-language YouTubers and streamers of 2026. Rankings, profiles, subscriber counts, and content breakdowns for Spain",
-    "publishDate": "2026-06-21",
-    "modifiedDate": "2026-06-21",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "Spanish"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fyoutube%2Fspanish",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
@@ -1865,47 +1700,23 @@
     "featured": false
   },
   {
-    "slug": "/youtube/england-vs-france-charity-match-2026",
-    "title": "England vs France Creator Match 2026 | Eleven All-Stars 2 at Parc des Princes",
-    "description": "England vs France creator football returns May 24, 2026 at Parc des Princes. KSI captains Team England against AmineMaTue\\",
-    "publishDate": "2026-05-21",
-    "modifiedDate": "2026-05-21",
-    "category": "YouTube",
+    "slug": "/cars/2025-nissan-z-vs-toyota-gr-supra-comparison",
+    "title": "2025 Nissan Z vs Toyota GR Supra | Full Comparison, Specs",
+    "description": "This head-to-head breakdown covers engine specs, design, interior, technology, pricing, and real-world driving dynamics to help you decide between the",
+    "publishDate": "2026-05-22",
+    "modifiedDate": "2026-05-22",
+    "category": "Cars",
     "tags": [
-      "YouTube",
-      "Creator Economy",
-      "England Vs France Charity Match 2026"
+      "Cars",
+      "Automotive",
+      "2025 Nissan Z Vs Toyota Gr Supra Comparison"
     ],
     "author": "ObjectWire Editorial",
-    "authorSlug": "jack-sterling",
     "priority": 0.6,
     "changeFrequency": "weekly",
-    "imageUrl": "https://www.owire.org${SLUG}/opengraph-image",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcars%2F2025-nissan-z-vs-toyota-gr-supra-comparison",
     "imageWidth": 1200,
-    "imageHeight": 675,
-    "imageAlt": "England vs France Eleven All-Stars 2 creator match 2026",
-    "featured": false
-  },
-  {
-    "slug": "/youtube/history",
-    "title": "YouTube History | Founded 2005 to 2B Users in 2026",
-    "description": "YouTube was founded in 2005 by Chad Hurley, Steve Chen, and Jawed Karim and acquired by Google for $1.65B in 2006. Today it has 2 billion monthly users and $36B in annual ad revenue.",
-    "publishDate": "2026-05-21",
-    "modifiedDate": "2026-05-21",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "History"
-    ],
-    "author": "ObjectWire Editorial",
-    "authorSlug": "jack-sterling",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/YouTube_play_buttom_icon_%282013-2017%29.png",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "imageAlt": "YouTube logo history",
+    "imageHeight": 630,
     "featured": false
   },
   {
@@ -2281,50 +2092,6 @@
     "featured": false
   },
   {
-    "slug": "/youtube/the-bridge/mbappe-hakimi-interview-2026",
-    "title": "Mbappé on The Bridge Podcast | Hakimi Interview 2026",
-    "description": "Kylian Mbappé joins former PSG teammate Achraf Hakimi on The Bridge YouTube podcast hosted by Malik Bentalha. The two cover their friendship, Mbappé",
-    "publishDate": "2026-05-13",
-    "modifiedDate": "2026-05-13",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "The Bridge",
-      "Mbappe Hakimi Interview 2026"
-    ],
-    "author": "ObjectWire Editorial",
-    "authorSlug": "jack-brennan",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg",
-    "imageWidth": 1280,
-    "imageHeight": 720,
-    "imageAlt": "Kylian Mbappé on The Bridge podcast with Achraf Hakimi",
-    "featured": false
-  },
-  {
-    "slug": "/youtube/the-bridge",
-    "title": "The Bridge Podcast | Achraf Hakimi, Malik Bentalha YouTube Show",
-    "description": "The Bridge is a French-Arab YouTube podcast hosted by PSG defender Achraf Hakimi and comedian Malik Bentalha. The show bridges football, North African culture, and celebrity guests including Kylian Mbappé.",
-    "publishDate": "2026-05-13",
-    "modifiedDate": "2026-05-13",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "The Bridge"
-    ],
-    "author": "Jack Sterling",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fyoutube%2Fthe-bridge",
-    "imageWidth": 1280,
-    "imageHeight": 720,
-    "imageAlt": "The Bridge podcast with Achraf Hakimi and Malik Bentalha",
-    "featured": false
-  },
-  {
     "slug": "/cars/ferrari/ferrari-f80-hypercar-price-specs-2026",
     "title": "Ferrari F80 | Price, Specs, 1184HP Hybrid, Q1 2026 Delivery",
     "description": "Ferrari F80 revealed: $3.735M, 1184hp hybrid hypercar with F1-derived MGU-K technology. 0-60mph in 1.9 seconds. All 799 units sold. Q1 2026 deliveries.",
@@ -2345,6 +2112,28 @@
     "imageWidth": 1200,
     "imageHeight": 675,
     "imageAlt": "Ferrari F80 hypercar red hood emblem, 1184hp hybrid supercar 2026",
+    "featured": false
+  },
+  {
+    "slug": "/cars/ferrari/ferrari-luce-electric-2026",
+    "title": "Ferrari Luce | First Electric Ferrari, Price, Specs 2026",
+    "description": "Ferrari Luce revealed: 1,113hp quad-motor EV, 122 kWh 880V battery, 330-mile range, 0-62 in 2.5 seconds. Price from $530K. Global reveal May 25, 2026.",
+    "publishDate": "2026-05-07",
+    "modifiedDate": "2026-05-07",
+    "category": "Cars",
+    "tags": [
+      "Cars",
+      "Automotive",
+      "Ferrari",
+      "Ferrari Luce Electric 2026"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/ferrari-luce-electric-2026.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "imageAlt": "Ferrari Luce four-door electric GT interior cockpit 2026",
     "featured": false
   },
   {
@@ -2388,6 +2177,27 @@
     "priority": 0.6,
     "changeFrequency": "weekly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fmlb%2Frobot-umpires-abs-challenge-2026",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/cars/bugatti-tourbillon-v16-hybrid-reveal-2026",
+    "title": "Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar",
+    "description": "Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.",
+    "publishDate": "2026-05-01",
+    "modifiedDate": "2026-05-01",
+    "category": "Cars",
+    "tags": [
+      "Cars",
+      "Automotive",
+      "Bugatti Tourbillon V16 Hybrid Reveal 2026"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "conan-boyle",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcars%2Fbugatti-tourbillon-v16-hybrid-reveal-2026",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
@@ -2570,29 +2380,6 @@
     "imageWidth": 1200,
     "imageHeight": 675,
     "imageAlt": "Football stadium crowd World Cup",
-    "featured": false
-  },
-  {
-    "slug": "/youtube/sidemen/charity-match/2026-lineup-max-fosh-willne",
-    "title": "Sidemen Charity Match 2026 Lineup | Max Fosh, WillNE",
-    "description": "The full Sidemen Charity Match 2026 lineup is confirmed. Max Fosh and WillNE join the YouTube All-Stars squad after contentious dropouts including Logan",
-    "publishDate": "2026-04-17",
-    "modifiedDate": "2026-04-17",
-    "category": "YouTube",
-    "tags": [
-      "YouTube",
-      "Creator Economy",
-      "Sidemen",
-      "Charity Match",
-      "2026 Lineup Max Fosh Willne"
-    ],
-    "author": "ObjectWire Editorial",
-    "priority": 0.6,
-    "changeFrequency": "weekly",
-    "imageUrl": "https://www.objectivewire.com/influncer/sidemne_charity_match_26.png",
-    "imageWidth": 1200,
-    "imageHeight": 675,
-    "imageAlt": "Sidemen Charity Match 2026 squad lineup",
     "featured": false
   },
   {
