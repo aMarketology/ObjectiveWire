@@ -6,14 +6,17 @@ import type { ContentEntry } from '@/lib/content-registry';
 // Fully static — regenerated at every build via sync-registry.ts in prebuild.
 // No Supabase calls. registry-data.json is the source of truth.
 
+const SENTINEL_DATE = '2020-01-01';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
   const registry = registryDataRaw as ContentEntry[];
+  const now = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'hourly',
       priority: 1.0,
     },
@@ -21,7 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const registryEntries: MetadataRoute.Sitemap = registry.map(entry => ({
     url: `${baseUrl}${entry.slug}`,
-    lastModified: new Date(entry.modifiedDate),
+    // Hub/utility pages have sentinel date 2020-01-01 — show build date so
+    // Google knows they are actively maintained, not abandoned.
+    lastModified: entry.modifiedDate === SENTINEL_DATE ? now : new Date(entry.modifiedDate),
     changeFrequency: entry.changeFrequency as MetadataRoute.Sitemap[number]['changeFrequency'],
     priority: Number(entry.priority),
   }));

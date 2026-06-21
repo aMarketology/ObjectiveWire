@@ -6,20 +6,31 @@ import type { ContentEntry } from '@/lib/content-registry';
 // Updated on every build via sync-registry.ts in prebuild.
 const RSS_LIMIT = 200;
 
+// Path-prefix roots that are never articles (author pages, hub pages, service pages, etc.)
+const NON_ARTICLE_ROOTS = new Set([
+  'authors', 'service', 'editorial-standards', 'get-help',
+  'local', 'account', 'auth', 'api', 'admin', 'tags', 'search',
+  'index', 'blog', 'site-index', 'team', 'privacy-policy',
+  'terms-of-service', 'corrections', 'copyright', 'about',
+  'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
+  'feed.json', 'podcasts',
+]);
+
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
   const registry = registryDataRaw as ContentEntry[];
 
   const articles = [...registry]
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
-    .slice(0, RSS_LIMIT)
     .filter((row) => {
       const parts = row.slug.split('/').filter(Boolean);
       if (parts.length < 2) return false;
+      if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
       if ((row.description || '').length < 60) return false;
       if ((row.title || '').startsWith('›')) return false;
       return true;
-    });
+    })
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+    .slice(0, RSS_LIMIT);
 
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">

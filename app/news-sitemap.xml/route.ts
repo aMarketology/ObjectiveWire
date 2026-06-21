@@ -7,9 +7,20 @@ import type { ContentEntry } from '@/lib/content-registry';
 // To appear here, an entry needs:
 //   - publishDate within the sliding window (NEWS_WINDOW_DAYS)
 //   - tags[] used as news keywords
+//   - must be a real article (slug depth >= 2, description >= 60 chars)
 // No Supabase calls — fully in-memory.
 
-const NEWS_WINDOW_DAYS = 3;
+const NEWS_WINDOW_DAYS = 7;
+
+// Path-prefix roots that are never articles (author pages, hub pages, service pages, etc.)
+const NON_ARTICLE_ROOTS = new Set([
+  'authors', 'service', 'editorial-standards', 'get-help',
+  'local', 'account', 'auth', 'api', 'admin', 'tags', 'search',
+  'index', 'blog', 'site-index', 'team', 'privacy-policy',
+  'terms-of-service', 'corrections', 'copyright', 'about',
+  'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
+  'feed.json', 'podcasts',
+]);
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
@@ -20,7 +31,14 @@ export async function GET() {
   const cutoffStr = cutoff.toISOString().split('T')[0]; // "YYYY-MM-DD"
 
   const recentArticles = registry
-    .filter(entry => entry.publishDate >= cutoffStr)
+    .filter(entry => {
+      if (entry.publishDate < cutoffStr) return false;
+      const parts = entry.slug.split('/').filter(Boolean);
+      if (parts.length < 2) return false;
+      if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
+      if ((entry.description || '').length < 60) return false;
+      return true;
+    })
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
     .map(entry => ({
       loc: `${baseUrl}${entry.slug}`,

@@ -62,10 +62,6 @@ export default function robots(): MetadataRoute.Robots {
           '/test/*',
           '/tmp/',
           '/temp/',
-          
-          // RSS/XML endpoints (indexed separately)
-          '/rss.xml/',
-          '/news-sitemap.xml/',
         ],
       },
       
