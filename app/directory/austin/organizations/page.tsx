@@ -347,7 +347,6 @@ export default function AustinOrganizationsPage() {
                       href={org.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
                       className="text-[11px] text-blue-400 hover:text-blue-300 underline transition-colors"
                     >
                       {org.website.replace('https://', '')}

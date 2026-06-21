@@ -10,26 +10,24 @@ const PAGE_URL = 'https://www.objectivewire.org/blog';
 export const metadata: Metadata = {
   title: 'Texas Investigations | Objective Wire',
   description:
-    'Public-interest investigative reporting from Objective Wire. Austin city hall, Houston courts, Travis County public records, workers comp fraud, and statewide accountability journalism from a 501(c)(3) nonprofit newsroom.',
+    'Public-interest investigative reporting from Objective Wire. Austin courts, Houston fraud, workers comp, public corruption, and statewide accountability journalism sourced from public records and original field work.',
   keywords: [
     'Texas investigative reporting',
     'Austin public records journalism',
     'Houston accountability reporting',
     'Travis County courts',
-    'Texas nonprofit journalism',
-    'Objective Wire Texas blog',
-    'Austin investigative news',
-    'Texas public interest reporting',
-    'workers comp fraud Texas',
     'Texas public corruption',
-    'APD accountability',
-    'Harris County courts',
+    'workers comp fraud Texas',
+    'Objective Wire investigations',
+    'Austin investigative news',
+    'Karmelo Anthony trial',
+    'Bexar County towing bribery',
+    'Texas AG lawsuit',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: 'Texas Investigations | Objective Wire',
-    description:
-      'Public-interest reporting on Texas. Austin, Houston, Greater Texas, courts, public records, and accountability journalism.',
+    description: 'Public-interest reporting on Texas. Austin, Houston, Greater Texas, courts, public records, and accountability journalism.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
@@ -37,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Texas Investigations | Objective Wire',
-    description: 'Nonprofit investigative reporting across Texas, sourced from public records and court filings.',
+    description: 'Investigative reporting across Texas sourced from public records, court filings, and original field work.',
   },
 };
 
@@ -79,11 +77,42 @@ const BEATS = [
 // Page
 // ---------------------------------------------------------------------------
 
+// Utility/hub routes that are not article pages on this branch
+const SKIP_EXACT = new Set([
+  '/blog', '/local', '/local/austin', '/local/houston', '/local/greater-texas',
+  '/local/mexico-canada', '/local/us-news', '/service', '/directory',
+  '/directory/austin', '/directory/houston', '/directory/greater-texas',
+  '/world-cup', '/cars', '/news', '/authors', '/about', '/team',
+  '/search', '/site-index', '/tags', '/account', '/profile', '/saved',
+  '/login', '/index', '/editorial-standards', '/corrections',
+  '/privacy-policy', '/terms-of-service', '/copyright', '/get-help',
+  '/podcasts', '/blog/[slug]',
+]);
+
+function isArticlePage(slug: string): boolean {
+  if (SKIP_EXACT.has(slug)) return false;
+  const parts = slug.split('/').filter(Boolean);
+  // Must be a real sub-page (2+ segments) unless it's a standalone article like /austin-private-detective-agency
+  if (parts.length === 1) {
+    // Allow known standalone landing articles
+    return ['austin-private-detective-agency'].includes(parts[0]);
+  }
+  // Skip pure hub/utility top-level sections with only one segment of depth
+  const topLevel = parts[0];
+  const SKIP_TOPS = ['directory', 'get-help', 'api', 'auth', 'admin', 'feed', 'feeds', 'rss', 'sitemap', 'image-sitemap'];
+  if (SKIP_TOPS.includes(topLevel)) return false;
+  return parts.length >= 2;
+}
+
 export default async function TexasBlogPage() {
   const all = await getAllEntries();
-  const articles: ContentEntry[] = all.filter(
-    (e) => e.slug.startsWith('/blog/') && e.slug.split('/').filter(Boolean).length >= 2
-  );
+  const articles: ContentEntry[] = all
+    .filter((e) => isArticlePage(e.slug))
+    .sort((a, b) => {
+      const da = a.publishDate ? new Date(a.publishDate).getTime() : 0;
+      const db = b.publishDate ? new Date(b.publishDate).getTime() : 0;
+      return db - da;
+    });
 
   return (
     <>
@@ -101,7 +130,7 @@ export default async function TexasBlogPage() {
             </nav>
             <div className="border-l-4 border-amber-500 pl-6">
               <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-amber-600 mb-3 font-mono">
-                501(c)(3) Nonprofit · Public-Interest Reporting · Throughout Texas
+                Public-Interest Reporting · Texas
               </p>
               <h1 className="font-serif text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 text-gray-900">
                 Texas.<br />Investigated &amp; Reported.
@@ -125,9 +154,9 @@ export default async function TexasBlogPage() {
                 </p>
                 <h2 className="font-serif text-3xl font-black text-gray-900">Recently Published</h2>
               </div>
-              {articles.length > 6 && (
+              {articles.length > 9 && (
                 <Link
-                  href="/blog/archive"
+                  href="/site-index"
                   className="text-xs font-mono font-bold uppercase tracking-widest text-amber-600 hover:underline"
                 >
                   All stories &rarr;
@@ -267,8 +296,24 @@ function ArticleCard({ article }: { article: ContentEntry }) {
   return (
     <Link
       href={article.slug}
-      className="group block bg-white border border-gray-200 hover:border-amber-500 hover:shadow-md transition-all"
+      className="group block bg-white border border-gray-200 hover:border-amber-500 hover:shadow-md transition-all overflow-hidden"
     >
+      {/* Thumbnail */}
+      {article.imageUrl && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={article.imageUrl}
+          alt={article.title}
+          className="w-full h-44 object-cover"
+          loading="lazy"
+        />
+      )}
+      {!article.imageUrl && (
+        <div className="w-full h-44 bg-gray-100 flex items-center justify-center">
+          <span className="text-3xl opacity-30">📰</span>
+        </div>
+      )}
+
       <div className="h-[3px] bg-gray-200 group-hover:bg-amber-500 transition-colors" />
       <div className="p-6">
         {article.category && (
