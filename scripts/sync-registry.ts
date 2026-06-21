@@ -364,12 +364,17 @@ function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
     ? meta.extractedTags
     : categoryTags;
 
-  // Real publishedTime from the file wins; fall back to existing date;
-  // last resort: a far-past sentinel so undated hub/utility pages always sort
-  // BELOW real articles in homepage feeds — never pollute the top of the feed.
+  // Real publishedTime from the file wins.
+  // Fall back to existing date ONLY if it looks like a real article date
+  // (i.e. it was not assigned by a previous sync that used TODAY as a fallback).
+  // If existing date === TODAY it means the page never had a publishedTime and
+  // got today's date as a placeholder — reset it to the far-past sentinel so
+  // hub/utility pages always sort BELOW real articles in homepage feeds.
+  const existingDate = existing?.publishDate;
+  const existingIsReal = existingDate && existingDate !== TODAY;
   const publishDate = meta.publishedTime
     ? meta.publishedTime.split('T')[0]
-    : existing?.publishDate ?? '2020-01-01';
+    : existingIsReal ? existingDate : '2020-01-01';
 
   return {
     slug: meta.slug,
@@ -421,8 +426,8 @@ function main() {
   if (updated)      console.log(`♻️   ${updated} existing pages updated`);
   if (removed > 0)  console.log(`🗑️   ${removed} orphaned entries removed (no matching page.tsx)`);
   if (withoutDate.length) {
-    console.log(`\n⚠️  ${withoutDate.length} pages have no openGraph.publishedTime — assigned today's date.`);
-    console.log('    Add openGraph.publishedTime to those files for accurate Google News indexing.');
+    console.log(`\n⚠️  ${withoutDate.length} pages have no openGraph.publishedTime — assigned sentinel date 2020-01-01.`);
+    console.log('    These pages sort below all real articles in feeds. Add openGraph.publishedTime for accurate Google News indexing.');
   }
 
   if (!WRITE_FLAG) {

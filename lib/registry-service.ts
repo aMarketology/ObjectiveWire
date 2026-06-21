@@ -32,11 +32,24 @@ const HUB_SLUGS = new Set([
 
 const HUB_CATEGORIES = new Set(['Meta', 'Support', 'Services', 'Legal']);
 
+// Top-level path segments whose sub-pages are NEVER real articles
+// (author profiles, service pages, editorial meta, legal pages, etc.)
+const NON_ARTICLE_ROOTS = new Set([
+  'authors', 'service', 'editorial-standards', 'get-help',
+  'local', 'account', 'auth', 'api', 'admin', 'tags', 'search',
+  'index', 'blog', 'site-index', 'team', 'privacy-policy',
+  'terms-of-service', 'corrections', 'copyright', 'about',
+  'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
+  'feed.json', 'podcasts',
+]);
+
 function isRealArticle(e: ContentEntry): boolean {
   if (HUB_SLUGS.has(e.slug)) return false;
   if (HUB_CATEGORIES.has(e.category)) return false;
   const parts = e.slug.split('/').filter(Boolean);
   if (parts.length < 2) return false;
+  // Block all sub-pages of non-article roots (e.g. /authors/x, /service/x)
+  if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
   if (e.description.length < 60) return false;
   if (e.title.startsWith('›') || e.title.startsWith('ObjectWire coverage')) return false;
   return true;
