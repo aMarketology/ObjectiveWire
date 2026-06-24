@@ -111,15 +111,15 @@ const BREADCRUMB_SCHEMA = {
 };
 
 const SERVICES = [
-  { href: '/service/surveillance', label: 'Surveillance', icon: '🎥', desc: 'Covert photo and video documentation for domestic, legal, and corporate cases.' },
-  { href: '/service/infidelity-investigations', label: 'Infidelity Investigations', icon: '🔍', desc: 'Cheating spouse and domestic partner cases with timestamped evidence.' },
-  { href: '/service/missing-persons', label: 'Missing Persons', icon: '📍', desc: 'Locate missing adults, runaways, and estranged family members.' },
-  { href: '/service/background-checks', label: 'Background Checks', icon: '📋', desc: 'Criminal history, employment verification, and identity research.' },
-  { href: '/service/skip-tracing', label: 'Skip Tracing', icon: '🗺️', desc: 'Locate debtors, witnesses, defendants, and estranged contacts.' },
-  { href: '/service/child-custody-investigations', label: 'Child Custody', icon: '⚖️', desc: 'Parental surveillance and verification for Travis County family court.' },
-  { href: '/service/workers-compensation-fraud', label: 'Workers Comp Fraud', icon: '🏥', desc: 'Claimant surveillance for insurers and defense attorneys.' },
-  { href: '/service/corporate-investigations', label: 'Corporate Investigations', icon: '🏢', desc: 'Employee misconduct, IP theft, fraud, and executive due diligence.' },
-  { href: '/service/digital-forensics', label: 'Digital Forensics', icon: '💻', desc: 'Online harassment, identity fraud, social media aliases, and dark-web exposure.' },
+  { href: '/service/surveillance', label: 'Surveillance', icon: '📷', desc: 'Discreet field surveillance for individuals, attorneys, and businesses in Travis County and Central Texas.' },
+  { href: '/service/missing-persons', label: 'Missing Persons', icon: '🔍', desc: 'Field investigation and skip tracing to locate missing family members, witnesses, and individuals.' },
+  { href: '/service/background-checks', label: 'Background Checks', icon: '📋', desc: 'Comprehensive background screening for employment, relationships, tenants, and business partners.' },
+  { href: '/service/infidelity-investigations', label: 'Infidelity Investigations', icon: '🤝', desc: 'Discreet, documented investigations for individuals and family law attorneys.' },
+  { href: '/service/digital-forensics', label: 'Digital Forensics', icon: '💻', desc: 'Device analysis, social media investigation, and online trace work for civil and private matters.' },
+  { href: '/service/skip-tracing', label: 'Skip Tracing', icon: '📍', desc: 'Locate individuals for debt recovery, legal service, reunification, and heir searches.' },
+  { href: '/service/child-custody-investigations', label: 'Child Custody', icon: '👨‍👧', desc: 'Documented evidence for family law proceedings. Parental fitness, location monitoring, and compliance.' },
+  { href: '/service/workers-compensation-fraud', label: 'Workers Comp Fraud', icon: '🏥', desc: 'Surveillance and documentation for insurers and employers disputing workers compensation claims.' },
+  { href: '/service/corporate-investigations', label: 'Corporate Investigations', icon: '🏢', desc: 'Internal fraud, employee misconduct, due diligence, and competitive intelligence for businesses.' },
 ];
 
 const JOURNALISM_SERVICES = [

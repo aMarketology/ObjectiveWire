@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import { scanAllContent } from '@/lib/content-scanner';
+import { 
+  getPublishedArticles, 
+  getCreatorArticles, 
+  getJackArticles 
+} from '@/lib/article-service';
 import Breadcrumb from '@/components/nav/Breadcrumb';
 import type { Metadata } from 'next';
 
@@ -43,32 +47,38 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   if (query) {
     searchPerformed = true;
 
-    // Single source of truth: filesystem scan finds ALL pages with metadata.
-    // No separate Supabase query — avoids duplicates and broken slug-to-URL mapping.
-    const allArticles = await scanAllContent();
+    // Fetch from all primary content registries in Supabase
+    const [articles, creators, jacks] = await Promise.all([
+      getPublishedArticles(),
+      getCreatorArticles(),
+      getJackArticles(),
+    ]);
+
+    const allContent = [...articles, ...creators, ...jacks];
 
     // Search algorithm: title, excerpt, category, author
-    results = allArticles.filter(article => {
+    results = allContent.filter(item => {
       const searchableText = `
-        ${article.title} 
-        ${article.excerpt} 
-        ${article.category} 
-        ${article.author}
+        ${item.title || ''} 
+        ${item.excerpt || ''} 
+        ${item.category || ''} 
+        ${item.author || item.author_name || ''}
       `.toLowerCase();
 
       return searchableText.includes(query);
     });
 
-    // Sort by relevance (title matches first, then excerpt matches)
+    // Sort by relevance (title matches first, then date)
     results.sort((a, b) => {
-      const aTitleMatch = a.title.toLowerCase().includes(query);
-      const bTitleMatch = b.title.toLowerCase().includes(query);
+      const aTitleMatch = (a.title || '').toLowerCase().includes(query);
+      const bTitleMatch = (b.title || '').toLowerCase().includes(query);
       
       if (aTitleMatch && !bTitleMatch) return -1;
       if (!aTitleMatch && bTitleMatch) return 1;
       
-      // If both match title or both don't, sort by date
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      const aDate = new Date(a.publishedAt || a.published_at || 0).getTime();
+      const bDate = new Date(b.publishedAt || b.published_at || 0).getTime();
+      return bDate - aDate;
     });
   }
 
