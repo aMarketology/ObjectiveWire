@@ -8,95 +8,57 @@ export const revalidate = false;
 const PAGE_URL = 'https://www.objectivewire.com/service';
 
 export const metadata: Metadata = {
-  title: 'Investigative Services Austin TX | ObjectWire',
+  title: 'ObjectWire Coverage | Sports, Creators, Cars & Culture',
   description:
-    'ObjectWire is an Austin-based investigative media company. Licensed PI services, investigative journalism, document review, and newsroom tips. Serving Travis County and Central Texas.',
+    'ObjectWire is a verified sports, creators, and culture network. Primary-source reporting on World Cup 2026, Premier League, MLS, MLB, golf, supercars, creator economy, and breaking culture news.',
   keywords: [
-    'investigative services Austin TX',
-    'private investigator Austin Texas',
-    'Austin PI agency',
-    'investigative journalism Austin',
-    'surveillance Austin Texas',
-    'missing persons Austin',
-    'digital forensics Austin',
-    'background check Austin TX',
-    'corporate investigations Austin',
-    'skip tracing Austin Texas',
-    'tip the newsroom Austin',
-    'FOIA Austin Texas',
-    'ObjectWire investigative services',
+    'World Cup 2026 coverage',
+    'Premier League news 2026',
+    'MLS 2026 reporting',
+    'MLB news 2026',
+    'supercar news',
+    'creator economy news',
+    'YouTube creator profiles',
+    'TikTok influencer news',
+    'sports verified scores',
+    'sports betting data verified',
+    'culture reporting',
+    'ObjectWire sports coverage',
+    'investigative sports journalism',
+    'tip the newsroom',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Investigative Services Austin TX | ObjectWire',
+    title: 'ObjectWire Coverage | Sports, Creators, Cars & Culture',
     description:
-      'Austin investigative media company. Licensed PI services and investigative journalism. Surveillance, missing persons, digital forensics, background checks, corporate investigations, FOIA, and newsroom tips.',
+      'Verified sports and culture coverage. World Cup 2026, Premier League, MLS, supercars, and the creator economy. Primary sources. Accuracy over speed.',
     type: 'website',
     url: PAGE_URL,
     siteName: 'Objective Wire',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Investigative Services Austin TX | ObjectWire',
+    title: 'ObjectWire Coverage | Sports, Creators, Cars & Culture',
     description:
-      'Austin PI and investigative journalism services. Surveillance, missing persons, digital forensics, and newsroom tips.',
+      'World Cup 2026, Premier League, supercars, creators. Verified reporting, primary sources only.',
   },
 };
 
-const LOCAL_BUSINESS_SCHEMA = {
+const SITE_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'ProfessionalService'],
-  name: 'ObjectWire Investigative Services',
-  description:
-    'Austin-based investigative media company offering licensed private investigator services including surveillance, missing persons, digital forensics, background checks, infidelity investigations, skip tracing, child custody, workers compensation fraud, and corporate investigations.',
+  '@type': 'NewsMediaOrganization',
+  name: 'Objective Wire',
+  alternateName: 'oWire',
   url: PAGE_URL,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Austin',
-    addressRegion: 'TX',
-    addressCountry: 'US',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 30.2672,
-    longitude: -97.7431,
-  },
-  areaServed: [
-    { '@type': 'City', name: 'Austin', containedInPlace: { '@type': 'State', name: 'Texas' } },
-    { '@type': 'AdministrativeArea', name: 'Travis County' },
-    { '@type': 'AdministrativeArea', name: 'Williamson County' },
-    { '@type': 'AdministrativeArea', name: 'Hays County' },
-  ],
-  knowsAbout: [
-    'Private Investigation',
-    'Surveillance',
-    'Digital Forensics',
-    'Missing Persons',
-    'Background Checks',
-    'Corporate Investigations',
-    'Investigative Journalism',
-    'FOIA',
-    'Source Protection',
-    'Whistleblower Reporting',
-    'Public Records',
-  ],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Investigative Services',
-    itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surveillance Investigations', url: 'https://www.objectivewire.com/service/surveillance' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Infidelity Investigations', url: 'https://www.objectivewire.com/service/infidelity-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Missing Persons Investigations', url: 'https://www.objectivewire.com/service/missing-persons' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Background Check Investigations', url: 'https://www.objectivewire.com/service/background-checks' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Skip Tracing', url: 'https://www.objectivewire.com/service/skip-tracing' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Child Custody Investigations', url: 'https://www.objectivewire.com/service/child-custody-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workers Compensation Fraud', url: 'https://www.objectivewire.com/service/workers-compensation-fraud' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Corporate Investigations', url: 'https://www.objectivewire.com/service/corporate-investigations' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Digital Forensics', url: 'https://www.objectivewire.com/service/digital-forensics' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Investigative Reporting', url: 'https://www.objectivewire.com/service/investigative-reporting' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Newsroom Tip Submission', url: 'https://www.objectivewire.com/service/tip-the-newsroom' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Document Review and FOIA', url: 'https://www.objectivewire.com/service/document-review' } },
-    ],
+  description:
+    'Objective Wire is a verified sports, creators, and culture network covering World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy.',
+  foundingDate: '2024',
+  email: 'editorial@objectivewire.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.objectivewire.com/zwire-logo-square.png',
+    width: 1001,
+    height: 1001,
   },
   sameAs: ['https://www.objectivewire.com'],
 };
@@ -106,34 +68,94 @@ const BREADCRUMB_SCHEMA = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.objectivewire.com' },
-    { '@type': 'ListItem', position: 2, name: 'Investigative Services', item: PAGE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Coverage', item: PAGE_URL },
   ],
 };
 
-const SERVICES = [
-  { href: '/service/surveillance', label: 'Surveillance', icon: '📷', desc: 'Discreet field surveillance for individuals, attorneys, and businesses in Travis County and Central Texas.' },
-  { href: '/service/missing-persons', label: 'Missing Persons', icon: '🔍', desc: 'Field investigation and skip tracing to locate missing family members, witnesses, and individuals.' },
-  { href: '/service/background-checks', label: 'Background Checks', icon: '📋', desc: 'Comprehensive background screening for employment, relationships, tenants, and business partners.' },
-  { href: '/service/infidelity-investigations', label: 'Infidelity Investigations', icon: '🤝', desc: 'Discreet, documented investigations for individuals and family law attorneys.' },
-  { href: '/service/digital-forensics', label: 'Digital Forensics', icon: '💻', desc: 'Device analysis, social media investigation, and online trace work for civil and private matters.' },
-  { href: '/service/skip-tracing', label: 'Skip Tracing', icon: '📍', desc: 'Locate individuals for debt recovery, legal service, reunification, and heir searches.' },
-  { href: '/service/child-custody-investigations', label: 'Child Custody', icon: '👨‍👧', desc: 'Documented evidence for family law proceedings. Parental fitness, location monitoring, and compliance.' },
-  { href: '/service/workers-compensation-fraud', label: 'Workers Comp Fraud', icon: '🏥', desc: 'Surveillance and documentation for insurers and employers disputing workers compensation claims.' },
-  { href: '/service/corporate-investigations', label: 'Corporate Investigations', icon: '🏢', desc: 'Internal fraud, employee misconduct, due diligence, and competitive intelligence for businesses.' },
+const COVERAGE_PILLARS = [
+  {
+    href: '/world-cup',
+    label: 'World Cup 2026',
+    icon: '⚽',
+    desc: 'Live match reports, standings, group stage results, knockout bracket, and elimination coverage for the 2026 FIFA World Cup across the USA, Mexico, and Canada.',
+  },
+  {
+    href: '/premier-league',
+    label: 'Premier League',
+    icon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    desc: 'Premier League news, results, transfer window reporting, manager news, and table standings. Primary-source coverage from club and league announcements.',
+  },
+  {
+    href: '/mls',
+    label: 'MLS 2026',
+    icon: '🇺🇸',
+    desc: 'Major League Soccer match reports, standings, playoff race, and roster news. The most complete American soccer coverage outside the World Cup.',
+  },
+  {
+    href: '/mlb',
+    label: 'MLB',
+    icon: '⚾',
+    desc: 'MLB standings, trade news, playoff picture, and player performance reporting. Verified stats and primary-source roster moves.',
+  },
+  {
+    href: '/golf',
+    label: 'Golf',
+    icon: '⛳',
+    desc: 'PGA Tour leaderboards, major championship coverage, LIV Golf news, and player rankings. Accuracy-first golf journalism.',
+  },
+  {
+    href: '/cars',
+    label: 'Cars and Motorsport',
+    icon: '🏎️',
+    desc: 'Supercar reveals, EV news, Formula 1, IMSA, and auto industry reporting. Primary source: manufacturer press releases and race results.',
+  },
+  {
+    href: '/creator',
+    label: 'Creator Economy',
+    icon: '🎬',
+    desc: 'YouTube creator news, TikTok trends, influencer profiles, brand deals, and platform policy changes affecting the creator economy.',
+  },
+  {
+    href: '/youtube',
+    label: 'YouTube',
+    icon: '▶️',
+    desc: 'YouTube creator spotlights, subscriber milestones, controversy coverage, and platform policy reporting. Verified from primary sources.',
+  },
+  {
+    href: '/soccer',
+    label: 'Soccer',
+    icon: '�',
+    desc: 'Global soccer coverage beyond the World Cup. Nations League, Copa America, CONMEBOL, CAF, and international match reports.',
+  },
 ];
 
-const JOURNALISM_SERVICES = [
-  { href: '/service/investigative-reporting', label: 'Investigative Reporting', icon: '📰', desc: 'Published accountability journalism on public figures, institutions, and matters of public interest.' },
-  { href: '/service/tip-the-newsroom', label: 'Tip the Newsroom', icon: '📬', desc: 'Submit a confidential tip. We protect sources and pursue stories the public deserves to know.' },
-  { href: '/service/document-review', label: 'Document Review and FOIA', icon: '📁', desc: 'Submit public records, FOIA responses, or leaked materials for investigative analysis.' },
+const EDITORIAL_SERVICES = [
+  {
+    href: '/service/tip-the-newsroom',
+    label: 'Tip the Newsroom',
+    icon: '�',
+    desc: 'Submit a confidential tip. We protect sources and pursue stories that serve the public interest. All tips reviewed by the editorial desk.',
+  },
+  {
+    href: '/editorial-standards',
+    label: 'Editorial Standards',
+    icon: '�',
+    desc: 'ObjectWire publishes verified, primary-source reporting. Read our editorial standards: accuracy over speed, transparent corrections, named authors.',
+  },
+  {
+    href: '/corrections',
+    label: 'Corrections',
+    icon: '✏️',
+    desc: 'Errors corrected publicly, timestamped, with the original text preserved. Report a factual error to the editorial desk.',
+  },
 ];
 
-export default function ServicesHubPage() {
+export default function CoverageHubPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA) }}
       />
       <script
         type="application/ld+json"
@@ -148,36 +170,36 @@ export default function ServicesHubPage() {
             <Breadcrumb
               items={[
                 { name: 'Home', item: '/' },
-                { name: 'Investigative Services', item: '/service' },
+                { name: 'Coverage', item: '/service' },
               ]}
               className="text-gray-400"
             />
           </div>
           <div className="container mx-auto px-4 py-16 max-w-6xl">
             <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-400 mb-4 font-mono">
-              Austin, Texas · Licensed Investigative Journalists · 501(c)(3) Nonprofit
+              Verified Sports, Culture and Creators
             </p>
             <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight mb-6 max-w-4xl">
-              Austin&apos;s Investigative<br />
-              <span className="text-blue-400">Media Outlet.</span>
+              What ObjectWire<br />
+              <span className="text-blue-400">Covers.</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mb-6 leading-relaxed">
-              Our reporters hold Texas PI licenses. That means court-admissible surveillance,
-              legal skip tracing, and verified background research, applied to stories the
-              public deserves to know.
+              Primary-source reporting on the events, people, and industries that matter.
+              World Cup 2026, Premier League, MLS, MLB, supercars, creators, and breaking culture.
+              Accuracy over speed. Every article traceable to source.
             </p>
             <p className="text-base text-gray-400 max-w-2xl mb-10 leading-relaxed">
-              We are a news outlet first. The license enables the journalism, giving oWire
-              access to investigative methods most reporters cannot legally use.
+              ObjectWire builds verified factual records for the sports and culture events
+              people bet on, argue about, and search for. Every stat, every result,
+              every roster move, sourced and timestamped.
             </p>
 
-            {/* Stat badges */}
             <div className="flex flex-wrap gap-6 mb-10">
               {[
-                { stat: 'Licensed', label: 'Texas PI Agency' },
-                { stat: '501(c)(3)', label: 'Nonprofit Newsroom' },
-                { stat: 'Austin, TX', label: 'Travis County Based' },
-                { stat: 'Tip Us', label: 'Submit a Story' },
+                { stat: '9', label: 'Coverage Beats' },
+                { stat: 'Primary', label: 'Sources Only' },
+                { stat: 'World Cup', label: '2026 Focus' },
+                { stat: 'Verified', label: 'Every Claim' },
               ].map(({ stat, label }) => (
                 <div key={label} className="text-center">
                   <div className="text-2xl font-black text-white">{stat}</div>
@@ -188,52 +210,51 @@ export default function ServicesHubPage() {
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/service/tip-the-newsroom"
+                href="/world-cup"
                 className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
               >
-                Tip the Newsroom
+                World Cup 2026 Coverage
               </Link>
               <Link
-                href="/austin-private-detective-agency"
+                href="/service/tip-the-newsroom"
                 className="border border-gray-600 hover:border-white text-gray-300 hover:text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
               >
-                About Our License
+                Tip the Newsroom
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ── PI SERVICES GRID ── */}
+        {/* ── COVERAGE PILLARS ── */}
         <section className="py-20 bg-white dark:bg-gray-950">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="mb-12">
               <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-600 mb-3 font-mono">
-                Investigative Methods
+                Editorial Beats
               </p>
               <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-                How Our Reporters Investigate
+                Coverage Areas
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-                These are the licensed investigative methods our reporters apply to public-interest stories.
-                oWire reporters hold Texas PI credentials, enabling legal surveillance, skip tracing, and
-                background research as part of the reporting process.
+                ObjectWire covers four content pillars: sports, cars, creators, and culture.
+                Every article is primary-source only, written for people who want facts, not takes.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SERVICES.map((s) => (
+              {COVERAGE_PILLARS.map((p) => (
                 <Link
-                  key={s.href}
-                  href={s.href}
+                  key={p.href}
+                  href={p.href}
                   className="group border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-blue-500 hover:shadow-lg transition-all bg-white dark:bg-gray-900"
                 >
-                  <div className="text-3xl mb-4">{s.icon}</div>
+                  <div className="text-3xl mb-4">{p.icon}</div>
                   <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">
-                    {s.label}
+                    {p.label}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{s.desc}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{p.desc}</p>
                   <span className="text-blue-600 text-sm font-semibold group-hover:underline">
-                    Learn more →
+                    Read coverage →
                   </span>
                 </Link>
               ))}
@@ -241,24 +262,73 @@ export default function ServicesHubPage() {
           </div>
         </section>
 
-        {/* ── JOURNALISM SERVICES ── */}
+        {/* ── VERIFIED DATA FOR SPORTS BETTORS ── */}
         <section className="py-20 bg-gray-50 dark:bg-gray-900">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-600 mb-3 font-mono">
+                  Verified Factual Base
+                </p>
+                <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-6">
+                  Objective data for the biggest events.
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                  Every World Cup result, standings update, goal scorer, and group table
+                  on ObjectWire is sourced directly from FIFA. No editorial spin.
+                  The record stands as a verifiable, timestamped fact base.
+                </p>
+                <p className="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+                  ObjectWire builds the factual foundation for sports events, covering scores,
+                  brackets, and results with the precision that sports bettors, analysts,
+                  and researchers require. Primary source or it does not publish.
+                </p>
+                <Link
+                  href="/world-cup"
+                  className="text-blue-600 hover:text-blue-800 underline font-semibold"
+                >
+                  World Cup 2026 hub →
+                </Link>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { icon: '✅', text: 'Match results sourced from official FIFA and league records' },
+                  { icon: '✅', text: 'Standings updated from primary league data, not aggregators' },
+                  { icon: '✅', text: 'Elimination bracket tracking for every World Cup round' },
+                  { icon: '✅', text: 'Roster news cited to club and federation announcements' },
+                  { icon: '✅', text: 'Named bylines, known authors, no anonymous takes' },
+                  { icon: '✅', text: 'Timestamps on every publish and update' },
+                  { icon: '✅', text: 'Corrections posted publicly when facts change' },
+                  { icon: '✅', text: 'No manufactured drama, no clickbait, no hedged claims' },
+                ].map(({ icon, text }) => (
+                  <div key={text} className="flex items-start gap-3">
+                    <span className="text-lg mt-0.5">{icon}</span>
+                    <p className="text-gray-700 dark:text-gray-300">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── EDITORIAL SERVICES ── */}
+        <section className="py-20 bg-white dark:bg-gray-950">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="mb-12">
               <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-600 mb-3 font-mono">
-                Media and Journalism
+                Editorial
               </p>
               <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
-                Investigative Journalism Services
+                Newsroom Services
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-                Our journalism is editorially independent. We decide what to publish based on public
-                interest, not client fees. Results become public record.
+                Tip the newsroom, review our editorial standards, or report a factual error.
+                Transparency is part of the product.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {JOURNALISM_SERVICES.map((s) => (
+              {EDITORIAL_SERVICES.map((s) => (
                 <Link
                   key={s.href}
                   href={s.href}
@@ -278,68 +348,23 @@ export default function ServicesHubPage() {
           </div>
         </section>
 
-        {/* ── WHY OBJECTWIRE ── */}
-        <section className="py-20 bg-white dark:bg-gray-950">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-600 mb-3 font-mono">
-                  Why ObjectWire
-                </p>
-                <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-6">
-                  A newsroom that is also licensed to investigate.
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  Most news outlets rely on secondhand sources. oWire reporters hold Texas PI
-                  credentials, which means we can legally conduct surveillance, pull public
-                  records, and verify identities as part of original reporting, then publish
-                  what we find.
-                </p>
-                <Link
-                  href="/about"
-                  className="text-blue-600 hover:text-blue-800 underline font-semibold"
-                >
-                  About ObjectWire →
-                </Link>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { icon: '✅', text: 'Licensed under Texas Occupations Code Chapter 1702' },
-                  { icon: '✅', text: 'Free initial consultation, no commitment required' },
-                  { icon: '✅', text: 'All findings are fully confidential, never published without consent' },
-                  { icon: '✅', text: '501(c)(3) nonprofit, no profit motive or shareholder pressure' },
-                  { icon: '✅', text: 'Court-ready documentation chain of custody on every case' },
-                  { icon: '✅', text: 'Scientific and digital forensics expertise on staff' },
-                  { icon: '✅', text: 'Coordinated directly with attorneys on litigation cases' },
-                  { icon: '✅', text: 'Source identity protection on all journalism tips' },
-                ].map(({ icon, text }) => (
-                  <div key={text} className="flex items-start gap-3">
-                    <span className="text-lg mt-0.5">{icon}</span>
-                    <p className="text-gray-700 dark:text-gray-300">{text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── HOW IT WORKS ── */}
+        {/* ── EDITORIAL PRINCIPLES ── */}
         <section className="py-20 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="mb-12 text-center">
               <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-600 mb-3 font-mono">
-                Case Process
+                How We Work
               </p>
               <h2 className="text-4xl font-black text-gray-900 dark:text-white">
-                How It Works
+                The ObjectWire Standard
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
-                { step: '01', title: 'Free Consultation', desc: 'Confidential call or message. We assess your case, objectives, and what evidence is achievable.' },
-                { step: '02', title: 'Case Brief', desc: 'We define scope, legal parameters, timeline, and cost before any field work begins.' },
-                { step: '03', title: 'Investigation', desc: 'Licensed investigators gather timestamped, geotagged documentation using professional equipment.' },
-                { step: '04', title: 'Delivery', desc: 'You receive a written case report, full photo and video file set, and a chain-of-custody record.' },
+                { step: '01', title: 'Primary Source', desc: 'Every factual claim traces to an original source. No aggregators, no secondhand rewrites.' },
+                { step: '02', title: 'Named Author', desc: 'All articles carry a named byline with an author page. No anonymous content.' },
+                { step: '03', title: 'No Hedging', desc: 'Claims are specific and verifiable. Vague assertions do not publish.' },
+                { step: '04', title: 'Transparent Corrections', desc: 'Errors are corrected publicly, timestamped, with the original text preserved.' },
               ].map(({ step, title, desc }) => (
                 <div key={step} className="text-center">
                   <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-4">
@@ -353,86 +378,30 @@ export default function ServicesHubPage() {
           </div>
         </section>
 
-        {/* ── COVERAGE AREA ── */}
-        <section className="py-16 bg-white dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] font-black text-blue-600 mb-3 font-mono">
-                  Service Area
-                </p>
-                <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-4">
-                  Austin and Central Texas
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  Primary field coverage across Travis County and the greater Central Texas region.
-                  Out-of-area cases handled with travel fees disclosed at consultation.
-                </p>
-                <div className="grid grid-cols-2 gap-2">
-                  {['Austin', 'Travis County', 'Round Rock', 'Cedar Park', 'Georgetown', 'Pflugerville', 'Leander', 'San Marcos', 'Kyle', 'Buda', 'Bastrop County', 'Williamson County'].map((city) => (
-                    <div key={city} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-                      <span className="text-blue-600">📍</span> {city}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-gray-900 rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-black mb-2">Licensed PI Agency</h3>
-                <p className="text-gray-400 text-sm mb-6">
-                  Regulated under Texas Occupations Code Chapter 1702.<br />
-                  Enforced by the Texas Department of Public Safety.
-                </p>
-                <div className="space-y-3 text-sm text-gray-300">
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">Organization</span>
-                    <span>ObjectWire LLC</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">Type</span>
-                    <span>501(c)(3) Nonprofit</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">Jurisdiction</span>
-                    <span>State of Texas</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-700 pb-2">
-                    <span className="font-semibold text-white">HQ</span>
-                    <span>Austin, TX</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-semibold text-white">Consulting</span>
-                    <span className="text-blue-400">Free, confidential</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── CTA ── */}
         <section className="py-20 bg-blue-700 text-white">
           <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h2 className="text-4xl font-black mb-4">Ready to Start Your Case?</h2>
+            <h2 className="text-4xl font-black mb-4">Follow the Coverage</h2>
             <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-              Free consultation. No commitment. We will tell you honestly what is achievable,
-              what evidence standards apply, and what it costs, before any work begins.
+              World Cup 2026 is live. Premier League, MLS, MLB, and the creator economy
+              are updated daily. Accuracy over speed, every time.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/get-help"
+                href="/world-cup"
                 className="bg-white text-blue-700 hover:bg-blue-50 font-black px-10 py-4 rounded-lg transition-colors text-lg"
               >
-                Start a Free Consultation
+                World Cup 2026
               </Link>
               <Link
-                href="/austin-private-detective-agency"
+                href="/creator"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-700 font-bold px-10 py-4 rounded-lg transition-colors text-lg"
               >
-                PI Agency Overview
+                Creator Economy
               </Link>
             </div>
             <p className="mt-8 text-blue-200 text-sm">
-              Editorial tips and newsroom contact:{' '}
+              Editorial contact:{' '}
               <a href="mailto:editorial@objectivewire.com" className="underline text-white hover:text-blue-100">
                 editorial@objectivewire.com
               </a>

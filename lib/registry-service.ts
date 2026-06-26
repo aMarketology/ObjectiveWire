@@ -36,12 +36,17 @@ const HUB_CATEGORIES = new Set(['Meta', 'Support', 'Services', 'Legal']);
 // (author profiles, service pages, editorial meta, legal pages, etc.)
 const NON_ARTICLE_ROOTS = new Set([
   'authors', 'service', 'editorial-standards', 'get-help',
-  'local', 'account', 'auth', 'api', 'admin', 'tags', 'search',
+  'account', 'auth', 'api', 'admin', 'tags', 'search',
   'index', 'blog', 'site-index', 'team', 'privacy-policy',
   'terms-of-service', 'corrections', 'copyright', 'about',
   'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
   'feed.json', 'podcasts',
 ]);
+
+// Hub-only roots: top-level segment is valid BUT sub-pages are only real
+// articles if the path has 3+ segments (e.g. /local/greater-texas/article).
+// 2-segment paths like /local/austin are hub listing pages, not articles.
+const HUB_ONLY_ROOTS = new Set(['local']);
 
 function isRealArticle(e: ContentEntry): boolean {
   if (HUB_SLUGS.has(e.slug)) return false;
@@ -50,6 +55,8 @@ function isRealArticle(e: ContentEntry): boolean {
   if (parts.length < 2) return false;
   // Block all sub-pages of non-article roots (e.g. /authors/x, /service/x)
   if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
+  // For hub-only roots (e.g. /local), require 3+ path segments to be a real article
+  if (HUB_ONLY_ROOTS.has(parts[0]) && parts.length < 3) return false;
   if (e.description.length < 60) return false;
   if (e.title.startsWith('›') || e.title.startsWith('ObjectWire coverage')) return false;
   return true;

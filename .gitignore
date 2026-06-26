@@ -56,8 +56,7 @@ supabase/functions/.vscode
 *-[a-f0-9]*.json
 objectwireorg-76d014b98819.json
 
-# Un-ignore registry-data.json — must be branch-tracked so each branch
-# (org, main) has its own correct version. The *-[a-f0-9]*.json pattern above
-# accidentally matches "registry-data" because 'd' falls in hex range a-f.
-!lib/registry-data.json
+# registry-data.json is generated at build time by sync-registry.ts
+# Never commit — each environment regenerates it from its own page.tsx files.
+lib/registry-data.json
 
