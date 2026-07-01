@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
+import { getLatestArticles } from '@/lib/registry-service';
+import type { ContentEntry } from '@/lib/registry-service';
 
-export const dynamic = 'force-static';
-export const revalidate = false;
+export const revalidate = 3600;
 
 const PAGE_URL = 'https://www.objectivewire.org';
 
@@ -130,6 +132,53 @@ const SERVICES = [
   },
 ];
 
+const CATEGORY_COLORS: Record<string, string> = {
+  Investigations: 'bg-[#92400e] text-white',
+  Sports:         'bg-blue-700 text-white',
+  'World Cup':    'bg-blue-700 text-white',
+  Entertainment:  'bg-purple-700 text-white',
+  Culture:        'bg-purple-700 text-white',
+  News:           'bg-gray-700 text-white',
+  Politics:       'bg-red-700 text-white',
+  Tech:           'bg-cyan-700 text-white',
+  Finance:        'bg-green-700 text-white',
+  Crypto:         'bg-emerald-700 text-white',
+  Science:        'bg-teal-700 text-white',
+  Gaming:         'bg-indigo-700 text-white',
+  World:          'bg-sky-700 text-white',
+};
+
+const CATEGORY_BG: Record<string, string> = {
+  Investigations: 'bg-amber-900/20',
+  Sports:         'bg-blue-900/20',
+  'World Cup':    'bg-blue-900/20',
+  Entertainment:  'bg-purple-900/20',
+  Culture:        'bg-purple-900/20',
+  News:           'bg-gray-400/20',
+  Politics:       'bg-red-900/20',
+  Tech:           'bg-cyan-900/20',
+  Finance:        'bg-green-900/20',
+  Crypto:         'bg-emerald-900/20',
+};
+
+function categoryBadge(cat: string) {
+  return CATEGORY_COLORS[cat] ?? 'bg-gray-700 text-white';
+}
+
+function categoryBg(cat: string) {
+  return CATEGORY_BG[cat] ?? 'bg-gray-200';
+}
+
+function formatDate(raw: string) {
+  try {
+    const d = new Date(raw);
+    if (isNaN(d.getTime())) return raw;
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  } catch {
+    return raw;
+  }
+}
+
 const HOW_IT_WORKS = [
   {
     step: '01',
@@ -148,7 +197,76 @@ const HOW_IT_WORKS = [
   },
 ];
 
-export default function HomePage() {
+function ArticleCard({ article, featured }: { article: ContentEntry; featured: boolean }) {
+  const badge = categoryBadge(article.category);
+  const fallbackBg = categoryBg(article.category);
+  const hasImage = Boolean(article.imageUrl);
+
+  return (
+    <Link
+      href={article.slug}
+      className="group block bg-white hover:shadow-md transition-all border border-gray-200"
+    >
+      {featured ? (
+        <>
+          {/* Tall featured card — image or color block */}
+          <div className={`relative w-full h-44 overflow-hidden ${!hasImage ? fallbackBg : ''}`}>
+            {hasImage ? (
+              <Image
+                src={article.imageUrl!}
+                alt={article.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              />
+            ) : (
+              <div className={`absolute inset-0 ${fallbackBg} flex items-end p-4`}>
+                <span className={`text-[9px] font-black px-2 py-0.5 uppercase tracking-widest rounded-sm ${badge}`}>
+                  {article.category}
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="p-5">
+            {hasImage && (
+              <span className={`inline-block text-[9px] font-black px-2 py-0.5 tracking-widest uppercase rounded-sm mb-3 ${badge}`}>
+                {article.category}
+              </span>
+            )}
+            <h3 className="font-serif font-black text-gray-900 group-hover:text-amber-600 transition-colors leading-snug text-base mb-2 line-clamp-3">
+              {article.title}
+            </h3>
+            <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mb-4">
+              {article.description}
+            </p>
+            <p className="text-[10px] text-gray-400 font-mono border-t border-gray-100 pt-3">
+              {article.author} &middot; {formatDate(article.publishDate)}
+            </p>
+          </div>
+        </>
+      ) : (
+        /* Compact card — no image */
+        <div className="flex gap-0">
+          <div className={`w-1 shrink-0 ${badge.replace('text-white', '').trim()}`} />
+          <div className="p-4 flex-1 min-w-0">
+            <span className={`inline-block text-[8px] font-black px-1.5 py-0.5 tracking-widest uppercase rounded-sm mb-2 ${badge}`}>
+              {article.category}
+            </span>
+            <h3 className="font-serif font-black text-gray-900 group-hover:text-amber-600 transition-colors leading-snug text-sm mb-1.5 line-clamp-2">
+              {article.title}
+            </h3>
+            <p className="text-[10px] text-gray-400 font-mono">
+              {article.author} &middot; {formatDate(article.publishDate)}
+            </p>
+          </div>
+        </div>
+      )}
+    </Link>
+  );
+}
+
+export default async function HomePage() {
+  const recentArticles = await getLatestArticles(9);
   return (
     <>
       <script
@@ -210,6 +328,55 @@ export default function HomePage() {
 
           </div>
         </section>
+
+        {/* RECENT ARTICLES */}
+        {recentArticles.length > 0 && (
+          <section className="py-16 bg-[#f5f5f5] border-b border-gray-200">
+            <div className="container mx-auto px-4 max-w-6xl">
+              <div className="flex items-end justify-between mb-10">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-gray-400 mb-2 font-mono">
+                    Latest from oWire
+                  </p>
+                  <h2 className="font-serif text-3xl md:text-4xl font-black text-gray-900">
+                    Recent Articles
+                  </h2>
+                </div>
+                <Link
+                  href="/blog"
+                  className="hidden md:inline-block text-sm font-bold text-gray-600 hover:text-gray-900 border-b border-gray-400 hover:border-gray-900 pb-0.5 transition-colors"
+                >
+                  View All &rarr;
+                </Link>
+              </div>
+
+              {/* Top row — 3 featured cards with image */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+                {recentArticles.slice(0, 3).map((article) => (
+                  <ArticleCard key={article.slug} article={article} featured />
+                ))}
+              </div>
+
+              {/* Bottom row — 6 compact cards */}
+              {recentArticles.length > 3 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {recentArticles.slice(3, 9).map((article) => (
+                    <ArticleCard key={article.slug} article={article} featured={false} />
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-8 md:hidden text-center">
+                <Link
+                  href="/blog"
+                  className="inline-block border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-bold px-8 py-3 transition-colors text-sm"
+                >
+                  View All Articles &rarr;
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* TRUST STRIP */}
         <section className="bg-[#e8e8e8] border-b border-gray-300">
