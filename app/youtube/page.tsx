@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllEntries } from '@/lib/registry-service';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 3600;
 
@@ -10,12 +11,12 @@ const SLUG = '/youtube';
 export const metadata: Metadata = {
   title: 'YouTube News | Creators, Channels & Platform 2026',
   description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.',
-  alternates: { canonical: `https://www.objectwire.org${SLUG}` },
+  alternates: { canonical: `${SITE_CONFIG.url}${SLUG}` },
   openGraph: {
     title: 'YouTube News | Creators, Channels & Platform 2026',
     description: 'YouTube news covering creators, channels, platform updates, and the creator economy from ZWire.',
     type: 'website',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `${SITE_CONFIG.url}${SLUG}`,
     siteName: 'Objective Wire',
   },
   twitter: {

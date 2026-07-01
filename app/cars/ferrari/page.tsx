@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 3600;
 
 const SLUG = '/cars/ferrari';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 // Photo: Two red Ferrari sports cars — Isaac Maffeis (@isaacmaffeis) on Unsplash
 // https://unsplash.com/@isaacmaffeis?utm_source=zwire&utm_medium=referral
 // Minted thumbnail — watermarked, keyword-optimised, EXIF-tagged, objectwire.org-hosted
 const OG_IMAGE = '/thumbnails/ferrari-hub.jpg';
-const OG_IMAGE_FULL = `https://www.objectwire.org${OG_IMAGE}`;
+const OG_IMAGE_FULL = `${SITE_CONFIG.url}${OG_IMAGE}`;
 
 export const metadata: Metadata = {
   title: 'Ferrari | F80 Hypercar, Models, Formula 1 News 2026',

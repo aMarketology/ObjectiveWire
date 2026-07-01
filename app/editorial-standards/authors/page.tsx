@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
@@ -9,13 +10,13 @@ export const metadata: Metadata = {
   title: "Our Authors | Editorial Standards",
   description: "ZeroWire is a verified news platform driven by our team of journalists, analysts, and contributors.",
   alternates: {
-    canonical: 'https://www.objectwire.org/editorial-standards/authors',
+    canonical: `${SITE_CONFIG.url}/editorial-standards/authors`,
   },
   openGraph: {
     title: "Our Authors | Editorial Standards",
     description: "ZeroWire is a verified news platform driven by our team of journalists, analysts, and contributors.",
     type: 'article',
-    url: "https://www.objectwire.org/editorial-standards/authors",
+    url: `${SITE_CONFIG.url}/editorial-standards/authors`,
     siteName: 'ZeroWire',
     section: "News",
   },

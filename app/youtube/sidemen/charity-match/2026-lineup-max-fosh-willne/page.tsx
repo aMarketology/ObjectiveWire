@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 
 
 const SLUG = '/youtube/sidemen/charity-match/2026-lineup-max-fosh-willne';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const OG_IMAGE = 'https://www.objectwire.org/influncer/sidemne_charity_match_26.png';
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
+const OG_IMAGE = `${SITE_CONFIG.url}/influncer/sidemne_charity_match_26.png`;
 
 export const metadata: Metadata = {
   title: 'Sidemen Charity Match 2026 Lineup | Max Fosh, WillNE',

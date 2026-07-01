@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 86400;
 
 const SLUG = '/premier-league/premier-league-history';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Premier League History | Founded 1992, Champions & Records',
@@ -59,7 +60,7 @@ export default function PremierLeagueHistoryPage() {
         title="Premier League History | Founded 1992, Champions & Records"
         description="The Premier League was founded in 1992 and is now the world's most-watched football league, covering 20 clubs across 38 matchdays each season."
         author="Jack Brennan"
-        authorUrl="https://www.objectwire.org/authors/jack-brennan"
+        authorUrl={`${SITE_CONFIG.url}/authors/jack-brennan`}
         publishedTime="2026-05-14T10:00:00Z"
         modifiedTime="2026-05-14T10:00:00Z"
         articleUrl={ARTICLE_URL}

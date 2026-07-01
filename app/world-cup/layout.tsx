@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'World Cup 2026 | ObjectWire',
   description: 'Coverage, analysis, and news about the 2026 FIFA World Cup.',
   alternates: {
-    canonical: 'https://www.objectwire.org/world-cup',
+    canonical: `${SITE_CONFIG.url}/world-cup`,
   },
 };
 

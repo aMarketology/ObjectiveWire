@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 86400;
 
 const SLUG = '/cars/ferrari/ferrari-hc25-special-projects';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Ferrari HC25 | Special Projects One-Off, Last V8 Spider',
@@ -58,7 +59,7 @@ export default function FerrariHC25Page() {
         title="Ferrari HC25 | Special Projects One-Off, Last V8 Spider"
         description="Ferrari HC25 revealed at COTA May 15, 2026. One-of-one Special Projects build on the F8 Spider. 710hp twin-turbo V8, vertical LED DRL first for Ferrari, Moonlight Gray."
         author="Conan D. Boyle"
-        authorUrl="https://www.objectwire.org/authors/conan-boyle"
+        authorUrl={`${SITE_CONFIG.url}/authors/conan-boyle`}
         publishedTime="2026-05-15T17:00:00Z"
         modifiedTime="2026-05-15T17:00:00Z"
         articleUrl={ARTICLE_URL}

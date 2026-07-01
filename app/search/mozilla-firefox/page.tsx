@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/nav/Breadcrumb";
 import { NewsArticleSchema } from "@/components/articles/NewsArticleSchema";
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: "Mozilla Firefox: Open-Source Web Browser & Privacy-Focused Technology | ObjectWire",
@@ -19,16 +20,16 @@ export const metadata: Metadata = {
     "Mozilla Foundation",
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/mozilla-firefox',
+    canonical: `${SITE_CONFIG.url}/mozilla-firefox`,
   },
   openGraph: {
     title: "Mozilla Firefox: Open-Source Web Browser & Privacy-Focused Technology",
     description: "Complete guide to Mozilla Foundation and Firefox browser, covering history, features, privacy focus, and market position.",
     type: "article",
-    url: "https://www.objectwire.org/mozilla-firefox",
+    url: `${SITE_CONFIG.url}/mozilla-firefox`,
     images: [
       {
-        url: "https://www.objectwire.org/images/mozilla-firefox-og.jpg",
+        url: `${SITE_CONFIG.url}/images/mozilla-firefox-og.jpg`,
         width: 1200,
         height: 630,
         alt: "Mozilla Firefox browser",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mozilla Firefox: Open-Source Web Browser",
     description: "Comprehensive overview of Mozilla Foundation and Firefox browser technology.",
-    images: ["https://www.objectwire.org/images/mozilla-firefox-twitter.jpg"],
+    images: [`${SITE_CONFIG.url}/images/mozilla-firefox-twitter.jpg`],
   },
 };
 
@@ -55,8 +56,8 @@ export default function MozillaFirefoxPage() {
         author="ObjectWire Technology Desk"
         publishedTime={publishedDate}
         modifiedTime={publishedDate}
-        imageUrl="https://www.objectwire.org/images/mozilla-firefox.jpg"
-        articleUrl="https://www.objectwire.org/mozilla-firefox"
+        imageUrl={`${SITE_CONFIG.url}/images/mozilla-firefox.jpg`}
+        articleUrl={`${SITE_CONFIG.url}/mozilla-firefox`}
         section="Technology & Software"
         keywords={["Mozilla", "Firefox", "web browser", "open source", "privacy"]}
       />

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Content sourced from Supabase via WikiArticle. ISR keeps it fresh without live hits.
 export const revalidate = 3600;
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: 'All Topics & Tags',
   description:
     'Browse all topics covered by ObjectWire, technology, gaming, finance, entertainment, sports, and more.',
-  alternates: { canonical: 'https://www.objectwire.org/tags' },
+  alternates: { canonical: `${SITE_CONFIG.url}/tags` },
   openGraph: {
     title: 'All Topics & Tags',
     description: 'Browse every topic covered by ObjectWire.',
-    url: 'https://www.objectwire.org/tags',
+    url: `${SITE_CONFIG.url}/tags`,
     siteName: 'Objective Wire',
     type: 'website',
   },

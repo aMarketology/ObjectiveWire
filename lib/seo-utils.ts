@@ -1,5 +1,6 @@
 // SEO utilities for articles
 import type { Metadata } from 'next';
+import { SITE_CONFIG } from './site-config';
 
 export interface ArticleMetadataOptions {
   title: string;
@@ -43,15 +44,16 @@ export function generateArticleMetadata(options: ArticleMetadataOptions): Metada
   const resolvedKeywords = keywords ?? tags;
 
   // Auto-generate OG image via Satori when no explicit image is provided
-  const SITE_URL = 'https://www.objectwire.org';
+  const SITE_URL = SITE_CONFIG.url;
   let fallbackOgImage: string | undefined;
   if (!ogImage && images.length === 0 && resolvedCanonical) {
-    const slug = resolvedCanonical.startsWith(SITE_URL)
-      ? resolvedCanonical.slice(SITE_URL.length)
-      : resolvedCanonical.startsWith('https://objectwire.org')
-        ? resolvedCanonical.slice('https://objectwire.org'.length)
-        : resolvedCanonical.startsWith('/') ? resolvedCanonical : null;
-    if (slug) fallbackOgImage = `${SITE_URL}/api/og?slug=${encodeURIComponent(slug)}`;
+    let slugPath: string | null = null;
+    if (resolvedCanonical.startsWith('/')) {
+      slugPath = resolvedCanonical;
+    } else {
+      try { slugPath = new URL(resolvedCanonical).pathname; } catch { /* invalid */ }
+    }
+    if (slugPath) fallbackOgImage = `${SITE_URL}/api/og?slug=${encodeURIComponent(slugPath)}`;
   }
 
   const allImages = ogImage

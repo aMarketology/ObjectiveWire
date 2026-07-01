@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 import {
   YoutubeCreatorPage,
   YTSection,
@@ -10,7 +11,7 @@ import {
 export const revalidate = 86400;
 
 const SLUG = '/youtube/the-bridge';
-const PAGE_URL = `https://www.objectwire.org${SLUG}`;
+const PAGE_URL = `${SITE_CONFIG.url}${SLUG}`;
 const THUMBNAIL = 'https://i.ytimg.com/vi/5ipd6EH568w/maxresdefault.jpg';
 
 export const metadata: Metadata = {
@@ -65,7 +66,7 @@ export default function TheBridgePage() {
         publishedTime: '2026-05-13T12:00:00Z',
         modifiedTime: '2026-05-13T12:00:00Z',
         author: 'Jack Sterling',
-        authorUrl: 'https://www.objectwire.org/authors/jack-sterling',
+        authorUrl: `${SITE_CONFIG.url}/authors/jack-sterling`,
         articleUrl: PAGE_URL,
         imageUrl: THUMBNAIL,
         section: 'YouTube',

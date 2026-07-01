@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // ISR: regenerate at most once per hour.
 export const revalidate = 3600;
@@ -8,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Premier League News & Analysis | oWire',
   description: 'The latest Premier League news, results, transfers, and analysis from oWire.',
-  alternates: { canonical: 'https://www.objectwire.org/premier-league' },
+  alternates: { canonical: `${SITE_CONFIG.url}/premier-league` },
 };
 
 export default async function PremierLeagueHubPage() {

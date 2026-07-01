@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Authors & Contributors',
   description:
     'Meet the journalists, reporters, and editors behind ObjectWire, covering finance, markets, science, technology, anime, gaming, investigations, and',
-  alternates: { canonical: 'https://www.objectwire.org/authors' },
+  alternates: { canonical: `${SITE_CONFIG.url}/authors` },
   openGraph: {
     title: 'ObjectWire Authors & Contributors',
     description: 'Meet the journalists and editors behind ObjectWire.',
-    url: 'https://www.objectwire.org/authors',
+    url: `${SITE_CONFIG.url}/authors`,
     siteName: 'Objective Wire',
     type: 'website',
   },

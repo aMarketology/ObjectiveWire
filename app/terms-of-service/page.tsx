@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Static legal page. Regenerates daily via ISR.
 export const revalidate = 86400;
@@ -8,13 +9,13 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description: "ObjectWire Terms of Service - Rules and guidelines for using our platform",
   alternates: {
-    canonical: 'https://www.objectwire.org/terms-of-service',
+    canonical: `${SITE_CONFIG.url}/terms-of-service`,
   },
   openGraph: {
     title: "Terms of Service",
     description: "ObjectWire Terms of Service - Rules and guidelines for using our platform",
     type: 'article',
-    url: "https://www.objectwire.org/terms-of-service",
+    url: `${SITE_CONFIG.url}/terms-of-service`,
     siteName: 'Objective Wire',
     section: "News",
   },

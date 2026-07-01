@@ -19,6 +19,7 @@
 
 import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export type ArticleTable = 'articles' | 'jack_articles' | 'article_pages';
 
@@ -121,7 +122,7 @@ export async function generateArticleMetadata(
   const canonicalPath = r.url || r.article_url || `/${slug.replace(/-/g, '/')}`;
   const canonicalUrl = canonicalPath.startsWith('http')
     ? canonicalPath
-    : `https://www.objectwire.org${canonicalPath}`;
+    : `${SITE_CONFIG.url}${canonicalPath}`;
 
   // ── Resolve image ────────────────────────────────────────────────
   const resolvedImageUrl =
@@ -133,7 +134,7 @@ export async function generateArticleMetadata(
   // When no article-specific image exists, fall back to the dynamic OG card
   // generator at /api/og which renders a branded card with title, category,
   // and a pre-populated Unsplash background (if the batch-fix script has run).
-  const ogFallback = `https://www.objectwire.org/api/og?slug=${encodeURIComponent(canonicalPath)}`;
+  const ogFallback = `${SITE_CONFIG.url}/api/og?slug=${encodeURIComponent(canonicalPath)}`;
   const imageUrl = resolvedImageUrl || ogFallback;
 
   const imageAlt =

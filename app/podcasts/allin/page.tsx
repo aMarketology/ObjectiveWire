@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 86400;
 
 const SLUG = '/podcasts/allin';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 const VIDEO_ID = '10MdOvK-aG4';
 
 export const metadata: Metadata = {
@@ -57,7 +58,7 @@ export default function AllInPodcastRecap() {
         title="All-In Podcast | SpaceX-Anthropic Deal, AI Monopoly, FDA for AI"
         description="All-In Podcast recap: Chamath, Sacks, Jason, and Friedberg break down the SpaceX-Anthropic compute deal, whether Anthropic is the next AI monopoly, the White House FDA-for-AI proposal, and how to trade the AI boom."
         author="Jack Sterling"
-        authorUrl="https://www.objectwire.org/authors/jack-sterling"
+        authorUrl={`${SITE_CONFIG.url}/authors/jack-sterling`}
         publishedTime="2026-05-13T19:00:00Z"
         modifiedTime="2026-05-13T19:00:00Z"
         articleUrl={ARTICLE_URL}

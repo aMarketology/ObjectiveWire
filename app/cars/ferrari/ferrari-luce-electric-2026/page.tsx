@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 86400;
 
 const SLUG = '/cars/ferrari/ferrari-luce-electric-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 // Photo: Red sports car close-up — Hoyoun Lee (@icedcocoa) on Unsplash
 // https://unsplash.com/@icedcocoa?utm_source=zwire&utm_medium=referral
 const UNSPLASH_PHOTO_ID = 'photo-1696581081901-f8e0f10713b2';
@@ -16,7 +17,7 @@ const UNSPLASH_PHOTOGRAPHER = 'Hoyoun Lee';
 const UNSPLASH_PHOTOGRAPHER_URL = 'https://unsplash.com/@icedcocoa?utm_source=zwire&utm_medium=referral';
 // Minted thumbnail — watermarked, keyword-optimised, EXIF-tagged, objectwire.org-hosted
 const OG_IMAGE = '/thumbnails/ferrari-luce-electric-2026.jpg';
-const OG_IMAGE_FULL = `https://www.objectwire.org${OG_IMAGE}`;
+const OG_IMAGE_FULL = `${SITE_CONFIG.url}${OG_IMAGE}`;
 const PUBLISHED = '2026-05-07T16:00:00Z';
 
 export const metadata: Metadata = {
@@ -73,7 +74,7 @@ export default function FerrariLucePage() {
         title="Ferrari Luce | First Electric Ferrari, Price, Specs 2026"
         description="Ferrari Luce: 1,113hp quad-motor electric four-door, 122 kWh 880-volt battery, 330-mile WLTP range, LoveFrom interior. Global reveal May 25, 2026. Price from $530,000."
         author="ZWire Auto Desk"
-        authorUrl="https://www.objectwire.org/authors/zwire-auto-desk"
+        authorUrl={`${SITE_CONFIG.url}/authors/zwire-auto-desk`}
         publishedTime={PUBLISHED}
         modifiedTime={PUBLISHED}
         imageUrl={OG_IMAGE_FULL}

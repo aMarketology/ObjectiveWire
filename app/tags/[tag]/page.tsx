@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 import {
   getAllTags,
   getEntriesByTag,
@@ -56,12 +57,12 @@ export async function generateMetadata({
     title: `${tag} | ${articles.length} Articles | ObjectWire`,
     description: `All ObjectWire articles tagged "${tag}", the latest news, analysis and coverage.`,
     alternates: {
-      canonical: `https://www.objectwire.org/tags/${rawTag}`,
+      canonical: `${SITE_CONFIG.url}/tags/${rawTag}`,
     },
     openGraph: {
       title: `${tag} | ObjectWire`,
       description: `${articles.length} articles about ${tag} on ObjectWire.`,
-      url: `https://www.objectwire.org/tags/${rawTag}`,
+      url: `${SITE_CONFIG.url}/tags/${rawTag}`,
       siteName: 'Objective Wire',
       type: 'website',
     },
@@ -184,12 +185,12 @@ export default async function TagArchivePage({
             '@type': 'CollectionPage',
             name: `${tag}, ObjectWire`,
             description: `All articles tagged "${tag}" on ObjectWire.`,
-            url: `https://www.objectwire.org/tags/${rawTag}`,
+            url: `${SITE_CONFIG.url}/tags/${rawTag}`,
             numberOfItems: articles.length,
             publisher: {
               '@type': 'Organization',
               name: 'ObjectWire',
-              url: 'https://www.objectwire.org',
+              url: `${SITE_CONFIG.url}`,
             },
             mainEntity: {
               '@type': 'ItemList',
@@ -197,7 +198,7 @@ export default async function TagArchivePage({
               itemListElement: articles.slice(0, 50).map((a, i) => ({
                 '@type': 'ListItem',
                 position: i + 1,
-                url: `https://www.objectwire.org${a.slug}`,
+                url: `${SITE_CONFIG.url}${a.slug}`,
                 name: a.title,
               })),
             },

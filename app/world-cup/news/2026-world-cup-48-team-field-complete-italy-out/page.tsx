@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/2026-world-cup-48-team-field-complete-italy-out';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const OG_IMAGE = 'https://www.objectwire.org/world-cup/worldcup-usa-drama-strikes.jpg';
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
+const OG_IMAGE = `${SITE_CONFIG.url}/world-cup/worldcup-usa-drama-strikes.jpg`;
 
 export const metadata: Metadata = {
   title: '2026 World Cup Field Complete | Italy Out, 48 Nations Set',

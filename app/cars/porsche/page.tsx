@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { ArticlePageDB } from '@/components/articles/ArticlePageDB';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/porsche';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {

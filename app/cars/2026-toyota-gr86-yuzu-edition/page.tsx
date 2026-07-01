@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 86400;
 
 const SLUG = '/cars/2026-toyota-gr86-yuzu-edition';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: '2026 Toyota GR86 Yuzu Edition | Specs, Price, 860 Units',
@@ -55,7 +56,7 @@ export default function ToyotaGR86YuzuPage() {
         title="2026 Toyota GR86 Yuzu Edition | Specs, Price, 860 Units"
         description="The 2026 Toyota GR86 Yuzu Edition starts at $36,365 in the US and $45,025 in Canada. Limited to 860 units in North America with Brembo brakes, Sachs dampers, and exclusive yellow paint."
         author="Conan D. Boyle"
-        authorUrl="https://www.objectwire.org/authors/conan-boyle"
+        authorUrl={`${SITE_CONFIG.url}/authors/conan-boyle`}
         publishedTime="2026-05-15T14:00:00Z"
         modifiedTime="2026-05-15T14:00:00Z"
         articleUrl={ARTICLE_URL}

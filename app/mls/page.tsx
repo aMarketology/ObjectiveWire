@@ -3,6 +3,7 @@ import { Hub } from '@/components/Hub';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 import { SEOWrapper } from '@/components/SEOWrapper';
 import { scanAllContent } from '@/lib/content-scanner';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 3600; // ISR 1h � content scanner reads filesystem, not live Supabase
 const SLUG = '/mls';
@@ -25,13 +26,13 @@ export const metadata: Metadata = {
     'soccer news',
     'MLS scores',
   ],
-  alternates: { canonical: `https://www.objectwire.org${SLUG}` },
+  alternates: { canonical: `${SITE_CONFIG.url}${SLUG}` },
   openGraph: {
     title: 'MLS | Major League Soccer News & Analysis',
     description:
       'Complete MLS coverage from ObjectWire. Transfers, standings, expansion, match reports, and 2026 season analysis.',
     type: 'website',
-    url: `https://www.objectwire.org${SLUG}`,
+    url: `${SITE_CONFIG.url}${SLUG}`,
     siteName: 'Objective Wire',
   },
   twitter: {

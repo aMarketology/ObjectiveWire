@@ -3,6 +3,7 @@ import { Hub } from '@/components/Hub';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
 import { SEOWrapper } from '@/components/SEOWrapper';
 import { createClient } from '@/lib/supabase/server';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // -----------------------------------------------------------------------------
 // SEO METADATA
@@ -30,14 +31,14 @@ export const metadata: Metadata = {
     'ObjectWire creator',
   ],
   alternates: {
-    canonical: 'https://www.objectwire.org/creator',
+    canonical: `${SITE_CONFIG.url}/creator`,
   },
   openGraph: {
     title: 'Creator Hub | Profiles, News & Culture',
     description:
       'In-depth profiles and breaking news covering the biggest creators across fitness, YouTube, golf, and online culture. Updated 2026.',
     type: 'website',
-    url: 'https://www.objectwire.org/creator',
+    url: `${SITE_CONFIG.url}/creator`,
     siteName: 'Objective Wire',
   },
   twitter: {

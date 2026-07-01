@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 import {
   CountdownTimer,
   HostCitiesMap,
@@ -10,7 +11,7 @@ import {
 export const revalidate = 3600;
 
 const SLUG = '/world-cup';
-const CANONICAL = `https://www.objectwire.org${SLUG}`;
+const CANONICAL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'FIFA World Cup 2026 | Schedule, Teams, Host Cities & News',

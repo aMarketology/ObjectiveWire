@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const PAGE_URL = 'https://www.objectwire.org/editorial-standards';
+const PAGE_URL = `${SITE_CONFIG.url}/editorial-standards`;
 
 export const metadata: Metadata = {
   title: 'Editorial Standards | oWire',

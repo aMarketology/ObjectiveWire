@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 3600;
 
 const SLUG = '/premier-league/leeds-united-vs-brighton-may-17-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Leeds United vs Brighton May 17 | Europa League on the Line for Brighton',
@@ -52,7 +53,7 @@ export default function LeedsVsBrightonPage() {
         title="Leeds United vs Brighton May 17 | Europa League on the Line for Brighton"
         description="Brighton host Leeds United at Elland Road on May 17, 2026. Brighton are 2 points behind Bournemouth in sixth, chasing Europa League qualification with two games left."
         author="Conan D. Boyle"
-        authorUrl="https://www.objectwire.org/authors/conan-boyle"
+        authorUrl={`${SITE_CONFIG.url}/authors/conan-boyle`}
         publishedTime="2026-05-14T12:00:00Z"
         modifiedTime="2026-05-14T12:00:00Z"
         articleUrl={ARTICLE_URL}

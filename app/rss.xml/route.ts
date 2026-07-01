@@ -1,14 +1,14 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import registryDataRaw from '@/lib/registry-data.json';
-import type { ContentEntry } from '@/lib/content-registry';
+import { getAllEntries } from '@/lib/registry-service';
 
-// RSS feed is generated from lib/registry-data.json — no Supabase calls.
-// Updated on every build via sync-registry.ts in prebuild.
+export const dynamic = 'force-dynamic';
+
+// RSS feed — no JSON file, no Supabase. Scans app/**/page.tsx on every request — always fresh.
 const RSS_LIMIT = 200;
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
-  const registry = registryDataRaw as ContentEntry[];
+  const registry = await getAllEntries();
 
   const articles = [...registry]
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())

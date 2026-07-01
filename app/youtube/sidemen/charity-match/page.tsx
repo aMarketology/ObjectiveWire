@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { WikiArticle } from '@/components/articles/WikiArticle';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Page renders dynamically — content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     title: "Sidemen Charity Match 2026: YouTube's Biggest Football Event",
     description: "The world's biggest YouTube charity football match returns. 100+ creators, millions raised, and the match of the year.",
     type: "article",
-    url: "https://www.objectwire.org/youtube/sidemen/charity-match",
+    url: `${SITE_CONFIG.url}/youtube/sidemen/charity-match`,
     siteName: 'Objective Wire',
   },
   twitter: {
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     description: "100+ creators. Millions raised. The match of the year returns.",
   },
   alternates: {
-    canonical: 'https://www.objectwire.org/youtube/sidemen/charity-match',
+    canonical: `${SITE_CONFIG.url}/youtube/sidemen/charity-match`,
   },
 };
 

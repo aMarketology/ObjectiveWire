@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 import {
   SportArticle,
   SportCallout,
@@ -13,7 +14,7 @@ import {
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/sofi-stadium-world-cup-renovation-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'SoFi Stadium World Cup 2026 | Corner Seats Removed for FIFA Pitch',

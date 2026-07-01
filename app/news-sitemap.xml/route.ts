@@ -1,19 +1,17 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import registryDataRaw from '@/lib/registry-data.json';
-import type { ContentEntry } from '@/lib/content-registry';
+import { getAllEntries } from '@/lib/registry-service';
+
+export const dynamic = 'force-dynamic';
 
 // Google News Sitemap Protocol: https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap
-// Articles are sourced from lib/registry-data.json (generated at build time by sync-registry.ts).
-// To appear here, an entry needs:
-//   - publishDate within the sliding window (NEWS_WINDOW_DAYS)
-//   - tags[] used as news keywords
-// No Supabase calls — fully in-memory.
+// No JSON file, no Supabase. Scans app/**/page.tsx on every request — always fresh.
+// To appear here an entry needs publishDate within the sliding window (NEWS_WINDOW_DAYS).
 
 const NEWS_WINDOW_DAYS = 3;
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
-  const registry = registryDataRaw as ContentEntry[];
+  const registry = await getAllEntries();
 
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - NEWS_WINDOW_DAYS);

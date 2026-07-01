@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import { scanAllContent } from '@/lib/content-scanner';
 import Breadcrumb from '@/components/nav/Breadcrumb';
 import type { Metadata } from 'next';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -28,7 +29,7 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
       follow: true,
     },
     alternates: {
-      canonical: 'https://www.objectwire.org/search',
+      canonical: `${SITE_CONFIG.url}/search`,
     },
   };
 }

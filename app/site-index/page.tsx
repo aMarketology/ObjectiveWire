@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
 import { SiteIndexTree } from './SiteIndexTree';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 3600; // ISR 1h � regenerates when new articles are added
 
@@ -9,14 +10,14 @@ export const metadata: Metadata = {
   description:
     'Browse the complete ObjectWire article index organized by category and tags. Explore 400+ verified articles across technology, gaming, finance, politics,',
   alternates: {
-    canonical: 'https://www.objectwire.org/site-index',
+    canonical: `${SITE_CONFIG.url}/site-index`,
   },
   openGraph: {
     title: 'Site Index',
     description:
       'Browse the complete ObjectWire article index organized by category and tags.',
     type: 'website',
-    url: 'https://www.objectwire.org/site-index',
+    url: `${SITE_CONFIG.url}/site-index`,
     siteName: 'Objective Wire',
   },
   twitter: {

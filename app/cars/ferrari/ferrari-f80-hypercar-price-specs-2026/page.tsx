@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 86400;
 
 const SLUG = '/cars/ferrari/ferrari-f80-hypercar-price-specs-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 // Photo: Ferrari hood emblem, red supercar — Jerry Wei (@findway_jerry) on Unsplash
 // https://unsplash.com/@findway_jerry?utm_source=zwire&utm_medium=referral
 const UNSPLASH_PHOTO_ID = 'photo-1730298878684-33c8b2c81aac';
@@ -15,7 +16,7 @@ const UNSPLASH_PHOTOGRAPHER = 'Jerry Wei';
 const UNSPLASH_PHOTOGRAPHER_URL = 'https://unsplash.com/@findway_jerry?utm_source=zwire&utm_medium=referral';
 // Minted thumbnail — watermarked, keyword-optimised, EXIF-tagged, objectwire.org-hosted
 const OG_IMAGE = '/thumbnails/ferrari-f80-hypercar-price-specs-2026.jpg';
-const OG_IMAGE_FULL = `https://www.objectwire.org${OG_IMAGE}`;
+const OG_IMAGE_FULL = `${SITE_CONFIG.url}${OG_IMAGE}`;
 
 export const metadata: Metadata = {
   title: 'Ferrari F80 | Price, Specs, 1184HP Hybrid, Q1 2026 Delivery',

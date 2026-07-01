@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { AuthorArticlesServer } from '@/components/authors/AuthorArticlesServer';
 import AuthorSchema from '@/components/authors/AuthorSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,20 +12,20 @@ export const metadata: Metadata = {
   title: 'Jack Sterling, ObjectWire Reporter',
   description:
     'Jack Sterling is a reporter at ObjectWire covering Congress, federal investigations, and AI policy. Reach him through ObjectWire editorial contact.',
-  alternates: { canonical: 'https://www.objectwire.org/authors/jack-sterling' },
+  alternates: { canonical: `${SITE_CONFIG.url}/authors/jack-sterling` },
   openGraph: {
     title: 'Jack Sterling, ObjectWire Reporter',
     description: 'Reporter at ObjectWire covering Congress, federal investigations, and AI policy.',
-    url: 'https://www.objectwire.org/authors/jack-sterling',
+    url: `${SITE_CONFIG.url}/authors/jack-sterling`,
     siteName: 'Objective Wire',
     type: 'profile',
-    images: [{ url: 'https://www.objectwire.org/influncer/author/jack_sterling.jpg', width: 800, height: 800, alt: 'Jack Sterling, ObjectWire reporter' }],
+    images: [{ url: `${SITE_CONFIG.url}/influncer/author/jack_sterling.jpg`, width: 800, height: 800, alt: 'Jack Sterling, ObjectWire reporter' }],
   },
   twitter: {
     card: 'summary',
     title: 'Jack Sterling, ObjectWire Reporter',
     description: 'Reporter at ObjectWire. Congress, federal investigations, AI policy.',
-    images: ['https://www.objectwire.org/influncer/author/jack_sterling.jpg'],
+    images: [`${SITE_CONFIG.url}/influncer/author/jack_sterling.jpg`],
   },
 };
 
@@ -46,7 +47,7 @@ export default function JackSterlingAuthorPage() {
         name="Jack Sterling"
         jobTitle="Journalist & Reporter"
         description="Jack Sterling is a journalist at ObjectWire covering breaking news, investigations, federal politics, Congress, and AI policy."
-        url="https://www.objectwire.org/authors/jack-sterling"
+        url={`${SITE_CONFIG.url}/authors/jack-sterling`}
         knowsAbout={['Politics', 'Federal Investigations', 'Breaking News', 'Congress', 'AI Policy', 'National Security']}
         articleCount={14}
       />

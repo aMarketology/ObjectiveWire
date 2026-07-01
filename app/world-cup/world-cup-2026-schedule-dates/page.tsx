@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Inline article � no Supabase sync. Content lives in the codebase.
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/world-cup-2026-schedule-dates';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 const OG_IMAGE = 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {

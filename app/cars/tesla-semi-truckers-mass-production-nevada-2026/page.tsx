@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/tesla-semi-truckers-mass-production-nevada-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
-const IMAGE_URL = 'https://www.objectwire.org/entertainment/waymo.jpg';
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
+const IMAGE_URL = `${SITE_CONFIG.url}/entertainment/waymo.jpg`;
 
 export const metadata: Metadata = {
   title: 'Tesla Semi Wins Over Truckers Ahead of Mass Production Ramp',

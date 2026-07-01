@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import { NewsArticle } from '@/components/articles/NewsArticle';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar',
   description: 'Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.',
-  alternates: { canonical: 'https://www.objectivewire.com/cars/bugatti-tourbillon-v16-hybrid-reveal-2026' },
+  alternates: { canonical: `${SITE_CONFIG.url}/cars/bugatti-tourbillon-v16-hybrid-reveal-2026` },
   openGraph: {
     title: 'Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar',
     description: 'Bugatti unveils the Chiron successor: The Tourbillon. 8.3L V16 + three electric motors, 1,800 HP, 250 units at $4.1M.',
     type: 'article',
-    url: 'https://www.objectivewire.com/cars/bugatti-tourbillon-v16-hybrid-reveal-2026',
+    url: `${SITE_CONFIG.url}/cars/bugatti-tourbillon-v16-hybrid-reveal-2026`,
     siteName: 'Objective Wire',
     publishedTime: '2026-05-01T10:00:00Z',
     modifiedTime: '2026-05-01T10:00:00Z',

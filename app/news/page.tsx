@@ -47,9 +47,7 @@ function cleanImageUrl(url: string | null | undefined): string | undefined {
   if (
     url.includes('${') ||
     url.includes('objectwire.com') ||
-    url.includes('objectwire.org/og') ||
-    url.includes('objectwire.org/api/og') ||
-    url.includes('/api/og?')
+    url.includes('/api/og')
   ) return undefined;
   return url;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // ISR: regenerate at most once per hour.
 export const revalidate = 3600;
@@ -8,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Cars & Automotive | oWire',
   description: 'Hypercars, sports cars, and automotive culture. No filter.',
-  alternates: { canonical: 'https://www.objectwire.org/cars' }
+  alternates: { canonical: `${SITE_CONFIG.url}/cars` }
 };
 
 export default async function CarsHubPage() {

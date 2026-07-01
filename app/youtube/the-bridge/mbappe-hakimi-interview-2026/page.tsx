@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 86400;
 
 const SLUG = '/youtube/the-bridge/mbappe-hakimi-interview-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 const VIDEO_ID = '5ipd6EH568w';
 const OG_IMAGE = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
 
@@ -59,7 +60,7 @@ export default function MbappeTheBridgePage() {
         title="Kylian Mbappé on The Bridge Podcast | Hakimi, Bentalha Interview 2026"
         description="Kylian Mbappé joins former PSG teammate Achraf Hakimi on The Bridge YouTube podcast hosted by Malik Bentalha, covering their friendship, Mbappé's Real Madrid move, and cultural identity."
         author="Jack Brennan"
-        authorUrl="https://www.objectwire.org/authors/jack-brennan"
+        authorUrl={`${SITE_CONFIG.url}/authors/jack-brennan`}
         publishedTime="2026-05-13T12:00:00Z"
         modifiedTime="2026-05-13T12:00:00Z"
         articleUrl={ARTICLE_URL}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // ISR: regenerate at most once per hour. Hub pages don't change on every request.
 export const revalidate = 3600;
@@ -8,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'MLB News & Analysis | oWire',
   description: 'Major League Baseball news, scores, standings, and analysis from oWire.',
-  alternates: { canonical: 'https://www.objectwire.org/mlb' },
+  alternates: { canonical: `${SITE_CONFIG.url}/mlb` },
 };
 
 export default async function MLBHubPage() {

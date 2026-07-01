@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 3600;
 
 const SLUG = '/premier-league/everton-vs-sunderland-may-17-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'Everton vs Sunderland May 17 | Sunderland\'s First Top-Flight Season in 27 Years',
@@ -52,7 +53,7 @@ export default function EvertonVsSunderlandPage() {
         title="Everton vs Sunderland May 17 | Sunderland's First Top-Flight Season in 27 Years"
         description="Everton host Sunderland at Bramley-Moore Dock on May 17, 2026. Sunderland's first Premier League season in 27 years ends with two games to play."
         author="Conan D. Boyle"
-        authorUrl="https://www.objectwire.org/authors/conan-boyle"
+        authorUrl={`${SITE_CONFIG.url}/authors/conan-boyle`}
         publishedTime="2026-05-14T12:00:00Z"
         modifiedTime="2026-05-14T12:00:00Z"
         articleUrl={ARTICLE_URL}

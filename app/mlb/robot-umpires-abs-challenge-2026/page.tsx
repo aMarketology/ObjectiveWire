@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 import {
   NewsArticle,
   HighlightBox,
@@ -9,7 +10,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/mlb/robot-umpires-abs-challenge-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`;
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`;
 
 export const metadata: Metadata = {
   title: 'MLB ABS Challenge System 2026 | Are Robot Umpires Inevitable',

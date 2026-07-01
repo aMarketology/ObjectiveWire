@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
 import { getArticlesByCategory } from '@/lib/registry-service';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // ISR: regenerate at most once per hour.
 export const revalidate = 3600;
@@ -8,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: 'Soccer News & Analysis | oWire',
   description: 'The latest from the Premier League, MLS, World Cup, and global soccer.',
-  alternates: { canonical: 'https://www.objectwire.org/soccer' }
+  alternates: { canonical: `${SITE_CONFIG.url}/soccer` }
 };
 
 export default async function SoccerHubPage() {

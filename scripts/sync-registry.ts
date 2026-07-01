@@ -1,17 +1,13 @@
 #!/usr/bin/env tsx
 // =============================================================================
-// scripts/sync-registry.ts
+// scripts/sync-registry.ts  — DIAGNOSTIC ONLY
 // =============================================================================
-// Scans app/**/page.tsx files, extracts metadata, and writes
-// lib/registry-data.json — the single source of truth for the content
-// registry (sitemap, RSS, news-sitemap, homepage, hub pages).
-//
-// No Supabase involved. The JSON is committed to the repo and imported
-// as a static asset by all SEO consumers. New article = new build = updated JSON.
+// Scans app/**/page.tsx files and reports what would appear in the registry.
+// No file is written. The live registry is now generated at build time by
+// lib/registry-loader.ts — no JSON file needed.
 //
 // Usage:
-//   npm run registry:sync            — preview (dry-run)
-//   npm run registry:sync -- --write — write lib/registry-data.json
+//   npm run registry:sync   — list all detected pages
 // =============================================================================
 
 import * as fs from 'fs';
@@ -22,112 +18,12 @@ import * as path from 'path';
 // ---------------------------------------------------------------------------
 const ROOT = path.resolve(__dirname, '..');
 const APP_DIR = path.join(ROOT, 'app');
-const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', 'registry-data.json');
 const DEFAULT_AUTHOR = 'ObjectWire Editorial';
 const TODAY = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
-const WRITE_FLAG = process.argv.includes('--write');
+const WRITE_FLAG = false; // writes are disabled — registry lives in lib/registry-loader.ts
 
-// ---------------------------------------------------------------------------
-// category / tag detection
-// ---------------------------------------------------------------------------
-const CATEGORY_MAP: { prefix: string; category: string; tags: string[] }[] = [
-  { prefix: '/winter-olympics',    category: 'Sports',        tags: ['Winter Olympics', 'Milan Cortina 2026'] },
-  { prefix: '/world-cup',          category: 'Sports',        tags: ['World Cup', 'Soccer', 'FIFA'] },
-  { prefix: '/formula-1',          category: 'Sports',        tags: ['Formula 1', 'F1', 'Motorsport'] },
-  { prefix: '/redbull',            category: 'Sports',        tags: ['Red Bull', 'Motorsport'] },
-  { prefix: '/youtube',            category: 'YouTube',       tags: ['YouTube', 'Creator Economy'] },
-  { prefix: '/nvidia',             category: 'Technology',    tags: ['NVIDIA', 'AI Hardware', 'GPU'] },
-  { prefix: '/microsoft',          category: 'Technology',    tags: ['Microsoft', 'Big Tech'] },
-  { prefix: '/google',             category: 'Technology',    tags: ['Google', 'Big Tech'] },
-  { prefix: '/apple',              category: 'Technology',    tags: ['Apple', 'Big Tech'] },
-  { prefix: '/open-ai',            category: 'Technology',    tags: ['OpenAI', 'Artificial Intelligence'] },
-  { prefix: '/intel',              category: 'Technology',    tags: ['Intel', 'Semiconductors'] },
-  { prefix: '/blitzy',             category: 'Technology',    tags: ['Blitzy', 'AI', 'SaaS'] },
-  { prefix: '/tech',               category: 'Technology',    tags: ['Technology'] },
-  { prefix: '/technology',         category: 'Technology',    tags: ['Technology'] },
-  { prefix: '/saas',               category: 'Technology',    tags: ['SaaS', 'Software'] },
-  { prefix: '/github',             category: 'Technology',    tags: ['GitHub', 'Open Source'] },
-  { prefix: '/nasa',               category: 'Science',       tags: ['NASA', 'Space'] },
-  { prefix: '/bio-hacking',        category: 'Science',       tags: ['Biohacking', 'Health', 'Science'] },
-  { prefix: '/neurophos',          category: 'Science',       tags: ['Neurophos', 'AI Hardware', 'Photonics'] },
-  { prefix: '/earth',              category: 'Science',       tags: ['Earth', 'Environment', 'Science'] },
-  { prefix: '/research',           category: 'Research',      tags: ['Research', 'Analysis'] },
-  { prefix: '/finance',            category: 'Finance',       tags: ['Finance', 'Economy'] },
-  { prefix: '/bank-of-america',    category: 'Finance',       tags: ['Bank of America', 'Finance'] },
-  { prefix: '/crypto',             category: 'Finance',       tags: ['Crypto', 'Cryptocurrency', 'Web3'] },
-  { prefix: '/elon-musk',          category: 'Business',      tags: ['Elon Musk', 'Tesla', 'xAI'] },
-  { prefix: '/trump',              category: 'Politics',      tags: ['Donald Trump', 'US Politics'] },
-  { prefix: '/disney',             category: 'Entertainment', tags: ['Disney', 'Entertainment'] },
-  { prefix: '/artists',            category: 'Entertainment', tags: ['Music', 'Artists'] },
-  { prefix: '/entertainment',      category: 'Entertainment', tags: ['Entertainment'] },
-  { prefix: '/video-games',        category: 'Gaming',        tags: ['Video Games', 'Gaming'] },
-  { prefix: '/beastgames',         category: 'YouTube',       tags: ['Beast Games', 'MrBeast', 'YouTube'] },
-  { prefix: '/cars',               category: 'Cars',          tags: ['Cars', 'Automotive'] },
-  { prefix: '/college',            category: 'Education',     tags: ['College', 'Education'] },
-  { prefix: '/influencer',         category: 'Creators',      tags: ['Influencer', 'Social Media'] },
-  { prefix: '/social',             category: 'Social Media',  tags: ['Social Media'] },
-  { prefix: '/ngos',               category: 'World Affairs', tags: ['NGO', 'Nonprofits'] },
-  { prefix: '/missing-persons',    category: 'Investigations',tags: ['Missing Persons', 'Investigations'] },
-  { prefix: '/investigations',     category: 'Investigations',tags: ['Investigations'] },
-  { prefix: '/austin-private',     category: 'Investigations',tags: ['Private Investigations', 'Austin'] },
-  { prefix: '/ironspring',         category: 'Business',      tags: ['Startups', 'Venture Capital', 'Construction Tech'] },
-  { prefix: '/objectwire',         category: 'Meta',          tags: ['ObjectWire'] },
-  { prefix: '/news',               category: 'News',          tags: ['News'] },
-  { prefix: '/blog',               category: 'Blog',          tags: ['Blog'] },
-  { prefix: '/podcasts',           category: 'Media',         tags: ['Podcasts'] },
-  { prefix: '/service',            category: 'Services',      tags: ['Services'] },
-  { prefix: '/about',              category: 'Meta',          tags: ['About', 'ObjectWire'] },
-  { prefix: '/team',               category: 'Meta',          tags: ['Team', 'ObjectWire'] },
-  { prefix: '/authors',            category: 'Meta',          tags: ['Author', 'ObjectWire'] },
-  { prefix: '/clothing',           category: 'Lifestyle',     tags: ['Clothing', 'Fashion'] },
-  { prefix: '/define',             category: 'Reference',     tags: ['Definitions', 'Reference'] },
-  { prefix: '/get-help',           category: 'Support',       tags: ['Help', 'Support'] },
-  { prefix: '/search',             category: 'Meta',          tags: ['Search'] },
-  { prefix: '/site-index',         category: 'Meta',          tags: ['Site Index', 'Sitemap'] },
-  { prefix: '/index',              category: 'Meta',          tags: ['Index'] },
-  { prefix: '/events',             category: 'Events',        tags: ['Events'] },
-  { prefix: '/privacy-policy',     category: 'Legal',         tags: ['Privacy', 'Legal'] },
-  { prefix: '/terms-of-service',   category: 'Legal',         tags: ['Terms', 'Legal'] },
-  { prefix: '/copyright',          category: 'Legal',         tags: ['Copyright', 'Legal'] },
-  { prefix: '/corrections',        category: 'Meta',          tags: ['Corrections', 'Editorial'] },
-  { prefix: '/editorial-standards',category: 'Meta',          tags: ['Editorial', 'Standards'] },
-];
-
-function detectCategory(slug: string): { category: string; tags: string[] } {
-  for (const rule of CATEGORY_MAP) {
-    if (slug.startsWith(rule.prefix)) {
-      // merge slug-segment tags with rule tags
-      const extraTags = slug
-        .split('/')
-        .filter(Boolean)
-        .slice(1) // skip the top-level segment already in rule.tags
-        .map(s =>
-          s.replace(/-/g, ' ')
-           .replace(/\b\w/g, c => c.toUpperCase())
-        )
-        .filter(t => t.length > 2 && !rule.tags.some(rt => rt.toLowerCase() === t.toLowerCase()));
-      return { category: rule.category, tags: [...rule.tags, ...extraTags] };
-    }
-  }
-  // fallback — derive from first slug segment
-  const topSegment = slug.split('/').filter(Boolean)[0] ?? 'general';
-  const category = topSegment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  return { category, tags: [category] };
-}
-
-function detectPriority(slug: string, category: string): number {
-  const depth = slug.split('/').filter(Boolean).length;
-  if (depth === 1) return 0.8;  // hub pages
-  if (['Sports', 'Technology', 'Finance', 'News'].includes(category)) return 0.7;
-  if (['Legal', 'Meta', 'Support'].includes(category)) return 0.3;
-  return 0.6;
-}
-
-function detectChangeFrequency(category: string): string {
-  if (['Sports', 'News', 'Technology'].includes(category)) return 'weekly';
-  if (['Legal', 'Meta', 'Support', 'Reference'].includes(category)) return 'monthly';
-  return 'weekly';
-}
+// Category/tag detection is handled by lib/category-map.ts (shared source of truth).
+// This diagnostic script does not need to re-derive categories — it only lists pages.
 
 // ---------------------------------------------------------------------------
 // scan all page.tsx files → extract slug + metadata
@@ -308,86 +204,11 @@ function scanApp(dir: string, results: PageMeta[] = []): PageMeta[] {
 }
 
 // ---------------------------------------------------------------------------
-// Local registry — read / write lib/registry-data.json
+// readLocalRegistry / writeLocalRegistry — removed (no JSON file)
 // ---------------------------------------------------------------------------
-interface RegistryEntry {
-  slug: string;
-  title: string;
-  description: string;
-  publishDate: string;
-  modifiedDate: string;
-  category: string;
-  tags: string[];
-  author: string;
-  authorSlug?: string;
-  priority: number;
-  changeFrequency: string;
-  imageUrl?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  imageAlt?: string;
-  featured?: boolean;
-}
-
-function readLocalRegistry(): Map<string, RegistryEntry> {
-  try {
-    if (!fs.existsSync(LOCAL_REGISTRY_PATH)) return new Map();
-    const raw = fs.readFileSync(LOCAL_REGISTRY_PATH, 'utf-8').trim();
-    if (!raw || raw === '[]') return new Map();
-    const arr = JSON.parse(raw) as RegistryEntry[];
-    return new Map(arr.map(e => [e.slug, e]));
-  } catch {
-    return new Map();
-  }
-}
-
-function writeLocalRegistry(entries: RegistryEntry[]): void {
-  const sorted = [...entries].sort((a, b) =>
-    new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-  );
-  fs.writeFileSync(LOCAL_REGISTRY_PATH, JSON.stringify(sorted, null, 2) + '\n', 'utf-8');
-}
 
 // ---------------------------------------------------------------------------
-// build one RegistryEntry from scanned page metadata
-// ---------------------------------------------------------------------------
-function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
-  const { category, tags: categoryTags } = detectCategory(meta.slug);
-
-  // Prefer openGraph tags from the file; fall back to slug-derived category tags
-  const tags = (meta.extractedTags && meta.extractedTags.length >= 2)
-    ? meta.extractedTags
-    : categoryTags;
-
-  // Real publishedTime from the file wins; fall back to existing date; last resort: today
-  const publishDate = meta.publishedTime
-    ? meta.publishedTime.split('T')[0]
-    : existing?.publishDate ?? TODAY;
-
-  return {
-    slug: meta.slug,
-    title: meta.title,
-    description: meta.description,
-    publishDate,
-    modifiedDate: publishDate,
-    category,
-    tags,
-    author: meta.author,
-    authorSlug: meta.authorSlug,
-    priority: detectPriority(meta.slug, category),
-    changeFrequency: detectChangeFrequency(category),
-    // Scanned values win; preserve existing if scan didn't find them;
-    // fall back to auto-generated Satori OG image so no entry is imageless.
-    imageUrl:    meta.imageUrl    ?? existing?.imageUrl    ?? `https://www.objectwire.org/api/og?slug=${encodeURIComponent(meta.slug)}`,
-    imageWidth:  meta.imageWidth  ?? existing?.imageWidth  ?? 1200,
-    imageHeight: meta.imageHeight ?? existing?.imageHeight ?? 630,
-    imageAlt:    meta.imageAlt    ?? existing?.imageAlt,
-    featured:    existing?.featured ?? false,
-  };
-}
-
-// ---------------------------------------------------------------------------
-// main
+// main — diagnostic only
 // ---------------------------------------------------------------------------
 function main() {
   console.log('🔍  Scanning app directory for page.tsx files…');
@@ -395,48 +216,27 @@ function main() {
   console.log(`    Found ${allPages.length} pages with real metadata\n`);
 
   if (allPages.length === 0) {
-    console.warn('⚠️  No pages passed the metadata quality gate. Check that your page.tsx files export `metadata` with a real title and description (≥60 chars).');
+    console.warn('⚠️  No pages passed the metadata quality gate.');
     return;
   }
-
-  const existing = readLocalRegistry();
-  console.log(`📋  Current local registry: ${existing.size} entries\n`);
-
-  const newEntries = allPages.map(meta => buildEntry(meta, existing.get(meta.slug)));
-
-  const added   = newEntries.filter(e => !existing.has(e.slug)).length;
-  const updated = newEntries.filter(e =>  existing.has(e.slug)).length;
-  const removed = existing.size - updated;
 
   const withoutDate = allPages.filter(p => !p.publishedTime);
-
-  if (added)        console.log(`➕  ${added} new pages added`);
-  if (updated)      console.log(`♻️   ${updated} existing pages updated`);
-  if (removed > 0)  console.log(`🗑️   ${removed} orphaned entries removed (no matching page.tsx)`);
   if (withoutDate.length) {
-    console.log(`\n⚠️  ${withoutDate.length} pages have no openGraph.publishedTime — assigned today's date.`);
-    console.log('    Add openGraph.publishedTime to those files for accurate Google News indexing.');
+    console.log(`⚠️  ${withoutDate.length} pages have no openGraph.publishedTime — will use today's date.`);
+    console.log('    Add openGraph.publishedTime for accurate Google News indexing.\n');
   }
 
-  if (!WRITE_FLAG) {
-    console.log('\n--- PREVIEW (pass --write to apply) ---');
-    const newSlugs = newEntries.filter(e => !existing.has(e.slug)).map(e => e.slug);
-    if (newSlugs.length) {
-      for (const slug of newSlugs.slice(0, 20)) console.log(`  + ${slug}`);
-      if (newSlugs.length > 20) console.log(`  … and ${newSlugs.length - 20} more`);
-    }
-    if (removed > 0) {
-      const removedSlugs = [...existing.keys()].filter(s => !newEntries.some(e => e.slug === s));
-      for (const slug of removedSlugs.slice(0, 10)) console.log(`  - ${slug}`);
-      if (removedSlugs.length > 10) console.log(`  … and ${removedSlugs.length - 10} more removed`);
-    }
-    if (!added && !removed) console.log('  (no changes)');
-    console.log('\nRun:  npm run registry:sync -- --write');
-    return;
+  console.log('📄  Detected pages (newest first by publishedTime):');
+  const sorted = allPages
+    .slice()
+    .sort((a, b) => (b.publishedTime ?? '').localeCompare(a.publishedTime ?? ''));
+  for (const page of sorted.slice(0, 30)) {
+    const date = page.publishedTime?.split('T')[0] ?? '(no date)';
+    console.log(`  ${date}  ${page.slug}`);
   }
+  if (sorted.length > 30) console.log(`  … and ${sorted.length - 30} more`);
 
-  writeLocalRegistry(newEntries);
-  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data.json`);
+  console.log(`\n✅  Registry is built live from app/ at build time — no JSON write needed.`);
 }
 
 main();

@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:publish -- --file <path>' to update content in Supabase.
 export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/porsche/911-gt3-sc-sport-cabriolet-reveal-2026';
-const ARTICLE_URL = `https://www.objectwire.org${SLUG}`; // restored by wiki:publish
+const ARTICLE_URL = `${SITE_CONFIG.url}${SLUG}`; // restored by wiki:publish
 const OG_IMAGE = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&h=675&fit=crop';
 
 export const metadata: Metadata = {
