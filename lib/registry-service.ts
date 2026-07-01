@@ -27,7 +27,7 @@ const HUB_SLUGS = new Set([
   '/bio-hacking', '/earth', '/ngos', '/cars', '/clothing', '/events',
   '/bank-of-america', '/austin-private-detective-agency', '/missing-persons',
   '/investigations', '/college', '/define', '/authors', '/politics',
-  '/amazon', '/tiktok', '/trump', '/cuba',
+  '/amazon', '/tiktok', '/trump', '/cuba', '/predictions',
 ]);
 
 const HUB_CATEGORIES = new Set(['Meta', 'Support', 'Services', 'Legal']);
@@ -46,7 +46,7 @@ const NON_ARTICLE_ROOTS = new Set([
 // Hub-only roots: top-level segment is valid BUT sub-pages are only real
 // articles if the path has 3+ segments (e.g. /local/greater-texas/article).
 // 2-segment paths like /local/austin are hub listing pages, not articles.
-const HUB_ONLY_ROOTS = new Set(['local']);
+const HUB_ONLY_ROOTS = new Set(['local', 'predict']);
 
 function isRealArticle(e: ContentEntry): boolean {
   if (HUB_SLUGS.has(e.slug)) return false;
