@@ -10,30 +10,35 @@ type Hub = { label: string; href: string; items: NavItem[]; cols?: 1 | 2 };
 
 const HUBS: Hub[] = [
   {
-    label: 'Services',
-    href: '/service',
+    label: 'Sports',
+    href: '/world-cup',
     cols: 2,
     items: [
-      { label: 'All Services', href: '/service' },
-      { label: 'Surveillance', href: '/service/surveillance' },
-      { label: 'Missing Persons', href: '/service/missing-persons' },
-      { label: 'Background Checks', href: '/service/background-checks' },
-      { label: 'Infidelity Investigations', href: '/service/infidelity-investigations' },
-      { label: 'Skip Tracing', href: '/service/skip-tracing' },
-      { label: 'Child Custody', href: '/service/child-custody-investigations' },
-      { label: 'Digital Forensics', href: '/service/digital-forensics' },
-      { label: 'Corporate Investigations', href: '/service/corporate-investigations' },
-      { label: 'Tip the Newsroom', href: '/service/tip-the-newsroom' },
+      { label: 'All Sports Coverage', href: '/world-cup' },
+      { label: 'World Cup 2026', href: '/world-cup' },
+      { label: 'MLB', href: '/mlb' },
+      { label: 'MLS', href: '/mls' },
+      { label: 'Premier League', href: '/premier-league' },
+      { label: 'Golf', href: '/golf' },
+      { label: 'Soccer', href: '/soccer' },
     ],
   },
   {
-    label: 'Texas Blog',
-    href: '/blog',
+    label: 'Creators',
+    href: '/creator',
     items: [
-      { label: 'All Articles', href: '/blog' },
-      { label: 'Austin', href: '/local/austin' },
-      { label: 'Houston', href: '/local/houston' },
-      { label: 'Greater Texas', href: '/local/greater-texas' },
+      { label: 'All Creators', href: '/creator' },
+      { label: 'YouTube', href: '/youtube' },
+      { label: 'Influencer Profiles', href: '/creator' },
+    ],
+  },
+  {
+    label: 'Cars',
+    href: '/cars',
+    items: [
+      { label: 'All Cars', href: '/cars' },
+      { label: 'Supercars', href: '/cars' },
+      { label: 'Electric Vehicles', href: '/cars' },
     ],
   },
   {
