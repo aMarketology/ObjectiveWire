@@ -254,20 +254,6 @@ function HeadlineRow({ article }: { article: ContentEntry }) {
   );
 }
 
-// ─── Beat Nav (inside masthead) ───────────────────────────────────────────────
-
-const BEATS = [
-  { label: 'World Cup 2026', href: '/world-cup' },
-  { label: 'MLB',            href: '/mlb' },
-  { label: 'Premier League', href: '/premier-league' },
-  { label: 'MLS',            href: '/mls' },
-  { label: 'Golf',           href: '/golf' },
-  { label: 'Creators',       href: '/creator' },
-  { label: 'YouTube',        href: '/youtube' },
-  { label: 'Cars',           href: '/cars' },
-  { label: 'All News',       href: '/news' },
-];
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function HomePage() {
@@ -305,61 +291,11 @@ export default async function HomePage() {
   const youtube  = articles.filter(isYouTube).slice(0, 4);
   const cars     = articles.filter(isCars).slice(0, 4);
 
-  const editionDate = new Date().toLocaleDateString('en-US', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-  });
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA) }} />
 
       <div className="bg-white min-h-screen">
-
-        {/* ── MASTHEAD ──────────────────────────────────────────────────── */}
-        <div className="border-b-[3px] border-gray-900">
-          {/* Date + utility row */}
-          <div className="border-b border-gray-200 bg-gray-50">
-            <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between h-8">
-              <span className="text-[9px] font-mono uppercase tracking-widest text-gray-500">
-                {editionDate}
-              </span>
-              <div className="flex items-center gap-5">
-                <Link href="/about" className="text-[9px] font-mono uppercase tracking-widest text-gray-500 hover:text-gray-900 transition-colors hidden sm:inline">About</Link>
-                <Link href="/corrections" className="text-[9px] font-mono uppercase tracking-widest text-gray-500 hover:text-gray-900 transition-colors hidden sm:inline">Corrections</Link>
-                <Link href="/rss.xml" className="text-[9px] font-mono uppercase tracking-widest text-gray-500 hover:text-gray-900 transition-colors">RSS</Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Nameplate */}
-          <div className="container mx-auto px-4 max-w-7xl py-7 md:py-10 text-center border-b border-gray-100">
-            <Link href="/" className="inline-block group">
-              <span className="font-serif font-black text-5xl md:text-7xl lg:text-8xl tracking-tight text-gray-900 uppercase block leading-none group-hover:text-amber-700 transition-colors">
-                Objective Wire
-              </span>
-            </Link>
-            <p className="text-[9px] font-mono uppercase tracking-[0.45em] text-gray-400 mt-2 md:mt-3">
-              Sports &nbsp;&middot;&nbsp; Creators &nbsp;&middot;&nbsp; Cars &nbsp;&middot;&nbsp; Culture &nbsp;&middot;&nbsp; Accuracy Over Speed
-            </p>
-          </div>
-
-          {/* Beat nav */}
-          <nav aria-label="Coverage beats">
-            <div className="container mx-auto px-0 max-w-7xl">
-              <div className="flex overflow-x-auto scrollbar-hide border-t border-gray-100">
-                {BEATS.map((b) => (
-                  <Link
-                    key={b.href}
-                    href={b.href}
-                    className="text-[10px] font-black uppercase tracking-[0.12em] px-4 md:px-6 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-r border-gray-200 first:border-l whitespace-nowrap transition-colors shrink-0"
-                  >
-                    {b.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </nav>
-        </div>
 
         <main className="container mx-auto px-4 max-w-7xl py-8">
 

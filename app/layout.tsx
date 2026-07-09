@@ -138,62 +138,35 @@ export default async function RootLayout({
         <OrganizationSchema />
         <WebSiteSchema />
       </head>
-      <body className="bg-[#2a2a2e] text-gray-100 antialiased font-sans">
+      <body className="bg-white text-gray-900 antialiased font-sans">
         <AuthProvider>
           <ThemeProvider>
             <FooterAuthorProvider>
-            {/* ── oWire Masthead ─────────────────────────────────────────── */}
-            <header className="bg-[#2a2a2e] relative z-40 overflow-visible shadow-[0_2px_0_0_var(--brand-accent),0_3px_0_0_var(--brand-accent)]">
+            {/* ── Newspaper Masthead ────────────────────────────────────── */}
+            <header className="bg-white border-b-[3px] border-gray-900">
 
-              {/* Top info strip */}
-              <div className="border-b border-[#3a3a3e] bg-[#252528]">
-                <div className="container mx-auto px-4 py-1 flex items-center justify-between">
+              {/* Top utility strip — date + search */}
+              <div className="border-b border-gray-200 bg-gray-50">
+                <div className="container mx-auto px-4">
                   <TopStripSearch dateString={new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />
                 </div>
+              </div>
+
+              {/* Nameplate */}
+              <div className="container mx-auto px-4 py-5 md:py-8 text-center border-b border-gray-100">
+                <Link href="/" className="inline-block group" aria-label="Objective Wire — home">
+                  <span className="font-serif font-black text-5xl sm:text-6xl md:text-8xl tracking-tight text-gray-900 uppercase leading-none group-hover:text-amber-700 transition-colors block">
+                    Objective Wire
+                  </span>
+                  <p className="text-[9px] font-mono uppercase tracking-[0.4em] text-gray-400 mt-2">
+                    Sports &nbsp;&middot;&nbsp; Creators &nbsp;&middot;&nbsp; Cars &nbsp;&middot;&nbsp; Culture &nbsp;&middot;&nbsp; Accuracy Over Speed
+                  </p>
+                </Link>
               </div>
 
               {/* Section nav bar — hub dropdowns */}
               <MainNav />
 
-              {/* Nameplate */}
-              <div className="container mx-auto px-4 py-3 md:py-6 text-center">
-                <Link href="/" className="inline-block group" aria-label="Objective Wire — home">
-                  <div className="relative inline-block">
-                    {/* Sunset image — clipped to show only the sun + upper sky, behind text */}
-                    <div
-                      className="absolute left-1/2 -translate-x-1/2 pointer-events-none overflow-hidden"
-                      aria-hidden="true"
-                      style={{
-                        bottom: '-10px',
-                        width: '260px',
-                        height: '100px',
-                        zIndex: 0,
-                        opacity: 0.75,
-                      }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="/sunset.png"
-                        alt=""
-                        style={{
-                          width: '260px',
-                          height: '260px',
-                          objectFit: 'cover',
-                          objectPosition: 'center 20%',
-                          display: 'block',
-                        }}
-                      />
-                    </div>
-                    <div className="brand-wordmark text-[2.6rem] sm:text-6xl md:text-8xl relative" style={{ zIndex: 1 }}>
-                      <span className="o">Objective</span><span className="brand-wire"><span className="brand-w">W</span>ire</span>
-                    </div>
-                  </div>
-                  <div className="brand-rule mx-auto mt-2 w-40 md:w-72" />
-                  <p className="mt-2 text-[9px] tracking-[.3em] uppercase text-[#e07b39] font-mono whitespace-nowrap">
-                     Sports <span className="brand-accent-text">·</span> World Cup <span className="brand-accent-text">·</span> Luxury Cars <span className="brand-accent-text">·</span> Documented
-                  </p>
-                </Link>
-              </div>
             </header>
 
             <main className="mx-auto max-w-screen-2xl px-0">{children}</main>

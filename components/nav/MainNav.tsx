@@ -54,7 +54,7 @@ const HUBS: Hub[] = [
 ];
 
 const LINK_CLS =
-  'block px-3 lg:px-4 py-2.5 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap text-gray-200 hover:bg-[#d97706] hover:text-white transition-colors';
+  'block px-3 lg:px-5 py-3 text-[10px] font-black tracking-[.12em] uppercase whitespace-nowrap text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors border-r border-gray-200';
 
 export default function MainNav() {
   const [openHub, setOpenHub] = useState<string | null>(null);
@@ -74,7 +74,7 @@ export default function MainNav() {
   };
 
   return (
-    <div className="border-t border-white/10 bg-[#141414]">
+    <div className="border-t border-gray-200 bg-white">
       <div className="container mx-auto px-4">
         <nav className="flex items-center">
 
@@ -102,7 +102,7 @@ export default function MainNav() {
                 >
                   <Link
                     href={hub.href}
-                    className={`${LINK_CLS} border-r border-white/10 flex items-center gap-1 ${isOpen ? 'bg-[#d97706] text-white' : ''}`}
+                    className={`${LINK_CLS} flex items-center gap-1 ${isOpen ? 'bg-gray-900 text-white' : ''}`}
                   >
                     {hub.label}
                     <svg
@@ -116,29 +116,21 @@ export default function MainNav() {
 
                   {isOpen && (
                     <div
-                      className="absolute top-full left-0 z-[200] bg-[#1c1c1e] rounded-b-xl shadow-2xl mt-0 overflow-hidden"
-                      style={{ borderTopColor: 'var(--brand-accent)', borderTopWidth: '3px', borderTopStyle: 'solid' }}
+                      className="absolute top-full left-0 z-[200] bg-white rounded-b shadow-xl mt-0 overflow-hidden border border-t-0 border-gray-200"
+                      style={{ borderTopColor: '#111827', borderTopWidth: '2px', borderTopStyle: 'solid' }}
                       onMouseEnter={cancelClose}
                       onMouseLeave={scheduleClose}
                     >
-                      <div className={`p-3 grid gap-2 ${hub.cols === 2 ? 'grid-cols-2 w-[480px]' : 'grid-cols-1 w-[240px]'}`}>
+                      <div className={`p-2 grid gap-1 ${hub.cols === 2 ? 'grid-cols-2 w-[440px]' : 'grid-cols-1 w-[220px]'}`}>
                         {hub.items.map((item, idx) => (
                           <Link
                             key={item.href}
                             href={item.href}
                             onClick={() => setOpenHub(null)}
-                            className={`flex items-center gap-3 py-2.5 px-3 bg-[#2d2d2d] rounded-md shadow-sm border border-white/10 hover:border-[#d97706] hover:shadow-md transition-all duration-300 group transform hover:-translate-y-0.5 ${idx === 0 && hub.cols === 2 ? 'col-span-2 bg-[#d97706] hover:bg-[#f59e0b] text-white border-none' : ''}`}
+                            className={`flex items-center justify-between py-2 px-3 transition-colors text-[10px] font-black uppercase tracking-[.1em] ${idx === 0 && hub.cols === 2 ? 'col-span-2 bg-gray-900 text-white hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-b border-gray-100 last:border-0'}`}
                           >
-                            <span
-                              className={`text-[10px] font-black transition-colors leading-none tracking-[.1em] uppercase ${idx === 0 && hub.cols === 2 ? 'text-white' : 'text-gray-200 group-hover:text-[#d97706]'}`}
-                            >
-                              {item.label}
-                            </span>
-                            <span
-                              className={`ml-auto transition-colors ${idx === 0 && hub.cols === 2 ? 'text-white/70' : 'text-gray-500 group-hover:text-[#d97706]'}`}
-                            >
-                              →
-                            </span>
+                            {item.label}
+                            <span className="opacity-40 ml-2">&rarr;</span>
                           </Link>
                         ))}
                       </div>
@@ -152,12 +144,12 @@ export default function MainNav() {
           {/* Right controls */}
           <div className="flex items-center ml-auto shrink-0">
             <Link
-              href="/about"
-              className={`${LINK_CLS} border-l border-r border-white/10 hidden sm:block`}
+              href="/news"
+              className={`${LINK_CLS} hidden sm:block`}
             >
-              About
+              All News
             </Link>
-            <div className="hidden sm:block border-r border-white/10">
+            <div className="hidden sm:block border-r border-gray-200">
               <NavUserButton />
             </div>
             {/* Mobile hamburger */}
