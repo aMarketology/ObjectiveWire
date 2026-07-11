@@ -1,228 +1,304 @@
-# Objective Wire | Texas Editorial Topics
-**Updated: June 1, 2026**
-**Mission:** Public-interest investigative reporting from Texas. Primary sources only. Court filings, public records, FOIA, and original field work.
+# Objective Wire | Editorial Topics & Content Pipeline
+**Updated: July 11, 2026**
+**Mission:** Verified sports, creators, cars, and culture coverage. Accuracy over speed, primary sources only, named authors.
 
 ---
 
 ## How to Use This Doc
 
-1. Pick a story from the tables below
-2. Gather sources (FOIA docs, court filings, agency records, named official statements)
-3. Duplicate `app/blog/[slug]/page.tsx` template to `app/blog/your-story-slug/`
-4. Write body starting with the direct answer to the headline (no hooks)
-5. Run `npx tsx scripts/sync-registry.ts --write` or `npm run build`
-6. Article auto-populates the `/blog` feed
+1. Pick a story from the pipeline tables below
+2. Check the hub page for existing articles in the cluster
+3. Create `app/[hub]/[slug]/page.tsx` using the appropriate component:
+   - `NewsArticle` — standard news format (World Cup match reports, breaking news, trend stories)
+   - `JackArticle` — premium deep-dive with stats, sources, indicators
+   - `CreatorArticle` — creator profile with infobox, gallery, social links
+4. Run `npx tsx scripts/sync-registry.ts --write` or `npm run build`
+5. Article auto-populates the homepage, news page, and relevant hub
 
 **Author routing:**
 | Beat | Author | `authorSlug` |
 |---|---|---|
-| Courts, general Texas | Jack Brennan | `jack-brennan` |
-| PI, missing persons, fraud | Conan D. Boyle | `conan-boyle` |
+| World Cup 2026 / Sports | Jack Brennan | `jack-brennan` |
+| Cars / Supercars | Conan D. Boyle | `conan-boyle` |
+| Creators / YouTube / Influencer | Jack Sterling | `jack-sterling` |
+| Culture / Entertainment | Jack Brennan | `jack-brennan` |
 
 ---
 
-## Beat 1 | Austin | Travis County, City Hall, APD
+## Pillar 1 | World Cup 2026 — Summer's Biggest Story
 
-Hub: `/local/austin`
+Hub: `/world-cup` | Current: Round of 16 complete, Quarterfinals incoming
 
-### Stories to Research and Write
+This is the highest-traffic pillar. Every match report drives search + AI citation. Production batch: 8-9 articles per round.
 
-| Story | Angle | Primary Source | Priority |
+### Pipeline
+
+| Round | Articles | Status | Deadline |
 |---|---|---|---|
-| **Austin City Council budget 2026** | Where is the $6B+ budget allocated, what was cut, how council voted | City of Austin budget docs, council vote records | HIGH |
-| **APD use-of-force reports 2025-2026** | Pattern analysis of incidents, disciplinary outcomes, officer names in public records | APD Office of Police Oversight reports (public) | HIGH |
-| **Travis County court backlogs** | Post-COVID backlog, how long cases are sitting, which judges have the most pending | Travis County District Clerk public docket | MEDIUM |
-| **Austin development permits | Who is getting fast-tracked, which projects bypassed normal review** | City of Austin Development Services Department permits | MEDIUM |
-| **Austin homeless camp sweeps 2026** | Number of sweeps, cost to taxpayers, where displaced persons go, city data | City audit reports, APD records, budget documents | MEDIUM |
-| **Austin ISD board votes 2026** | Key curriculum and budget votes, school closures, board member positions | AISD board meeting minutes (public) | MEDIUM |
-| **Travis County DA charging decisions** | Cases declined to prosecute, why, patterns by crime type | Travis County DA public records, court filings | HIGH |
-| **Austin water utility rate hikes** | Austin Water rate increases, who approved them, low-income impact | Austin Water rate case filings, city council votes | LOW |
-| **CapMetro expansion audit** | Project Connects Phase 1 spending vs budget, contractor payments | CapMetro public financial reports, FTA filings | MEDIUM |
-| **APD academy attrition and staffing** | Recruit classes, dropout rates, current sworn officer count vs budgeted | APD annual report, city budget docs | LOW |
+| Group Stage roundup | 4-6 hub intro / recap articles | ✅ Done | — |
+| Round of 32 | 9 match reports | ✅ Done | — |
+| Round of 16 | 8 match reports | ✅ Done | — |
+| **Quarterfinals** | **4 match reports** | **⬅️ NEXT** | **July 11-12** |
+| Semifinals | 2 match reports | ⏳ Pending | July 14 |
+| Third-place match | 1 report | ⏳ Pending | July 15 |
+| Final | 1 report + trophy feature | ⏳ Pending | July 16 |
+| Featured: VAR controversy deep-dive | 1 long-read | ⏳ Pending | July 17 |
+| Featured: Tournament legacy | 1 long-read | ⏳ Pending | July 18 |
 
-### Source Directory | Austin
+### Quarterfinal Matchups (approaching)
 
-| Source | URL / Access |
-|---|---|
-| Austin City Council meeting records | austintexas.gov/cityclerk |
-| APD Office of Police Oversight | austintexas.gov/department/office-police-oversight |
-| Travis County District Clerk | traviscountytx.gov/district-clerk |
-| Austin City Budget | austintexas.gov/budget |
-| Austin Development Services | austintexas.gov/department/development-services |
-| Texas Public Information Act requests | Request via agency directly, 10-day response deadline |
-
----
-
-## Beat 2 | Houston | Harris County, HPD, Energy Sector, Port
-
-Hub: `/local/houston`
-
-### Stories to Research and Write
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **HPD backlog of untested rape kits** | How many kits remain untested, timeline, accountability | HPD crime lab reports, Harris County DA records | HIGH |
-| **Harris County flood control spending** | Post-Harvey bond funds, how much spent, which projects delayed or over budget | Harris County Flood Control District public financials | HIGH |
-| **Port of Houston contract awards 2025-2026** | Who received major contracts, were bids competitive, any commissioner connections | Port of Houston Authority meeting minutes, contracts | MEDIUM |
-| **Houston energy sector layoffs 2025-2026** | Which companies cut, how many jobs, state response | Texas Workforce Commission records, SEC filings (public companies) | MEDIUM |
-| **Harris County jail conditions 2026** | Inmate deaths, lawsuits filed, inspection results | Harris County Sheriff public records, federal court filings | HIGH |
-| **HPD overtime spending** | How much overtime paid, to which units, patterns | HPD budget documents, city controller reports | MEDIUM |
-| **Harris County bail reform outcomes** | Impact of PR bond changes on re-arrest rates | Harris County criminal court data, DA reports | HIGH |
-| **Houston ISD state takeover status** | TEA intervention, which schools affected, superintendent actions | TEA public documents, HISD board records | MEDIUM |
-| **Houston water infrastructure failures** | Boil water events 2024-2026, cause, city response timeline | City of Houston PWE reports, EPA compliance records | MEDIUM |
-| **Energy corridor zoning and TxDOT** | Highway expansion through energy corridor, who benefits, public comment record | TxDOT project records, Harris County appraisal records | LOW |
-
-### Source Directory | Houston
-
-| Source | URL / Access |
-|---|---|
-| Harris County District Clerk | hcdistrictclerk.com |
-| HPD Open Data | houstontx.gov/police |
-| Port of Houston Authority | porthouston.com/about/public-records |
-| Harris County Flood Control | hcfcd.org |
-| Texas Commission on Environmental Quality | tceq.texas.gov/records |
-| Harris County Sheriff | harriscountyso.org |
-
----
-
-## Beat 3 | Greater Texas | Statewide, Workers Comp, Public Corruption
-
-Hub: `/local/greater-texas`
-
-### Workers Comp Fraud
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **Texas workers comp claim denial rates by employer** | Which large employers deny claims most, how appeals end | Texas Department of Insurance Division of Workers Comp public data | HIGH |
-| **Employer misclassification fraud** | Workers classified as independent contractors to avoid comp coverage, enforcement actions | TDI-DWC enforcement orders (public) | HIGH |
-| **Medical provider billing fraud in comp system** | Overbilling patterns, providers sanctioned | TDI-DWC fraud unit public enforcement records | MEDIUM |
-| **Injured worker attorney outcomes** | What happens to claims when workers get attorneys vs. don't | TDI-DWC public case outcome data | MEDIUM |
-| **Construction industry comp coverage gaps** | Uninsured employers in construction, TDI enforcement | TDI-DWC uninsured employer database | HIGH |
-
-### Public Corruption
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **Texas AG Ken Paxton post-impeachment actions** | What oversight remains, pending cases, OAG public records | Texas AG public records, Travis County court filings | HIGH |
-| **Bid rigging in Texas construction contracts** | State agency contract awards, losing bids, price anomalies | Texas Comptroller ESBD (Electronic State Business Daily) | MEDIUM |
-| **Texas school district vendor fraud** | Districts with irregularities, TEA audit findings | TEA audit reports (public), district financial records | MEDIUM |
-| **Water district governance failures** | Small water districts, board conflicts of interest, EPA violations | TCEQ enforcement orders, EPA ECHO database | MEDIUM |
-| **Texas border security spending accountability** | Operation Lone Star expenditure, what was actually achieved | Texas Division of Emergency Management public records, LBB reports | HIGH |
-
-### Missing Persons
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **Texas DPS unresolved missing persons by county** | Which counties have the highest counts, resource gaps | Texas DPS Missing Persons Clearinghouse annual report | HIGH |
-| **Nueces County missing persons patterns** | Coastal area, specific patterns in cases | Nueces County Sheriff, DPS records | MEDIUM |
-| **Colonia missing persons cases, Rio Grande Valley** | Unincorporated communities, limited law enforcement access | Hidalgo/Starr/Cameron county sheriff records | HIGH |
-| **Missing Indigenous women in Texas** | NamUs database Texas entries, tribal vs. state jurisdiction gaps | NamUs public database, Texas DPS | HIGH |
-
-### Statewide Public Records
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **Texas Public Information Act response time audit** | How long agencies are taking, which agencies stonewalling | OAG Open Records Division decisions (public) | MEDIUM |
-| **Texas prison system deaths 2024-2026** | TDCJ in-custody deaths, cause, accountability | TDCJ offender death reports (public), OIG records | HIGH |
-| **State agency travel and expense abuse** | High-cost trips, first-class travel by state employees | Texas Comptroller expenditure database | LOW |
-| **Texas foster care system outcomes** | DFPS case data, federal monitor reports | DFPS public data, federal court monitor reports (M.D. ex rel. Stukenberg v. Abbott) | HIGH |
-
----
-
-## Beat 4 | Courts | Travis County, Harris County, Federal Districts
-
-### Active Court Clusters to Monitor
-
-| Court | What to Watch | Access |
+| Match | Date | Stakes |
 |---|---|---|
-| **Travis County District Courts** | High-profile criminal trials, civil suits against city/county, TPIA litigation | traviscountytx.gov/district-clerk |
-| **Harris County District Courts** | Capital cases, civil rights suits against HPD, energy sector litigation | hcdistrictclerk.com |
-| **U.S. District Court, W.D. Texas (Austin)** | Federal civil rights suits, state vs. federal disputes, immigration enforcement challenges | pacer.gov |
-| **U.S. District Court, S.D. Texas (Houston)** | Offshore energy litigation, human trafficking prosecutions, border cases | pacer.gov |
-| **Texas Supreme Court** | State law precedents affecting public agencies, property rights, elections | txcourts.gov |
-| **Texas Court of Criminal Appeals** | Death penalty cases, wrongful conviction claims | txcourts.gov |
+| Norway vs Morocco | July 11 | Underdog vs underdog, one guaranteed semifinalist |
+| Argentina vs Switzerland | July 11 | Messi's path continues, Swiss defensive test |
+| Spain vs England | July 12 | Heavyweight tactical battle |
+| France vs Belgium | July 12 | European classic, stacked talent |
+
+### World Cup Article Pattern
+
+- Component: `NewsArticle`
+- `topicTag: "sports"`
+- Author: Jack Brennan, avatar `/influncer/author/jack_brennen.JPG`
+- `revalidate: 86400`
+- Slug: `world-cup-2026-[team1]-[score]-[team2]-[score]-[round]`
+- `keyTakeaways`: 4 items (definition, key stat, turning point, aftermath)
+- `faqItems`: 3-5 items (score, MVP, next match, key moment)
+- Internal links: hub backlink + 2 sibling match reports + author page
+- Thumbnail: Satori minted via 2-curl workflow
 
 ---
 
-## Research Toolkit | Texas Public Records
+## Pillar 2 | Sports — MLB, MLS, Premier League, Golf, Soccer
 
-### Fastest Sources (No FOIA Needed)
+Hubs: `/mlb` `/mls` `/premier-league` `/golf` `/soccer`
+
+### MLB
+
+| Story | Angle | Priority |
+|---|---|---|
+| 2026 season standings + playoff race | Mid-season analysis, division races, wild card | HIGH |
+| Trade deadline preview | Key players on the block, contenders' needs | HIGH (late July) |
+| Draft recap 2026 | Top picks, analysis, team grades | MEDIUM |
+| Team-specific features | Surprise teams, slumping stars | MEDIUM |
+| Stadium / attendance stories | New ballparks, attendance trends | LOW |
+
+### MLS
+
+| Story | Angle | Priority |
+|---|---|---|
+| Leagues Cup 2026 | MLS vs Liga MX, format, key matches | HIGH (Aug) |
+| Playoff race | Supporters Shield, playoff positioning | MEDIUM |
+| USMNT players in MLS | World Cup 2026 prep, player watch | MEDIUM |
+| Expansion news | New franchises, stadiums | LOW |
+
+### Premier League
+
+| Story | Angle | Priority |
+|---|---|---|
+| Transfer window roundup | Summer 2026 signings, fees, analysis | HIGH (Aug-Sep) |
+| Season preview 2026-27 | Title race, relegation battle, key storylines | HIGH (Aug) |
+| U.S. tours | PL clubs in America, preseason friendlies | MEDIUM (Jul) |
+| Manager changes | Hires, firings, tactical shifts | MEDIUM |
+
+### Golf
+
+| Story | Angle | Priority |
+|---|---|---|
+| Major recaps | Masters, PGA, U.S. Open, Open Championship | HIGH |
+| LIV Golf vs PGA Tour | Merger status, player movements | MEDIUM |
+| Top player profiles | Scheffler, Rahm, McIlroy, emerging stars | MEDIUM |
+
+### Sports Article Pattern
+
+- Component: `NewsArticle`
+- `topicTag: "sports"`
+- Author: Jack Brennan
+- Slug: `[sport]/[slug]`
+- `keyTakeaways`: 3-4 items
+- `faqItems`: 3-4 items
+- Internal links: hub backlink + 2 sibling articles + author page
+
+---
+
+## Pillar 3 | Creators & YouTube — Influencer Economy
+
+Hubs: `/creator` `/youtube` `/influencer`
+
+### Creator Profiles (ongoing series)
+
+Each profile follows the **CreatorArticle** gold standard. Target: 2-3 per week.
+
+| Creator | Platform | Niche | Priority |
+|---|---|---|---|
+| MrBeast | YouTube | Creator economy, Beast Games, Feastables | HIGH |
+| Logan Paul | YouTube / WWE | Prime, podcast, wrestling | HIGH |
+| Jake Paul | YouTube / Boxing | Boxing career, MVP promotion | HIGH |
+| KSI | YouTube / Boxing | Prime, music, boxing | HIGH |
+| Kai Cenat | Twitch / YouTube | Streaming, Mafiathon, culture | HIGH |
+| Addison Rae | TikTok | Music, acting, brand deals | MEDIUM |
+| Bella Poarch | TikTok / Music | Music career, following | MEDIUM |
+| Emma Chamberlain | YouTube / Coffee | Coffee brand, fashion | MEDIUM |
+| Markiplier | YouTube | Gaming, streaming longevity | MEDIUM |
+| Airrack | YouTube | Challenge videos, Creator League | LOW |
+| Dream | YouTube / Minecraft | Face reveal, music, Minecraft | LOW |
+| Valkyrae | YouTube / Gaming | 100 Thieves, streaming | LOW |
+
+### Creator News (ongoing)
+
+| Story | Angle | Priority |
+|---|---|---|
+| Creator League 2026 | Format, teams, viewership, impact | HIGH |
+| YouTube Brandcast / Upfronts | Ad revenue, platform priorities | MEDIUM |
+| TikTok ban / regulation | Legislative updates, impact on creators | HIGH (if active) |
+| OnlyFans economics | Top earners, platform changes | MEDIUM |
+| Influencer marketing trends | Brand spend, ROI, fraud | MEDIUM |
+| Platform policy changes | Demonetization, algorithm changes, strikes | MEDIUM |
+
+### Creator Article Pattern
+
+- Component: `CreatorArticle` for profiles, `NewsArticle` for news
+- Author: Jack Sterling (profiles), Jack Brennan (news)
+- 15-18 keywords in metadata
+- Wikipedia-style infobox in sidebar for profiles
+- Internal links: 3 minimum
+
+---
+
+## Pillar 4 | Cars — Supercars, EVs, Auto News
+
+Hub: `/cars`
+
+### Car Coverage
+
+| Story | Angle | Priority |
+|---|---|---|
+| Ferrari F80 | 1,184hp hybrid hypercar, $3.7M, 799 units | HIGH |
+| Bugatti Tourbillon | 1,800hp V16 hybrid, $4.1M | HIGH |
+| McLaren W1 | 1,275hp hybrid, 399 units | HIGH |
+| Porsche 911 hybrid | 992-generation hybrid, specs, pricing | MEDIUM |
+| Lamborghini Revuelto | V12 hybrid flagship | MEDIUM |
+| Koenigsegg Jesko Absolut | Production, speed records | MEDIUM |
+| EV market 2026 | Tesla, Rivian, Lucid, legacy OEMs | MEDIUM |
+| Car launches / auto shows | Geneva, Pebble Beach, Monterey | MEDIUM |
+
+### Car Article Pattern
+
+- Component: `NewsArticle` with `topicTag: "cars"`
+- `keyTakeawaysColor: "red"`
+- Author: Conan D. Boyle
+- Slug: `/cars/[make]-[model]-[year]`
+
+---
+
+## Pillar 5 | Culture & Entertainment
+
+Hubs: `/creator/news` `/youtube/news`
+
+| Story | Angle | Priority |
+|---|---|---|
+| K-pop industry | Billboard trends, U.S. market | MEDIUM |
+| Celebrity brand launches | Beauty, fashion, alcohol | MEDIUM |
+| Film / TV | Box office, streaming wars | LOW |
+| Music | Album releases, chart performance | LOW |
+
+---
+
+## Pillar 6 | Texas Developments — Public Records, Courts, Infrastructure & Policy
+
+Hub: `/local` `/blog`
+
+This pillar covers **Texas-specific reporting** that fits within ZWire's editorial scope: court filings, public records, infrastructure, and policy changes that affect Texas residents. No partisan politics — focus on verifiable documents, financial data, and named officials.
+
+**Author routing:**
+| Beat | Author | `authorSlug` |
+|---|---|---|
+| Texas courts / public records | Jack Brennan | `jack-brennan` |
+| Texas infrastructure / business | Conan D. Boyle | `conan-boyle` |
+
+---
+
+### Public Records & FOIA
+
+| Story | Angle | Primary Source | Priority |
+|---|---|---|---|
+| **TPIA response time audit 2026** | How long Texas agencies take to respond, which agencies stonewall, OAG rulings | OAG Open Records Division decisions | HIGH |
+| **State agency travel & expense abuse** | High-cost trips, first-class travel by Texas state employees | Texas Comptroller expenditure database | MEDIUM |
+| **Texas public records requests by county** | Which counties comply fastest, which deny most, comparison | Texas OAG enforcement records | MEDIUM |
+| **Body cam footage release policies** | Which Texas PDs release body cam automatically vs. fight requests | Individual department policies, TPIA requests | HIGH |
+
+### Texas Courts
+
+| Story | Angle | Primary Source | Priority |
+|---|---|---|---|
+| **Federal court filings — Texas districts** | Civil rights suits, state vs. federal disputes, immigration challenges | PACER (W.D. Texas, S.D. Texas, N.D. Texas, E.D. Texas) | HIGH |
+| **Texas Supreme Court 2026 term** | Major property rights, election law, and agency authority cases | txcourts.gov | MEDIUM |
+| **Texas Court of Criminal Appeals** | Wrongful conviction claims, death penalty cases, new evidentiary standards | txcourts.gov | MEDIUM |
+| **District court backlogs** | Post-COVID case clearance rates by county, judge-level data | Individual district clerk offices | MEDIUM |
+
+### Infrastructure & Environment
+
+| Story | Angle | Primary Source | Priority |
+|---|---|---|---|
+| **Texas power grid 2026** | ERCOT summer performance, rolling blackouts, reserve margins | ERCOT public reports, PUCT filings | HIGH |
+| **Texas water infrastructure** | Boil water events 2025-2026, small water district failures, EPA violations | TCEQ enforcement orders, EPA ECHO database | HIGH |
+| **TxDOT highway expansion projects** | I-35 expansion cost overruns, toll road revenue, contractor payments | TxDOT project records, Texas Comptroller | MEDIUM |
+| **Texas flood control spending** | County-level bond fund utilization, projects delayed over budget | Harris County Flood Control, state grant records | MEDIUM |
+| **High-speed rail Texas 2026** | Dallas-Houston line status, funding, regulatory approvals | Texas Rail Commission, FRA records | LOW |
+
+### Texas Economy & Business
+
+| Story | Angle | Primary Source | Priority |
+|---|---|---|---|
+| **Texas job growth 2026 by sector** | Which industries grow wages, which decline, energy vs. tech vs. healthcare | Texas Workforce Commission data | HIGH |
+| **Texas corporate relocations 2026** | Companies moving HQ to Texas, incentives offered, job commitments | Texas Governor's office deal announcements, local EDC records | MEDIUM |
+| **Texas energy sector** | Oil & gas production, renewable growth, LNG export capacity | Texas RRC data, EIA reports | MEDIUM |
+| **Texas housing market 2026** | Affordability crisis, property tax trends, urban vs. rural divide | Texas A&M Real Estate Center, local appraisal districts | HIGH |
+| **Texas film & media production** | Studio builds, tax incentives, production volume | Texas Film Commission, state incentive reports | LOW |
+
+### Texas Public Safety
+
+| Story | Angle | Primary Source | Priority |
+|---|---|---|---|
+| **DPS border security spending 2026** | Operation Lone Star expenditure, vehicle seizures, what was achieved | Texas DPS public records, LBB reports | HIGH |
+| **Texas prison system deaths 2025-2026** | TDCJ in-custody deaths, cause breakdown, unit-level data | TDCJ offender death reports, OIG records | HIGH |
+| **APD use-of-force 2025-2026** | Pattern analysis by incident type, disciplinary outcomes, officer names in public records | APD Office of Police Oversight reports | HIGH |
+| **HPD rape kit backlog** | Number of untested kits, timeline to clearance, accountability | HPD crime lab reports, Harris County DA records | HIGH |
+| **Texas foster care system** | DFPS case data, federal monitor report status, placement outcomes | DFPS public data, Stukenberg v. Abbott court monitor | HIGH |
+
+### Texas Politics & Policy (Non-Partisan)
+
+| Story | Angle | Primary Source | Priority |
+|---|---|---|---|
+| **2026 Texas legislative session preview** | Bills filed, committee assignments, leadership priorities | Texas Legislature Online (capitol.texas.gov) | MEDIUM |
+| **Texas school finance 2026** | Per-student funding levels, recapture payments, teacher pay | TEA budget data, Texas Comptroller | MEDIUM |
+| **Texas property tax reform** | Rate compression, appraisal caps, legislative outcomes | Texas Comptroller property tax division | MEDIUM |
+| **Texas election administration 2026** | Voter registration changes, polling place changes, county-level admin | Texas Secretary of State, county election offices | MEDIUM |
+
+---
+
+### Source Directory | Texas Public Records
 
 | Source | What You Get | URL |
 |---|---|---|
 | Texas Comptroller Expenditure Data | Every dollar state agencies spend, vendor names | comptroller.texas.gov/transparency |
 | Texas Comptroller ESBD | State contract awards, bid amounts, vendor history | comptroller.texas.gov/purchasing/esbd |
-| PACER | Federal court filings across all U.S. districts | pacer.gov (8c/page after $30 free/quarter) |
-| Texas OAG Open Records Decisions | Which agencies were ordered to release records | oag.texas.gov/open-government/or-decisions |
-| EPA ECHO Database | Environmental violations, penalties, inspection history | echo.epa.gov |
-| NamUs | National missing persons database with Texas cases | namus.nij.ojp.gov |
-| TDI-DWC Enforcement | Workers comp sanctions, fines, employer violations | tdi.texas.gov/wc/employer/enforcement |
-| TDCJ Offender Records | Inmate search, deaths, unit information | tdcj.texas.gov |
-| Texas Ethics Commission | Campaign finance, lobbyist disclosures, conflict filings | ethics.state.tx.us |
-| Texas Secretary of State | Corporate registrations, assumed names, UCC filings | sos.texas.gov |
+| PACER | Federal court filings — all TX districts | pacer.gov |
+| Texas OAG Open Records Decisions | Which agencies ordered to release records | oag.texas.gov/open-government/or-decisions |
+| EPA ECHO | Environmental violations, penalties, inspection history | echo.epa.gov |
+| ERCOT | Grid status, reserve margins, load forecasts | ercot.com |
+| Texas Workforce Commission | Employment data, unemployment claims | twc.texas.gov |
+| Texas DPS Public Information | Border security data, missing persons | dps.texas.gov/publicinformation |
+| TDCJ | In-custody death reports, offender records | tdcj.texas.gov |
+| Texas Ethics Commission | Campaign finance, lobbyist disclosures | ethics.state.tx.us |
+| Texas Secretary of State | Corporate registrations, election data | sos.texas.gov |
+| Texas RRC | Oil & gas production, well data | rrc.texas.gov |
 
-### FOIA / Texas PIA Request Targets
+### Article Pattern — Texas Developments
 
-File requests under the **Texas Public Information Act** (Tex. Gov't Code Ch. 552). Agencies must respond within **10 business days**.
-
-| Agency | What to Request | Notes |
-|---|---|---|
-| APD | Use-of-force reports, disciplinary records, body cam metadata | City of Austin portal: austintexas.gov/records |
-| Austin City Manager | Internal emails on specific projects or votes | Requestable via city clerk |
-| Harris County Sheriff | Jail death reports, internal affairs summaries | harriscountyso.org |
-| Texas DPS | Missing persons case files (non-active), UCR crime data | dps.texas.gov/publicinformation |
-| TDCJ | In-custody death reports, unit inspection records | tdcj.texas.gov/pio |
-| TEA | School district audit findings, TEA investigative reports | tea.texas.gov/about-tea/contact-us/open-records |
-| TDI-DWC | Employer compliance files, insurer audit results | tdi.texas.gov/pio |
-| Texas AG OAG | OAG investigation records where not exempt | oag.texas.gov |
-
----
-
-## Article Naming Conventions | Texas Beat
-
-These slug patterns ensure consistency and search clarity.
-
-| Beat | Slug Pattern | Example |
-|---|---|---|
-| Austin city hall | `austin-[topic]-[year]` | `austin-city-council-budget-2026` |
-| APD accountability | `apd-[topic]-[year]` | `apd-use-of-force-report-2026` |
-| Travis County courts | `travis-county-[topic]-[year]` | `travis-county-da-declination-rate-2026` |
-| Houston / Harris County | `houston-[topic]-[year]` | `houston-hpd-rape-kit-backlog-2026` |
-| Workers comp | `texas-workers-comp-[topic]` | `texas-workers-comp-employer-denials-2026` |
-| Missing persons | `texas-missing-persons-[location]` | `texas-missing-persons-rio-grande-valley` |
-| Public corruption | `texas-[subject]-corruption-[year]` | `texas-bid-rigging-construction-2026` |
-| Statewide | `texas-[topic]-[year]` | `texas-foster-care-deaths-2026` |
-
----
-
-## OStandard Reminders | Texas Articles
-
-- **No em dashes anywhere.** Use commas or rewrite the sentence.
-- **First sentence of every article = direct factual answer.** Not a scene. Not a hook.
-  - Bad: `"In the shadow of the Texas Capitol, a pattern has emerged..."`
-  - Good: `"The Texas Department of Family and Protective Services failed to investigate 1,200 abuse reports in 2025, according to federal monitor records filed in Travis County."`
-- **Named sources in every paragraph.** "Officials say" is not a source. Name the document, the agency, the filing number.
-- **H2s must be specific.** Not `"Background"`. Not `"Overview"`. Example: `"APD Use-of-Force Reports | What the 2025 Data Shows"`.
-- **Min 4 internal links** per article: `/blog` hub, 1-2 sibling stories, author page.
-- **category field** for Texas investigations: `"News"` or `"World"` (no Texas-specific category in the valid list, use News).
-
----
-
-## Publishing Checklist
-
-Before every publish on a Texas article:
-
-- [ ] First sentence is a direct factual answer, not a hook
-- [ ] Every factual claim has a named source (document, agency, filing, official statement)
-- [ ] `keyTakeaways` filled with 3-5 complete standalone sentences
-- [ ] `faqItems` filled, first question is "What is X?" or "What happened at X?"
-- [ ] Named author assigned (`jack-brennan` or `conan-boyle`)
-- [ ] `breadcrumbs` includes `/blog` as second crumb
-- [ ] Minimum 4 internal links present (hub + siblings + author page)
-- [ ] All links: `className="text-blue-600 hover:text-blue-800 underline"`
-- [ ] No em dashes (--) in title, headings, metadata, or body
-- [ ] `metadata.title` max 60 chars, no brand suffix
-- [ ] `metadata.description` 130-155 chars, primary keyword in first 60 chars
-- [ ] `published_at` is ISO-8601 (e.g. `2026-06-01T00:00:00Z`)
-- [ ] `revalidate = 86400` exported (or omit for fully static)
-- [ ] Registry synced: `npx tsx scripts/sync-registry.ts --write`
+- Component: `NewsArticle` (or `JackArticle` for premium deep-dives with sources/timeline)
+- `topicTag`: `"news"` or `"sports"` (for sports-related tx stories)
+- Category: `"News"` or `"Sports"` 
+- Slug: `texas-[topic]-[year]`
+- Author: per beat table above
+- Internal links: hub backlink to `/local` or `/blog`, 2+ additional internal links
+- Sources: minimum 2 verifiable primary sources per article (public records, court filings, named officials)
