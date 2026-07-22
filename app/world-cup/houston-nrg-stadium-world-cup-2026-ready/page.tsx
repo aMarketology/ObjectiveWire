@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
 
+const OG_IMAGE = '/thumbnails/world-cup-houston-nrg-stadium-world-cup-2026-ready.jpg';
+
 export const revalidate = 3600;
 
 const SLUG = '/world-cup/houston-nrg-stadium-world-cup-2026-ready';
@@ -38,12 +40,7 @@ export const metadata: Metadata = {
     modifiedTime: '2026-06-12T14:00:00Z',
     section: 'Sports',
     tags: ['World Cup 2026', 'Houston', 'NRG Stadium', 'FIFA', 'Soccer'],
-    images: [{
-      url: 'https://www.objectivewire.com/api/og?slug=%2Fworld-cup%2Fhouston-nrg-stadium-world-cup-2026-ready&v=1',
-      width: 1200,
-      height: 630,
-      alt: 'Houston NRG Stadium FIFA World Cup 2026',
-    }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',

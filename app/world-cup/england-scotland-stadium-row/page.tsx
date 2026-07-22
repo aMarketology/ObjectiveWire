@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 
+const OG_IMAGE = '/thumbnails/world-cup-england-scotland-stadium-row.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/world-cup/england-scotland-stadium-row';

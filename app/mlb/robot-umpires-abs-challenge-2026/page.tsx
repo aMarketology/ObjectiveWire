@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/mlb/robot-umpires-abs-challenge-2026';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = '/thumbnails/mlb-robot-umpires-abs-challenge-2026.jpg';
 
 export const metadata: Metadata = {
   title: 'MLB ABS Challenge System 2026 | Are Robot Umpires Inevitable',

@@ -4,6 +4,8 @@ import { NewsArticle } from '@/components/articles/NewsArticle';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
 import { PrismTable } from '@/components/articles/PrismTable';
 
+const OG_IMAGE = '/thumbnails/cars-dodge-viper-acr-2016-most-powerful-specs-value.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/cars/dodge-viper-acr-2016-most-powerful-specs-value';

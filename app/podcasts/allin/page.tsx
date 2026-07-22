@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 
+const OG_IMAGE = '/thumbnails/podcasts-allin.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/podcasts/allin';

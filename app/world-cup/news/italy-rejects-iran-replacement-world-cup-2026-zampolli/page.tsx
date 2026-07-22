@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/italy-rejects-iran-replacement-world-cup-2026-zampolli';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // restored by wiki:publish
-const OG_IMAGE = 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=675&fit=crop';
+const OG_IMAGE = '/thumbnails/world-cup-news-italy-rejects-iran-replacement-world-cup-2026-zampolli.jpg';
 
 export const metadata: Metadata = {
   title: 'Italy Rejects Iran Replacement Proposal | 2026 World Cup',

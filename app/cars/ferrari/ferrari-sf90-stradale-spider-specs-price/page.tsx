@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 
+const OG_IMAGE = '/thumbnails/cars-ferrari-ferrari-sf90-stradale-spider-specs-price.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/cars/ferrari/ferrari-sf90-stradale-spider-specs-price';

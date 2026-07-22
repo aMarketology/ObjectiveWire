@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
 
+const OG_IMAGE = '/thumbnails/cars-dodge-viper-discontinued-not-coming-back-2026.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/cars/dodge-viper-discontinued-not-coming-back-2026';

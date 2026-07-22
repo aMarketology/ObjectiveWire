@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/mls/san-jose-quakes-defensive-resurgence';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
-const OG_IMAGE = 'https://images.unsplash.com/photo-1558465202-92356bf74344?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
+const OG_IMAGE = '/thumbnails/mls-san-jose-quakes-defensive-resurgence.jpg';
 
 export const metadata: Metadata = {
   title: 'San Jose Earthquakes 2026 | Timo Werner Golden Boot Charge',

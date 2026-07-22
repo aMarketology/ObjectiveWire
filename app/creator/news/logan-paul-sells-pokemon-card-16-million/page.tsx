@@ -4,6 +4,8 @@ import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
 
+const OG_IMAGE = '/thumbnails/creator-news-logan-paul-sells-pokemon-card-16-million.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/creator/news/logan-paul-sells-pokemon-card-16-million';

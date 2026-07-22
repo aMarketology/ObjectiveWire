@@ -5,6 +5,8 @@ import { NewsArticle } from '@/components/articles/NewsArticle';
 export const revalidate = 86400;
 
 const URL_PATH = '/local/austin/best-swimming-holes-central-texas-2026';
+
+const OG_IMAGE = '/thumbnails/local-austin-best-swimming-holes-central-texas-2026.jpg';
 const SLUG = 'local-austin-best-swimming-holes-central-texas-2026';
 const CANONICAL = `https://www.objectivewire.com${URL_PATH}`;
 
@@ -68,6 +70,7 @@ export default function AustinSwimmingHolesPage() {
       }}
       slug={SLUG}
       url={URL_PATH}
+      thumbnail={{ src: OG_IMAGE, alt: '7 Best Swimming Holes Near Austin | Summer 2026 Status Guide' }}
       tags={['Austin', 'Texas', 'Swimming Holes', 'Summer 2026', 'Hill Country', 'Central Texas']}
       breadcrumbs={[
         { name: 'Home', item: '/' },

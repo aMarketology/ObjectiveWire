@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/fifa-world-cup-2026-tree-planting-arbor-day-earth-day';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // restored by wiki:publish
-const OG_IMAGE = 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
+const OG_IMAGE = '/thumbnails/world-cup-news-fifa-world-cup-2026-tree-planting-arbor-day-earth-day.jpg';
 
 export const metadata: Metadata = {
   title: 'FIFA World Cup 2026 | Tree Planting in All 16 Host Cities',

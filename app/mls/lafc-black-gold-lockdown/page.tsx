@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/mls/lafc-black-gold-lockdown';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
-const OG_IMAGE = 'https://images.unsplash.com/photo-1706675780107-7c43cc487928?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
+const OG_IMAGE = '/thumbnails/mls-lafc-black-gold-lockdown.jpg';
 
 export const metadata: Metadata = {
   title: 'LAFC Defense 2026 | Best in the West Without Sacrificing',

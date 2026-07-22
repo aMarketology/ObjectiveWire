@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/2026-world-cup-48-team-field-complete-italy-out';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
-const OG_IMAGE = 'https://www.objectivewire.com/world-cup/worldcup-usa-drama-strikes.jpg';
+const OG_IMAGE = '/thumbnails/world-cup-news-2026-world-cup-48-team-field-complete-italy-out.jpg';
 
 export const metadata: Metadata = {
   title: '2026 World Cup Field Complete | Italy Out, 48 Nations Set',

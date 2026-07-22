@@ -5,6 +5,7 @@ export const revalidate = 86400;
 
 const SLUG = '/copyright/news/aoc-mlb-polymarket-gambling-warning';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = '/thumbnails/copyright-news-aoc-mlb-polymarket-gambling-warning.jpg';
 
 export const metadata: Metadata = {
   title: "AOC MLB Polymarket | $300M Gambling Deal Warning",
@@ -30,11 +31,13 @@ export const metadata: Metadata = {
     siteName: 'Objective Wire',
     authors: ['Jack Sterling'],
     section: 'Politics',
+    images: [{ url: OG_IMAGE, width: 1200, height: 675, alt: 'AOC MLB Polymarket gambling deal warning' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: "AOC Warns Against MLB's $300M Polymarket Gambling Deal",
     description: "Rep. AOC calls the deal 'sad' and flags the pervasive gambling risk.",
+    images: [OG_IMAGE],
   },
 };
 

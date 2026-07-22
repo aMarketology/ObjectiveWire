@@ -31,7 +31,7 @@ import fs from 'fs';
 import path from 'path';
 
 // ── Config ────────────────────────────────────────────────────────────────────
-const SATORI_BASE    = 'http://localhost:3001';
+const SATORI_BASE    = 'https://fshot.one';
 const SATORI_TOKEN   = 'satori_0c00f62203a65529f7dac2f75b74e684f3806484f23724a3';
 const SATORI_NETWORK = 'ozone';
 const UNSPLASH_KEY   = 'Xf48MkOY-E_ughjz6FJ1d_heBKDy0YcF_qpIDoVi1FQ';

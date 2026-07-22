@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/mlb/2026-season-standings-april-update';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = '/thumbnails/mlb-2026-season-standings-april-update.jpg';
 
 export const metadata: Metadata = {
   title: 'MLB 2026 Standings | Yankees Lead, Padres Surge After One Month',

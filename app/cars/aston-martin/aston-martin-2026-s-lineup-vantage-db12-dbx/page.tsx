@@ -4,6 +4,8 @@ import { NewsArticle, EmbedBox } from '@/components/articles/NewsArticle';
 import { PrismTable } from '@/components/articles/PrismTable';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
 
+const OG_IMAGE = '/thumbnails/cars-aston-martin-aston-martin-2026-s-lineup-vantage-db12-dbx.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/cars/aston-martin/aston-martin-2026-s-lineup-vantage-db12-dbx';

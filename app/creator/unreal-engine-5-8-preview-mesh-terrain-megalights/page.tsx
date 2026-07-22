@@ -5,6 +5,8 @@ import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 import { SourcesInterlink } from '@/components/SourcesInterlink';
 import { PrismTable } from '@/components/articles/PrismTable';
 
+const OG_IMAGE = '/thumbnails/creator-unreal-engine-5-8-preview-mesh-terrain-megalights.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/creator/unreal-engine-5-8-preview-mesh-terrain-megalights';

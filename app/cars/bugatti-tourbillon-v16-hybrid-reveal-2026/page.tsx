@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 
+const OG_IMAGE = '/thumbnails/cars-bugatti-tourbillon-v16-hybrid-reveal-2026.jpg';
+
 export const metadata: Metadata = {
   title: 'Bugatti Tourbillon Revealed | 1,800 HP V16 Hybrid Hypercar',
   description: 'Bugatti unveils the Chiron successor: The Tourbillon. Featuring an 8.3L naturally aspirated V16 paired with three electric motors producing 1,800 HP.',

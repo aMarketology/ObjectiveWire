@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/world-cup-2026-us-transit-prices-fans-outraged';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // restored by wiki:publish
-const OG_IMAGE = 'https://images.unsplash.com/photo-1544366981-43d8d59eeba9?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy';
+const OG_IMAGE = '/thumbnails/world-cup-news-world-cup-2026-us-transit-prices-fans-outraged.jpg';
 
 export const metadata: Metadata = {
   title: 'World Cup 2026 Transit Prices | Fans Outraged by $100 Train',

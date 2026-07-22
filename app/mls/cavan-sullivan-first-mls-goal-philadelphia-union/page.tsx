@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { NewsArticle } from '@/components/articles/NewsArticle';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 
+const OG_IMAGE = '/thumbnails/mls-cavan-sullivan-first-mls-goal-philadelphia-union.jpg';
+
 export const revalidate = 86400;
 
 const SLUG = '/mls/cavan-sullivan-first-mls-goal-philadelphia-union';
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     publishedTime: '2026-05-15T10:00:00Z',
     modifiedTime: '2026-05-15T10:00:00Z',
     section: 'MLS',
-    images: [{ url: 'https://www.objectivewire.com/mls/cavan_sullivan.png', width: 1200, height: 675, alt: 'Cavan Sullivan celebrating his first MLS goal for Philadelphia Union' }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     tags: ['Cavan Sullivan', 'Philadelphia Union', 'MLS', 'Sports Science', 'Soccer Analytics'],
   },
   twitter: {

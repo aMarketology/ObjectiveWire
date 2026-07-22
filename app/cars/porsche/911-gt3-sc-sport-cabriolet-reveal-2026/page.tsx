@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/cars/porsche/911-gt3-sc-sport-cabriolet-reveal-2026';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // restored by wiki:publish
-const OG_IMAGE = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&h=675&fit=crop';
+const OG_IMAGE = '/thumbnails/cars-porsche-911-gt3-sc-sport-cabriolet-reveal-2026.jpg';
 
 export const metadata: Metadata = {
   title: 'Porsche 911 GT3 SC Cabriolet Revealed | 2026 Specs & Price',

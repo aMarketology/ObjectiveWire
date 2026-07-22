@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 const SLUG = '/world-cup/news/fifa-world-cup-2026-final-halftime-show-chris-martin';
 const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`; // restored by wiki:publish
-const OG_IMAGE = 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&h=675&fit=crop';
+const OG_IMAGE = '/thumbnails/world-cup-news-fifa-world-cup-2026-final-halftime-show-chris-martin.jpg';
 
 export const metadata: Metadata = {
   title: 'FIFA World Cup 2026 Halftime Show | Chris Martin, Global',

@@ -95,33 +95,44 @@ function ChangeBadge({ change }: { change?: number }) {
 
 function MarketRow({ market, rank }: { market: PredictionMarket; rank: number }) {
   const isResolved = market.status === 'resolved';
-  const barColor = isResolved ? 'bg-gray-300' : probabilityBarColor(market.probability);
-  const probColor = isResolved ? 'text-gray-400' : probabilityColor(market.probability);
+  const isWinner = market.resolvedOutcome === 'won';
+  const barColor = isWinner ? 'bg-amber-400' : isResolved ? 'bg-gray-300' : probabilityBarColor(market.probability);
+  const probColor = isWinner ? 'text-amber-600' : isResolved ? 'text-gray-400' : probabilityColor(market.probability);
 
   return (
-    <div className={`flex items-center gap-3 p-4 rounded-xl border transition-all ${isResolved ? 'bg-gray-50 border-gray-100 opacity-60' : 'bg-white border-gray-100 hover:border-gray-300 hover:shadow-sm'}`}>
+    <div className={`flex items-center gap-3 p-4 rounded-xl border transition-all ${
+      isWinner
+        ? 'bg-amber-50 border-amber-300 shadow-sm'
+        : isResolved
+          ? 'bg-gray-50 border-gray-100 opacity-60'
+          : 'bg-white border-gray-100 hover:border-gray-300 hover:shadow-sm'
+    }`}>
       {/* Rank */}
-      <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${isResolved ? 'bg-gray-200 text-gray-400' : 'bg-gray-100 text-gray-500'}`}>
-        {isResolved ? '✕' : rank}
+      <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-black ${
+        isWinner ? 'bg-amber-400 text-white' : isResolved ? 'bg-gray-200 text-gray-400' : 'bg-gray-100 text-gray-500'
+      }`}>
+        {isWinner ? '🏆' : isResolved ? '✕' : rank}
       </div>
 
       {/* Question + bar */}
       <div className="flex-1 min-w-0">
-        <p className={`text-sm font-semibold leading-snug mb-2 ${isResolved ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
+        <p className={`text-sm font-semibold leading-snug mb-2 ${
+          isWinner ? 'text-gray-900' : isResolved ? 'text-gray-400 line-through' : 'text-gray-900'
+        }`}>
           {market.question}
         </p>
         <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-          <div className={`h-full rounded-full ${barColor}`} style={{ width: `${market.probability}%` }} />
+          <div className={`h-full rounded-full ${barColor}`} style={{ width: `${isWinner ? 100 : market.probability}%` }} />
         </div>
       </div>
 
       {/* Stats */}
       <div className="shrink-0 text-right flex flex-col items-end gap-1">
         <span className={`text-xl font-black tabular-nums ${probColor}`}>
-          {isResolved ? 'OUT' : formatProbability(market.probability)}
+          {isWinner ? 'WON' : isResolved ? 'OUT' : formatProbability(market.probability)}
         </span>
         <div className="flex items-center gap-2">
-          <ChangeBadge change={market.change24h} />
+          {!isWinner && <ChangeBadge change={market.change24h} />}
           {!isResolved && (
             <span className="text-sm font-bold text-gray-600 tabular-nums">{market.americanOdds}</span>
           )}
@@ -264,12 +275,17 @@ export function PredictionsPage({
   summary,
 }: PredictionsPageProps) {
   const sortedMarkets = [...topic.markets].sort((a, b) => {
+    if (a.resolvedOutcome === 'won') return -1;
+    if (b.resolvedOutcome === 'won') return 1;
     if (a.status === 'resolved' && b.status !== 'resolved') return 1;
     if (b.status === 'resolved' && a.status !== 'resolved') return -1;
     return b.probability - a.probability;
   });
-  const topMarket = sortedMarkets.find(m => m.status === 'open');
-  const liveCount = sortedMarkets.filter(m => m.status === 'open').length;
+  const openMarkets = sortedMarkets.filter(m => m.status === 'open');
+  const champion = sortedMarkets.find(m => m.resolvedOutcome === 'won');
+  const liveCount = openMarkets.length;
+  const isTournamentComplete = liveCount === 0 && !!champion;
+  const topMarket = champion ?? openMarkets[0];
 
   const lastUpdated = new Date(topic.lastUpdated).toLocaleString('en-US', {
     month: 'short', day: 'numeric', year: 'numeric',
@@ -293,10 +309,16 @@ export function PredictionsPage({
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-4xl">{topic.emoji}</span>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-green-700 bg-green-100 px-3 py-1 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              {liveCount} Live Markets
-            </span>
+            {isTournamentComplete ? (
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-100 px-3 py-1 rounded-full">
+                🏁 Final Result
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-green-700 bg-green-100 px-3 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                {liveCount} Live Markets
+              </span>
+            )}
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-3">{topic.title}</h1>
           <p className="text-lg text-gray-600 mb-2">{topic.description}</p>
@@ -304,7 +326,31 @@ export function PredictionsPage({
         </header>
 
         {/* ── FEATURED MARKET HERO CARD ── */}
-        {topMarket && (
+        {topMarket && isTournamentComplete && (
+          <div className="bg-gradient-to-br from-amber-500 to-amber-700 rounded-2xl p-6 text-white mb-8">
+            <p className="text-xs font-bold uppercase tracking-widest text-amber-100 mb-1">🏆 Champion</p>
+            <p className="text-lg font-semibold mb-4 leading-snug">{topMarket.question.replace(/^Will /, '').replace(/\?$/, '')}</p>
+            <div className="flex items-end gap-6 mb-4">
+              <div>
+                <span className="text-6xl font-black tabular-nums text-white">WON</span>
+                <p className="text-xs text-amber-100 mt-1">market resolved YES</p>
+              </div>
+              <div className="ml-auto text-right">
+                <a href={topMarket.platformUrl} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:text-amber-100 transition-colors underline">
+                  View resolved market on {topMarket.platform} →
+                </a>
+                {topMarket.volume && <p className="text-xs text-amber-100 mt-0.5">Vol: {topMarket.volume}</p>}
+              </div>
+            </div>
+            <div className="h-2 bg-amber-900/30 rounded-full overflow-hidden">
+              <div className="h-full bg-white rounded-full" style={{ width: '100%' }} />
+            </div>
+          </div>
+        )}
+
+        {/* ── FEATURED MARKET HERO CARD (live tournaments) ── */}
+        {topMarket && !isTournamentComplete && (
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 text-white mb-8">
             <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">Current Favorite</p>
             <p className="text-lg font-semibold mb-4 leading-snug">{topMarket.question}</p>

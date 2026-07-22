@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { NewsArticleDB } from '@/components/articles/NewsArticleDB';
 
+const OG_IMAGE = '/thumbnails/cars-tesla-semi-truckers-mass-production-nevada-2026.jpg';
+
 // Page renders dynamically � content fetched from Supabase at request time.
 // Run 'npm run wiki:migrate' to update content in Supabase.
 export const dynamic = 'force-dynamic';
