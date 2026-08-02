@@ -1,304 +1,377 @@
-# Objective Wire | Editorial Topics & Content Pipeline
-**Updated: July 11, 2026**
-**Mission:** Verified sports, creators, cars, and culture coverage. Accuracy over speed, primary sources only, named authors.
+# Content Topics � April 2026
 
 ---
 
-## How to Use This Doc
+## Session Log � April 29, 2026
 
-1. Pick a story from the pipeline tables below
-2. Check the hub page for existing articles in the cluster
-3. Create `app/[hub]/[slug]/page.tsx` using the appropriate component:
-   - `NewsArticle` — standard news format (World Cup match reports, breaking news, trend stories)
-   - `JackArticle` — premium deep-dive with stats, sources, indicators
-   - `CreatorArticle` — creator profile with infobox, gallery, social links
-4. Run `npx tsx scripts/sync-registry.ts --write` or `npm run build`
-5. Article auto-populates the homepage, news page, and relevant hub
+### Transparency and Trust Overhaul
 
-**Author routing:**
-| Beat | Author | `authorSlug` |
+**Problem identified:** ObjectWire lacked visible editorial policies, named author credentials, ownership disclosure, and funding transparency � all factors that reduce credibility and hurt Google's E-E-A-T scoring on news sites.
+
+**Changes made:**
+
+#### Author pages � real headshots replacing initials
+All three author pages converted from placeholder initials to real photos using `next/image`:
+- `/authors/jack-sterling` � `public/influncer/author/jack_sterling.jpg`
+- `/authors/jack-brennan` � `public/influncer/author/jack_brennen.JPG`
+- `/authors/conan-boyle` � `public/influncer/author/conan_doyle.jpg`
+
+Meta titles simplified from SEO-stuffed pipe-separated strings to plain human names:
+- `Jack Sterling, ObjectWire Reporter`
+- `Jack Brennan, ObjectWire Investigations Reporter`
+- `Conan Boyle, ObjectWire Science Writer`
+
+OG/Twitter card images now include author headshot URLs so social previews show faces.
+
+#### Footer � sitewide ownership disclosure
+`app/layout.tsx` footer updated:
+- Added a visible "Ownership and funding" paragraph on every page disclosing: self-funded nonprofit, no advertising, no sponsored content, no political donations, with links to about / editorial-standards / corrections.
+- Bottom bar updated from "� 2026 ObjectWire News. All rights reserved." to "� 2026 ObjectWire. Self-funded nonprofit newsroom."
+
+#### OrganizationSchema � JSON-LD updated
+`components/articles/NewsArticleSchema.tsx` `OrganizationSchema`:
+- Added `additionalType: "https://schema.org/NGO"`
+- Added `nonprofitStatus: "Nonprofit501c3"`
+- Added `funder` object with self-funded disclosure
+- Added `diversityPolicy`
+- Updated `description` to lead with "independent, self-funded nonprofit newsroom"
+
+Ships on every page in the site's `<head>`.
+
+---
+
+### Static Page Migration (Supabase ? Codebase)
+
+**Problem identified:** `about`, `editorial-standards`, and `corrections` were all `force-dynamic` Supabase fetches. Googlebot received no content on the first byte. Content lived in a database table (`wiki_articles`) that was invisible to crawlers.
+
+**Strategy:** Pages that are purely evergreen and don't change based on user state should be `force-static` codebase pages, prerendered at build time.
+
+**Pages migrated:**
+
+#### `/about` � `app/about/page.tsx`
+- `force-static`, no Supabase
+- Full ownership and funding disclosure (self-funded, nonprofit, no ads/sponsorships/affiliates/political donations)
+- Lists all 3 authors with profile links
+- Explains editorial accountability rules
+- Contact info: `editorial@objectivewire.com`
+- Datestamped April 29, 2026
+
+#### `/editorial-standards` � `app/editorial-standards/page.tsx`
+- `force-static`, no Supabase
+- 10 numbered standards: accuracy over speed, primary sources only, attribution, news vs analysis, conflicts of interest, AI use in newsroom, corrections, right of reply, source protection, diversity of coverage
+- Explicitly states AI is not used to write published copy
+- Contact: `editorial@objectivewire.com`
+
+#### `/corrections` � `app/corrections/page.tsx`
+- `force-static`, no Supabase
+- Defines what gets corrected, how a correction looks on the page (original text preserved, timestamped), what is NOT a correction (routine updates), how to report an error, right of reply, removals/unpublishing policy
+- Contact: `corrections@objectivewire.com`
+
+**Why this matters for SEO:**
+- `force-static` pages are prerendered HTML � Googlebot gets full content instantly
+- `force-dynamic` on evergreen pages prevents proper caching and hurts TTFB
+- Real, substantive content in page source (not a `<WikiArticle>` shell) signals quality to crawlers
+- E-E-A-T scoring for YMYL/news: Google's Quality Rater Guidelines specifically look for ownership, funding, named authors, and correction policies
+
+**Orphaned rows:** `wiki_articles` rows for `about`, `editorial-standards`, `corrections` still exist in Supabase. Nothing reads them. No action needed � they do not affect SEO or crawling.
+
+**Policy going forward:** What is already in Supabase stays in Supabase. Only future evergreen pages that would otherwise be `force-dynamic` purely for content (not personalization) are candidates for codebase migration. No mass migration.
+
+---
+
+---
+
+## Female Influencer / YouTuber Article Targets
+
+### Tier 1 � High Search Volume, Strong SEO
+
+| Creator | Angle | Est. Monthly Search |
 |---|---|---|
-| World Cup 2026 / Sports | Jack Brennan | `jack-brennan` |
-| Cars / Supercars | Conan D. Boyle | `conan-boyle` |
-| Creators / YouTube / Influencer | Jack Sterling | `jack-sterling` |
-| Culture / Entertainment | Jack Brennan | `jack-brennan` |
+| **SSSniperWolf (Alia Shelesh)** | Gaming reactions, YouTube controversy, 35M subs | 800K+ |
+| **Pokimane (Imane Anys)** | Retired from Twitch 2024, new projects, net worth | 600K+ |
+| **Alix Earle** | TikTok rise, "GRWM girl", brand deals, dating life | 500K+ |
+| **Charli D'Amelio** | Post-TikTok era, dance career, family show | 900K+ |
+| **Emma Chamberlain** | YouTube evolution, Chamberlain Coffee, Met Gala | 400K+ |
+| **Valkyrae (Rachel Hofstetter)** | 100 Thieves co-owner, YouTube Gaming, RLYRAE brand | 300K+ |
+
+
+## Fortnite Article Targets (2026)
+
+### Chapter 6 Season 2 � "Lawless" (Active Season)
+
+| Topic | Search Angle | Status |
+|---|---|---|
+| **Chapter 6 Season 2 map changes** | Japanese/yakuza aesthetic, Shogun POI, cherry blossoms | **LIVE** � `app/video-games/fortnite/chapter-6-season-2-map-changes/` |
+| **Season 2 Battle Pass breakdown** | All skins, secret styles, bonus rewards | **LIVE** � `app/video-games/fortnite/chapter-6-season-2-battle-pass/` |
+| **New weapons tier list** | Katanas, SMGs, LMGs added this season | **LIVE** � `app/video-games/fortnite/chapter-6-season-2-weapons-tier-list/` |
+| **Ranked mode changes S2** | New ranked system, lobbies rebalance | Not started |
+
+**Hub:** `app/video-games/fortnite/page.tsx` � **LIVE**
+
+### Creator Collaborations (Next)
+
+| Collab | Notes |
+|---|---|
+| **Fortnite x Naruto (Season returns)** | Perennial high-search rerun � every return gets search spike |
+| **Fortnite Icon Series 2026** | New creator skins announced � Loserfruit crossover angle |
+| **Fortnite x MrBeast** | Any ongoing or announced tie-ins |
+| **Fortnite Festival Season** | Current music lineup, how to unlock songs |
+| **FNCS 2026 Spring** | Competitive scene, prize pool, bracket results |
+
+### "Moves Into Movies" Cluster (extend `/entertainment/news/fortnite-moves-into-movies`)
+
+| Article | Angle |
+|---|---|
+| **Fortnite film casting rumors** | Who could be cast in a live-action adaptation |
+| **Fortnite x Hollywood collabs history** | Timeline of every major IP crossover (Marvel, DC, Star Wars) |
+| **Epic Games revenue model 2026** | How creator collabs and Icon Series drive V-Buck sales |
 
 ---
 
-## Pillar 1 | World Cup 2026 — Summer's Biggest Story
+## Image SEO � How to Do It Right
 
-Hub: `/world-cup` | Current: Round of 16 complete, Quarterfinals incoming
+Every article must have at least one optimized image. These rules apply to both `thumbnail_src` (Supabase field) and any images inside `content_html`.
 
-This is the highest-traffic pillar. Every match report drives search + AI citation. Production batch: 8-9 articles per round.
+### 1. File Name
+Name the file with the primary keyword before uploading. Google reads the filename.
+- Good: `valkyrae-100-thieves-youtube-gaming-2026.jpg`
+- Bad: `IMG_4921.jpg` or `image1.png`
 
-### Pipeline
+### 2. Alt Text
+Every `<img>` tag needs descriptive `alt` text containing the primary keyword. Do not stuff � one natural keyword phrase is enough.
+```html
+<img
+  src="/influncer/valkyrae-profile.jpg"
+  alt="Valkyrae (Rachel Hofstetter) 100 Thieves co-owner and YouTube Gaming creator"
+/>
+```
+In Supabase: populate `thumbnail_alt` and `hero_image_alt` fields � these map directly to the rendered `alt` attribute.
 
-| Round | Articles | Status | Deadline |
+### 3. Dimensions and Format
+- Minimum 1200 x 675px for hero/OG images (required for Google Top Stories rich cards)
+- Use `.webp` wherever possible � 25-35% smaller than JPEG, same quality
+- Fallback `.jpg` for creator portrait shots if `.webp` conversion unavailable
+
+### 4. Open Graph Image
+Set `openGraph.images` in `page.tsx` metadata with explicit `width`, `height`, and `alt`:
+```ts
+openGraph: {
+  images: [{
+    url: 'https://www.objectivewire.com/influncer/valkyrae-profile.jpg',
+    width: 1200,
+    height: 675,
+    alt: 'Valkyrae YouTube Gaming profile 2026',
+  }],
+},
+```
+Missing `width`/`height` causes Google to skip the image in rich snippets.
+
+### 5. Supabase Fields to Always Populate
+| Field | Rule |
+|---|---|
+| `thumbnail_src` | Full URL or `/public`-relative path. Triggers the animated genie header in NewsArticleDB. |
+| `thumbnail_alt` | Descriptive alt text, primary keyword included. |
+| `hero_image_src` | For CreatorArticleDB � portrait, min 800px wide. |
+| `hero_image_alt` | For CreatorArticleDB � name + role. |
+| `schema_image_url` | Full `https://www.objectivewire.com/...` URL. Used in JSON-LD. Must be absolute. |
+
+### 6. Image Placement in Content
+- Hero/thumbnail: above the fold, handled automatically by the component
+- Supporting images: place after the second or third paragraph, not at the top
+- For CreatorArticle: `<CreatorImageGallery>` goes **after** the `<CreatorQuote>` block, not at the top (per gold standard)
+- Caption every image � Google surfaces captions in Google Images and Discover
+
+### 7. Structured Data
+The `NewsArticleSchema` component reads `imageUrl`, `imageWidth`, `imageHeight` from the `content_registry` entry. Always set these three fields in the registry row when publishing. Missing values = ineligible for Google Top Stories.
+
+---
+
+## GTA 6 Cluster � `/video-games/gta-6` (5M+/mo)
+
+**Hub:** `app/video-games/gta-6/page.tsx` � **LIVE** (migrated to codebase, force-static)
+
+### Sub-Articles
+
+| Article | Path | Status |
+|---|---|---|
+| **GTA 6 Trailer 2 breakdown** | `app/video-games/gta-6/gta-6-trailer-2-breakdown/` | **LIVE** |
+| **Take-Two AI team shake-up 2026** | `app/video-games/gta-6/news/take-two-ai-team-shake-up-2026/` | **LIVE** |
+| **GTA 6 release date** | `gta-6-release-date` | Not started |
+| **GTA 6 map size** | `gta-6-map-size-vice-city` | Not started |
+| **GTA 6 characters** | `gta-6-characters-jason-lucia` | Not started |
+| **GTA 6 price** | `gta-6-price-standard-edition` | Not started |
+| **GTA 6 PC release** | `gta-6-pc-release-date` | Not started |
+| **GTA 6 multiplayer** | `gta-6-multiplayer-online` | Not started |
+| **GTA Online 2026 updates** | `gta-online-2026-updates` | Not started |
+
+### Cluster Rules
+- Every article: `category: 'Gaming'`, `tags` must include `'GTA 6'`, `'Rockstar Games'`
+- Hub link text: `"GTA 6 release date and everything we know"`
+- Internal cross-links: GTA 6 articles should also link to `/video-games` hub
+
+---
+
+## Nintendo Switch 2 Cluster � `/video-games/switch2`
+
+> **Note:** Switch 2 launched June 5, **2025** (not 2026). The original hub and launch/pre-order articles were deleted April 29, 2026 after containing inaccurate dates. Do not rebuild those pages without verifying current facts.
+
+**Hub:** `app/video-games/switch2/` � exists but stripped back
+
+### Sub-Articles Currently Live
+
+| Article | Path | Notes |
+|---|---|---|
+| **Pokemon Pokopia (Switch 2)** | `app/video-games/switch2/pokemon-pokopia/` | LIVE |
+| **Super Mario Wonder Switch 2 edition** | `app/video-games/switch2/super-mario-wonder-switch2-edition-bellabel-park/` | LIVE |
+
+### Deleted (inaccurate � do not recreate without fact-checking)
+- `nintendo-switch-2-launch-games` � had wrong launch year
+- `nintendo-switch-2-pre-order-guide` � had wrong launch year
+
+### Future targets (verify facts first)
+- Switch 2 game reviews as they release
+- Switch 2 accessory guides
+- Nintendo Direct recaps
+
+---
+
+## OpenAI / AI Cluster � `/open-ai` (3M+/mo)
+
+**Hub:** `/open-ai` � covers OpenAI news, GPT releases, Sora, safety controversies
+
+### High-Priority Sub-Articles
+
+| Article | Slug | Angle |
+|---|---|---|
+| **GPT-5 release** | `gpt-5-release-date-features` | What's confirmed, benchmark comparisons, pricing |
+| **OpenAI o3 model** | `openai-o3-reasoning-model` | o3 vs o1, reasoning breakthroughs, ARC-AGI results |
+| **ChatGPT vs Gemini 2026** | `chatgpt-vs-gemini-2026` | Feature comparison, who's winning the AI assistant war |
+| **Sora video AI** | `openai-sora-video-generator` | How it works, access, use cases, limitations |
+| **Sam Altman net worth** | `sam-altman-net-worth-2026` | OpenAI equity, Y Combinator, Worldcoin |
+| **OpenAI valuation 2026** | `openai-valuation-funding-2026` | $300B+ valuation, Microsoft stake, latest funding |
+| **Claude vs ChatGPT** | `claude-vs-chatgpt-2026` | Anthropic's Claude 3.5/4 head-to-head |
+| **AI image generators compared** | `best-ai-image-generators-2026` | Midjourney, DALL-E, Flux, Stable Diffusion |
+
+### Related Hub Pages Already Existing
+- `/claude` � Anthropic Claude coverage
+- `/google` � Gemini updates
+- `/nvidia` � AI hardware
+
+---
+
+## Tech Cluster � Apple, Google, Nvidia, Microsoft
+
+### Apple � `/apple` (1M+/mo)
+
+| Article | Slug | Angle |
+|---|---|---|
+| **iPhone 17 release date** | `iphone-17-release-date` | September 2026 launch, new features, price |
+| **Apple Intelligence 2026** | `apple-intelligence-features-2026` | What shipped, what's delayed, Siri overhaul |
+| **WWDC 2026 recap** | `wwdc-2026-announcements` | iOS 20, macOS, new hardware reveals |
+| **Mac with M5 chip** | `apple-m5-chip-macbook-pro` | Performance uplift, MacBook Pro specs |
+
+### Google � `/google` (2M+/mo)
+
+| Article | Slug | Angle |
+|---|---|---|
+| **Google I/O 2026 recap** | `google-io-2026-announcements` | Gemini updates, Android 16, Search AI Mode |
+| **Gemini 2.0 Ultra** | `gemini-2-ultra-features` | Context window, coding benchmarks, vs GPT-5 |
+| **Google Search AI Mode** | `google-search-ai-mode-2026` | AI Overviews rollout, what it means for SEO |
+| **Google Pixel 10** | `google-pixel-10-specs-price` | Release window, Tensor G5, camera upgrades |
+
+### Nvidia � `/nvidia` (800K+/mo)
+
+| Article | Slug | Angle |
+|---|---|---|
+| **Nvidia RTX 5090 review** | `nvidia-rtx-5090-review` | Blackwell architecture, 4K gaming, AI performance |
+| **Nvidia stock 2026** | `nvidia-stock-price-2026` | AI demand, data center revenue, market cap |
+| **Nvidia GB200 NVL72** | `nvidia-gb200-rack-ai-server` | Enterprise AI rack, Microsoft/Google/Meta buyers |
+| **Jensen Huang net worth** | `jensen-huang-net-worth-2026` | Estimated $120B+, how Nvidia's rise built his wealth |
+
+---
+
+## Crypto Cluster � `/crypto` 
+
+### Active Article Targets
+
+| Article | Slug | Angle |
+|---|---|---|
+| **Bitcoin price 2026** | `bitcoin-price-prediction-2026` | Post-halving trajectory, ETF demand, institutional buying |
+| **Ethereum ETF launch** | `ethereum-spot-etf-2026` | SEC approval, inflows vs Bitcoin ETF |
+| **Solana vs Ethereum 2026** | `solana-vs-ethereum-2026` | DeFi TVL, transaction speed, developer activity |
+| **Coinbase stock 2026** | `coinbase-stock-price-2026` | Regulatory clarity, Q1 earnings, retail vs institutional |
+| **Crypto regulation 2026** | `crypto-regulation-us-2026` | FIT21 Act, SEC stance shift, stablecoin legislation |
+
+---
+
+## Entertainment Cluster � `/entertainment`
+
+### Streaming Wars 2026
+
+| Article | Slug | Angle |
+|---|---|---|
+| **Netflix subscribers 2026** | `netflix-subscribers-2026` | Q1/Q2 numbers, ad-tier growth, password crackdown impact |
+| **Disney+ vs Netflix** | `disney-plus-vs-netflix-2026` | Content spend, subscriber counts, bundling strategy |
+| **Best Netflix shows 2026** | `best-netflix-shows-2026` | SEO-optimized roundup, updated monthly |
+| **Squid Game Season 3** | `squid-game-season-3-release` | Release date, trailer, cast, what happens |
+
+### Box Office
+
+| Article | Slug | Angle |
+|---|---|---|
+| **Highest grossing movies 2026** | `highest-grossing-movies-2026` | Running tracker, updated weekly |
+| **Avatar 3 release date** | `avatar-3-release-date` | December 2026, production status |
+| **Mission Impossible 8** | `mission-impossible-dead-reckoning-2` | Cast, plot, release date |
+
+---
+
+## Seasonal Clusters
+
+### 2026 FIFA World Cup � `/world-cup`
+
+| Article | Slug | Angle |
+|---|---|---|
+| **World Cup 2026 schedule** | `world-cup-2026-schedule-dates` | Group stage, knockout rounds, final date |
+| **World Cup 2026 host cities** | `world-cup-2026-host-cities-usa` | US/Canada/Mexico stadiums, capacity |
+| **England World Cup squad** | `england-world-cup-2026-squad` | Predicted lineup, key players |
+| **World Cup 2026 favorites** | `world-cup-2026-favorites-odds` | France, England, Brazil, Argentina betting odds |
+
+### 2026 Winter Olympics � `/winter-olympics`
+
+| Article | Slug | Angle |
+|---|---|---|
+| **Winter Olympics 2026 schedule** | `winter-olympics-2026-schedule` | Milan-Cortina dates, event calendar |
+| **Team USA Winter Olympics** | `team-usa-winter-olympics-2026` | Athletes to watch, medal predictions |
+| **Figure skating 2026** | `figure-skating-2026-winter-olympics` | Top contenders, Ilia Malinin, Alysa Liu |
+
+---
+
+## Politics Cluster � `/trump`
+
+### Active Article Targets
+
+| Article | Slug | Angle |
+|---|---|---|
+| **Trump executive orders 2026** | `trump-executive-orders-2026` | Full tracker, signed orders, status |
+| **Trump tariffs 2026 impact** | `trump-tariffs-2026-economic-impact` | Trade war escalation, retaliatory tariffs |
+| **DOGE cuts 2026** | `doge-department-government-efficiency-2026` | Musk-led cuts, what was eliminated |
+| **2026 midterm elections** | `2026-midterm-elections-preview` | Key races, Senate map, House control |
+
+---
+
+## Content Velocity Targets � April/May 2026
+
+These are time-sensitive. Publish within the next 2�4 weeks to capture current search demand.
+
+| Article | Priority | Status | Why Now |
 |---|---|---|---|
-| Group Stage roundup | 4-6 hub intro / recap articles | ✅ Done | — |
-| Round of 32 | 9 match reports | ✅ Done | — |
-| Round of 16 | 8 match reports | ✅ Done | — |
-| **Quarterfinals** | **4 match reports** | **⬅️ NEXT** | **July 11-12** |
-| Semifinals | 2 match reports | ⏳ Pending | July 14 |
-| Third-place match | 1 report | ⏳ Pending | July 15 |
-| Final | 1 report + trophy feature | ⏳ Pending | July 16 |
-| Featured: VAR controversy deep-dive | 1 long-read | ⏳ Pending | July 17 |
-| Featured: Tournament legacy | 1 long-read | ⏳ Pending | July 18 |
-
-### Quarterfinal Matchups (approaching)
-
-| Match | Date | Stakes |
-|---|---|---|
-| Norway vs Morocco | July 11 | Underdog vs underdog, one guaranteed semifinalist |
-| Argentina vs Switzerland | July 11 | Messi's path continues, Swiss defensive test |
-| Spain vs England | July 12 | Heavyweight tactical battle |
-| France vs Belgium | July 12 | European classic, stacked talent |
-
-### World Cup Article Pattern
-
-- Component: `NewsArticle`
-- `topicTag: "sports"`
-- Author: Jack Brennan, avatar `/influncer/author/jack_brennen.JPG`
-- `revalidate: 86400`
-- Slug: `world-cup-2026-[team1]-[score]-[team2]-[score]-[round]`
-- `keyTakeaways`: 4 items (definition, key stat, turning point, aftermath)
-- `faqItems`: 3-5 items (score, MVP, next match, key moment)
-- Internal links: hub backlink + 2 sibling match reports + author page
-- Thumbnail: Satori minted via 2-curl workflow
-
----
-
-## Pillar 2 | Sports — MLB, MLS, Premier League, Golf, Soccer
-
-Hubs: `/mlb` `/mls` `/premier-league` `/golf` `/soccer`
-
-### MLB
-
-| Story | Angle | Priority |
-|---|---|---|
-| 2026 season standings + playoff race | Mid-season analysis, division races, wild card | HIGH |
-| Trade deadline preview | Key players on the block, contenders' needs | HIGH (late July) |
-| Draft recap 2026 | Top picks, analysis, team grades | MEDIUM |
-| Team-specific features | Surprise teams, slumping stars | MEDIUM |
-| Stadium / attendance stories | New ballparks, attendance trends | LOW |
-
-### MLS
-
-| Story | Angle | Priority |
-|---|---|---|
-| Leagues Cup 2026 | MLS vs Liga MX, format, key matches | HIGH (Aug) |
-| Playoff race | Supporters Shield, playoff positioning | MEDIUM |
-| USMNT players in MLS | World Cup 2026 prep, player watch | MEDIUM |
-| Expansion news | New franchises, stadiums | LOW |
-
-### Premier League
-
-| Story | Angle | Priority |
-|---|---|---|
-| Transfer window roundup | Summer 2026 signings, fees, analysis | HIGH (Aug-Sep) |
-| Season preview 2026-27 | Title race, relegation battle, key storylines | HIGH (Aug) |
-| U.S. tours | PL clubs in America, preseason friendlies | MEDIUM (Jul) |
-| Manager changes | Hires, firings, tactical shifts | MEDIUM |
-
-### Golf
-
-| Story | Angle | Priority |
-|---|---|---|
-| Major recaps | Masters, PGA, U.S. Open, Open Championship | HIGH |
-| LIV Golf vs PGA Tour | Merger status, player movements | MEDIUM |
-| Top player profiles | Scheffler, Rahm, McIlroy, emerging stars | MEDIUM |
-
-### Sports Article Pattern
-
-- Component: `NewsArticle`
-- `topicTag: "sports"`
-- Author: Jack Brennan
-- Slug: `[sport]/[slug]`
-- `keyTakeaways`: 3-4 items
-- `faqItems`: 3-4 items
-- Internal links: hub backlink + 2 sibling articles + author page
-
----
-
-## Pillar 3 | Creators & YouTube — Influencer Economy
-
-Hubs: `/creator` `/youtube` `/influencer`
-
-### Creator Profiles (ongoing series)
-
-Each profile follows the **CreatorArticle** gold standard. Target: 2-3 per week.
-
-| Creator | Platform | Niche | Priority |
-|---|---|---|---|
-| MrBeast | YouTube | Creator economy, Beast Games, Feastables | HIGH |
-| Logan Paul | YouTube / WWE | Prime, podcast, wrestling | HIGH |
-| Jake Paul | YouTube / Boxing | Boxing career, MVP promotion | HIGH |
-| KSI | YouTube / Boxing | Prime, music, boxing | HIGH |
-| Kai Cenat | Twitch / YouTube | Streaming, Mafiathon, culture | HIGH |
-| Addison Rae | TikTok | Music, acting, brand deals | MEDIUM |
-| Bella Poarch | TikTok / Music | Music career, following | MEDIUM |
-| Emma Chamberlain | YouTube / Coffee | Coffee brand, fashion | MEDIUM |
-| Markiplier | YouTube | Gaming, streaming longevity | MEDIUM |
-| Airrack | YouTube | Challenge videos, Creator League | LOW |
-| Dream | YouTube / Minecraft | Face reveal, music, Minecraft | LOW |
-| Valkyrae | YouTube / Gaming | 100 Thieves, streaming | LOW |
-
-### Creator News (ongoing)
-
-| Story | Angle | Priority |
-|---|---|---|
-| Creator League 2026 | Format, teams, viewership, impact | HIGH |
-| YouTube Brandcast / Upfronts | Ad revenue, platform priorities | MEDIUM |
-| TikTok ban / regulation | Legislative updates, impact on creators | HIGH (if active) |
-| OnlyFans economics | Top earners, platform changes | MEDIUM |
-| Influencer marketing trends | Brand spend, ROI, fraud | MEDIUM |
-| Platform policy changes | Demonetization, algorithm changes, strikes | MEDIUM |
-
-### Creator Article Pattern
-
-- Component: `CreatorArticle` for profiles, `NewsArticle` for news
-- Author: Jack Sterling (profiles), Jack Brennan (news)
-- 15-18 keywords in metadata
-- Wikipedia-style infobox in sidebar for profiles
-- Internal links: 3 minimum
-
----
-
-## Pillar 4 | Cars — Supercars, EVs, Auto News
-
-Hub: `/cars`
-
-### Car Coverage
-
-| Story | Angle | Priority |
-|---|---|---|
-| Ferrari F80 | 1,184hp hybrid hypercar, $3.7M, 799 units | HIGH |
-| Bugatti Tourbillon | 1,800hp V16 hybrid, $4.1M | HIGH |
-| McLaren W1 | 1,275hp hybrid, 399 units | HIGH |
-| Porsche 911 hybrid | 992-generation hybrid, specs, pricing | MEDIUM |
-| Lamborghini Revuelto | V12 hybrid flagship | MEDIUM |
-| Koenigsegg Jesko Absolut | Production, speed records | MEDIUM |
-| EV market 2026 | Tesla, Rivian, Lucid, legacy OEMs | MEDIUM |
-| Car launches / auto shows | Geneva, Pebble Beach, Monterey | MEDIUM |
-
-### Car Article Pattern
-
-- Component: `NewsArticle` with `topicTag: "cars"`
-- `keyTakeawaysColor: "red"`
-- Author: Conan D. Boyle
-- Slug: `/cars/[make]-[model]-[year]`
-
----
-
-## Pillar 5 | Culture & Entertainment
-
-Hubs: `/creator/news` `/youtube/news`
-
-| Story | Angle | Priority |
-|---|---|---|
-| K-pop industry | Billboard trends, U.S. market | MEDIUM |
-| Celebrity brand launches | Beauty, fashion, alcohol | MEDIUM |
-| Film / TV | Box office, streaming wars | LOW |
-| Music | Album releases, chart performance | LOW |
-
----
-
-## Pillar 6 | Texas Developments — Public Records, Courts, Infrastructure & Policy
-
-Hub: `/local` `/blog`
-
-This pillar covers **Texas-specific reporting** that fits within ZWire's editorial scope: court filings, public records, infrastructure, and policy changes that affect Texas residents. No partisan politics — focus on verifiable documents, financial data, and named officials.
-
-**Author routing:**
-| Beat | Author | `authorSlug` |
-|---|---|---|
-| Texas courts / public records | Jack Brennan | `jack-brennan` |
-| Texas infrastructure / business | Conan D. Boyle | `conan-boyle` |
-
----
-
-### Public Records & FOIA
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **TPIA response time audit 2026** | How long Texas agencies take to respond, which agencies stonewall, OAG rulings | OAG Open Records Division decisions | HIGH |
-| **State agency travel & expense abuse** | High-cost trips, first-class travel by Texas state employees | Texas Comptroller expenditure database | MEDIUM |
-| **Texas public records requests by county** | Which counties comply fastest, which deny most, comparison | Texas OAG enforcement records | MEDIUM |
-| **Body cam footage release policies** | Which Texas PDs release body cam automatically vs. fight requests | Individual department policies, TPIA requests | HIGH |
-
-### Texas Courts
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **Federal court filings — Texas districts** | Civil rights suits, state vs. federal disputes, immigration challenges | PACER (W.D. Texas, S.D. Texas, N.D. Texas, E.D. Texas) | HIGH |
-| **Texas Supreme Court 2026 term** | Major property rights, election law, and agency authority cases | txcourts.gov | MEDIUM |
-| **Texas Court of Criminal Appeals** | Wrongful conviction claims, death penalty cases, new evidentiary standards | txcourts.gov | MEDIUM |
-| **District court backlogs** | Post-COVID case clearance rates by county, judge-level data | Individual district clerk offices | MEDIUM |
-
-### Infrastructure & Environment
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **Texas power grid 2026** | ERCOT summer performance, rolling blackouts, reserve margins | ERCOT public reports, PUCT filings | HIGH |
-| **Texas water infrastructure** | Boil water events 2025-2026, small water district failures, EPA violations | TCEQ enforcement orders, EPA ECHO database | HIGH |
-| **TxDOT highway expansion projects** | I-35 expansion cost overruns, toll road revenue, contractor payments | TxDOT project records, Texas Comptroller | MEDIUM |
-| **Texas flood control spending** | County-level bond fund utilization, projects delayed over budget | Harris County Flood Control, state grant records | MEDIUM |
-| **High-speed rail Texas 2026** | Dallas-Houston line status, funding, regulatory approvals | Texas Rail Commission, FRA records | LOW |
-
-### Texas Economy & Business
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **Texas job growth 2026 by sector** | Which industries grow wages, which decline, energy vs. tech vs. healthcare | Texas Workforce Commission data | HIGH |
-| **Texas corporate relocations 2026** | Companies moving HQ to Texas, incentives offered, job commitments | Texas Governor's office deal announcements, local EDC records | MEDIUM |
-| **Texas energy sector** | Oil & gas production, renewable growth, LNG export capacity | Texas RRC data, EIA reports | MEDIUM |
-| **Texas housing market 2026** | Affordability crisis, property tax trends, urban vs. rural divide | Texas A&M Real Estate Center, local appraisal districts | HIGH |
-| **Texas film & media production** | Studio builds, tax incentives, production volume | Texas Film Commission, state incentive reports | LOW |
-
-### Texas Public Safety
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **DPS border security spending 2026** | Operation Lone Star expenditure, vehicle seizures, what was achieved | Texas DPS public records, LBB reports | HIGH |
-| **Texas prison system deaths 2025-2026** | TDCJ in-custody deaths, cause breakdown, unit-level data | TDCJ offender death reports, OIG records | HIGH |
-| **APD use-of-force 2025-2026** | Pattern analysis by incident type, disciplinary outcomes, officer names in public records | APD Office of Police Oversight reports | HIGH |
-| **HPD rape kit backlog** | Number of untested kits, timeline to clearance, accountability | HPD crime lab reports, Harris County DA records | HIGH |
-| **Texas foster care system** | DFPS case data, federal monitor report status, placement outcomes | DFPS public data, Stukenberg v. Abbott court monitor | HIGH |
-
-### Texas Politics & Policy (Non-Partisan)
-
-| Story | Angle | Primary Source | Priority |
-|---|---|---|---|
-| **2026 Texas legislative session preview** | Bills filed, committee assignments, leadership priorities | Texas Legislature Online (capitol.texas.gov) | MEDIUM |
-| **Texas school finance 2026** | Per-student funding levels, recapture payments, teacher pay | TEA budget data, Texas Comptroller | MEDIUM |
-| **Texas property tax reform** | Rate compression, appraisal caps, legislative outcomes | Texas Comptroller property tax division | MEDIUM |
-| **Texas election administration 2026** | Voter registration changes, polling place changes, county-level admin | Texas Secretary of State, county election offices | MEDIUM |
-
----
-
-### Source Directory | Texas Public Records
-
-| Source | What You Get | URL |
-|---|---|---|
-| Texas Comptroller Expenditure Data | Every dollar state agencies spend, vendor names | comptroller.texas.gov/transparency |
-| Texas Comptroller ESBD | State contract awards, bid amounts, vendor history | comptroller.texas.gov/purchasing/esbd |
-| PACER | Federal court filings — all TX districts | pacer.gov |
-| Texas OAG Open Records Decisions | Which agencies ordered to release records | oag.texas.gov/open-government/or-decisions |
-| EPA ECHO | Environmental violations, penalties, inspection history | echo.epa.gov |
-| ERCOT | Grid status, reserve margins, load forecasts | ercot.com |
-| Texas Workforce Commission | Employment data, unemployment claims | twc.texas.gov |
-| Texas DPS Public Information | Border security data, missing persons | dps.texas.gov/publicinformation |
-| TDCJ | In-custody death reports, offender records | tdcj.texas.gov |
-| Texas Ethics Commission | Campaign finance, lobbyist disclosures | ethics.state.tx.us |
-| Texas Secretary of State | Corporate registrations, election data | sos.texas.gov |
-| Texas RRC | Oil & gas production, well data | rrc.texas.gov |
-
-### Article Pattern — Texas Developments
-
-- Component: `NewsArticle` (or `JackArticle` for premium deep-dives with sources/timeline)
-- `topicTag`: `"news"` or `"sports"` (for sports-related tx stories)
-- Category: `"News"` or `"Sports"` 
-- Slug: `texas-[topic]-[year]`
-- Author: per beat table above
-- Internal links: hub backlink to `/local` or `/blog`, 2+ additional internal links
-- Sources: minimum 2 verifiable primary sources per article (public records, court filings, named officials)
+| GTA 6 trailer 2 breakdown | HIGH | **LIVE** | Perennial evergreen |
+| Fortnite C6S2 map changes | HIGH | **LIVE** | Active season |
+| Fortnite C6S2 battle pass | HIGH | **LIVE** | Active season |
+| Fortnite C6S2 weapons tier list | HIGH | **LIVE** | Active season |
+| ~~Nintendo Switch 2 pre-order guide~~ | ~~URGENT~~ | **DELETED** (wrong year) | � |
+| ~~Switch 2 launch games full list~~ | ~~URGENT~~ | **DELETED** (wrong year) | � |
+| GPT-5 features and release date | HIGH | Not started | Expected announcement Q2 2026 |
+| World Cup 2026 schedule | HIGH | Not started | June start � search climbing |
+| Netflix Q2 2026 earnings recap | MEDIUM | Not started | Publish within 24h of earnings |
+| Nvidia RTX 5090 review | MEDIUM | Not started | Hardware cycle |

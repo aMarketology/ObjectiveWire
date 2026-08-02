@@ -1,54 +1,46 @@
 import type { Metadata } from 'next';
 import { JackArticleDB } from '@/components/JackArticleDB';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 86400;
 
 const SLUG = '/copyright/news/aoc-mlb-polymarket-gambling-warning';
-const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
-const IMAGE_URL =
-  'https://www.objectivewire.org/default/aoc.PNG';
+const ARTICLE_URL = `https://www.objectivewire.com${SLUG}`;
+const OG_IMAGE = '/thumbnails/copyright-news-aoc-mlb-polymarket-gambling-warning.jpg';
 
 export const metadata: Metadata = {
-  title: "AOC Calls MLB's $300M Polymarket Deal 'Sad,' Warns Against Pervasive Gambling",
-  description:
-    "Rep. Alexandria Ocasio-Cortez condemned Major League Baseball's exclusive prediction market deal with Polymarket, warning that embedding gambling into",
+  title: "AOC MLB Polymarket | $300M Gambling Deal Warning",
+  description: 'Rep. Alexandria Ocasio-Cortez calls MLB\'s $300M Polymarket sponsorship deal "sad" and warns against the normalization of pervasive sports gambling in America.',
   keywords: [
-    'AOC Polymarket MLB',
-    'Alexandria Ocasio-Cortez Polymarket',
-    'MLB Polymarket deal 2026',
-    'Major League Baseball prediction market',
-    'Polymarket sports gambling',
-    'AOC sports gambling warning',
-    'prediction markets sports betting',
-    'MLB gambling partner 2026',
-    'Polymarket $300 million MLB',
-    'sports gambling legislation 2026',
+    'AOC MLB Polymarket',
+    'AOC Polymarket gambling warning',
+    'MLB Polymarket $300 million deal',
+    'Alexandria Ocasio-Cortez MLB gambling',
+    'Polymarket MLB sponsorship',
+    'sports gambling warning 2026',
+    'prediction markets MLB',
+    'AOC gambling',
+    'MLB gambling deal',
+    'Polymarket controversy',
   ],
-  alternates: {
-    canonical: ARTICLE_URL,
-  },
+  alternates: { canonical: ARTICLE_URL },
   openGraph: {
     title: "AOC Calls MLB's $300M Polymarket Deal 'Sad,' Warns Against Pervasive Gambling",
-    description:
-      "MLB named Polymarket its official prediction market exchange partner, the first such deal in major U.S. sports. AOC responded immediately, warning that",
+    description: 'Alexandria Ocasio-Cortez warns against MLB\'s $300M Polymarket deal, calling it a troubling sign of normalized sports gambling in American culture.',
     type: 'article',
     url: ARTICLE_URL,
-    siteName: 'ObjectWire',
-    images: [IMAGE_URL],
-    publishedTime: '2026-03-24T15:00:00Z',
-    modifiedTime: '2026-03-24T15:00:00Z',
-    section: 'Politics & Law',
-    tags: ['AOC', 'MLB', 'Polymarket', 'Gambling', 'Prediction Markets', 'Politics', 'Sports'],
+    siteName: 'Objective Wire',
+    authors: ['Jack Sterling'],
+    section: 'Politics',
+    images: [{ url: OG_IMAGE, width: 1200, height: 675, alt: 'AOC MLB Polymarket gambling deal warning' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "AOC on MLB-Polymarket: 'Sad.' Gambling in Sports Is 'Not Good for Society'",
-    description:
-      "MLB became the first U.S. major league to partner with a prediction exchange. AOC fired back immediately. The debate over pervasive sports gambling is",
-    images: [IMAGE_URL],
+    title: "AOC Warns Against MLB's $300M Polymarket Gambling Deal",
+    description: "Rep. AOC calls the deal 'sad' and flags the pervasive gambling risk.",
+    images: [OG_IMAGE],
   },
 };
 
-export default function AocMLBPolymarketPage() {
+export default function AocMlbPolymarketPage() {
   return <JackArticleDB slug="copyright-news-aoc-mlb-polymarket-gambling-warning" />;
 }

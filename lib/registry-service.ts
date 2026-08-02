@@ -1,15 +1,16 @@
 // =============================================================================
 // lib/registry-service.ts
 // =============================================================================
-// All content registry data is loaded at runtime by scanning app/**/page.tsx.
-// No JSON file. No Supabase calls. Scans once per process and caches in memory.
+// All content registry data lives in lib/registry-data.json.
+// Generated at build time by scripts/sync-registry.ts (runs in prebuild).
+// All queries are pure in-memory operations — zero Supabase calls.
 // =============================================================================
 
 export type { ContentEntry, ChangeFrequency } from '@/lib/content-registry';
 import type { ContentEntry } from '@/lib/content-registry';
-import { loadRegistry } from './registry-loader';
+import registryDataRaw from './registry-data.json';
 
-const registry = loadRegistry();
+const registry = registryDataRaw as ContentEntry[];
 
 // ---------------------------------------------------------------------------
 // isRealArticle — filters out hub/index/meta pages from article feeds
@@ -26,16 +27,36 @@ const HUB_SLUGS = new Set([
   '/bio-hacking', '/earth', '/ngos', '/cars', '/clothing', '/events',
   '/bank-of-america', '/austin-private-detective-agency', '/missing-persons',
   '/investigations', '/college', '/define', '/authors', '/politics',
-  '/amazon', '/tiktok', '/trump', '/cuba',
+  '/amazon', '/tiktok', '/trump', '/cuba', '/predictions',
 ]);
 
 const HUB_CATEGORIES = new Set(['Meta', 'Support', 'Services', 'Legal']);
+
+// Top-level path segments whose sub-pages are NEVER real articles
+// (author profiles, service pages, editorial meta, legal pages, etc.)
+const NON_ARTICLE_ROOTS = new Set([
+  'authors', 'service', 'editorial-standards', 'get-help',
+  'account', 'auth', 'api', 'admin', 'tags', 'search',
+  'index', 'blog', 'site-index', 'team', 'privacy-policy',
+  'terms-of-service', 'corrections', 'copyright', 'about',
+  'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
+  'feed.json', 'podcasts',
+]);
+
+// Hub-only roots: top-level segment is valid BUT sub-pages are only real
+// articles if the path has 3+ segments (e.g. /local/greater-texas/article).
+// 2-segment paths like /local/austin are hub listing pages, not articles.
+const HUB_ONLY_ROOTS = new Set(['local', 'predict']);
 
 function isRealArticle(e: ContentEntry): boolean {
   if (HUB_SLUGS.has(e.slug)) return false;
   if (HUB_CATEGORIES.has(e.category)) return false;
   const parts = e.slug.split('/').filter(Boolean);
   if (parts.length < 2) return false;
+  // Block all sub-pages of non-article roots (e.g. /authors/x, /service/x)
+  if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
+  // For hub-only roots (e.g. /local), require 3+ path segments to be a real article
+  if (HUB_ONLY_ROOTS.has(parts[0]) && parts.length < 3) return false;
   if (e.description.length < 60) return false;
   if (e.title.startsWith('›') || e.title.startsWith('ObjectWire coverage')) return false;
   return true;
