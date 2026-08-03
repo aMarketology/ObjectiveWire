@@ -282,9 +282,11 @@ export default async function HomePage() {
     e.category.toLowerCase() === 'youtube' || e.slug.startsWith('/youtube');
   const isCars    = (e: ContentEntry) =>
     e.category.toLowerCase() === 'cars' || e.slug.startsWith('/cars');
+  const isLocal   = (e: ContentEntry) => e.slug.startsWith('/local');
 
-  const lead     = articles[0];
-  const nextUp   = articles.filter((a) => a !== lead).slice(0, 5);
+  const local    = articles.filter(isLocal).slice(0, 9);
+  const lead     = local.length > 0 ? local[0] : articles[0];
+  const nextUp   = articles.filter((a) => a.slug !== (local.length > 0 ? local[0]?.slug : lead?.slug)).slice(0, 5);
   const worldCup = articles.filter(isWC).slice(0, 9);
   const sports   = articles.filter((e) => isSports(e) && !isWC(e)).slice(0, 6);
   const creators = articles.filter(isCreator).slice(0, 6);
@@ -312,6 +314,25 @@ export default async function HomePage() {
                   <StoryCard key={a.slug} article={a} showImage={false} />
                 ))}
               </div>
+            </section>
+          )}
+
+          {/* ── TEXAS INVESTIGATIONS (local) ──────────────────────────────── */}
+          {local.length > 0 && (
+            <section aria-label="Texas Investigations" className="mt-6 mb-6">
+              <SectionFlag label="Texas Investigations" href="/local" color="#ea580c" />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {local.slice(0, 6).map((a, i) => (
+                  <StoryCard key={a.slug} article={a} priority={i === 0} />
+                ))}
+              </div>
+              {local.length > 6 && (
+                <div className="mt-4 border-t border-gray-200 pt-3">
+                  {local.slice(6).map((a) => (
+                    <HeadlineRow key={a.slug} article={a} />
+                  ))}
+                </div>
+              )}
             </section>
           )}
 

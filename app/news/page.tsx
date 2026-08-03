@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: 'News | Sports, Creators & Cars | oWire',
   description:
     'Latest news from oWire. Sports, creators, cars, and culture. World Cup, MLB, MrBeast, Logan Paul, Ferrari, and more.',
-  alternates: { canonical: 'https://www.objectivewire.com/news' },
+  alternates: { canonical: 'https://www.objectivewire.org/news' },
   openGraph: {
     title: 'News | Sports, Creators & Cars | oWire',
     description: 'Daily coverage of athletes, influencers, and the moments everyone is talking about.',
-    url: 'https://www.objectivewire.com/news',
+    url: 'https://www.objectivewire.org/news',
     siteName: 'oWire',
     type: 'website',
   },

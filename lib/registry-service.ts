@@ -1,16 +1,15 @@
 // =============================================================================
 // lib/registry-service.ts
 // =============================================================================
-// All content registry data lives in lib/registry-data.json.
-// Generated at build time by scripts/sync-registry.ts (runs in prebuild).
-// All queries are pure in-memory operations — zero Supabase calls.
+// All content registry data is loaded live from the filesystem at build time
+// via lib/registry-loader.ts. All queries are pure in-memory operations.
 // =============================================================================
 
 export type { ContentEntry, ChangeFrequency } from '@/lib/content-registry';
 import type { ContentEntry } from '@/lib/content-registry';
-import registryDataRaw from './registry-data.json';
+import { loadRegistry } from './registry-loader';
 
-const registry = registryDataRaw as ContentEntry[];
+const registry = loadRegistry();
 
 // ---------------------------------------------------------------------------
 // isRealArticle — filters out hub/index/meta pages from article feeds
