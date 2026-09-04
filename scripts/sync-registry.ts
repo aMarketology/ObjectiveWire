@@ -16,13 +16,16 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getActiveSite, getArticleOwnerSite, getActiveSiteConfig } from '../lib/active-site';
 
 // ---------------------------------------------------------------------------
 // config
 // ---------------------------------------------------------------------------
 const ROOT = path.resolve(__dirname, '..');
 const APP_DIR = path.join(ROOT, 'app');
-const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', 'registry-data.json');
+const activeSite = getActiveSite();
+const siteConfig = getActiveSiteConfig();
+const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', `registry-data-${activeSite}.json`);
 const DEFAULT_AUTHOR = 'ObjectWire Editorial';
 const TODAY = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
 const WRITE_FLAG = process.argv.includes('--write');
@@ -198,6 +201,15 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     if (SKIP_EXACT.includes(slug)) return null;
     if (SKIP_PREFIXES.some(p => slug.startsWith(p))) return null;
     if (SKIP_REGISTRY_PREFIXES.some(p => slug.startsWith(p))) return null;
+
+    // Filter by site ownership
+    const siteExportMatch = content.match(/export\s+const\s+registrySite\s*=\s*['"`](org|main)['"`]/);
+    const explicitSite = siteExportMatch?.[1];
+    const ownerSite = getArticleOwnerSite(slug, explicitSite);
+
+    if (ownerSite !== activeSite) {
+      return null;
+    }
 
     // ── Quality gate 1: must have a real metadata export ──────────────────
     if (!content.includes('export const metadata') && !content.includes('export async function generateMetadata')) {
@@ -390,7 +402,7 @@ function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
     changeFrequency: detectChangeFrequency(category),
     // Scanned values win; preserve existing if scan didn't find them;
     // fall back to auto-generated Satori OG image so no entry is imageless.
-    imageUrl:    meta.imageUrl    ?? existing?.imageUrl    ?? `https://www.objectivewire.com/api/og?slug=${encodeURIComponent(meta.slug)}`,
+    imageUrl:    meta.imageUrl    ?? existing?.imageUrl    ?? `${siteConfig.url}/api/og?slug=${encodeURIComponent(meta.slug)}`,
     imageWidth:  meta.imageWidth  ?? existing?.imageWidth  ?? 1200,
     imageHeight: meta.imageHeight ?? existing?.imageHeight ?? 630,
     imageAlt:    meta.imageAlt    ?? existing?.imageAlt,
@@ -402,12 +414,13 @@ function buildEntry(meta: PageMeta, existing?: RegistryEntry): RegistryEntry {
 // main
 // ---------------------------------------------------------------------------
 function main() {
-  console.log('🔍  Scanning app directory for page.tsx files…');
+  console.log(`🌐  Active site: ${activeSite} (${siteConfig.domain})`);
+  console.log(`🔍  Scanning app directory for ${activeSite}-owned pages…`);
   const allPages = scanApp(APP_DIR);
-  console.log(`    Found ${allPages.length} pages with real metadata\n`);
+  console.log(`    Found ${allPages.length} pages matching ${activeSite}\n`);
 
   if (allPages.length === 0) {
-    console.warn('⚠️  No pages passed the metadata quality gate. Check that your page.tsx files export `metadata` with a real title and description (≥60 chars).');
+    console.warn('⚠️  No pages passed the metadata quality gate.');
     return;
   }
 
@@ -448,7 +461,7 @@ function main() {
   }
 
   writeLocalRegistry(newEntries);
-  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data.json`);
+  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data-${activeSite}.json`);
 }
 
 main();

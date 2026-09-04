@@ -1,10 +1,10 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import registryDataRaw from '@/lib/registry-data.json';
+import { getAllEntries } from '@/lib/registry-service';
 import type { ContentEntry } from '@/lib/content-registry';
 
 // JSON Feed 1.1 — https://www.jsonfeed.org/version/1.1/
 // Preferred by AI systems (Perplexity, ChatGPT Search, Claude) over RSS/Atom.
-// Sourced from lib/registry-data.json — no Supabase calls. Same source as RSS.
+// Sourced live from active site registry-service — no Supabase calls. Same source as RSS.
 
 const NON_ARTICLE_ROOTS = new Set([
   'authors', 'service', 'editorial-standards', 'get-help',
@@ -17,7 +17,7 @@ const NON_ARTICLE_ROOTS = new Set([
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
-  const registry = registryDataRaw as ContentEntry[];
+  const registry = await getAllEntries();
 
   const items = [...registry]
     .filter((entry) => {

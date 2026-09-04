@@ -2,64 +2,30 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllEntries, type ContentEntry } from '@/lib/registry-service';
+import { getActiveSite, getActiveSiteConfig } from '@/lib/active-site';
 
 export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.objectivewire.com';
-
-export const metadata: Metadata = {
-  title: 'Objective Wire | Sports, Creators, Cars & Culture',
-  description:
-    'Objective Wire is a verified sports, creators, and culture network covering World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy. Accuracy over speed, primary sources only.',
-  keywords: [
-    'World Cup 2026',
-    'Premier League news',
-    'MLS 2026',
-    'MLB news',
-    'golf news',
-    'supercar news',
-    'creator news',
-    'YouTube creators',
-    'TikTok news',
-    'influencer profiles',
-    'Objective Wire',
-    'oWire',
-    'sports network',
-    'verified news',
-  ],
-  alternates: { canonical: PAGE_URL },
-  openGraph: {
-    title: 'Objective Wire | Sports, Creators, Cars & Culture',
-    description:
-      'Verified sports and culture coverage. World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy. Accuracy over speed.',
-    type: 'website',
-    url: PAGE_URL,
-    siteName: 'Objective Wire',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Objective Wire | Sports, Creators, Cars & Culture',
-    description: 'World Cup 2026, Premier League, MLS, supercars, and creator economy. Verified news, primary sources only.',
-  },
-};
-
-const SITE_SCHEMA = {
-  '@context': 'https://schema.org',
-  '@type': 'NewsMediaOrganization',
-  name: 'Objective Wire',
-  alternateName: 'oWire',
-  url: PAGE_URL,
-  description:
-    'Objective Wire is a verified sports, creators, and culture network covering World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy.',
-  foundingDate: '2024',
-  email: 'editorial@objectivewire.com',
-  logo: {
-    '@type': 'ImageObject',
-    url: 'https://www.objectivewire.com/zwire-logo-square.png',
-    width: 1001,
-    height: 1001,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = getActiveSiteConfig();
+  return {
+    title: `${config.name} | ${config.tagline}`,
+    description: config.description,
+    alternates: { canonical: config.url },
+    openGraph: {
+      title: `${config.name} | ${config.tagline}`,
+      description: config.description,
+      type: 'website',
+      url: config.url,
+      siteName: config.name,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${config.name} | ${config.tagline}`,
+      description: config.description,
+    },
+  };
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -258,6 +224,8 @@ function HeadlineRow({ article }: { article: ContentEntry }) {
 
 export default async function HomePage() {
   const allEntries = await getAllEntries();
+  const activeSite = getActiveSite();
+  const siteConfig = getActiveSiteConfig();
 
   const SKIP = new Set(['meta', 'support', 'legal', 'services', 'service']);
   const articles = allEntries
@@ -272,6 +240,19 @@ export default async function HomePage() {
     })
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
+  // ── org-specific buckets (Texas Investigations) ──────────────────────────
+  const isAustin   = (e: ContentEntry) => e.slug.includes('/austin');
+  const isHouston  = (e: ContentEntry) => e.slug.includes('/houston');
+  const isTxState  = (e: ContentEntry) =>
+    e.slug.includes('/greater-texas') ||
+    e.slug.startsWith('/blog') ||
+    (!isAustin(e) && !isHouston(e));
+
+  const austinNews   = articles.filter(isAustin).slice(0, 6);
+  const houstonNews  = articles.filter(isHouston).slice(0, 6);
+  const stateNews    = articles.filter(isTxState).slice(0, 6);
+
+  // ── main-specific buckets (Sports, Cars, Creators) ───────────────────────
   const isWC      = (e: ContentEntry) => e.slug.startsWith('/world-cup') || e.category.toLowerCase() === 'world-cup';
   const isSports  = (e: ContentEntry) =>
     ['mlb', 'mls', 'soccer', 'golf', 'premier-league', 'sports'].includes(e.category.toLowerCase()) ||
@@ -291,9 +272,20 @@ export default async function HomePage() {
   const youtube  = articles.filter(isYouTube).slice(0, 4);
   const cars     = articles.filter(isCars).slice(0, 4);
 
+  const siteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsMediaOrganization',
+    name: siteConfig.name,
+    alternateName: 'oWire',
+    url: siteConfig.url,
+    description: siteConfig.description,
+    foundingDate: '2024',
+    email: siteConfig.email,
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }} />
 
       <div className="bg-white min-h-screen">
 
@@ -315,77 +307,120 @@ export default async function HomePage() {
             </section>
           )}
 
-          {/* ── WORLD CUP 2026 ──────────────────────────────────────────── */}
-          {worldCup.length > 0 && (
-            <section aria-label="World Cup 2026">
-              <SectionFlag label="World Cup 2026" href="/world-cup" color="#15803d" />
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div className="lg:col-span-5">
-                  <StoryCard article={worldCup[0]} priority />
-                </div>
-                <div className="lg:col-span-4 grid grid-cols-2 gap-5 content-start">
-                  {worldCup.slice(1, 5).map((a) => (
-                    <StoryCard key={a.slug} article={a} />
-                  ))}
-                </div>
-                {worldCup.length > 5 && (
-                  <div className="lg:col-span-3 border-t lg:border-t-0 lg:border-l lg:border-gray-200 lg:pl-6 pt-4 lg:pt-0">
-                    {worldCup.slice(5).map((a) => (
-                      <HeadlineRow key={a.slug} article={a} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </section>
-          )}
-
-          {/* ── SPORTS | CREATORS (two-col) ──────────────────────────────── */}
-          {(sports.length > 0 || creators.length > 0) && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-gray-900">
-              {sports.length > 0 && (
-                <section aria-label="Sports" className="pb-8 lg:pb-0 lg:pr-8">
-                  <SectionFlag label="Sports" href="/mlb" color="#1d4ed8" />
-                  <div className="grid grid-cols-2 gap-5 mb-4">
-                    {sports.slice(0, 2).map((a, i) => (
+          {/* ── ORG SITE: TEXAS INVESTIGATIONS LAYOUT ──────────────────── */}
+          {activeSite === 'org' && (
+            <>
+              {houstonNews.length > 0 && (
+                <section aria-label="Houston Investigations" className="pt-6">
+                  <SectionFlag label="Houston Investigations" href="/local/houston" color="#ea580c" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {houstonNews.map((a, i) => (
                       <StoryCard key={a.slug} article={a} priority={i === 0} />
                     ))}
                   </div>
-                  <div>
-                    {sports.slice(2).map((a) => (
-                      <HeadlineRow key={a.slug} article={a} />
+                </section>
+              )}
+
+              {austinNews.length > 0 && (
+                <section aria-label="Austin Public Interest" className="pt-8 border-t-2 border-gray-900 mt-8">
+                  <SectionFlag label="Austin & Central Texas" href="/local/austin" color="#0891b2" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {austinNews.map((a, i) => (
+                      <StoryCard key={a.slug} article={a} priority={i === 0} />
                     ))}
                   </div>
                 </section>
               )}
 
-              {(creators.length > 0 || youtube.length > 0) && (
-                <section aria-label="Creators and YouTube" className="pt-8 lg:pt-0 lg:pl-8">
-                  <SectionFlag label="Creators &amp; YouTube" href="/creator" color="#b45309" />
-                  <div className="grid grid-cols-2 gap-5 mb-4">
-                    {creators.slice(0, 2).map((a) => (
-                      <StoryCard key={a.slug} article={a} />
-                    ))}
-                  </div>
-                  <div>
-                    {[...creators.slice(2), ...youtube].slice(0, 6).map((a) => (
-                      <HeadlineRow key={a.slug} article={a} />
+              {stateNews.length > 0 && (
+                <section aria-label="Statewide Texas Investigations" className="pt-8 border-t-2 border-gray-900 mt-8">
+                  <SectionFlag label="Texas Statewide Investigations" href="/blog" color="#1e3a5f" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {stateNews.map((a, i) => (
+                      <StoryCard key={a.slug} article={a} priority={i === 0} />
                     ))}
                   </div>
                 </section>
               )}
-            </div>
+            </>
           )}
 
-          {/* ── CARS ────────────────────────────────────────────────────── */}
-          {cars.length > 0 && (
-            <section aria-label="Cars and Supercars" className="border-t-2 border-gray-900 pt-0">
-              <SectionFlag label="Cars &amp; Supercars" href="/cars" color="#1e3a5f" />
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                {cars.map((a, i) => (
-                  <StoryCard key={a.slug} article={a} priority={i === 0} />
-                ))}
-              </div>
-            </section>
+          {/* ── MAIN SITE: SPORTS, CREATORS, CARS, WORLD CUP ───────────── */}
+          {activeSite === 'main' && (
+            <>
+              {/* ── WORLD CUP 2026 ──────────────────────────────────────────── */}
+              {worldCup.length > 0 && (
+                <section aria-label="World Cup 2026">
+                  <SectionFlag label="World Cup 2026" href="/world-cup" color="#15803d" />
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div className="lg:col-span-5">
+                      <StoryCard article={worldCup[0]} priority />
+                    </div>
+                    <div className="lg:col-span-4 grid grid-cols-2 gap-5 content-start">
+                      {worldCup.slice(1, 5).map((a) => (
+                        <StoryCard key={a.slug} article={a} />
+                      ))}
+                    </div>
+                    {worldCup.length > 5 && (
+                      <div className="lg:col-span-3 border-t lg:border-t-0 lg:border-l lg:border-gray-200 lg:pl-6 pt-4 lg:pt-0">
+                        {worldCup.slice(5).map((a) => (
+                          <HeadlineRow key={a.slug} article={a} />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </section>
+              )}
+
+              {/* ── SPORTS | CREATORS (two-col) ──────────────────────────────── */}
+              {(sports.length > 0 || creators.length > 0) && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-gray-900">
+                  {sports.length > 0 && (
+                    <section aria-label="Sports" className="pb-8 lg:pb-0 lg:pr-8">
+                      <SectionFlag label="Sports" href="/mlb" color="#1d4ed8" />
+                      <div className="grid grid-cols-2 gap-5 mb-4">
+                        {sports.slice(0, 2).map((a, i) => (
+                          <StoryCard key={a.slug} article={a} priority={i === 0} />
+                        ))}
+                      </div>
+                      <div>
+                        {sports.slice(2).map((a) => (
+                          <HeadlineRow key={a.slug} article={a} />
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
+                  {(creators.length > 0 || youtube.length > 0) && (
+                    <section aria-label="Creators and YouTube" className="pt-8 lg:pt-0 lg:pl-8">
+                      <SectionFlag label="Creators &amp; YouTube" href="/creator" color="#b45309" />
+                      <div className="grid grid-cols-2 gap-5 mb-4">
+                        {creators.slice(0, 2).map((a) => (
+                          <StoryCard key={a.slug} article={a} />
+                        ))}
+                      </div>
+                      <div>
+                        {[...creators.slice(2), ...youtube].slice(0, 6).map((a) => (
+                          <HeadlineRow key={a.slug} article={a} />
+                        ))}
+                      </div>
+                    </section>
+                  )}
+                </div>
+              )}
+
+              {/* ── CARS ────────────────────────────────────────────────────── */}
+              {cars.length > 0 && (
+                <section aria-label="Cars and Supercars" className="border-t-2 border-gray-900 pt-0">
+                  <SectionFlag label="Cars &amp; Supercars" href="/cars" color="#1e3a5f" />
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+                    {cars.map((a, i) => (
+                      <StoryCard key={a.slug} article={a} priority={i === 0} />
+                    ))}
+                  </div>
+                </section>
+              )}
+            </>
           )}
 
         </main>
@@ -394,9 +429,11 @@ export default async function HomePage() {
         <footer className="border-t-[3px] border-gray-900 bg-gray-50 py-8 mt-6">
           <div className="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <span className="font-serif font-black text-2xl text-gray-900 block">Objective Wire</span>
+              <span className="font-serif font-black text-2xl text-gray-900 block">{siteConfig.name}</span>
               <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-gray-400 mt-1 block">
-                Accuracy Over Speed &nbsp;&middot;&nbsp; Primary Sources Only &nbsp;&middot;&nbsp; Named Authors
+                {activeSite === 'org'
+                  ? 'Nonprofit Investigative Newsroom · Documented Field Work · Named Authors'
+                  : 'Accuracy Over Speed · Primary Sources Only · Named Authors'}
               </span>
             </div>
             <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer links">

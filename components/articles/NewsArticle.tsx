@@ -11,6 +11,9 @@ import type { BreadcrumbItem } from '@/components/nav/Breadcrumb';
 import FAQAccordion, { FAQSchema } from '@/components/FAQAccordion';
 import type { FAQItem } from '@/components/FAQAccordion';
 import { MoreFromHub, type MoreFromHubItem } from '@/components/discovery/MoreFromHub';
+import { KeyTakeaways } from '@/components/articles/KeyTakeaways';
+import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 // =============================================================================
 // NEWS ARTICLE COMPONENT - Flashy, engaging article layout
@@ -78,6 +81,10 @@ export interface NewsArticleProps {
   keyTakeaways?: string[];
   /** Color accent for the KeyTakeaways block. */
   keyTakeawaysColor?: 'red' | 'blue' | 'green' | 'purple' | 'orange';
+  /** ISO-8601 publish timestamp — used to emit NewsArticle JSON-LD schema. e.g. '2026-06-24T22:00:00Z' */
+  publishedTime?: string;
+  /** ISO-8601 modified timestamp — defaults to publishedTime in schema if omitted. */
+  modifiedTime?: string;
 }
 
 // =============================================================================
@@ -709,13 +716,32 @@ export function NewsArticle({
   moreFromHub,
   moreFromHubLabel,
   moreFromHubHref,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   keyTakeaways,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   keyTakeawaysColor,
+  publishedTime,
+  modifiedTime,
 }: NewsArticleProps) {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-950">
+    <>
+      {/* NewsArticle JSON-LD — emitted when publishedTime is provided. Enables Google News + AI indexing. */}
+      {publishedTime && url && (
+        <NewsArticleSchema
+          title={title}
+          description={subtitle ?? ''}
+          author={author?.name ?? 'ObjectWire Editorial'}
+          authorUrl={author?.authorSlug ? `${SITE_CONFIG.url}/authors/${author.authorSlug}` : undefined}
+          publishedTime={publishedTime}
+          modifiedTime={modifiedTime}
+          imageUrl={thumbnail?.src ?? heroImage?.src}
+          imageAlt={thumbnail?.alt ?? heroImage?.alt}
+          imageWidth={1200}
+          imageHeight={630}
+          articleUrl={`${SITE_CONFIG.url}${url}`}
+          section={category}
+          keywords={tags ?? []}
+        />
+      )}
+      <main className="min-h-screen bg-white dark:bg-gray-950">
       {/* Record view in reading history (localStorage for everyone, server for signed-in users) */}
       {slug && url && (
         <ArticleViewTracker
@@ -771,6 +797,16 @@ export function NewsArticle({
 
           {/* Main body — center column. No self-start needed in grid. */}
           <article className="w-full min-w-0">
+            {/* Key Takeaways — AI-extraction-first summary block, emits ItemList JSON-LD */}
+            {keyTakeaways && keyTakeaways.length > 0 && (
+              <div className="mb-8">
+                <KeyTakeaways
+                  items={keyTakeaways}
+                  color={keyTakeawaysColor ?? 'gray'}
+                  articleUrl={url ?? ''}
+                />
+              </div>
+            )}
             <div data-article-body="true" className="max-w-none font-serif text-gray-900 dark:text-gray-100
               [&_p]:!font-serif [&_p]:!text-[18px] [&_p]:!leading-[1.75] [&_p]:!text-gray-800 [&_p]:!mb-6 lg:[&_p]:!text-justify lg:[&_p]:!hyphens-auto dark:[&_p]:!text-gray-200
               [&>div>p:first-of-type]:!text-[20px] [&>div>p:first-of-type]:!font-medium
@@ -838,7 +874,8 @@ export function NewsArticle({
         </div>
       </div>
 
-    </main>
+      </main>
+    </>
   );
 }
 

@@ -1,8 +1,7 @@
 import { ImageResponse } from 'next/og';
-import { createClient } from '@supabase/supabase-js';
 import type { NextRequest } from 'next/server';
 
-// Edge runtime — lightweight, fast, globally distributed
+// Edge runtime — required by @vercel/og / ImageResponse
 export const runtime = 'edge';
 
 const W = 1200;
@@ -79,25 +78,25 @@ export async function GET(req: NextRequest) {
     let desc     = descParam   || '';
     let bgImageUrl: string | null = imageParam || null;
 
-    // ── Fetch from content_registry when slug is provided ──────────
+    // ── Fetch from active site registry via HTTP (Edge-compatible) ─
     if (slug) {
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const anonKey     = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-      if (supabaseUrl && anonKey) {
-        const supabase = createClient(supabaseUrl, anonKey);
-        const { data } = await supabase
-          .from('content_registry')
-          .select('title, category, description, image_url')
-          .eq('slug', slug)
-          .maybeSingle();
-
-        if (data) {
-          title      = data.title       || title;
-          category   = data.category    || category;
-          desc       = data.description || desc;
-          bgImageUrl = bgImageUrl       || data.image_url || null;
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.objectivewire.com';
+        const res = await fetch(`${baseUrl}/api/registry`, {
+          signal: AbortSignal.timeout(3000),
+        });
+        if (res.ok) {
+          const entries = await res.json();
+          const entry = entries.find((e: any) => e.slug === slug);
+          if (entry) {
+            title      = entry.title       || title;
+            category   = entry.category    || category;
+            desc       = entry.description || desc;
+            bgImageUrl = bgImageUrl        || entry.imageUrl || null;
+          }
         }
+      } catch {
+        // Fall back to query params
       }
     }
 

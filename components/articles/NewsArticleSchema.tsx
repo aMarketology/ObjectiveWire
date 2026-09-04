@@ -1,6 +1,6 @@
 // NewsArticle Schema Component for Google News, Perplexity, and MSN
 // Add this to your article pages for proper indexing
-// IMPORTANT: All URLs must use https://www.objectivewire.com (canonical www domain)
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export interface ArticleSchemaProps {
   title: string;
@@ -30,9 +30,10 @@ export function NewsArticleSchema({
   imageHeight = 675,
   imageAlt,
   articleUrl,
-  section = "Technology",
+  section = "Sports",
   keywords = [],
 }: ArticleSchemaProps) {
+  const siteUrl = SITE_CONFIG.url;
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -46,18 +47,18 @@ export function NewsArticleSchema({
     "author": {
       "@type": "Person",
       "name": author,
-      "url": authorUrl || `https://www.objectivewire.com/authors/${author.toLowerCase().replace(/\s+/g, '-')}`
+      "url": authorUrl || `${siteUrl}/authors/${author.toLowerCase().replace(/\s+/g, '-')}`
     },
     "publisher": {
       "@type": "NewsMediaOrganization",
       "name": "Objective Wire",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.objectivewire.com/zwire-logo-square.png",
+        "url": `${siteUrl}/zwire-logo-square.png`,
         "width": 1001,
         "height": 1001
       },
-      "url": "https://www.objectivewire.com",
+      "url": siteUrl,
       "sameAs": [
         "https://twitter.com/object_wire",
         "https://www.facebook.com/objectwire",
@@ -73,7 +74,7 @@ export function NewsArticleSchema({
     "isAccessibleForFree": true,
     "inLanguage": "en-US",
     "copyrightYear": new Date(publishedTime).getFullYear(),
-    "copyrightHolder": { "@type": "Organization", "name": "Objective Wire", "url": "https://www.objectivewire.com" },
+    "copyrightHolder": { "@type": "Organization", "name": "Objective Wire", "url": siteUrl },
     "speakable": {
       "@type": "SpeakableSpecification",
       "cssSelector": ["h1", "article"]
@@ -90,19 +91,20 @@ export function NewsArticleSchema({
 
 // Organization Schema for the main site
 export function OrganizationSchema() {
+  const siteUrl = SITE_CONFIG.url;
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsMediaOrganization",
     "name": "Objective Wire",
     "alternateName": "oWire",
-    "url": "https://www.objectivewire.com",
+    "url": siteUrl,
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.objectivewire.com/zwire-logo-square.png",
+      "url": `${siteUrl}/zwire-logo-square.png`,
       "width": 1001,
       "height": 1001
     },
-    "description": "Objective Wire is a verified sports, creators, and culture network covering World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy. Accuracy over speed, primary sources only.",
+    "description": "Objective Wire is a verified news platform delivering source-cited reporting on creators, sports, cars, and culture. Based in Austin, Texas.",
     "foundingDate": "2024",
     "founders": [
       {
@@ -118,14 +120,13 @@ export function OrganizationSchema() {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "editorial",
-      "email": "editorial@objectivewire.com",
+      "email": "editorial@objectivewire.org",
       "areaServed": "US"
     },
-    "ethicsPolicy": "https://www.objectivewire.com/editorial-standards",
-    "correctionsPolicy": "https://www.objectivewire.com/corrections",
-    "verificationFactCheckingPolicy": "https://www.objectivewire.com/editorial-standards",
-    "masthead": "https://www.objectivewire.com/team",
-    "ownershipFundingInfo": "https://www.objectivewire.com/about"
+    "ethicsPolicy": `${siteUrl}/editorial-standards`,
+    "correctionsPolicy": `${siteUrl}/corrections`,
+    "masthead": `${siteUrl}/team`,
+    "ownershipFundingInfo": `${siteUrl}/about`
   };
 
   return (
@@ -138,16 +139,17 @@ export function OrganizationSchema() {
 
 // WebSite Schema with SearchAction for Google
 export function WebSiteSchema() {
+  const siteUrl = SITE_CONFIG.url;
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Objective Wire",
-    "url": "https://www.objectivewire.com",
+    "url": siteUrl,
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.objectivewire.com/search?q={search_term_string}"
+        "urlTemplate": `${siteUrl}/search?q={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     }

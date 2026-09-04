@@ -1,9 +1,8 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import registryDataRaw from '@/lib/registry-data.json';
+import { getAllEntries } from '@/lib/registry-service';
 import type { ContentEntry } from '@/lib/content-registry';
 
-// RSS feed is generated from lib/registry-data.json — no Supabase calls.
-// Updated on every build via sync-registry.ts in prebuild.
+// RSS feed is generated live from registry-service for the active site — no Supabase calls.
 const RSS_LIMIT = 200;
 
 // Path-prefix roots that are never articles (author pages, hub pages, service pages, etc.)
@@ -18,7 +17,7 @@ const NON_ARTICLE_ROOTS = new Set([
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
-  const registry = registryDataRaw as ContentEntry[];
+  const registry = await getAllEntries();
 
   const articles = [...registry]
     .filter((row) => {

@@ -1,9 +1,11 @@
 import { SITE_CONFIG } from '@/lib/site-config';
+import { getAllEntries } from '@/lib/registry-service';
 import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
 
 // Google Image Sitemap — https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps
+// Sourced live from the active site registry (branch/site-isolated).
 //
 // Sources (in priority order, registry takes precedence):
 //   1. content_registry — image_url, image_alt, title (most complete)
@@ -46,31 +48,27 @@ export async function GET() {
   const pageMap = new Map<string, PageEntry>();
 
   try {
-    const supabase = await createClient();
-
     // -------------------------------------------------------------------------
-    // 1. content_registry — primary source (has image_url, image_alt, title)
+    // 1. Local active registry — primary source
     // -------------------------------------------------------------------------
-    const { data: regRows } = await supabase
-      .from('content_registry')
-      .select('slug, title, image_url, image_alt')
-      .not('image_url', 'is', null)
-      .neq('image_url', '');
+    const entries = await getAllEntries();
 
-    for (const row of regRows ?? []) {
-      const imgLoc = toAbsolute(row.image_url as string, baseUrl);
+    for (const entry of entries) {
+      const imgLoc = toAbsolute(entry.imageUrl, baseUrl);
       if (!imgLoc) continue;
-      const pageUrl = `${baseUrl}${row.slug}`;
+      const pageUrl = `${baseUrl}${entry.slug}`;
       pageMap.set(pageUrl, {
         images: [
           {
             loc: imgLoc,
-            caption: (row.image_alt as string) || undefined,
-            title: (row.title as string) || undefined,
+            caption: entry.imageAlt || undefined,
+            title: entry.title || undefined,
           },
         ],
       });
     }
+
+    const supabase = await createClient();
 
     // -------------------------------------------------------------------------
     // 2. articles table — supplement for entries not already in registry map

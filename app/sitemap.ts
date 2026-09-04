@@ -1,16 +1,16 @@
 import { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/lib/site-config';
-import registryDataRaw from '@/lib/registry-data.json';
+import { getAllEntries } from '@/lib/registry-service';
 import type { ContentEntry } from '@/lib/content-registry';
 
-// Fully static — regenerated at every build via sync-registry.ts in prebuild.
-// No Supabase calls. registry-data.json is the source of truth.
+// Dynamic sitemap reading live from branch/site-scoped registry-service.
+// No Supabase calls.
 
 const SENTINEL_DATE = '2020-01-01';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url;
-  const registry = registryDataRaw as ContentEntry[];
+  const registry = await getAllEntries();
   const now = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = [

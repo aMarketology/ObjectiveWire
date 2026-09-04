@@ -1,9 +1,9 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import registryDataRaw from '@/lib/registry-data.json';
+import { getAllEntries } from '@/lib/registry-service';
 import type { ContentEntry } from '@/lib/content-registry';
 
 // Google News Sitemap Protocol: https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap
-// Articles are sourced from lib/registry-data.json (generated at build time by sync-registry.ts).
+// Articles are sourced live from registry-service (filtered to active deployment site).
 // To appear here, an entry needs:
 //   - publishDate within the sliding window (NEWS_WINDOW_DAYS)
 //   - tags[] used as news keywords
@@ -24,7 +24,7 @@ const NON_ARTICLE_ROOTS = new Set([
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
-  const registry = registryDataRaw as ContentEntry[];
+  const registry = await getAllEntries();
 
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - NEWS_WINDOW_DAYS);
