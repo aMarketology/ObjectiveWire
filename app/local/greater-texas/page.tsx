@@ -4,7 +4,7 @@ import { Hub } from '@/components/Hub';
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.objectivewire.com/local/greater-texas';
+const PAGE_URL = 'https://www.objectivewire.org/local/greater-texas';
 
 export const metadata: Metadata = {
   title: 'Greater Texas News | Statewide Investigative Reporting | Objective Wire',

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/site-config';
 
 export const revalidate = 3600;
 
-const PAGE_URL = 'https://www.objectivewire.com/blog';
+const PAGE_URL = `${SITE_CONFIG.url}/blog`;
 
 export const metadata: Metadata = {
   title: 'Blog | Objective Wire',
