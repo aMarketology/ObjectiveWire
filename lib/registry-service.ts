@@ -1,18 +1,17 @@
 // =============================================================================
 // lib/registry-service.ts
 // =============================================================================
-// All content registry data is loaded live from the filesystem at build time
-// via lib/registry-loader.ts, scoped to the active deployment site.
+// All content registry data is loaded from lib/registry-data.json,
+// which is regenerated at build time by scripts/sync-registry.ts
+// with only the active site's articles (controlled by OBJECTWIRE_SITE).
 // All queries are pure in-memory operations — zero Supabase calls.
 // =============================================================================
 
 export type { ContentEntry, ChangeFrequency } from '@/lib/content-registry';
 import type { ContentEntry } from '@/lib/content-registry';
-import { loadRegistry } from './registry-loader';
+import registryDataRaw from './registry-data.json';
 
-function getRegistry(): ContentEntry[] {
-  return loadRegistry();
-}
+const registry = registryDataRaw as ContentEntry[];
 
 // ---------------------------------------------------------------------------
 // isRealArticle — filters out hub/index/meta pages from article feeds
@@ -70,31 +69,31 @@ function isRealArticle(e: ContentEntry): boolean {
 
 /** All entries, sorted newest first */
 export async function getAllEntries(): Promise<ContentEntry[]> {
-  return [...getRegistry()].sort((a, b) =>
+  return [...registry].sort((a, b) =>
     new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
   );
 }
 
 /** All entries as a Map<slug, ContentEntry> — O(1) lookups */
 export async function getAllEntriesMap(): Promise<Map<string, ContentEntry>> {
-  return new Map(getRegistry().map(e => [e.slug, e]));
+  return new Map(registry.map(e => [e.slug, e]));
 }
 
 /** Look up a single entry by slug */
 export async function getEntry(slug: string): Promise<ContentEntry | undefined> {
-  return getRegistry().find(e => e.slug === slug);
+  return registry.find(e => e.slug === slug);
 }
 
 /** Featured articles, newest first */
 export async function getFeaturedArticles(): Promise<ContentEntry[]> {
-  return [...getRegistry()]
+  return [...registry]
     .filter(e => e.featured)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 }
 
 /** Latest real articles (no hub/index pages), newest first */
 export async function getLatestArticles(limit = 10): Promise<ContentEntry[]> {
-  return [...getRegistry()]
+  return [...registry]
     .filter(isRealArticle)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
     .slice(0, limit);
@@ -102,7 +101,7 @@ export async function getLatestArticles(limit = 10): Promise<ContentEntry[]> {
 
 /** Articles by category, newest first */
 export async function getArticlesByCategory(category: string, limit?: number): Promise<ContentEntry[]> {
-  const results = [...getRegistry()]
+  const results = [...registry]
     .filter(e => e.category.toLowerCase() === category.toLowerCase())
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
   return limit ? results.slice(0, limit) : results;
@@ -110,10 +109,10 @@ export async function getArticlesByCategory(category: string, limit?: number): P
 
 /** Related articles for a slug, scored by category + tag overlap */
 export async function getRelatedArticles(slug: string, limit = 5): Promise<ContentEntry[]> {
-  const current = getRegistry().find(e => e.slug === slug);
+  const current = registry.find(e => e.slug === slug);
   if (!current) return getLatestArticles(limit);
 
-  return getRegistry()
+  return registry
     .filter(e => e.slug !== slug)
     .map(e => ({
       entry: e,
@@ -133,7 +132,7 @@ export async function getRelatedArticles(slug: string, limit = 5): Promise<Conte
 /** Every unique tag with article count, sorted by count desc */
 export async function getAllTags(): Promise<{ tag: string; count: number }[]> {
   const tagMap = new Map<string, number>();
-  for (const entry of getRegistry()) {
+  for (const entry of registry) {
     for (const tag of entry.tags) {
       tagMap.set(tag, (tagMap.get(tag) ?? 0) + 1);
     }
@@ -145,7 +144,7 @@ export async function getAllTags(): Promise<{ tag: string; count: number }[]> {
 
 /** Articles matching a specific tag, newest first */
 export async function getEntriesByTag(tag: string, limit?: number): Promise<ContentEntry[]> {
-  const results = [...getRegistry()]
+  const results = [...registry]
     .filter(e => e.tags.some(t => t.toLowerCase() === tag.toLowerCase()))
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
   return limit ? results.slice(0, limit) : results;
@@ -153,7 +152,7 @@ export async function getEntriesByTag(tag: string, limit?: number): Promise<Cont
 
 /** Articles by author slug */
 export async function getEntriesByAuthor(authorSlug: string): Promise<ContentEntry[]> {
-  return [...getRegistry()]
+  return [...registry]
     .filter(e => e.authorSlug === authorSlug)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 }

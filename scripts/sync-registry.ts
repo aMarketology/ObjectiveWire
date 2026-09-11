@@ -25,7 +25,7 @@ const ROOT = path.resolve(__dirname, '..');
 const APP_DIR = path.join(ROOT, 'app');
 const activeSite = getActiveSite();
 const siteConfig = getActiveSiteConfig();
-const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', `registry-data-${activeSite}.json`);
+const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', 'registry-data.json');
 const DEFAULT_AUTHOR = 'ObjectWire Editorial';
 const TODAY = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
 const WRITE_FLAG = process.argv.includes('--write');
@@ -461,7 +461,7 @@ function main() {
   }
 
   writeLocalRegistry(newEntries);
-  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data-${activeSite}.json`);
+  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data.json`);
 }
 
 main();
