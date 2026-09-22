@@ -8,49 +8,50 @@ import AuthorSchema from '@/components/authors/AuthorSchema';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Conan Boyle | Investigative Reporter, oWire Austin',
+  title: 'Conan D. Boyle | Head of Automotive, oWire',
   description:
-    'Conan Boyle is a licensed investigative reporter at oWire in Austin, Texas. He covers public records, accountability journalism, supercars, and local Texas investigations using PI-grade research methods.',
+    'Conan D. Boyle is the Head of Automotive at oWire, overseeing all car, supercar, hypercar, EV, and motorsport coverage. From Ferrari and Bugatti to Hennessey and McLaren, he leads the automotive desk with a document-first, specifications-verified approach.',
   alternates: { canonical: 'https://www.objectivewire.com/authors/conan-boyle' },
   openGraph: {
-    title: 'Conan Boyle | Investigative Reporter, oWire Austin',
-    description: 'Licensed investigative reporter at oWire. Public records, accountability journalism, supercars, and Texas investigations.',
+    title: 'Conan D. Boyle | Head of Automotive, oWire',
+    description: 'Head of Automotive at oWire. Overseeing hypercar, supercar, EV, and motorsport coverage with specifications-verified, primary-source reporting.',
     url: 'https://www.objectivewire.com/authors/conan-boyle',
     siteName: 'oWire',
     type: 'profile',
-    images: [{ url: 'https://www.objectivewire.com/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan Boyle, oWire investigative reporter' }],
+    images: [{ url: 'https://www.objectivewire.com/influncer/author/conan_doyle.jpg', width: 800, height: 800, alt: 'Conan D. Boyle, oWire Head of Automotive' }],
   },
   twitter: {
     card: 'summary',
-    title: 'Conan Boyle | Investigative Reporter, oWire',
-    description: 'Licensed investigative reporter. Public records, Austin accountability, supercars.',
+    title: 'Conan D. Boyle | Head of Automotive, oWire',
+    description: 'Head of Automotive. Hypercars, supercars, EVs, and motorsport with verified specifications.',
     images: ['https://www.objectivewire.com/influncer/author/conan_doyle.jpg'],
   },
 };
 
 const BEATS = [
-  'Investigative Reporting', 'Public Records', 'Austin Accountability',
-  'Texas FOIA', 'Supercars', 'Cars & EVs', 'Background Investigations', 'Corporate Fraud',
+  'Hypercars', 'Supercars', 'Electric Vehicles',
+  'Motorsport', 'Performance Engineering', 'Luxury Autos',
+  'Manufacturer Scoops', 'Spec Verification',
 ];
 
 const HIGHLIGHTS = [
   { stat: '3+', label: 'Years at oWire' },
-  { stat: 'Licensed', label: 'Texas PI Credential' },
-  { stat: '22+', label: 'Published Articles' },
+  { stat: 'Lead', label: 'Automotive Desk' },
+  { stat: '30+', label: 'Published Articles' },
 ];
 
 export default function ConanBoyleAuthorPage() {
   return (
     <main className="min-h-screen bg-white">
       <AuthorSchema
-        name="Conan Boyle"
-        jobTitle="Investigative Reporter"
-        description="Conan Boyle is a licensed investigative reporter at oWire, covering public records, Austin accountability journalism, and supercars. He holds a Texas PI credential enabling PI-grade field research as part of his reporting."
+        name="Conan D. Boyle"
+        jobTitle="Head of Automotive"
+        description="Conan D. Boyle is the Head of Automotive at oWire, overseeing all car, supercar, hypercar, EV, and motorsport coverage. He leads the automotive desk with a specifications-verified, primary-source approach, from Ferrari and Bugatti to Hennessey and McLaren."
         url="https://www.objectivewire.com/authors/conan-boyle"
-        knowsAbout={['Investigative Reporting', 'Public Records', 'Texas FOIA', 'Supercars', 'Cars & EVs', 'Background Investigations', 'Austin Accountability']}
+        knowsAbout={['Hypercars', 'Supercars', 'Electric Vehicles', 'Motorsport', 'Performance Engineering', 'Luxury Automobiles', 'Manufacturer Specifications']}
         alumniOf={[{ name: 'North Carolina State University', department: 'Journalism' }]}
         location={{ city: 'Austin', region: 'TX' }}
-        articleCount={22}
+        articleCount={30}
       />
 
       {/* Full-bleed Header */}
@@ -77,12 +78,12 @@ export default function ConanBoyleAuthorPage() {
             </div>
             <div className="flex-1">
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-500 mb-2 font-mono">
-                Founding Reporter · oWire
+                Head of Automotive · oWire
               </p>
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Conan Boyle
               </h1>
-              <p className="text-gray-300 text-xl font-medium">Investigative Reporter</p>
+              <p className="text-gray-300 text-xl font-medium">Head of Automotive</p>
             </div>
             <div className="flex gap-8 md:pb-1 shrink-0">
               {HIGHLIGHTS.map((h) => (
@@ -96,7 +97,7 @@ export default function ConanBoyleAuthorPage() {
 
           <div className="mt-10 border-l-4 border-gray-500 pl-5">
             <p className="text-gray-300 text-lg italic font-light leading-relaxed max-w-2xl">
-              &ldquo;The document is the story. Everything else is commentary.&rdquo;
+              &ldquo;Verify the spec sheet before you publish the headline.&rdquo;
             </p>
           </div>
         </div>
@@ -107,8 +108,8 @@ export default function ConanBoyleAuthorPage() {
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center gap-6 text-xs font-mono text-gray-400">
           <span>Austin, Texas</span>
           <span>NC State University, Journalism</span>
-          <span>Investigative Desk</span>
-          <span>Founding Reporter, 2023</span>
+          <span>Automotive Desk</span>
+          <span>Head of Automotive, 2026</span>
         </div>
       </div>
 
@@ -132,7 +133,7 @@ export default function ConanBoyleAuthorPage() {
             <div className="border border-gray-200 divide-y divide-gray-100">
               {[
                 ['Organization', 'oWire'],
-                ['Role', 'Investigative Reporter'],
+                ['Role', 'Head of Automotive'],
                 ['Education', 'NC State, Journalism'],
                 ['Location', 'Austin, Texas'],
                 ['Joined', '2023'],
@@ -167,32 +168,25 @@ export default function ConanBoyleAuthorPage() {
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed text-[15px]">
                 <p>
-                  Conan Boyle is a founding reporter at oWire and the publication&rsquo;s lead
-                  investigative journalist. Based in Austin, Texas, Boyle holds a Texas Private
-                  Investigator credential under the Department of Public Safety, which he applies
-                  directly to his reporting, conducting legally admissible field surveillance,
-                  skip tracing, background research, and public records analysis as standard
-                  practice on every story he covers.
+                  Conan D. Boyle is the Head of Automotive at oWire, leading the publication&rsquo;s
+                  coverage of hypercars, supercars, electric vehicles, motorsport, and the broader
+                  luxury automotive sector. Based in Austin, Texas, Boyle oversees oWire&rsquo;s
+                  automotive desk with a specifications-verified, primary-source methodology,
+                  from Ferrari and Bugatti to Hennessey, McLaren, Porsche, and beyond.
                 </p>
                 <p>
                   A graduate of North Carolina State University&rsquo;s journalism program, Boyle
-                  covers two primary beats: Austin-area public accountability, including Travis
-                  County courts, city hall, APD records, and Texas FOIA requests, and the supercar
-                  and automotive industry, where he applies the same evidence-first methodology
-                  to manufacturer claims, pricing data, and performance specifications.
+                  applies the same evidence-first discipline to manufacturer press releases, spec
+                  sheets, pricing data, and performance claims that investigative reporters apply
+                  to court records and public filings. Every horsepower figure, price tag, and
+                  production number is verified against primary sources before publication.
                 </p>
                 <p>
-                  His investigative approach is grounded in primary documentation. Boyle sources
-                  named individuals, official filings, court records, and verifiable public data
-                  before publication. When field investigation is required, his PI license allows
-                  oWire to legally document subjects and situations that most news organizations
-                  must cover secondhand.
-                </p>
-                <p>
-                  Boyle&rsquo;s work on the automotive beat includes deep-coverage profiles of
-                  hypercar launches, EV performance claims, and manufacturer sourcing, bringing
-                  the same document-first discipline to press releases and spec sheets that he
-                  applies to public records and court filings.
+                  Under his leadership, oWire&rsquo;s automotive coverage has expanded to include
+                  deep-dive hypercar profiles, EV performance analysis, motorsport news, and
+                  manufacturer investigations. His work on the launch of the Ferrari F80, Bugatti
+                  Tourbillon, McLaren W1, and Hennessey Venom F5-M has become authoritative
+                  reference coverage for enthusiasts and industry watchers alike.
                 </p>
               </div>
             </section>
@@ -204,22 +198,22 @@ export default function ConanBoyleAuthorPage() {
               <div className="space-y-4">
                 {[
                   {
+                    label: 'Hennessey Venom F5-M | 1,817-HP Manual Hypercar',
+                    detail: "The world's most powerful manual car: gated six-speed, $2.65M, 12 units.",
+                    href: '/cars/hennessey-venom-f5m-manual-hypercar-1817hp',
+                    date: 'September 2026',
+                  },
+                  {
                     label: 'Ferrari F80 | Price, Specs, 1,184hp Hybrid',
                     detail: "Full spec breakdown on Ferrari's 1,184hp hybrid hypercar priced at $3.735M, limited to 799 units.",
                     href: '/cars/ferrari/ferrari-f80-hypercar-price-specs-2026',
                     date: 'May 2026',
                   },
                   {
-                    label: 'Austin APD Use-of-Force Records | 2025',
-                    detail: 'Public records analysis of Travis County APD incident filings, sourced via Texas FOIA.',
-                    href: '/local/austin',
-                    date: 'April 2026',
-                  },
-                  {
-                    label: 'Bugatti Tourbillon | V16 Hybrid, $4.1M',
-                    detail: 'Verified specs and pricing on the Bugatti Tourbillon, sourced directly from manufacturer filings.',
-                    href: '/cars',
-                    date: 'March 2026',
+                    label: 'McLaren W1 | 1,258 HP Hybrid Hypercar',
+                    detail: 'Verified specs and pricing on McLaren W1, sourced directly from manufacturer filings.',
+                    href: '/cars/mclaren-w1-hybrid-hypercar-price-specs-2026',
+                    date: 'July 2026',
                   },
                 ].map((item) => (
                   <Link key={item.href} href={item.href} className="block group border border-gray-200 p-5 hover:border-gray-900 transition-colors">
