@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'ObjectWire',
-    authors: ['Alfonso M.'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-30T14:00:00Z',
     modifiedTime: '2026-06-30T14:00:00Z',
     section: 'Investigations',
@@ -58,9 +58,9 @@ export default function KarmeloAnthonyVerdictPage() {
       publishDate="June 30, 2026"
       readTime="7 min read"
       author={{
-        name: 'Alfonso M.',
-        role: 'Lead Investigator',
-        authorSlug: 'alfansa',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
+        authorSlug: 'carson-scott',
       }}
       breadcrumbs={[
         { name: 'Home', item: '/' },
@@ -214,7 +214,7 @@ export default function KarmeloAnthonyVerdictPage() {
         report is part of our ongoing coverage of{' '}
         <Link href="/blog" className="text-blue-600 hover:text-blue-800 underline">
           Texas courts and public-interest investigations
-        </Link>. Alfonso M. has also reported on the{' '}
+        </Link>. Carson Scott has also reported on the{' '}
         <Link
           href="/blog/bexar-county-towing-bribery-conviction"
           className="text-blue-600 hover:text-blue-800 underline"

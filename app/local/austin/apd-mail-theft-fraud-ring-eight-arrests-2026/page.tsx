@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-07-29T16:00:00Z',
     modifiedTime: '2026-07-29T16:00:00Z',
     section: 'News',
@@ -58,8 +58,8 @@ export default function APDMailTheftRingPage() {
       <NewsArticleSchema
         title="Austin Mail Theft Fraud Ring | Eight Arrested in APD Raids"
         description="The Austin Police Department has arrested eight individuals connected to a massive organized criminal enterprise responsible for mail theft, identity fraud, and drug trafficking."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-07-29T16:00:00Z"
         modifiedTime="2026-07-29T16:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -82,9 +82,9 @@ export default function APDMailTheftRingPage() {
         publishedTime="2026-07-29T16:00:00Z"
         readTime="5 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Reporter, Objective Wire',
-          authorSlug: 'jack-brennan',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
+          authorSlug: 'carson-scott',
         }}
         slug={SLUG}
         url={SLUG}

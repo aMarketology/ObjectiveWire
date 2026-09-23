@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-07-29T15:00:00Z',
     modifiedTime: '2026-07-29T15:00:00Z',
     section: 'News',
@@ -59,8 +59,8 @@ export default function MagnoliaDiagnosticsSettlementPage() {
       <NewsArticleSchema
         title="Magnolia Diagnostics $24M COVID Testing Fraud Settlement"
         description="Magnolia Diagnostics, its owners John and Kelly Bains, and its investors have agreed to pay $24 million to resolve allegations of billing Medicare for unnecessary respiratory panels alongside COVID-19 tests."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-07-29T15:00:00Z"
         modifiedTime="2026-07-29T15:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -83,9 +83,9 @@ export default function MagnoliaDiagnosticsSettlementPage() {
         publishedTime="2026-07-29T15:00:00Z"
         readTime="5 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Reporter, Objective Wire',
-          authorSlug: 'jack-brennan',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
+          authorSlug: 'carson-scott',
         }}
         slug={SLUG}
         url={SLUG}

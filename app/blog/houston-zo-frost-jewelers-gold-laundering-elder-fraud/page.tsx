@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'Objective Wire',
-    authors: ['Alfonso C.'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-01T12:00:00Z',
     modifiedTime: '2026-06-01T12:00:00Z',
     section: 'Investigations',
@@ -55,9 +55,9 @@ export default function ZoFrostJewelersIndictmentPage() {
       publishDate="June 1, 2026"
       readTime="4 min read"
       author={{
-        name: 'Alfonso C.',
-        role: 'Lead Investigator',
-        authorSlug: 'alfansa',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
+        authorSlug: 'carson-scott',
       }}
       breadcrumbs={[
         { name: 'Home', item: '/' },
@@ -158,7 +158,7 @@ export default function ZoFrostJewelersIndictmentPage() {
 
       <p>
         This investigation was reported by{' '}
-        <Link href="/authors/alfansa" className="text-blue-600 hover:text-blue-800 underline">
+        <Link href="/authors/carson-scott" className="text-blue-600 hover:text-blue-800 underline">
           Alfonso C.
         </Link>
         , lead investigator at Objective Wire, using federal court filings and Department of

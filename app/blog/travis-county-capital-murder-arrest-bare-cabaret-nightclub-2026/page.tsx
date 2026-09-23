@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-07-12T10:00:00Z',
     modifiedTime: '2026-07-12T10:00:00Z',
     section: 'Investigations',
@@ -56,9 +56,9 @@ export default function BareCaretCapitalMurderPage() {
       publishedTime="2026-07-12T10:00:00Z"
       readTime="5 min read"
       author={{
-        name: 'Jack Brennan',
-        role: 'Reporter, Objective Wire',
-        authorSlug: 'jack-brennan',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
+        authorSlug: 'carson-scott',
       }}
       slug={SLUG}
       url={SLUG}

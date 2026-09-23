@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'ObjectWire',
-    authors: ['Alfonso C.'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-01T10:00:00Z',
     modifiedTime: '2026-06-01T10:00:00Z',
     section: 'Investigations',
@@ -57,9 +57,9 @@ export default function CamSolarLawsuitPage() {
       publishDate="June 1, 2026"
       readTime="5 min read"
       author={{
-        name: 'Alfonso C.',
-        role: 'Lead Investigator',
-        authorSlug: 'alfansa',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
+        authorSlug: 'carson-scott',
       }}
       breadcrumbs={[
         { name: 'Home', item: '/' },

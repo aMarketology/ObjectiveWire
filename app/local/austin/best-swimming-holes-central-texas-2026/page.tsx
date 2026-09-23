@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: CANONICAL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-20T12:00:00Z',
     modifiedTime: '2026-06-20T12:00:00Z',
     section: 'Culture',
@@ -63,10 +63,10 @@ export default function AustinSwimmingHolesPage() {
       publishDate="June 20, 2026"
       readTime="8 min read"
       author={{
-        name: 'Jack Brennan',
-        role: 'Reporter, Objective Wire',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
         avatar: '/influncer/author/jack_brennen.JPG',
-        authorSlug: 'jack-brennan',
+        authorSlug: 'carson-scott',
       }}
       slug={SLUG}
       url={URL_PATH}

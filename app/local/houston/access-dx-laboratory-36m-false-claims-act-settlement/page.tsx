@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-08-03T15:00:00Z',
     modifiedTime: '2026-08-03T15:00:00Z',
     section: 'News',
@@ -56,8 +56,8 @@ export default function AccessDXSettlementPage() {
       <NewsArticleSchema
         title="Access DX Laboratory | $36.4M False Claims Act Settlement"
         description="The DOJ finalized a $36.4 million settlement with Houston-based Access DX Laboratory over illegal kickbacks and unnecessary genetic testing billed to Medicare and Medicaid."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-08-03T15:00:00Z"
         modifiedTime="2026-08-03T15:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -80,9 +80,9 @@ export default function AccessDXSettlementPage() {
         publishedTime="2026-08-03T15:00:00Z"
         readTime="5 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Reporter, Objective Wire',
-          authorSlug: 'jack-brennan',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
+          authorSlug: 'carson-scott',
         }}
         slug={SLUG}
         url={SLUG}

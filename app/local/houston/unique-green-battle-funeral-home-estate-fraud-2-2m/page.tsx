@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-08-03T14:00:00Z',
     modifiedTime: '2026-08-03T14:00:00Z',
     section: 'News',
@@ -54,8 +54,8 @@ export default function UniqueGreenBattlePage() {
       <NewsArticleSchema
         title="Unique Green-Battle Funeral Home Fraud | $2.2M Estate Theft Charges"
         description="Unlicensed Houston funeral director Unique Green-Battle stormed out of a Harris County courthouse after being charged with $2.2 million in estate fraud, including forging a will and posing as a deceased client widow."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-08-03T14:00:00Z"
         modifiedTime="2026-08-03T14:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -78,9 +78,9 @@ export default function UniqueGreenBattlePage() {
         publishedTime="2026-08-03T14:00:00Z"
         readTime="5 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Reporter, Objective Wire',
-          authorSlug: 'jack-brennan',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
+          authorSlug: 'carson-scott',
         }}
         slug={SLUG}
         url={SLUG}

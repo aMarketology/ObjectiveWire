@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'ObjectWire',
-    authors: ['Alfonso M.'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-01T13:00:00Z',
     modifiedTime: '2026-06-01T13:00:00Z',
     section: 'Investigations',
@@ -57,9 +57,9 @@ export default function KarmeloAnthonyTrialPage() {
       publishDate="June 1, 2026"
       readTime="6 min read"
       author={{
-        name: 'Alfonso M.',
-        role: 'Lead Investigator',
-        authorSlug: 'alfansa',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
+        authorSlug: 'carson-scott',
       }}
       breadcrumbs={[
         { name: 'Home', item: '/' },
@@ -218,7 +218,7 @@ export default function KarmeloAnthonyTrialPage() {
         <Link href="/service" className="text-blue-600 hover:text-blue-800 underline">
           reach our investigative desk here
         </Link>
-        . Alfonso M. has also reported on the{' '}
+        . Carson Scott has also reported on the{' '}
         <Link
           href="/blog/bexar-county-towing-bribery-conviction"
           className="text-blue-600 hover:text-blue-800 underline"

@@ -283,7 +283,7 @@ export default function AustinPrivateDetectivePage() {
                   every story.
                 </p>
                 <ul className="space-y-2 mb-8">
-                  {['Supercars, EVs, and auto news from Conan D. Boyle', 'Premier League, MLS, MLB, golf, and World Cup', 'YouTube, TikTok, and creator economy coverage', 'Verified, sourced, bylined journalism'].map((item) => (
+                  {['Supercars, EVs, and auto news from Carson Scott', 'Premier League, MLS, MLB, golf, and World Cup', 'YouTube, TikTok, and creator economy coverage', 'Verified, sourced, bylined journalism'].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
                       <span className="text-[#d97706] mt-0.5">✓</span> {item}
                     </li>

@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-08-02T14:00:00Z',
     modifiedTime: '2026-08-02T14:00:00Z',
     section: 'News',
@@ -59,8 +59,8 @@ export default function KatyFreewayInducedDemandPage() {
       <NewsArticleSchema
         title="Katy Freeway $2.8B Expansion | 26 Lanes, Induced Demand, Traffic Failure"
         description="Houston expanded the Katy Freeway to 26 lanes at a cost of $2.8 billion, yet within three years, commute times increased by up to 55%. The mega-project is now a global case study in induced demand."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-08-02T14:00:00Z"
         modifiedTime="2026-08-02T14:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -83,9 +83,9 @@ export default function KatyFreewayInducedDemandPage() {
         publishedTime="2026-08-02T14:00:00Z"
         readTime="6 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Reporter, Objective Wire',
-          authorSlug: 'jack-brennan',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
+          authorSlug: 'carson-scott',
         }}
         slug={SLUG}
         url={SLUG}

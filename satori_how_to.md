@@ -1,5 +1,5 @@
 # Satori Thumbnail System | How-To Guide
-
+`
 **Updated:** August 10, 2026
 **Production URL:** `https://satori-neon.vercel.app/
 **Token:** `satori_0c00f62203a65529f7dac2f75b74e684f3806484f23724a3`

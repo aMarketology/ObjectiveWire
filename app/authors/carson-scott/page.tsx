@@ -8,43 +8,43 @@ import AuthorSchema from '@/components/authors/AuthorSchema';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Carson Scott | NFL Sports Reporter, ObjectWire',
+  title: 'Carson Scott | Investigative Reporter, Objective Wire',
   description:
-    'Carson Scott is an NFL reporter at ObjectWire covering trades, breaking news, fantasy football impact, and the business of professional football.',
-  alternates: { canonical: 'https://www.objectivewire.com/authors/carson-scott' },
+    'Carson Scott is an investigative reporter at Objective Wire covering Texas public corruption, fraud, courts, and accountability journalism. He also contributes sports coverage across the Objective Wire network.',
+  alternates: { canonical: 'https://www.objectivewire.org/authors/carson-scott' },
   openGraph: {
-    title: 'Carson Scott | NFL Sports Reporter, ObjectWire',
-    description: 'NFL reporter covering trades, roster moves, fantasy football, and the business of the league.',
-    url: 'https://www.objectivewire.com/authors/carson-scott',
-    siteName: 'ObjectWire',
+    title: 'Carson Scott | Investigative Reporter, Objective Wire',
+    description: 'Texas investigative reporter covering public corruption, fraud, courts, and accountability journalism, plus sports coverage.',
+    url: 'https://www.objectivewire.org/authors/carson-scott',
+    siteName: 'Objective Wire',
     type: 'profile',
     images: [
       {
-        url: 'https://www.objectivewire.com/influncer/author/carson_scott.jpg',
+        url: 'https://www.objectivewire.org/influncer/author/carson_scott.jpg',
         width: 800,
         height: 800,
-        alt: 'Carson Scott, ObjectWire NFL reporter',
+        alt: 'Carson Scott, Objective Wire investigative reporter',
       },
     ],
   },
   twitter: {
     card: 'summary',
-    title: 'Carson Scott, ObjectWire NFL Reporter',
-    description: 'NFL reporter at ObjectWire. Trades, fantasy football, and the business of the league.',
-    images: ['https://www.objectivewire.com/influncer/author/carson_scott.jpg'],
+    title: 'Carson Scott, Objective Wire Investigative Reporter',
+    description: 'Texas investigative reporter. Public corruption, fraud, courts, and accountability journalism.',
+    images: ['https://www.objectivewire.org/influncer/author/carson_scott.jpg'],
   },
 };
 
 const BEATS = [
-  'NFL', 'Trades & Free Agency', 'Fantasy Football',
-  'Salary Cap', 'Roster Moves', 'NFL Draft',
-  'Patriots', 'Eagles',
+  'Texas Investigations', 'Public Corruption', 'Healthcare Fraud',
+  'Courts & Legal', 'Government Accountability', 'Crime',
+  'MLS', 'MLB',
 ];
 
 const HIGHLIGHTS = [
+  { stat: '30+', label: 'Published Articles' },
+  { stat: 'Texas', label: 'Investigative Desk' },
   { stat: '2026', label: 'Joined' },
-  { stat: '8+', label: 'Beats Covered' },
-  { stat: '10+', label: 'Published Articles' },
 ];
 
 export default function CarsonScottAuthorPage() {
@@ -52,12 +52,12 @@ export default function CarsonScottAuthorPage() {
     <main className="min-h-screen bg-white">
       <AuthorSchema
         name="Carson Scott"
-        jobTitle="NFL Reporter"
-        description="Carson Scott is ObjectWire's NFL reporter covering trades, breaking news, fantasy football impact, salary cap analysis, and the business of professional football."
-        url="https://www.objectivewire.com/authors/carson-scott"
-        knowsAbout={['NFL', 'Trades', 'Fantasy Football', 'Salary Cap', 'NFL Draft', 'Roster Moves']}
-        location={{ city: 'New York', region: 'NY' }}
-        articleCount={10}
+        jobTitle="Investigative Reporter"
+        description="Carson Scott is Objective Wire's investigative reporter covering Texas public corruption, fraud, courts, and accountability journalism, plus sports coverage across the network."
+        url="https://www.objectivewire.org/authors/carson-scott"
+        knowsAbout={['Texas Investigations', 'Public Corruption', 'Healthcare Fraud', 'Courts', 'Government Accountability', 'MLS', 'MLB']}
+        location={{ city: 'Austin', region: 'TX' }}
+        articleCount={30}
         sameAs={['https://www.facebook.com/profile.php?id=100010599588220']}
       />
 
@@ -87,12 +87,12 @@ export default function CarsonScottAuthorPage() {
             {/* Identity */}
             <div className="flex-1">
               <p className="text-[10px] uppercase tracking-[0.3em] font-black text-gray-500 mb-2 font-mono">
-                ObjectWire &middot; Sports
+                Objective Wire &middot; Investigations
               </p>
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Carson Scott
               </h1>
-              <p className="text-gray-300 text-xl font-medium">NFL Reporter</p>
+              <p className="text-gray-300 text-xl font-medium">Investigative Reporter</p>
             </div>
             {/* Stats */}
             <div className="flex gap-8 md:pb-1 shrink-0">
@@ -108,7 +108,7 @@ export default function CarsonScottAuthorPage() {
           {/* Quote bar */}
           <div className="mt-10 border-l-4 border-white pl-5">
             <p className="text-gray-300 text-lg italic font-light leading-relaxed max-w-2xl">
-              &ldquo;Every trade tells two stories. Get both before you publish either.&rdquo;
+              &ldquo;Follow the document. It never lies when the people do.&rdquo;
             </p>
           </div>
         </div>
@@ -117,18 +117,10 @@ export default function CarsonScottAuthorPage() {
       {/* Detail Strip */}
       <div className="bg-gray-950 text-white border-b border-gray-800">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-wrap items-center gap-6 text-xs font-mono text-gray-400">
-          <span>🏈 NFL Sports Desk</span>
-          <span>📍 ObjectWire Newsroom</span>
-          <span>📊 Trades &amp; Fantasy Coverage</span>
+          <span>🌵 Texas Investigations Desk</span>
+          <span>📍 Austin, Texas</span>
+          <span>🔍 Public Corruption &amp; Fraud Coverage</span>
           <span>📅 Active Since 2026</span>
-          <a
-            href="https://www.facebook.com/profile.php?id=100010599588220"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 transition-colors underline"
-          >
-            Facebook
-          </a>
         </div>
       </div>
 
@@ -203,27 +195,24 @@ export default function CarsonScottAuthorPage() {
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed text-[15px]">
                 <p>
-                  Carson Scott is ObjectWire&rsquo;s NFL reporter, covering the full landscape of professional
-                  football: trades, free agency, salary cap mechanics, fantasy football implications,
-                  and the business decisions that reshape rosters across the league calendar.
+                  Carson Scott is ObjectWire&rsquo;s investigative reporter, leading coverage of Texas
+                  public corruption, healthcare fraud, courts, and government accountability. Based in
+                  Austin, he heads the Texas Investigations desk and also contributes sports coverage
+                  across the Objective Wire network.
                 </p>
                 <p>
-                  Scott approaches NFL news with a transactions-first lens. When a trade is announced,
-                  his first question is always structural: what are the cap mechanics, who is gaining
-                  leverage, and what does the acquiring team expect to get for the cost. His coverage
-                  connects the front office reasoning to the field impact, giving readers context that
-                  goes beyond the initial transaction report.
+                  Scott approaches every story with a document-first methodology. When allegations
+                  surface, his first question is always evidentiary: what does the court filing say,
+                  who is named, and what does the public record prove. From the Magnolia Diagnostics
+                  and Access DX Medicare fraud settlements to the Georgetown $400 million fraud verdict,
+                  he brings the same verified, primary-source rigor to every investigation.
                 </p>
                 <p>
-                  His June 2026 coverage of the A.J. Brown trade from Philadelphia to New England
-                  outlined the full post-June 1 dead money split that made the deal viable for
-                  the Eagles, the fantasy ramifications for Drake Maye and DeVonta Smith, and the
-                  broader implication of Howie Roseman becoming the first general manager to hold
-                  multiple 2028 first-round picks.
-                </p>
-                <p>
-                  Scott operates out of ObjectWire&rsquo;s Sports Desk. Tips on roster moves and
-                  league transactions can be directed to ObjectWire&rsquo;s editorial contact channel.
+                  His reporting spans the full Texas landscape: Houston healthcare fraud, Austin mail
+                  theft and identity rings, Polk County forgery cases, and statewide public-accountability
+                  investigations. Scott sources named individuals, official filings, court records, and
+                  verifiable public data before publication, ensuring every bylined story meets the
+                  publication&rsquo;s standard for accuracy over speed.
                 </p>
               </div>
             </section>

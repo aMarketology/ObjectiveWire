@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'Objective Wire',
-    authors: ['TODO: Author Name'], // e.g. 'Jack Brennan'
+    authors: ['Carson Scott'], // e.g. 'Carson Scott'
     publishedTime: '2026-06-01T00:00:00Z', // TODO: actual publish date ISO-8601
     modifiedTime: '2026-06-01T00:00:00Z',  // TODO: actual modified date ISO-8601
     section: 'Investigations',
@@ -97,13 +97,11 @@ export default function YourArticlePage() {
 
       // ── Author ───────────────────────────────────────────────────────────
       // TODO: Pick the correct author for the beat:
-      //   Sports / General Texas  → Jack Brennan  (jack-brennan)
-      //   Courts / Legal          → Jack Brennan  (jack-brennan)
-      //   PI / Investigations     → Conan D. Boyle (conan-boyle)
+      //   Texas Investigations / Courts / PI  → Carson Scott (carson-scott)
       author={{
-        name: 'Jack Brennan',
-        role: 'Investigative Reporter',
-        authorSlug: 'jack-brennan',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
+        authorSlug: 'carson-scott',
       }}
 
       // ── Breadcrumbs ──────────────────────────────────────────────────────

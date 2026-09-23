@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'Objective Wire',
-    authors: ['Objective Wire Investigations'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-13T00:00:00Z',
     modifiedTime: '2026-06-13T00:00:00Z',
     section: 'Government',

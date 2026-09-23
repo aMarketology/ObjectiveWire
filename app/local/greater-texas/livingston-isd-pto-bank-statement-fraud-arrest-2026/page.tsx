@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-09-23T14:00:00Z',
     modifiedTime: '2026-09-23T14:00:00Z',
     section: 'News',
@@ -55,8 +55,8 @@ export default function LivingstonPtoFraudPage() {
       <NewsArticleSchema
         title="Livingston ISD PTO Fraud | Matthew Anderson Arrest"
         description="A 40-year-old Livingston man, Matthew Anderson, has been arrested for allegedly falsifying bank statements from a Livingston ISD Parent Teacher Organization for personal financial gain."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-09-23T14:00:00Z"
         modifiedTime="2026-09-23T14:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -79,9 +79,9 @@ export default function LivingstonPtoFraudPage() {
         publishedTime="2026-09-23T14:00:00Z"
         readTime="4 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Reporter, Objective Wire',
-          authorSlug: 'jack-brennan',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
+          authorSlug: 'carson-scott',
         }}
         slug={SLUG}
         url={SLUG}

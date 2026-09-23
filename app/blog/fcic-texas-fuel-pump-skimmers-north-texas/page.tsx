@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: CANONICAL,
     siteName: 'Objective Wire',
-    authors: ['Conan D. Boyle'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-17T12:00:00Z',
     modifiedTime: '2026-06-17T12:00:00Z',
     section: 'Texas',
@@ -57,10 +57,10 @@ export default function FCICFuelSkimmerPage() {
       publishDate="June 17, 2026"
       readTime="4 min read"
       author={{
-        name: 'Conan D. Boyle',
-        role: 'Chief Investigator, Objective Wire',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
         avatar: '/influncer/author/conan_doyle.jpg',
-        authorSlug: 'conan-boyle',
+        authorSlug: 'carson-scott',
       }}
       slug={SLUG}
       url={URL_PATH}

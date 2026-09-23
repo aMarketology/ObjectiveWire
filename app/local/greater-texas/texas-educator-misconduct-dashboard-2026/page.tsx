@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-21T14:00:00Z',
     modifiedTime: '2026-06-21T14:00:00Z',
     section: 'News',
@@ -77,8 +77,8 @@ export default function TexasEducatorMisconductDashboard2026Page() {
       <NewsArticleSchema
         title="Texas Educator Misconduct Dashboard | TEA Launches Public Tracker"
         description="The Texas Education Agency launched its Educator Misconduct Reporting Dashboard on June 2, 2026, tracking 13,000 annual reports, SBEC sanctions, and a Do Not Hire Registry that grows by 300 to 500 educators per year."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-06-21T14:00:00Z"
         modifiedTime="2026-06-21T14:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -105,10 +105,10 @@ export default function TexasEducatorMisconductDashboard2026Page() {
         publishDate="June 21, 2026"
         readTime="7 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Investigations Reporter, ObjectWire',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
           avatar: '/influncer/author/jack_brennen.JPG',
-          authorSlug: 'jack-brennan',
+          authorSlug: 'carson-scott',
         }}
         thumbnail={{
           src: OG_IMAGE,
@@ -408,7 +408,7 @@ export default function TexasEducatorMisconductDashboard2026Page() {
           , follow ObjectWire&rsquo;s national desk.
         </p>
         <p>
-          <Link href="/authors/jack-brennan" className="text-blue-600 hover:text-blue-800 underline">
+          <Link href="/authors/carson-scott" className="text-blue-600 hover:text-blue-800 underline">
             Jack Brennan
           </Link>{' '}
           covers investigations and public accountability reporting for ObjectWire. Tips on educator

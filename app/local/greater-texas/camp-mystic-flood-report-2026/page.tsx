@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: ARTICLE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-06-21T10:00:00Z',
     modifiedTime: '2026-06-21T10:00:00Z',
     section: 'News',
@@ -67,8 +67,8 @@ export default function CampMysticFloodReport2026Page() {
       <NewsArticleSchema
         title="Camp Mystic Flood | Texas Finds 28 Deaths Were Preventable"
         description="A Texas legislative report released June 18, 2026, found that 28 deaths at Camp Mystic during the July 4, 2025, Guadalupe River flood were preventable, citing a centralized plan, a cell phone ban, and a culture of complacency."
-        author="Jack Brennan"
-        authorUrl="https://www.objectivewire.org/authors/jack-brennan"
+        author="Carson Scott"
+        authorUrl="https://www.objectivewire.org/authors/carson-scott"
         publishedTime="2026-06-21T10:00:00Z"
         modifiedTime="2026-06-21T10:00:00Z"
         articleUrl={ARTICLE_URL}
@@ -94,10 +94,10 @@ export default function CampMysticFloodReport2026Page() {
         publishDate="June 21, 2026"
         readTime="8 min read"
         author={{
-          name: 'Jack Brennan',
-          role: 'Investigations Reporter, ObjectWire',
+          name: 'Carson Scott',
+          role: 'Investigative Reporter, Objective Wire',
           avatar: '/influncer/author/jack_brennen.JPG',
-          authorSlug: 'jack-brennan',
+          authorSlug: 'carson-scott',
         }}
         thumbnail={{
           src: OG_IMAGE,
@@ -360,7 +360,7 @@ export default function CampMysticFloodReport2026Page() {
           of licensure. That gap is now part of the public legislative record.
         </p>
         <p>
-          <Link href="/authors/jack-brennan" className="text-blue-600 hover:text-blue-800 underline">
+          <Link href="/authors/carson-scott" className="text-blue-600 hover:text-blue-800 underline">
             Jack Brennan
           </Link>{' '}
           covers investigations, environmental law, and public accountability for ObjectWire from Washington, D.C.

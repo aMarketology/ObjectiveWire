@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'Objective Wire',
-    authors: ['Jack Brennan'],
+    authors: ['Carson Scott'],
     publishedTime: '2026-07-01T11:00:00Z',
     modifiedTime: '2026-07-01T11:00:00Z',
     section: 'Investigations',
@@ -59,10 +59,10 @@ export default function HoustonGameRoomRaidsPage() {
       publishDate="July 1, 2026"
       readTime="7 min read"
       author={{
-        name: 'Jack Brennan',
-        role: 'Investigations Reporter',
+        name: 'Carson Scott',
+        role: 'Investigative Reporter, Objective Wire',
         avatar: '/influncer/author/jack_brennen.JPG',
-        authorSlug: 'jack-brennan',
+        authorSlug: 'carson-scott',
       }}
       breadcrumbs={[
         { name: 'Home', item: '/' },
