@@ -8,13 +8,13 @@ import AuthorSchema from '@/components/authors/AuthorSchema';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Carson Scott | Investigative Reporter, Objective Wire',
+  title: 'Carson Scott | Chief Investigative Writer, Objective Wire',
   description:
-    'Carson Scott is an investigative reporter at Objective Wire covering Texas public corruption, fraud, courts, and accountability journalism. He also contributes sports coverage across the Objective Wire network.',
+    'Carson Scott is the Chief Investigative Writer at Objective Wire, leading the .org newsroom covering Texas public corruption, fraud, courts, and accountability journalism.',
   alternates: { canonical: 'https://www.objectivewire.org/authors/carson-scott' },
   openGraph: {
-    title: 'Carson Scott | Investigative Reporter, Objective Wire',
-    description: 'Texas investigative reporter covering public corruption, fraud, courts, and accountability journalism, plus sports coverage.',
+    title: 'Carson Scott | Chief Investigative Writer, Objective Wire',
+    description: 'Chief Investigative Writer leading the .org newsroom. Texas public corruption, fraud, courts, and accountability journalism.',
     url: 'https://www.objectivewire.org/authors/carson-scott',
     siteName: 'Objective Wire',
     type: 'profile',
@@ -23,14 +23,14 @@ export const metadata: Metadata = {
         url: 'https://www.objectivewire.org/influncer/author/carson_scott.jpg',
         width: 800,
         height: 800,
-        alt: 'Carson Scott, Objective Wire investigative reporter',
+        alt: 'Carson Scott, Objective Wire Chief Investigative Writer',
       },
     ],
   },
   twitter: {
     card: 'summary',
-    title: 'Carson Scott, Objective Wire Investigative Reporter',
-    description: 'Texas investigative reporter. Public corruption, fraud, courts, and accountability journalism.',
+    title: 'Carson Scott, Objective Wire Chief Investigative Writer',
+    description: 'Chief Investigative Writer for the .org newsroom. Public corruption, fraud, courts, and accountability journalism.',
     images: ['https://www.objectivewire.org/influncer/author/carson_scott.jpg'],
   },
 };
@@ -38,13 +38,13 @@ export const metadata: Metadata = {
 const BEATS = [
   'Texas Investigations', 'Public Corruption', 'Healthcare Fraud',
   'Courts & Legal', 'Government Accountability', 'Crime',
-  'MLS', 'MLB',
+  'Immigration', 'Pandemic Loan Fraud',
 ];
 
 const HIGHLIGHTS = [
   { stat: '30+', label: 'Published Articles' },
-  { stat: 'Texas', label: 'Investigative Desk' },
-  { stat: '2026', label: 'Joined' },
+  { stat: 'Chief', label: 'Investigative Writer' },
+  { stat: 'Texas', label: 'Newsroom Lead' },
 ];
 
 export default function CarsonScottAuthorPage() {
@@ -52,13 +52,16 @@ export default function CarsonScottAuthorPage() {
     <main className="min-h-screen bg-white">
       <AuthorSchema
         name="Carson Scott"
-        jobTitle="Investigative Reporter"
-        description="Carson Scott is Objective Wire's investigative reporter covering Texas public corruption, fraud, courts, and accountability journalism, plus sports coverage across the network."
+        jobTitle="Chief Investigative Writer"
+        description="Carson Scott is Objective Wire's Chief Investigative Writer, leading the .org newsroom covering Texas public corruption, fraud, courts, and accountability journalism."
         url="https://www.objectivewire.org/authors/carson-scott"
-        knowsAbout={['Texas Investigations', 'Public Corruption', 'Healthcare Fraud', 'Courts', 'Government Accountability', 'MLS', 'MLB']}
+        knowsAbout={['Texas Investigations', 'Public Corruption', 'Healthcare Fraud', 'Courts', 'Government Accountability', 'Immigration Fraud', 'Pandemic Loan Fraud']}
         location={{ city: 'Austin', region: 'TX' }}
         articleCount={30}
-        sameAs={['https://www.facebook.com/profile.php?id=100010599588220']}
+        sameAs={[
+          'https://www.linkedin.com/in/carson-scott-a82104b3',
+          'https://www.facebook.com/scott.carson.18049/',
+        ]}
       />
 
       {/* Header */}
@@ -77,7 +80,7 @@ export default function CarsonScottAuthorPage() {
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden shrink-0 ring-2 ring-white relative bg-gray-800">
               <Image
                 src="/influncer/author/carson_scott.jpg"
-                alt="Carson Scott, ObjectWire NFL reporter"
+                alt="Carson Scott, Objective Wire Chief Investigative Writer"
                 fill
                 sizes="(min-width: 768px) 96px, 80px"
                 className="object-cover"
@@ -92,7 +95,7 @@ export default function CarsonScottAuthorPage() {
               <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-3">
                 Carson Scott
               </h1>
-              <p className="text-gray-300 text-xl font-medium">Investigative Reporter</p>
+              <p className="text-gray-300 text-xl font-medium">Chief Investigative Writer</p>
             </div>
             {/* Stats */}
             <div className="flex gap-8 md:pb-1 shrink-0">
@@ -121,6 +124,22 @@ export default function CarsonScottAuthorPage() {
           <span>📍 Austin, Texas</span>
           <span>🔍 Public Corruption &amp; Fraud Coverage</span>
           <span>📅 Active Since 2026</span>
+          <a
+            href="https://www.linkedin.com/in/carson-scott-a82104b3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 transition-colors underline"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://www.facebook.com/scott.carson.18049/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 transition-colors underline"
+          >
+            Facebook
+          </a>
         </div>
       </div>
 
@@ -195,24 +214,32 @@ export default function CarsonScottAuthorPage() {
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed text-[15px]">
                 <p>
-                  Carson Scott is ObjectWire&rsquo;s investigative reporter, leading coverage of Texas
-                  public corruption, healthcare fraud, courts, and government accountability. Based in
-                  Austin, he heads the Texas Investigations desk and also contributes sports coverage
-                  across the Objective Wire network.
+                  Carson Scott is ObjectWire&rsquo;s <strong>Chief Investigative Writer</strong>, leading the
+                  publication&rsquo;s .org newsroom and its coverage of Texas public corruption, healthcare fraud,
+                  courts, and government accountability. Based in Austin, he heads the Texas Investigations desk
+                  and guides the editorial direction for all investigative reporting on the network&rsquo;s
+                  nonprofit, public-interest platform.
                 </p>
                 <p>
-                  Scott approaches every story with a document-first methodology. When allegations
-                  surface, his first question is always evidentiary: what does the court filing say,
-                  who is named, and what does the public record prove. From the Magnolia Diagnostics
-                  and Access DX Medicare fraud settlements to the Georgetown $400 million fraud verdict,
-                  he brings the same verified, primary-source rigor to every investigation.
+                  Scott approaches every story with a document-first methodology. When allegations surface, his
+                  first question is always evidentiary: what does the court filing say, who is named, and what
+                  does the public record prove. From the Magnolia Diagnostics and Access DX Medicare fraud
+                  settlements to the Georgetown $400 million fraud verdict and the DOJ&rsquo;s pandemic loan
+                  fraud crackdown, he brings the same verified, primary-source rigor to every investigation.
                 </p>
                 <p>
-                  His reporting spans the full Texas landscape: Houston healthcare fraud, Austin mail
-                  theft and identity rings, Polk County forgery cases, and statewide public-accountability
-                  investigations. Scott sources named individuals, official filings, court records, and
-                  verifiable public data before publication, ensuring every bylined story meets the
-                  publication&rsquo;s standard for accuracy over speed.
+                  His reporting spans the full Texas landscape: Houston healthcare fraud, Austin mail theft and
+                  identity rings, Polk County forgery cases, immigration attorney fraud, and statewide
+                  public-accountability investigations. Scott sources named individuals, official filings, court
+                  records, and verifiable public data before publication, ensuring every bylined story meets
+                  the publication&rsquo;s standard for accuracy over speed.
+                </p>
+                <p>
+                  As chief writer, Scott leads the .org editorial team while founders Max and Chad Black focus
+                  on the day-to-day operations of Objective Wire&rsquo;s investigative services and field work.
+                  Scott drives the newsroom&rsquo;s reporting and editorial standards, translating the
+                  organization&rsquo;s documented investigations into the public-interest journalism that
+                  defines the platform.
                 </p>
               </div>
             </section>
