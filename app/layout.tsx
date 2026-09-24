@@ -148,7 +148,7 @@ export default async function RootLayout({
               {/* Top utility strip — date + search */}
               <div className="border-b border-gray-200 bg-gray-50">
                 <div className="container mx-auto px-4">
-                  <TopStripSearch dateString={new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />
+                  <TopStripSearch dateString={new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} focusLine={SITE_CONFIG.focusLine} foundedYear={SITE_CONFIG.foundedYear} />
                 </div>
               </div>
 
@@ -159,7 +159,7 @@ export default async function RootLayout({
                     Objective Wire
                   </span>
                   <p className="text-[9px] font-mono uppercase tracking-[0.4em] text-gray-400 mt-2">
-                    Sports &nbsp;&middot;&nbsp; Creators &nbsp;&middot;&nbsp; Cars &nbsp;&middot;&nbsp; Culture &nbsp;&middot;&nbsp; Accuracy Over Speed
+                    {SITE_CONFIG.focusLine}
                   </p>
                 </Link>
               </div>
@@ -279,9 +279,9 @@ export default async function RootLayout({
               <div className="flex items-center gap-3 text-xs text-gray-400">
                 <span className="font-bold text-gray-600 dark:text-gray-300">Objective Wire</span>
                 <span className="text-gray-300 dark:text-gray-700">|</span>
-                <span>Sports · Creators · Cars · Culture</span>
+                <span>{SITE_CONFIG.focusLine}</span>
                 <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">|</span>
-                <span className="hidden sm:inline">objectivewire.com</span>
+                <span className="hidden sm:inline">{SITE_CONFIG.domain}</span>
               </div>
 
               <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400">

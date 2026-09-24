@@ -77,7 +77,7 @@ export default function TexasBlogPage() {
             </nav>
             <div className="border-l-4 border-amber-500 pl-6">
               <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-amber-600 mb-3 font-mono">
-                Sports · Creators · Cars · Culture
+                Texas Investigations · Public Records · Courts · Crime
               </p>
               <h1 className="font-serif text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 text-gray-900">
                 Texas.<br />Investigated &amp; Reported.

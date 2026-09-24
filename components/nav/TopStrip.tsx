@@ -10,7 +10,7 @@ interface Suggestion {
   category: string;
 }
 
-export default function TopStrip({ dateString }: { dateString: string }) {
+export default function TopStrip({ dateString, focusLine, foundedYear }: { dateString: string; focusLine: string; foundedYear: number }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
@@ -206,9 +206,9 @@ export default function TopStrip({ dateString }: { dateString: string }) {
                 </svg>
                 Community
               </a>
-              <span className="text-xs font-mono text-gray-500 hidden sm:block">Est. 2024 ·</span>
+              <span className="text-xs font-mono text-gray-500 hidden sm:block">Est. {foundedYear} ·</span>
               <ThemeToggle />
-              <span className="text-xs font-mono hidden sm:block" style={{ color: 'var(--brand-accent)' }}>Sports · Creators · Cars · Culture</span>
+              <span className="text-xs font-mono hidden sm:block" style={{ color: 'var(--brand-accent)' }}>{focusLine}</span>
             </>
           )}
         </div>

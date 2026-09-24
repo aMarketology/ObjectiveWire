@@ -20,6 +20,8 @@ export const SITE_CONFIG = {
   defaultOgImage: `${_siteUrl}/opengraph-image`,
   socialImage: `${_siteUrl}/opengraph-image`,
   locale: 'en_US',
+  foundedYear: _active.foundedYear,
+  focusLine: _active.focusLine,
 } as const;
 
 export type SiteConfig = typeof SITE_CONFIG;

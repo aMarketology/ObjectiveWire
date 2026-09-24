@@ -19,6 +19,8 @@ export interface SiteDefinition {
   description: string;
   registryTable: string;
   email: string;
+  foundedYear: number;
+  focusLine: string;
 }
 
 export const SITES: Record<ObjectiveWireSite, SiteDefinition> = {
@@ -32,6 +34,8 @@ export const SITES: Record<ObjectiveWireSite, SiteDefinition> = {
       'Objective Wire is a 501(c)(3) nonprofit investigative agency and public-interest newsroom covering Texas crime, courts, public accountability, and government investigations.',
     registryTable: 'content_registry_org',
     email: 'editorial@objectivewire.org',
+    foundedYear: 2025,
+    focusLine: 'Texas Investigations · Public Records · Courts · Crime',
   },
   main: {
     site: 'main',
@@ -43,6 +47,8 @@ export const SITES: Record<ObjectiveWireSite, SiteDefinition> = {
       'Objective Wire is a verified sports, creators, and culture network covering World Cup 2026, Premier League, MLS, MLB, supercars, and the creator economy.',
     registryTable: 'content_registry_main',
     email: 'editorial@objectivewire.com',
+    foundedYear: 2024,
+    focusLine: 'Sports · Creators · Cars · Culture',
   },
 };
 
