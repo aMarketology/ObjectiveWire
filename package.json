@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "concurrently -n com,org -c blue,green \"npm run dev:com\" \"npm run dev:org\"",
     "dev:com": "OBJECTWIRE_SITE=main next dev --turbopack -p 3000",
     "dev:org": "OBJECTWIRE_SITE=org next dev --turbopack -p 3001",
     "dev:all": "concurrently -n com,org -c blue,green \"npm run dev:com\" \"npm run dev:org\"",

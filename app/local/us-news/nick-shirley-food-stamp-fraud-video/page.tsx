@@ -14,7 +14,7 @@ const VIDEO_ID = 'dh6gOzLUHWM';
 export const metadata: Metadata = {
   title: 'Nick Shirley Food Stamp Fraud Video | EBT Cash-Out Scheme Ends in Stolen Gun',
   description:
-    'Independent reporter Nick Shirley\'s investigation into food stamp fraud ended in a violent street altercation and a stolen gun, exposing how EBT benefits are systematically traded for cash and illicit drugs.',
+    'Independent reporter Nick Shirley released an investigation into food stamp fraud that ended in a violent street altercation and a stolen gun, exposing how EBT benefits are systematically traded for cash and illicit drugs.',
   keywords: [
     'Nick Shirley food stamp fraud video',
     'EBT fraud cash discount scheme',

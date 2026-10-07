@@ -1,7 +1,9 @@
 // =============================================================================
 // lib/registry-service.ts
 // =============================================================================
-// All content registry data is loaded from lib/registry-data.json,
+// All content registry data is loaded from a site-specific JSON file:
+//   - lib/registry-data-main.json  (objectivewire.com)
+//   - lib/registry-data-org.json   (objectivewire.org)
 // which is regenerated at build time by scripts/sync-registry.ts
 // with only the active site's articles (controlled by OBJECTWIRE_SITE).
 // All queries are pure in-memory operations — zero Supabase calls.
@@ -9,9 +11,11 @@
 
 export type { ContentEntry, ChangeFrequency } from '@/lib/content-registry';
 import type { ContentEntry } from '@/lib/content-registry';
-import registryDataRaw from './registry-data.json';
+import { getActiveSite } from './active-site';
+import mainData from './registry-data-main.json';
+import orgData from './registry-data-org.json';
 
-const registry = registryDataRaw as ContentEntry[];
+const registry: ContentEntry[] = (getActiveSite() === 'org' ? orgData : mainData) as ContentEntry[];
 
 // ---------------------------------------------------------------------------
 // isRealArticle — filters out hub/index/meta pages from article feeds

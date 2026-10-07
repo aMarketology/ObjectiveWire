@@ -25,7 +25,7 @@ const ROOT = path.resolve(__dirname, '..');
 const APP_DIR = path.join(ROOT, 'app');
 const activeSite = getActiveSite();
 const siteConfig = getActiveSiteConfig();
-const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', 'registry-data.json');
+const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', `registry-data-${activeSite}.json`);
 const DEFAULT_AUTHOR = 'ObjectWire Editorial';
 const TODAY = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
 const WRITE_FLAG = process.argv.includes('--write');
@@ -227,9 +227,11 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     if (!rawTitle || rawTitle === slugDerived) return null;
 
     // ── Extract description ────────────────────────────────────────────────
+    // Tolerate escaped apostrophes (\') inside single-quoted strings so
+    // articles with contractions are not silently dropped by the quality gate.
     const descMatch =
-      content.match(/description\s*:\s*['"`]([^'"`\r\n]{10,300})['"`]/) ||
-      content.match(/content\s*:\s*['"`]([^'"`\r\n]{10,300})['"`]/);
+      content.match(/description\s*:\s*['"`]((?:[^'"`\r\n]|\\'){10,300})['"`]/) ||
+      content.match(/content\s*:\s*['"`]((?:[^'"`\r\n]|\\'){10,300})['"`]/);
     const rawDesc = descMatch?.[1]?.trim() ?? '';
 
     // Quality gate 3: reject fallback description and very short ones
@@ -461,7 +463,7 @@ function main() {
   }
 
   writeLocalRegistry(newEntries);
-  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data.json`);
+  console.log(`\n✅  Wrote ${newEntries.length} entries → lib/registry-data-${activeSite}.json`);
 }
 
 main();

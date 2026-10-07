@@ -60,3 +60,9 @@ objectwireorg-76d014b98819.json
 # Never commit — each environment regenerates it from its own page.tsx files.
 lib/registry-data.json
 
+# Site-specific registries ARE committed — they are the source of truth for
+# each deployment (objectivewire.com vs objectivewire.org) and must exist in
+# the repo so `next dev` can serve both sites without a prebuild step.
+!lib/registry-data-main.json
+!lib/registry-data-org.json
+
