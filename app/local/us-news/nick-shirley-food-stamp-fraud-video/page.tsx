@@ -9,6 +9,7 @@ export const revalidate = 86400;
 const SLUG = '/local/us-news/nick-shirley-food-stamp-fraud-video';
 const ARTICLE_URL = `https://www.objectivewire.org${SLUG}`;
 const OG_IMAGE = `https://www.objectivewire.org/thumbnails/local-us-news-nick-shirley-food-stamp-fraud-video.jpg`;
+const VIDEO_ID = 'dh6gOzLUHWM';
 
 export const metadata: Metadata = {
   title: 'Nick Shirley Food Stamp Fraud Video | EBT Cash-Out Scheme Ends in Stolen Gun',
@@ -140,6 +141,30 @@ export default function NickShirleyFoodStampFraudPage() {
           <p>
             "This is arguably one of the most dangerous situations I've ever been in," one of Shirley's security personnel admitted as the crew sped away from a gathering crowd. Beyond the dramatic street chase, Shirley's footage highlights a pervasive, highly lucrative fraud scheme operating at the intersection of retail loopholes, illegal cash discounting, and the urban drug crisis.
           </p>
+
+          {/* ── Nick Shirley Investigation Video ── */}
+          <div className="my-8 not-prose">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full rounded-xl shadow-lg"
+                src={`https://www.youtube.com/embed/${VIDEO_ID}?rel=0&modestbranding=1`}
+                title="Nick Shirley Food Stamp Fraud Investigation | EBT Cash-Out Scheme Ends in Stolen Gun"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <p className="text-xs text-gray-500 mt-2 text-center">
+              Nick Shirley's full investigation via{' '}
+              <a
+                href={`https://www.youtube.com/watch?v=${VIDEO_ID}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                YouTube
+              </a>
+            </p>
+          </div>
 
           <h2>How the Fraud Works | The EBT Cash-Out Mechanics</h2>
 
