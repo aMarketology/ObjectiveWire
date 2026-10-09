@@ -288,6 +288,15 @@ const nextConfig: NextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
   reactStrictMode: true,
+
+  // ==========================================================================
+  // SITE-SPECIFIC BUILD DIRECTORY
+  // ==========================================================================
+  // When running both .com and .org dev servers simultaneously (npm run dev),
+  // each must use its own .next directory. Sharing one causes HMR websocket
+  // conflicts ("unrecognized HMR message ping") and cross-site cache pollution.
+  // OBJECTWIRE_SITE is set per-process by dev:com / dev:org.
+  distDir: process.env.OBJECTWIRE_SITE === 'org' ? '.next-org' : '.next-main',
   
   // ==========================================================================
   // EXPERIMENTAL PERFORMANCE FEATURES
