@@ -1,5 +1,51 @@
 [
   {
+    "slug": "/ufc/farid-basharat-removed-ufc-roster-free-agency-2026",
+    "title": "Farid Basharat Removed From UFC Roster | Free Agency",
+    "description": "Undefeated bantamweight Farid Basharat (16-0, 7-0 UFC) was removed from the UFC roster after his contract expired, making him a prized free agent.",
+    "publishDate": "2026-10-14",
+    "modifiedDate": "2026-10-14",
+    "category": "Sports",
+    "tags": [
+      "UFC",
+      "Farid Basharat",
+      "MMA",
+      "Bantamweight",
+      "Free Agency"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/ufc-farid-basharat-removed-ufc-roster-free-agency-2026.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "Farid Basharat removed from UFC roster",
+    "featured": false
+  },
+  {
+    "slug": "/mlb/dodgers-braves-nlds-game-4-2026",
+    "title": "Dodgers vs Braves NLDS Game 4 | Elimination Game at Truist Park",
+    "description": "The Los Angeles Dodgers look to close out the National League Division Series in Game 4 against the Atlanta Braves at Truist Park, with Atlanta fighting to force a decisive Game 5.",
+    "publishDate": "2026-10-07",
+    "modifiedDate": "2026-10-07",
+    "category": "Mlb",
+    "tags": [
+      "MLB",
+      "NLDS",
+      "Dodgers",
+      "Braves",
+      "Playoffs"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/mlb-dodgers-braves-nlds-game-4-2026.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "Dodgers vs Braves NLDS Game 4",
+    "featured": false
+  },
+  {
     "slug": "/news/cam-jurgens-trade-ravens-eagles-2026",
     "title": "Cam Jurgens Trade Ravens Eagles | Pro Bowl Center Deal",
     "description": "The Philadelphia Eagles have agreed to trade Pro Bowl interior lineman Cam Jurgens to the Baltimore Ravens for future draft picks, reshuffling both offensive lines midseason.",
@@ -7,8 +53,11 @@
     "modifiedDate": "2026-10-07",
     "category": "News",
     "tags": [
-      "News",
-      "Cam Jurgens Trade Ravens Eagles 2026"
+      "NFL",
+      "Philadelphia Eagles",
+      "Baltimore Ravens",
+      "Cam Jurgens",
+      "Trade"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.7,
@@ -27,7 +76,11 @@
     "modifiedDate": "2026-09-29",
     "category": "Soccer",
     "tags": [
-      "Soccer"
+      "International Friendlies",
+      "FIFA",
+      "Soccer",
+      "USMNT",
+      "Kirin Cup"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -47,7 +100,11 @@
     "modifiedDate": "2026-09-29",
     "category": "Soccer",
     "tags": [
-      "Soccer"
+      "USMNT",
+      "USA vs Mexico",
+      "USA vs Canada",
+      "Soccer",
+      "Friendlies"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -68,9 +125,10 @@
     "category": "Sports",
     "tags": [
       "World Cup",
-      "Soccer",
       "FIFA",
-      "Why Group Matches Played Simultaneously"
+      "Soccer",
+      "Explainer",
+      "Disgrace of Gijon"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -90,7 +148,11 @@
     "modifiedDate": "2026-09-24",
     "category": "Reality Tv",
     "tags": [
-      "Reality Tv"
+      "Amazing Race 39",
+      "Reality TV",
+      "CBS",
+      "Ali Krieger",
+      "Express Pass"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-sterling",
@@ -110,7 +172,11 @@
     "modifiedDate": "2026-09-24",
     "category": "Reality Tv",
     "tags": [
-      "Reality Tv"
+      "Big Brother 28",
+      "Reality TV",
+      "Drew Campbell",
+      "Dee Valladares",
+      "Rick Devens"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-sterling",
@@ -130,7 +196,11 @@
     "modifiedDate": "2026-09-24",
     "category": "Reality Tv",
     "tags": [
-      "Reality Tv"
+      "Survivor 51",
+      "Reality TV",
+      "Castaways",
+      "Open Era",
+      "Cast List"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-sterling",
@@ -150,7 +220,11 @@
     "modifiedDate": "2026-09-24",
     "category": "Reality Tv",
     "tags": [
-      "Reality Tv"
+      "Survivor 51",
+      "Reality TV",
+      "Aaliyah Puglia",
+      "Jeff Probst",
+      "Open Era"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-sterling",
@@ -170,9 +244,11 @@
     "modifiedDate": "2026-09-23",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
-      "Aston Martin Valhalla 1000hp Mid Engine Hybrid 2027"
+      "Aston Martin",
+      "Valhalla",
+      "Hybrid Hypercar",
+      "Hypercar",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -192,10 +268,11 @@
     "modifiedDate": "2026-09-23",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Audi",
-      "Nuvolari 1001hp F1 Hybrid Supercar"
+      "Nuvolari",
+      "Supercar",
+      "Hybrid Hypercar",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -215,9 +292,11 @@
     "modifiedDate": "2026-09-23",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
-      "Koenigsegg Ccgt1 1600hp Track Homage Hypercar"
+      "Koenigsegg",
+      "CCGT1",
+      "Hypercar",
+      "Track Car",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -237,11 +316,12 @@
     "modifiedDate": "2026-09-23",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Toyota",
-      "Gr Gt",
-      "2027"
+      "Gazoo Racing",
+      "GR GT",
+      "Supercar",
+      "Hybrid V8",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -261,9 +341,11 @@
     "modifiedDate": "2026-09-22",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
-      "Hennessey Venom F5m Manual Hypercar 1817hp"
+      "Hennessey",
+      "Venom F5-M",
+      "Manual Hypercar",
+      "Hypercar",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -283,10 +365,11 @@
     "modifiedDate": "2026-09-20",
     "category": "Science",
     "tags": [
-      "Earth",
+      "Antarctic Ozone Hole",
+      "Copernicus CAMS",
       "Environment",
       "Science",
-      "Antarctic Ozone Hole Expansion 2026"
+      "Montreal Protocol"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-wang",
@@ -349,7 +432,10 @@
     "modifiedDate": "2026-09-10",
     "category": "Mls",
     "tags": [
-      "Mls"
+      "MLS",
+      "Portland Timbers",
+      "St. Louis CITY SC",
+      "Kristoffer Velde"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -368,7 +454,11 @@
     "modifiedDate": "2026-09-10",
     "category": "Mls",
     "tags": [
-      "Mls"
+      "MLS",
+      "San Jose Earthquakes",
+      "San Diego FC",
+      "Rivalry",
+      "Red Cards"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -605,7 +695,10 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Diamondbacks",
+      "Guardians",
+      "Arizona"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -624,7 +717,10 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Braves",
+      "Nationals",
+      "Atlanta"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -643,7 +739,11 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Red Sox",
+      "Dodgers",
+      "Boston",
+      "Los Angeles"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -662,7 +762,10 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Cubs",
+      "Yankees",
+      "Chicago"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -681,7 +784,10 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Rockies",
+      "Royals",
+      "Colorado"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -745,7 +851,10 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Pirates",
+      "Reds",
+      "Pittsburgh"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -764,7 +873,10 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Padres",
+      "Giants",
+      "San Diego"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -783,7 +895,10 @@
     "modifiedDate": "2026-08-01",
     "category": "Mlb",
     "tags": [
-      "Mlb"
+      "MLB",
+      "Mariners",
+      "Twins",
+      "Seattle"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -826,7 +941,11 @@
     "modifiedDate": "2026-07-28",
     "category": "Nfl",
     "tags": [
-      "Nfl"
+      "NFL",
+      "Hall of Fame Game",
+      "Seahawks",
+      "Patriots",
+      "2026 Season"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -869,7 +988,11 @@
     "modifiedDate": "2026-07-28",
     "category": "Soccer",
     "tags": [
-      "Soccer"
+      "Zinedine Zidane",
+      "France",
+      "Les Bleus",
+      "Soccer",
+      "World Cup"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -889,11 +1012,10 @@
     "modifiedDate": "2026-07-28",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
+      "Gianni Infantino",
       "FIFA",
-      "News",
-      "Infantino Accuses World Cup Critics Hate"
+      "World Cup 2026",
+      "Soccer"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -912,10 +1034,11 @@
     "modifiedDate": "2026-07-21",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Cadillac",
-      "Celestiq Escalade Iq Luxury Ev"
+      "Celestiq",
+      "Escalade IQ",
+      "Luxury EV",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -957,9 +1080,11 @@
     "modifiedDate": "2026-07-21",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
-      "Lincoln Navigator 2027 Black Label Price Specs"
+      "Lincoln Navigator",
+      "Lincoln",
+      "Luxury SUV",
+      "Black Label",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -1048,11 +1173,14 @@
     "modifiedDate": "2026-07-18",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
-      "FIFA",
-      "2026",
-      "England 6 4 France Third Place"
+      "World Cup 2026",
+      "England",
+      "France",
+      "Third Place",
+      "Mbappe",
+      "Saka",
+      "Bellingham",
+      "Match Report"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -1095,10 +1223,11 @@
     "modifiedDate": "2026-07-11",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Ferrari",
-      "Ferrari F80 Hypercar Price Specs 2026"
+      "Ferrari F80",
+      "Hypercar",
+      "Supercar",
+      "Hybrid"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -1142,9 +1271,12 @@
     "modifiedDate": "2026-07-11",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
-      "Mclaren W1 Hybrid Hypercar Price Specs 2026"
+      "McLaren W1",
+      "Hypercar",
+      "Hybrid",
+      "McLaren",
+      "Supercar",
+      "Automotive"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -1163,11 +1295,14 @@
     "modifiedDate": "2026-07-11",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
-      "FIFA",
-      "2026",
-      "England 2 1 Norway Bellingham Extra Time Quarterfinal"
+      "World Cup 2026",
+      "England",
+      "Norway",
+      "Quarterfinal",
+      "Bellingham",
+      "Haaland",
+      "Extra Time",
+      "Match Report"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -1232,11 +1367,14 @@
     "modifiedDate": "2026-07-05",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
-      "FIFA",
-      "2026",
-      "Argentina 3 2 Egypt Var Round Of 16"
+      "World Cup 2026",
+      "Argentina",
+      "Egypt",
+      "VAR",
+      "Messi",
+      "Round of 16",
+      "Controversy",
+      "Enzo Fernandez"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -1640,10 +1778,11 @@
     "modifiedDate": "2026-06-25",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Porsche",
-      "911 Gt4 R Revealed 2027"
+      "911 GT4 R",
+      "Customer Racing",
+      "Motorsport",
+      "GT4"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -1758,11 +1897,11 @@
     "modifiedDate": "2026-06-24",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
+      "World Cup 2026",
       "FIFA",
-      "2026",
-      "How First Elimination Round Works"
+      "Round of 32",
+      "Knockout Stage",
+      "Jack Brennan"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -2326,10 +2465,11 @@
     "modifiedDate": "2026-06-12",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
+      "World Cup 2026",
+      "Houston",
+      "NRG Stadium",
       "FIFA",
-      "Houston Nrg Stadium World Cup 2026 Ready"
+      "Soccer"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "jack-brennan",
@@ -2394,10 +2534,11 @@
     "modifiedDate": "2026-06-04",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Aston Martin",
-      "Aston Martin 2026 S Lineup Vantage Db12 Dbx"
+      "Vantage S",
+      "DB12 S",
+      "DBX S",
+      "Supercars"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -2594,7 +2735,8 @@
     "modifiedDate": "2026-06-01",
     "category": "Tennis",
     "tags": [
-      "Tennis"
+      "Serena Williams",
+      "Queen"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -2768,7 +2910,11 @@
     "modifiedDate": "2026-05-15",
     "category": "Creator",
     "tags": [
-      "Creator"
+      "Epic Games",
+      "Unreal Engine",
+      "Virtual Production",
+      "MegaLights",
+      "Mesh Terrain"
     ],
     "author": "Epic Games",
     "authorSlug": "jack-sterling",
@@ -2810,7 +2956,11 @@
     "modifiedDate": "2026-05-15",
     "category": "Mls",
     "tags": [
-      "Mls"
+      "Cavan Sullivan",
+      "Philadelphia Union",
+      "MLS",
+      "Sports Science",
+      "Soccer Analytics"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "alfasa",
@@ -2874,7 +3024,10 @@
     "modifiedDate": "2026-05-14",
     "category": "Premier League",
     "tags": [
-      "Premier League"
+      "Everton",
+      "Sunderland",
+      "Premier League",
+      "Bramley-Moore Dock"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "conan-boyle",
@@ -3047,10 +3200,10 @@
     "modifiedDate": "2026-05-07",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Ferrari",
-      "Ferrari Luce Electric 2026"
+      "Ferrari Luce",
+      "Electric Car",
+      "Hypercar"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -3135,10 +3288,11 @@
     "modifiedDate": "2026-04-29",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
+      "World Cup 2026",
       "FIFA",
-      "World Cup 2026 Schedule Dates"
+      "Soccer",
+      "USA 2026",
+      "MetLife Stadium"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "objectwire-sports-desk",
@@ -3158,11 +3312,13 @@
     "modifiedDate": "2026-04-22",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
+      "World Cup 2026",
       "FIFA",
-      "News",
-      "Fifa World Cup 2026 Five Major Issues 50 Days"
+      "Iran",
+      "ICE",
+      "Mexico",
+      "Tickets",
+      "Transit"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.7,
@@ -3181,11 +3337,11 @@
     "modifiedDate": "2026-04-22",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
+      "World Cup 2026",
       "FIFA",
-      "News",
-      "Fifa World Cup 2026 Tree Planting Arbor Day Earth Day"
+      "Arbor Day Foundation",
+      "Earth Day",
+      "Sustainability"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.7,
@@ -3204,10 +3360,11 @@
     "modifiedDate": "2026-04-21",
     "category": "Cars",
     "tags": [
-      "Cars",
-      "Automotive",
       "Porsche",
-      "911 Gt3 Sc Sport Cabriolet Reveal 2026"
+      "911 GT3",
+      "Sports Cars",
+      "Convertible",
+      "Automotive 2026"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -3269,11 +3426,10 @@
     "modifiedDate": "2026-04-17",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
+      "World Cup 2026",
       "FIFA",
-      "News",
-      "World Cup 2026 Us Transit Prices Fans Outraged"
+      "New Jersey Transit",
+      "MetLife Stadium"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.7,
@@ -3292,11 +3448,12 @@
     "modifiedDate": "2026-04-08",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
-      "FIFA",
-      "News",
-      "2026 World Cup 48 Team Field Complete Italy Out"
+      "FIFA World Cup 2026",
+      "Italy",
+      "Iraq",
+      "DR Congo",
+      "World Cup Qualification",
+      "Bosnia"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.7,
@@ -3315,11 +3472,12 @@
     "modifiedDate": "2026-04-08",
     "category": "Sports",
     "tags": [
-      "World Cup",
-      "Soccer",
-      "FIFA",
-      "News",
-      "Trump Iran World Cup 2026 Usa Hosting Controversy"
+      "FIFA World Cup 2026",
+      "Donald Trump",
+      "Iran",
+      "USA Hosting",
+      "FIFA Statutes",
+      "World Cup Controversy"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.7,
@@ -3533,7 +3691,11 @@
     "modifiedDate": "2022-08-01",
     "category": "Creator",
     "tags": [
-      "Creator"
+      "Logan Paul",
+      "Pokemon",
+      "Pikachu Illustrator",
+      "Auction",
+      "Collectibles"
     ],
     "author": "Professional Sports Authenticator",
     "authorSlug": "jack-sterling",

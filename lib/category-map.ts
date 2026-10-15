@@ -33,6 +33,7 @@ export const CATEGORY_MAP: CategoryRule[] = [
   { prefix: '/mls',                 category: 'Sports',          tags: ['MLS', 'Soccer'] },
   { prefix: '/premier-league',      category: 'Sports',          tags: ['Premier League', 'Soccer'] },
   { prefix: '/soccer',              category: 'Sports',          tags: ['Soccer', 'Football'] },
+  { prefix: '/ufc',                 category: 'Sports',          tags: ['UFC', 'MMA', 'Combat Sports'] },
 
   // Creators / YouTube
   { prefix: '/youtube',             category: 'YouTube',         tags: ['YouTube', 'Creator Economy'] },

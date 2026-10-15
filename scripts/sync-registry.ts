@@ -38,6 +38,7 @@ const CATEGORY_MAP: { prefix: string; category: string; tags: string[] }[] = [
   { prefix: '/world-cup',          category: 'Sports',        tags: ['World Cup', 'Soccer', 'FIFA'] },
   { prefix: '/formula-1',          category: 'Sports',        tags: ['Formula 1', 'F1', 'Motorsport'] },
   { prefix: '/redbull',            category: 'Sports',        tags: ['Red Bull', 'Motorsport'] },
+  { prefix: '/ufc',                category: 'Sports',        tags: ['UFC', 'MMA', 'Combat Sports'] },
   { prefix: '/youtube',            category: 'YouTube',       tags: ['YouTube', 'Creator Economy'] },
   { prefix: '/nvidia',             category: 'Technology',    tags: ['NVIDIA', 'AI Hardware', 'GPU'] },
   { prefix: '/microsoft',          category: 'Technology',    tags: ['Microsoft', 'Big Tech'] },
@@ -271,7 +272,7 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     const imageAlt = ogAltMatch?.[1]?.trim();
 
     // ── Extract openGraph.tags ────────────────────────────────────────────
-    const ogTagsMatch = content.match(/openGraph[\s\S]{0,500}tags\s*:\s*\[([^\]]+)\]/);
+    const ogTagsMatch = content.match(/openGraph[\s\S]{0,900}tags\s*:\s*\[([^\]]+)\]/);
     let extractedTags: string[] | undefined;
     if (ogTagsMatch) {
       extractedTags = ogTagsMatch[1]
