@@ -34,6 +34,10 @@ export const CATEGORY_MAP: CategoryRule[] = [
   { prefix: '/premier-league',      category: 'Sports',          tags: ['Premier League', 'Soccer'] },
   { prefix: '/soccer',              category: 'Sports',          tags: ['Soccer', 'Football'] },
   { prefix: '/ufc',                 category: 'Sports',          tags: ['UFC', 'MMA', 'Combat Sports'] },
+  { prefix: '/nfl',                 category: 'Sports',          tags: ['NFL', 'Football'] },
+  { prefix: '/tennis',              category: 'Sports',          tags: ['Tennis', 'ATP'] },
+  { prefix: '/predict',             category: 'Sports',          tags: ['Predictions', 'Markets'] },
+  { prefix: '/predictions',         category: 'Sports',          tags: ['Predictions', 'Markets'] },
 
   // Creators / YouTube
   { prefix: '/youtube',             category: 'YouTube',         tags: ['YouTube', 'Creator Economy'] },
@@ -90,6 +94,13 @@ export const CATEGORY_MAP: CategoryRule[] = [
   // Social / Local
   { prefix: '/social',              category: 'Social Media',    tags: ['Social Media'] },
   { prefix: '/local',               category: 'Local',           tags: ['Local News'] },
+  { prefix: '/directory',           category: 'Local',           tags: ['Directory', 'Local News'] },
+
+  // Crime / Courts / Entertainment / Utility routes
+  { prefix: '/crime',               category: 'Investigations',  tags: ['Crime', 'Courts'] },
+  { prefix: '/reality-tv',          category: 'Entertainment',   tags: ['Reality TV', 'Television'] },
+  { prefix: '/tags',                category: 'Meta',            tags: ['Tags', 'ObjectWire'] },
+  { prefix: '/account',             category: 'Meta',            tags: ['Account', 'ObjectWire'] },
 
   // Investigations (org branch)
   { prefix: '/ngos',                category: 'World Affairs',   tags: ['NGO', 'Nonprofits'] },

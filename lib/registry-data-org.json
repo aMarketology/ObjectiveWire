@@ -102,7 +102,9 @@
     "modifiedDate": "2026-08-03",
     "category": "Local",
     "tags": [
-      "Local"
+      "Local News",
+      "Austin",
+      "Shugs Bagels Soft Open Austin 2026"
     ],
     "author": "ObjectWire Editorial",
     "authorSlug": "carson-scott",
@@ -552,7 +554,7 @@
     "description": "Travis County District Attorney office profile. Jose P. Garza, elected 2020. Jurisdiction, divisions, budget, key cases, and public records access for Travis County.",
     "publishDate": "2026-06-13",
     "modifiedDate": "2026-06-13",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
       "Travis County",
       "District Attorney",
@@ -573,7 +575,7 @@
     "description": "Profile of the Port of Houston Authority. Covers Port Commission governance, Ship Channel dredging contracts, environmental justice, industrial safety, and public records access.",
     "publishDate": "2026-06-13",
     "modifiedDate": "2026-06-13",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
       "Port of Houston",
       "Ship Channel",
@@ -594,7 +596,7 @@
     "description": "Profile of the Harris County Flood Control District. Administers the Proposition A $2.5B+ bond program. Covers governance, Harvey-era capital projects, contractor oversight, and public records.",
     "publishDate": "2026-06-13",
     "modifiedDate": "2026-06-13",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
       "Harris County",
       "Flood Control",
@@ -826,9 +828,12 @@
     "description": "Documented profiles of Austin and Texas-based companies that hold government contracts or are of public interest. Government consulting, software, professional services.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Austin",
+      "Companies"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -844,7 +849,7 @@
     "description": "Tyler Technologies (NYSE: TYL) is the largest publicly traded company in the US dedicated exclusively to government software. Based in Plano, TX. Public interest profile covering Texas government contracts, court systems, and accountability.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
       "Government Contractor",
       "amber",
@@ -869,7 +874,7 @@
     "description": "Capital Metropolitan Transportation Authority (CapMetro) profile. Governance, Project Connect controversy, board oversight, contracts, and public records access in Austin, TX.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
       "Public Authority",
       "sky",
@@ -894,9 +899,12 @@
     "description": "Documented profiles of Austin and Travis County government agencies. District attorney, courts, police, transit, utilities, and public records sources.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Austin",
+      "Government"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -912,9 +920,12 @@
     "description": "Documented profiles of 15 Austin nonprofits, civic organizations, advocacy groups, legal aid organizations, and watchdogs of public interest. Investigative directory by Objective Wire.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Austin",
+      "Organizations"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -930,9 +941,11 @@
     "description": "Documented profiles of Austin and Travis County government agencies, organizations, and companies of public interest. Primary-source records by Objective Wire.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Austin"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -948,9 +961,11 @@
     "description": "Directory of Texas statewide government agencies, officials, organizations, and companies of public interest. Texas AG, DPS, HHSC, TxDOT, and more. Documented by Objective Wire.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Greater Texas"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -966,9 +981,12 @@
     "description": "Profiles of Houston-area companies doing business with government, energy infrastructure, ports, and public works. Port of Houston contractors, engineering firms, petrochemical industry, and more.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Houston",
+      "Companies"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -984,9 +1002,12 @@
     "description": "Documented profiles of Houston and Harris County government agencies. DA Sean Teare, HPD, Flood Control District, Port of Houston, METRO, Commissioners Court, and more.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Houston",
+      "Government"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -1002,9 +1023,11 @@
     "description": "Documented profiles of Houston and Harris County government agencies, organizations, and companies of public interest. DA, HPD, Port of Houston, Flood Control, METRO, CenterPoint, and more.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News",
+      "Houston"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -1020,9 +1043,10 @@
     "description": "Public-interest directory of Texas government agencies, organizations, and companies. Documented by Objective Wire licensed investigators.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
-    "category": "Directory",
+    "category": "Local",
     "tags": [
-      "Directory"
+      "Directory",
+      "Local News"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.8,
@@ -1040,7 +1064,8 @@
     "modifiedDate": "2020-01-01",
     "category": "Local",
     "tags": [
-      "Local"
+      "Local News",
+      "Austin"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -1058,7 +1083,8 @@
     "modifiedDate": "2020-01-01",
     "category": "Local",
     "tags": [
-      "Local"
+      "Local News",
+      "Greater Texas"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -1076,7 +1102,8 @@
     "modifiedDate": "2020-01-01",
     "category": "Local",
     "tags": [
-      "Local"
+      "Local News",
+      "Houston"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -1094,7 +1121,8 @@
     "modifiedDate": "2020-01-01",
     "category": "Local",
     "tags": [
-      "Local"
+      "Local News",
+      "Mexico Canada"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,
@@ -1112,7 +1140,7 @@
     "modifiedDate": "2020-01-01",
     "category": "Local",
     "tags": [
-      "Local"
+      "Local News"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.8,
@@ -1130,7 +1158,8 @@
     "modifiedDate": "2020-01-01",
     "category": "Local",
     "tags": [
-      "Local"
+      "Local News",
+      "Us News"
     ],
     "author": "ObjectWire Editorial",
     "priority": 0.6,

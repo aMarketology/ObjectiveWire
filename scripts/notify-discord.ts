@@ -29,12 +29,14 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { getActiveSite, getActiveSiteConfig } from '../lib/active-site';
 
 const ROOT = path.resolve(__dirname, '..');
-const REGISTRY_PATH = path.join(ROOT, 'lib', 'registry-data.json');
-const LEDGER_PATH = path.join(ROOT, 'lib', 'discord-announced.json');
+const ACTIVE_SITE = getActiveSite();
+const REGISTRY_PATH = path.join(ROOT, 'lib', `registry-data-${ACTIVE_SITE}.json`);
+const LEDGER_PATH = path.join(ROOT, 'lib', `discord-announced-${ACTIVE_SITE}.json`);
 
-const SITE = 'https://www.objectivewire.com';
+const SITE = getActiveSiteConfig().url;
 const WEBHOOK = process.env.DISCORD_NEW_ARTICLES_WEBHOOK_URL;
 
 const DRY_RUN = process.argv.includes('--dry-run');
@@ -133,7 +135,7 @@ async function postArticle(entry: RegistryEntry): Promise<boolean> {
 async function main() {
   const registry = readJson<RegistryEntry[]>(REGISTRY_PATH, []);
   if (registry.length === 0) {
-    console.warn('\u26a0\ufe0f  registry-data.json is empty or missing. Run `npm run registry:write` first.');
+    console.warn(`\u26a0\ufe0f  ${path.basename(REGISTRY_PATH)} is empty or missing. Run \`npm run registry:write\` first.`);
     return;
   }
 

@@ -17,6 +17,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { getActiveSite, getArticleOwnerSite, getActiveSiteConfig } from '../lib/active-site';
+import { detectCategory, detectPriority, detectChangeFreq as detectChangeFrequency } from '../lib/category-map';
 
 // ---------------------------------------------------------------------------
 // config
@@ -29,109 +30,6 @@ const LOCAL_REGISTRY_PATH = path.join(ROOT, 'lib', `registry-data-${activeSite}.
 const DEFAULT_AUTHOR = 'ObjectWire Editorial';
 const TODAY = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
 const WRITE_FLAG = process.argv.includes('--write');
-
-// ---------------------------------------------------------------------------
-// category / tag detection
-// ---------------------------------------------------------------------------
-const CATEGORY_MAP: { prefix: string; category: string; tags: string[] }[] = [
-  { prefix: '/winter-olympics',    category: 'Sports',        tags: ['Winter Olympics', 'Milan Cortina 2026'] },
-  { prefix: '/world-cup',          category: 'Sports',        tags: ['World Cup', 'Soccer', 'FIFA'] },
-  { prefix: '/formula-1',          category: 'Sports',        tags: ['Formula 1', 'F1', 'Motorsport'] },
-  { prefix: '/redbull',            category: 'Sports',        tags: ['Red Bull', 'Motorsport'] },
-  { prefix: '/ufc',                category: 'Sports',        tags: ['UFC', 'MMA', 'Combat Sports'] },
-  { prefix: '/youtube',            category: 'YouTube',       tags: ['YouTube', 'Creator Economy'] },
-  { prefix: '/nvidia',             category: 'Technology',    tags: ['NVIDIA', 'AI Hardware', 'GPU'] },
-  { prefix: '/microsoft',          category: 'Technology',    tags: ['Microsoft', 'Big Tech'] },
-  { prefix: '/google',             category: 'Technology',    tags: ['Google', 'Big Tech'] },
-  { prefix: '/apple',              category: 'Technology',    tags: ['Apple', 'Big Tech'] },
-  { prefix: '/open-ai',            category: 'Technology',    tags: ['OpenAI', 'Artificial Intelligence'] },
-  { prefix: '/intel',              category: 'Technology',    tags: ['Intel', 'Semiconductors'] },
-  { prefix: '/blitzy',             category: 'Technology',    tags: ['Blitzy', 'AI', 'SaaS'] },
-  { prefix: '/tech',               category: 'Technology',    tags: ['Technology'] },
-  { prefix: '/technology',         category: 'Technology',    tags: ['Technology'] },
-  { prefix: '/saas',               category: 'Technology',    tags: ['SaaS', 'Software'] },
-  { prefix: '/github',             category: 'Technology',    tags: ['GitHub', 'Open Source'] },
-  { prefix: '/nasa',               category: 'Science',       tags: ['NASA', 'Space'] },
-  { prefix: '/bio-hacking',        category: 'Science',       tags: ['Biohacking', 'Health', 'Science'] },
-  { prefix: '/neurophos',          category: 'Science',       tags: ['Neurophos', 'AI Hardware', 'Photonics'] },
-  { prefix: '/earth',              category: 'Science',       tags: ['Earth', 'Environment', 'Science'] },
-  { prefix: '/research',           category: 'Research',      tags: ['Research', 'Analysis'] },
-  { prefix: '/finance',            category: 'Finance',       tags: ['Finance', 'Economy'] },
-  { prefix: '/bank-of-america',    category: 'Finance',       tags: ['Bank of America', 'Finance'] },
-  { prefix: '/crypto',             category: 'Finance',       tags: ['Crypto', 'Cryptocurrency', 'Web3'] },
-  { prefix: '/elon-musk',          category: 'Business',      tags: ['Elon Musk', 'Tesla', 'xAI'] },
-  { prefix: '/trump',              category: 'Politics',      tags: ['Donald Trump', 'US Politics'] },
-  { prefix: '/disney',             category: 'Entertainment', tags: ['Disney', 'Entertainment'] },
-  { prefix: '/artists',            category: 'Entertainment', tags: ['Music', 'Artists'] },
-  { prefix: '/entertainment',      category: 'Entertainment', tags: ['Entertainment'] },
-  { prefix: '/video-games',        category: 'Gaming',        tags: ['Video Games', 'Gaming'] },
-  { prefix: '/beastgames',         category: 'YouTube',       tags: ['Beast Games', 'MrBeast', 'YouTube'] },
-  { prefix: '/cars',               category: 'Cars',          tags: ['Cars', 'Automotive'] },
-  { prefix: '/college',            category: 'Education',     tags: ['College', 'Education'] },
-  { prefix: '/influencer',         category: 'Creators',      tags: ['Influencer', 'Social Media'] },
-  { prefix: '/social',             category: 'Social Media',  tags: ['Social Media'] },
-  { prefix: '/ngos',               category: 'World Affairs', tags: ['NGO', 'Nonprofits'] },
-  { prefix: '/missing-persons',    category: 'Investigations',tags: ['Missing Persons', 'Investigations'] },
-  { prefix: '/investigations',     category: 'Investigations',tags: ['Investigations'] },
-  { prefix: '/austin-private',     category: 'Investigations',tags: ['Private Investigations', 'Austin'] },
-  { prefix: '/ironspring',         category: 'Business',      tags: ['Startups', 'Venture Capital', 'Construction Tech'] },
-  { prefix: '/objectwire',         category: 'Meta',          tags: ['ObjectWire'] },
-  { prefix: '/news',               category: 'News',          tags: ['News'] },
-  { prefix: '/blog',               category: 'Blog',          tags: ['Blog'] },
-  { prefix: '/podcasts',           category: 'Media',         tags: ['Podcasts'] },
-  { prefix: '/service',            category: 'Services',      tags: ['Services'] },
-  { prefix: '/about',              category: 'Meta',          tags: ['About', 'ObjectWire'] },
-  { prefix: '/team',               category: 'Meta',          tags: ['Team', 'ObjectWire'] },
-  { prefix: '/authors',            category: 'Meta',          tags: ['Author', 'ObjectWire'] },
-  { prefix: '/clothing',           category: 'Lifestyle',     tags: ['Clothing', 'Fashion'] },
-  { prefix: '/define',             category: 'Reference',     tags: ['Definitions', 'Reference'] },
-  { prefix: '/get-help',           category: 'Support',       tags: ['Help', 'Support'] },
-  { prefix: '/search',             category: 'Meta',          tags: ['Search'] },
-  { prefix: '/site-index',         category: 'Meta',          tags: ['Site Index', 'Sitemap'] },
-  { prefix: '/index',              category: 'Meta',          tags: ['Index'] },
-  { prefix: '/events',             category: 'Events',        tags: ['Events'] },
-  { prefix: '/privacy-policy',     category: 'Legal',         tags: ['Privacy', 'Legal'] },
-  { prefix: '/terms-of-service',   category: 'Legal',         tags: ['Terms', 'Legal'] },
-  { prefix: '/copyright',          category: 'Legal',         tags: ['Copyright', 'Legal'] },
-  { prefix: '/corrections',        category: 'Meta',          tags: ['Corrections', 'Editorial'] },
-  { prefix: '/editorial-standards',category: 'Meta',          tags: ['Editorial', 'Standards'] },
-];
-
-function detectCategory(slug: string): { category: string; tags: string[] } {
-  for (const rule of CATEGORY_MAP) {
-    if (slug.startsWith(rule.prefix)) {
-      // merge slug-segment tags with rule tags
-      const extraTags = slug
-        .split('/')
-        .filter(Boolean)
-        .slice(1) // skip the top-level segment already in rule.tags
-        .map(s =>
-          s.replace(/-/g, ' ')
-           .replace(/\b\w/g, c => c.toUpperCase())
-        )
-        .filter(t => t.length > 2 && !rule.tags.some(rt => rt.toLowerCase() === t.toLowerCase()));
-      return { category: rule.category, tags: [...rule.tags, ...extraTags] };
-    }
-  }
-  // fallback — derive from first slug segment
-  const topSegment = slug.split('/').filter(Boolean)[0] ?? 'general';
-  const category = topSegment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  return { category, tags: [category] };
-}
-
-function detectPriority(slug: string, category: string): number {
-  const depth = slug.split('/').filter(Boolean).length;
-  if (depth === 1) return 0.8;  // hub pages
-  if (['Sports', 'Technology', 'Finance', 'News'].includes(category)) return 0.7;
-  if (['Legal', 'Meta', 'Support'].includes(category)) return 0.3;
-  return 0.6;
-}
-
-function detectChangeFrequency(category: string): string {
-  if (['Sports', 'News', 'Technology'].includes(category)) return 'weekly';
-  if (['Legal', 'Meta', 'Support', 'Reference'].includes(category)) return 'monthly';
-  return 'weekly';
-}
 
 // ---------------------------------------------------------------------------
 // scan all page.tsx files → extract slug + metadata

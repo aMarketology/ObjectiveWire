@@ -111,6 +111,23 @@ export async function getArticlesByCategory(category: string, limit?: number): P
   return limit ? results.slice(0, limit) : results;
 }
 
+/**
+ * Real articles under a route path prefix (e.g. '/mlb'), newest first.
+ *
+ * Preferred over getArticlesByCategory for hub pages: a hub's scope is defined by
+ * its route, not by its taxonomy label. Categories are normalized to OStandard
+ * values ('Sports' covers /mlb, /nfl, /golf, /soccer, /ufc), so category-based
+ * lookups cannot distinguish one sport hub from another.
+ */
+export async function getArticlesByPath(prefix: string, limit?: number): Promise<ContentEntry[]> {
+  const norm = prefix.startsWith('/') ? prefix : `/${prefix}`;
+  const results = [...registry]
+    .filter(e => isRealArticle(e))
+    .filter(e => e.slug === norm || e.slug.startsWith(`${norm}/`))
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+  return limit ? results.slice(0, limit) : results;
+}
+
 /** Related articles for a slug, scored by category + tag overlap */
 export async function getRelatedArticles(slug: string, limit = 5): Promise<ContentEntry[]> {
   const current = registry.find(e => e.slug === slug);

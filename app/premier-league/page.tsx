@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Hub from '@/components/Hub';
-import { getArticlesByCategory } from '@/lib/registry-service';
+import { getArticlesByPath } from '@/lib/registry-service';
 
 // ISR: regenerate at most once per hour.
 export const revalidate = 3600;
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PremierLeagueHubPage() {
-  const articles = await getArticlesByCategory('Premier League', 20);
+  const articles = await getArticlesByPath('/premier-league', 20);
 
   const featured = articles.slice(0, 2);
   const latest = articles.slice(2);
