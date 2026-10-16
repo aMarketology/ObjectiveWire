@@ -290,13 +290,23 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   // ==========================================================================
-  // SITE-SPECIFIC BUILD DIRECTORY
+  // SITE-SPECIFIC BUILD DIRECTORY (DEV ONLY)
   // ==========================================================================
   // When running both .com and .org dev servers simultaneously (npm run dev),
   // each must use its own .next directory. Sharing one causes HMR websocket
   // conflicts ("unrecognized HMR message ping") and cross-site cache pollution.
   // OBJECTWIRE_SITE is set per-process by dev:com / dev:org.
-  distDir: process.env.OBJECTWIRE_SITE === 'org' ? '.next-org' : '.next-main',
+  //
+  // IMPORTANT: This must NOT apply to production builds. Vercel expects the
+  // build output at the default ".next" directory; a custom distDir causes
+  // "NEXT_NO_ROUTES_MANIFEST" because routes-manifest.json is written to the
+  // custom dir instead of .next. So we only override distDir in development.
+  distDir:
+    process.env.NODE_ENV === 'development'
+      ? process.env.OBJECTWIRE_SITE === 'org'
+        ? '.next-org'
+        : '.next-main'
+      : '.next',
   
   // ==========================================================================
   // EXPERIMENTAL PERFORMANCE FEATURES

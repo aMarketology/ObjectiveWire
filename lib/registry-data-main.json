@@ -1,7 +1,7 @@
 [
   {
     "slug": "/nfl/alaric-jackson-suspension-appeal-bradley-chubb-2026",
-    "title": "Alaric Jackson Suspension Appeal | Punching Ban Cut to One",
+    "title": "Rams' Alaric Jackson Has Suspension Cut to One Game Following Appeal",
     "description": "After a postgame altercation with Bills linebacker Bradley Chubb, Rams left tackle Alaric Jackson had his two-game suspension cut to one on appeal.",
     "publishDate": "2026-10-14",
     "modifiedDate": "2026-10-14",
@@ -1028,6 +1028,29 @@
     "featured": false
   },
   {
+    "slug": "/ufc/conor-mcgregor-max-holloway-last-dance-2027",
+    "title": "Conor McGregor Max Holloway | Last Dance Fight 2027",
+    "description": "Conor McGregor has called for a \"Last Dance\" trilogy fight against Max Holloway in 2027, targeting a return to the Octagon against the BMF champion in what would be one of the biggest fights in UFC history.",
+    "publishDate": "2026-07-28",
+    "modifiedDate": "2026-07-28",
+    "category": "Sports",
+    "tags": [
+      "Conor McGregor",
+      "Max Holloway",
+      "UFC",
+      "MMA",
+      "BMF"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fufc%2Fconor-mcgregor-max-holloway-last-dance-2027",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
     "slug": "/world-cup/news/infantino-accuses-world-cup-critics-hate",
     "title": "Gianni Infantino World Cup Critics | Hate Speech Accusation",
     "description": "FIFA president Gianni Infantino has accused critics of the 2026 World Cup of spreading hate, delivering a fiery defense of the tournament in a speech that has drawn sharp reactions from human rights groups and media organizations.",
@@ -1166,7 +1189,7 @@
   },
   {
     "slug": "/world-cup/2026/spain-1-0-argentina-final-aet",
-    "title": "Spain 1-0 Argentina AET | World Cup 2026 Final | Ferran Torres Wins It in Extra Time",
+    "title": "Spain 1-0 Argentina AET | Ferran Torres Wins the 2026 World Cup Final",
     "description": "Spain defeated Argentina 1-0 after extra time to win the 2026 World Cup, their second title in modern history. Ferran Torres scored the winner in the 106th minute after a controversial VAR-disallowed goal, while Emiliano Martinez made a final-record 12 saves to keep Argentina alive.",
     "publishDate": "2026-07-19",
     "modifiedDate": "2026-07-19",
@@ -1190,7 +1213,7 @@
   },
   {
     "slug": "/world-cup/2026/england-6-4-france-third-place",
-    "title": "England 6-4 France | World Cup 2026 Third Place | Mbappe Passes Messi, Bellingham Wins It",
+    "title": "England 6-4 France | Mbappe Passes Messi as All-Time World Cup Scorer",
     "description": "England defeated France 6-4 in a 10-goal third-place thriller at the 2026 World Cup. Bukayo Saka scored a hat-trick, Kylian Mbappe surpassed Lionel Messi as the all-time World Cup leading scorer, and Jude Bellingham sealed bronze deep into stoppage time.",
     "publishDate": "2026-07-18",
     "modifiedDate": "2026-07-18",
@@ -1216,8 +1239,8 @@
   },
   {
     "slug": "/world-cup/2026/argentina-2-0-switzerland-quarterfinal",
-    "title": "Argentina 2-0 Switzerland | World Cup 2026 Quarterfinal | Messi Masterclass Sends Defending Champions to Semis",
-    "description": "Argentina defeated Switzerland 2-0 in the World Cup quarterfinals, overcoming the tournament",
+    "title": "Argentina 2-0 Switzerland | Messi Masterclass | England Next in Semifinals",
+    "description": "Argentina defeated Switzerland 2-0 in the World Cup quarterfinals, overcoming the tournament's most organized defense. Lionel Messi delivered a masterclass performance, scoring once and creating the other, as the defending champions advanced to face England in the semifinals.",
     "publishDate": "2026-07-12",
     "modifiedDate": "2026-07-12",
     "category": "Sports",
@@ -1312,7 +1335,7 @@
   },
   {
     "slug": "/world-cup/2026/england-2-1-norway-bellingham-extra-time-quarterfinal",
-    "title": "England 2-1 Norway AET | World Cup 2026 Quarterfinal | Bellingham Hero, Haaland Test",
+    "title": "England 2-1 Norway AET | Bellingham Double Sends England to Semifinals | World Cup 2026",
     "description": "Norway led 1-0. Bellingham equalized in first-half stoppage time. Haaland forced off. Bellingham struck again in extra time. England survive the ultimate test. Report by Jack Brennan.",
     "publishDate": "2026-07-11",
     "modifiedDate": "2026-07-11",
@@ -1339,7 +1362,7 @@
   {
     "slug": "/world-cup/2026/france-2-0-morocco-quarterfinal",
     "title": "France 2-0 Morocco | World Cup 2026 Quarterfinal | Defensive Masterclass Sends Les Bleus to Semis",
-    "description": "France defeated Morocco 2-0 in the World Cup quarterfinals in Boston, producing a defensive masterclass to stifle Morocco",
+    "description": "France defeated Morocco 2-0 in the World Cup quarterfinals in Boston, producing a defensive masterclass to stifle Morocco's wingers. A rematch of the 2022 semifinal, France once again dashed Moroccan dreams with clinical finishing to reach the final four.",
     "publishDate": "2026-07-11",
     "modifiedDate": "2026-07-11",
     "category": "Sports",
@@ -1362,7 +1385,7 @@
   {
     "slug": "/world-cup/2026/spain-2-1-belgium-quarterfinal",
     "title": "Spain 2-1 Belgium | World Cup 2026 Quarterfinal | Midfield Dictates in Los Angeles",
-    "description": "Spain defeated Belgium 2-1 in a fascinating tactical battle in Los Angeles, with Spain",
+    "description": "Spain defeated Belgium 2-1 in a fascinating tactical battle in Los Angeles, with Spain's midfield dictating the tempo. Despite a fierce physical response from a revamped Belgian side, Spain capitalized on two defensive lapses to secure their place in the final four.",
     "publishDate": "2026-07-11",
     "modifiedDate": "2026-07-11",
     "category": "Sports",
@@ -1384,8 +1407,8 @@
   },
   {
     "slug": "/world-cup/2026/argentina-3-2-egypt-var-round-of-16",
-    "title": "Argentina 3-2 Egypt | World Cup 2026 VAR Controversy | Messi 83rd-Minute Equalizer",
-    "description": "Argentina staged one of the most dramatic comebacks in World Cup history, overturning a 2-0 deficit against Egypt in Atlanta after a VAR controversy disallowed Mohamed Ziko",
+    "title": "Egypt lead 2-0. VAR. Ziko's goal gone. Romero 2-1. Messi 2-2. Fernandez 3-2. The greatest comeback of the tournament.",
+    "description": "Egypt lead 2-0. Ziko's 67th-minute goal disallowed by VAR. Argentina turn it around 3-2. Hossam Hassan erupts. Messi's World Cup continues. Report by Jack Brennan.",
     "publishDate": "2026-07-05",
     "modifiedDate": "2026-07-05",
     "category": "Sports",
@@ -1409,9 +1432,33 @@
     "featured": false
   },
   {
+    "slug": "/world-cup/2026/belgium-4-1-usa-round-of-16",
+    "title": "Belgium 4-1 USA | USMNT Out | World Cup 2026 Round of 16",
+    "description": "Belgium ended the USMNT's 2026 World Cup journey with a dominant 4-1 Round of 16 victory in Seattle. Without the suspended Folarin Balogun, a fatigued American side was overwhelmed by Belgium's relentless attacking waves.",
+    "publishDate": "2026-07-05",
+    "modifiedDate": "2026-07-05",
+    "category": "Sports",
+    "tags": [
+      "World Cup 2026",
+      "Belgium",
+      "USA",
+      "USMNT",
+      "Round of 16",
+      "Match Report"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/world-cup-2026-belgium-4-1-usa-round-of-16.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
     "slug": "/world-cup/2026/spain-1-0-portugal-merino-stoppage-time-round-of-16",
-    "title": "Spain 1-0 Portugal | World Cup 2026 Round of 16 | Merino Stoppage-Time Winner, Ronaldo Farewell",
-    "description": "Spain defeated Portugal 1-0 in a hyper-tactical Iberian derby, with Mikel Merino",
+    "title": "Merino Stoppage Time | Spain 1-0 Portugal | Ronaldo's Last World Cup | Round of 16",
+    "description": "Spain defeated Portugal 1-0 in a hyper-tactical Iberian derby, with Mikel Merino's stoppage-time winner settling one of the great World Cup tactical battles. The result brought a deeply emotional end to Cristiano Ronaldo's final World Cup campaign.",
     "publishDate": "2026-07-05",
     "modifiedDate": "2026-07-05",
     "category": "Sports",
@@ -1435,7 +1482,7 @@
   },
   {
     "slug": "/world-cup/2026/switzerland-0-0-colombia-pens-round-of-16",
-    "title": "Switzerland 0-0 Colombia 4-3 Pens | World Cup 2026 Round of 16 | Swiss GK Heroics",
+    "title": "Switzerland 0-0 Colombia 4-3 Pens | Swiss GK Heroics | World Cup 2026 Round of 16",
     "description": "Switzerland advanced to the World Cup quarterfinals 4-3 on penalties after a 0-0 draw across 120 goalless minutes against Colombia. The Swiss goalkeeper was the hero of a shootout lottery that was the definition of a war of attrition.",
     "publishDate": "2026-07-05",
     "modifiedDate": "2026-07-05",
@@ -1459,7 +1506,7 @@
   },
   {
     "slug": "/world-cup/2026/england-3-2-mexico-round-of-16",
-    "title": "England 3-2 Mexico | World Cup 2026 Round of 16 | Red Card Chaos, Five-Goal Thriller",
+    "title": "England 3-2 Mexico. Red card. Hostile crowd. Five goals. England hold on. World Cup 2026.",
     "description": "England edged a five-goal thriller 3-2 against co-hosts Mexico in the Round of 16, overcoming a hostile Mexico City atmosphere, a controversial 54th-minute straight red card, and a fierce Mexican fightback to advance to the World Cup quarterfinals.",
     "publishDate": "2026-07-04",
     "modifiedDate": "2026-07-04",
@@ -1483,8 +1530,8 @@
   },
   {
     "slug": "/world-cup/2026/norway-2-1-brazil-round-of-16",
-    "title": "Norway 2-1 Brazil | World Cup 2026 Round of 16 | Haaland Ends Selecao Dream",
-    "description": "Norway produced the biggest upset of the 2026 World Cup, eliminating Brazil 2-1 in the Round of 16 in a historic rematch 28 years after their famous 1998 meeting. Erling Haaland and Norway",
+    "title": "NORWAY ELIMINATE BRAZIL. 2-1. The biggest upset of the 2026 World Cup. Haaland rewrites history.",
+    "description": "Norway produced the biggest upset of the 2026 World Cup, eliminating Brazil 2-1 in the Round of 16 in a historic rematch 28 years after their famous 1998 meeting. Erling Haaland and Norway's direct counter-attack punished a ball-dominant Brazil side ruthlessly.",
     "publishDate": "2026-07-04",
     "modifiedDate": "2026-07-04",
     "category": "Sports",
@@ -1502,6 +1549,30 @@
     "priority": 0.7,
     "changeFrequency": "weekly",
     "imageUrl": "/thumbnails/world-cup-2026-norway-2-1-brazil-round-of-16.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/world-cup/2026/france-1-0-paraguay-round-of-16",
+    "title": "France survive. Paraguay's fairytale is over. 1-0. World Cup 2026.",
+    "description": "France ended Paraguay's fairytale giant-killing run with a hard-fought 1-0 victory in the Round of 16. Les Bleus were made to work for every inch before a solitary moment of world-class finishing spared French blushes and booked their quarterfinal place.",
+    "publishDate": "2026-07-03",
+    "modifiedDate": "2026-07-03",
+    "category": "Sports",
+    "tags": [
+      "World Cup 2026",
+      "France",
+      "Paraguay",
+      "Round of 16",
+      "Mbappe",
+      "Match Report"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/world-cup-2026-france-1-0-paraguay-round-of-16.jpg",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
@@ -1532,8 +1603,8 @@
   },
   {
     "slug": "/world-cup/2026/belgium-3-2-senegal-aet-round-of-32",
-    "title": "Belgium 3-2 Senegal AET | World Cup 2026 Round of 32 | 125th-Minute Penalty",
-    "description": "Belgium completed a stunning multi-goal comeback against Senegal in extra time, winning 3-2 with a 125th-minute penalty in arguably the match of the tournament. The Red Devils advance to the Round of 16 after an extraordinary war of attrition.",
+    "title": "Belgium. Comeback. Extra time. 125th-minute penalty. The game of the World Cup. 3-2.",
+    "description": "A multi-goal comeback, extra time, and a 125th-minute penalty. Belgium survive Senegal in the game of the 2026 World Cup. Report by Jack Brennan.",
     "publishDate": "2026-07-01",
     "modifiedDate": "2026-07-01",
     "category": "Sports",
@@ -1556,8 +1627,8 @@
   },
   {
     "slug": "/world-cup/2026/england-2-1-dr-congo-round-of-32",
-    "title": "England 2-1 DR Congo | World Cup 2026 Round of 32 | Kane 86th-Minute Winner",
-    "description": "Harry Kane rescued England from a World Cup exit with an 86th-minute game-winner against a highly aggressive DR Congo in the Round of 32. England survived a nervy 2-1 scare as Kane",
+    "title": "Kane 86 | England 2-1 DR Congo | World Cup 2026 Round of 32",
+    "description": "Harry Kane rescued England from a World Cup exit with an 86th-minute game-winner against a highly aggressive DR Congo in the Round of 32. England survived a nervy 2-1 scare as Kane's leadership proved decisive.",
     "publishDate": "2026-07-01",
     "modifiedDate": "2026-07-01",
     "category": "Sports",
@@ -1580,8 +1651,8 @@
   },
   {
     "slug": "/world-cup/2026/usa-2-0-bosnia-10-men-tillman-free-kick-round-of-32",
-    "title": "USA 2-0 Bosnia | World Cup 2026 Round of 32 | Tillman Free Kick, Balogun Red Card",
-    "description": "The USMNT defeated Bosnia 2-0 in the Round of 32 despite playing the final 30 minutes with 10 men after Folarin Balogun",
+    "title": "USMNT 2-0 Bosnia | 10 Men, Tillman Free Kick, First Knockout Win Since 2002 | World Cup 2026",
+    "description": "The USMNT defeated Bosnia 2-0 in the Round of 32 despite playing the final 30 minutes with 10 men after Folarin Balogun's controversial red card. Malik Tillman's curling free-kick in the dying minutes sealed a historic first knockout stage victory since 2002.",
     "publishDate": "2026-07-01",
     "modifiedDate": "2026-07-01",
     "category": "Sports",
@@ -1652,7 +1723,7 @@
   },
   {
     "slug": "/world-cup/2026/france-3-0-sweden-round-of-32",
-    "title": "France 3-0 Sweden | World Cup 2026 Round of 32 | Mbappe Brace",
+    "title": "Mbappe brace. France 3-0. The favorites have announced themselves. World Cup 2026.",
     "description": "France made a commanding statement in the 2026 World Cup Round of 32, routing Sweden 3-0. Kylian Mbappe was unplayable, scoring a brilliant brace to lead Les Bleus into the last 16 with a dominant performance.",
     "publishDate": "2026-06-30",
     "modifiedDate": "2026-06-30",
@@ -1676,8 +1747,8 @@
   },
   {
     "slug": "/world-cup/2026/mexico-2-0-ecuador-round-of-32",
-    "title": "Mexico 2-0 Ecuador | World Cup 2026 Round of 32 | El Tri Fortress Holds",
-    "description": "Co-hosts Mexico defeated Ecuador 2-0 in the Round of 32, striking twice early in the first half and locking down a clean sheet to advance to the last 16. A roaring home crowd helped El Tri turn their stadium into a fortress.",
+    "title": "Mexico's fortress holds. 2-0. El Tri are through. World Cup 2026.",
+    "description": "Mexico's home advantage is real and lethal. El Tri strike twice early and suffocate Ecuador to advance 2-0. Report by Jack Brennan.",
     "publishDate": "2026-06-30",
     "modifiedDate": "2026-06-30",
     "category": "Sports",
@@ -1700,8 +1771,8 @@
   },
   {
     "slug": "/world-cup/2026/norway-2-1-ivory-coast-round-of-32",
-    "title": "Norway 2-1 Ivory Coast | World Cup 2026 Round of 32 | Haaland 86th-Minute Winner",
-    "description": "Erling Haaland struck an 86th-minute winner to send Norway into the Round of 16, defeating a physical Ivory Coast 2-1 in the Round of 32. Haaland",
+    "title": "Haaland 86 | Norway 2-1 Ivory Coast | World Cup 2026 Round of 32",
+    "description": "Erling Haaland struck an 86th-minute winner to send Norway into the Round of 16, defeating a physical Ivory Coast 2-1 in the Round of 32. Haaland's clinical late finish spared Norway from extra time.",
     "publishDate": "2026-06-30",
     "modifiedDate": "2026-06-30",
     "category": "Sports",
@@ -1748,7 +1819,7 @@
   {
     "slug": "/world-cup/2026/germany-1-1-paraguay-pens-round-of-32",
     "title": "Germany 1-1 Paraguay (3-4 Pens) | World Cup 2026 Round of 32 Shock",
-    "description": "Paraguay pulled off one of the biggest upsets of the 2026 World Cup, eliminating Germany on penalties after a 1-1 draw in the Round of 32. Germany lost the shootout 3-4 as Paraguay held their nerve to send the former world champions home.",
+    "description": "Tournament earthquake. Paraguay eliminate Germany on spot-kicks in the Round of 32. Germany's clinical penalty reputation couldn't save them. Report by Jack Brennan.",
     "publishDate": "2026-06-29",
     "modifiedDate": "2026-06-29",
     "category": "Sports",
@@ -1772,7 +1843,7 @@
   {
     "slug": "/world-cup/2026/netherlands-1-1-morocco-pens-round-of-32",
     "title": "Netherlands 1-1 Morocco (2-3 Pens) | World Cup 2026 Round of 32",
-    "description": "Morocco eliminated the Netherlands on penalties in the Round of 32, winning the shootout 3-2 after a 1-1 draw. The Atlas Lions",
+    "description": "Morocco eliminated the Netherlands on penalties in the Round of 32, winning the shootout 3-2 after a 1-1 draw. The Atlas Lions' goalkeeper produced heroic saves as Morocco proved their 2022 run was no fluke.",
     "publishDate": "2026-06-29",
     "modifiedDate": "2026-06-29",
     "category": "Sports",
@@ -2083,7 +2154,7 @@
   {
     "slug": "/world-cup/2026/canada-vs-switzerland-group-b-decider",
     "title": "Canada vs Switzerland | World Cup 2026 Group B Decider Preview",
-    "description": "Canada need a draw. Switzerland need a win. Group B first place on the line in Vancouver. Preview by Jack Brennan.",
+    "description": "Canada's massive goal difference advantage from their 6–0 win over Qatar means Switzerland must beat the co-hosts outright to claim top spot in Group B on June 24 in Vancouver.",
     "publishDate": "2026-06-20",
     "modifiedDate": "2026-06-20",
     "category": "Sports",
@@ -2131,7 +2202,7 @@
   {
     "slug": "/world-cup/2026/norway-vs-france-group-i-preview",
     "title": "Norway vs France | World Cup 2026 Group I | Haaland vs Mbappe Preview",
-    "description": "Erling Haaland and Kylian Mbappe meet in the World Cup group stage. Norway vs France on June 26 in Group I is the tournament",
+    "description": "Erling Haaland and Kylian Mbappe meet in the World Cup group stage. Norway vs France on June 26 in Group I is the tournament's premier superstar collision. Full match preview.",
     "publishDate": "2026-06-20",
     "modifiedDate": "2026-06-20",
     "category": "Sports",
@@ -2156,7 +2227,7 @@
   {
     "slug": "/world-cup/2026/spain-vs-uruguay-group-h-preview",
     "title": "Spain vs Uruguay | World Cup 2026 Group H Finale Preview",
-    "description": "Spain dropped points to Cape Verde. Uruguay are level. Group H finale decider, full preview by Jack Brennan.",
+    "description": "Spain's shock 0–0 draw against Cape Verde left Group H wide open. Uruguay sit level on points. The Group H finale decides who goes through as winner and who faces the harder bracket path.",
     "publishDate": "2026-06-20",
     "modifiedDate": "2026-06-20",
     "category": "Sports",
@@ -2273,9 +2344,32 @@
     "featured": false
   },
   {
+    "slug": "/world-cup/2026/belgium-1-egypt-1-group-g",
+    "title": "Belgium 1–1 Egypt | World Cup 2026 Group G Match Report",
+    "description": "Egypt's Emam Ashour scored his first international goal to put the Pharaohs 1–0 up before Belgium leveled via an own goal, leaving Group G's opening fixture at 1–1.",
+    "publishDate": "2026-06-15",
+    "modifiedDate": "2026-06-15",
+    "category": "Sports",
+    "tags": [
+      "World Cup 2026",
+      "Belgium",
+      "Egypt",
+      "Group G",
+      "Match Report"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/world-cup-2026-belgium-1-egypt-1-group-g.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
     "slug": "/world-cup/2026/saudi-arabia-1-uruguay-1-group-h",
     "title": "Saudi Arabia 1–1 Uruguay | World Cup 2026 Group H Match Report",
-    "description": "Mohammed Al-Owais produced a legendary goalkeeping performance as Saudi Arabia survived a second-half onslaught to draw 1–1 with Uruguay in Miami, with Maxi Araújo",
+    "description": "Mohammed Al-Owais produced a legendary goalkeeping performance as Saudi Arabia survived a second-half onslaught to draw 1–1 with Uruguay in Miami, with Maxi Araújo's 80th-minute equalizer the only goal Uruguay could claim from 27 shots.",
     "publishDate": "2026-06-15",
     "modifiedDate": "2026-06-15",
     "category": "Sports",
@@ -2321,7 +2415,7 @@
   {
     "slug": "/world-cup/2026/sweden-5-tunisia-1-group-f",
     "title": "Sweden 5–1 Tunisia | World Cup 2026 Group F Match Report",
-    "description": "Sweden demolished Tunisia 5–1 in Monterrey with goals from Yasin Ayari, Alexander Isak, Viktor Gyökeres and Mattias Svanberg. Tunisia",
+    "description": "Sweden demolished Tunisia 5–1 in Monterrey with goals from Yasin Ayari, Alexander Isak, Viktor Gyökeres and Mattias Svanberg. Tunisia's head coach was fired the following day.",
     "publishDate": "2026-06-15",
     "modifiedDate": "2026-06-15",
     "category": "Sports",
@@ -2342,9 +2436,32 @@
     "featured": false
   },
   {
+    "slug": "/world-cup",
+    "title": "How the World Cup Works for Americans | 2026 FIFA World Cup Guide",
+    "description": "New to the World Cup? Here's everything you need to know about the 2026 FIFA World Cup — the groups, format, rules, favorites, and how to watch. Written for American newcomers.",
+    "publishDate": "2026-06-15",
+    "modifiedDate": "2026-06-15",
+    "category": "Sports",
+    "tags": [
+      "World Cup 2026",
+      "FIFA",
+      "Soccer",
+      "Explainer",
+      "USA"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.8,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fworld-cup",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
     "slug": "/world-cup/2026/germany-7-curacao-1-group-e",
     "title": "Germany 7–1 Curaçao | World Cup 2026 Group E Match Report",
-    "description": "Germany demolished Curaçao 7–1 in Houston, with Livano Comenencia",
+    "description": "Germany demolished Curaçao 7–1 in Houston, with Livano Comenencia's historic equalizer briefly giving the island nation's supporters a moment before the four-time champions responded with six unanswered goals.",
     "publishDate": "2026-06-14",
     "modifiedDate": "2026-06-14",
     "category": "Sports",
@@ -2365,9 +2482,55 @@
     "featured": false
   },
   {
+    "slug": "/world-cup/2026/ivory-coast-1-ecuador-0-group-e",
+    "title": "Ivory Coast 1–0 Ecuador | World Cup 2026 Group E Match Report",
+    "description": "Amad Diallo's dramatic 90th-minute chip lifted Ivory Coast past Ecuador 1–0 in Philadelphia, sending the Elephants level with Germany at the top of Group E.",
+    "publishDate": "2026-06-14",
+    "modifiedDate": "2026-06-14",
+    "category": "Sports",
+    "tags": [
+      "World Cup 2026",
+      "Ivory Coast",
+      "Ecuador",
+      "Group E",
+      "Match Report"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/world-cup-2026-ivory-coast-1-ecuador-0-group-e.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/world-cup/2026/netherlands-2-japan-2-group-f",
+    "title": "Netherlands 2–2 Japan | World Cup 2026 Group F Match Report",
+    "description": "Daichi Kamada's 88th-minute equalizer completed a stunning Japan comeback from 2–1 down to draw 2–2 with the Netherlands in Dallas, with three goals coming in a wild 13-minute second-half spell.",
+    "publishDate": "2026-06-14",
+    "modifiedDate": "2026-06-14",
+    "category": "Sports",
+    "tags": [
+      "World Cup 2026",
+      "Netherlands",
+      "Japan",
+      "Group F",
+      "Match Report"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/world-cup-2026-netherlands-2-japan-2-group-f.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
     "slug": "/world-cup/2026/australia-2-turkiye-0-group-d",
     "title": "Australia 2–0 Türkiye | World Cup 2026 Group D Match Report",
-    "description": "Australia shocked Türkiye 2–0 in Monterrey, with Nestory Irankunda",
+    "description": "Australia shocked Türkiye 2–0 in Monterrey, with Nestory Irankunda's brilliant first touch and finish followed by Connor Metcalfe's long-range strike in one of Day 3's biggest surprises.",
     "publishDate": "2026-06-13",
     "modifiedDate": "2026-06-13",
     "category": "Sports",
@@ -2390,7 +2553,7 @@
   {
     "slug": "/world-cup/2026/brazil-1-morocco-1-group-c",
     "title": "Brazil 1–1 Morocco | World Cup 2026 Group C Match Report",
-    "description": "Brazil and Morocco played out a 1–1 draw in one of the most anticipated matches of the opening round. Vinícius Júnior bailed Brazil out after Morocco held the Seleção at bay for long stretches.",
+    "description": "The most glamorous fixture of the opening round delivers as advertised. Brazil's reliance on Vinícius Júnior exposed. Report by Jack Brennan.",
     "publishDate": "2026-06-13",
     "modifiedDate": "2026-06-13",
     "category": "Sports",
@@ -2413,7 +2576,7 @@
   {
     "slug": "/world-cup/2026/scotland-1-haiti-0-group-c",
     "title": "Scotland 1–0 Haiti | World Cup 2026 Group C Match Report",
-    "description": "Scotland ended a 28-year World Cup drought with a 1–0 win over Haiti in Atlanta, making their long-awaited return to football",
+    "description": "Scotland ended a 28-year World Cup drought with a 1–0 win over Haiti in Atlanta, making their long-awaited return to football's biggest stage count.",
     "publishDate": "2026-06-13",
     "modifiedDate": "2026-06-13",
     "category": "Sports",
@@ -2434,9 +2597,32 @@
     "featured": false
   },
   {
+    "slug": "/world-cup/2026/switzerland-1-qatar-1-group-b",
+    "title": "Switzerland 1–1 Qatar | World Cup 2026 Group B Match Report",
+    "description": "Switzerland dominated but were denied victory by Qatar's last-gasp equalizer from Boualem Khoukhi. The Swiss had 23 shots but could not hold their 1–0 lead.",
+    "publishDate": "2026-06-13",
+    "modifiedDate": "2026-06-13",
+    "category": "Sports",
+    "tags": [
+      "World Cup 2026",
+      "Switzerland",
+      "Qatar",
+      "Group B",
+      "Match Report"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/world-cup-2026-switzerland-1-qatar-1-group-b.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
     "slug": "/world-cup/2026/canada-1-bosnia-1-group-b",
     "title": "Canada 1–1 Bosnia and Herzegovina | World Cup 2026 Group B Match Report",
-    "description": "Canada drew 1–1 with Bosnia and Herzegovina in their home opener in Toronto. A Jovo Lukić header was cancelled out by Cyle Larin",
+    "description": "Canada drew 1–1 with Bosnia and Herzegovina in their home opener in Toronto. A Jovo Lukić header was cancelled out by Cyle Larin's late substitute equalizer.",
     "publishDate": "2026-06-12",
     "modifiedDate": "2026-06-12",
     "category": "Sports",
@@ -2751,9 +2937,30 @@
     "featured": false
   },
   {
+    "slug": "/tennis/queens-club-championships-2026-guide",
+    "title": "Queen's Club Championships 2026 | What Is the Queens Cup",
+    "description": "What is Queen's Club and the Queens Cup? The complete guide to the 2026 HSBC Championships at Queen's Club in London, the premier Wimbledon warm-up for men and women.",
+    "publishDate": "2026-06-01",
+    "modifiedDate": "2026-06-01",
+    "category": "Sports",
+    "tags": [
+      "Tennis",
+      "ATP",
+      "Queens Club Championships 2026 Guide"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "madison-younghans",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Ftennis%2Fqueens-club-championships-2026-guide",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
     "slug": "/tennis/serena-williams-queens-club-2026-return",
-    "title": "Serena Williams Queen",
-    "description": "Serena Williams returns to competitive tennis at the 2026 WTA 500 Queen",
+    "title": "Serena Williams Queen's Club 2026 | Wildcard Return, Victoria Mboko",
+    "description": "Serena Williams returns to competitive tennis at the 2026 WTA 500 Queen's Club Championships in London, competing in doubles with Canadian Victoria Mboko on a wildcard entry.",
     "publishDate": "2026-06-01",
     "modifiedDate": "2026-06-01",
     "category": "Sports",
@@ -2771,8 +2978,8 @@
   },
   {
     "slug": "/tennis/wimbledon-2026-preview-contenders",
-    "title": "Wimbledon 2026 Preview | Top Contenders, Draw, Key Matches",
-    "description": "Wimbledon 2026 starts June 29 at the All England Club. Full contender preview for the men",
+    "title": "Wimbledon 2026 | WTA",
+    "description": "Wimbledon 2026 starts June 29 at the All England Club. Full contender preview for the men's and women's draws, grass court form guide, and who the favorites are after Queen's Club.",
     "publishDate": "2026-06-01",
     "modifiedDate": "2026-06-01",
     "category": "Sports",
@@ -2787,6 +2994,28 @@
     "priority": 0.7,
     "changeFrequency": "weekly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Ftennis%2Fwimbledon-2026-preview-contenders",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/world-cup/england-world-cup-2026-squad-prediction",
+    "title": "England World Cup 2026 Squad | Predicted Lineup, Key Players",
+    "description": "England's predicted World Cup 2026 squad and starting eleven. Jude Bellingham leads a 26-man group with genuine title contender depth. Full position-by-position breakdown.",
+    "publishDate": "2026-06-01",
+    "modifiedDate": "2026-06-01",
+    "category": "Sports",
+    "tags": [
+      "England",
+      "FIFA World Cup 2026",
+      "Soccer",
+      "Jude Bellingham"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "jack-brennan",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fworld-cup%2Fengland-world-cup-2026-squad-prediction",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
@@ -3263,7 +3492,7 @@
   {
     "slug": "/mlb/robot-umpires-abs-challenge-2026",
     "title": "MLB ABS Challenge System 2026 | Are Robot Umpires Inevitable",
-    "description": "Hawk-Eye is overturning calls. Umpire accuracy sits at 92.5%. The 2026 pitch challenge system may be baseball technology\\",
+    "description": "MLB's 2026 ABS Challenge System lets players contest ball-strike calls via Hawk-Eye. With umpire accuracy gaps exposed, are robot umps inevitable?",
     "publishDate": "2026-05-04",
     "modifiedDate": "2026-05-04",
     "category": "Sports",
@@ -3325,6 +3554,50 @@
     "imageWidth": 1200,
     "imageHeight": 675,
     "imageAlt": "FIFA World Cup 2026 schedule host cities USA Canada Mexico",
+    "featured": false
+  },
+  {
+    "slug": "/cars/ford",
+    "title": "Ford Motor Company | Perfect Storm Warning, Q1 2026",
+    "description": "Ford CEO Jim Farley warns of a \"perfect storm\" threatening US automakers. Q1 2026 sales fell 9%, F-Series down 16%, EV sales dropped 70%. Ford\\",
+    "publishDate": "2026-04-25",
+    "modifiedDate": "2026-04-25",
+    "category": "Cars",
+    "tags": [
+      "Ford",
+      "Jim Farley",
+      "Electric Vehicles",
+      "US Auto Industry"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://images.unsplash.com/photo-1612825173281-9a193378527e?ixlib=rb-4.1.0&w=1200&q=85&fm=jpg&fit=crop&crop=entropy",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "imageAlt": "Ford pickup truck on American highway representing domestic manufacturing",
+    "featured": false
+  },
+  {
+    "slug": "/world-cup/news/italy-rejects-iran-replacement-world-cup-2026-zampolli",
+    "title": "Italy Rejects Iran Replacement Proposal | 2026 World Cup",
+    "description": "Italy\\'s government and Olympic officials slam as \"shameful\" a U.S. proposal by envoy Paolo Zampolli to replace Iran at the 2026 FIFA World Cup. Italy\\",
+    "publishDate": "2026-04-23",
+    "modifiedDate": "2026-04-23",
+    "category": "Sports",
+    "tags": [
+      "Italy",
+      "Iran",
+      "FIFA",
+      "2026 World Cup"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.7,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/world-cup-news-italy-rejects-iran-replacement-world-cup-2026-zampolli.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "imageAlt": "Soccer ball on stadium pitch representing Italy Iran 2026 FIFA World Cup controversy",
     "featured": false
   },
   {
@@ -3489,8 +3762,8 @@
   },
   {
     "slug": "/world-cup/news/trump-iran-world-cup-2026-usa-hosting-controversy",
-    "title": "Trump Iran Comments | World Cup USA Hosting Controversy",
-    "description": "Trump raised Iran as a security threat to the 2026 World Cup on US soil. FIFA",
+    "title": "Trump Iran Comments | World Cup 2026 USA Hosting Controversy",
+    "description": "Trump raised Iran as a security threat to the 2026 World Cup on US soil. FIFA's statutes prohibit excluding qualified nations on political grounds, and",
     "publishDate": "2026-04-08",
     "modifiedDate": "2026-04-08",
     "category": "Sports",
@@ -3559,7 +3832,7 @@
   },
   {
     "slug": "/mls/san-jose-quakes-defensive-resurgence",
-    "title": "San Jose Earthquakes 2026 | Timo Werner Golden Boot Charge",
+    "title": "San Jose Earthquakes 2026 | Defensive Resurgence and Timo's Golden Boot Charge",
     "description": "The San Jose Earthquakes have allowed just 9 goals in 8 matches and Timo Werner leads MLS with 7 goals. A defensive rebuild and a marquee signing are",
     "publishDate": "2026-04-04",
     "modifiedDate": "2026-04-04",
@@ -3854,7 +4127,7 @@
   {
     "slug": "/authors/jack-wang",
     "title": "Jack Wang | Contributor & Journalist",
-    "description": "Jack Wang is a co-founder and contributor at ObjectWire. published articles covering technology, gaming, finance, and digital culture.",
+    "description": "Co-founder bringing insightful metaphors and deep perspectives to journalism.",
     "publishDate": "2020-01-01",
     "modifiedDate": "2020-01-01",
     "category": "Meta",
@@ -3951,6 +4224,28 @@
     "featured": false
   },
   {
+    "slug": "/copyright/news/aoc-mlb-polymarket-gambling-warning",
+    "title": "AOC MLB Polymarket | $300M Gambling Deal Warning",
+    "description": "Rep. AOC calls the deal 'sad' and flags the pervasive gambling risk.",
+    "publishDate": "2020-01-01",
+    "modifiedDate": "2020-01-01",
+    "category": "Legal",
+    "tags": [
+      "Copyright",
+      "Legal",
+      "News",
+      "Aoc Mlb Polymarket Gambling Warning"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.3,
+    "changeFrequency": "monthly",
+    "imageUrl": "/thumbnails/copyright-news-aoc-mlb-polymarket-gambling-warning.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 675,
+    "imageAlt": "AOC MLB Polymarket gambling deal warning",
+    "featured": false
+  },
+  {
     "slug": "/corrections",
     "title": "Corrections Policy | Objective Wire",
     "description": "How Objective Wire handles corrections. Errors are fixed publicly, timestamped, and the original text is preserved. Report an issue here.",
@@ -3965,6 +4260,25 @@
     "priority": 0.8,
     "changeFrequency": "monthly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcorrections",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/creator",
+    "title": "Creator Hub | Profiles, News & Culture",
+    "description": "ObjectWire's Creator Hub: in-depth profiles, breaking news, and cultural coverage of the biggest names in content creation, fitness, YouTube, golf, and",
+    "publishDate": "2020-01-01",
+    "modifiedDate": "2020-01-01",
+    "category": "Creators",
+    "tags": [
+      "Creator",
+      "Social Media"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.8,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fcreator",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
@@ -4514,6 +4828,26 @@
     "priority": 0.8,
     "changeFrequency": "weekly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fsports",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/tags/[tag]",
+    "title": "${tag} | ${articles.length} Articles | ObjectWire",
+    "description": "All ObjectWire articles tagged \"${tag}\", the latest news, analysis and coverage.",
+    "publishDate": "2020-01-01",
+    "modifiedDate": "2020-01-01",
+    "category": "Meta",
+    "tags": [
+      "Tags",
+      "ObjectWire",
+      "[Tag]"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.3,
+    "changeFrequency": "monthly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Ftags%2F%5Btag%5D",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
