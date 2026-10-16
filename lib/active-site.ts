@@ -21,6 +21,7 @@ export interface SiteDefinition {
   email: string;
   foundedYear: number;
   focusLine: string;
+  gaMeasurementId: string;
 }
 
 export const SITES: Record<ObjectiveWireSite, SiteDefinition> = {
@@ -36,6 +37,7 @@ export const SITES: Record<ObjectiveWireSite, SiteDefinition> = {
     email: 'editorial@objectivewire.org',
     foundedYear: 2025,
     focusLine: 'Texas Investigations · Public Records · Courts · Crime',
+    gaMeasurementId: 'G-50NPJVFVQ4',
   },
   main: {
     site: 'main',
@@ -49,6 +51,7 @@ export const SITES: Record<ObjectiveWireSite, SiteDefinition> = {
     email: 'editorial@objectivewire.com',
     foundedYear: 2024,
     focusLine: 'Sports · Creators · Cars · Culture',
+    gaMeasurementId: 'G-TJKLF1V24M',
   },
 };
 

@@ -22,6 +22,7 @@ export const SITE_CONFIG = {
   locale: 'en_US',
   foundedYear: _active.foundedYear,
   focusLine: _active.focusLine,
+  gaMeasurementId: _active.gaMeasurementId,
 } as const;
 
 export type SiteConfig = typeof SITE_CONFIG;
