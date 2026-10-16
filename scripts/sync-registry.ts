@@ -116,8 +116,12 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     }
 
     // ── Extract title ──────────────────────────────────────────────────────
+    // Tolerate apostrophes inside double-quoted strings (e.g. "Lam's Seafood")
+    // so titles with contractions are not truncated or dropped.
     const titleMatch =
-      content.match(/title\s*:\s*['"`]([^'"`\r\n]{3,200})['"`]/) ||
+      content.match(/title\s*:\s*"((?:[^"\r\n]|\\"){3,200})"/) ||
+      content.match(/title\s*:\s*'((?:[^'\r\n]|\\'){3,200})'/) ||
+      content.match(/title\s*:\s*`((?:[^`\r\n]){3,200})`/) ||
       content.match(/<h1[^>]*>([^<]{3,200})<\/h1>/);
     const rawTitle = titleMatch?.[1]?.trim() ?? '';
 
@@ -126,10 +130,13 @@ function extractMetadataFromFile(filePath: string): PageMeta | null {
     if (!rawTitle || rawTitle === slugDerived) return null;
 
     // ── Extract description ────────────────────────────────────────────────
-    // Tolerate escaped apostrophes (\') inside single-quoted strings so
-    // articles with contractions are not silently dropped by the quality gate.
+    // Tolerate apostrophes inside double-quoted strings (e.g. "Seattle's Lam's")
+    // and escaped apostrophes (\') inside single-quoted strings so articles
+    // with contractions are not silently dropped by the quality gate.
     const descMatch =
-      content.match(/description\s*:\s*['"`]((?:[^'"`\r\n]|\\'){10,300})['"`]/) ||
+      content.match(/description\s*:\s*"((?:[^"\r\n]|\\"){10,300})"/) ||
+      content.match(/description\s*:\s*'((?:[^'\r\n]|\\'){10,300})'/) ||
+      content.match(/description\s*:\s*`((?:[^`\r\n]){10,300})`/) ||
       content.match(/content\s*:\s*['"`]((?:[^'"`\r\n]|\\'){10,300})['"`]/);
     const rawDesc = descMatch?.[1]?.trim() ?? '';
 

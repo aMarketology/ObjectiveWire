@@ -1,5 +1,26 @@
 [
   {
+    "slug": "/local/us-news/lams-seafood-ebt-fraud-king-5-2026",
+    "title": "Lam's Seafood EBT Fraud King 5 | What Investigations Found",
+    "description": "A viral video accused Seattle's Lam's Seafood of EBT fraud. We break down what the video showed, the store's response, and what police found.",
+    "publishDate": "2026-10-15",
+    "modifiedDate": "2026-10-15",
+    "category": "Local",
+    "tags": [
+      "Local News",
+      "Us News",
+      "Lams Seafood Ebt Fraud King 5 2026"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.org/thumbnails/local-us-news-lams-seafood-ebt-fraud-king-5-2026.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "Lam",
+    "featured": false
+  },
+  {
     "slug": "/local/us-news/keion-white-shooting-san-francisco-2026",
     "title": "Keion White Shot | 49ers Star and Four SF Suspects",
     "description": "San Francisco 49ers defensive lineman Keion White was shot outside a Mission District venue in February 2026. Four men face charges and White has fully recovered.",
@@ -44,6 +65,31 @@
     "imageWidth": 1200,
     "imageHeight": 630,
     "imageAlt": "Nick Shirley food stamp fraud video investigation",
+    "featured": false
+  },
+  {
+    "slug": "/local/greater-texas/doj-summer-surge-pandemic-loan-fraud-15m-texas-2026",
+    "title": "DOJ Summer Surge Pandemic Loan Fraud | $15.3M Stolen in Texas",
+    "description": "Federal investigators concluded a massive \"summer surge\" of COVID-era loan fraud indictments, uncovering over $15.3 million stolen in Texas alone as part of a $245 million nationwide crackdown.",
+    "publishDate": "2026-09-23",
+    "modifiedDate": "2026-09-23",
+    "category": "Local",
+    "tags": [
+      "DOJ",
+      "Pandemic Loan Fraud",
+      "Texas",
+      "SBA",
+      "PPP Fraud",
+      "Austin"
+    ],
+    "author": "ObjectWire Editorial",
+    "authorSlug": "carson-scott",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.org/thumbnails/local-greater-texas-doj-summer-surge-pandemic-loan-fraud-15m-texas-2026.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "DOJ summer surge pandemic loan fraud Texas crackdown",
     "featured": false
   },
   {
@@ -96,8 +142,8 @@
   },
   {
     "slug": "/local/austin/shugs-bagels-soft-open-austin-2026",
-    "title": "Shug",
-    "description": "After months of navigating city permitting hurdles and utility upgrades, Dallas-founded Shug",
+    "title": "Shug's Bagels Austin | Soft Open After Permitting Delays",
+    "description": "After months of navigating city permitting hurdles and utility upgrades, Dallas-founded Shug's Bagels has soft-opened its long-awaited Austin location at 1206 Parkway with limited hours ahead of a full-service launch.",
     "publishDate": "2026-08-03",
     "modifiedDate": "2026-08-03",
     "category": "Local",
@@ -241,7 +287,7 @@
   {
     "slug": "/local/greater-texas/georgetown-the-district-400m-fraud-verdict-2026",
     "title": "Georgetown The District Fraud | $400M Jury Verdict 2026",
-    "description": "A Williamson County jury has ordered the developers behind the failed 400-acre Georgetown project,",
+    "description": "A Williamson County jury has ordered the developers behind the failed 400-acre Georgetown project, \"The District,\" to pay over $400 million in damages for fraud and breach of contract. The verdict includes $300 million in punitive damages.",
     "publishDate": "2026-07-29",
     "modifiedDate": "2026-07-29",
     "category": "Local",
@@ -315,7 +361,7 @@
   {
     "slug": "/blog/the-meadow-epic-city-texas-court-ruling-2026",
     "title": "The Meadow Project | Travis County Court Ruling, Texas Fair Housing Dispute",
-    "description": "A Travis County judge ordered the TWC to honor its settlement with developers of the 400-acre master-planned community near Josephine. Governor Abbott vowed the project",
+    "description": "A Travis County judge ordered the TWC to honor its settlement with developers of the 400-acre master-planned community near Josephine. Governor Abbott vowed the project \"will never see the light of day.\" The legal fight spans fair housing, securities, and utility law.",
     "publishDate": "2026-07-11",
     "modifiedDate": "2026-07-11",
     "category": "Blog",
@@ -586,6 +632,31 @@
     "priority": 0.6,
     "changeFrequency": "weekly",
     "imageUrl": "https://www.objectivewire.org/api/og?slug=%2Fdirectory%2Fhouston%2Fcompanies%2Fport-houston",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/directory/houston/government/harris-county-da",
+    "title": "Harris County DA | Sean Teare | District Attorney's Office",
+    "description": "Harris County District Attorney's Office profile. DA Sean Teare took office January 2025. Covers office structure, investigative priorities, public records access, and accountability beats.",
+    "publishDate": "2026-06-13",
+    "modifiedDate": "2026-06-13",
+    "category": "Local",
+    "tags": [
+      "Harris County",
+      "sky",
+      "Elected Office",
+      "violet",
+      "Prosecution",
+      "rose",
+      "Houston",
+      "slate"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.org/api/og?slug=%2Fdirectory%2Fhouston%2Fgovernment%2Fharris-county-da",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false
