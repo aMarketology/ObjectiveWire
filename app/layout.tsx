@@ -15,7 +15,9 @@ import { SITE_CONFIG } from "@/lib/site-config";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || SITE_CONFIG.gaMeasurementId;
+// Hardcoded per-site GA4 ID. Do NOT read from env — a stale
+// NEXT_PUBLIC_GA_MEASUREMENT_ID was overriding the .com ID with the .org ID.
+const GA_ID = SITE_CONFIG.gaMeasurementId;
 
 // =============================================================================
 // FONT OPTIMIZATION - Prevents layout shift (CLS)

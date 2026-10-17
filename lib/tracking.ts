@@ -8,8 +8,12 @@
 // attributed correctly across sessions without third-party cookies.
 // =============================================================================
 
-export const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? 'G-50NPJVFVQ4';
+import { getActiveSiteConfig } from './active-site';
+
+// Hardcoded per-site GA4 measurement ID. Do NOT read from env — a stale
+// NEXT_PUBLIC_GA_MEASUREMENT_ID in .env/.env.local was overriding the .com ID
+// with the .org ID, sending all .com traffic to the wrong property.
+export const GA_MEASUREMENT_ID = getActiveSiteConfig().gaMeasurementId;
 
 // ── Visitor identity store ────────────────────────────────────────────────────
 const VISITOR_KEY = 'ow_visitor';
