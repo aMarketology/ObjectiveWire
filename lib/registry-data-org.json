@@ -23,6 +23,29 @@
     "featured": false
   },
   {
+    "slug": "/local/us-news/ghost-mode-corvette-c7-rlyslo-police-chase",
+    "title": "Ghost Mode Corvette C7 RlySlo | Police Chase Kill Switch",
+    "description": "Inside the Ghost Mode street racing phenomenon, where blackout kill switches and thermal imaging let high-powered cars vanish from police pursuits.",
+    "publishDate": "2026-10-26",
+    "modifiedDate": "2026-10-26",
+    "category": "Local",
+    "tags": [
+      "Ghost Mode",
+      "Street Racing",
+      "RlySlo",
+      "Corvette",
+      "Police Pursuit"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.org/thumbnails/local-us-news-ghost-mode-corvette-c7-rlyslo-police-chase.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "Ghost Mode Corvette C7 police chase",
+    "featured": false
+  },
+  {
     "slug": "/local/houston/fort-bend-tax-assessor-carmen-turner-arrested-2026",
     "title": "Fort Bend Tax Assessor Carmen Turner Arrested | Charges",
     "description": "Fort Bend County Tax Assessor-Collector Carmen Turner was federally indicted, accused of using county payroll to pay caregivers for her mother.",
