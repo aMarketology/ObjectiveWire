@@ -35,6 +35,7 @@ export const CATEGORY_MAP: CategoryRule[] = [
   { prefix: '/soccer',              category: 'Sports',          tags: ['Soccer', 'Football'] },
   { prefix: '/ufc',                 category: 'Sports',          tags: ['UFC', 'MMA', 'Combat Sports'] },
   { prefix: '/nfl',                 category: 'Sports',          tags: ['NFL', 'Football'] },
+  { prefix: '/wnba',                category: 'Sports',          tags: ['WNBA', 'Basketball'] },
   { prefix: '/tennis',              category: 'Sports',          tags: ['Tennis', 'ATP'] },
   { prefix: '/predict',             category: 'Sports',          tags: ['Predictions', 'Markets'] },
   { prefix: '/predictions',         category: 'Sports',          tags: ['Predictions', 'Markets'] },
