@@ -104,6 +104,7 @@ export const CATEGORY_MAP: CategoryRule[] = [
   { prefix: '/account',             category: 'Meta',            tags: ['Account', 'ObjectWire'] },
 
   // Investigations (org branch)
+  { prefix: '/foreign-affairs',     category: 'World Affairs',   tags: ['Foreign Affairs', 'World'] },
   { prefix: '/ngos',                category: 'World Affairs',   tags: ['NGO', 'Nonprofits'] },
   { prefix: '/missing-persons',     category: 'Investigations',  tags: ['Missing Persons', 'Investigations'] },
   { prefix: '/investigations',      category: 'Investigations',  tags: ['Investigations'] },

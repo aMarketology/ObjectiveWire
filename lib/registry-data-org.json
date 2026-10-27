@@ -1,5 +1,28 @@
 [
   {
+    "slug": "/foreign-affairs/brazil/election-26",
+    "title": "Flávio Bolsonaro Brazilian Election | Lula Wins Runoff",
+    "description": "Luiz Inácio Lula da Silva secured a historic comeback in Brazil's 2026 runoff. Flávio Bolsonaro refuses to concede, citing a two-hour voting extension.",
+    "publishDate": "2026-10-26",
+    "modifiedDate": "2026-10-26",
+    "category": "World Affairs",
+    "tags": [
+      "Brazil",
+      "Lula da Silva",
+      "Flávio Bolsonaro",
+      "Election",
+      "Foreign Affairs"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.org/thumbnails/foreign-affairs-brazil-election-26.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "Brazil 2026 presidential election runoff",
+    "featured": false
+  },
+  {
     "slug": "/local/houston/fort-bend-tax-assessor-carmen-turner-arrested-2026",
     "title": "Fort Bend Tax Assessor Carmen Turner Arrested | Charges",
     "description": "Fort Bend County Tax Assessor-Collector Carmen Turner was federally indicted, accused of using county payroll to pay caregivers for her mother.",
@@ -1192,6 +1215,25 @@
     "priority": 0.8,
     "changeFrequency": "weekly",
     "imageUrl": "https://www.objectivewire.org/api/og?slug=%2Fdirectory",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/foreign-affairs",
+    "title": "Foreign Affairs | World News and Analysis | oWire",
+    "description": "Foreign affairs coverage from Objective Wire. World elections, international politics, and global accountability reporting.",
+    "publishDate": "2020-01-01",
+    "modifiedDate": "2020-01-01",
+    "category": "World Affairs",
+    "tags": [
+      "Foreign Affairs",
+      "World"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.8,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.org/api/og?slug=%2Fforeign-affairs",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false

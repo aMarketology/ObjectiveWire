@@ -111,7 +111,8 @@ export function getArticleOwnerSite(slug: string, explicitSite?: string): Object
     normalized.startsWith('/local') ||
     normalized.startsWith('/blog') ||
     normalized.startsWith('/directory') ||
-    normalized.startsWith('/austin-private-detective-agency')
+    normalized.startsWith('/austin-private-detective-agency') ||
+    normalized.startsWith('/foreign-affairs')
   ) {
     return 'org';
   }
