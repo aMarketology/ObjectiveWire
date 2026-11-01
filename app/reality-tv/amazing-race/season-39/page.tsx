@@ -190,6 +190,10 @@ export default function AmazingRace39CastPage() {
           <Link href="/reality-tv" className="text-blue-600 hover:text-blue-800 underline">
             Reality TV hub
           </Link>
+          , follow the season in our{' '}
+          <Link href="/reality-tv/amazing-race/season-39/episode-6" className="text-blue-600 hover:text-blue-800 underline">
+            Episode 6 recap
+          </Link>
           , or read our{' '}
           <Link href="/reality-tv/survivor/season-51" className="text-blue-600 hover:text-blue-800 underline">
             Survivor 51 premiere recap

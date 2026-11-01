@@ -1,5 +1,74 @@
 [
   {
+    "slug": "/reality-tv/amazing-race/season-39/episode-6",
+    "title": "The Amazing Race 39 Episode 6 Recap | Express Passes Burned",
+    "description": "The Amazing Race Season 39 Episode 6 recap: the final Express Passes burned in Albania, a non-elimination save, and a Double U-Turn tease.",
+    "publishDate": "2026-10-31",
+    "modifiedDate": "2026-10-31",
+    "category": "Entertainment",
+    "tags": [
+      "The Amazing Race",
+      "Reality TV",
+      "CBS",
+      "Express Pass",
+      "Phil Keoghan"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/reality-tv-amazing-race-season-39-episode-6-recap.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "The Amazing Race Season 39 Episode 6 recap in Albania",
+    "featured": false
+  },
+  {
+    "slug": "/reality-tv/survivor/season-51/episode-6",
+    "title": "Survivor 51 Episode 6 Recap | Tethered Idol and Ori Ousted",
+    "description": "Survivor 51 Episode 6 delivered a cross-tribe Exile summit, the debut Tethered Idol, and a 2-0 vote sending Ori Jean-Charles home from Savu.",
+    "publishDate": "2026-10-31",
+    "modifiedDate": "2026-10-31",
+    "category": "Entertainment",
+    "tags": [
+      "Survivor 51",
+      "Reality TV",
+      "Ori Jean-Charles",
+      "Jeff Probst",
+      "CBS"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/reality-tv-survivor-season-51-episode-6-recap.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "Survivor 51 Episode 6 recap and tribal council",
+    "featured": false
+  },
+  {
+    "slug": "/reality-tv/the-voice/season-30",
+    "title": "The Voice Season 30 Update | Cut Week Format Explained",
+    "description": "The Voice Season 30 wrapped Battle Rounds with Kelly Clarkson, Adam Levine, Queen Latifah and Riley Green. Here is the new Cut Week format.",
+    "publishDate": "2026-10-31",
+    "modifiedDate": "2026-10-31",
+    "category": "Entertainment",
+    "tags": [
+      "The Voice",
+      "NBC",
+      "Reality TV",
+      "Kelly Clarkson",
+      "Adam Levine"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.6,
+    "changeFrequency": "weekly",
+    "imageUrl": "/thumbnails/reality-tv-the-voice-season-30-update.jpg",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "imageAlt": "The Voice Season 30 update and Cut Week format",
+    "featured": false
+  },
+  {
     "slug": "/mlb/brewers-rays-world-series-game-3-2026",
     "title": "Brewers vs Rays World Series Game 3 | 8-Run Surge",
     "description": "Fueled by a historic eight-run, two-out surge in the fifth inning and Jackson Chourio's four-hit night, the Brewers dominated the Rays in Game 3.",
@@ -4641,6 +4710,25 @@
     "priority": 0.8,
     "changeFrequency": "monthly",
     "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Fprivacy-policy",
+    "imageWidth": 1200,
+    "imageHeight": 630,
+    "featured": false
+  },
+  {
+    "slug": "/reality-tv",
+    "title": "Reality TV News & Recaps | The Voice, Survivor, Big Brother",
+    "description": "Reality TV coverage from oWire: The Voice, Survivor, Big Brother and The Amazing Race. Premiere recaps, cast guides, format twists and live show results.",
+    "publishDate": "2020-01-01",
+    "modifiedDate": "2020-01-01",
+    "category": "Entertainment",
+    "tags": [
+      "Reality TV",
+      "Television"
+    ],
+    "author": "ObjectWire Editorial",
+    "priority": 0.8,
+    "changeFrequency": "weekly",
+    "imageUrl": "https://www.objectivewire.com/api/og?slug=%2Freality-tv",
     "imageWidth": 1200,
     "imageHeight": 630,
     "featured": false

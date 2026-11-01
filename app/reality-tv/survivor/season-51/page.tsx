@@ -163,7 +163,11 @@ export default function Survivor51PremierePage() {
           <Link href="/reality-tv/survivor/season-51/castaways" className="text-blue-600 hover:text-blue-800 underline">
             Survivor 51 remaining castaways guide
           </Link>
-          .
+          . The Open Era twists kept coming, and{' '}
+          <Link href="/reality-tv/survivor/season-51/episode-6" className="text-blue-600 hover:text-blue-800 underline">
+            Episode 6 introduced the Tethered Idol
+          </Link>{' '}
+          on Exile Island.
         </p>
 
         <h2>Sources</h2>
