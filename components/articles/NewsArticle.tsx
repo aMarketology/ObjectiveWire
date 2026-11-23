@@ -11,6 +11,7 @@ import type { BreadcrumbItem } from '@/components/nav/Breadcrumb';
 import FAQAccordion, { FAQSchema } from '@/components/FAQAccordion';
 import type { FAQItem } from '@/components/FAQAccordion';
 import { MoreFromHub, type MoreFromHubItem } from '@/components/discovery/MoreFromHub';
+import { LibraryConnectedArticles } from '@/components/discovery/LibraryConnectedArticles';
 import { KeyTakeaways } from '@/components/articles/KeyTakeaways';
 import { NewsArticleSchema } from '@/components/articles/NewsArticleSchema';
 import { SITE_CONFIG } from '@/lib/site-config';
@@ -298,11 +299,11 @@ export function NewsHeader({
       {/* No Hero Image - Gradient Header */}
       {!heroImage && (
         <div
-          className={`bg-gradient-to-r ${categoryColors[categoryColor]} py-16 md:py-24`}
-          style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%)' }}
+          className={`bg-gradient-to-r ${categoryColors[categoryColor]} py-14 md:py-20`}
+          style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)' }}
         >
-          <div className="container mx-auto px-6 max-w-5xl">
-            <div className="flex items-center gap-8">
+          <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-10">
 
               {/* Left column — all text content (fills remaining space) */}
               <div className="flex-1 min-w-0">
@@ -378,11 +379,11 @@ export function NewsHeader({
                 </div>
               </div>
 
-              {/* Right column — thumbnail with genie float + flare animation */}
+              {/* Right column — full 1200x630 thumbnail with genie float + flare animation */}
               {thumbnail && (() => {
-                const aspectRatioCss = thumbnail.aspectRatio ? thumbnail.aspectRatio.replace(':', '/') : undefined;
+                const aspectRatioCss = thumbnail.aspectRatio ? thumbnail.aspectRatio.replace(':', '/') : '1200 / 630';
                 return (
-                <div className="hidden md:flex shrink-0 self-stretch -my-16 md:-my-24 -mr-6" style={{ width: '30%' }}>
+                <div className="w-full lg:w-[48%] shrink-0">
                   <style>{`
                     @keyframes genieFloat {
                       0%,100% { transform: translateY(0px) rotate(0deg) scale(1); }
@@ -406,10 +407,9 @@ export function NewsHeader({
                     .genie-flare1{ animation: genieFlare  3.2s ease-in-out infinite; }
                     .genie-flare2{ animation: genieFlare2 4.1s ease-in-out infinite 0.9s; }
                   `}</style>
-                  {/* wrapper fills the full height of the gradient header via flex-stretch */}
                   <div
-                    className="relative w-full rounded-l-xl overflow-hidden genie-wrap"
-                    style={aspectRatioCss ? { aspectRatio: aspectRatioCss } : { height: '100%' }}
+                    className="relative w-full rounded-2xl overflow-hidden border border-white/25 genie-wrap"
+                    style={{ aspectRatio: aspectRatioCss }}
                   >
                     <img
                       src={thumbnail.src}
@@ -835,12 +835,20 @@ export function NewsArticle({
               </div>
             )}
 
-            {/* Server-rendered MoreFromHub — inside article column so sticky rails stay locked. */}
-            {moreFromHub && moreFromHub.length > 0 && (
+            {/* Server-rendered MoreFromHub + Connected Library Graph — inside article column so sticky rails stay locked. */}
+            {moreFromHub && moreFromHub.length > 0 ? (
               <MoreFromHub
                 items={moreFromHub}
                 hubLabel={moreFromHubLabel ?? category}
                 hubHref={moreFromHubHref}
+              />
+            ) : (
+              <LibraryConnectedArticles
+                currentSlug={url ?? slug ?? ''}
+                currentTitle={title}
+                category={category}
+                tags={tags}
+                limit={6}
               />
             )}
           </article>

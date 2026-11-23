@@ -8,10 +8,11 @@
  * NOT for: long-form investigations (use JackArticle), evergreen guides (use ArticlePage)
  */
 
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import { LibraryConnectedArticles } from '@/components/discovery/LibraryConnectedArticles';
+import RelatedArticles from '@/components/discovery/RelatedArticles';
+import { HubBacklink } from '@/components/HubBacklink';
 
 // ─── Accent colour map (matches JackArticle palette) ─────────────────────────
 const ACCENT_MAP: Record<string, { border: string; text: string; badge: string }> = {
@@ -99,13 +100,17 @@ export default function QuickArticle({
   children,
 }: QuickArticleProps) {
   const accent = resolveAccent(accentColor);
+  const currentSlug = breadcrumbs?.[breadcrumbs.length - 1]?.href ?? '';
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-8">
+    <main className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-8 lg:gap-10">
+      <article className="w-full min-w-0">
       {/* ── Breadcrumbs ───────────────────────────────────────────────────── */}
       {breadcrumbs && breadcrumbs.length > 0 && (
         <nav
-          className="flex items-center gap-2 text-sm text-gray-500 mb-5"
+          className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-5"
           aria-label="Breadcrumb"
         >
           {breadcrumbs.map((crumb, i) => (
@@ -113,7 +118,7 @@ export default function QuickArticle({
               {i > 0 && <span className="select-none">/</span>}
               <Link
                 href={crumb.href}
-                className="text-blue-600 hover:text-blue-800 underline"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 underline"
               >
                 {crumb.label}
               </Link>
@@ -136,29 +141,29 @@ export default function QuickArticle({
         </p>
 
         {/* H1 */}
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-4">
           {title}
         </h1>
 
         {/* Subtitle */}
         {subtitle && (
-          <p className="text-lg text-gray-600 leading-relaxed mb-5">{subtitle}</p>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-5">{subtitle}</p>
         )}
 
         {/* Byline row */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
           {author && (
             <span>
               By{' '}
               {author.slug ? (
                 <Link
                   href={`/authors/${author.slug}`}
-                  className="text-blue-600 hover:text-blue-800 underline font-medium"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-800 underline font-medium"
                 >
                   {author.name}
                 </Link>
               ) : (
-                <span className="font-medium text-gray-700">{author.name}</span>
+                <span className="font-medium text-gray-700 dark:text-gray-200">{author.name}</span>
               )}
             </span>
           )}
@@ -173,18 +178,19 @@ export default function QuickArticle({
         </div>
       </header>
 
-      {/* ── Hero image ────────────────────────────────────────────────────── */}
+      {/* ── Hero / Thumbnail Showcase (Full 1200x630 uncropped) ───────────── */}
       {heroImage && (
-        <figure className="mb-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={heroImage.src}
-            alt={heroImage.alt}
-            className="w-full rounded-xl object-cover"
-            style={{ maxHeight: 460 }}
-          />
+        <figure className="mb-9 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 shadow-lg">
+          <div className="aspect-[1200/630] w-full overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={heroImage.src}
+              alt={heroImage.alt}
+              className="w-full h-full object-cover"
+            />
+          </div>
           {heroImage.caption && (
-            <figcaption className="mt-2 text-sm text-center text-gray-500">
+            <figcaption className="px-4 py-2.5 text-xs sm:text-sm text-center text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-900/90 border-t border-gray-200 dark:border-gray-800">
               {heroImage.caption}
             </figcaption>
           )}
@@ -192,7 +198,7 @@ export default function QuickArticle({
       )}
 
       {/* ── Body ──────────────────────────────────────────────────────────── */}
-      <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-blue-600 prose-a:underline prose-a:hover:text-blue-800">
+      <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-p:text-gray-800 dark:prose-p:text-gray-200 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:underline prose-a:hover:text-blue-800">
         {children}
       </div>
 
@@ -243,31 +249,30 @@ export default function QuickArticle({
         </div>
       )}
 
-      {/* ── Related articles ──────────────────────────────────────────────── */}
-      {relatedArticles && relatedArticles.length > 0 && (
-        <div className="mt-10 pt-6 border-t border-gray-200">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">
-            More Stories
-          </h2>
-          <ul className="space-y-3">
-            {relatedArticles.map((rel, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <Link
-                  href={rel.href ?? rel.url ?? '#'}
-                  className="text-blue-600 hover:text-blue-800 underline text-sm leading-snug"
-                >
-                  {rel.title}
-                </Link>
-                {rel.category && (
-                  <span className="text-xs text-gray-400 mt-0.5 shrink-0">
-                    {rel.category}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* ── Connected Library Articles (Wikipedia-style Knowledge Graph) ───── */}
+      <LibraryConnectedArticles
+        currentSlug={currentSlug}
+        currentTitle={title}
+        category={category}
+        tags={tags}
+        manualItems={relatedArticles}
+        limit={6}
+      />
     </article>
+
+      {/* ── Right rail — sticky Related Articles + Hub backlink ───────────── */}
+      <aside>
+        <div className="sticky top-6">
+          <HubBacklink category={category} />
+          <RelatedArticles
+            currentSlug={currentSlug}
+            category={category}
+            tags={tags}
+          />
+        </div>
+      </aside>
+      </div>
+    </div>
+    </main>
   );
 }

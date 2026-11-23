@@ -155,8 +155,8 @@ export default function TarikSkubalMetsContractPage() {
           Rather than relying on complicated opt-out clauses or club options, Mets owner <strong>Steve Cohen</strong> and president of baseball operations <strong>David Stearns</strong> structured a straightforward nine-year commitment paired with targeted cash-flow mechanisms:
         </p>
 
-        <div className="my-8 not-prose overflow-hidden rounded-xl border border-orange-200 shadow-sm">
-          <table className="w-full text-sm border-collapse">
+        <div className="my-8 not-prose overflow-x-auto rounded-xl border border-orange-200 dark:border-orange-900/60 bg-white dark:bg-gray-900 shadow-sm">
+          <table className="w-full text-sm border-collapse text-left">
             <thead>
               <tr className="bg-orange-600 text-white">
                 <th className="px-4 py-3 text-left font-bold">Contract Component</th>
@@ -164,7 +164,7 @@ export default function TarikSkubalMetsContractPage() {
                 <th className="px-4 py-3 text-left font-bold">Financial &amp; Roster Impact</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-orange-100">
+            <tbody className="divide-y divide-orange-100 dark:divide-gray-800">
               {[
                 [
                   'Total Guaranteed Value',
@@ -197,10 +197,10 @@ export default function TarikSkubalMetsContractPage() {
                   'Gives Skubal complete veto power over any future trade scenarios.',
                 ],
               ].map((row, i) => (
-                <tr key={i} className={i % 2 === 1 ? 'bg-orange-50/40' : 'bg-white'}>
-                  <td className="px-4 py-3 font-semibold text-orange-950 whitespace-nowrap">{row[0]}</td>
-                  <td className="px-4 py-3 text-gray-800 font-medium">{row[1]}</td>
-                  <td className="px-4 py-3 text-gray-700">{row[2]}</td>
+                <tr key={i} className={i % 2 === 1 ? 'bg-orange-50 dark:bg-gray-800/70' : 'bg-white dark:bg-gray-900'}>
+                  <td className="px-4 py-3 font-semibold text-gray-950 dark:text-orange-200 whitespace-nowrap">{row[0]}</td>
+                  <td className="px-4 py-3 text-gray-900 dark:text-gray-100 font-medium">{row[1]}</td>
+                  <td className="px-4 py-3 text-gray-700 dark:text-gray-300">{row[2]}</td>
                 </tr>
               ))}
             </tbody>
