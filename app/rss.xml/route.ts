@@ -1,33 +1,18 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import { getAllEntries } from '@/lib/registry-service';
-import type { ContentEntry } from '@/lib/content-registry';
+import { getAllEntries, isRealArticle, toAbsoluteUrl } from '@/lib/registry-service';
+
+export const revalidate = 3600;
 
 // RSS feed is generated live from registry-service for the active site — no Supabase calls.
 const RSS_LIMIT = 200;
 
-// Path-prefix roots that are never articles (author pages, hub pages, service pages, etc.)
-const NON_ARTICLE_ROOTS = new Set([
-  'authors', 'service', 'editorial-standards', 'get-help',
-  'local', 'account', 'auth', 'api', 'admin', 'tags', 'search',
-  'index', 'blog', 'site-index', 'team', 'privacy-policy',
-  'terms-of-service', 'corrections', 'copyright', 'about',
-  'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
-  'feed.json', 'podcasts',
-]);
-
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
   const registry = await getAllEntries();
+  const todayStr = new Date().toISOString().split('T')[0];
 
   const articles = [...registry]
-    .filter((row) => {
-      const parts = row.slug.split('/').filter(Boolean);
-      if (parts.length < 2) return false;
-      if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
-      if ((row.description || '').length < 60) return false;
-      if ((row.title || '').startsWith('›')) return false;
-      return true;
-    })
+    .filter((row) => isRealArticle(row) && row.publishDate <= todayStr)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
     .slice(0, RSS_LIMIT);
 
@@ -49,6 +34,7 @@ export async function GET() {
       const pubDate = new Date(row.publishDate).toUTCString();
       const author = row.author || 'ObjectWire Editorial Team';
       const tags = Array.isArray(row.tags) ? row.tags : [];
+      const absImageUrl = toAbsoluteUrl(row.imageUrl, baseUrl);
       return `
     <item>
       <title><![CDATA[${row.title}]]></title>
@@ -58,9 +44,10 @@ export async function GET() {
       <pubDate>${pubDate}</pubDate>
       <author>${SITE_CONFIG.email} (${escapeXml(author)})</author>
       <category>${escapeXml(row.category || 'News')}</category>${tags.map((tag) => `
-      <category>${escapeXml(tag)}</category>`).join('')}${row.imageUrl ? `
-      <enclosure url="${escapeXml(row.imageUrl)}" type="image/jpeg"/>
-      <media:content url="${escapeXml(row.imageUrl)}" medium="image"/>` : ''}
+      <category>${escapeXml(tag)}</category>`).join('')}${absImageUrl ? `
+      <enclosure url="${escapeXml(absImageUrl)}" type="image/jpeg"/>
+      <media:content url="${escapeXml(absImageUrl)}" medium="image"/>
+      <media:thumbnail url="${escapeXml(absImageUrl)}"/>` : ''}
     </item>`;
     }).join('')}
   </channel>

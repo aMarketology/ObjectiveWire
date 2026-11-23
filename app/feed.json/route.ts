@@ -1,33 +1,19 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import { getAllEntries } from '@/lib/registry-service';
-import type { ContentEntry } from '@/lib/content-registry';
+import { getAllEntries, isRealArticle, toAbsoluteUrl } from '@/lib/registry-service';
+
+export const revalidate = 3600;
 
 // JSON Feed 1.1 — https://www.jsonfeed.org/version/1.1/
 // Preferred by AI systems (Perplexity, ChatGPT Search, Claude) over RSS/Atom.
 // Sourced live from active site registry-service — no Supabase calls. Same source as RSS.
 
-const NON_ARTICLE_ROOTS = new Set([
-  'authors', 'service', 'editorial-standards', 'get-help',
-  'local', 'account', 'auth', 'api', 'admin', 'tags', 'search',
-  'index', 'blog', 'site-index', 'team', 'privacy-policy',
-  'terms-of-service', 'corrections', 'copyright', 'about',
-  'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
-  'feed.json', 'podcasts',
-]);
-
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
   const registry = await getAllEntries();
+  const todayStr = new Date().toISOString().split('T')[0];
 
   const items = [...registry]
-    .filter((entry) => {
-      const parts = entry.slug.split('/').filter(Boolean);
-      if (parts.length < 2) return false;
-      if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
-      if ((entry.description || '').length < 60) return false;
-      if ((entry.title || '').startsWith('›')) return false;
-      return true;
-    })
+    .filter((entry) => isRealArticle(entry) && entry.publishDate <= todayStr)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
     .slice(0, 100)
     .map((entry) => {
@@ -41,7 +27,8 @@ export async function GET() {
         authors: [{ name: entry.author || 'Objective Wire Editorial' }],
         tags: Array.isArray(entry.tags) ? entry.tags : [],
       };
-      if (entry.imageUrl) item.image = entry.imageUrl;
+      const absImage = toAbsoluteUrl(entry.imageUrl, baseUrl);
+      if (absImage) item.image = absImage;
       return item;
     });
 

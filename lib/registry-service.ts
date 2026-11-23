@@ -42,7 +42,7 @@ const HUB_CATEGORIES = new Set(['Meta', 'Support', 'Services', 'Legal']);
 const NON_ARTICLE_ROOTS = new Set([
   'authors', 'service', 'editorial-standards', 'get-help',
   'account', 'auth', 'api', 'admin', 'tags', 'search',
-  'index', 'blog', 'site-index', 'team', 'privacy-policy',
+  'index', 'site-index', 'team', 'privacy-policy',
   'terms-of-service', 'corrections', 'copyright', 'about',
   'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
   'feed.json', 'podcasts',
@@ -53,7 +53,7 @@ const NON_ARTICLE_ROOTS = new Set([
 // 2-segment paths like /local/austin are hub listing pages, not articles.
 const HUB_ONLY_ROOTS = new Set(['local', 'predict']);
 
-function isRealArticle(e: ContentEntry): boolean {
+export function isRealArticle(e: ContentEntry): boolean {
   if (HUB_SLUGS.has(e.slug)) return false;
   if (HUB_CATEGORIES.has(e.category)) return false;
   const parts = e.slug.split('/').filter(Boolean);
@@ -65,6 +65,14 @@ function isRealArticle(e: ContentEntry): boolean {
   if (e.description.length < 60) return false;
   if (e.title.startsWith('›') || e.title.startsWith('ObjectWire coverage')) return false;
   return true;
+}
+
+/** Normalize a relative path (e.g. /thumbnails/foo.jpg) to an absolute URL. */
+export function toAbsoluteUrl(src: string | null | undefined, baseUrl: string): string | undefined {
+  if (!src || src.trim() === '') return undefined;
+  if (src.startsWith('https://') || src.startsWith('http://')) return src;
+  if (src.startsWith('/')) return `${baseUrl}${src}`;
+  return `${baseUrl}/${src}`;
 }
 
 // ---------------------------------------------------------------------------

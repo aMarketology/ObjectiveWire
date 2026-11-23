@@ -1,4 +1,4 @@
-﻿# Content Topics � April 2026
+# Content Topics � April 2026
 
 ---
 
@@ -375,3 +375,64 @@ These are time-sensitive. Publish within the next 2�4 weeks to capture current
 | World Cup 2026 schedule | HIGH | Not started | June start � search climbing |
 | Netflix Q2 2026 earnings recap | MEDIUM | Not started | Publish within 24h of earnings |
 | Nvidia RTX 5090 review | MEDIUM | Not started | Hardware cycle |
+
+---
+
+# Objective Wire (.org) — Texas Investigations & Ongoing Criminal Cases Docket
+
+The `.org` branch (`https://www.objectivewire.org`, site discriminator `OBJECTWIRE_SITE=org`) is dedicated to hard-hitting investigative journalism, courthouse reporting, public corruption, federal indictments, and municipal/state accountability across Texas (Austin, Houston, Dallas-Fort Worth, San Antonio, and Greater Texas).
+
+### Core Standards for .org Editorial
+- **Author Bylines:** Default to `Carson Scott` (`carson-scott`), Chief Investigative Writer, or `ObjectWire Investigative Desk`.
+- **Primary Sources:** Every case report must be anchored in verified filings (PACER federal dockets, Texas county district clerk records, TDCAA case summaries, Texas Court of Criminal Appeals rulings, SEC/DOJ complaints).
+- **Component Pattern:** Use `<NewsArticle>` or `<QuickArticle>` with structured headers, court/docket breakdown tree blocks, and verified video embeds or court documents.
+- **Tone:** Objective, measured, forensic legal terminology; no fluff, speculation, or unverified claims.
+
+---
+
+## Active & Ongoing Texas Criminal Cases Docket (Late 2026)
+
+### 1. Houston & Harris County / Fort Bend
+| Case / Investigation | Slug / Target Path | Primary Angle & Evidence | Status & Docket |
+|---|---|---|---|
+| **Carmen Turner Federal Bribery & Tax Fraud** | `/local/houston/carmen-turner-fort-bend-tax-assessor-indictment` | Former Fort Bend County Tax Assessor-Collector indicted in federal court for wire fraud, bribery, and steering municipal contracts to shell vendor entities. | **LIVE (SDTX Case 4:26-cr-677)** |
+| **Zo Frost / Houston Galleria Jewelry Gold Laundering** | `/blog/houston-zo-frost-jewelers-gold-laundering-elder-fraud` | Federal probe into Houston luxury jewelers and courier networks converting millions in elder-fraud proceeds into physical gold bars and custom bullion. | **LIVE / SCHEDULED (Nov 27, 2026)** |
+| **Galveston County & Hitchcock Game Room Protection Ring** | `/blog/galveston-county-hitchcock-illegal-gameroom-protection-indictment` | Federal and state public corruption indictments alleging municipal officials and law enforcement took cash kickbacks to shield illicit 8-liner gambling halls. | Galveston County 10th / 56th District Court |
+| **Harris County Inmate Jail Deaths Civil Rights Probe** | `/local/houston/harris-county-jail-deaths-doj-civil-rights-investigation` | Federal DOJ Civil Rights Division investigation into systemic medical neglect, overcrowding, and staffing shortages at 1200 Baker Street. | Ongoing DOJ Civil Rights Section review |
+
+### 2. Austin & Travis County / Central Texas
+| Case / Investigation | Slug / Target Path | Primary Angle & Evidence | Status & Docket |
+|---|---|---|---|
+| **Bare Cabaret Capital Murder Trial** | `/blog/austin-bare-cabaret-capital-murder-trial-travis-county` | High-profile capital murder trial stemming from the fatal execution-style shooting at north Austin's Bare Cabaret; disputes over surveillance video and gang affiliations. | Travis County 147th District Court |
+| **Daniel Perry Murder Conviction Pardon Appeal** | `/blog/daniel-perry-pardon-appeal-texas-court-criminal-appeals` | Travis County DA's constitutional challenge against Governor Abbott’s pardon of Daniel Perry; appellate battle before the Texas Court of Criminal Appeals (CCA). | En Banc Review, Texas Court of Criminal Appeals |
+| **Georgetown "The District" $400M Real Estate Fraud Fallout** | `/local/greater-texas/georgetown-the-district-real-estate-fraud-aftermath` | Criminal and SEC securities fraud fallout following the collapse of the 32-acre mixed-use development, uncovering investor misrepresentations and misappropriated escrow funds. | **LIVE / SCHEDULED (Nov 25, 2026)** |
+
+### 3. Greater Texas, Border & State Agencies
+| Case / Investigation | Slug / Target Path | Primary Angle & Evidence | Status & Docket |
+|---|---|---|---|
+| **Ken Paxton Election Integrity Unit County Prosecutions** | `/local/greater-texas/ken-paxton-election-integrity-county-da-disputes` | OAG Election Integrity Unit attempting to bypass local county DAs to prosecute local voter registration organizers following *State v. Stephens*. | **LIVE / SCHEDULED (Nov 26, 2026)** |
+| **Camp Mystic Guadalupe River Flash Flood Inquest** | `/local/greater-texas/camp-mystic-guadalupe-river-flood-investigation` | Kerr County grand jury and state regulatory inquiry into emergency response protocols and warning system delays during Hill Country river flooding. | **LIVE (Kerr County 216th District & WDTX Bankruptcy)** |
+| **Operation Lone Star Guard Contractor Payroll & Kickback Probe** | `/local/greater-texas/operation-lone-star-private-security-fraud-probe` | State Auditor and Texas Rangers investigating private security and logistics contractors padding billable hours along Del Rio and Eagle Pass border sectors. | Texas Rangers Public Integrity Unit |
+| **Bexar County Constable Racketeering & Extortion Trial** | `/local/san-antonio/bexar-county-constable-deputy-extortion-trial` | Federal trial of former Bexar County precinct deputies accused of running protection schemes and extorting local flea market vendors. | WDTX San Antonio Division |
+
+### 4. Federal Cross-Border & Special Proceedings
+| Case / Investigation | Slug / Target Path | Primary Angle & Evidence | Status & Docket |
+|---|---|---|---|
+| **Andrew & Tristan Tate UK Extradition Proceedings** | `/blog/andrew-tate-tristan-tate-uk-extradition-hearing-delayed-miami` | Miami federal court canceling November hearings, scheduling habeas corpus bail challenges on Nov 30, and pushing final UK extradition hearings to January 2027. | **LIVE (S.D. Fla. Magistrate Judge Louis)** |
+
+---
+
+## .org Content Pipeline Workflow
+
+1. **Case Intake:** Select target from active docket above or check Texas Court of Criminal Appeals / PACER SDTX & WDTX daily orders.
+2. **Document Extraction:** Pull docket number, presiding judge, defense counsel, prosecuting agency, and indictment counts.
+3. **Drafting:** Place article in appropriate directory (`app/local/houston/`, `app/local/greater-texas/`, or `app/blog/`).
+4. **Visual Assets:** Generate high-resolution thumbnail using Satori with cinematic layout (`accent: '#c0392b'` or `#1a365d'`).
+5. **Registry Sync & Verification:**
+   ```bash
+   OBJECTWIRE_SITE=org npx tsx scripts/sync-registry.ts --write
+   npx tsx scripts/validate-public.ts
+   npx tsx scripts/validate-canonicals.ts
+   npx tsc --noEmit
+   ```
+

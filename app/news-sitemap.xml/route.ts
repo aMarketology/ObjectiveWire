@@ -1,42 +1,33 @@
 import { SITE_CONFIG } from '@/lib/site-config';
-import { getAllEntries } from '@/lib/registry-service';
-import type { ContentEntry } from '@/lib/content-registry';
+import { getAllEntries, isRealArticle } from '@/lib/registry-service';
+
+export const revalidate = 3600;
 
 // Google News Sitemap Protocol: https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap
 // Articles are sourced live from registry-service (filtered to active deployment site).
 // To appear here, an entry needs:
-//   - publishDate within the sliding window (NEWS_WINDOW_DAYS)
+//   - publishDate within the sliding window (NEWS_WINDOW_DAYS) and not in the future
 //   - tags[] used as news keywords
-//   - must be a real article (slug depth >= 2, description >= 60 chars)
+//   - must pass isRealArticle() (handles /blog/*, /local/*/*, and hub exclusions)
 // No Supabase calls — fully in-memory.
 
 const NEWS_WINDOW_DAYS = 7;
-
-// Path-prefix roots that are never articles (author pages, hub pages, service pages, etc.)
-const NON_ARTICLE_ROOTS = new Set([
-  'authors', 'service', 'editorial-standards', 'get-help',
-  'local', 'account', 'auth', 'api', 'admin', 'tags', 'search',
-  'index', 'blog', 'site-index', 'team', 'privacy-policy',
-  'terms-of-service', 'corrections', 'copyright', 'about',
-  'feeds', 'rss.xml', 'news-sitemap.xml', 'image-sitemap.xml',
-  'feed.json', 'podcasts',
-]);
 
 export async function GET() {
   const baseUrl = SITE_CONFIG.url;
   const registry = await getAllEntries();
 
-  const cutoff = new Date();
+  const now = new Date();
+  const todayStr = now.toISOString().split('T')[0]; // "YYYY-MM-DD"
+  const cutoff = new Date(now);
   cutoff.setDate(cutoff.getDate() - NEWS_WINDOW_DAYS);
   const cutoffStr = cutoff.toISOString().split('T')[0]; // "YYYY-MM-DD"
 
   const recentArticles = registry
     .filter(entry => {
+      if (!isRealArticle(entry)) return false;
       if (entry.publishDate < cutoffStr) return false;
-      const parts = entry.slug.split('/').filter(Boolean);
-      if (parts.length < 2) return false;
-      if (NON_ARTICLE_ROOTS.has(parts[0])) return false;
-      if ((entry.description || '').length < 60) return false;
+      if (entry.publishDate > todayStr) return false;
       return true;
     })
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())

@@ -34,13 +34,22 @@ export function NewsArticleSchema({
   keywords = [],
 }: ArticleSchemaProps) {
   const siteUrl = SITE_CONFIG.url;
+  const normalizedImageUrl = imageUrl
+    ? (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')
+        ? imageUrl
+        : `${siteUrl}${imageUrl.startsWith('/') ? imageUrl : `/${imageUrl}`}`)
+    : undefined;
+  const normalizedArticleUrl =
+    articleUrl.startsWith('http://') || articleUrl.startsWith('https://')
+      ? articleUrl
+      : `${siteUrl}${articleUrl.startsWith('/') ? articleUrl : `/${articleUrl}`}`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     "headline": title,
     "description": description,
-    "image": imageUrl
-      ? [{ "@type": "ImageObject", "url": imageUrl, "width": imageWidth, "height": imageHeight, "caption": imageAlt || title }]
+    "image": normalizedImageUrl
+      ? [{ "@type": "ImageObject", "url": normalizedImageUrl, "width": imageWidth, "height": imageHeight, "caption": imageAlt || title }]
       : undefined,
     "datePublished": publishedTime,
     "dateModified": modifiedTime || publishedTime,
@@ -67,7 +76,7 @@ export function NewsArticleSchema({
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": articleUrl
+      "@id": normalizedArticleUrl
     },
     "articleSection": section,
     "keywords": keywords.join(", "),
