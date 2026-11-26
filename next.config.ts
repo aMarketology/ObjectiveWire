@@ -94,6 +94,16 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // API routes - never cache dynamic responses
+      {
+        source: '/api/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, max-age=0'
+          },
+        ],
+      },
       // Sitemaps and feeds - moderate caching
       {
         source: '/:path*.xml',

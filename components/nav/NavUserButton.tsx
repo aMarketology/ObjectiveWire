@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { createBrowserClient } from '@/lib/supabase/client';
+import { createAuthBrowserClient } from '@/lib/supabase/client';
 
 export default function NavUserButton() {
   const [label, setLabel] = useState<string | null>(null);
 
   useEffect(() => {
-    const supabase = createBrowserClient();
+    const supabase = createAuthBrowserClient();
 
     supabase.auth.getUser().then(({ data }) => {
       const user = data?.user;

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, Suspense } from 'react';
-import { createBrowserClient } from '@/lib/supabase/client';
+import { useState, useEffect, Suspense } from 'react';
+import { createAuthBrowserClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -32,10 +32,32 @@ function LoginContent() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.location.hash) return;
+    const hashParams = new URLSearchParams(window.location.hash.slice(1));
+    const access_token = hashParams.get('access_token');
+    const refresh_token = hashParams.get('refresh_token');
+    if (!access_token || !refresh_token) return;
+
+    const supabase = createAuthBrowserClient();
+    supabase.auth.setSession({ access_token, refresh_token }).then(({ error: sessionErr }) => {
+      if (sessionErr) {
+        setError(sessionErr.message);
+        return;
+      }
+      const nextTarget =
+        (redirectTo && redirectTo !== '/' ? redirectTo : null)
+        ?? sessionStorage.getItem('ow_auth_next')
+        ?? '/';
+      sessionStorage.removeItem('ow_auth_next');
+      window.location.replace(nextTarget);
+    });
+  }, [redirectTo]);
+
   const handleGoogleSignIn = async () => {
     setGoogleLoading(true);
     setError('');
-    const supabase = createBrowserClient();
+    const supabase = createAuthBrowserClient();
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
@@ -59,7 +81,7 @@ function LoginContent() {
     }
 
     setLoading(true);
-    const supabase = createBrowserClient();
+    const supabase = createAuthBrowserClient();
 
     if (mode === 'signup') {
       const { error: signUpError } = await supabase.auth.signUp({ email, password });

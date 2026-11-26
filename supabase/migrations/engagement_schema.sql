@@ -121,6 +121,7 @@ CREATE POLICY "as_anon_delete" ON article_saves FOR DELETE TO anon USING (true);
 CREATE TABLE IF NOT EXISTS discord_comments (
   id               UUID        DEFAULT gen_random_uuid() PRIMARY KEY,
   slug             TEXT        NOT NULL,
+  parent_id        UUID        REFERENCES discord_comments(id) ON DELETE CASCADE,
   discord_id       TEXT        NOT NULL,
   discord_username TEXT        NOT NULL,
   discord_avatar   TEXT        NOT NULL,
@@ -129,6 +130,7 @@ CREATE TABLE IF NOT EXISTS discord_comments (
 );
 
 CREATE INDEX IF NOT EXISTS idx_dc_slug ON discord_comments (slug, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_dc_parent ON discord_comments (parent_id, created_at ASC);
 CREATE INDEX IF NOT EXISTS idx_dc_user ON discord_comments (discord_id, created_at DESC);
 
 ALTER TABLE discord_comments ENABLE ROW LEVEL SECURITY;

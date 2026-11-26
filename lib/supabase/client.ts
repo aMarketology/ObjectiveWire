@@ -28,6 +28,10 @@ export function createBrowserClient() {
 export function createAuthBrowserClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-  return createSSRBrowserClient(url, key);
+  return createSSRBrowserClient(url, key, {
+    auth: {
+      flowType: 'pkce',
+    },
+  });
 }
 
