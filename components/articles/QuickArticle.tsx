@@ -12,8 +12,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import DiscordComments from '@/components/engagement/discord-comments';
 
 // ─── Accent colour map (matches JackArticle palette) ─────────────────────────
 const ACCENT_MAP: Record<string, { border: string; text: string; badge: string }> = {
@@ -79,7 +77,6 @@ export interface QuickArticleProps {
   sources?: QuickSource[];
   relatedArticles?: QuickRelated[];
   tags?: string[];
-  slug?: string;
   children: React.ReactNode;
 }
 
@@ -99,11 +96,8 @@ export default function QuickArticle({
   sources,
   relatedArticles,
   tags,
-  slug,
   children,
 }: QuickArticleProps) {
-  const pathname = usePathname();
-  const resolvedSlug = (slug ?? pathname ?? '').replace(/^\/+/, '');
   const accent = resolveAccent(accentColor);
 
   return (
@@ -272,13 +266,6 @@ export default function QuickArticle({
               </li>
             ))}
           </ul>
-        </div>
-      )}
-
-      {/* ── Comments (Discord) ────────────────────────────────────────────── */}
-      {resolvedSlug && (
-        <div className="mt-10 pt-6 border-t border-gray-200">
-          <DiscordComments slug={resolvedSlug} articleTitle={title} />
         </div>
       )}
     </article>

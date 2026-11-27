@@ -19,8 +19,36 @@
 const ANONYMOUS_COMMENTS = false;
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import Link from 'next/link';
 import { createAuthBrowserClient } from '@/lib/supabase/client';
 import Image from 'next/image';
+
+interface MentionCandidate {
+  username: string;
+  displayName: string;
+  avatarUrl: string;
+  discordId: string;
+  inThread?: boolean;
+}
+
+function renderBodyWithMentions(body: string) {
+  const parts = body.split(/(@[a-zA-Z0-9_.-]{2,32})/g);
+  return parts.map((part, idx) => {
+    if (/^@[a-zA-Z0-9_.-]{2,32}$/.test(part)) {
+      const handle = part.slice(1).toLowerCase();
+      return (
+        <Link
+          key={idx}
+          href={`/u/${encodeURIComponent(handle)}`}
+          className="inline-block font-medium text-[#5865F2] bg-[#5865F2]/10 hover:bg-[#5865F2]/20 px-1 rounded transition-colors"
+        >
+          {part}
+        </Link>
+      );
+    }
+    return <span key={idx}>{part}</span>;
+  });
+}
 
 interface Comment {
   id: string;
@@ -127,7 +155,9 @@ function CommentCard({
             </button>
           )}
         </div>
-        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed break-words">{comment.body}</p>
+        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed break-words">
+          {renderBodyWithMentions(comment.body)}
+        </p>
       </div>
     </div>
   );
@@ -201,6 +231,11 @@ export default function DiscordComments({ slug, articleTitle, compact = false }:
   const [replySubmitting, setReplySubmitting] = useState(false);
   const [replyError, setReplyError] = useState('');
 
+  // @Mention autocomplete state
+  const [mentionQuery, setMentionQuery] = useState<string | null>(null);
+  const [mentionTarget, setMentionTarget] = useState<'main' | 'reply'>('main');
+  const [mentionCandidates, setMentionCandidates] = useState<MentionCandidate[]>([]);
+
   const hasMounted = useRef(false);
 
   // ── On mount: check Supabase session ─────────────────────────────────────
@@ -271,6 +306,55 @@ export default function DiscordComments({ slug, articleTitle, compact = false }:
   }, [slug]);
 
   useEffect(() => { fetchComments(); }, [fetchComments]);
+
+  // ── @Mention autocomplete lookup ─────────────────────────────────────────
+  useEffect(() => {
+    if (mentionQuery === null) {
+      setMentionCandidates([]);
+      return;
+    }
+    const ctrl = new AbortController();
+    const timer = setTimeout(async () => {
+      try {
+        const res = await fetch(
+          `/api/discord/mentions?q=${encodeURIComponent(mentionQuery)}&slug=${encodeURIComponent(slug)}`,
+          { signal: ctrl.signal, cache: 'no-store' },
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setMentionCandidates(data.candidates ?? []);
+        }
+      } catch {
+        /* aborted or network error */
+      }
+    }, 120);
+    return () => {
+      clearTimeout(timer);
+      ctrl.abort();
+    };
+  }, [mentionQuery, slug]);
+
+  function handleDraftChange(value: string, target: 'main' | 'reply') {
+    if (target === 'main') setDraft(value);
+    else setReplyDraft(value);
+
+    const match = value.match(/(?:^|\s)@([a-zA-Z0-9_.-]{0,32})$/);
+    if (match) {
+      setMentionTarget(target);
+      setMentionQuery(match[1]);
+    } else {
+      setMentionQuery(null);
+    }
+  }
+
+  function insertMention(username: string, target: 'main' | 'reply') {
+    const current = target === 'main' ? draft : replyDraft;
+    const updated = current.replace(/(^|\s)@[a-zA-Z0-9_.-]{0,32}$/, `$1@${username} `);
+    if (target === 'main') setDraft(updated);
+    else setReplyDraft(updated);
+    setMentionQuery(null);
+    setMentionCandidates([]);
+  }
 
   // ── Auth handlers ─────────────────────────────────────────────────────────
   async function handleDiscordLogin() {
@@ -536,14 +620,35 @@ export default function DiscordComments({ slug, articleTitle, compact = false }:
                 </div>
               )}
 
-              <textarea
-                value={draft}
-                onChange={(e) => setDraft(e.target.value)}
-                placeholder={user ? `Comment as ${user.name}…` : 'Write a comment…'}
-                maxLength={1000}
-                rows={compact ? 2 : 3}
-                className="w-full border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2.5 text-sm text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-[#5865F2]/40 focus:border-[#5865F2] transition"
-              />
+              <div className="relative">
+                <textarea
+                  value={draft}
+                  onChange={(e) => handleDraftChange(e.target.value, 'main')}
+                  placeholder={user ? `Comment as ${user.name}… (type @ to mention)` : 'Write a comment…'}
+                  maxLength={1000}
+                  rows={compact ? 2 : 3}
+                  className="w-full border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2.5 text-sm text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-[#5865F2]/40 focus:border-[#5865F2] transition"
+                />
+                {mentionTarget === 'main' && mentionCandidates.length > 0 && (
+                  <div className="absolute left-0 right-0 z-20 mt-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg overflow-hidden">
+                    {mentionCandidates.map((c) => (
+                      <button
+                        key={c.username}
+                        type="button"
+                        onClick={() => insertMention(c.username, 'main')}
+                        className="w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs hover:bg-[#5865F2]/10 transition-colors"
+                      >
+                        <span className="font-semibold text-gray-900 dark:text-gray-100">@{c.username}</span>
+                        {c.inThread && (
+                          <span className="text-[10px] text-[#5865F2] bg-[#5865F2]/10 px-1.5 py-0.5 rounded-full">
+                            In thread
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <span className="text-[11px] text-gray-400">{draft.length}/1000 · 10/hr max</span>
@@ -647,15 +752,36 @@ export default function DiscordComments({ slug, articleTitle, compact = false }:
                           Cancel
                         </button>
                       </div>
-                      <textarea
-                        value={replyDraft}
-                        onChange={(e) => setReplyDraft(e.target.value)}
-                        placeholder={`Reply to @${replyingTo.username}…`}
-                        maxLength={1000}
-                        rows={2}
-                        autoFocus
-                        className="w-full border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-[#5865F2]/40 focus:border-[#5865F2] transition"
-                      />
+                      <div className="relative">
+                        <textarea
+                          value={replyDraft}
+                          onChange={(e) => handleDraftChange(e.target.value, 'reply')}
+                          placeholder={`Reply to @${replyingTo.username}… (type @ to mention)`}
+                          maxLength={1000}
+                          rows={2}
+                          autoFocus
+                          className="w-full border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-[#5865F2]/40 focus:border-[#5865F2] transition"
+                        />
+                        {mentionTarget === 'reply' && mentionCandidates.length > 0 && (
+                          <div className="absolute left-0 right-0 z-20 mt-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg overflow-hidden">
+                            {mentionCandidates.map((c) => (
+                              <button
+                                key={c.username}
+                                type="button"
+                                onClick={() => insertMention(c.username, 'reply')}
+                                className="w-full flex items-center gap-2.5 px-3 py-2 text-left text-xs hover:bg-[#5865F2]/10 transition-colors"
+                              >
+                                <span className="font-semibold text-gray-900 dark:text-gray-100">@{c.username}</span>
+                                {c.inThread && (
+                                  <span className="text-[10px] text-[#5865F2] bg-[#5865F2]/10 px-1.5 py-0.5 rounded-full">
+                                    In thread
+                                  </span>
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                       <div className="flex items-center justify-between gap-2">
                         <span className="text-[11px] text-gray-400">{replyDraft.length}/1000</span>
                         <button

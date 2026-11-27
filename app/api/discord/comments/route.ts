@@ -12,6 +12,7 @@
 // =============================================================================
 
 import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'crypto';
 import { createAuthClient, createClient } from '@/lib/supabase/server';
 import { SITE_CONFIG } from '@/lib/site-config';
 
@@ -74,7 +75,7 @@ export async function GET(req: NextRequest) {
       .select('id, slug, discord_id, discord_username, discord_avatar, body, created_at')
       .in('slug', [cleanSlug, `/${cleanSlug}`])
       .order('created_at', { ascending: false });
-    data = (fallback.data ?? []).map((row) => ({ ...row, parent_id: null }));
+    data = (fallback.data ?? []).map((row: Record<string, unknown>) => ({ ...row, parent_id: null })) as typeof data;
     error = fallback.error;
   }
 
@@ -171,7 +172,38 @@ export async function POST(req: NextRequest) {
     ?? user.user_metadata?.avatar_url
     ?? '';
 
+  const commenterHandle = (
+    identityData.name?.replace(/#\d+$/, '')
+    ?? identityData.full_name
+    ?? commenterName
+  )
+    .toLowerCase()
+    .replace(/[^a-z0-9_.-]/g, '')
+    .slice(0, 32) || `user_${commenterId.slice(0, 8)}`;
+
   const supabase = authSupabase;
+
+  // ── Sync public_profiles (best-effort; never blocks commenting) ───────────
+  try {
+    const hashSeed = user.email ? user.email.toLowerCase() : user.id;
+    const userHash = crypto.createHash('sha256').update(hashSeed).digest('hex');
+    await supabase.from('public_profiles').upsert(
+      {
+        user_hash: userHash,
+        auth_user_id: user.id,
+        username: commenterHandle,
+        display_name: commenterName,
+        email: user.email ?? null,
+        avatar_url: commenterAvatar || null,
+        primary_provider: 'discord',
+        discord_id: commenterId,
+        discord_username: commenterName,
+      },
+      { onConflict: 'user_hash' },
+    );
+  } catch {
+    // public_profiles may not be migrated yet
+  }
 
   // ── Hard rate limit: max 10 comments & replies per hour ──────────────────
   const now = Date.now();
@@ -248,6 +280,79 @@ export async function POST(req: NextRequest) {
     createdAt: inserted.created_at,
   };
 
+  // ── Resolve @mentions (for Discord <@id> pings + in-app notifications) ───
+  const mentionMatches = Array.from(text.matchAll(/@([a-zA-Z0-9_.-]{2,32})/g)).map((m) => m[1]);
+  const uniqueMentions = Array.from(new Set(mentionMatches.map((m) => m.toLowerCase())));
+  const mentionMap = new Map<string, { discordId?: string; authUserId?: string }>();
+
+  if (uniqueMentions.length > 0) {
+    try {
+      const { data: profileHits } = await supabase
+        .from('public_profiles')
+        .select('username, discord_username, discord_id, auth_user_id')
+        .limit(50);
+
+      for (const p of profileHits ?? []) {
+        const u1 = String(p.username ?? '').toLowerCase();
+        const u2 = String(p.discord_username ?? '').toLowerCase();
+        for (const token of uniqueMentions) {
+          if (u1 === token || u2 === token) {
+            mentionMap.set(token, {
+              discordId: p.discord_id ?? undefined,
+              authUserId: p.auth_user_id ?? undefined,
+            });
+          }
+        }
+      }
+    } catch {
+      // ignore if public_profiles doesn't exist yet
+    }
+
+    // Fallback to participants in this thread's discord_comments
+    const unresolved = uniqueMentions.filter((t) => !mentionMap.get(t)?.discordId);
+    if (unresolved.length > 0) {
+      const { data: threadUsers } = await supabase
+        .from('discord_comments')
+        .select('discord_id, discord_username')
+        .in('slug', [slug, `/${slug}`])
+        .limit(50);
+
+      for (const row of threadUsers ?? []) {
+        const uname = String(row.discord_username ?? '').toLowerCase();
+        if (unresolved.includes(uname) && row.discord_id) {
+          const prev = mentionMap.get(uname) ?? {};
+          mentionMap.set(uname, { ...prev, discordId: row.discord_id });
+        }
+      }
+    }
+
+    // Insert mention notifications for resolved Supabase users (excluding self)
+    try {
+      const notifRows = Array.from(mentionMap.values())
+        .filter((m) => m.authUserId && m.authUserId !== user.id)
+        .map((m) => ({
+          user_id: m.authUserId!,
+          actor_name: commenterName,
+          actor_avatar: commenterAvatar || null,
+          type: 'mention',
+          slug,
+          comment_id: comment.id,
+          body_preview: text.trim().slice(0, 140),
+        }));
+      if (notifRows.length > 0) {
+        await supabase.from('notifications').insert(notifRows);
+      }
+    } catch {
+      // ignore if notifications table doesn't exist yet
+    }
+  }
+
+  // Format body for Discord: translate @username -> <@discord_id> for real pings
+  const discordBody = text.trim().replace(/@([a-zA-Z0-9_.-]{2,32})/g, (full, handle: string) => {
+    const resolved = mentionMap.get(handle.toLowerCase());
+    return resolved?.discordId ? `<@${resolved.discordId}>` : full;
+  });
+
   // ── Forward to Discord Forum Channel webhook ─────────────────────────────
   const webhookUrl = process.env.DISCORD_COMMENTS_WEBHOOK_URL;
   let discordSynced = false;
@@ -273,27 +378,31 @@ export async function POST(req: NextRequest) {
       const threadTitle = `${prefix}${rawTitle}`.slice(0, 100);
 
       const buildPayload = (isNewThread: boolean): Record<string, unknown> => ({
-        username: `${commenterName} via ${siteDomain}`,
+        username: `${commenterName} · ${siteDomain}`,
         avatar_url: commenterAvatar || undefined,
         ...(isNewThread ? { thread_name: threadTitle } : {}),
         embeds: [
           {
             color: 0x5865f2,
+            title: isNewThread ? rawTitle.slice(0, 256) : undefined,
+            url: isNewThread ? articleUrl : undefined,
             author: {
               name: commenterName,
+              url: `${siteBaseUrl}/u/${encodeURIComponent(commenterHandle)}`,
               icon_url: commenterAvatar || undefined,
             },
-            description: text.trim(),
+            description: discordBody,
             fields: [
               ...(replyToUsername
                 ? [{ name: '↩️ Replying to', value: `@${replyToUsername}`, inline: true }]
                 : []),
               {
-                name: '📰 Article',
-                value: `[${rawTitle.slice(0, 100)}](${articleUrl})`,
+                name: '🔗 Navigate',
+                value: `[💬 Reply on Site](${articleUrl}#discord-comments) · [📰 Read Article](${articleUrl})`,
+                inline: Boolean(replyToUsername),
               },
             ],
-            footer: { text: siteDomain },
+            footer: { text: `${siteDomain} · #article-discussion` },
             timestamp: comment.createdAt,
           },
         ],
