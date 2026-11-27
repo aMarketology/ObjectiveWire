@@ -12,7 +12,8 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import { useRouter }   from 'next/navigation';
 import Image            from 'next/image';
 import Link             from 'next/link';
-import { createBrowserClient } from '@/lib/supabase/client';
+import { createAuthBrowserClient } from '@/lib/supabase/client';
+import ArcScoreCard     from '@/components/engagement/ArcScoreCard';
 import type { User }    from '@supabase/supabase-js';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -71,7 +72,19 @@ interface CommentEntry {
   created_at: string;
 }
 
-type Tab = 'overview' | 'liked' | 'saved' | 'history' | 'profile';
+interface NotificationEntry {
+  id: string;
+  actor_name: string;
+  actor_avatar: string | null;
+  type: 'mention' | 'reply' | 'follow';
+  slug: string | null;
+  comment_id: string | null;
+  body_preview: string | null;
+  read_at: string | null;
+  created_at: string;
+}
+
+type Tab = 'overview' | 'alerts' | 'liked' | 'saved' | 'history' | 'profile';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -101,7 +114,7 @@ function StatCard({ label, value, icon }: { label: string; value: number | strin
 
 export default function VaultDashboard() {
   const router   = useRouter();
-  const supabase = createBrowserClient();
+  const supabase = createAuthBrowserClient();
 
   // Auth + profile
   const [user, setUser]         = useState<User | null>(null);
@@ -115,6 +128,10 @@ export default function VaultDashboard() {
   const [saves, setSaves]           = useState<SaveEntry[]>([]);
   const [views, setViews]           = useState<ViewEntry[]>([]);
   const [comments, setComments]     = useState<CommentEntry[]>([]);
+  const [notifications, setNotifications] = useState<NotificationEntry[]>([]);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const [arcScore, setArcScore]       = useState(0);
+  const [arcTierLabel, setArcTierLabel] = useState('Reader');
   const [vaultLoading, setVaultLoading] = useState(true);
 
   // Profile editing
@@ -136,8 +153,9 @@ export default function VaultDashboard() {
     const { data } = await supabase
       .from('public_profiles')
       .select('*')
-      .eq('id', uid)
-      .single();
+      .or(`auth_user_id.eq.${uid},id.eq.${uid}`)
+      .limit(1)
+      .maybeSingle();
 
     if (data) {
       setProfile(data);
@@ -180,7 +198,34 @@ export default function VaultDashboard() {
       })
       .catch(() => {})
       .finally(() => setVaultLoading(false));
+
+    fetch('/api/notifications', { cache: 'no-store' })
+      .then(r => (r.ok ? r.json() : null))
+      .then(data => {
+        if (!data) return;
+        setNotifications(data.notifications ?? []);
+        setUnreadCount(data.unreadCount ?? 0);
+      })
+      .catch(() => {});
+
+    fetch('/api/arc', { cache: 'no-store' })
+      .then(r => (r.ok ? r.json() : null))
+      .then(data => {
+        if (!data) return;
+        setArcScore(data.arcScore ?? 0);
+        if (data.tier?.label) setArcTierLabel(data.tier.label);
+      })
+      .catch(() => {});
   }, [authReady]);
+
+  const handleMarkAllRead = async () => {
+    const res = await fetch('/api/notifications', { method: 'PATCH' });
+    if (res.ok) {
+      const now = new Date().toISOString();
+      setNotifications(prev => prev.map(n => ({ ...n, read_at: n.read_at ?? now })));
+      setUnreadCount(0);
+    }
+  };
 
   // ── Save profile ──────────────────────────────────────────────────────
 
@@ -280,6 +325,7 @@ export default function VaultDashboard() {
 
   const tabs: { id: Tab; label: string; icon: string; count?: number }[] = [
     { id: 'overview', label: 'Overview',  icon: '◈' },
+    { id: 'alerts',   label: 'Alerts',    icon: '🔔', count: unreadCount || undefined },
     { id: 'liked',    label: 'Liked',     icon: '♥', count: stats?.totalLikes },
     { id: 'saved',    label: 'Saved',     icon: '⊞', count: stats?.totalSaves },
     { id: 'history',  label: 'History',   icon: '◷', count: stats?.totalViews },
@@ -382,6 +428,9 @@ export default function VaultDashboard() {
           ══════════════════════════════════════════════════════════════════ */}
       {tab === 'overview' && (
         <div className="space-y-10">
+
+          {/* Rotten-Tomatoes-style ARC Audience Score */}
+          <ArcScoreCard score={arcScore} tierLabel={arcTierLabel} />
 
           {/* Stats Grid */}
           {vaultLoading ? (
@@ -747,6 +796,70 @@ export default function VaultDashboard() {
             </button>
           </section>
         </div>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════════
+          TAB: ALERTS / NOTIFICATIONS
+          ══════════════════════════════════════════════════════════════════ */}
+      {tab === 'alerts' && (
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xs font-black tracking-[.2em] uppercase text-gray-400">
+              Mentions, Replies &amp; Watchlist Alerts
+            </h2>
+            {unreadCount > 0 && (
+              <button
+                type="button"
+                onClick={handleMarkAllRead}
+                className="text-xs font-bold text-[#5865F2] hover:underline"
+              >
+                Mark all read
+              </button>
+            )}
+          </div>
+
+          {notifications.length === 0 ? (
+            <div className="border-2 border-dashed border-gray-200 p-8 text-center text-sm text-gray-500">
+              No notifications yet. When someone @mentions you, replies, or tracks your contributions, alerts appear here.
+            </div>
+          ) : (
+            <div className="divide-y divide-gray-200 border-2 border-black bg-white">
+              {notifications.map((n) => {
+                const cleanSlug = n.slug?.replace(/^\/+/, '');
+                const targetHref = cleanSlug ? `/${cleanSlug}#discord-comments` : '/account';
+                return (
+                  <div
+                    key={n.id}
+                    className={`p-4 flex items-start justify-between gap-4 ${n.read_at ? 'bg-white' : 'bg-[#5865F2]/5'}`}
+                  >
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 text-xs font-bold text-gray-900">
+                        <span>{n.actor_name}</span>
+                        <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-gray-100 text-gray-600">
+                          {n.type === 'follow' ? 'watchlist' : n.type}
+                        </span>
+                        {!n.read_at && (
+                          <span className="w-2 h-2 rounded-full bg-[#5865F2]" title="Unread" />
+                        )}
+                      </div>
+                      {n.body_preview && (
+                        <p className="text-sm text-gray-700 mt-1 break-words">{n.body_preview}</p>
+                      )}
+                      <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+                        <span>{timeAgo(n.created_at)}</span>
+                        {cleanSlug && (
+                          <Link href={targetHref} className="text-[#5865F2] font-semibold hover:underline">
+                            View discussion →
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
       )}
 
     </main>

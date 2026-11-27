@@ -70,10 +70,10 @@ export default function FollowButton({ targetUserId, initialFollowersCount = 0 }
             : 'bg-[#5865F2] hover:bg-[#4752C4] text-white'
         }`}
       >
-        {busy ? 'Updating…' : isFollowing ? 'Following' : 'Follow'}
+        {busy ? 'Updating…' : isFollowing ? 'Tracking' : 'Track'}
       </button>
       <span className="text-xs text-gray-500">
-        <strong className="text-gray-900">{followersCount}</strong> {followersCount === 1 ? 'follower' : 'followers'}
+        <strong className="text-gray-900">{followersCount}</strong> tracking
       </span>
     </div>
   );

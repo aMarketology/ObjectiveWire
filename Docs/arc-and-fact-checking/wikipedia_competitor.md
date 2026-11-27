@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS fact_check_proposals (
   claim_quote    TEXT,
   proposed_text  TEXT        NOT NULL CHECK (char_length(proposed_text) <= 2000),
   source_urls    TEXT[]      NOT NULL CHECK (array_length(source_urls, 1) >= 1),
-  status         TEXT        NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+  status         TEXT        NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'contested', 'approved', 'overridden', 'rejected')),
+  is_locked      BOOLEAN     NOT NULL DEFAULT false, -- Locked by Owner Override against repeat spam
   reviewer_id    UUID        REFERENCES auth.users(id),
   review_note    TEXT,
   created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -76,7 +77,7 @@ CREATE TABLE IF NOT EXISTS fact_check_votes (
   PRIMARY KEY (proposal_id, user_id)
 );
 
--- 3. Immutable public revision log
+-- 3. Immutable public revision log (also powers agent-readable delta feeds)
 CREATE TABLE IF NOT EXISTS article_revision_log (
   id             UUID        DEFAULT gen_random_uuid() PRIMARY KEY,
   site_domain    TEXT        NOT NULL DEFAULT 'objectivewire.com',
@@ -84,11 +85,25 @@ CREATE TABLE IF NOT EXISTS article_revision_log (
   proposal_id    UUID        REFERENCES fact_check_proposals(id),
   contributor_id UUID        REFERENCES auth.users(id),
   approved_by    UUID        REFERENCES auth.users(id),
+  resolution     TEXT        NOT NULL DEFAULT 'approved' CHECK (resolution IN ('approved', 'overridden')),
   summary        TEXT        NOT NULL,
   source_urls    TEXT[]      NOT NULL,
   published_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- 4. Story / Investigation Watchlists ("Track this Story" alerts)
+CREATE TABLE IF NOT EXISTS story_watchlists (
+  user_id        UUID        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  site_domain    TEXT        NOT NULL DEFAULT 'objectivewire.com',
+  slug           TEXT        NOT NULL,
+  created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (user_id, site_domain, slug)
+);
 ```
+
+### Agent-Ready & Anti-Spam Additions
+- **Agent-Readable Delta Feed:** Expose approved/overridden `article_revision_log` entries via `/api/verified-updates` (JSON) and `ClaimReview` JSON-LD so personal AI news agents can consume verified updates without scraping whole pages.
+- **Anti-Spam Rate Limits:** Enforce daily proposal caps per user and deduct ARC (`spam_penalty`) on bad-faith/unsourced rejections.
 
 ---
 

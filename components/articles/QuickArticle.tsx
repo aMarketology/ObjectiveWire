@@ -12,6 +12,11 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import ArticleViewTracker from '@/components/articles/ArticleViewTracker';
+import ReactionBar from '@/components/engagement/ReactionBar';
+import ObjectiveMeter from '@/components/engagement/ObjectiveMeter';
+import DiscordComments from '@/components/engagement/discord-comments';
 
 // ─── Accent colour map (matches JackArticle palette) ─────────────────────────
 const ACCENT_MAP: Record<string, { border: string; text: string; badge: string }> = {
@@ -77,6 +82,7 @@ export interface QuickArticleProps {
   sources?: QuickSource[];
   relatedArticles?: QuickRelated[];
   tags?: string[];
+  slug?: string;
   children: React.ReactNode;
 }
 
@@ -96,12 +102,25 @@ export default function QuickArticle({
   sources,
   relatedArticles,
   tags,
+  slug,
   children,
 }: QuickArticleProps) {
+  const pathname = usePathname();
+  const resolvedSlug = (slug ?? pathname ?? '').replace(/^\/+/, '');
   const accent = resolveAccent(accentColor);
 
   return (
     <article className="max-w-3xl mx-auto px-4 py-8">
+      {resolvedSlug && (
+        <ArticleViewTracker
+          slug={resolvedSlug}
+          title={title}
+          url={`/${resolvedSlug}`}
+          image={heroImage?.src}
+          category={category}
+          tags={tags}
+        />
+      )}
       {/* ── Breadcrumbs ───────────────────────────────────────────────────── */}
       {breadcrumbs && breadcrumbs.length > 0 && (
         <nav
@@ -266,6 +285,21 @@ export default function QuickArticle({
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {/* ── ReactionBar (Like / Comment / Save) + Comments (Discord) ─────── */}
+      {resolvedSlug && (
+        <div className="mt-10 pt-6 border-t border-gray-200 space-y-6">
+          <ReactionBar
+            slug={resolvedSlug}
+            title={title}
+            url={`/${resolvedSlug}`}
+            image={heroImage?.src}
+            category={category}
+          />
+          <ObjectiveMeter slug={resolvedSlug} />
+          <DiscordComments slug={resolvedSlug} articleTitle={title} />
         </div>
       )}
     </article>

@@ -87,8 +87,19 @@ export default function ArticleViewTracker({ slug, title, url, image, category, 
     recordLocal({ slug, title, url, image, category, tags, ts: Date.now(), scrollDepth: 0, dwellMs: 0 });
 
     // Server mirror only when signed in
+    let arcTimer: ReturnType<typeof setTimeout> | null = null;
     if (isLoggedIn) {
       track({ slug, title, url, image, category });
+      // Award +2 ARC after 10s of active page view (anti-bounce dwell guard)
+      arcTimer = setTimeout(() => {
+        if (!document.hidden) {
+          fetch('/api/arc', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ slug }),
+          }).catch(() => {});
+        }
+      }, 10_000);
     }
 
     // ── Dwell timer ────────────────────────────────────────────────────────
@@ -141,6 +152,7 @@ export default function ArticleViewTracker({ slug, title, url, image, category, 
     window.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
+      if (arcTimer) clearTimeout(arcTimer);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       window.removeEventListener('scroll', onScroll);
       pauseDwell();

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import FollowButton from '@/components/engagement/FollowButton';
+import ArcScoreCard from '@/components/engagement/ArcScoreCard';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,11 +17,20 @@ export default async function UserProfilePage({
 
   const supabase = await createClient();
 
-  const { data: profiles } = await supabase
+  let { data: profiles, error: profileErr } = await supabase
     .from('public_profiles')
-    .select('id, auth_user_id, username, display_name, bio, avatar_url, discord_id, discord_username, created_at')
+    .select('id, auth_user_id, username, display_name, bio, avatar_url, discord_id, discord_username, arc_score, role, created_at')
     .or(`username.ilike.${cleanHandle},discord_username.ilike.${cleanHandle}`)
     .limit(1);
+
+  if (profileErr?.code === '42703') {
+    const fallback = await supabase
+      .from('public_profiles')
+      .select('id, auth_user_id, username, display_name, bio, avatar_url, discord_id, discord_username, created_at')
+      .or(`username.ilike.${cleanHandle},discord_username.ilike.${cleanHandle}`)
+      .limit(1);
+    profiles = (fallback.data ?? []).map((p: Record<string, unknown>) => ({ ...p, arc_score: 0, role: 'reader' })) as typeof profiles;
+  }
 
   const profile = profiles?.[0];
   if (!profile) {
@@ -54,11 +64,14 @@ export default async function UserProfilePage({
             <div>
               <h1 className="text-xl font-bold text-gray-900">{profile.display_name || cleanHandle}</h1>
               <p className="text-sm text-gray-500">@{profile.username || cleanHandle}</p>
-              {profile.discord_username && (
-                <span className="inline-block mt-1 text-[11px] font-medium text-[#5865F2] bg-[#5865F2]/10 px-2 py-0.5 rounded-full">
-                  Discord: {profile.discord_username}
-                </span>
-              )}
+              <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                <ArcScoreCard score={profile.arc_score ?? 0} compact />
+                {profile.discord_username && (
+                  <span className="inline-block text-[11px] font-medium text-[#5865F2] bg-[#5865F2]/10 px-2 py-0.5 rounded-full">
+                    Discord: {profile.discord_username}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 

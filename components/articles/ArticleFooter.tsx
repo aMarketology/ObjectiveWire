@@ -20,6 +20,7 @@
 
 import Link from 'next/link';
 import ReactionBar from '@/components/engagement/ReactionBar';
+import ObjectiveMeter from '@/components/engagement/ObjectiveMeter';
 import DiscordComments from '@/components/engagement/discord-comments';
 import FooterAuthorBroadcast from '@/components/authors/FooterAuthorBroadcast';
 
@@ -141,6 +142,9 @@ export default function ArticleFooter({
         image={image}
         category={category}
       />
+
+      {/* 2b. Objective Meter (Reader Accuracy Score) */}
+      <ObjectiveMeter slug={slug} />
 
       {/* 3. Discord Comments */}
       <DiscordComments slug={slug} articleTitle={title} />

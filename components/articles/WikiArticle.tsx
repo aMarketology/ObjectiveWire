@@ -12,6 +12,8 @@
 import { notFound } from 'next/navigation';
 import { getWikiArticle } from '@/lib/local-content';
 import { Breadcrumb } from '@/components/nav/Breadcrumb';
+import ArticleViewTracker from '@/components/articles/ArticleViewTracker';
+import ArticleFooter from '@/components/articles/ArticleFooter';
 
 interface WikiArticleProps {
   slug: string;
@@ -65,6 +67,14 @@ export async function WikiArticle({ slug }: WikiArticleProps) {
         </div>
 
         <article className="container mx-auto px-4 max-w-5xl pb-16">
+          <ArticleViewTracker
+            slug={slug}
+            title={article.title}
+            url={`/${slug}`}
+            image={article.image_url}
+            category={article.category}
+            tags={Array.isArray(article.tags) ? article.tags : undefined}
+          />
           {/* Category / Breaking badge */}
           <div className="flex items-center gap-2 mt-4 mb-4">
             {article.breaking && (
@@ -124,19 +134,15 @@ export async function WikiArticle({ slug }: WikiArticleProps) {
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
 
-          {/* Tags */}
-          {Array.isArray(article.tags) && article.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-10 pt-6 border-t border-gray-200">
-              {article.tags.map((tag: string) => (
-                <span
-                  key={tag}
-                  className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          <ArticleFooter
+            slug={slug}
+            title={article.title}
+            url={`/${slug}`}
+            image={article.image_url}
+            category={article.category}
+            tags={Array.isArray(article.tags) ? article.tags : undefined}
+            author={article.author_name ? { name: article.author_name } : undefined}
+          />
         </article>
       </div>
     );

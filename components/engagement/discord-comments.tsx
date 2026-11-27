@@ -31,9 +31,13 @@ interface MentionCandidate {
   inThread?: boolean;
 }
 
-function renderBodyWithMentions(body: string) {
-  const parts = body.split(/(@[a-zA-Z0-9_.-]{2,32})/g);
+function renderCommentBody(body: string) {
+  const tokenRegex = /(@[a-zA-Z0-9_.-]{2,32}|https?:\/\/[^\s<>"']+|(?:^|\s)\/(?:mlb|nfl|mls|wnba|golf|tennis|ufc|soccer|world-cup|premier-league|local|news|cars|cameras|business|crime|earth|foreign-affairs|podcasts|blog|u)\/[a-zA-Z0-9/_-]+)/g;
+  const parts = body.split(tokenRegex);
+
   return parts.map((part, idx) => {
+    if (!part) return null;
+
     if (/^@[a-zA-Z0-9_.-]{2,32}$/.test(part)) {
       const handle = part.slice(1).toLowerCase();
       return (
@@ -46,6 +50,64 @@ function renderBodyWithMentions(body: string) {
         </Link>
       );
     }
+
+    const trimmed = part.trim();
+    const leadingSpace = part.startsWith(' ') ? ' ' : '';
+
+    if (/^https?:\/\//i.test(trimmed)) {
+      try {
+        const parsed = new URL(trimmed);
+        const host = parsed.hostname.replace(/^www\./, '');
+        const isOwnSite = host === 'objectivewire.com' || host === 'objectivewire.org';
+        if (isOwnSite) {
+          const internalPath = parsed.pathname + parsed.search + parsed.hash;
+          return (
+            <span key={idx}>
+              {leadingSpace}
+              <Link
+                href={internalPath || '/'}
+                className="inline-flex items-center gap-1 font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-1.5 py-0.5 rounded text-xs transition-colors"
+              >
+                <span>📰</span>
+                <span>{host}{parsed.pathname.length > 36 ? parsed.pathname.slice(0, 36) + '…' : parsed.pathname}</span>
+              </Link>
+            </span>
+          );
+        }
+        return (
+          <span key={idx}>
+            {leadingSpace}
+            <a
+              href={trimmed}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-1.5 py-0.5 rounded text-xs transition-colors"
+            >
+              <span>🔗</span>
+              <span>{host}</span>
+            </a>
+          </span>
+        );
+      } catch {
+        return <span key={idx}>{part}</span>;
+      }
+    }
+
+    if (trimmed.startsWith('/')) {
+      return (
+        <span key={idx}>
+          {leadingSpace}
+          <Link
+            href={trimmed}
+            className="inline-flex items-center gap-1 font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-1.5 py-0.5 rounded text-xs transition-colors"
+          >
+            <span>📰</span>
+            <span>{trimmed.length > 40 ? trimmed.slice(0, 40) + '…' : trimmed}</span>
+          </Link>
+        </span>
+      );
+    }
+
     return <span key={idx}>{part}</span>;
   });
 }
@@ -156,7 +218,7 @@ function CommentCard({
           )}
         </div>
         <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed break-words">
-          {renderBodyWithMentions(comment.body)}
+          {renderCommentBody(comment.body)}
         </p>
       </div>
     </div>
