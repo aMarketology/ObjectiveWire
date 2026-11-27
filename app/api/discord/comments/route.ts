@@ -373,8 +373,18 @@ export async function POST(req: NextRequest) {
 
       // Always use the site's production URL for article links in Discord
       const articleUrl = `${siteBaseUrl}/${slug}`;
-      const rawTitle = articleTitle || slug.split('/').pop()?.replace(/-/g, ' ') || slug;
-      const prefix = `[${siteDomain}] `;
+      const segments = slug.split('/').filter(Boolean);
+      const sectionPath = segments.length > 1 ? segments.slice(0, -1).join('/') : (segments[0] ?? '');
+      const breadcrumbTrail = [
+        `[${siteBaseUrl}](${siteBaseUrl})`,
+        ...segments.map((seg, idx) => {
+          const pathSoFar = segments.slice(0, idx + 1).join('/');
+          return `[${seg}](${siteBaseUrl}/${pathSoFar})`;
+        }),
+      ].join(' › ');
+
+      const rawTitle = articleTitle || segments[segments.length - 1]?.replace(/-/g, ' ') || slug;
+      const prefix = sectionPath ? `[${siteDomain}/${sectionPath}] ` : `[${siteDomain}] `;
       const threadTitle = `${prefix}${rawTitle}`.slice(0, 100);
 
       const buildPayload = (isNewThread: boolean): Record<string, unknown> => ({
@@ -397,12 +407,19 @@ export async function POST(req: NextRequest) {
                 ? [{ name: '↩️ Replying to', value: `@${replyToUsername}`, inline: true }]
                 : []),
               {
+                name: '📍 Breadcrumbs',
+                value: breadcrumbTrail.slice(0, 1024),
+              },
+              {
+                name: '🌐 Full URL',
+                value: articleUrl,
+              },
+              {
                 name: '🔗 Navigate',
-                value: `[💬 Reply on Site](${articleUrl}#discord-comments) · [📰 Read Article](${articleUrl})`,
-                inline: Boolean(replyToUsername),
+                value: `[💬 Reply on Site](${articleUrl}#discord-comments) · [📰 Read Article](${articleUrl}) · [👤 Profile](${siteBaseUrl}/u/${encodeURIComponent(commenterHandle)})`,
               },
             ],
-            footer: { text: `${siteDomain} · #article-discussion` },
+            footer: { text: `${siteBaseUrl} · /${slug}` },
             timestamp: comment.createdAt,
           },
         ],
